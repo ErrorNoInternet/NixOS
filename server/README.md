@@ -7,55 +7,55 @@ Make sure you already have a functioning NixOS install. You might want to back u
 
 1. Create a directory called `secrets` in `/etc/nixos`. This is where you'll store private information such as WiFi passwords, authorized SSH keys, etc.
 
-Then, create a file in `secrets/` called `secrets.nix` with the following contents:
-```nix
-let
-    global = {};
-in
-{
-    ssh = import ./ssh.nix;
-    wireless = import ./wireless.nix;
-}
-```
-you can replace `ssh` and `wireless` with anything you want, but you'll also have to remove them from `base.nix`.
-You can also add global secrets (e.g. email for alerts) in `global = {}`.
+    Then, create a file in `secrets/` called `secrets.nix` with the following contents:
+    ```nix
+    let
+        global = {};
+    in
+    {
+        ssh = import ./ssh.nix;
+        wireless = import ./wireless.nix;
+    }
+    ```
+    you can replace `ssh` and `wireless` with anything you want, but you'll also have to remove them from `base.nix`.
+    You can also add global secrets (e.g. email for alerts) in `global = {}`.
 
-Now create the respective files in `secrets/` (`ssh.nix` and `wireless.nix`):
-```nix
-{
-    authorizedKeys = [
-        "insert ssh public keys here"
-    ];
-}
-```
-and
-```nix
-{
-    networks = {
-        "insert WiFi SSID here" = {
-            psk = "insert WiFi password here";
+    Now create the respective files in `secrets/` (`ssh.nix` and `wireless.nix`):
+    ```nix
+    {
+        authorizedKeys = [
+            "insert ssh public keys here"
+        ];
+    }
+    ```
+    and
+    ```nix
+    {
+        networks = {
+            "insert WiFi SSID here" = {
+                psk = "insert WiFi password here";
+            };
         };
-    };
-}
-```
+    }
+    ```
 
 2. Make a directory called `variables` in `/etc/nixos`. This is where you'll store extra options for the configuration, such as `hostLocation` (for mirrors, timezones, etc) and `hostType` (`minecraft-server`, `web-server`, etc).
 
-To use the Minecraft server configuration + mirrors/DNS fixes for China, you can run the following:
-```
-echo -n "minecraft-server" | sudo tee /etc/nixos/variables/hostType
-echo -n "china" | sudo tee /etc/nixos/variables/hostLocation
-```
+    To use the Minecraft server configuration + mirrors/DNS fixes for China, you can run the following:
+    ```
+    echo -n "minecraft-server" | sudo tee /etc/nixos/variables/hostType
+    echo -n "china" | sudo tee /etc/nixos/variables/hostLocation
+    ```
 
 3. Symlink all the files from this repository to `/etc/nixos`:
-```console
-cd /etc/nixos/
-ln nixos-repository/server/configuration.nix configuration.nix
-ln nixos-repository/server/base.nix base.nix
-ln nixos-repository/server/minecraft-server.nix minecraft-server.nix
-ln -s nixos-repository/server/locations locations
+    ```console
+    cd /etc/nixos/
+    ln nixos-repository/server/configuration.nix configuration.nix
+    ln nixos-repository/server/base.nix base.nix
+    ln nixos-repository/server/minecraft-server.nix minecraft-server.nix
+    ln -s nixos-repository/server/locations locations
 # and possibly more...
-```
+    ```
 
 4. Run `sudo nixos-rebuild switch`, and you should be good to go.
 
