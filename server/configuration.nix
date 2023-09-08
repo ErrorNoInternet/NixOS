@@ -1,16 +1,14 @@
 { config, pkgs, ... }:
 
 let
-    hostLocation = (builtins.readFile "/etc/nixos/variables/hostLocation");
-    hostType = (builtins.readFile "/etc/nixos/variables/hostType");
-
+    hostSettings = import ./host-settings.nix;
     secrets = import secrets/secrets.nix;
 in
 {
     imports = [
         ./hardware-configuration.nix
         (import ./base.nix { inherit pkgs secrets; })
-        "/etc/nixos/locations/${hostLocation}.nix"
-        (import "/etc/nixos/${hostType}.nix" { inherit pkgs; })
+        "/etc/nixos/locations/${hostSettings.location}.nix"
+        (import "/etc/nixos/${hostSettings.type}.nix" { inherit pkgs; })
     ];
 }

@@ -39,12 +39,14 @@ Make sure you already have a functioning NixOS install. You might want to back u
     }
     ```
 
-2. Make a directory called `variables` in `/etc/nixos`. This is where you'll store extra options for the configuration, such as `hostLocation` (for mirrors, timezones, etc) and `hostType` (`minecraft-server`, `web-server`, etc).
+2. Create a file called `host-settings.nix` in `/etc/nixos`. This is where you'll store extra settings for the configuration, such as `location` (for mirrors, timezones, etc) and `type` (`minecraft-server`, `web-server`, etc).
 
-    To use the Minecraft server configuration + mirrors/DNS fixes for China, you can run the following:
-    ```
-    echo -n "minecraft-server" | sudo tee /etc/nixos/variables/hostType
-    echo -n "china" | sudo tee /etc/nixos/variables/hostLocation
+    For example, to use the Minecraft server configuration + mirrors/DNS fixes for China, you could write:
+    ```nix
+    {
+        location = "china";
+        type = "minecraft-server";
+    }
     ```
 
 3. Symlink all the files from this repository to `/etc/nixos`:
