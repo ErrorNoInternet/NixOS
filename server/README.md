@@ -58,3 +58,5 @@ ln -s nixos-repository/server/locations locations
 ```
 
 4. Run `sudo nixos-rebuild switch`, and you should be good to go.
+
+To update this configuration later on, simply run `git pull` (in `nixos-repository`) and `sudo nixos-rebuild switch`.
