@@ -49,6 +49,14 @@ Make sure you already have a functioning NixOS install. You might want to back u
     }
     ```
 
+    Or just use the base configuration:
+    ```nix
+    {
+        location = "no-location";
+        type = "basic-server";
+    }
+    ```
+
 3. Create a file called `extra.nix` in `/etc/nixos`. This is where you could store extra options for your specific server.
 
     Empty configuration:
