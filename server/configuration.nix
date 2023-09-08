@@ -1,8 +1,8 @@
 { config, pkgs, ... }:
 
 let
-    hostLocation = "china";
-    hostType = "minecraft-server";
+    hostLocation = (builtins.readFile "/etc/nixos/variables/hostLocation");
+    hostType = (builtins.readFile "/etc/nixos/variables/hostType");
 
     secrets = import secrets/secrets.nix;
 in
@@ -10,7 +10,7 @@ in
     imports = [
         ./hardware-configuration.nix
         (import ./base.nix { inherit pkgs secrets; })
-        (import "/etc/nixos/locations/${hostLocation}.nix" {})
+        "/etc/nixos/locations/${hostLocation}.nix"
         (import "/etc/nixos/${hostType}.nix" { inherit pkgs; })
     ];
 }
