@@ -1,5 +1,4 @@
-/server/secrets/
-!/server/secrets/secrets.nix
+secrets
 *.qcow2
 *.img
 *.fd
