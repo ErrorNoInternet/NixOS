@@ -1,4 +1,5 @@
-secrets
+secrets/
+!secrets/secrets.nix
 *.qcow2
 *.img
 *.fd
