@@ -54,7 +54,7 @@ Make sure you already have a functioning NixOS install. You might want to back u
     ln nixos-repository/server/base.nix base.nix
     ln nixos-repository/server/minecraft-server.nix minecraft-server.nix
     ln -s nixos-repository/server/locations locations
-# and possibly more...
+    # and possibly more...
     ```
 
 4. Run `sudo nixos-rebuild switch`, and you should be good to go.
