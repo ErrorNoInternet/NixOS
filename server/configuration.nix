@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 let
     hostSettings = import ./host-settings.nix;
@@ -8,6 +8,7 @@ in
     imports = [
         ./hardware-configuration.nix
         (import ./base.nix { inherit pkgs secrets; })
+        (import ./extra.nix { inherit pkgs; })
         "/etc/nixos/locations/${hostSettings.location}.nix"
         (import "/etc/nixos/${hostSettings.type}.nix" { inherit pkgs; })
     ];

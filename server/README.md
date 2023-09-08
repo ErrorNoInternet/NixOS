@@ -49,7 +49,17 @@ Make sure you already have a functioning NixOS install. You might want to back u
     }
     ```
 
-3. Symlink all the files from this repository to `/etc/nixos`:
+3. Create a file called `extra.nix` in `/etc/nixos`. This is where you could store extra options for your specific server.
+
+    Empty configuration:
+    ```nix
+    { pkgs, ... }:
+
+    {
+    }
+    ```
+
+4. Symlink all the files from this repository to `/etc/nixos`:
     ```console
     cd /etc/nixos/
     ln nixos-repository/server/configuration.nix configuration.nix
@@ -59,6 +69,6 @@ Make sure you already have a functioning NixOS install. You might want to back u
     # and possibly more...
     ```
 
-4. Run `sudo nixos-rebuild switch`, and you should be good to go.
+5. Run `sudo nixos-rebuild switch`, and you should be good to go.
 
 To update this configuration later on, simply run `git pull` (in `nixos-repository`) and `sudo nixos-rebuild switch`.
