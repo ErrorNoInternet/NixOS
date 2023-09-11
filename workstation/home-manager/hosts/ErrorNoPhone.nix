@@ -10,18 +10,5 @@
         ../modules/bat.nix
     ];
 
-    nixpkgs.overlays = config.nixpkgs.overlays;
-    home.packages = with pkgs; [
-        fastfetch
-        cmatrix
-
-        exa
-        (import ../derivations/hsize.nix {})
-
-        python3
-        rustup
-        gcc
-    ];
-
     home.stateVersion = "23.05";
 }
