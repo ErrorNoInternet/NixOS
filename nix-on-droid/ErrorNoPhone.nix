@@ -6,8 +6,10 @@
     environment.motd = "";
 
     environment.packages = with pkgs; [
-        (import ./nixos-repository/workstation/home-manager/derivations/hsize.nix {})
         cmatrix
+        neofetch
+
+        (import ./nixos-repository/workstation/home-manager/derivations/hsize.nix {})
         exa
 
         gcc
