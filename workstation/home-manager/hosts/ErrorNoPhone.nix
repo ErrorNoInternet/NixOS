@@ -2,7 +2,6 @@
 
 {
     imports = [
-        ../modules/fastfetch.nix
         ../modules/nvim.nix
         ../modules/tmux.nix
         ../modules/zsh.nix
