@@ -17,6 +17,7 @@
         git
         gnugrep
         gnutar
+        gzip
         ncurses
         perl
         wget
