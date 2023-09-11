@@ -11,13 +11,13 @@
         neofetch
 
 #        (import ./nixos-repository/home-manager/derivations/hsize.nix {})
-        exa
-        git
-        tput
-        perl
-        gawk
-        wget
         curl
+        exa
+        gawk
+        git
+        ncurses
+        perl
+        wget
 
         gcc
         python3
