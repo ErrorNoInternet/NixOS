@@ -10,7 +10,8 @@
         ../modules/bat.nix
     ];
 
-    environment.packages = with pkgs; [
+    nixpkgs.overlays = config.nixpkgs.overlays;
+    home.packages = with pkgs; [
         fastfetch
         cmatrix
 
