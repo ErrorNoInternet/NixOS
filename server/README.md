@@ -44,6 +44,7 @@ Make sure you already have a functioning NixOS install. You might want to back u
     For example, to use the Minecraft server configuration + mirrors/DNS fixes for China, you could write:
     ```nix
     {
+        name = "NixServer";
         location = "china";
         type = "minecraft-server";
     }
@@ -52,6 +53,7 @@ Make sure you already have a functioning NixOS install. You might want to back u
     Or just use the base configuration:
     ```nix
     {
+        name = "NixServer";
         location = "no-location";
         type = "basic-server";
     }
@@ -61,7 +63,7 @@ Make sure you already have a functioning NixOS install. You might want to back u
 
     Empty configuration:
     ```nix
-    { pkgs, ... }:
+    { hostSettings, pkgs, ... }:
 
     {
     }
