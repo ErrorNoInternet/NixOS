@@ -7,8 +7,8 @@ in
 {
     imports = [
         ./hardware-configuration.nix
-        (import ./base.nix { inherit pkgs secrets; })
-        (import ./extra.nix { inherit pkgs; })
+        (import ./base.nix { inherit hostSettings pkgs secrets; })
+        (import ./extra.nix { inherit hostSettings pkgs secrets; })
         "/etc/nixos/locations/${hostSettings.location}.nix"
         (import "/etc/nixos/${hostSettings.type}.nix" { inherit pkgs; })
     ];

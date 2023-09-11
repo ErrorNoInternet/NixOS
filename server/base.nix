@@ -18,6 +18,7 @@
         '';
     };
 
+    i18n.defaultLocale = "en_US.UTF-8";
     boot = {
         loader = {
             systemd-boot.enable = true;
@@ -26,9 +27,8 @@
         kernelParams = [ "console=tty0" ];
         supportedFilesystems = [ "ntfs" ];
     };
-
     networking = {
-        hostName = "NixServer";
+        hostName = hostSettings.name;
         wireless = {
             enable = true;
             networks = secrets.wireless.networks;
@@ -38,8 +38,6 @@
             allowedTCPPorts = [ 22 ];
         };
     };
-
-    i18n.defaultLocale = "en_US.UTF-8";
     zramSwap = {
         enable = true;
         memoryPercent = 50;
