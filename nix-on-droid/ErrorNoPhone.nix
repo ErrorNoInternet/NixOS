@@ -3,8 +3,9 @@
 {
     system.stateVersion = "23.05";
     environment.sessionVariables.HOSTNAME = "ErrorNoPhone";
-    environment.motd = "";
 
+    environment.motd = "";
+    user.shell = "${pkgs.zsh}/bin/zsh";
     environment.packages = with pkgs; [
         cmatrix
         neofetch
