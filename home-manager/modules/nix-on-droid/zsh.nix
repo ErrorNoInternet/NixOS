@@ -36,7 +36,7 @@ zstyle ':completion:*' menu select
 zmodload zsh/complist
 '';
         initExtra = ''
-neofetch
+f
 source ~/.p10k.zsh
 
 export _ZO_RESOLVE_SYMLINKS=1
