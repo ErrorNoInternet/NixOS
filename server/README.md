@@ -70,10 +70,10 @@ Make sure you already have a functioning NixOS install. You might want to back u
 4. Symlink all the files from this repository to `/etc/nixos`:
     ```console
     cd /etc/nixos/
-    ln nixos-repository/server/configuration.nix configuration.nix
-    ln nixos-repository/server/base.nix base.nix
-    ln nixos-repository/server/minecraft-server.nix minecraft-server.nix
-    ln -s nixos-repository/server/locations locations
+    sudo ln nixos-repository/server/configuration.nix .
+    sudo ln nixos-repository/server/base.nix .
+    sudo ln nixos-repository/server/minecraft-server.nix .
+    sudo ln -s nixos-repository/server/locations locations
     # and possibly more...
     ```
 
