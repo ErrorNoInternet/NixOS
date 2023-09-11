@@ -2,11 +2,11 @@
 
 {
     imports = [
+        ../modules/bat.nix
+        ../modules/nix-on-droid/zsh.nix
         ../modules/nvim.nix
         ../modules/tmux.nix
-        ../modules/zsh.nix
         ../modules/zoxide.nix
-        ../modules/bat.nix
     ];
 
     home.stateVersion = "23.05";
