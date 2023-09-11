@@ -18,6 +18,7 @@
         gnugrep
         ncurses
         perl
+        tar
         wget
 
         gcc
