@@ -32,7 +32,6 @@
             size = 100000;
             save = 100000;
             share = true;
-            path = "${config.xdg.dataHome}/zsh_history";
         };
         enableCompletion = false;
         initExtraBeforeCompInit = ''
