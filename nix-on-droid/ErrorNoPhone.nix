@@ -11,6 +11,8 @@
 
         (import ./nixos-repository/workstation/home-manager/derivations/hsize.nix {})
         exa
+        git
+        neovim
 
         gcc
         python3
