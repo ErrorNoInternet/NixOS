@@ -1,4 +1,4 @@
-{ config, pkgs, secrets, ... }:
+{ config, pkgs, ... }:
 
 let
     hostName = builtins.getEnv "HOSTNAME";
