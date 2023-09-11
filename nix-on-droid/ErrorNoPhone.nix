@@ -13,6 +13,11 @@
 #        (import ./nixos-repository/home-manager/derivations/hsize.nix {})
         exa
         git
+        tput
+        perl
+        gawk
+        wget
+        curl
 
         gcc
         python3
