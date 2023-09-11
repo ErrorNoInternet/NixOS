@@ -9,7 +9,7 @@
         cmatrix
         neofetch
 
-        (import ./nixos-repository/workstation/home-manager/derivations/hsize.nix {})
+        (import ./nixos-repository/home-manager/derivations/hsize.nix {})
         exa
         git
         neovim
@@ -19,7 +19,7 @@
         rustup
     ];
     home-manager = {
-        config = ./nixos-repository/workstation/home-manager/home.nix;
+        config = ./nixos-repository/home-manager/home.nix;
         useUserPackages = true;
     };
 }
