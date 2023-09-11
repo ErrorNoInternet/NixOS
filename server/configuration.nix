@@ -12,4 +12,7 @@ in
         "/etc/nixos/locations/${hostSettings.location}.nix"
         (import "/etc/nixos/${hostSettings.type}.nix" { inherit pkgs; })
     ];
+
+    system.copySystemConfiguration = true;
+    system.stateVersion = "23.05";
 }

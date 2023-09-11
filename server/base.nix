@@ -67,7 +67,4 @@
             openssh.authorizedKeys.keys = secrets.ssh.authorizedKeys;
         };
     };
-
-    system.copySystemConfiguration = true;
-    system.stateVersion = "23.05";
 }
