@@ -16,9 +16,9 @@
         gawk
         git
         gnugrep
+        gnutar
         ncurses
         perl
-        tar
         wget
 
         gcc
