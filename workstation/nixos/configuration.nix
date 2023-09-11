@@ -8,8 +8,8 @@ in
         ./hardware-configuration.nix
         (import ./base.nix { inherit hostSettings pkgs; })
         (import ./extra.nix { inherit hostSettings pkgs; })
-        (import "/etc/nixos/locations/${hostSettings.location}.nix" { inherit pkgs; })
-        (import "/etc/nixos/hosts/${hostSettings.name}.nix" { inherit pkgs; })
+        (import ./locations/${hostSettings.location}.nix { inherit pkgs; })
+        (import ./hosts/${hostSettings.name}.nix { inherit pkgs; })
     ];
 
     system.copySystemConfiguration = true;

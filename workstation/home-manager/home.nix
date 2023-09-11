@@ -6,6 +6,6 @@ let
 in
 {
     imports = [
-        (import "/home/ryan/.config/home-manager/hosts/${hostName}.nix" { inherit config pkgs secrets; })
+        (import ./hosts/${hostName}.nix { inherit config pkgs secrets; })
     ];
 }
