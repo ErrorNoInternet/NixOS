@@ -15,6 +15,7 @@
         exa
         gawk
         git
+        gnugrep
         ncurses
         perl
         wget
