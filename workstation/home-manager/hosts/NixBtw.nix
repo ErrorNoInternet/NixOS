@@ -85,52 +85,52 @@ in
         downloads.source = config.lib.file.mkOutOfStoreSymlink "/mnt/data/downloads";
     };
 
-    home.packages = [
+    home.packages = with pkgs; [
         # rice
-        pkgs.fastfetch
-        pkgs.cmatrix
-        pkgs.cava
+        fastfetch
+        cmatrix
+        cava
 
         # desktop
-        pkgs.wl-clipboard
-        pkgs.swaylock-effects
-        pkgs.swayidle
-        pkgs.hyprland-autoname-workspaces
-        pkgs.hyprpaper
-        pkgs.grim
-        pkgs.slurp
-        pkgs.hyprpicker
-        pkgs.cliphist
-        pkgs.pavucontrol
+        wl-clipboard
+        swaylock-effects
+        swayidle
+        hyprland-autoname-workspaces
+        hyprpaper
+        grim
+        slurp
+        hyprpicker
+        cliphist
+        pavucontrol
 
         # system utilities
-        pkgs.exa
-        pkgs.jq
-        pkgs.duf
+        exa
+        jq
+        duf
         (import ../derivations/hsize.nix {})
-        pkgs.nvtop
-        pkgs.timg
+        nvtop
+        timg
 
         # graphical utilities
-        pkgs.firefox
-        pkgs.kdeconnect
-        pkgs.xdragon
-        pkgs.gimp
-        pkgs.qbittorrent
-        (pkgs.discord-canary.override {
+        firefox
+        kdeconnect
+        xdragon
+        gimp
+        qbittorrent
+        (discord-canary.override {
             withOpenASAR = true;
             withVencord = true;
         })
 
         # development utilities
-        pkgs.virt-manager
-        pkgs.python3
-        pkgs.rustup
-        pkgs.gcc
+        virt-manager
+        python3
+        rustup
+        gcc
 
         # games
-        pkgs.prismlauncher
-        pkgs.superTuxKart
+        prismlauncher
+        superTuxKart
     ];
 
     home.sessionVariables = {

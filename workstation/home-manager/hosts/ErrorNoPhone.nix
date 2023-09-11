@@ -10,16 +10,16 @@
         ../modules/bat.nix
     ];
 
-    home.packages = [
-        pkgs.fastfetch
-        pkgs.cmatrix
+    environment.packages = with pkgs; [
+        fastfetch
+        cmatrix
 
-        pkgs.exa
+        exa
         (import ../derivations/hsize.nix {})
 
-        pkgs.python3
-        pkgs.rustup
-        pkgs.gcc
+        python3
+        rustup
+        gcc
     ];
 
     home.stateVersion = "23.05";
