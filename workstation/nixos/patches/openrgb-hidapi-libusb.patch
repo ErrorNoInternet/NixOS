@@ -1,0 +1,33 @@
+--- a/OpenRGB.pro
++++ b/OpenRGB.pro
+@@ -1844,27 +1844,10 @@
+ 
+     QMAKE_CXXFLAGS += -Wno-implicit-fallthrough
+ 
+-    #-------------------------------------------------------------------------------------------#
+-    # Determine which hidapi to use based on availability                                       #
+-    #   Prefer hidraw backend, then libusb                                                      #
+-    #-------------------------------------------------------------------------------------------#
+-    packagesExist(hidapi-hidraw) {
+-        LIBS += -lhidapi-hidraw
+-
+-        #---------------------------------------------------------------------------------------#
+-        # hidapi-hidraw >= 0.10.1 supports USAGE/USAGE_PAGE                                     #
+-        # Define USE_HID_USAGE if hidapi-hidraw supports it                                     #
+-        #---------------------------------------------------------------------------------------#
+-        HIDAPI_HIDRAW_VERSION = $$system($$PKG_CONFIG --modversion hidapi-hidraw)
+-        if(versionAtLeast(HIDAPI_HIDRAW_VERSION, "0.10.1")) {
+-            DEFINES += USE_HID_USAGE
+-        }
++    packagesExist(hidapi-libusb) {
++        LIBS += -lhidapi-libusb
+     } else {
+-        packagesExist(hidapi-libusb) {
+-            LIBS += -lhidapi-libusb
+-        } else {
+-            LIBS += -lhidapi
+-        }
++        LIBS += -lhidapi
+     }
+ 
+     SOURCES +=                                                                                  \
