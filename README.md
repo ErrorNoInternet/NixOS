@@ -1,2 +1,2 @@
 # NixOS Configuration Files
-This repository contains the NixOS configuration files I use for my workstations and servers
+My workstation, server, and Nix-on-Droid configuration files.
