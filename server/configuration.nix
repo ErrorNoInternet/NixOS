@@ -9,8 +9,8 @@ in
         ./hardware-configuration.nix
         (import ./base.nix { inherit hostSettings pkgs secrets; })
         (import ./extra.nix { inherit hostSettings pkgs secrets; })
-        ./locations/${hostSettings.location}.nix
-        (import ./modules/${hostSettings.type}.nix { inherit pkgs; })
+        (import ./locations/${hostSettings.location}.nix { inherit pkgs secrets; })
+        (import ./modules/${hostSettings.type}.nix { inherit pkgs secrets; })
     ];
 
     system.copySystemConfiguration = true;

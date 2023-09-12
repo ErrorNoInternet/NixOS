@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, secrets, ... }:
 
 {
     networking.firewall.allowedTCPPorts = [ 25565 ];
