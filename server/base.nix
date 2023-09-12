@@ -1,4 +1,4 @@
-{ pkgs, secrets, ... }:
+{ hostSettings, pkgs, secrets, ... }:
 
 {
     nixpkgs.config.allowUnfree = true;

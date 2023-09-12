@@ -63,7 +63,7 @@ Make sure you already have a functioning NixOS install. You might want to back u
 
     Empty configuration:
     ```nix
-    { hostSettings, pkgs, ... }:
+    { hostSettings, pkgs, secrets, ... }:
 
     {
     }
