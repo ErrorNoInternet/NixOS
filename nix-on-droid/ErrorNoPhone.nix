@@ -16,9 +16,11 @@
         gawk
         git
         gnugrep
+        gnupg
         gnutar
         gzip
         ncurses
+        openssh
         perl
         wget
 
