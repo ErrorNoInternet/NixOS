@@ -2,13 +2,13 @@
 
 {
     imports = [
-        (import ../presets/openrgb.nix { inherit pkgs; })
-        (import ../presets/video-acceleration.nix { inherit pkgs; })
-        ../presets/bluetooth.nix
-        ../presets/gaming.nix
-        ../presets/nvidia.nix
-        ../presets/nvidia-prime.nix
-        ../presets/virtualization.nix
+        (import ../modules/openrgb.nix { inherit pkgs; })
+        (import ../modules/video-acceleration.nix { inherit pkgs; })
+        ../modules/bluetooth.nix
+        ../modules/gaming.nix
+        ../modules/nvidia.nix
+        ../modules/nvidia-prime.nix
+        ../modules/virtualization.nix
     ];
 
     fileSystems."/mnt/data" = {
