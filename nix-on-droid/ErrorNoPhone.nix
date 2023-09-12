@@ -10,7 +10,7 @@
         cmatrix
         neofetch
 
-#        (import ./nixos-repository/home-manager/derivations/hsize.nix {})
+        (import ./nixos-repository/home-manager/derivations/hsize.nix {})
         curl
         exa
         gawk
