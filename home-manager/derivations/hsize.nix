@@ -2,11 +2,11 @@
 pkgs.rustPlatform.buildRustPackage rec {
     pname = "hsize";
     version = "1.0.1";
-    cargoHash = "sha256-ekzfu1Sfg4GjUGPp4GWpxZVzQUwafjFFTXIfc2m6JR8=";
+    cargoHash = "sha256-ParDbdVivWfwmL8MZEH5C6vMkDvaCPpYxS4wmkXpFw8=";
     src = pkgs.fetchFromGitHub {
         owner = "ErrorNoInternet";
         repo = pname;
-        rev = "a30620cc211c41391ccdd75a00fbf62ccceb315c";
-        hash = "sha256-ceX7RKRsdw5kPBwWouF3gsaaGKiXYy2nQDNJk6F/NAw=";
+        rev = "b852fd3db51c7008113e61a82330314caba292ad";
+        hash = "sha256-vd7znBHU94KEKqtx55jFNzrrEGaCzThMx3bKN0QNags=";
     };
 }
