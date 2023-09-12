@@ -74,7 +74,7 @@ Make sure you already have a functioning NixOS install. You might want to back u
     cd /etc/nixos/
     sudo ln nixos-repository/server/configuration.nix .
     sudo ln nixos-repository/server/base.nix .
-    sudo ln nixos-repository/server/minecraft-server.nix .
+    sudo ln -s nixos-repository/server/modules .
     sudo ln -s nixos-repository/server/locations locations
     # and possibly more...
     ```

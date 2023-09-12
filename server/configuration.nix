@@ -10,7 +10,7 @@ in
         (import ./base.nix { inherit hostSettings pkgs secrets; })
         (import ./extra.nix { inherit hostSettings pkgs secrets; })
         ./locations/${hostSettings.location}.nix
-        (import ./${hostSettings.type}.nix { inherit pkgs; })
+        (import ./modules/${hostSettings.type}.nix { inherit pkgs; })
     ];
 
     system.copySystemConfiguration = true;
