@@ -2,7 +2,7 @@
 
 let
     hostSettings = import ./host-settings.nix;
-    secrets = import secrets/secrets.nix;
+    secrets = import ./secrets/secrets.nix;
 in
 {
     imports = [
