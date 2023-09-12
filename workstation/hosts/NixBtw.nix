@@ -7,6 +7,7 @@
         ../presets/bluetooth.nix
         ../presets/gaming.nix
         ../presets/nvidia.nix
+        ../presets/nvidia-prime.nix
         ../presets/virtualization.nix
     ];
 
@@ -27,18 +28,6 @@
     };
 
     boot.kernelModules = [ "i2c-dev" "i2c-piix4" ];
-    hardware.nvidia = {
-        modesetting.enable = true;
-        prime = {
-            offload = {
-                enable = true;
-                enableOffloadCmd = true;
-            };
-
-            intelBusId = "PCI:0:2:0";
-            nvidiaBusId = "PCI:1:0:0";
-        };
-    };
     services.udev.extraRules = ''
         SUBSYSTEMS=="usb|hidraw", ATTRS{idVendor}=="1770", ATTRS{idProduct}=="ff00", TAG+="uaccess", TAG+="MSI_3Zone_Laptop"
     '';
