@@ -114,6 +114,7 @@ in
 
         # graphical utilities
         firefox
+        brave
         kdeconnect
         xdragon
         gimp
@@ -132,6 +133,9 @@ in
         # games
         prismlauncher
         superTuxKart
+
+        # ABSOLUTELY PROPRIETARY
+        zoom-us
     ];
 
     home.sessionVariables = {
