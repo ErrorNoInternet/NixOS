@@ -104,10 +104,11 @@ in
         pavucontrol
 
         # system utilities
+        (import ../derivations/hsize.nix {})
+        duf
         exa
         jq
-        duf
-        (import ../derivations/hsize.nix {})
+        nmap
         nvtop
         timg
 
