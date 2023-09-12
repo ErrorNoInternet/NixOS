@@ -20,6 +20,7 @@
         gnutar
         gzip
         ncurses
+        nmap
         openssh
         perl
         wget
