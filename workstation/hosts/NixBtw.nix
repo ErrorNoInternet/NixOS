@@ -3,6 +3,7 @@
 {
     imports = [
         (import ../presets/openrgb.nix { inherit pkgs; })
+        (import ../presets/video-acceleration.nix { inherit pkgs; })
         ../presets/bluetooth.nix
         ../presets/gaming.nix
         ../presets/nvidia.nix
