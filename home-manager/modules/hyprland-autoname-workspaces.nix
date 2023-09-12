@@ -30,6 +30,8 @@
             "Mullvad VPN" = "󰖂 "
             "openrgb" = ""
             "virt-manager" = " "
+            "Brave-browser" = " "
+            "zoom" = "󰬡 "
 
             [exclude]
             "" = "^$"
