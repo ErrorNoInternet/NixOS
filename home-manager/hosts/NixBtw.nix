@@ -52,7 +52,6 @@ in
         (import ../modules/cava.nix { inherit custom; })
         (import ../modules/dunst.nix { inherit custom pkgs; })
         (import ../modules/fcitx.nix { inherit pkgs; })
-        (import ../modules/kdeconnect.nix { inherit pkgs; } )
         (import ../modules/git.nix { inherit secrets; })
         (import ../modules/gtk.nix { inherit custom; })
         (import ../modules/hyprland-autoname-workspaces.nix { inherit custom; })
@@ -67,6 +66,7 @@ in
         ../modules/desktop-entries.nix
         ../modules/fastfetch.nix
         ../modules/hyprpaper.nix
+        ../modules/kdeconnect.nix
         ../modules/mpv.nix
         ../modules/nvim.nix
         ../modules/obs-studio.nix
@@ -116,7 +116,6 @@ in
         # graphical utilities
         firefox
         brave
-        kdeconnect
         xdragon
         gimp
         qbittorrent
