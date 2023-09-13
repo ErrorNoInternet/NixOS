@@ -66,6 +66,7 @@ in
         ../modules/desktop-entries.nix
         ../modules/fastfetch.nix
         ../modules/hyprpaper.nix
+        ../modules/kdeconnect.nix
         ../modules/mpv.nix
         ../modules/nvim.nix
         ../modules/obs-studio.nix
