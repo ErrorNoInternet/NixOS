@@ -1,3 +1,5 @@
+{ pkgs, ... }:
+
 {
     systemd.user.services.kdeconnect = {
         Unit.Description = "KDE Connect Indicator";
