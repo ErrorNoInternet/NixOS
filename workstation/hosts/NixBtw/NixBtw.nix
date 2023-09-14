@@ -2,14 +2,11 @@
 
 {
     imports = [
-        (import ../modules/openrgb.nix { inherit pkgs; })
-        (import ../modules/video-acceleration.nix { inherit pkgs; })
-        ../modules/bluetooth.nix
-        ../modules/gaming.nix
-        ../modules/nvidia.nix
-        ../modules/nvidia-prime.nix
-        ../modules/virtualization.nix
+
     ];
+
+    networking.hostName = "NixBtw";
+    environment.variables.HOSTNAME = "NixBtw";
 
     fileSystems."/mnt/data" = {
         device = "/dev/disk/by-uuid/ffabee31-a399-41ac-b803-d07215f60c33";

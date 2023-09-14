@@ -1,4 +1,4 @@
-{ hostSettings, pkgs, ... }:
+{ pkgs, ... }:
 
 {
     nixpkgs.config.allowUnfree = true;
@@ -17,9 +17,6 @@
             max-free = ${toString (1024 * 1024 * 1024)}
         '';
     };
-
-    networking.hostName = hostSettings.name;
-    environment.variables.HOSTNAME = hostSettings.name;
 
     i18n.defaultLocale = "en_US.UTF-8";
     boot = {
@@ -131,4 +128,6 @@
         extraGroups = [ "wheel" "video" ];
         shell = pkgs.zsh;
     };
+
+    system.stateVersion = "23.05";
 }
