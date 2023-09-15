@@ -4,8 +4,8 @@
     imports = [
         ../modules/bat.nix
         ../modules/nix-on-droid/zsh.nix
-        ../modules/nix-on-droid/nvim.nix
-        ../modules/nix-on-droid/tmux.nix
+        ../modules/nvim.nix
+        ../modules/tmux.nix
         ../modules/zoxide.nix
     ];
 
