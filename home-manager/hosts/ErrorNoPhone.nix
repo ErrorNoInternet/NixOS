@@ -5,7 +5,7 @@
         ../modules/bat.nix
         ../modules/nix-on-droid/zsh.nix
         ../modules/nix-on-droid/nvim.nix
-        ../modules/tmux.nix
+        ../modules/nix-on-droid/tmux.nix
         ../modules/zoxide.nix
     ];
 
