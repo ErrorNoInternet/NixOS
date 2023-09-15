@@ -67,7 +67,9 @@
             isNormalUser = true;
             extraGroups = [ "wheel" ];
             initialPassword = "snowflake";
-            openssh.authorizedKeys.keys = config.age.secrets.systems;
+            openssh.authorizedKeys.keys = [
+                "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDzdpxex2GlFVf5G2qsh3Ixa/XCMjnbq4JSTmAev7WYJ"
+            ];
         };
     };
 
