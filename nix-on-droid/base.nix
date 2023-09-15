@@ -11,8 +11,9 @@
 
         (import ./nixos-repository/home-manager/derivations/hsize.nix {})
         curl
-        exa
+        eza
         gawk
+        dig
         git
         gnugrep
         gnupg
@@ -22,6 +23,7 @@
         nmap
         openssh
         perl
+        unixtools.ping
         wget
 
         gcc
