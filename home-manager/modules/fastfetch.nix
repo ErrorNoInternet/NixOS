@@ -9,7 +9,7 @@
 --packages-key "󰆧 packages"
 --packages-format "{9}+{10}+{11} (nix), {15} (flatpak)"
 --disk-key " storage"
---disk-format "{1} / {2} ({3}%)"
+--disk-format "{1} / {2} ({3})"
 --terminal-key " terminal"
 --disk-folders /
 
