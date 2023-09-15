@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }:
+{ pkgs, ... }:
 
 {
     environment.sessionVariables.HOSTNAME = "ErrorNoPhone";
