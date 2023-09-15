@@ -30,10 +30,11 @@
         supportedFilesystems = [ "ntfs" ];
     };
     networking = {
-        hostName = hostSettings.name;
         wireless = {
             enable = true;
-            networks = (import ${config.age.secrets.wireless-networks.path});
+            environmentFile = config.age.secrets.wireless-networks;
+            "@ssid1@".psk = "@psk1@";
+            "@ssid2@".psk = "@psk2@";
         };
         firewall = {
             enable = true;
@@ -64,7 +65,7 @@
             isNormalUser = true;
             extraGroups = [ "wheel" ];
             initialPassword = "snowflake";
-            openssh.authorizedKeys.keys = age.secrets.systems;
+            openssh.authorizedKeys.keys = config.age.secrets.systems;
         };
     };
 
