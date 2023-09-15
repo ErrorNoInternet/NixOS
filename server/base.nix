@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 {
-    age.secrets.wireless-networks.file = ../../secrets/wireless-networks.age;
+    age.secrets.wireless-networks.file = ../secrets/wireless-networks.age;
 
     nixpkgs.config.allowUnfree = true;
     nix = {
