@@ -37,6 +37,16 @@
                     ./workstation/modules/virtualization.nix
                 ];
             };
+            Crix = nixpkgs.lib.nixosSystem {
+                specialArgs = { inherit pkgs; };
+                modules = [
+                    ./server/base.nix
+                    ./server/locations/china.nix
+                    ./server/hosts/Crix/Crix.nix
+                    ./server/hosts/Crix/hardware-configuration.nix
+                    ./server/modules/minecraft-server.nix
+                ];
+            };
         };
         homeConfigurations.ryan = home-manager.lib.homeManagerConfiguration {
             inherit pkgs;

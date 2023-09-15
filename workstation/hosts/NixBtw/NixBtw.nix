@@ -1,10 +1,6 @@
 { pkgs, ... }:
 
 {
-    imports = [
-
-    ];
-
     networking.hostName = "NixBtw";
     environment.variables.HOSTNAME = "NixBtw";
 

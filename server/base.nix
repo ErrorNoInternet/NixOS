@@ -1,6 +1,8 @@
-{ hostSettings, pkgs, secrets, ... }:
+{ config, pkgs, ... }:
 
 {
+    age.secrets.wireless-networks.file = ../../secrets/wireless-networks.age;
+
     nixpkgs.config.allowUnfree = true;
     nix = {
         settings = {
@@ -31,7 +33,7 @@
         hostName = hostSettings.name;
         wireless = {
             enable = true;
-            networks = secrets.wireless.networks;
+            networks = (import ${config.age.secrets.wireless-networks.path});
         };
         firewall = {
             enable = true;
@@ -62,7 +64,9 @@
             isNormalUser = true;
             extraGroups = [ "wheel" ];
             initialPassword = "snowflake";
-            openssh.authorizedKeys.keys = secrets.ssh.authorizedKeys;
+            openssh.authorizedKeys.keys = age.secrets.systems;
         };
     };
+
+    system.stateVersion = "23.05";
 }
