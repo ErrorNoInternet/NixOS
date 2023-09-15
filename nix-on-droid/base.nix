@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 {
-    environment.sessionVariables.HOSTNAME = "ErrorNoPhone";
+    system.stateVersion = "23.05";
     environment.motd = "";
 
     user.shell = "${pkgs.zsh}/bin/zsh";

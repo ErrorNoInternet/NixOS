@@ -3,13 +3,19 @@
 
     inputs = {
         nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-        home-manager.url = "github:nix-community/home-manager";
-        home-manager.inputs.nixpkgs.follows = "nixpkgs";
+        home-manager = {
+            url = "github:nix-community/home-manager";
+            inputs.nixpkgs.follows = "nixpkgs";
+        };
+        nix-on-droid = {
+            url = "github:nix-community/nix-on-droid/release-23.05";
+            inputs.nixpkgs.follows = "nixpkgs";
+        };
         agenix.url = "github:ryantm/agenix";
         spicetify-nix.url = "github:the-argus/spicetify-nix";
     };
 
-    outputs = { self, nixpkgs, home-manager, agenix, spicetify-nix } @ inputs:
+    outputs = { self, nixpkgs, home-manager, agenix, nix-on-droid, spicetify-nix } @ inputs:
     let
         system = "x86_64-linux";
         overlays = [
@@ -63,6 +69,13 @@
                 agenix.homeManagerModules.default
                 ./home-manager/hosts/NixBtw.nix
                 ./home-manager/modules/spicetify.nix
+            ];
+        };
+        nixOnDroidConfigurations.ErrorNoPhone = nix-on-droid.lib.nixOnDroidConfiguration {
+            modules = [
+                ./nix-on-droid/base.nix
+                ./nix-on-droid/locations/china.nix
+                ./nix-on-droid/hosts/ErrorNoPhone.nix
             ];
         };
     };
