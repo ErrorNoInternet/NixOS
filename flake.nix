@@ -40,6 +40,7 @@
             Crix = nixpkgs.lib.nixosSystem {
                 specialArgs = { inherit pkgs; };
                 modules = [
+                    agenix.nixosModules.default
                     ./server/base.nix
                     ./server/locations/china.nix
                     ./server/hosts/Crix/Crix.nix
