@@ -33,8 +33,10 @@
         wireless = {
             enable = true;
             environmentFile = config.age.secrets.wireless-networks;
-            "@ssid1@".psk = "@psk1@";
-            "@ssid2@".psk = "@psk2@";
+            networks = {
+                "@ssid1@".psk = "@psk1@";
+                "@ssid2@".psk = "@psk2@";
+            };
         };
         firewall = {
             enable = true;
