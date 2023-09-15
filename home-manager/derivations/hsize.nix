@@ -1,4 +1,5 @@
-{ pkgs ? import <nixpkgs> {  } }:
+{ pkgs, ... }:
+
 pkgs.rustPlatform.buildRustPackage rec {
     pname = "hsize";
     version = "1.0.1";

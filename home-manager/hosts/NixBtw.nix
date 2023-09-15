@@ -1,4 +1,4 @@
-{ config, pkgs, secrets, ... }:
+{ config, pkgs, ... }:
 
 let
     custom = {
@@ -35,12 +35,6 @@ let
             package = pkgs.colloid-icon-theme.override { schemeVariants = [ "nord" ]; };
         };
     };
-
-    flake-compat = builtins.fetchTarball "https://github.com/edolstra/flake-compat/archive/master.tar.gz";
-    spicetify-nix = (import flake-compat {
-        src = builtins.fetchTarball "https://github.com/the-argus/spicetify-nix/archive/master.tar.gz";
-    }).defaultNix;
-    spicePkgs = spicetify-nix.packages.${pkgs.system}.default;
 in
 {
     imports = [
@@ -52,19 +46,18 @@ in
         (import ../modules/cava.nix { inherit custom; })
         (import ../modules/dunst.nix { inherit custom pkgs; })
         (import ../modules/fcitx.nix { inherit pkgs; })
-        (import ../modules/git.nix { inherit secrets; })
         (import ../modules/gtk.nix { inherit custom; })
         (import ../modules/hyprland-autoname-workspaces.nix { inherit custom; })
         (import ../modules/hyprland.nix { inherit custom; })
         (import ../modules/kitty.nix { inherit custom; })
-        (import ../modules/nheko.nix { inherit secrets; })
-        (import ../modules/rofi.nix { inherit custom pkgs config; })
-        (import ../modules/spotify.nix { inherit spicePkgs; })
+        (import ../modules/nheko.nix { inherit config pkgs; })
+        (import ../modules/rofi.nix { inherit config custom pkgs; })
         (import ../modules/waybar.nix { inherit custom pkgs; })
         ../modules/bat.nix
         ../modules/btop.nix
         ../modules/desktop-entries.nix
         ../modules/fastfetch.nix
+        ../modules/git.nix
         ../modules/hyprpaper.nix
         ../modules/kdeconnect.nix
         ../modules/mpv.nix
@@ -74,8 +67,6 @@ in
         ../modules/virt-manager.nix
         ../modules/zoxide.nix
         ../modules/zsh.nix
-
-        spicetify-nix.homeManagerModule
     ];
 
     nixpkgs.config.allowUnfree = true;
@@ -105,9 +96,9 @@ in
         pavucontrol
 
         # system utilities
-        (import ../derivations/hsize.nix {})
+        (import ../derivations/hsize.nix { inherit pkgs; })
         duf
-        exa
+        eza
         jq
         nmap
         nvtop

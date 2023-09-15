@@ -1,12 +1,10 @@
-{ secrets, ... }:
-
 {
     programs.git = {
         enable = true;
-        userName = secrets.git.userName;
-        userEmail = secrets.git.userEmail;
+        userName = "ErrorNoInternet";
+        userEmail = "errornointernet@envs.net";
         signing = {
-            key = secrets.git.signingKey;
+            key = "2486BFB7B1E6A4A3";
             signByDefault = true;
         };
         aliases = {

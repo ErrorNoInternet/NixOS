@@ -1,11 +1,18 @@
-{ secrets, ... }:
+{ config, pkgs, ... }:
 
 {
+    age.secrets.nheko.file = ../../secrets/nheko.age;
+
     programs.nheko = {
         enable = true;
         settings = {
             general.disableCertificateValidation = false;
-            auth = secrets.nheko.auth;
+            auth = {
+                accessToken = ''${pkgs.coreutils}/bin/cat ${config.age.secrets.nheko.path}'';
+                deviceId = "LMAONIXBTW";
+                homeServer = "https://matrix.envs.net:443";
+                userId = "@errornointernet:envs.net";
+            };
             settings.scaleFactor = 1.0;
             user = {
                 alertOnNotification = false;

@@ -10,7 +10,7 @@
             ];
         };
         shellAliases = {
-            ls = "exa --git --icons";
+            ls = "eza --git --icons";
             ll = "ls -l";
             la = "ls -a";
             lla = "ls -al";
