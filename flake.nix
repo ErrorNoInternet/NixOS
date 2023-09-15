@@ -12,11 +12,18 @@
     outputs = { self, nixpkgs, home-manager, agenix, spicetify-nix } @ inputs:
     let
         system = "x86_64-linux";
+        overlays = [
+            (self: super: {
+                openrgb = super.openrgb.overrideAttrs (oldAttrs: {
+                    patches = (oldAttrs.patches or []) ++ [
+                        ./patches/openrgb-hidapi-libusb.patch
+                    ];
+                });
+            })
+        ];
         pkgs = import nixpkgs {
-            inherit system;
-            config = {
-                allowUnfree = true;
-            };
+            inherit overlays system;
+            config.allowUnfree = true;
         };
     in
     {
