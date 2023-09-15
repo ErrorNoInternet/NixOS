@@ -9,7 +9,7 @@
         cmatrix
         neofetch
 
-        (import ./nixos-repository/home-manager/derivations/hsize.nix {})
+        (import ../home-manager/derivations/hsize.nix {})
         curl
         eza
         gawk
@@ -31,7 +31,7 @@
         rustup
     ];
     home-manager = {
-        config = ./nixos-repository/home-manager/home.nix;
+        config = ../home-manager/hosts/ErrorNoPhone.nix;
         useUserPackages = true;
     };
 }
