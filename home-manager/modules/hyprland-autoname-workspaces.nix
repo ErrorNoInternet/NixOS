@@ -27,6 +27,7 @@
             "openrgb" = ""
             "org.prismlauncher.PrismLauncher" = "󰍳 "
             "org.qbittorrent.qBittorrent" = "󰰛 "
+            "osu!" = " "
             "pavucontrol" = " "
             "Rofi" = " "
             "Spotify" = " "
