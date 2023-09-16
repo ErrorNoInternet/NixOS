@@ -14,9 +14,10 @@
         };
         agenix.url = "github:ryantm/agenix";
         spicetify-nix.url = "github:the-argus/spicetify-nix";
+        nix-gaming.url = "github:fufexan/nix-gaming";
     };
 
-    outputs = { self, nixpkgs, home-manager, agenix, nix-on-droid, spicetify-nix } @ inputs:
+    outputs = { self, nixpkgs, home-manager, nix-on-droid, agenix, spicetify-nix, nix-gaming } @ inputs:
     let
         system = "x86_64-linux";
         overlays = [

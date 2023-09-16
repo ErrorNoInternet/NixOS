@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, inputs, pkgs, ... }:
 
 let
     custom = {
@@ -124,6 +124,7 @@ in
         # games
         prismlauncher
         superTuxKart
+        inputs.nix-gaming.packages.${pkgs.system}.osu-lazer-bin
 
         # ABSOLUTELY PROPRIETARY
         zoom-us
