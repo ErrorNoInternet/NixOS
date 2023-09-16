@@ -21,7 +21,7 @@
                 "memory"
             ];
             modules-center = [
-                "wlr/workspaces"
+                "hyprland/workspaces"
             ];
             modules-right = [
                 "tray"
