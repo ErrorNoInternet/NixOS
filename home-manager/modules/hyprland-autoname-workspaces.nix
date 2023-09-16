@@ -24,7 +24,7 @@
             "mpv" = " "
             "Mullvad VPN" = "󰖂 "
             "nheko" = " "
-            "openrgb" = ""
+            "openrgb" = " "
             "org.prismlauncher.PrismLauncher" = "󰍳 "
             "org.qbittorrent.qBittorrent" = "󰰛 "
             "osu!" = " "
