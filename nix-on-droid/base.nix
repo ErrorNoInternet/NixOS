@@ -9,7 +9,7 @@
         cmatrix
         neofetch
 
-        (import ../home-manager/derivations/hsize.nix {})
+        (import ../home-manager/derivations/hsize.nix { inherit pkgs; })
         curl
         eza
         gawk

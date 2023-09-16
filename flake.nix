@@ -10,6 +10,7 @@
         nix-on-droid = {
             url = "github:nix-community/nix-on-droid/release-23.05";
             inputs.nixpkgs.follows = "nixpkgs";
+            inputs.home-manager.follows = "home-manager";
         };
         agenix.url = "github:ryantm/agenix";
         spicetify-nix.url = "github:the-argus/spicetify-nix";
