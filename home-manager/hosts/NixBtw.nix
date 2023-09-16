@@ -75,6 +75,7 @@ in
     home.homeDirectory = "/home/ryan";
     home.file = {
         downloads.source = config.lib.file.mkOutOfStoreSymlink "/mnt/data/downloads";
+        data.source = config.lib.file.mkOutOfStoreSymlink "/mnt/data";
     };
 
     home.packages = with pkgs; [
