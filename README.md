@@ -1,2 +1,2 @@
 # NixOS Flakes
-My workstation, server, and Nix-on-Droid flakes.
+My home-manager, workstation, server, and Nix-on-Droid flakes.
