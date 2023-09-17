@@ -67,10 +67,10 @@ in
             0=Shift_L
 
             [Hotkey/EnumerateForwardKeys]
-            0=Control+Shift_L
+            0=
 
             [Hotkey/EnumerateBackwardKeys]
-            0=Control+Shift_R
+            0=
 
             [Hotkey/EnumerateGroupForwardKeys]
             0=Super+space
