@@ -121,6 +121,7 @@ in
         python3
         rustup
         gcc
+        python310Packages.bpython
 
         # games
         prismlauncher
