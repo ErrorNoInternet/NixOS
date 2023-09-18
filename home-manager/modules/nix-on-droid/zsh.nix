@@ -21,6 +21,8 @@
             f = "neofetch --disable cpu";
             cm = "cmatrix -C blue";
             py = "python3";
+
+            ping = "/android/system/bin/linker64 /android/system/bin/ping";
         };
         history = {
             size = 100000;
