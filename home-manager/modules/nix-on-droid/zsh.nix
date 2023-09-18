@@ -17,8 +17,7 @@
             lla = "ls -al";
             grep = "grep --color";
 
-            switch = "nix-on-droid switch";
-            update = "cd ~/.config/nixpkgs/nixos-repository && git pull && rm ../nix-on-droid.nix ../base.nix && ln nix-on-droid/nix-on-droid.nix ../nix-on-droid.nix && ln nix-on-droid/base.nix ../base.nix && cd -";
+            update = "cd ~/.config/nixpkgs/nixos-repository && git pull && cd -";
             f = "neofetch --disable cpu";
             cm = "cmatrix -C blue";
             py = "python3";
