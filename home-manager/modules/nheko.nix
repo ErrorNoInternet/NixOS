@@ -1,9 +1,9 @@
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 {
-    age.secrets.nheko.file = ../../secrets/nheko.age;
-    home.activation."nheko-access-token" = ''
-        secret=$(cat "${config.age.secrets.nheko.path}")
+    age.secrets.nheko-access-token.file = ../../secrets/nheko-access-token.age;
+    home.activation."nheko-access-token" = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+        secret=$(cat "${config.age.secrets.nheko-access-token.path}")
         configurationFile=~/.config/nheko/nheko.conf
         ${pkgs.gnused}/bin/sed -i "s|@nheko-access-token@|$secret|" "$configurationFile"
     '';
@@ -14,9 +14,9 @@
             general.disableCertificateValidation = false;
             auth = {
                 accessToken = "@nheko-access-token@";
-                deviceId = "BJKAOKONRP";
+                deviceId = "UNASDGZRGV";
                 homeServer = "https://matrix.envs.net:443";
-                userId = "@errornointernet:envs.net";
+                userId = "@@errornointernet:envs.net";
             };
             settings.scaleFactor = 1.0;
             user = {

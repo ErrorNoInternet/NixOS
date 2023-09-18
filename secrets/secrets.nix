@@ -4,6 +4,6 @@ let
     systems = [ NixBtw Crix ];
 in
 {
-    "nheko.age".publicKeys = [ NixBtw ];
+    "nheko-access-token.age".publicKeys = [ NixBtw ];
     "wireless-networks.age".publicKeys = systems;
 }
