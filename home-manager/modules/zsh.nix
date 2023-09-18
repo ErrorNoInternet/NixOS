@@ -26,7 +26,7 @@
             py = "python3";
             timg = "timg -pk";
             lsimg = "timg --grid=6 --upscale --title --center --frames=1";
-            drg = "dragon -T -x -a";
+            drg = "ripdrag -xa";
             cava = "TERM=kitty cava";
         };
         history = {

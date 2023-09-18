@@ -108,7 +108,7 @@ in
         # graphical utilities
         firefox
         brave
-        xdragon
+        ripdrag
         gimp
         qbittorrent
         (discord-canary.override {
