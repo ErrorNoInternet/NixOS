@@ -14,7 +14,7 @@
             general.disableCertificateValidation = false;
             auth = {
                 accessToken = "@nheko-access-token@";
-                deviceId = "LMAONIXBTW";
+                deviceId = "BJKAOKONRP";
                 homeServer = "https://matrix.envs.net:443";
                 userId = "@errornointernet:envs.net";
             };
