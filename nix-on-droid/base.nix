@@ -23,7 +23,7 @@
         nmap
         openssh
         perl
-        unixtools.ping
+        # unixtools.ping
         wget
 
         gcc
