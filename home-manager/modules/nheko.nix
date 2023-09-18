@@ -2,13 +2,18 @@
 
 {
     age.secrets.nheko.file = ../../secrets/nheko.age;
+    home.activation."nheko-access-token" = ''
+        secret=$(cat "${config.age.secrets.nheko.path}")
+        configurationFile=~/.config/nheko/nheko.conf
+        ${pkgs.gnused}/bin/sed -i "s|@nheko-access-token@|$secret|" "$configurationFile"
+    '';
 
     programs.nheko = {
         enable = true;
         settings = {
             general.disableCertificateValidation = false;
             auth = {
-                accessToken = ''${pkgs.coreutils}/bin/cat ${config.age.secrets.nheko.path}'';
+                accessToken = "@nheko-access-token@";
                 deviceId = "LMAONIXBTW";
                 homeServer = "https://matrix.envs.net:443";
                 userId = "@errornointernet:envs.net";
