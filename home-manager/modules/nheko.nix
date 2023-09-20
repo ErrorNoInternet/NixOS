@@ -14,7 +14,7 @@
         text = ''
             [auth]
             access_token=@nheko-access-token@
-            device_id=UNASDGZRGV
+            device_id=PYCFYGFZSG
             home_server=https://matrix.envs.net:443
             user_id=@@errornointernet:envs.net
 
