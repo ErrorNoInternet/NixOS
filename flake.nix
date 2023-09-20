@@ -13,11 +13,12 @@
             inputs.home-manager.follows = "home-manager";
         };
         agenix.url = "github:ryantm/agenix";
+        hyprland.url = "github:hyprwm/Hyprland";
         spicetify-nix.url = "github:the-argus/spicetify-nix";
         nix-gaming.url = "github:fufexan/nix-gaming";
     };
 
-    outputs = { self, nixpkgs, home-manager, nix-on-droid, agenix, spicetify-nix, nix-gaming } @ inputs:
+    outputs = { self, nixpkgs, home-manager, nix-on-droid, agenix, hyprland, spicetify-nix, nix-gaming } @ inputs:
     let
         system = "x86_64-linux";
         overlays = [
@@ -37,18 +38,19 @@
     {
         nixosConfigurations = {
             NixBtw = nixpkgs.lib.nixosSystem {
-                specialArgs = { inherit pkgs; };
+                specialArgs = { inherit inputs pkgs; };
                 modules = [
                     ./workstation/base.nix
                     ./workstation/locations/china.nix
                     ./workstation/hosts/NixBtw/NixBtw.nix
                     ./workstation/hosts/NixBtw/hardware-configuration.nix
-                    ./workstation/modules/openrgb.nix
-                    ./workstation/modules/video-acceleration.nix
                     ./workstation/modules/bluetooth.nix
                     ./workstation/modules/gaming.nix
-                    ./workstation/modules/nvidia.nix
+                    ./workstation/modules/hyprland.nix
                     ./workstation/modules/nvidia-prime.nix
+                    ./workstation/modules/nvidia.nix
+                    ./workstation/modules/openrgb.nix
+                    ./workstation/modules/video-acceleration.nix
                     ./workstation/modules/virtualization.nix
                 ];
             };
