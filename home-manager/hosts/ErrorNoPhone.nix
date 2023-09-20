@@ -8,6 +8,4 @@
         ../modules/tmux.nix
         ../modules/zoxide.nix
     ];
-
-    home.stateVersion = "23.05";
 }

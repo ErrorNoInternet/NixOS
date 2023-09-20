@@ -69,8 +69,6 @@ in
         ../modules/zsh.nix
     ];
 
-    nixpkgs.config.allowUnfree = true;
-
     home.username = "ryan";
     home.homeDirectory = "/home/ryan";
     home.file = {
@@ -145,6 +143,5 @@ in
         gtk.enable = true;
     };
 
-    home.stateVersion = "23.05";
     programs.home-manager.enable = true;
 }

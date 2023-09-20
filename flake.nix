@@ -71,15 +71,17 @@
             extraSpecialArgs = { inherit inputs; };
             modules = [
                 agenix.homeManagerModules.default
+                ./home-manager/base.nix
                 ./home-manager/hosts/NixBtw.nix
                 ./home-manager/modules/spicetify.nix
             ];
         };
         nixOnDroidConfigurations.ErrorNoPhone = nix-on-droid.lib.nixOnDroidConfiguration {
             modules = [
+                ./home-manager/base.nix
                 ./nix-on-droid/base.nix
-                ./nix-on-droid/locations/china.nix
                 ./nix-on-droid/hosts/ErrorNoPhone.nix
+                ./nix-on-droid/locations/china.nix
             ];
         };
     };
