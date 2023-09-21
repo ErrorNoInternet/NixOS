@@ -20,7 +20,6 @@
 
     outputs = { self, nixpkgs, home-manager, nix-on-droid, agenix, hyprland, spicetify-nix, nix-gaming } @ inputs:
     let
-        system = "x86_64-linux";
         overlays = [
             (self: super: {
                 openrgb = super.openrgb.overrideAttrs (oldAttrs: {
@@ -31,7 +30,13 @@
             })
         ];
         pkgs = import nixpkgs {
-            inherit overlays system;
+            inherit overlays;
+            system = "x86_64-linux";
+            config.allowUnfree = true;
+        };
+        pkgsArm = import nixpkgs {
+            inherit overlays;
+            system = "aarch64-linux";
             config.allowUnfree = true;
         };
     in
@@ -68,7 +73,7 @@
                 ];
             };
             Pix = nixpkgs.lib.nixosSystem {
-                specialArgs = { inherit pkgs; };
+                specialArgs = { inherit pkgsArm; };
                 modules = [
                     agenix.nixosModules.default
                     ./server/base.nix
@@ -79,7 +84,6 @@
             };
         };
         homeConfigurations.ryan = home-manager.lib.homeManagerConfiguration {
-            inherit pkgs;
             extraSpecialArgs = { inherit inputs; };
             modules = [
                 agenix.homeManagerModules.default
