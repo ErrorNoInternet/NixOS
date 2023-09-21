@@ -13,7 +13,7 @@
             inputs.home-manager.follows = "home-manager";
         };
         agenix.url = "github:ryantm/agenix";
-        hyprland.url = "github:hyprwm/Hyprland";
+        hyprland.url = "github:ErrorNoInternet/Hyprland";
         spicetify-nix.url = "github:the-argus/spicetify-nix";
         nix-gaming.url = "github:fufexan/nix-gaming";
     };
