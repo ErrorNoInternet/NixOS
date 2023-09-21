@@ -41,9 +41,10 @@
                 specialArgs = { inherit inputs pkgs; };
                 modules = [
                     ./workstation/base.nix
-                    ./workstation/locations/china.nix
-                    ./workstation/hosts/NixBtw/NixBtw.nix
                     ./workstation/hosts/NixBtw/hardware-configuration.nix
+                    ./workstation/hosts/NixBtw/NixBtw.nix
+                    ./workstation/locations/china.nix
+                    ./workstation/modules/aarch64-emulation.nix
                     ./workstation/modules/bluetooth.nix
                     ./workstation/modules/gaming.nix
                     ./workstation/modules/hyprland.nix
@@ -59,9 +60,9 @@
                 modules = [
                     agenix.nixosModules.default
                     ./server/base.nix
-                    ./server/locations/china.nix
                     ./server/hosts/Crix/Crix.nix
                     ./server/hosts/Crix/hardware-configuration.nix
+                    ./server/locations/china.nix
                     ./server/modules/minecraft-server.nix
                 ];
             };
