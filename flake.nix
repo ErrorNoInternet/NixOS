@@ -64,6 +64,17 @@
                     ./server/hosts/Crix/hardware-configuration.nix
                     ./server/locations/china.nix
                     ./server/modules/minecraft-server.nix
+                    ./server/modules/wireless.nix
+                ];
+            };
+            Pix = nixpkgs.lib.nixosSystem {
+                specialArgs = { inherit pkgs; };
+                modules = [
+                    agenix.nixosModules.default
+                    ./server/base.nix
+                    ./server/hosts/Pix/Pix.nix
+                    ./server/hosts/Pix/hardware-configuration.nix
+                    ./server/locations/china.nix
                 ];
             };
         };
