@@ -4,7 +4,7 @@
     networking.hostName = "Pix";
     environment.variables.HOSTNAME = "Pix";
 
-    filesystems = {
+    fileSystems = {
         "/mnt/drive1" = {
             device = "/dev/disk/by-uuid/fc102db2-60b8-43e1-8b21-40a589edfdda";
             fsType = "btrfs";
