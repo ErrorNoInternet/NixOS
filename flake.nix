@@ -99,7 +99,7 @@
                 ];
             };
             "snowflake@Pix" = home-manager.lib.homeManagerConfiguration {
-                inherit pkgs;
+                inherit pkgsArm;
                 extraSpecialArgs = { inherit inputs; };
                 modules = [
                     agenix.homeManagerModules.default
