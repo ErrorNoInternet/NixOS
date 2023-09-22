@@ -4,10 +4,10 @@
     networking.hostName = "Pix";
     environment.variables.HOSTNAME = "Pix";
 
-    networking.firewall.allowedTCPPorts = [
-        # NFS server
-        2049
-    ];
+    networking.firewall = {
+        allowedTCPPorts = [ 111 2049 4000 4001 4002 20048 ];
+        allowedUDPPorts = [ 111 2049 4000 4001 4002 20048 ];
+    };
 
     fileSystems = {
         "/mnt/drive1" = {
@@ -32,6 +32,9 @@
 
     services.nfs.server = {
         enable = true;
+        lockdPort = 4001;
+        mountdPort = 4002;
+        statdPort = 4000;
         exports = ''
             /export/drive1 localhost(rw,sync,no_subtree_check,no_root_squash)
             /export/drive3 localhost(rw,sync,no_subtree_check,no_root_squash)
