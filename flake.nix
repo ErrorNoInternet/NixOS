@@ -94,6 +94,7 @@
                     ./home-manager/base.nix
                     ./home-manager/hosts/NixBtw.nix
                     ./home-manager/modules/spicetify.nix
+                    ./home-manager/nixos-base.nix
                 ];
             };
             "snowflake@Pix" = home-manager.lib.homeManagerConfiguration {
@@ -104,6 +105,7 @@
                     ./home-manager/base.nix
                     ./home-manager/hosts/NixBtw.nix
                     ./home-manager/modules/spicetify.nix
+                    ./home-manager/nixos-base.nix
                 ];
             };
         };
