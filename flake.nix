@@ -68,6 +68,7 @@
                     ./server/hosts/Crix/Crix.nix
                     ./server/hosts/Crix/hardware-configuration.nix
                     ./server/locations/china.nix
+                    ./server/modules/bootloader.nix
                     ./server/modules/minecraft-server.nix
                     ./server/modules/wireless.nix
                 ];

@@ -20,10 +20,6 @@
 
     i18n.defaultLocale = "en_US.UTF-8";
     boot = {
-        loader = {
-            systemd-boot.enable = true;
-            efi.canTouchEfiVariables = true;
-        };
         kernelParams = [ "console=tty0" ];
         supportedFilesystems = [ "ntfs" ];
     };
