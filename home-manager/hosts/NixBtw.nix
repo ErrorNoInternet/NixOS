@@ -142,6 +142,4 @@ in
         x11.enable = true;
         gtk.enable = true;
     };
-
-    programs.home-manager.enable = true;
 }

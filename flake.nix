@@ -85,15 +85,27 @@
                 ];
             };
         };
-        homeConfigurations.ryan = home-manager.lib.homeManagerConfiguration {
-            inherit pkgs;
-            extraSpecialArgs = { inherit inputs; };
-            modules = [
-                agenix.homeManagerModules.default
-                ./home-manager/base.nix
-                ./home-manager/hosts/NixBtw.nix
-                ./home-manager/modules/spicetify.nix
-            ];
+        homeConfigurations = {
+            "ryan@NixBtw" = home-manager.lib.homeManagerConfiguration {
+                inherit pkgs;
+                extraSpecialArgs = { inherit inputs; };
+                modules = [
+                    agenix.homeManagerModules.default
+                    ./home-manager/base.nix
+                    ./home-manager/hosts/NixBtw.nix
+                    ./home-manager/modules/spicetify.nix
+                ];
+            };
+            "snowflake@Pix" = home-manager.lib.homeManagerConfiguration {
+                inherit pkgs;
+                extraSpecialArgs = { inherit inputs; };
+                modules = [
+                    agenix.homeManagerModules.default
+                    ./home-manager/base.nix
+                    ./home-manager/hosts/NixBtw.nix
+                    ./home-manager/modules/spicetify.nix
+                ];
+            };
         };
         nixOnDroidConfigurations.ErrorNoPhone = nix-on-droid.lib.nixOnDroidConfiguration {
             modules = [
