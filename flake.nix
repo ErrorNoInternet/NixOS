@@ -104,7 +104,7 @@
                 modules = [
                     agenix.homeManagerModules.default
                     ./home-manager/base.nix
-                    ./home-manager/hosts/Pix.nix.nix
+                    ./home-manager/hosts/Pix.nix
                 ];
             };
         };
