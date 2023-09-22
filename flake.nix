@@ -92,10 +92,11 @@
                 modules = [
                     agenix.nixosModules.default
                     ./server/base.nix
-                    ./server/hosts/Pix/Pix.nix
                     ./server/hosts/Pix/hardware-configuration.nix
+                    ./server/hosts/Pix/Pix.nix
                     ./server/locations/china.nix
                     ./server/modules/raspberry-pi.nix
+                    ./server/modules/samba.nix
                     ./server/modules/zsh.nix
                 ];
             };

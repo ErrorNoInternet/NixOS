@@ -39,4 +39,32 @@
             /mnt/drive3 192.168.0.101(rw,sync,no_subtree_check,no_root_squash)
         '';
     };
+
+    services.samba = {
+        securityType = "user";
+        extraConfig = ''
+            create mask = 644
+            directory mask = 755
+            force group = users
+            force user = snowflake
+            map to guest = bad user
+            workgroup = WORKGROUP
+        '';
+        shares = {
+            drive1 = {
+                path = "/mnt/drive1";
+                "follow symlinks" = "yes";
+                "valid users" = "snowflake";
+                browseable = "yes";
+                writeable = "yes";
+            };
+            drive3 = {
+                path = "/mnt/drive3";
+                "follow symlinks" = "yes";
+                "valid users" = "snowflake";
+                browseable = "yes";
+                writeable = "yes";
+            };
+        };
+    };
 }
