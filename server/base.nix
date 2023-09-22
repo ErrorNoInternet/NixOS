@@ -40,6 +40,7 @@
         zip
         unzip
         file
+        killall
         tmux
         git
 

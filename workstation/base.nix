@@ -75,6 +75,7 @@
         curl
         unzip
         file
+        killall
         pulseaudio
         xdg-user-dirs
     ];
