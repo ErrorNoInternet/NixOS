@@ -85,8 +85,9 @@
                 workspace_swipe = true;
             };
             misc = {
-                disable_hyprland_logo  = true;
+                disable_hyprland_logo = true;
                 disable_splash_rendering = true;
+                vfr = false;
             };
             bind = [
                 "$mainMod, D, exec, rofi -show drun"
