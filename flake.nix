@@ -112,7 +112,6 @@
         nixOnDroidConfigurations.ErrorNoPhone = nix-on-droid.lib.nixOnDroidConfiguration {
             extraSpecialArgs = { inherit inputs; };
             modules = [
-                ./home-manager/base.nix
                 ./nix-on-droid/base.nix
                 ./nix-on-droid/hosts/ErrorNoPhone.nix
                 ./nix-on-droid/locations/china.nix

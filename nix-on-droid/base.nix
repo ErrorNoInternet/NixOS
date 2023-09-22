@@ -31,7 +31,7 @@
         rustup
     ];
     home-manager = {
-        config = ../home-manager/hosts/ErrorNoPhone.nix;
+        config = ../home-manager/base.nix;
         useUserPackages = true;
     };
 }
