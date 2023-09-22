@@ -3,7 +3,6 @@
 
     inputs = {
         nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-        nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.05";
         home-manager = {
             url = "github:nix-community/home-manager";
             inputs.nixpkgs.follows = "nixpkgs";
@@ -38,14 +37,6 @@
             config.allowUnfree = true;
         };
         pkgsArm = import nixpkgs {
-            inherit overlays;
-            system = "aarch64-linux";
-            config = {
-                allowUnfree = true;
-                allowUnsupportedSystem = true;
-            };
-        };
-        pkgsArmStable = import nixpkgs-stable {
             inherit overlays;
             system = "aarch64-linux";
             config = {
@@ -88,7 +79,7 @@
                 ];
             };
             Pix = nixpkgs.lib.nixosSystem {
-                specialArgs = { inherit pkgsArmStable; };
+                specialArgs = { inherit pkgsArm; };
                 modules = [
                     agenix.nixosModules.default
                     ./server/base.nix
@@ -114,7 +105,7 @@
                 ];
             };
             "snowflake@Pix" = home-manager.lib.homeManagerConfiguration {
-                pkgs = pkgsArmStable;
+                pkgs = pkgsArm;
                 extraSpecialArgs = { inherit inputs; };
                 modules = [
                     agenix.homeManagerModules.default
