@@ -39,7 +39,10 @@
         pkgsArm = import nixpkgs {
             inherit overlays;
             system = "aarch64-linux";
-            config.allowUnfree = true;
+            config = {
+                allowUnfree = true;
+                allowUnsupportedSystem = true;
+            };
         };
     in
     {
