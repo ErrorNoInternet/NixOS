@@ -88,7 +88,7 @@
                 ];
             };
             Pix = nixpkgs.lib.nixosSystem {
-                specialArgs = { inherit pkgsArmStable; };
+                pkgs = pkgsArmStable;
                 modules = [
                     agenix.nixosModules.default
                     ./server/base.nix
