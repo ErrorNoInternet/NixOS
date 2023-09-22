@@ -39,10 +39,7 @@
         pkgsArm = import nixpkgs {
             inherit overlays;
             system = "aarch64-linux";
-            config = {
-                allowUnfree = true;
-                allowUnsupportedSystem = true;
-            };
+            config.allowUnfree = true;
         };
     in
     {
@@ -107,8 +104,7 @@
                 modules = [
                     agenix.homeManagerModules.default
                     ./home-manager/base.nix
-                    ./home-manager/hosts/NixBtw.nix
-                    ./home-manager/modules/spicetify.nix
+                    ./home-manager/hosts/Pix.nix.nix
                 ];
             };
         };
