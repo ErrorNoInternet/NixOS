@@ -33,10 +33,10 @@
     services.nfs.server = {
         enable = true;
         exports = ''
-            /mnt/drive1 localhost(rw,sync,no_subtree_check,no_root_squash)
-            /mnt/drive3 localhost(rw,sync,no_subtree_check,no_root_squash)
-            /mnt/drive1 192.168.0.101(rw,sync,no_subtree_check,no_root_squash)
-            /mnt/drive3 192.168.0.101(rw,sync,no_subtree_check,no_root_squash)
+            /export/drive1 localhost(rw,sync,no_subtree_check,no_root_squash)
+            /export/drive3 localhost(rw,sync,no_subtree_check,no_root_squash)
+            /export/drive1 192.168.0.101(rw,sync,no_subtree_check,no_root_squash)
+            /export/drive3 192.168.0.101(rw,sync,no_subtree_check,no_root_squash)
         '';
     };
 
