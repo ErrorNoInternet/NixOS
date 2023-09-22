@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 
 {
     system.stateVersion = "23.05";
@@ -9,7 +9,7 @@
         cmatrix
         neofetch
 
-        (import ../home-manager/derivations/hsize.nix { inherit pkgs; })
+        inputs.hsize.packages.${pkgs.system}.hsize
         curl
         eza
         gawk

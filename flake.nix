@@ -110,6 +110,7 @@
             };
         };
         nixOnDroidConfigurations.ErrorNoPhone = nix-on-droid.lib.nixOnDroidConfiguration {
+            extraSpecialArgs = { inherit inputs; };
             modules = [
                 ./home-manager/base.nix
                 ./nix-on-droid/base.nix
