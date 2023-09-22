@@ -1,6 +1,8 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
+    age.secrets.wireless-networks.file = ../secrets/wireless-networks.age;
+
     wireless = {
         enable = true;
         environmentFile = config.age.secrets.wireless-networks.path;
