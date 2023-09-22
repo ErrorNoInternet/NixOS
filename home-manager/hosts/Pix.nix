@@ -20,7 +20,7 @@
         cmatrix
 
         # system utilities
-        (import ../derivations/hsize.nix { inherit pkgs; })
+        inputs.hsize.packages.${pkgs.system}.hsize
         duf
         eza
         jq
