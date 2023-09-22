@@ -21,7 +21,7 @@
         hsize.url = "github:ErrorNoInternet/hsize";
     };
 
-    outputs = { self, nixpkgs, nixpkgs-stable, home-manager, nix-on-droid, agenix, hyprland, spicetify-nix, nix-gaming, ... } @ inputs:
+    outputs = { self, nixpkgs, home-manager, nix-on-droid, agenix, hyprland, spicetify-nix, nix-gaming, ... } @ inputs:
     let
         overlays = [
             (self: super: {
@@ -88,7 +88,7 @@
                 ];
             };
             Pix = nixpkgs.lib.nixosSystem {
-                pkgs = pkgsArmStable;
+                specialArgs = { inherit pkgsArmStable; };
                 modules = [
                     agenix.nixosModules.default
                     ./server/base.nix
