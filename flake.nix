@@ -81,6 +81,7 @@
                     ./server/hosts/Pix/Pix.nix
                     ./server/hosts/Pix/hardware-configuration.nix
                     ./server/locations/china.nix
+                    ./server/modules/raspberry-pi.nix
                 ];
             };
         };
