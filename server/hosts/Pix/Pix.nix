@@ -5,8 +5,8 @@
     environment.variables.HOSTNAME = "Pix";
 
     networking.firewall = {
-        allowedTCPPorts = [ 111 2049 4000 4001 4002 20048 8080 8081 8082 ];
-        allowedUDPPorts = [ 111 2049 4000 4001 4002 20048 8080 8081 8082 ];
+        allowedTCPPorts = [ 8080 8081 8082 ];
+        allowedUDPPorts = [ 8080 8081 8082 ];
     };
 
     fileSystems = {
@@ -22,18 +22,12 @@
         };
     };
 
-    services.nfs.server = {
-        enable = true;
-        lockdPort = 4001;
-        mountdPort = 4002;
-        statdPort = 4000;
-        exports = ''
-            /mnt/drive1 localhost(rw,sync,no_subtree_check,no_root_squash)
-            /mnt/drive3 localhost(rw,sync,no_subtree_check,no_root_squash)
-            /mnt/drive1 192.168.0.101(rw,sync,no_subtree_check,no_root_squash)
-            /mnt/drive3 192.168.0.101(rw,sync,no_subtree_check,no_root_squash)
-        '';
-    };
+    services.nfs.server.exports = ''
+        /mnt/drive1 localhost(rw,sync,no_subtree_check,no_root_squash)
+        /mnt/drive3 localhost(rw,sync,no_subtree_check,no_root_squash)
+        /mnt/drive1 192.168.0.101(rw,sync,no_subtree_check,no_root_squash)
+        /mnt/drive3 192.168.0.101(rw,sync,no_subtree_check,no_root_squash)
+    '';
 
     services.samba = {
         securityType = "user";

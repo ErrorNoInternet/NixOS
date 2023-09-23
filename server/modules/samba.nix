@@ -11,6 +11,7 @@
     ];
 
     services = {
+        samba-wsdd.enable = true;
         samba = {
             package = pkgs.sambaFull;
             enable = true;
@@ -21,6 +22,5 @@
                 printcap name = cups
             '';
         };
-        samba-wsdd.enable = true;
     };
 }

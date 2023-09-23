@@ -89,6 +89,7 @@
                     ./server/modules/printing.nix
                     ./server/modules/raspberry-pi.nix
                     ./server/modules/samba.nix
+                    ./server/modules/nfs.nix
                     ./server/modules/zsh.nix
                 ];
             };
