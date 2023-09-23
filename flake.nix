@@ -86,10 +86,10 @@
                     ./server/hosts/Pix/hardware-configuration.nix
                     ./server/hosts/Pix/Pix.nix
                     ./server/locations/china.nix
+                    ./server/modules/nfs.nix
                     ./server/modules/printing.nix
                     ./server/modules/raspberry-pi.nix
                     ./server/modules/samba.nix
-                    ./server/modules/nfs.nix
                     ./server/modules/zsh.nix
                 ];
             };
