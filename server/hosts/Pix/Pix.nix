@@ -46,6 +46,15 @@
             workgroup = WORKGROUP
         '';
         shares = {
+            printers = {
+                path = "/var/spool/samba";
+                "create mode" = 0700;
+                "valid users" = "snowflake";
+                browseable = "yes";
+                comment = "All Printers";
+                printable = "yes";
+                writeable = "no";
+            };
             drive1 = {
                 path = "/mnt/drive1";
                 "follow symlinks" = "yes";
@@ -62,4 +71,7 @@
             };
         };
     };
+    systemd.tmpfiles.rules = [
+        "d /var/spool/samba 1777 root root -"
+    ];
 }
