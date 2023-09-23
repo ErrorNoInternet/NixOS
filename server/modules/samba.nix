@@ -15,12 +15,12 @@
             package = pkgs.sambaFull;
             enable = true;
             openFirewall = true;
+            extraConfig = ''
+                load printers = yes
+                printing = cups
+                printcap name = cups
+            '';
         };
         samba-wsdd.enable = true;
-        extraConfig = ''
-            load printers = yes
-            printing = cups
-            printcap name = cups
-        '';
     };
 }
