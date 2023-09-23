@@ -15,18 +15,10 @@
             fsType = "btrfs";
             options = [ "x-systemd.automount" "noauto" ];
         };
-        "/export/drive1" = {
-            device = "/mnt/drive1";
-            options = [ "bind" ];
-        };
         "/mnt/drive3" = {
             device = "/dev/disk/by-uuid/6a03c0f9-5c76-4a08-9091-aba7239a6429";
             fsType = "btrfs";
             options = [ "x-systemd.automount" "noauto" ];
-        };
-        "/export/drive3" = {
-            device = "/mnt/drive3";
-            options = [ "bind" ];
         };
     };
 
@@ -36,10 +28,10 @@
         mountdPort = 4002;
         statdPort = 4000;
         exports = ''
-            /export/drive1 localhost(rw,sync,no_subtree_check,no_root_squash)
-            /export/drive3 localhost(rw,sync,no_subtree_check,no_root_squash)
-            /export/drive1 192.168.0.101(rw,sync,no_subtree_check,no_root_squash)
-            /export/drive3 192.168.0.101(rw,sync,no_subtree_check,no_root_squash)
+            /mnt/drive1 localhost(rw,sync,no_subtree_check,no_root_squash)
+            /mnt/drive3 localhost(rw,sync,no_subtree_check,no_root_squash)
+            /mnt/drive1 192.168.0.101(rw,sync,no_subtree_check,no_root_squash)
+            /mnt/drive3 192.168.0.101(rw,sync,no_subtree_check,no_root_squash)
         '';
     };
 
