@@ -38,6 +38,8 @@
             force user = snowflake
             map to guest = bad user
             workgroup = WORKGROUP
+
+            valid users = snowflake
         '';
         shares = {
             printers = {
