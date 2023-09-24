@@ -56,6 +56,7 @@
                     ./workstation/locations/china.nix
                     ./workstation/modules/aarch64-emulation.nix
                     ./workstation/modules/bluetooth.nix
+                    ./workstation/modules/clamav.nix
                     ./workstation/modules/gaming.nix
                     ./workstation/modules/hyprland.nix
                     ./workstation/modules/nvidia-prime.nix
