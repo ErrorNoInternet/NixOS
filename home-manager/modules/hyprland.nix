@@ -64,7 +64,7 @@
             };
             animations = {
                 enabled = true;
-                bezier = "customBezier, 0.05, 0.9, 0.1, 1.05";
+                bezier = "customBezier, 0.05, 0.9, 0.1, 1.00";
                 animation = [
                     "windows, 1, 6, customBezier"
                     "windowsOut, 1, 6, default, popin 80%"
