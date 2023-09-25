@@ -9,6 +9,7 @@
         };
         aliases = {
             "c" = "commit -m";
+            "ca" = "commit --amend";
         };
         difftastic.enable = true;
         extraConfig = {
