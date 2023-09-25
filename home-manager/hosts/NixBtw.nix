@@ -64,6 +64,7 @@ in
         ../modules/mpv.nix
         ../modules/nvim.nix
         ../modules/obs-studio.nix
+        ../modules/thunderbird.nix
         ../modules/tmux.nix
         ../modules/virt-manager.nix
         ../modules/zoxide.nix
@@ -111,7 +112,6 @@ in
         gimp
         qbittorrent
         ripdrag
-        thunderbird
         (discord-canary.override {
             withOpenASAR = true;
             withVencord = true;
