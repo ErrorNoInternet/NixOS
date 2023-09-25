@@ -57,6 +57,7 @@ in
         ../modules/btop.nix
         ../modules/desktop-entries.nix
         ../modules/fastfetch.nix
+        ../modules/gaming.nix
         ../modules/git.nix
         ../modules/hyprpaper.nix
         ../modules/kdeconnect.nix
@@ -127,6 +128,7 @@ in
         prismlauncher
         superTuxKart
         inputs.nix-gaming.packages.${pkgs.system}.osu-lazer-bin
+        inputs.nix-gaming.packages.${pkgs.system}.wine-ge
 
         # ABSOLUTELY PROPRIETARY
         zoom-us
