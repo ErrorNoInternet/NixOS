@@ -101,6 +101,7 @@ in
         jq
         nmap
         nvtop
+        pv
         timg
 
         # graphical utilities
