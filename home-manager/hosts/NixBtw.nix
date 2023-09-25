@@ -105,11 +105,12 @@ in
         timg
 
         # graphical utilities
-        firefox
         brave
-        ripdrag
+        firefox
         gimp
         qbittorrent
+        ripdrag
+        thunderbird
         (discord-canary.override {
             withOpenASAR = true;
             withVencord = true;
