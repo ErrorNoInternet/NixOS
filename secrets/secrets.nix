@@ -5,7 +5,7 @@ let
     systems = [ NixBtw-user Crix-system Pix-system ];
 in
 {
+    "ddns.age".publicKeys = [ NixBtw-user Pix-system ];
     "nheko-access-token.age".publicKeys = [ NixBtw-user ];
-    "update-ddns.sh.age".publicKeys = [ Pix-system ];
     "wireless-networks.age".publicKeys = systems;
 }
