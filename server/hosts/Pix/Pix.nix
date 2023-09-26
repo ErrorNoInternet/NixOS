@@ -29,7 +29,7 @@
             wantedBy = [ "timers.target" ];
             timerConfig = {
                 OnBootSec = "1m";
-                OnUnitActivateSec = "12h";
+                OnUnitActivateSec = "6h";
                 Unit = "update-ddns.service";
             };
         };
