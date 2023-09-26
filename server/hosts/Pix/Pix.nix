@@ -36,8 +36,10 @@
         services."update-ddns" = {
             script = ''
                 TOKEN="$(head -n1 ${config.age.secrets.ddns.path})"
-                ZONE="$(tail -n1 ${config.age.secrets.ddns.path})"
-                ${pkgs.curl}/bin/curl -4Lv "https://ipv4.dynv6.com/api/update?ipv4=auto&token=$TOKEN&zone=$ZONE"
+                ZONES="$(tail -n+2 ${config.age.secrets.ddns.path})"
+                for ZONE in $ZONES; do
+                    ${pkgs.curl}/bin/curl -4Lv "https://ipv4.dynv6.com/api/update?ipv4=auto&token=$TOKEN&zone=$ZONE"
+                done
             '';
             serviceConfig = {
                 Type = "oneshot";
