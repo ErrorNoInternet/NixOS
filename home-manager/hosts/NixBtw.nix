@@ -98,6 +98,7 @@ in
 
         # system utilities
         inputs.hsize.packages.${pkgs.system}.hsize
+        compsize
         duf
         eza
         jq
