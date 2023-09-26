@@ -1,8 +1,10 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
     networking.hostName = "Pix";
     environment.variables.HOSTNAME = "Pix";
+
+    age.secrets.ddns.file = ../../../secrets/ddns.age;
 
     networking.firewall = {
         allowedTCPPorts = [ 8080 8081 8082 ];
@@ -19,6 +21,28 @@
             device = "/dev/disk/by-uuid/6a03c0f9-5c76-4a08-9091-aba7239a6429";
             fsType = "btrfs";
             options = [ "x-systemd.automount" "noauto" ];
+        };
+    };
+
+    systemd = {
+        timers."update-ddns" = {
+            wantedBy = [ "timers.target" ];
+            timerConfig = {
+                OnBootSec = "1m";
+                OnUnitActivateSec = "12h";
+                Unit = "update-ddns.service";
+            };
+        };
+        services."update-ddns" = {
+            script = ''
+                TOKEN="$(head -n1 ${config.age.secrets.ddns.path})"
+                ZONE="$(tail -n1 ${config.age.secrets.ddns.path})"
+                ${pkgs.curl}/bin/curl -4Lv "https://ipv4.dynv6.com/api/update?ipv4=auto&token=$TOKEN&zone=$ZONE"
+            '';
+            serviceConfig = {
+                Type = "oneshot";
+                User = "root";
+            };
         };
     };
 
