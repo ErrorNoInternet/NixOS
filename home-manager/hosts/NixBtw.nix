@@ -98,6 +98,7 @@ in
 
         # system utilities
         inputs.hsize.packages.${pkgs.system}.hsize
+        _7zz
         compsize
         duf
         eza
