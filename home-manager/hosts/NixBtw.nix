@@ -50,6 +50,7 @@ in
         (import ../modules/hyprland-autoname-workspaces.nix { inherit custom; })
         (import ../modules/hyprland.nix { inherit custom inputs pkgs; })
         (import ../modules/kitty.nix { inherit custom; })
+        (import ../modules/libreoffice.nix { inherit pkgs; })
         (import ../modules/nheko.nix { inherit config pkgs; })
         (import ../modules/rofi.nix { inherit config custom pkgs; })
         (import ../modules/waybar.nix { inherit custom pkgs; })
