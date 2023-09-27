@@ -28,14 +28,16 @@
                 "wl-paste --type image --watch cliphist store"
             ];
             input = {
-                kb_layout = "us";
-                follow_mouse = 1;
-                accel_profile = "flat";
-                sensitivity = 0.8;
                 touchpad = {
                     natural_scroll = true;
                     disable_while_typing = false;
                 };
+                kb_layout = "us";
+                follow_mouse = 1;
+                accel_profile = "flat";
+                sensitivity = 0.8;
+                repeat_delay = 300;
+                repeat_rate = 40;
             };
             general = {
                 gaps_in = 6;
