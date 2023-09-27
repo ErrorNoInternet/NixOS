@@ -68,6 +68,7 @@ in
         ../modules/thunderbird.nix
         ../modules/tmux.nix
         ../modules/virt-manager.nix
+        ../modules/yazi.nix
         ../modules/zoxide.nix
         ../modules/zsh.nix
     ];
