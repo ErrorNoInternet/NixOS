@@ -15,10 +15,12 @@
         mouse = true;
         terminal = "tmux-256color";
         extraConfig = ''
-set -ga terminal-overrides ",xterm*:RGB"
-
+set -g allow-passthrough on
 set -g repeat-time 0
 set -g set-clipboard on
+set -ga terminal-overrides ",xterm*:RGB"
+set -ga update-environment TERM
+set -ga update-environment TERM_PROGRAM
 
 set -g pane-active-border-style 'fg=colour4'
 
