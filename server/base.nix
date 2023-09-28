@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 {
     nixpkgs.config.allowUnfree = true;
@@ -51,12 +51,20 @@
         openssh.enable = true;
         fail2ban = {
             enable = true;
+            ignoreIP = [ "192.168.0.101" ];
             maxretry = 6;
             bantime = "5m";
             bantime-increment = {
                 enable = true;
                 multipliers = "1 2 6 12 24 72 144 288 864 2016";
                 rndtime = "5m";
+            };
+            jails = {
+                sshd = lib.mkForce ''
+                    enabled = true
+                    mode = aggressive
+                    port = ${lib.strings.concatMapStringsSep "," (p: toString p) config.services.openssh.ports}
+                '';
             };
         };
     };
