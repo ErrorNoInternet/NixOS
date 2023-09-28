@@ -19,6 +19,7 @@
                 "custom/launcher"
                 "cpu"
                 "memory"
+                "network#usage"
             ];
             modules-center = [
                 "hyprland/workspaces"
@@ -26,7 +27,7 @@
             modules-right = [
                 "tray"
                 "pulseaudio"
-                "network"
+                "network#status"
                 "battery"
                 "clock"
             ];
@@ -63,22 +64,29 @@
                 format-alt = "{icon}  {time}";
                 format-icons = ["" "" "" "" ""];
             };
-            memory = {
-                format = "󰍛 {}%";
-                format-alt = "󰍛 {used}/{total} GiB";
-                interval = 5;
-            };
             cpu = {
                 format = "󰻠 {usage}%";
                 format-alt = "󰻠 {avg_frequency} GHz";
                 interval = 5;
             };
-            network = {
+            memory = {
+                format = "󰍛 {}%";
+                format-alt = "󰍛 {used}/{total} GiB";
+                interval = 5;
+            };
+            "network#usage" = {
+                format-wifi = "󱚻  {bandwidthUpBytes}  {bandwidthDownBytes} ";
+                tooltip-format = "{bandwidthUpBits}  {bandwidthDownBits} ";
+                format-disconnected = "󱚻  ?";
+                interval = 1;
+            };
+            "network#status" = {
                 format-wifi = "  {signalStrength}%";
                 format-ethernet = "󰈀 (eth)";
-                tooltip-format = "Connected to {essid} ({gwaddr}) via {ifname}";
+                tooltip-format-wifi = "({frequency} GHz) Connected to {essid} ({gwaddr}) via {ifname} ({ipaddr})";
+                tooltip-format-ethernet = "Connected via {ifname} ({gwaddr}, {ipaddr})";
                 format-linked = "{ifname} (No IP)";
-                format-disconnected = "󰖪 ?";
+                format-disconnected = "󰖪  ?";
             };
             pulseaudio = {
                 format = "{icon} {volume}%";
