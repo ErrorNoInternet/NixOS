@@ -54,6 +54,9 @@
             ignoreIP = [ "192.168.0.101" ];
             maxretry = 6;
             bantime = "5m";
+            extraSettings = {
+                findtime = "15m";
+            };
             bantime-increment = {
                 enable = true;
                 multipliers = "1 2 6 12 24 72 144 288 864 2016";
