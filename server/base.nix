@@ -47,7 +47,19 @@
         btop
     ];
 
-    services.openssh.enable = true;
+    services = {
+        openssh.enable = true;
+        fail2ban = {
+            enable = true;
+            maxretry = 6;
+            bantime = "5m";
+            bantime-increment = {
+                enable = true;
+                multipliers = "1 2 6 12 24 72 144 288 864 2016";
+                rndtime = "5m";
+            };
+        };
+    };
     users.users = {
         root.password = "snowflake";
         snowflake = {
