@@ -75,14 +75,15 @@
                 interval = 5;
             };
             "network#usage" = {
-                format-wifi = "󱚻  {bandwidthUpBytes}  {bandwidthDownBytes} ";
+                format = "󱚻  {bandwidthTotalBytes}";
+                format-alt = "󱚻  {bandwidthUpBytes}  {bandwidthDownBytes} ";
                 tooltip-format = "{bandwidthUpBits}  {bandwidthDownBits} ";
                 format-disconnected = "󱚻  ?";
                 interval = 1;
             };
             "network#status" = {
                 format-wifi = "  {signalStrength}%";
-                format-ethernet = "󰈀 (eth)";
+                format-ethernet = "󰈀  (eth)";
                 tooltip-format-wifi = "({frequency} GHz) Connected to {essid} ({gwaddr}) via {ifname} ({ipaddr})";
                 tooltip-format-ethernet = "Connected via {ifname} ({gwaddr}, {ipaddr})";
                 format-linked = "{ifname} (No IP)";
