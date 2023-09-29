@@ -98,11 +98,13 @@ in
         pavucontrol
 
         # system utilities
-        inputs.hsize.packages.${pkgs.system}.hsize
         _7zz
+        bandwhich
         compsize
         duf
         eza
+        ffmpeg_6-full
+        inputs.hsize.packages.${pkgs.system}.hsize
         jq
         nmap
         nvtop
