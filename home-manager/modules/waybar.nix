@@ -34,7 +34,7 @@
             clock = {
                 format = " {:%a, %b %d, %H:%M}";
                 tooltip = "true";
-                tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
+                tooltip-format = "<tt><small>{calendar}</small></tt>";
                 format-alt = " {:%m/%d}";
             };
             "wlr/workspaces"= {
@@ -55,13 +55,13 @@
             battery = {
                 states = {
                     good = 95;
-                    warning = 30;
+                    warning = 35;
                     critical = 15;
                 };
                 format = "{icon}  {capacity}%";
                 format-charging = "  {capacity}%";
                 format-plugged = "  {capacity}%";
-                format-alt = "{icon}  {time}";
+                tooltip-format = "{time}";
                 format-icons = ["" "" "" "" ""];
             };
             cpu = {
