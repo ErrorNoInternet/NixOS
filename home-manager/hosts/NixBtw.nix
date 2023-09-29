@@ -58,7 +58,6 @@ in
         ../modules/btop.nix
         ../modules/desktop-entries.nix
         ../modules/fastfetch.nix
-        ../modules/gaming.nix
         ../modules/git.nix
         ../modules/hyprpaper.nix
         ../modules/kdeconnect.nix

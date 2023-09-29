@@ -57,6 +57,7 @@
                     ./workstation/modules/aarch64-emulation.nix
                     ./workstation/modules/bluetooth.nix
                     ./workstation/modules/clamav.nix
+                    ./workstation/modules/gaming-cache.nix
                     ./workstation/modules/gaming.nix
                     ./workstation/modules/hyprland.nix
                     ./workstation/modules/nvidia-prime.nix
@@ -105,6 +106,7 @@
                     ./home-manager/hosts/NixBtw.nix
                     ./home-manager/locations/china.nix
                     ./home-manager/modules/spicetify.nix
+                    ./workstation/modules/gaming-cache.nix
                 ];
             };
             "snowflake@Pix" = home-manager.lib.homeManagerConfiguration {
