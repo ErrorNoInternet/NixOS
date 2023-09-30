@@ -23,6 +23,7 @@
             py = "python3";
 
             ping = "/android/system/bin/linker64 /android/system/bin/ping";
+            nc = "ncat";
         };
         history = {
             size = 100000;
