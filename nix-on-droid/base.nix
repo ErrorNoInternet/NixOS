@@ -9,21 +9,22 @@
         cmatrix
         neofetch
 
-        inputs.hsize.packages.${pkgs.system}.hsize
+        # unixtools.ping
         curl
+        dig
         eza
         gawk
-        dig
         git
         gnugrep
         gnupg
         gnutar
         gzip
+        inputs.hsize.packages.${pkgs.system}.hsize
+        iproute2
         ncurses
         nmap
         openssh
         perl
-        # unixtools.ping
         wget
 
         gcc
