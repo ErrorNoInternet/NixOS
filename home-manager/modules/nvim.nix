@@ -1,6 +1,7 @@
 { pkgs, ... }:
 
 {
+    home.packages = [ pkgs.python310Packages.jedi ];
     programs.neovim = {
         enable = true;
         defaultEditor = true;

@@ -123,11 +123,11 @@ in
         })
 
         # development utilities
-        virt-manager
-        python3
-        rustup
         gcc
+        python3
         python310Packages.bpython
+        rustup
+        virt-manager
 
         # games
         prismlauncher
