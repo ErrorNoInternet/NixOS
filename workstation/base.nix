@@ -106,8 +106,14 @@
         ];
         fontconfig = {
             defaultFonts = {
-                serif = [ "JetBrainsMono Nerd Font" ];
-                sansSerif = [ "JetBrainsMono Nerd Font" ];
+                serif = [
+                    "JetBrainsMono Nerd Font"
+                    "Noto Serif CJK SC"
+                ];
+                sansSerif = [
+                    "JetBrainsMono Nerd Font"
+                    "Noto Sans CJK SC"
+                ];
                 monospace = [ "JetBrainsMono Nerd Font" ];
                 emoji = [ "Twitter Color Emoji" ];
             };
