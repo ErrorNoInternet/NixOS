@@ -55,7 +55,7 @@
             lightdm.enable = false;
             sddm = {
                 enable = true;
-                theme = "${import ./sddm-theme.nix { inherit pkgs; }}";
+                theme = "${import ./derivations/sddm-theme.nix { inherit pkgs; }}";
             };
         };
     };
