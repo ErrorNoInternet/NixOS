@@ -20,7 +20,6 @@
         options = [ "x-systemd.automount" "noauto" ];
     };
 
-    boot.kernelModules = [ "i2c-dev" "i2c-piix4" ];
     services.udev.extraRules = ''
         SUBSYSTEMS=="usb|hidraw", ATTRS{idVendor}=="1770", ATTRS{idProduct}=="ff00", TAG+="uaccess", TAG+="MSI_3Zone_Laptop"
     '';
