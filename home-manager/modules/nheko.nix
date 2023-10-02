@@ -34,7 +34,7 @@
             camera_frame_rate=30
             camera_resolution=640x480
             decrypt_notificatons=false
-            decrypt_sidebar=false
+            decrypt_sidebar=true
             desktop_notifications=true
             expose_dbus_api=false
             fancy_effects=true
