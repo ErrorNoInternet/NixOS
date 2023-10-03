@@ -8,6 +8,7 @@
     services.xserver.desktopManager.plasma5.enable = true;
     environment.systemPackages = with pkgs; [
         (import ../../derivations/collect-hwinfo.nix { inherit pkgs; })
+        (import ../../derivations/passgen.nix.nix { inherit pkgs; })
         (import ../../derivations/tbw.nix { inherit pkgs; })
         blender
         brave
