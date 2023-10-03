@@ -13,8 +13,8 @@
             options = "--delete-older-than 14d";
         };
         extraOptions = ''
-            min-free = ${toString (512 * 1024 * 1024)}
-            max-free = ${toString (1024 * 1024 * 1024)}
+            min-free = ${toString (1024 * 1024 * 1024 * 2)}
+            max-free = ${toString (1024 * 1024 * 1024 * 10)}
         '';
     };
 
