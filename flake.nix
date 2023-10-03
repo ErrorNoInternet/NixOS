@@ -67,6 +67,24 @@
                     ./workstation/modules/virtualization.nix
                 ];
             };
+            Rescanix = nixpkgs.lib.nixosSystem {
+                specialArgs = { inherit pkgs; };
+                modules = [
+                    #./workstation/hosts/Rescanix/hardware-configuration.nix
+                    ./workstation/base.nix
+                    ./workstation/hosts/Rescanix/Rescanix.nix
+                    ./workstation/locations/china.nix
+                    ./workstation/modules/bluetooth.nix
+                    ./workstation/modules/clamav.nix
+                    ./workstation/modules/gaming-cache.nix
+                    ./workstation/modules/gaming.nix
+                    ./workstation/modules/hyprland.nix
+                    ./workstation/modules/nvidia-prime.nix
+                    ./workstation/modules/nvidia.nix
+                    ./workstation/modules/openrgb.nix
+                    ./workstation/modules/video-acceleration.nix
+                ];
+            };
             Crix = nixpkgs.lib.nixosSystem {
                 specialArgs = { inherit pkgs; };
                 modules = [
