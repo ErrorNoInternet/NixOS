@@ -100,7 +100,8 @@
 
                 "$mainMod, L, exec, ~/scripts/swaylock.sh 0 1"
                 "$mainMod, RETURN, exec, kitty"
-
+                
+                "$mainMod, TAB, workspace, previous"
                 "$mainMod SHIFT, F, fullscreen"
                 "$mainMod, F, fullscreen, 1"
                 "$mainMod, V, togglefloating"
