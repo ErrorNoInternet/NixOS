@@ -70,8 +70,8 @@
             Rescanix = nixpkgs.lib.nixosSystem {
                 specialArgs = { inherit pkgs; };
                 modules = [
-                    #./workstation/hosts/Rescanix/hardware-configuration.nix
                     ./workstation/base.nix
+                    ./workstation/hosts/Rescanix/hardware-configuration.nix
                     ./workstation/hosts/Rescanix/Rescanix.nix
                     ./workstation/locations/china.nix
                     ./workstation/modules/bluetooth.nix
