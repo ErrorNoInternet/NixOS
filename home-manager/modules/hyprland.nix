@@ -49,7 +49,6 @@
             };
             decoration = {
                 rounding = 10;
-                multisample_edges = true;
                 shadow_ignore_window = true;
                 drop_shadow = true;
                 shadow_range = 20;
