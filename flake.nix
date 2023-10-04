@@ -68,7 +68,7 @@
                 ];
             };
             Rescanix = nixpkgs.lib.nixosSystem {
-                specialArgs = { inherit pkgs; };
+                specialArgs = { inherit inputs pkgs; };
                 modules = [
                     ./workstation/base.nix
                     ./workstation/hosts/Rescanix/hardware-configuration.nix
