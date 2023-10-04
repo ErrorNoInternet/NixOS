@@ -3,7 +3,7 @@
 pkgs.rustPlatform.buildRustPackage rec {
     pname = "passgen";
     version = "0.1.0";
-    cargoHash = "sha256-Ytrlsvdx1Bp8YSD/G30xwSFjPxK8KNAʊ8mKT4X5twRM=";
+    cargoHash = "sha256-Ytrlsvdx1Bp8YSD/G30xwSFjPxK8KNAv8mKT4X5twRM=";
     src = pkgs.fetchFromGitHub {
         owner = "ErrorNoInternet";
         repo = pname;
