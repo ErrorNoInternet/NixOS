@@ -132,7 +132,7 @@
         VIDEOS=
     '';
     users.users.ryan = {
-        initialPassword = "gigachad";
+        initialPassword = "snowflake";
         isNormalUser = true;
         extraGroups = [ "wheel" "video" ];
         shell = pkgs.zsh;
