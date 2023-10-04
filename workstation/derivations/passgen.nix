@@ -8,6 +8,6 @@ pkgs.rustPlatform.buildRustPackage rec {
         owner = "ErrorNoInternet";
         repo = pname;
         rev = "d5a8324a37471a41eb6e203756daf2a4b94a0b55";
-        hash = "";
+        hash = "sha256-YG0DJ5dbthH1zSeStp1QF9k0TpyyBnClaeTLBNJ+oxs=";
     };
 }
