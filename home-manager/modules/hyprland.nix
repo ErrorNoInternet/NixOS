@@ -92,8 +92,8 @@
                 vfr = false;
             };
             bind = [
-                "$mainMod, D, exec, rofi -show drun"
-                "$mainMod, Z, exec, rofi -show drun"
+                "$mainMod, D, exec, rofi -show drun || pkill rofi"
+                "$mainMod, Z, exec, rofi -show drun || pkill rofi"
                 "$mainMod, G, exec, cliphist list | rofi -dmenu | cliphist decode | wl-copy"
                 "$mainMod, code:60, exec, rofi -show emoji"
                 ", PRINT, exec, ~/scripts/grimblast.sh --freeze copy area"
