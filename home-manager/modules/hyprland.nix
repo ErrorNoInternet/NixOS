@@ -88,6 +88,9 @@
             misc = {
                 vfr = false;
             };
+            binds = {
+                allow_workspace_cycles = true;
+            };
             bind = [
                 "$mainMod, D, exec, rofi -show drun || pkill rofi"
                 "$mainMod, Z, exec, rofi -show drun || pkill rofi"
