@@ -72,6 +72,7 @@
             memory = {
                 format = "󰍛 {}%";
                 format-alt = "󰍛 {used}/{total} GiB";
+                tooltip-format = "swap: {swapUsed}/{swapTotal} GiB";
                 interval = 5;
             };
             "network#usage" = {
