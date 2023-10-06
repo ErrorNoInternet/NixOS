@@ -1,10 +1,14 @@
 { config, pkgs, ... }:
 
 {
+    age.secrets.ddns.file = ../../../secrets/ddns.age;
+
     networking.hostName = "Pix";
     environment.variables.HOSTNAME = "Pix";
 
-    age.secrets.ddns.file = ../../../secrets/ddns.age;
+    users.users.snowflake.openssh.authorizedKeys.keys = [
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIExq/sL8TLmD7AERh7X9afXlqeuf4g5EeIaoemRf+C7l"
+    ];
 
     networking.firewall = {
         allowedTCPPorts = [ 8080 8081 8082 ];
