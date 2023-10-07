@@ -43,7 +43,6 @@ in
         ../scripts/grimblast.nix
         ../scripts/pavolume.nix
 
-        (import ../modules/awesomewm.nix { inherit custom pkgs; })
         (import ../modules/cava.nix { inherit custom; })
         (import ../modules/dunst.nix { inherit custom pkgs; })
         (import ../modules/fcitx.nix { inherit pkgs; })
@@ -61,6 +60,7 @@ in
         ../modules/fastfetch.nix
         ../modules/git.nix
         ../modules/hyprpaper.nix
+        ../modules/irssi.nix
         ../modules/kdeconnect.nix
         ../modules/mpv.nix
         ../modules/nvim.nix
