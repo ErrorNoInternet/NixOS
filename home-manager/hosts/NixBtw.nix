@@ -61,6 +61,7 @@ in
         ../modules/fastfetch.nix
         ../modules/git.nix
         ../modules/hyprpaper.nix
+        ../modules/irssi.nix
         ../modules/kdeconnect.nix
         ../modules/mpv.nix
         ../modules/nvim.nix
