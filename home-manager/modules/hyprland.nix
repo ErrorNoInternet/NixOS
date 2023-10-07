@@ -72,7 +72,7 @@
                     "border, 1, 6, default"
                     "borderangle, 1, 6, default"
                     "fade, 1, 6, default"
-                    "workspaces, 1, 6, default"
+                    "workspaces, 1, 6, customBezier"
                 ];
             };
             dwindle = {
@@ -102,7 +102,7 @@
 
                 "$mainMod, L, exec, ~/scripts/swaylock.sh 0 1"
                 "$mainMod, RETURN, exec, kitty"
-                
+
                 "$mainMod, TAB, workspace, previous"
                 "$mainMod SHIFT, F, fullscreen"
                 "$mainMod, F, fullscreen, 1"
