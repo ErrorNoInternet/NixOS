@@ -127,6 +127,18 @@
                     ./workstation/modules/gaming-cache.nix
                 ];
             };
+            "ryan@Rescanix" = home-manager.lib.homeManagerConfiguration {
+                inherit pkgs;
+                extraSpecialArgs = { inherit inputs; };
+                modules = [
+                    agenix.homeManagerModules.default
+                    ./home-manager/base.nix
+                    ./home-manager/hosts/Rescanix.nix.nix
+                    ./home-manager/locations/china.nix
+                    ./home-manager/modules/spicetify.nix
+                    ./workstation/modules/gaming-cache.nix
+                ];
+            };
             "snowflake@Pix" = home-manager.lib.homeManagerConfiguration {
                 pkgs = pkgsArm;
                 extraSpecialArgs = { inherit inputs; };
