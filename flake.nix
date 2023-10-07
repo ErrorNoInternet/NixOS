@@ -133,7 +133,7 @@
                 modules = [
                     agenix.homeManagerModules.default
                     ./home-manager/base.nix
-                    ./home-manager/hosts/Rescanix.nix.nix
+                    ./home-manager/hosts/Rescanix.nix
                     ./home-manager/locations/china.nix
                     ./home-manager/modules/spicetify.nix
                     ./workstation/modules/gaming-cache.nix
