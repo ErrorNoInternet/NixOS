@@ -43,7 +43,6 @@ in
         ../scripts/grimblast.nix
         ../scripts/pavolume.nix
 
-        (import ../modules/awesomewm.nix { inherit custom pkgs; })
         (import ../modules/cava.nix { inherit custom; })
         (import ../modules/dunst.nix { inherit custom pkgs; })
         (import ../modules/fcitx.nix { inherit pkgs; })
