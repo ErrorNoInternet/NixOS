@@ -58,6 +58,9 @@
                 theme = "${import ./derivations/sddm-theme.nix { inherit pkgs; }}";
             };
         };
+        windowManager.awesome = {
+            enable = true;
+        };
     };
 
     xdg.portal = {
