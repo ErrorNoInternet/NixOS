@@ -72,63 +72,62 @@ in
     home.homeDirectory = "/home/ryan";
 
     home.packages = with pkgs; [
-        fastfetch
-        cmatrix
-        cava
+        (hashcat.override { cudaSupport = true; })
         (import ../../workstation/derivations/collect-hwinfo.nix { inherit pkgs; })
         (import ../../workstation/derivations/passgen.nix { inherit pkgs; })
         (import ../../workstation/derivations/tbw.nix { inherit pkgs; })
-        wl-clipboard
-        swaylock-effects
-        swayidle
-        hyprland-autoname-workspaces
-        hyprpaper
-        grim
-        slurp
-        hyprpicker
-        cliphist
-        pavucontrol
         _7zz
         bandwhich
+        blender
+        brave
+        cava
+        cliphist
+        cmatrix
         compsize
+        cpu-x
+        drm_info
         duf
         eza
+        fastfetch
         ffmpeg_6-full
-        inputs.hsize.packages.${pkgs.system}.hsize
-        jq
-        nmap
-        nvtop
-        pv
-        timg
-        brave
         firefox
-        blender
-        gimp
-        ripdrag
-        cpu-x
-        (hashcat.override { cudaSupport = true; })
         gcc
-        python3
-        rustup
-        prismlauncher
-        superTuxKart
+        geekbench
+        gimp
+        grim
+        hyprland-autoname-workspaces
+        hyprpaper
+        hyprpicker
+        inputs.hsize.packages.${pkgs.system}.hsize
         inputs.nix-gaming.packages.${pkgs.system}.osu-lazer-bin
         inputs.nix-gaming.packages.${pkgs.system}.wine-ge
-        drm_info
-        ffmpeg_6-full
-        geekbench
         intel-gpu-tools
+        jq
         kdiskmark
         lm_sensors
         lshw
         mangohud
         mesa-demos
+        nmap
+        nvtop
+        pavucontrol
         powertop
+        prismlauncher
+        pv
+        python3
         radeontop
+        ripdrag
+        rustup
+        slurp
         smartmontools
         sshfs
+        superTuxKart
+        swayidle
+        swaylock-effects
+        timg
         unigine-heaven
         vulkan-tools
+        wl-clipboard
     ];
 
     home.sessionVariables = {
