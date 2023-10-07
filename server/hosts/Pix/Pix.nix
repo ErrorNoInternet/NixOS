@@ -7,8 +7,8 @@
     age.secrets.ddns.file = ../../../secrets/ddns.age;
 
     networking.firewall = {
-        allowedTCPPorts = [ 8080 8081 8082 ];
-        allowedUDPPorts = [ 8080 8081 8082 ];
+        allowedTCPPorts = [ 8080 8081 8082 22122 ];
+        allowedUDPPorts = [ 8080 8081 8082 22122 ];
     };
 
     fileSystems = {
