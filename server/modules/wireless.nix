@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs }:
 
 {
     age.secrets.wireless-networks.file = ../../secrets/wireless-networks.age;

@@ -54,6 +54,8 @@ in
         (import ../modules/nheko.nix { inherit config pkgs; })
         (import ../modules/rofi.nix { inherit config custom pkgs; })
         (import ../modules/waybar.nix { inherit custom pkgs; })
+        (import ../modules/neovim.nix { inherit pkgs; })
+        (import ../modules/tmux.nix { inherit pkgs; })
         ../modules/bat.nix
         ../modules/btop.nix
         ../modules/desktop-entries.nix
@@ -63,10 +65,8 @@ in
         ../modules/irssi.nix
         ../modules/kdeconnect.nix
         ../modules/mpv.nix
-        ../modules/nvim.nix
         ../modules/obs-studio.nix
         ../modules/thunderbird.nix
-        ../modules/tmux.nix
         ../modules/virt-manager.nix
         ../modules/yazi.nix
         ../modules/zoxide.nix

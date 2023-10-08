@@ -1,4 +1,4 @@
-{ custom, pkgs, config, ... }:
+{ custom, pkgs, config }:
 
 {
     programs.rofi = {

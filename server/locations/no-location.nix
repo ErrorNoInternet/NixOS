@@ -1,3 +1,3 @@
-{ pkgs, secrets, ... }:
+{ pkgs, secrets }:
 
 {}

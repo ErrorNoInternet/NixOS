@@ -1,4 +1,4 @@
-{ custom, ... }:
+{ custom }:
 
 {
     home.file = {

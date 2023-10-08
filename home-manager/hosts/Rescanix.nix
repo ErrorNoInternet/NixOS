@@ -1,4 +1,4 @@
-{ config, inputs, pkgs, ... }:
+{ config, inputs, pkgs }:
 
 let
     custom = {
@@ -60,7 +60,7 @@ in
         ../modules/hyprpaper.nix
         ../modules/kdeconnect.nix
         ../modules/mpv.nix
-        ../modules/nvim.nix
+        ../modules/neovim.nix
         ../modules/obs-studio.nix
         ../modules/tmux.nix
         ../modules/yazi.nix

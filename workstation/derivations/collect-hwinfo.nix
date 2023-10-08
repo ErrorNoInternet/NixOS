@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs }:
 
 pkgs.writeShellScriptBin "collect-hwinfo" ''
     if [ "$EUID" -ne 0 ]

@@ -1,4 +1,4 @@
-{ custom, ... }:
+{ custom }:
 
 {
   programs.kitty = {
