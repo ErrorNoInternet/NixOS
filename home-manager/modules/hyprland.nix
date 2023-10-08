@@ -186,14 +186,14 @@
             bind=$mainMod,R,submap,resize
             submap=resize
 
-            binde=,left,resizeactive,-20 0
-            binde=,right,resizeactive,20 0
-            binde=,up,resizeactive,0 -20
-            binde=,down,resizeactive,0 20
-            binde=,H,resizeactive,-20 0
-            binde=,L,resizeactive,20 0
-            binde=,K,resizeactive,0 -20
-            binde=,J,resizeactive,0 20
+            binde=,left,resizeactive,-25 0
+            binde=,right,resizeactive,25 0
+            binde=,up,resizeactive,0 -25
+            binde=,down,resizeactive,0 25
+            binde=,H,resizeactive,-25 0
+            binde=,L,resizeactive,25 0
+            binde=,K,resizeactive,0 -25
+            binde=,J,resizeactive,0 25
 
             bind=,escape,submap,reset
             bind=$mainMod,R,submap,reset
