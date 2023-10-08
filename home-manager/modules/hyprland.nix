@@ -49,12 +49,10 @@
             };
             decoration = {
                 rounding = 10;
-                shadow_ignore_window = true;
                 drop_shadow = true;
-                shadow_range = 20;
+                shadow_range = 30;
                 shadow_render_power = 2;
                 "col.shadow" = "rgb(${custom.dark1})";
-                "col.shadow_inactive" = "rgb(${custom.dark1})";
                 blur = {
                     enabled = true;
                     size = 6;

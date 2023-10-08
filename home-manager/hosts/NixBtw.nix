@@ -19,7 +19,7 @@ let
         yellow = "EBCB8B";
         green = "A3BE8C";
         pink = "B48EAD";
-        opacity = ".75";
+        opacity = ".7";
         subtleOpacity = ".9";
         pointerCursor = {
             name = "Bibata-Modern-Classic";
