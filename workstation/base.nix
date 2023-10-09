@@ -138,5 +138,6 @@
         shell = pkgs.zsh;
     };
 
+    environment.etc."current-nixos".source = ./.;
     system.stateVersion = "23.05";
 }
