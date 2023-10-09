@@ -14,21 +14,21 @@
         plugins = with pkgs.vimPlugins; [
             auto-pairs
             bufferline-nvim
-            vim-go
             nerdtree
             nord-nvim
             presence-nvim
             rust-vim
+            suda-vim
             vim-airline
             vim-airline-themes
             vim-devicons
-            suda-vim
+            vim-go
 
-            coc-sh
             coc-go
             coc-html
             coc-python
             coc-rust-analyzer
+            coc-sh
         ];
         extraConfig = ''
 "Basic Configuration
