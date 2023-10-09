@@ -83,6 +83,7 @@
                     ./workstation/modules/nvidia.nix
                     ./workstation/modules/openrgb.nix
                     ./workstation/modules/video-acceleration.nix
+                    ./workstation/modules/vm-guest.nix
                 ];
             };
             Crix = nixpkgs.lib.nixosSystem {
