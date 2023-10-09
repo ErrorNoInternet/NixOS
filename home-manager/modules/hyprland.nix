@@ -50,7 +50,7 @@
             decoration = {
                 rounding = 10;
                 drop_shadow = true;
-                shadow_range = 30;
+                shadow_range = 25;
                 shadow_render_power = 2;
                 "col.shadow" = "rgb(${custom.dark1})";
                 blur = {
