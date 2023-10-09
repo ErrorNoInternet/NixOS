@@ -53,6 +53,7 @@ in
         (import ../modules/kitty.nix { inherit custom; })
         (import ../modules/neovim.nix { inherit pkgs; })
         (import ../modules/rofi.nix { inherit config custom pkgs; })
+        (import ../modules/tmux.nix { inherit pkgs; })
         (import ../modules/waybar.nix { inherit custom pkgs; })
         ../modules/bat.nix
         ../modules/btop.nix
@@ -63,7 +64,6 @@ in
         ../modules/kdeconnect.nix
         ../modules/mpv.nix
         ../modules/obs-studio.nix
-        ../modules/tmux.nix
         ../modules/yazi.nix
         ../modules/zoxide.nix
         ../modules/zsh.nix
