@@ -55,10 +55,7 @@
                 "col.shadow" = "rgb(${custom.dark1})";
                 blur = {
                     enabled = true;
-                    size = 6;
-                    passes = 3;
-                    ignore_opacity = true;
-                    new_optimizations = true;
+                    passes = 2;
                 };
             };
             animations = {
@@ -196,6 +193,8 @@
             bind=,escape,submap,reset
             bind=$mainMod,R,submap,reset
             submap=reset
+
+            layerrule=blur,waybar
         '';
     };
 }
