@@ -119,7 +119,7 @@
             }
 
             window#waybar {
-                background-color: #${custom.dark3};
+                background-color: rgba(${custom.dark3-rgb}, ${custom.opacity});
             }
 
             #workspaces {

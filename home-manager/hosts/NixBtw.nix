@@ -6,6 +6,7 @@ let
         dark1 = "2E3440";
         dark2 = "3B4252";
         dark3 = "434C5E";
+        dark3-rgb = "67, 76, 94";
         dark4 = "4C566A";
         light1 = "D8DEE9";
         light2 = "E5E9F0";
