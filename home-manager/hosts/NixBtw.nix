@@ -79,6 +79,7 @@ in
     home.file = {
         downloads.source = config.lib.file.mkOutOfStoreSymlink "/mnt/data/downloads";
         data.source = config.lib.file.mkOutOfStoreSymlink "/mnt/data";
+        "pictures/wallpapers".source = ../../other/wallpapers;
     };
 
     home.packages = with pkgs; [
