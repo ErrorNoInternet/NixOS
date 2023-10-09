@@ -170,7 +170,7 @@
             #clock {
                 background-color: #${custom.dark1};
                 color: #${custom.light1};
-                border-radius: 0px 0px 0px 20px;
+                border-radius: 20px 0px 0px 20px;
                 padding: 2px 15px 2px 20px;
                 margin-left: 7px;
                 font-weight: bold;
@@ -179,7 +179,7 @@
             #custom-launcher {
                 background-color: #${custom.dark1};
                 color: #${custom.nord3};
-                border-radius: 0px 0px 20px 0px;
+                border-radius: 0px 20px 20px 0px;
                 padding: 0px 30px 0px 15px;
                 margin: 0px;
                 font-size: 22px;
