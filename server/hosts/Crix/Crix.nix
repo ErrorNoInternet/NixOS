@@ -1,8 +1,8 @@
 { pkgs }:
 
 {
-    networking.hostName = "Crix";
-    environment.variables.HOSTNAME = "Crix";
+  networking.hostName = "Crix";
+  environment.variables.HOSTNAME = "Crix";
 
-    services.logind.lidSwitch = "ignore";
+  services.logind.lidSwitch = "ignore";
 }

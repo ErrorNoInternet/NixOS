@@ -1,9 +1,9 @@
 { custom }:
 
 {
-    gtk = {
-        enable = true;
-        theme = custom.gtkTheme;
-        iconTheme = custom.gtkIconTheme;
-    };
+  gtk = {
+    enable = true;
+    theme = custom.gtkTheme;
+    iconTheme = custom.gtkIconTheme;
+  };
 }

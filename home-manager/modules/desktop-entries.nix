@@ -1,9 +1,9 @@
 {
-    xdg.desktopEntries = {
-        supertuxkart = {
-            name = "SuperTuxKart";
-            icon = "supertuxkart";
-            exec = "nvidia-offload supertuxkart";
-        };
+  xdg.desktopEntries = {
+    supertuxkart = {
+      name = "SuperTuxKart";
+      icon = "supertuxkart";
+      exec = "nvidia-offload supertuxkart";
     };
+  };
 }

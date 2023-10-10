@@ -1,3 +1,3 @@
 {
-    services.spice-vdagentd.enable = true;
+  services.spice-vdagentd.enable = true;
 }

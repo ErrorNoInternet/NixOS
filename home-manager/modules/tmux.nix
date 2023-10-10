@@ -1,20 +1,20 @@
 { pkgs }:
 
 {
-    programs.tmux = {
-        enable = true;
-        plugins = with pkgs.tmuxPlugins; [
-            yank
-            nord
-        ];
-        baseIndex = 1;
-        clock24 = true;
-        escapeTime = 0;
-        historyLimit = 100000;
-        keyMode = "vi";
-        mouse = true;
-        terminal = "tmux-256color";
-        extraConfig = ''
+  programs.tmux = {
+    enable = true;
+    plugins = with pkgs.tmuxPlugins; [
+      yank
+      nord
+    ];
+    baseIndex = 1;
+    clock24 = true;
+    escapeTime = 0;
+    historyLimit = 100000;
+    keyMode = "vi";
+    mouse = true;
+    terminal = "tmux-256color";
+    extraConfig = ''
 set -g allow-passthrough on
 set -g repeat-time 0
 set -g set-clipboard on
@@ -38,5 +38,5 @@ bind -T copy-mode-vi C-Right send -X next-word
 bind -T copy-mode-vi 'Home' send -X start-of-line
 bind -T copy-mode-vi 'End'  send -X end-of-line
 '';
-    };
+  };
 }

@@ -1,4 +1,4 @@
 {
-    virtualisation.libvirtd.enable = true;
-    users.users.ryan.extraGroups = [ "libvirtd" ];
+  virtualisation.libvirtd.enable = true;
+  users.users.ryan.extraGroups = [ "libvirtd" ];
 }

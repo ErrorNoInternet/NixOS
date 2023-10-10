@@ -1,7 +1,7 @@
 {
-    home.file = {
-        ".config/fastfetch/minimal.conf" = {
-            text = ''
+  home.file = {
+    ".config/fastfetch/minimal.conf" = {
+      text = ''
 --os-key " os"
 --os-format "{2} {9} ({12})"
 --kernel-key " kernel"
@@ -18,13 +18,13 @@
 --separator "  "
 --structure os:kernel:uptime:packages:disk:terminal:colors
 '';
-        };
-        ".config/fastfetch/config.conf" = {
-            text = ''
+    };
+    ".config/fastfetch/config.conf" = {
+      text = ''
 --disk-folders /
 
 --structure title:separator:os:kernel:uptime:packages:shell:display:wm:theme:icons:cursor:terminalfont:terminal:processes:memory:disk:break:colors
 '';
-        };
     };
+  };
 }
