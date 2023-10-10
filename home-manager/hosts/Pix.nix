@@ -1,11 +1,17 @@
-{ config, inputs, pkgs }:
+{ inputs, pkgs, ... }:
 
+let
+  custom = {
+    predefinedColorScheme = "Nord";
+  };
+in
 {
+  _module.args = { inherit custom; };
   imports = [
     ../modules/bat.nix
     ../modules/btop.nix
     ../modules/fastfetch.nix
-    ../modules/nvim.nix
+    ../modules/neovim.nix
     ../modules/tmux.nix
     ../modules/zoxide.nix
     ../modules/zsh.nix
