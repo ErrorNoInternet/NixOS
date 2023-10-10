@@ -58,11 +58,12 @@
             NixBtw = nixpkgs.lib.nixosSystem {
                 specialArgs = { inherit inputs pkgs; };
                 modules = [
+                    ./shared/modules/aarch64-emulation.nix
+                    ./shared/modules/store-compression.nix
                     ./workstation/base.nix
                     ./workstation/hosts/NixBtw/hardware-configuration.nix
                     ./workstation/hosts/NixBtw/NixBtw.nix
                     ./workstation/locations/china.nix
-                    ./workstation/modules/aarch64-emulation.nix
                     ./workstation/modules/bluetooth.nix
                     ./workstation/modules/clamav.nix
                     ./workstation/modules/gaming-cache.nix
@@ -78,6 +79,7 @@
             Rescanix = nixpkgs.lib.nixosSystem {
                 specialArgs = { inherit inputs pkgs; };
                 modules = [
+                    ./shared/modules/store-compression.nix
                     ./workstation/base.nix
                     ./workstation/hosts/Rescanix/hardware-configuration.nix
                     ./workstation/hosts/Rescanix/Rescanix.nix
@@ -104,7 +106,8 @@
                     ./server/locations/china.nix
                     ./server/modules/bootloader.nix
                     ./server/modules/minecraft-server.nix
-                    ./server/modules/wireless.nix
+                    ./shared/modules/store-compression.nix
+                    ./shared/modules/wireless.nix
                 ];
             };
             Pix = nixpkgs.lib.nixosSystem {
@@ -117,9 +120,10 @@
                     ./server/locations/china.nix
                     ./server/modules/nfs.nix
                     ./server/modules/printing.nix
-                    ./server/modules/raspberry-pi.nix
                     ./server/modules/samba.nix
                     ./server/modules/zsh.nix
+                    ./shared/modules/raspberry-pi.nix
+                    ./shared/modules/store-compression.nix
                 ];
             };
         };
