@@ -1,4 +1,4 @@
-{ custom, pkgs }:
+{ config, custom, ... }:
 
 {
   services.dunst = {
@@ -18,21 +18,21 @@
         mouse_right_click = "close_all";
       };
       urgency_low = {
-        background = "#${custom.dark1}";
-        foreground = "#${custom.light3}";
-        frame_color = "#${custom.dark4}";
+        background = "#${config.colorScheme.colors.base00}";
+        foreground = "#${config.colorScheme.colors.base06}";
+        frame_color = "#${config.colorScheme.colors.base03}";
         timeout = 5;
       };
       urgency_normal = {
-        background = "#${custom.dark1}";
-        foreground = "#${custom.light3}";
-        frame_color = "#${custom.nord2}";
+        background = "#${config.colorScheme.colors.base00}";
+        foreground = "#${config.colorScheme.colors.base06}";
+        frame_color = "#${config.colorScheme.colors.base08}";
         timeout = 10;
       };
       urgency_critical = {
-        background = "#${custom.dark1}";
-        foreground = "#${custom.light3}";
-        frame_color = "#${custom.red}";
+        background = "#${config.colorScheme.colors.base00}";
+        foreground = "#${config.colorScheme.colors.base06}";
+        frame_color = "#${config.colorScheme.colors.base0B}";
         timeout = 0;
       };
     };

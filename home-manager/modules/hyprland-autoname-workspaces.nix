@@ -1,5 +1,3 @@
-{ custom }:
-
 {
   home.file = {
     ".config/hyprland-autoname-workspaces/config.toml".text = ''

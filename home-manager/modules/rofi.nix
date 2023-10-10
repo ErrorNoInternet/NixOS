@@ -1,4 +1,4 @@
-{ custom, pkgs, config }:
+{ config, custom, pkgs, ... }:
 
 {
   programs.rofi = {
@@ -10,8 +10,8 @@
         inherit (config.lib.formats.rasi) mkLiteral;
       in {
         "*" = {
-          background-color = mkLiteral "#${custom.dark1}";
-          text-color = mkLiteral "#${custom.light1}";
+          background-color = mkLiteral "#${config.colorScheme.colors.base00}";
+          text-color = mkLiteral "#${config.colorScheme.colors.base04}";
         };
 
         "configuration" = {
@@ -28,10 +28,10 @@
 
         "window" = {
           transparency = "real";
-          background-color = mkLiteral "#${custom.dark1}";
-          text-color = mkLiteral "#${custom.light1}";
+          background-color = mkLiteral "#${config.colorScheme.colors.base00}";
+          text-color = mkLiteral "#${config.colorScheme.colors.base04}";
           border = mkLiteral "2px";
-          border-color = mkLiteral "#${custom.nord3}";
+          border-color = mkLiteral "#${config.colorScheme.colors.base0D}";
           border-radius = mkLiteral "10px";
           width = mkLiteral "550px";
           location = mkLiteral "center";
@@ -43,14 +43,14 @@
           font = "${custom.font} 9";
           enabled = mkLiteral "true";
           padding = mkLiteral "10px 15px 10px 15px";
-          background-color = mkLiteral "#${custom.dark2}";
-          text-color = mkLiteral "#${custom.light1}";
+          background-color = mkLiteral "#${config.colorScheme.colors.base01}";
+          text-color = mkLiteral "#${config.colorScheme.colors.base04}";
         };
 
         "entry" = {
-          background-color = mkLiteral "#${custom.dark2}";
-          text-color = mkLiteral "#${custom.light1}";
-          placeholder-color = mkLiteral "#${custom.light1}";
+          background-color = mkLiteral "#${config.colorScheme.colors.base01}";
+          text-color = mkLiteral "#${config.colorScheme.colors.base04}";
+          placeholder-color = mkLiteral "#${config.colorScheme.colors.base04}";
           expand = mkLiteral "true";
           horizontal-align = mkLiteral "0";
           placeholder = "Search...";
@@ -61,17 +61,17 @@
 
         "inputbar" = {
           children = map mkLiteral [ "prompt" "entry" ];
-          background-color = mkLiteral "#${custom.dark3}";
-          text-color = mkLiteral "#${custom.light1}";
+          background-color = mkLiteral "#${config.colorScheme.colors.base02}";
+          text-color = mkLiteral "#${config.colorScheme.colors.base04}";
           expand = mkLiteral "false";
           border = mkLiteral "0px";
           border-radius = mkLiteral "0px";
-          border-color = mkLiteral "#${custom.dark4}";
+          border-color = mkLiteral "#${config.colorScheme.colors.base03}";
           spacing = mkLiteral "0px";
         };
 
         "listview" = {
-          background-color = mkLiteral "#${custom.dark1}";
+          background-color = mkLiteral "#${config.colorScheme.colors.base00}";
           padding = mkLiteral "10px 10px 10px 10px";
           columns = mkLiteral "2";
           lines = mkLiteral "7";
@@ -82,18 +82,18 @@
         };
 
         "mainbox" = {
-          background-color = mkLiteral "#${custom.dark1}";
+          background-color = mkLiteral "#${config.colorScheme.colors.base00}";
           border = mkLiteral "0px";
           border-radius = mkLiteral "0px";
-          border-color = mkLiteral "#${custom.dark4}";
+          border-color = mkLiteral "#${config.colorScheme.colors.base03}";
           children = map mkLiteral [ "inputbar" "listview" ];
           spacing = mkLiteral "0px";
           padding = mkLiteral "0px";
         };
 
         "element" = {
-          background-color = mkLiteral "#${custom.dark1}";
-          text-color = mkLiteral "#${custom.light1}";
+          background-color = mkLiteral "#${config.colorScheme.colors.base00}";
+          text-color = mkLiteral "#${config.colorScheme.colors.base04}";
           orientation = mkLiteral "horizontal";
           border-radius = mkLiteral "0px";
           padding = mkLiteral "6px";
@@ -116,11 +116,11 @@
         };
 
         "element selected" = {
-          background-color = mkLiteral "#${custom.light1}";
-          text-color = mkLiteral "#${custom.dark1}";
+          background-color = mkLiteral "#${config.colorScheme.colors.base04}";
+          text-color = mkLiteral "#${config.colorScheme.colors.base00}";
           border = mkLiteral "0px";
           border-radius = mkLiteral "10px";
-          border-color = mkLiteral "#${custom.dark1}";
+          border-color = mkLiteral "#${config.colorScheme.colors.base00}";
         };
       };
   };

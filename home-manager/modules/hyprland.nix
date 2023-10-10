@@ -1,4 +1,4 @@
-{ custom, inputs, pkgs }:
+{ config, custom, inputs, pkgs, ... }:
 
 {
   wayland.windowManager.hyprland = {
@@ -44,8 +44,8 @@
         gaps_in = 6;
         gaps_out = 10;
         border_size = 2;
-        "col.active_border" = "rgb(${custom.nord3})";
-        "col.inactive_border" = "rgb(${custom.dark4})";
+        "col.active_border" = "rgb(${config.colorScheme.colors.base0D})";
+        "col.inactive_border" = "rgb(${config.colorScheme.colors.base03})";
         layout = "dwindle";
       };
       decoration = {
@@ -53,7 +53,7 @@
         drop_shadow = true;
         shadow_range = 25;
         shadow_render_power = 2;
-        "col.shadow" = "rgb(${custom.dark1})";
+        "col.shadow" = "rgb(${config.colorScheme.colors.base00})";
         blur = {
           enabled = true;
           passes = 2;

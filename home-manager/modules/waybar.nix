@@ -1,4 +1,4 @@
-{ custom, inputs, pkgs }:
+{ config, custom, inputs, lib, pkgs, ... }:
 
 {
   programs.waybar = {
@@ -120,20 +120,20 @@
       }
 
       window#waybar {
-        background-color: rgba(${custom.dark3-rgb}, ${custom.opacity});
+        background-color: rgba(${builtins.toString (lib.intersperse ", " (inputs.nix-colors.lib.conversions.hexToRGB config.colorScheme.colors.base02))}, ${custom.opacity});
       }
 
       #workspaces {
-        background-color: #${custom.dark1};
-        color: #${custom.dark3};
+        background-color: #${config.colorScheme.colors.base00};
+        color: #${config.colorScheme.colors.base02};
         margin: 4px 4px;
         padding: 4px 2px;
         border-radius: 16px;
       }
 
       #workspaces button {
-        background-color: #${custom.dark2};
-        color: #${custom.light1};
+        background-color: #${config.colorScheme.colors.base01};
+        color: #${config.colorScheme.colors.base04};
         padding: 0px 10px;
         margin: 0px 4px;
         border-radius: 16px;
@@ -142,8 +142,8 @@
       }
 
       #workspaces button.active {
-        background-color: #${custom.nord3};
-        color: #${custom.dark3};
+        background-color: #${config.colorScheme.colors.base0D};
+        color: #${config.colorScheme.colors.base02};
         border-radius: 16px;
         min-width: 40px;
         background-size: 400% 400%;
@@ -151,16 +151,16 @@
       }
 
       #workspaces button:hover {
-        background-color: #${custom.light1};
-        color: #${custom.dark3};
+        background-color: #${config.colorScheme.colors.base04};
+        color: #${config.colorScheme.colors.base02};
         border-radius: 16px;
         min-width: 40px;
         background-size: 400% 400%;
       }
 
       #cpu, #memory, #tray, #pulseaudio, #network, #battery {
-        background-color: #${custom.dark1};
-        color: #${custom.light1};
+        background-color: #${config.colorScheme.colors.base00};
+        color: #${config.colorScheme.colors.base04};
         margin: 4px 0px;
         margin-left: 7px;
         border-radius: 16px 16px 16px 16px;
@@ -169,8 +169,8 @@
       }
 
       #clock {
-        background-color: #${custom.dark1};
-        color: #${custom.light1};
+        background-color: #${config.colorScheme.colors.base00};
+        color: #${config.colorScheme.colors.base04};
         border-radius: 20px 0px 0px 20px;
         padding: 2px 15px 2px 20px;
         margin-left: 7px;
@@ -178,8 +178,8 @@
       }
 
       #custom-launcher {
-        background-color: #${custom.dark1};
-        color: #${custom.nord3};
+        background-color: #${config.colorScheme.colors.base00};
+        color: #${config.colorScheme.colors.base0D};
         border-radius: 0px 20px 20px 0px;
         padding: 0px 30px 0px 15px;
         margin: 0px;

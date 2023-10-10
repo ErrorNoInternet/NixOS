@@ -1,4 +1,4 @@
-{ custom, pkgs }:
+{ config, custom, pkgs }:
 
 pkgs.writeShellApplication {
   name = "custom-swaylock";
@@ -7,22 +7,22 @@ pkgs.writeShellApplication {
     swaylock \
       --indicator-radius 90 \
       --indicator-thickness 15 \
-      --inside-color ${custom.dark1} \
-      --inside-clear-color ${custom.dark1} \
-      --inside-ver-color ${custom.dark1} \
-      --inside-wrong-color ${custom.dark1} \
-      --key-hl-color ${custom.green} \
-      --bs-hl-color ${custom.orange} \
-      --ring-color ${custom.dark4} \
-      --ring-clear-color ${custom.yellow} \
-      --ring-wrong-color ${custom.red} \
-      --ring-ver-color ${custom.nord3} \
-      --separator-color ${custom.dark4} \
-      --text-color ${custom.light1} \
-      --text-clear-color ${custom.light1} \
-      --text-ver-color ${custom.light1} \
-      --text-wrong-color ${custom.light1} \
-      --text-caps-lock-color ${custom.orange} \
+      --inside-color ${config.colorScheme.colors.base00} \
+      --inside-clear-color ${config.colorScheme.colors.base00} \
+      --inside-ver-color ${config.colorScheme.colors.base00} \
+      --inside-wrong-color ${config.colorScheme.colors.base00} \
+      --key-hl-color ${config.colorScheme.colors.base0B} \
+      --bs-hl-color ${config.colorScheme.colors.base09} \
+      --ring-color ${config.colorScheme.colors.base03} \
+      --ring-clear-color ${config.colorScheme.colors.base0A} \
+      --ring-wrong-color ${config.colorScheme.colors.base08} \
+      --ring-ver-color ${config.colorScheme.colors.base0D} \
+      --separator-color ${config.colorScheme.colors.base03} \
+      --text-color ${config.colorScheme.colors.base04} \
+      --text-clear-color ${config.colorScheme.colors.base04} \
+      --text-ver-color ${config.colorScheme.colors.base04} \
+      --text-wrong-color ${config.colorScheme.colors.base04} \
+      --text-caps-lock-color ${config.colorScheme.colors.base09} \
       --line-uses-ring \
       --font "${custom.font}" \
       --font-size 25 \
