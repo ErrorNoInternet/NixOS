@@ -1,8 +1,10 @@
+{ custom, ... }:
+
 {
   programs.bat = {
     enable = true;
     config = {
-      theme = "Nord";
+      theme = "${custom.predefinedColorScheme}";
     };
   };
 }

@@ -1,4 +1,4 @@
-{ config, custom, inputs, pkgs, ... }:
+{ config, custom, inputs, lib, pkgs, ... }:
 
 {
   wayland.windowManager.hyprland = {
@@ -21,7 +21,7 @@
       ];
       exec-once = [
         "swww init"
-        "swww img pictures/wallpapers/wallpaper1.png"
+        "swww img pictures/wallpapers/${lib.strings.toLower custom.predefinedColorScheme}/wallpaper0.png"
         "hyprctl setcursor ${custom.pointerCursor.name} ${builtins.toString custom.pointerCursor.size}"
         "swayidle -w timeout 600 'custom-swaylock 10 10' before-sleep 'custom-swaylock 0 1'"
         "hyprland-autoname-workspaces"

@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ custom, lib, pkgs, ... }:
 
 {
   programs.neovim = {
@@ -14,6 +14,7 @@
     plugins = with pkgs.vimPlugins; [
       auto-pairs
       bufferline-nvim
+      gruvbox-nvim
       nerdtree
       nord-nvim
       nvim-colorizer-lua
@@ -153,7 +154,7 @@
       "Themes
       lua vim.g.nord_italic = false
       lua vim.g.nord_disable_background = true
-      colorscheme nord
+      colorscheme ${lib.strings.toLower custom.predefinedColorScheme}
       set termguicolors
       highlight clear CursorLine
       if !exists('g:airline_symbols')

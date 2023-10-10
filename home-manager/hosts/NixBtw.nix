@@ -1,21 +1,22 @@
-{ config, inputs, pkgs, ... }:
+{ config, inputs, lib, pkgs, ... }:
 
 let
   custom = {
     font = "JetBrainsMono Nerd Font";
     opacity = ".7";
     subtleOpacity = ".9";
+    predefinedColorScheme = "Nord";
     pointerCursor = {
       name = "Bibata-Modern-Classic";
       package = pkgs.bibata-cursors;
       size = 16;
     };
     gtkTheme = {
-      name = "Colloid-Dark-Nord";
-      package = pkgs.colloid-gtk-theme.override { tweaks = [ "nord" ]; };
+      name = "Colloid-Dark-${custom.predefinedColorScheme}";
+      package = pkgs.colloid-gtk-theme.override { tweaks = [ "${lib.strings.toLower custom.predefinedColorScheme}" ]; };
     };
     gtkIconTheme = {
-      name = "Colloid-nord-dark";
+      name = "Colloid-${lib.strings.toLower custom.predefinedColorScheme}-dark";
       package = pkgs.colloid-icon-theme.override { schemeVariants = [ "nord" ]; };
     };
   };

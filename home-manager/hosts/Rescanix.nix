@@ -63,6 +63,7 @@ in
     ../modules/zsh.nix
   ];
 
+  colorScheme = inputs.nix-colors.colorSchemes.nord;
   home.username = "ryan";
   home.homeDirectory = "/home/ryan";
 
