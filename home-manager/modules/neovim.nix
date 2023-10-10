@@ -147,6 +147,9 @@
             autocmd FileType rust imap <buffer> <F8> <esc> :wa<CR>:term cd %:p:h:h && cargo run --release<CR>
             let g:rustfmt_autosave = 1
 
+            "Nix indentation
+            autocmd FileType nix setlocal shiftwidth=2 softtabstop=2 expandtab
+
             "Themes
             lua vim.g.nord_italic = false
             lua vim.g.nord_disable_background = true
