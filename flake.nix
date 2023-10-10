@@ -13,14 +13,22 @@
             inputs.home-manager.follows = "home-manager";
         };
         agenix.url = "github:ryantm/agenix";
-        hyprland.url = "github:hyprwm/Hyprland";
-        spicetify-nix.url = "github:the-argus/spicetify-nix";
-        nix-gaming.url = "github:fufexan/nix-gaming";
 
         hsize.url = "github:ErrorNoInternet/hsize";
+        hyprland.url = "github:hyprwm/Hyprland";
+        nix-gaming.url = "github:fufexan/nix-gaming";
+        spicetify-nix.url = "github:the-argus/spicetify-nix";
+        hyprwm-contrib.url = "github:hyprwm/contrib";
     };
 
-    outputs = { self, nixpkgs, home-manager, nix-on-droid, agenix, hyprland, spicetify-nix, nix-gaming, ... } @ inputs:
+    outputs = {
+        self,
+        nixpkgs,
+        home-manager,
+        nix-on-droid,
+        agenix,
+        ...
+    } @ inputs:
     let
         overlays = [
             (self: super: {

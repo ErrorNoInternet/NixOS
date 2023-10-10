@@ -41,7 +41,6 @@ in
     imports = [
         (import ../scripts/swaylock.nix { inherit custom; })
         ../scripts/brightness.nix
-        ../scripts/grimblast.nix
         ../scripts/pavolume.nix
 
         (import ../modules/cava.nix { inherit custom; })
@@ -89,16 +88,15 @@ in
         cava
 
         # desktop
-        wl-clipboard
-        swaylock-effects
-        swayidle
+        cliphist
         hyprland-autoname-workspaces
         hyprpaper
-        grim
-        slurp
         hyprpicker
-        cliphist
+        inputs.hyprwm-contrib.packages.${pkgs.system}.grimblast
         pavucontrol
+        swayidle
+        swaylock-effects
+        wl-clipboard
 
         # system utilities
         _7zz

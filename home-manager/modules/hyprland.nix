@@ -95,7 +95,7 @@
                 "$mainMod, Z, exec, rofi -show drun || pkill rofi"
                 "$mainMod, G, exec, cliphist list | rofi -dmenu | cliphist decode | wl-copy"
                 "$mainMod, code:60, exec, rofi -show emoji"
-                ", PRINT, exec, ~/scripts/grimblast.sh --freeze copy area"
+                ", PRINT, exec, grimblast --freeze copy area"
 
                 "$mainMod, L, exec, ~/scripts/swaylock.sh 0 1"
                 "$mainMod, RETURN, exec, kitty"
