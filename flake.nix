@@ -16,9 +16,10 @@
 
         hsize.url = "github:ErrorNoInternet/hsize";
         hyprland.url = "github:hyprwm/Hyprland";
+        hyprwm-contrib.url = "github:hyprwm/contrib";
         nix-gaming.url = "github:fufexan/nix-gaming";
         spicetify-nix.url = "github:the-argus/spicetify-nix";
-        hyprwm-contrib.url = "github:hyprwm/contrib";
+        waybar.url = "github:Alexays/Waybar";
     };
 
     outputs = {

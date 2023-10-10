@@ -51,7 +51,7 @@ in
         (import ../modules/nheko.nix { inherit config pkgs; })
         (import ../modules/rofi.nix { inherit config custom pkgs; })
         (import ../modules/tmux.nix { inherit pkgs; })
-        (import ../modules/waybar.nix { inherit custom pkgs; })
+        (import ../modules/waybar.nix { inherit custom inputs pkgs; })
         ../modules/bat.nix
         ../modules/btop.nix
         ../modules/desktop-entries.nix
