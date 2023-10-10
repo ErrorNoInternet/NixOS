@@ -54,9 +54,8 @@
                     expand = mkLiteral "true";
                     horizontal-align = mkLiteral "0";
                     placeholder = "Search...";
-                    padding = mkLiteral "10px 10px 10px 10px";
-                    margin = mkLiteral "0px 250px 0px 0px";
-                    border-radius = mkLiteral "0px 50px 50px 0px";
+                    padding = mkLiteral "10px 15px 10px 10px";
+                    margin = mkLiteral "0px 0px 0px 0px";
                     blink = mkLiteral "true";
                 };
 
