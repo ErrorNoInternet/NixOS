@@ -93,8 +93,7 @@ in
         inputs.hyprwm-contrib.packages.${pkgs.system}.grimblast
         pavucontrol
         swayidle
-        swaylock-effects
-        swwww
+        swww
         wl-clipboard
 
         # system utilities

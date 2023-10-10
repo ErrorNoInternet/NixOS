@@ -121,7 +121,7 @@ in
         superTuxKart
         swayidle
         swaylock-effects
-        swwww
+        swww
         timg
         unigine-heaven
         vulkan-tools
