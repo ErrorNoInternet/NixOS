@@ -59,7 +59,7 @@
                 specialArgs = { inherit inputs pkgs; };
                 modules = [
                     ./shared/modules/aarch64-emulation.nix
-                    ./shared/modules/store-compression.nix
+                    ./shared/modules/compression.nix
                     ./workstation/base.nix
                     ./workstation/hosts/NixBtw/hardware-configuration.nix
                     ./workstation/hosts/NixBtw/NixBtw.nix
