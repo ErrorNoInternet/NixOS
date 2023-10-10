@@ -3,41 +3,26 @@
 let
   custom = {
     font = "JetBrainsMono Nerd Font";
-    dark1 = "2E3440";
-    dark2 = "3B4252";
-    dark3 = "434C5E";
-    dark3-rgb = "67, 76, 94";
-    dark4 = "4C566A";
-    light1 = "D8DEE9";
-    light2 = "E5E9F0";
-    light3 = "ECEFF4";
-    nord1 = "8FBCBB";
-    nord2 = "88C0D0";
-    nord3 = "81A1C1";
-    nord4 = "5E81AC";
-    red = "BF616A";
-    orange = "D08770";
-    yellow = "EBCB8B";
-    green = "A3BE8C";
-    pink = "B48EAD";
     opacity = ".7";
     subtleOpacity = ".9";
+    predefinedColorScheme = "Nord";
     pointerCursor = {
       name = "Bibata-Modern-Classic";
       package = pkgs.bibata-cursors;
       size = 16;
     };
     gtkTheme = {
-      name = "Colloid-Dark-Nord";
-      package = pkgs.colloid-gtk-theme.override { tweaks = [ "nord" ]; };
+      name = "Colloid-Dark-${custom.predefinedColorScheme}";
+      package = pkgs.colloid-gtk-theme.override { tweaks = [ "${lib.strings.toLower custom.predefinedColorScheme}" ]; };
     };
     gtkIconTheme = {
-      name = "Colloid-nord-dark";
+      name = "Colloid-${lib.strings.toLower custom.predefinedColorScheme}-dark";
       package = pkgs.colloid-icon-theme.override { schemeVariants = [ "nord" ]; };
     };
   };
 in
 {
+  _module.args = { inherit custom; };
   imports = [
     ../modules/cava.nix
     ../modules/dunst.nix
