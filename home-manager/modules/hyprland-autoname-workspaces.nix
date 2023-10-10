@@ -30,6 +30,7 @@
       "Rofi" = " "
       "Spotify" = " "
       "steam" = " "
+      "thunderbird" = "󰇮 "
       "virt-manager" = " "
       "zoom" = "󰬡 "
 
