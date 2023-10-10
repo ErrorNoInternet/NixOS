@@ -79,7 +79,6 @@
             Rescanix = nixpkgs.lib.nixosSystem {
                 specialArgs = { inherit inputs pkgs; };
                 modules = [
-                    ./shared/modules/store-compression.nix
                     ./workstation/base.nix
                     ./workstation/hosts/Rescanix/hardware-configuration.nix
                     ./workstation/hosts/Rescanix/Rescanix.nix
@@ -106,7 +105,6 @@
                     ./server/locations/china.nix
                     ./server/modules/bootloader.nix
                     ./server/modules/minecraft-server.nix
-                    ./shared/modules/store-compression.nix
                     ./shared/modules/wireless.nix
                 ];
             };
@@ -123,7 +121,6 @@
                     ./server/modules/samba.nix
                     ./server/modules/zsh.nix
                     ./shared/modules/raspberry-pi.nix
-                    ./shared/modules/store-compression.nix
                 ];
             };
         };
