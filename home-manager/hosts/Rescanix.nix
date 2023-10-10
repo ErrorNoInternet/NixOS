@@ -41,7 +41,6 @@ in
     imports = [
         (import ../scripts/swaylock.nix { inherit custom; })
         ../scripts/brightness.nix
-        ../scripts/grimblast.nix
         ../scripts/pavolume.nix
 
         (import ../modules/cava.nix { inherit custom; })
@@ -60,7 +59,6 @@ in
         ../modules/desktop-entries.nix
         ../modules/fastfetch.nix
         ../modules/git.nix
-        ../modules/hyprpaper.nix
         ../modules/kdeconnect.nix
         ../modules/mpv.nix
         ../modules/obs-studio.nix
@@ -95,11 +93,10 @@ in
         gcc
         geekbench
         gimp
-        grim
         hyprland-autoname-workspaces
-        hyprpaper
         hyprpicker
         inputs.hsize.packages.${pkgs.system}.hsize
+        inputs.hyprwm-contrib.packages.${pkgs.system}.grimblast
         inputs.nix-gaming.packages.${pkgs.system}.osu-lazer-bin
         inputs.nix-gaming.packages.${pkgs.system}.wine-ge
         intel-gpu-tools
@@ -119,12 +116,12 @@ in
         radeontop
         ripdrag
         rustup
-        slurp
         smartmontools
         sshfs
         superTuxKart
         swayidle
         swaylock-effects
+        swwww
         timg
         unigine-heaven
         vulkan-tools

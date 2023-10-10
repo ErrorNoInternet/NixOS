@@ -61,7 +61,6 @@ in
         ../modules/desktop-entries.nix
         ../modules/fastfetch.nix
         ../modules/git.nix
-        ../modules/hyprpaper.nix
         ../modules/irssi.nix
         ../modules/kdeconnect.nix
         ../modules/mpv.nix
@@ -90,12 +89,12 @@ in
         # desktop
         cliphist
         hyprland-autoname-workspaces
-        hyprpaper
         hyprpicker
         inputs.hyprwm-contrib.packages.${pkgs.system}.grimblast
         pavucontrol
         swayidle
         swaylock-effects
+        swwww
         wl-clipboard
 
         # system utilities
