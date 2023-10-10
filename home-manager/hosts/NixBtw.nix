@@ -39,10 +39,6 @@ let
 in
 {
     imports = [
-        (import ../scripts/swaylock.nix { inherit custom; })
-        ../scripts/brightness.nix
-        ../scripts/pavolume.nix
-
         (import ../modules/cava.nix { inherit custom; })
         (import ../modules/dunst.nix { inherit custom pkgs; })
         (import ../modules/fcitx.nix { inherit pkgs; })
@@ -95,6 +91,9 @@ in
         swayidle
         swww
         wl-clipboard
+        (import ../derivations/brightness.nix { inherit pkgs; })
+        (import ../derivations/pavolume.nix { inherit pkgs; })
+        (import ../derivations/swaylock.nix { inherit custom pkgs; })
 
         # system utilities
         _7zz

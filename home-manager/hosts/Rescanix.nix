@@ -39,10 +39,6 @@ let
 in
 {
     imports = [
-        (import ../scripts/swaylock.nix { inherit custom; })
-        ../scripts/brightness.nix
-        ../scripts/pavolume.nix
-
         (import ../modules/cava.nix { inherit custom; })
         (import ../modules/dunst.nix { inherit custom pkgs; })
         (import ../modules/fcitx.nix { inherit pkgs; })
@@ -75,6 +71,9 @@ in
         (import ../../workstation/derivations/collect-hwinfo.nix { inherit pkgs; })
         (import ../../workstation/derivations/passgen.nix { inherit pkgs; })
         (import ../../workstation/derivations/tbw.nix { inherit pkgs; })
+        (import ../derivations/brightness.nix { inherit pkgs; })
+        (import ../derivations/pavolume.nix { inherit pkgs; })
+        (import ../derivations/swaylock.nix { inherit custom pkgs; })
         _7zz
         bandwhich
         blender

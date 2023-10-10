@@ -22,7 +22,7 @@
             exec-once = [
                 "swww init"
                 "hyprctl setcursor ${custom.pointerCursor.name} ${builtins.toString custom.pointerCursor.size}"
-                "swayidle -w timeout 600 '~/scripts/swaylock.sh 10 10' before-sleep '~/scripts/swaylock.sh 0 1'"
+                "swayidle -w timeout 600 'custom-swaylock 10 10' before-sleep 'custom-swaylock 0 1'"
                 "hyprland-autoname-workspaces"
                 "wl-paste --type text --watch cliphist store"
                 "wl-paste --type image --watch cliphist store"
@@ -97,7 +97,7 @@
                 "$mainMod, code:60, exec, rofi -show emoji"
                 ", PRINT, exec, grimblast --freeze copy area"
 
-                "$mainMod, L, exec, ~/scripts/swaylock.sh 0 1"
+                "$mainMod, L, exec, custom-swaylock 0 1"
                 "$mainMod, RETURN, exec, kitty"
 
                 "$mainMod, TAB, workspace, previous"
@@ -155,15 +155,15 @@
                 "$mainMod, mouse:273, resizewindow"
             ];
             bindle = [
-                ",XF86AudioMute, exec, ~/scripts/pavolume.sh toggle"
-                ",XF86AudioRaiseVolume, exec, ~/scripts/pavolume.sh up"
-                ",XF86AudioLowerVolume, exec, ~/scripts/pavolume.sh down"
-                ",XF86MonBrightnessUp, exec, ~/scripts/brightness.sh up"
-                ",XF86MonBrightnessDown, exec, ~/scripts/brightness.sh down"
+                ",XF86AudioMute, exec, pavolume toggle"
+                ",XF86AudioRaiseVolume, exec, pavolume up"
+                ",XF86AudioLowerVolume, exec, pavolume down"
+                ",XF86MonBrightnessUp, exec, brightness up"
+                ",XF86MonBrightnessDown, exec, brightness down"
             ];
             bindl = [
-                ",switch:on:Lid Switch, exec, ~/scripts/swaylock.sh 0 1"
-                ",switch:off:Lid Switch, exec, ~/scripts/swaylock.sh 0 1"
+                ",switch:on:Lid Switch, exec, swaylock 0 1"
+                ",switch:off:Lid Switch, exec, swaylock 0 1"
             ];
             windowrulev2 = [
                 "float,class:^(pavucontrol)$"
