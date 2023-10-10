@@ -39,17 +39,17 @@ let
 in
 {
   imports = [
-    (import ../modules/cava.nix { inherit custom; })
-    (import ../modules/dunst.nix { inherit custom pkgs; })
-    (import ../modules/fcitx.nix { inherit pkgs; })
-    (import ../modules/gtk.nix { inherit custom; })
-    (import ../modules/hyprland-autoname-workspaces.nix { inherit custom; })
-    (import ../modules/hyprland.nix { inherit custom inputs pkgs; })
-    (import ../modules/kitty.nix { inherit custom; })
-    (import ../modules/neovim.nix { inherit pkgs; })
-    (import ../modules/rofi.nix { inherit config custom pkgs; })
-    (import ../modules/tmux.nix { inherit pkgs; })
-    (import ../modules/waybar.nix { inherit custom inputs pkgs; })
+    ../modules/cava.nix
+    ../modules/dunst.nix
+    ../modules/fcitx.nix
+    ../modules/gtk.nix
+    ../modules/hyprland-autoname-workspaces.nix
+    ../modules/hyprland.nix
+    ../modules/kitty.nix
+    ../modules/neovim.nix
+    ../modules/rofi.nix
+    ../modules/tmux.nix
+    ../modules/waybar.nix
     ../modules/bat.nix
     ../modules/btop.nix
     ../modules/desktop-entries.nix
@@ -73,7 +73,7 @@ in
     (import ../../workstation/derivations/tbw.nix { inherit pkgs; })
     (import ../derivations/brightness.nix { inherit pkgs; })
     (import ../derivations/pavolume.nix { inherit pkgs; })
-    (import ../derivations/swaylock.nix { inherit custom pkgs; })
+    (import ../derivations/swaylock.nix { inherit config custom pkgs; })
     _7zz
     bandwhich
     blender
