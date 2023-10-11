@@ -3,6 +3,10 @@
 pkgs.writeShellApplication {
   name = "tbw";
   text = ''
+    set +o errexit
+    set +o nounset
+    set +o pipefail
+
     attribute="Written"
     precision=3
     smartctl_errors=true
