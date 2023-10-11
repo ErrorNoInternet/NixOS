@@ -102,6 +102,7 @@ in
     radeontop
     ripdrag
     rustup
+    slurp
     smartmontools
     sshfs
     superTuxKart
@@ -111,6 +112,7 @@ in
     timg
     unigine-heaven
     vulkan-tools
+    wf-recorder
     wl-clipboard
   ];
 

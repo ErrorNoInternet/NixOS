@@ -103,6 +103,8 @@ in
     gimp
     qbittorrent
     ripdrag
+    slurp
+    wf-recorder
     (discord-canary.override {
       withOpenASAR = true;
       withVencord = true;
