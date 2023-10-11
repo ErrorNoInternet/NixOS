@@ -15,6 +15,7 @@ in
     ../modules/tmux.nix
     ../modules/zoxide.nix
     ../modules/zsh.nix
+    ../modules/yazi.nix
   ];
 
   home.username = "snowflake";
