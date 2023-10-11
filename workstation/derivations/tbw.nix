@@ -64,7 +64,7 @@ pkgs.writeShellApplication {
         if [[ unit -eq "bytes" ]]; then
           echo "$device: $bytes bytes"
         else
-          output=$(echo "scale=$precision; $bytes / 1000 / 1000 / 1000 / 1000" | bc -l)
+          output=$(echo "scale=$precision; $bytes / 1000 / 1000 / 1000 / 1000" | ${pkgs.bc}/bin/bc -l)
           if [[ $output =~ "error" ]]; then
             echo "[$device] bc error: $output" >&2
           else
