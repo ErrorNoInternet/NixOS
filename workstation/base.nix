@@ -10,10 +10,10 @@
     gc = {
       automatic = true;
       dates = "weekly";
-      options = "--delete-older-than 7d";
+      options = "--delete-older-than 14d";
     };
     extraOptions = ''
-      min-free = ${toString (1024 * 1024 * 1024 * 2)}
+      min-free = ${toString (1024 * 1024 * 1024 * 5)}
       max-free = ${toString (1024 * 1024 * 1024 * 10)}
     '';
   };
