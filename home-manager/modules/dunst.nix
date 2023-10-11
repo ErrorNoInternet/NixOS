@@ -26,13 +26,13 @@
       urgency_normal = {
         background = "#${config.colorScheme.colors.base00}";
         foreground = "#${config.colorScheme.colors.base06}";
-        frame_color = "#${config.colorScheme.colors.base08}";
+        frame_color = "#${config.colorScheme.colors.base0C}";
         timeout = 10;
       };
       urgency_critical = {
         background = "#${config.colorScheme.colors.base00}";
         foreground = "#${config.colorScheme.colors.base06}";
-        frame_color = "#${config.colorScheme.colors.base0B}";
+        frame_color = "#${config.colorScheme.colors.base08}";
         timeout = 0;
       };
     };
