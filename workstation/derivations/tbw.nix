@@ -57,19 +57,19 @@ pkgs.writeShellApplication {
       fi
 
       if bytes=$(echo "$value * $sector_size" | ${pkgs.bc}/bin/bc); then
+        if [[ unit -eq "bytes" ]]; then
+          echo "$device: $bytes bytes"
+        else
+          output=$(echo "scale=$precision; $bytes / 1000 / 1000 / 1000 / 1000" | bc -l)
+          if [[ $output =~ "error" ]]; then
+            echo "[$device] bc error: $output" >&2
+          else
+            echo "$device: $output terabytes"
+          fi
+        fi
+      else
         echo "[$device] bc error: unable to multiply \"$value\" by \"$sector_size\"!" >&2
         continue
-      fi
-
-      if [[ unit -eq "bytes" ]]; then
-        echo "$device: $bytes bytes"
-      else
-        output=$(echo "scale=$precision; $bytes / 1000 / 1000 / 1000 / 1000" | bc -l)
-        if [[ $output =~ "error" ]]; then
-          echo "[$device] bc error: $output" >&2
-        else
-          echo "$device: $output terabytes"
-        fi
       fi
     done
   '';
