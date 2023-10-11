@@ -164,9 +164,6 @@
 
         # Help
         { on = [ "~" ]; exec = "help"; desc = "Open help"; }
-
-        # Custom
-        { on = [ "<C-s>" ]; exec = "shell zsh --block --confirm"; }
       ];
     };
   };
