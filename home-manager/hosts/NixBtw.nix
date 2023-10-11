@@ -84,6 +84,7 @@ in
     (import ../derivations/swaylock.nix { inherit config custom pkgs; })
 
     # system utilities
+    (import ../../workstation/derivations/tbw.nix { inherit pkgs; })
     _7zz
     bandwhich
     compsize
