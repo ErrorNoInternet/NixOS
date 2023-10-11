@@ -24,25 +24,26 @@ in
 {
   _module.args = { inherit custom; };
   imports = [
+    ../modules/bat.nix
+    ../modules/btop.nix
     ../modules/cava.nix
+    ../modules/desktop-entries.nix
     ../modules/dunst.nix
+    ../modules/fastfetch.nix
     ../modules/fcitx.nix
+    ../modules/git.nix
     ../modules/gtk.nix
     ../modules/hyprland-autoname-workspaces.nix
     ../modules/hyprland.nix
+    ../modules/imv.nix
+    ../modules/kdeconnect.nix
     ../modules/kitty.nix
+    ../modules/mpv.nix
     ../modules/neovim.nix
+    ../modules/obs-studio.nix
     ../modules/rofi.nix
     ../modules/tmux.nix
     ../modules/waybar.nix
-    ../modules/bat.nix
-    ../modules/btop.nix
-    ../modules/desktop-entries.nix
-    ../modules/fastfetch.nix
-    ../modules/git.nix
-    ../modules/kdeconnect.nix
-    ../modules/mpv.nix
-    ../modules/obs-studio.nix
     ../modules/yazi.nix
     ../modules/zoxide.nix
     ../modules/zsh.nix

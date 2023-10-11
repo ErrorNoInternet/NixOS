@@ -35,6 +35,7 @@ in
     ../modules/gtk.nix
     ../modules/hyprland-autoname-workspaces.nix
     ../modules/hyprland.nix
+    ../modules/imv.nix
     ../modules/irssi.nix
     ../modules/kdeconnect.nix
     ../modules/kitty.nix
