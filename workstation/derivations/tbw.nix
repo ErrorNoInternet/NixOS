@@ -33,8 +33,8 @@ pkgs.writeShellApplication {
       usage;
     fi
 
-    for device in $@; do
-      smartctl_output=$(${pkgs.smartmontools}/bin/smartctl -x $device)
+    for device in "$@"; do
+      smartctl_output=$(${pkgs.smartmontools}/bin/smartctl -x "$device")
       if [[ $? -eq 1 || $? -eq 2 ]] && [[ $smartctl_errors = true ]]; then
         echo "[$device] error: unable to run smartctl on device!" >&2
         continue
@@ -56,9 +56,8 @@ pkgs.writeShellApplication {
         fi
       fi
 
-      bytes=$(echo "$value * $sector_size" | ${pkgs.bc}/bin/bc)
-      if [[ $? -ne 0 ]]; then
-        echo "[$device] bc error: unable to multiply \"$value\" by "$sector_size"!" >&2
+      if bytes=$(echo "$value * $sector_size" | ${pkgs.bc}/bin/bc); then
+        echo "[$device] bc error: unable to multiply \"$value\" by \"$sector_size\"!" >&2
         continue
       fi
 
