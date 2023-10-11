@@ -79,6 +79,7 @@ in
     gcc
     geekbench
     gimp
+    gptfdisk
     hyprland-autoname-workspaces
     hyprpicker
     inputs.hsize.packages.${pkgs.system}.hsize
