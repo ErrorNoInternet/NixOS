@@ -156,7 +156,6 @@
           ./home-manager/modules/spicetify.nix
           ./shared/modules/ErrorNoBinaries.nix
           ./workstation/modules/gaming-cache.nix
-          ./workstation/modules/selfhosted-cache.nix
         ];
       };
       "snowflake@Pix" = home-manager.lib.homeManagerConfiguration {
