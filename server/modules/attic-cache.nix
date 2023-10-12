@@ -120,7 +120,7 @@
     type = "zstd"
 
     # Compression level
-    level = 3
+    level = 9
 
     # Garbage collection
     [garbage-collection]
