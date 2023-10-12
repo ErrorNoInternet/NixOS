@@ -1,4 +1,4 @@
-{ config, inputs, pkgs, ... }:
+{ config, inputs, lib, pkgs, ... }:
 
 let
   custom = {
@@ -47,6 +47,7 @@ in
     ../modules/yazi.nix
     ../modules/zoxide.nix
     ../modules/zsh.nix
+    inputs.nix-colors.homeManagerModules.default
   ];
 
   colorScheme = inputs.nix-colors.colorSchemes.nord;
