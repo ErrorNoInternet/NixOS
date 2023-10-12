@@ -13,8 +13,8 @@
   ];
 
   networking.firewall = {
-    allowedTCPPorts = [ 8080 8081 8082 22122 ];
-    allowedUDPPorts = [ 8080 8081 8082 22122 ];
+    allowedTCPPorts = [ 7455 8080 8081 8082 22122 ];
+    allowedUDPPorts = [ 8080 8081 8082 ];
   };
 
   fileSystems = {

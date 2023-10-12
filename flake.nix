@@ -62,6 +62,7 @@
         modules = [
           ./shared/modules/aarch64-emulation.nix
           ./shared/modules/compression.nix
+          ./shared/modules/ErrorNoBinaries.nix
           ./workstation/base.nix
           ./workstation/hosts/NixBtw/hardware-configuration.nix
           ./workstation/hosts/NixBtw/NixBtw.nix
@@ -84,6 +85,7 @@
         modules = [
           # ./workstation/modules/nvidia-prime.nix
           # ./workstation/modules/nvidia.nix
+          ./shared/modules/ErrorNoBinaries.nix
           ./workstation/base.nix
           ./workstation/hosts/Rescanix/hardware-configuration.nix
           ./workstation/hosts/Rescanix/Rescanix.nix
@@ -94,7 +96,6 @@
           ./workstation/modules/gaming.nix
           ./workstation/modules/hyprland.nix
           ./workstation/modules/openrgb.nix
-          ./workstation/modules/selfhosted-cache.nix
           ./workstation/modules/video-acceleration.nix
           ./workstation/modules/vm-guest.nix
         ];
@@ -109,6 +110,7 @@
           ./server/locations/china.nix
           ./server/modules/bootloader.nix
           ./server/modules/minecraft-server.nix
+          ./shared/modules/ErrorNoBinaries.nix
           ./shared/modules/wireless.nix
         ];
       };
@@ -124,6 +126,7 @@
           ./server/modules/printing.nix
           ./server/modules/samba.nix
           ./server/modules/zsh.nix
+          ./shared/modules/ErrorNoBinaries.nix
           ./shared/modules/raspberry-pi.nix
         ];
       };
@@ -138,6 +141,7 @@
           ./home-manager/hosts/NixBtw.nix
           ./home-manager/locations/china.nix
           ./home-manager/modules/spicetify.nix
+          ./shared/modules/ErrorNoBinaries.nix
           ./workstation/modules/gaming-cache.nix
         ];
       };
@@ -150,6 +154,7 @@
           ./home-manager/hosts/Rescanix.nix
           ./home-manager/locations/china.nix
           ./home-manager/modules/spicetify.nix
+          ./shared/modules/ErrorNoBinaries.nix
           ./workstation/modules/gaming-cache.nix
           ./workstation/modules/selfhosted-cache.nix
         ];
@@ -167,6 +172,7 @@
           ./home-manager/base.nix
           ./home-manager/hosts/Pix.nix
           ./home-manager/locations/china.nix
+          ./shared/modules/ErrorNoBinaries.nix
         ];
       };
     };
