@@ -14,6 +14,7 @@
     };
     agenix.url = "github:ryantm/agenix";
 
+    attic.url = "github:zhaofengli/attic";
     hsize.url = "github:ErrorNoInternet/hsize";
     hyprland.url = "github:hyprwm/Hyprland";
     hyprwm-contrib.url = "github:hyprwm/contrib";
@@ -116,12 +117,14 @@
       };
       Pix = nixpkgs.lib.nixosSystem {
         pkgs = pkgsArm;
+        specialArgs = { inherit inputs; };
         modules = [
           agenix.nixosModules.default
           ./server/base.nix
           ./server/hosts/Pix/hardware-configuration.nix
           ./server/hosts/Pix/Pix.nix
           ./server/locations/china.nix
+          ./server/modules/attic-cache.nix
           ./server/modules/nfs.nix
           ./server/modules/printing.nix
           ./server/modules/samba.nix
