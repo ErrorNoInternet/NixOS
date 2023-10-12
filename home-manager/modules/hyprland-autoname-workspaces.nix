@@ -17,6 +17,7 @@
       "discord" = "󰙯 "
       "firefox" = " "
       "Gimp-2.10" = " "
+      "jetbrains-idea-ce" = " "
       "kitty" = ""
       "Minecraft.*" = "󰍳 "
       "mpv" = " "
