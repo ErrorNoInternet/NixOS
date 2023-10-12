@@ -34,18 +34,18 @@
     memoryPercent = 50;
   };
   environment.systemPackages = with pkgs; [
+    btop
     curl
     file
     git
     killall
     lsof
     neovim
+    sysstat
     tmux
     unzip
     wget
     zip
-
-    btop
   ];
 
   services = {
