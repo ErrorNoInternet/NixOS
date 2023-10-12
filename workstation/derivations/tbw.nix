@@ -50,12 +50,12 @@ pkgs.writeShellApplication {
         continue
       fi
 
-      value=$(echo "$smartctl_output" | grep Total_LBAs_$attribute | sed -n "s/.*\(\b[0-9]\+\)[^0-9]*$/\1/p")
+      value=$(echo "$smartctl_output" | grep "Logical Sectors $attribute" | sed -n "s/.*\b\([0-9]\+\)\b.*Logical Sectors $attribute$/\1/p")
       if [[ -z "$value" ]]; then
-        echo "[$device] warning: unable to parse Total_LBAs_$attribute value! trying device statistics..." >&2
-        value=$(echo "$smartctl_output" | grep --color=never "Logical Sectors $attribute" | sed -n "s/.*\b\([0-9]\+\)\b.*Logical Sectors Read$/\1/p")
+        echo "[$device] warning: unable to parse "Logical Sectors $attribute" value! trying alternative method..." >&2
+        value=$(echo "$smartctl_output" | grep Total_LBAs_$attribute | sed -n "s/.*\(\b[0-9]\+\)[^0-9]*$/\1/p")
         if [[ -z "$value" ]]; then
-          echo "[$device] warning: unable to parse \"Logical Sectors $attribute\"!" >&2
+          echo "[$device] error: unable to parse \"Total_LBAs_$attribute\"!" >&2
           continue
         fi
       fi
