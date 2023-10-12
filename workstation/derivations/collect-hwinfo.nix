@@ -9,8 +9,8 @@ pkgs.writeShellApplication {
     fi
 
     folder="hwinfo_$(date +'%Y-%b-%d_%H-%M-%S' | tr '[:upper:]' '[:lower:]')"
-    mkdir $folder
-    cd $folder
+    mkdir "$folder"
+    cd "$folder"
     mkdir smartctl
     set -x
 
@@ -34,7 +34,7 @@ pkgs.writeShellApplication {
     ${pkgs.lshw}/bin/lshw --short > lshw-short 2>&1
 
     for device in $(${pkgs.util-linux}/bin/lsblk -l -oNAME | tail -n+2); do
-        ${pkgs.smartmontools}/bin/smartctl -x "/dev/$device" > smartctl/$device 2>&1
+        ${pkgs.smartmontools}/bin/smartctl -x "/dev/$device" > smartctl/"$device" 2>&1
     done
     cd ..
   '';
