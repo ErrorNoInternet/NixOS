@@ -66,6 +66,7 @@
           ./workstation/hosts/NixBtw/hardware-configuration.nix
           ./workstation/hosts/NixBtw/NixBtw.nix
           ./workstation/locations/china.nix
+          ./workstation/modules/android-development.nix
           ./workstation/modules/bluetooth.nix
           ./workstation/modules/clamav.nix
           ./workstation/modules/gaming-cache.nix
