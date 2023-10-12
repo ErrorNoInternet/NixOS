@@ -88,6 +88,7 @@ in
     _7zz
     bandwhich
     compsize
+    croc
     duf
     eza
     ffmpeg_6-full

@@ -10,6 +10,7 @@
     neofetch
 
     # unixtools.ping
+    croc
     curl
     dig
     eza

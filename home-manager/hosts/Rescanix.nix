@@ -71,6 +71,7 @@ in
     cmatrix
     compsize
     cpu-x
+    croc
     drm_info
     duf
     eza

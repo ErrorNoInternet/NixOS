@@ -27,9 +27,10 @@ in
     cmatrix
 
     # system utilities
-    inputs.hsize.packages.${pkgs.system}.hsize
+    croc
     duf
     eza
+    inputs.hsize.packages.${pkgs.system}.hsize
     jq
     nmap
     nvtop
