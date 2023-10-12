@@ -38,7 +38,6 @@
     curl
     file
     git
-    killall
     lsof
     neovim
     sysstat

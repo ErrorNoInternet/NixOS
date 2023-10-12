@@ -6,6 +6,12 @@
 
   age.secrets.ddns.file = ../../../secrets/ddns.age;
 
+  environment.systemPackages = with pkgs; [
+    compsize
+    duperemove
+    xxd
+  ];
+
   networking.firewall = {
     allowedTCPPorts = [ 8080 8081 8082 22122 ];
     allowedUDPPorts = [ 8080 8081 8082 22122 ];
