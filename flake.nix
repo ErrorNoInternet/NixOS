@@ -63,10 +63,10 @@
         specialArgs = { inherit inputs pkgs; };
         modules = [
           ./shared/modules/aarch64-emulation.nix
+          ./shared/modules/caches/ErrorNoBinaries.nix
           ./shared/modules/caches/hyprland.nix
           ./shared/modules/caches/nix-gaming.nix
           ./shared/modules/compression.nix
-          ./shared/modules/ErrorNoBinaries.nix
           ./workstation/base.nix
           ./workstation/hosts/NixBtw/hardware-configuration.nix
           ./workstation/hosts/NixBtw/NixBtw.nix
@@ -88,9 +88,9 @@
         modules = [
           # ./workstation/modules/nvidia-prime.nix
           # ./workstation/modules/nvidia.nix
+          ./shared/modules/caches/ErrorNoBinaries.nix
           ./shared/modules/caches/hyprland.nix
           ./shared/modules/caches/nix-gaming.nix
-          ./shared/modules/ErrorNoBinaries.nix
           ./workstation/base.nix
           ./workstation/hosts/Rescanix/hardware-configuration.nix
           ./workstation/hosts/Rescanix/Rescanix.nix
@@ -114,7 +114,7 @@
           ./server/locations/china.nix
           ./server/modules/bootloader.nix
           ./server/modules/minecraft-server.nix
-          ./shared/modules/ErrorNoBinaries.nix
+          ./shared/modules/caches/ErrorNoBinaries.nix
           ./shared/modules/wireless.nix
         ];
       };
@@ -132,7 +132,7 @@
           ./server/modules/printing.nix
           ./server/modules/samba.nix
           ./server/modules/zsh.nix
-          ./shared/modules/ErrorNoBinaries.nix
+          ./shared/modules/caches/ErrorNoBinaries.nix
           ./shared/modules/raspberry-pi.nix
         ];
       };
@@ -147,8 +147,8 @@
           ./home-manager/hosts/NixBtw.nix
           ./home-manager/locations/china.nix
           ./home-manager/modules/spicetify.nix
+          ./shared/modules/caches/ErrorNoBinaries.nix
           ./shared/modules/caches/nix-gaming.nix
-          ./shared/modules/ErrorNoBinaries.nix
         ];
       };
       "ryan@Rescanix" = home-manager.lib.homeManagerConfiguration {
@@ -161,7 +161,7 @@
           ./home-manager/locations/china.nix
           ./home-manager/modules/spicetify.nix
           ./shared/modules/caches/nix-gaming.nix
-          ./shared/modules/ErrorNoBinaries.nix
+          ./shared/modules/caches/ErrorNoBinaries.nix
         ];
       };
       "snowflake@Pix" = home-manager.lib.homeManagerConfiguration {
@@ -177,7 +177,7 @@
           ./home-manager/base.nix
           ./home-manager/hosts/Pix.nix
           ./home-manager/locations/china.nix
-          ./shared/modules/ErrorNoBinaries.nix
+          ./shared/modules/caches/ErrorNoBinaries.nix
         ];
       };
     };
