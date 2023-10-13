@@ -12,38 +12,42 @@
     };
     settings = {
       manager = {
-        layout     = [ 1 4 3 ];
+        layout     = [ 1 4 4 ];
         sort_by    = "modified";
         sort_sensitive = false;
         sort_reverse   = true;
         sort_dir_first = true;
-        show_hidden  = false;
+        show_hidden    = false;
         show_symlink   = true;
       };
       preview = {
         tab_size   = 2;
-        max_width  = 600;
-        max_height = 900;
+        max_width  = 1024;
+        max_height = 1024;
         cache_dir  = "";
       };
       opener = {
         folder = [
           { exec = ''xdg-open "$@"''; }
-          { exec = ''$EDITOR "$@"''; }
         ];
         text = [
           { exec = ''$EDITOR "$@"''; block = true; }
         ];
+        image = [
+          { exec = ''imv "$@"''; }
+          { exec = ''${pkgs.exiftool}/bin/exiftool "$1"; echo "press enter to exit"; read''; block = true; }
+        ];
         video = [
           { exec = ''mpv "$@"''; }
-          { exec = ''mediainfo "$1"; echo "Press enter to exit"; read''; block = true; display_name = "Show media info"; }
+          { exec = ''${pkgs.exiftool}/bin/exiftool "$1"; echo "press enter to exit"; read''; block = true; }
         ];
         audio = [
           { exec = ''mpv "$@"''; }
-          { exec = ''mediainfo "$1"; echo "Press enter to exit"; read''; block = true; display_name = "Show media info"; }
+          { exec = ''${pkgs.exiftool}/bin/exiftool "$1"; echo "press enter to exit"; read''; block = true; }
         ];
         fallback = [
-          { exec = ''xdg-open "$@"''; display_name = "Open"; }
+          { exec = ''xdg-open "$@"''; display_name = "open"; }
+          { exec = ''${pkgs.file}/bin/file "$1"; echo "press enter to exit"; read''; block = true; }
         ];
       };
     };
@@ -104,11 +108,8 @@
         { on = [ "D" ];     exec = "remove --permanently";   desc = "Permanently delete the files"; }
         { on = [ "a" ];     exec = "create";         desc = "Create a file or directory (ends with / for directories)"; }
         { on = [ "r" ];     exec = "rename";         desc = "Rename a file or directory"; }
-        { on = [ ";" ];     exec = "shell";          desc = "Run a shell command"; }
         { on = [ ":" ];     exec = "shell --block";      desc = "Run a shell command (block the UI until the command finishes)"; }
         { on = [ "." ];     exec = "hidden toggle";      desc = "Toggle the visibility of hidden files"; }
-        { on = [ "s" ];     exec = "search fd";        desc = "Search files by name using fd"; }
-        { on = [ "S" ];     exec = "search rg";        desc = "Search files by content using ripgrep"; }
         { on = [ "z" ];     exec = "jump zoxide";      desc = "Jump to a directory using zoxide"; }
         { on = [ "Z" ];     exec = "jump fzf";         desc = "Jump to a directory; or reveal a file using fzf"; }
 
@@ -121,8 +122,6 @@
         # Find
         { on = [ "/" ]; exec = "find"; }
         { on = [ "?" ]; exec = "find --previous"; }
-        { on = [ "-" ]; exec = "find_arrow"; }
-        { on = [ "=" ]; exec = "find_arrow --previous"; }
 
         # Sorting
         { on = [ ";" "a" ]; exec = "sort alphabetical --dir_first";       desc = "Sort alphabetically"; }
@@ -159,11 +158,12 @@
         { on = [ "w" ]; exec = "tasks_show"; desc = "Show the tasks manager"; }
 
         # Goto
-        { on = [ "g" "h" ];     exec = "cd ~";       desc = "Go to the home directory"; }
-        { on = [ "g" "c" ];     exec = "cd ~/.config";   desc = "Go to the config directory"; }
-        { on = [ "g" "d" ];     exec = "cd ~/downloads";   desc = "Go to the downloads directory"; }
-        { on = [ "g" "t" ];     exec = "cd /tmp";      desc = "Go to the temporary directory"; }
-        { on = [ "g" "<Space>" ]; exec = "cd --interactive"; desc = "Go to a directory interactively"; }
+        { on = [ "g" "h" ];     exec = "cd ~";       desc = "home"; }
+        { on = [ "g" "c" ];     exec = "cd /etc/nixos/configuration.nix";   desc = "configuration.nix"; }
+        { on = [ "g" "d" ];     exec = "cd /mnt/data";   desc = "/mnt/data"; }
+        { on = [ "g" "s" ];     exec = "cd ~/downloads";   desc = "~/downloads"; }
+        { on = [ "g" "t" ];     exec = "cd /tmp";      desc = "/tmp"; }
+        { on = [ "g" "<Space>" ]; exec = "cd --interactive"; desc = "interactive"; }
 
         # Help
         { on = [ "~" ]; exec = "help"; desc = "Open help"; }
