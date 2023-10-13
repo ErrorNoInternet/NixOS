@@ -102,8 +102,8 @@
         { on = [ "x" ];     exec = "yank --cut";       desc = "Cut the selected files"; }
         { on = [ "p" ];     exec = "paste";          desc = "Paste the files"; }
         { on = [ "P" ];     exec = "paste --force";      desc = "Paste the files (overwrite if the destination exists)"; }
-        { on = [ "n" ];     exec = "link";           desc = "Symlink the absolute path of files"; }
-        { on = [ "N" ];     exec = "link --relative";    desc = "Symlink the relative path of files"; }
+        { on = [ "-" ];     exec = "link";           desc = "Symlink the absolute path of files"; }
+        { on = [ "_" ];     exec = "link --relative";    desc = "Symlink the relative path of files"; }
         { on = [ "d" ];     exec = "remove";         desc = "Move the files to the trash"; }
         { on = [ "D" ];     exec = "remove --permanently";   desc = "Permanently delete the files"; }
         { on = [ "a" ];     exec = "create";         desc = "Create a file or directory (ends with / for directories)"; }
@@ -122,6 +122,8 @@
         # Find
         { on = [ "/" ]; exec = "find"; }
         { on = [ "?" ]; exec = "find --previous"; }
+        { on = [ "n" ]; exec = "find_arrow"; }
+        { on = [ "N" ]; exec = "find_arrow --previous"; }
 
         # Sorting
         { on = [ ";" "a" ]; exec = "sort alphabetical --dir_first";       desc = "Sort alphabetically"; }
