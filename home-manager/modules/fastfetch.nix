@@ -7,7 +7,7 @@
 --kernel-key " kernel"
 --uptime-key " uptime"
 --packages-key "󰆧 packages"
---packages-format "{9}+{10}+{11} (nix), {15} (flatpak)"
+--packages-format "{9}+{10} (nix)"
 --disk-key " storage"
 --disk-format "{1} / {2} ({3})"
 --terminal-key " terminal"
