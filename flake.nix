@@ -63,6 +63,7 @@
         specialArgs = { inherit inputs pkgs; };
         modules = [
           ./shared/modules/aarch64-emulation.nix
+          ./shared/modules/caches/nix-gaming.nix
           ./shared/modules/compression.nix
           ./shared/modules/ErrorNoBinaries.nix
           ./workstation/base.nix
@@ -72,7 +73,6 @@
           ./workstation/modules/android-development.nix
           ./workstation/modules/bluetooth.nix
           ./workstation/modules/clamav.nix
-          ./workstation/modules/gaming-cache.nix
           ./workstation/modules/gaming.nix
           ./workstation/modules/hyprland.nix
           ./workstation/modules/nvidia-prime.nix
@@ -87,6 +87,7 @@
         modules = [
           # ./workstation/modules/nvidia-prime.nix
           # ./workstation/modules/nvidia.nix
+          ./shared/modules/caches/nix-gaming.nix
           ./shared/modules/ErrorNoBinaries.nix
           ./workstation/base.nix
           ./workstation/hosts/Rescanix/hardware-configuration.nix
@@ -94,7 +95,6 @@
           ./workstation/locations/china.nix
           ./workstation/modules/bluetooth.nix
           ./workstation/modules/clamav.nix
-          ./workstation/modules/gaming-cache.nix
           ./workstation/modules/gaming.nix
           ./workstation/modules/hyprland.nix
           ./workstation/modules/openrgb.nix
@@ -145,8 +145,8 @@
           ./home-manager/hosts/NixBtw.nix
           ./home-manager/locations/china.nix
           ./home-manager/modules/spicetify.nix
+          ./shared/modules/caches/nix-gaming.nix
           ./shared/modules/ErrorNoBinaries.nix
-          ./workstation/modules/gaming-cache.nix
         ];
       };
       "ryan@Rescanix" = home-manager.lib.homeManagerConfiguration {
@@ -158,8 +158,8 @@
           ./home-manager/hosts/Rescanix.nix
           ./home-manager/locations/china.nix
           ./home-manager/modules/spicetify.nix
+          ./shared/modules/caches/nix-gaming.nix
           ./shared/modules/ErrorNoBinaries.nix
-          ./workstation/modules/gaming-cache.nix
         ];
       };
       "snowflake@Pix" = home-manager.lib.homeManagerConfiguration {
