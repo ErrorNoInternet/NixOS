@@ -63,6 +63,7 @@
         specialArgs = { inherit inputs pkgs; };
         modules = [
           ./shared/modules/aarch64-emulation.nix
+          ./shared/modules/caches/hyprland.nix
           ./shared/modules/caches/nix-gaming.nix
           ./shared/modules/compression.nix
           ./shared/modules/ErrorNoBinaries.nix
@@ -87,6 +88,7 @@
         modules = [
           # ./workstation/modules/nvidia-prime.nix
           # ./workstation/modules/nvidia.nix
+          ./shared/modules/caches/hyprland.nix
           ./shared/modules/caches/nix-gaming.nix
           ./shared/modules/ErrorNoBinaries.nix
           ./workstation/base.nix
