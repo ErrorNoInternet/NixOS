@@ -1,4 +1,7 @@
 {
-  virtualisation.libvirtd.enable = true;
+  virtualisation = {
+    libvirtd.enable = true;
+    spiceUSBRedirection.enable = true;
+  };
   users.users.ryan.extraGroups = [ "libvirtd" ];
 }
