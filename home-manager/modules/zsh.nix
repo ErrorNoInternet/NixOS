@@ -30,7 +30,6 @@
     history = {
       size = 100000;
       save = 100000;
-      share = true;
     };
     enableCompletion = false;
     initExtraBeforeCompInit = ''
