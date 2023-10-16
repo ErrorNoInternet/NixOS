@@ -4,8 +4,6 @@
   networking.hostName = "NixBtw";
   environment.variables.HOSTNAME = "NixBtw";
 
-  nix.gc.automatic = lib.mkForce false;
-
   fileSystems."/mnt/data" = {
     device = "/dev/disk/by-uuid/ffabee31-a399-41ac-b803-d07215f60c33";
     fsType = "auto";
