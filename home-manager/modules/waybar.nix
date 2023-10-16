@@ -33,10 +33,10 @@
         "clock"
       ];
       clock = {
-        format = " {:%a, %b %d, %H:%M}";
+        format = "  {:%a, %b %d, %H:%M}";
         tooltip = "true";
         tooltip-format = "<tt><small>{calendar}</small></tt>";
-        format-alt = " {:%m/%d}";
+        format-alt = "  {:%m/%d}";
       };
       "wlr/workspaces"= {
         active-only = false;
@@ -85,10 +85,10 @@
       };
       "network#status" = {
         format-wifi = "  {signalStrength}%";
-        format-ethernet = "󰈀  (eth)";
+        format-ethernet = "󰈀  {ifname} (eth)";
         tooltip-format-wifi = "({frequency} GHz) Connected to {essid} ({gwaddr}) via {ifname} ({ipaddr})";
-        tooltip-format-ethernet = "Connected via {ifname} ({gwaddr}, {ipaddr})";
-        format-linked = "{ifname} (No IP)";
+        tooltip-format-ethernet = "Connected via {ifname} ({gwaddr} -> {ipaddr})";
+        format-linked = "󰈀  {ifname} (eth) (No IP)";
         format-disconnected = "󰖪  ?";
       };
       pulseaudio = {
