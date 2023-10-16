@@ -187,6 +187,7 @@
         ./nix-on-droid/base.nix
         ./nix-on-droid/hosts/ErrorNoPhone.nix
         ./nix-on-droid/locations/china.nix
+        ./nix-on-droid/modules/caches/ErrorNoBinaries.nix
       ];
     };
   };

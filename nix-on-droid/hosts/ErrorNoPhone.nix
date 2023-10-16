@@ -1,5 +1,3 @@
-{ pkgs }:
-
 {
   environment.sessionVariables.HOSTNAME = "ErrorNoPhone";
   home-manager.sharedModules = [
