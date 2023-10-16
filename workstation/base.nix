@@ -3,6 +3,7 @@
 {
   nixpkgs.config.allowUnfree = true;
   nix = {
+    trustedUsers = [ "root" "@wheel" ];
     settings = {
       auto-optimise-store = true;
       experimental-features = [ "nix-command" "flakes" ];
