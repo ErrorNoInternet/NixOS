@@ -1,6 +1,10 @@
-{ config, lib, pkgs }:
-
+let
+  custom = {
+    predefinedColorScheme = "Nord";
+  };
+in
 {
+  _module.args = { inherit custom; };
   imports = [
     ../modules/bat.nix
     ../modules/nix-on-droid/zsh.nix
