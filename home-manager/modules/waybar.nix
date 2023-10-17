@@ -38,7 +38,7 @@
         tooltip-format = "<tt><small>{calendar}</small></tt>";
         format-alt = "  {:%m/%d}";
       };
-      "wlr/workspaces"= {
+      "wlr/workspaces" = {
         active-only = false;
         all-outputs = false;
         on-click = "activate";
@@ -138,7 +138,7 @@
         margin: 0px 4px;
         border-radius: 16px;
         min-width: 20px;
-        transition: all 0.3s ease-in-out;
+        transition: all 0.2s ease-in-out;
       }
 
       #workspaces button.active {
