@@ -114,6 +114,7 @@ in
 
     # development utilities
     gcc
+    go
     jetbrains.idea-community
     python3
     python310Packages.bpython
