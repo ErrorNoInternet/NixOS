@@ -20,6 +20,8 @@
     options = [ "x-systemd.automount" "noauto" ];
   };
 
+  nix.gc.automatic = false;
+
   services.udev.extraRules = ''
     SUBSYSTEMS=="usb|hidraw", ATTRS{idVendor}=="1770", ATTRS{idProduct}=="ff00", TAG+="uaccess", TAG+="MSI_3Zone_Laptop"
   '';

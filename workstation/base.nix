@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }:
+{ inputs, lib, pkgs, ... }:
 
 {
   nixpkgs.config.allowUnfree = true;
@@ -9,7 +9,7 @@
       experimental-features = [ "nix-command" "flakes" ];
     };
     gc = {
-      automatic = true;
+      automatic = lib.mkDefault true;
       dates = "weekly";
       options = "--delete-older-than 14d";
     };
