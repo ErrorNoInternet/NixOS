@@ -91,6 +91,7 @@ in
     croc
     duf
     eza
+    fd
     ffmpeg_6-full
     inputs.hsize.packages.${pkgs.system}.hsize
     jq
@@ -103,6 +104,7 @@ in
     brave
     firefox
     gimp
+    imhex
     qbittorrent
     ripdrag
     slurp
