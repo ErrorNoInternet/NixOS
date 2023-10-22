@@ -37,6 +37,7 @@ in
     ../modules/hyprland.nix
     ../modules/imv.nix
     ../modules/irssi.nix
+    ../modules/joshuto.nix
     ../modules/kdeconnect.nix
     ../modules/kitty.nix
     ../modules/libreoffice.nix
@@ -85,6 +86,7 @@ in
 
     # system utilities
     (import ../../workstation/derivations/tbw.nix { inherit pkgs; })
+    (import ../derivations/preview-file.nix { inherit pkgs; })
     _7zz
     bandwhich
     compsize
