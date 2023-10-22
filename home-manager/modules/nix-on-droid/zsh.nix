@@ -35,10 +35,6 @@
       zmodload zsh/complist
     '';
     initExtra = ''
-      alias mf="fastfetch --load-config ~/.config/fastfetch/minimal.conf"
-      if [ $(ps | grep gitstatusd | wc -l) -eq 0 ]; then
-        mf && echo
-      fi
       source ~/.p10k.zsh
 
       export _ZO_RESOLVE_SYMLINKS=1
