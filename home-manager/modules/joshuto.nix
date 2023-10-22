@@ -2,7 +2,7 @@
 
 {
   programs.joshuto = {
-    enable = true;
+    enable = false;
     package = inputs.joshuto.packages.${pkgs.system}.joshuto;
     settings = {
       max_preview_size = 2097152;
