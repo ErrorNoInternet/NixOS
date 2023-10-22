@@ -6,7 +6,7 @@
     iconTheme = custom.gtkIconTheme;
     settings = {
       global = {
-        origin = "bottom-right";
+        origin = "top-right";
         offset = "10x10";
         follow = "mouse";
         notification_limit = 8;
