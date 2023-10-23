@@ -1,5 +1,5 @@
 {
-  specialization = {
+  specialisation = {
     nvidia.configuration = {
       hardware.opengl = {
         enable = true;
@@ -11,7 +11,7 @@
         modesetting.enable = true;
       };
 
-      specialization = {
+      specialisation = {
         nvidia-prime.configuration = {
           hardware.nvidia = {
             prime = {
