@@ -17,7 +17,7 @@
 
   fileSystems."/efi" =
     { device = "systemd-1";
-      FsType = "autofs"
+      fsType = "autofs";
     };
 
   fileSystems."/boot" =
