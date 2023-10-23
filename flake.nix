@@ -64,10 +64,10 @@
         specialArgs = { inherit inputs pkgs; };
         modules = [
           ./shared/modules/aarch64-emulation.nix
+          ./shared/modules/btrfs-subvolume-compression.nix-compression.nix
           ./shared/modules/caches/ErrorNoBinaries.nix
           ./shared/modules/caches/hyprland.nix
           ./shared/modules/caches/nix-gaming.nix
-          ./shared/modules/compression.nix
           ./workstation/base.nix
           ./workstation/hosts/NixBtw/hardware-configuration.nix
           ./workstation/hosts/NixBtw/NixBtw.nix
@@ -88,8 +88,7 @@
       Rescanix = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs pkgs; };
         modules = [
-          # ./workstation/modules/nvidia-prime.nix
-          # ./workstation/modules/nvidia.nix
+          ./shared/modules/btrfs-compression.nix
           ./shared/modules/caches/ErrorNoBinaries.nix
           ./shared/modules/caches/hyprland.nix
           ./shared/modules/caches/nix-gaming.nix
@@ -101,6 +100,8 @@
           ./workstation/modules/clamav.nix
           ./workstation/modules/gaming.nix
           ./workstation/modules/hyprland.nix
+          ./workstation/modules/nvidia-prime.nix
+          ./workstation/modules/nvidia.nix
           ./workstation/modules/openrgb.nix
           ./workstation/modules/video-acceleration.nix
           ./workstation/modules/vm-guest.nix
