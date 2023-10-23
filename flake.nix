@@ -77,7 +77,6 @@
           ./workstation/modules/clamav.nix
           ./workstation/modules/gaming.nix
           ./workstation/modules/hyprland.nix
-          ./workstation/modules/nvidia-prime.nix
           ./workstation/modules/nvidia.nix
           ./workstation/modules/openrgb.nix
           ./workstation/modules/video-acceleration.nix
@@ -100,7 +99,6 @@
           ./workstation/modules/clamav.nix
           ./workstation/modules/gaming.nix
           ./workstation/modules/hyprland.nix
-          ./workstation/modules/nvidia-prime.nix
           ./workstation/modules/nvidia.nix
           ./workstation/modules/openrgb.nix
           ./workstation/modules/video-acceleration.nix
