@@ -82,6 +82,7 @@
           ./workstation/modules/openrgb.nix
           ./workstation/modules/video-acceleration.nix
           ./workstation/modules/virtualization.nix
+          ./workstation/modules/zfs.nix
         ];
       };
       Rescanix = nixpkgs.lib.nixosSystem {

@@ -1,8 +1,11 @@
 { lib, pkgs, ... }:
 
 {
-  networking.hostName = "NixBtw";
   environment.variables.HOSTNAME = "NixBtw";
+  networking = {
+    hostName = "NixBtw";
+    hostId = "102f58f5";
+  };
 
   fileSystems."/mnt/data" = {
     device = "/dev/disk/by-uuid/ffabee31-a399-41ac-b803-d07215f60c33";
