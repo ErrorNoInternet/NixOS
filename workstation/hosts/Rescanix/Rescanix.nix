@@ -1,8 +1,11 @@
 { lib, pkgs, ... }:
 
 {
-  networking.hostName = "Rescanix";
   environment.variables.HOSTNAME = "Rescanix";
+  networking = {
+    hostName = "Rescanix";
+    hostId = "3a1f6cc6";
+  };
 
   boot.loader = {
     timeout = lib.mkForce 5;
