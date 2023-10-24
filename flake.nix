@@ -64,7 +64,7 @@
         specialArgs = { inherit inputs pkgs; };
         modules = [
           ./shared/modules/aarch64-emulation.nix
-          ./shared/modules/btrfs-subvolume-compression.nix-compression.nix
+          ./shared/modules/btrfs-subvolume-compression.nix
           ./shared/modules/caches/ErrorNoBinaries.nix
           ./shared/modules/caches/hyprland.nix
           ./shared/modules/caches/nix-gaming.nix
