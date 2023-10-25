@@ -25,7 +25,7 @@
     };
     shellAliases = {
       ls = "eza --git --icons";
-      l = "ls -l";
+      l = "ls";
       ll = "ls -l";
       la = "ls -a";
       lla = "ls -al";
