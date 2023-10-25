@@ -9,6 +9,13 @@
           port = 6697;
         };
       };
+      oftc = {
+        nick = "ErrorNoInternet";
+        server = {
+          address = "irc.oftc.net";
+          port = 6697;
+        };
+      };
     };
   };
 }
