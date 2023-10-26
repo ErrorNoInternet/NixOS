@@ -62,7 +62,8 @@
       jails = {
         DEFAULT.settings = {
           findtime = "15m";
-          bantime = "5m";
+          # TODO: wait for upstream fix
+          bantime = lib.mkForce "5m";
         };
         sshd = lib.mkForce ''
           enabled = true
