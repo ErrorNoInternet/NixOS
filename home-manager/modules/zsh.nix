@@ -44,6 +44,7 @@
     history = {
       size = 100000;
       save = 100000;
+      share = false;
     };
     enableCompletion = false;
     initExtraBeforeCompInit = ''
