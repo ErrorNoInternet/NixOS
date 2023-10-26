@@ -36,4 +36,24 @@
     script = "intel_gpu_frequency -m";
     wantedBy = [ "multi-user.target" ];
   };
+
+  boot.kernelPatches = [
+    {
+      name = "ftrace";
+      patch = null;
+      extraConfig = ''
+        CONFIG_FUNCTION_TRACER=y
+        CONFIG_FUNCTION_GRAPH_TRACER=y
+        CONFIG_STACK_TRACER=y
+        CONFIG_DYNAMIC_FTRACE=y
+      '';
+    }
+    {
+      name = "penguins";
+      patch = null;
+      extraConfig = ''
+        CONFIG_LOGO=y
+      '';
+    }
+  ];
 }
