@@ -8,7 +8,7 @@
   };
 
   fileSystems."/mnt/data" = {
-    device = "/dev/disk/by-uuid/ffabee31-a399-41ac-b803-d07215f60c33";
+    device = "/dev/disk/by-uuid/b5a83e11-2299-4b20-b324-d4484014f2d3";
     fsType = "auto";
     options = [ "defaults" "nofail" ];
   };
