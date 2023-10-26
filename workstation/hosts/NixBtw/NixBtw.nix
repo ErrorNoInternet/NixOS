@@ -42,10 +42,10 @@
       name = "ftrace";
       patch = null;
       extraConfig = ''
-        CONFIG_FUNCTION_TRACER=y
-        CONFIG_FUNCTION_GRAPH_TRACER=y
-        CONFIG_STACK_TRACER=y
-        CONFIG_DYNAMIC_FTRACE=y
+        FUNCTION_TRACER=y
+        FUNCTION_GRAPH_TRACER=y
+        STACK_TRACER=y
+        DYNAMIC_FTRACE=y
       '';
     }
   ];
