@@ -48,12 +48,5 @@
         CONFIG_DYNAMIC_FTRACE=y
       '';
     }
-    {
-      name = "penguins";
-      patch = null;
-      extraConfig = ''
-        CONFIG_LOGO=y
-      '';
-    }
   ];
 }
