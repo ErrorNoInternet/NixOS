@@ -236,13 +236,25 @@
           modified = {
             bg = '#${config.colorScheme.colors.base01}'
           },
-          buffer = {
-            bg = '#${config.colorScheme.colors.base01}'
-          },
           buffer_selected = {
             bg = '#${config.colorScheme.colors.base03}',
             italic = false
-          }
+          },
+          buffer = {
+            bg = '#${config.colorScheme.colors.base01}'
+          },
+          error_selected = {
+            bg = '#${config.colorScheme.colors.base03}'
+          },
+          error = {
+            bg = '#${config.colorScheme.colors.base01}'
+          },
+          error_diagnostic_selected = {
+            bg = '#${config.colorScheme.colors.base03}'
+          },
+          error_diagnostic = {
+            bg = '#${config.colorScheme.colors.base01}'
+          },
         }
       }
       EOF
