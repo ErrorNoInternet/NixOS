@@ -1,4 +1,4 @@
-{ custom, lib, pkgs, ... }:
+{ config, custom, lib, pkgs, ... }:
 
 {
   programs.neovim = {
@@ -154,8 +154,8 @@
       "Themes
       lua vim.g.nord_italic = false
       lua vim.g.nord_disable_background = true
+      lua vim.o.termguicolors = true
       colorscheme ${lib.strings.toLower custom.predefinedColorScheme}
-      set termguicolors
       highlight clear CursorLine
       if !exists('g:airline_symbols')
         let g:airline_symbols = {}
@@ -196,7 +196,7 @@
         options = {
           tab_size = 18,
           truncate_names = true,
-          separator_style = "slant",
+          separator_style = "thin",
           show_close_icon = false,
           show_tab_indicators = false,
           diagnostics = "coc",
@@ -212,18 +212,35 @@
         },
         highlights = {
           fill = {
-            bg = "#262C38"
+            bg = '#${config.colorScheme.colors.base01}'
+          },
+          background = {
+            bg = '#${config.colorScheme.colors.base01}',
           },
           separator = {
-            fg = '#262C38'
+            fg = '#${config.colorScheme.colors.base00}',
+            bg = '#${config.colorScheme.colors.base01}'
           },
-          separator_selected = {
-            fg = '#262C38'
+          indicator_selected = {
+            bg = '#${config.colorScheme.colors.base03}'
           },
-          separator_visible = {
-            fg = '#262C38'
+          close_button_selected = {
+            bg = '#${config.colorScheme.colors.base03}'
+          },
+          modified_selected = {
+            bg = '#${config.colorScheme.colors.base03}'
+          },
+          close_button = {
+            bg = '#${config.colorScheme.colors.base01}'
+          },
+          modified = {
+            bg = '#${config.colorScheme.colors.base01}'
+          },
+          buffer = {
+            bg = '#${config.colorScheme.colors.base01}'
           },
           buffer_selected = {
+            bg = '#${config.colorScheme.colors.base03}',
             italic = false
           }
         }
