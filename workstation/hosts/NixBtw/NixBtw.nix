@@ -36,25 +36,4 @@
     script = "intel_gpu_frequency -m";
     wantedBy = [ "multi-user.target" ];
   };
-
-  boot.kernelPatches = [
-    {
-      name = "ftrace";
-      patch = null;
-      extraStructuredConfig = {
-        DYNAMIC_FTRACE = lib.kernel.yes;
-        DEBUG_FS = lib.kernel.yes;
-        FTRACE = lib.kernel.yes;
-        FUNCTION_TRACER = lib.kernel.yes;
-        FUNCTION_GRAPH_TRACER = lib.kernel.yes;
-        IRQSOFF_TRACER = lib.kernel.yes;
-        PREEMPT_TRACER = lib.kernel.yes;
-        SCHED_TRACER = lib.kernel.yes;
-        STACK_TRACER = lib.kernel.yes;
-        BLK_DEV_IO_TRACE = lib.kernel.yes;
-        FUNCTION_PROFILER = lib.kernel.yes;
-        FTRACE_MCOUNT_RECORD = lib.kernel.yes;
-      };
-    }
-  ];
 }
