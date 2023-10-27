@@ -41,20 +41,20 @@
     {
       name = "ftrace";
       patch = null;
-      extraConfig = ''
-        DYNAMIC_FTRACE y
-        DEBUG_FS y
-        FTRACE y
-        FUNCTION_TRACER y
-        FUNCTION_GRAPH_TRACER y
-        IRQSOFF_TRACER y
-        PREEMPT_TRACER y
-        SCHED_TRACER y
-        STACK_TRACER y
-        BLK_DEV_IO_TRACE y
-        FUNCTION_PROFILER y
-        FTRACE_MCOUNT_RECORD y
-      '';
+      extraStructuredConfig = {
+        DYNAMIC_FTRACE = lib.kernel.yes;
+        DEBUG_FS = lib.kernel.yes;
+        FTRACE = lib.kernel.yes;
+        FUNCTION_TRACER = lib.kernel.yes;
+        FUNCTION_GRAPH_TRACER = lib.kernel.yes;
+        IRQSOFF_TRACER = lib.kernel.yes;
+        PREEMPT_TRACER = lib.kernel.yes;
+        SCHED_TRACER = lib.kernel.yes;
+        STACK_TRACER = lib.kernel.yes;
+        BLK_DEV_IO_TRACE = lib.kernel.yes;
+        FUNCTION_PROFILER = lib.kernel.yes;
+        FTRACE_MCOUNT_RECORD = lib.kernel.yes;
+      };
     }
   ];
 }
