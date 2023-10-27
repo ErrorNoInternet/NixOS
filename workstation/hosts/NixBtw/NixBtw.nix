@@ -42,18 +42,18 @@
       name = "ftrace";
       patch = null;
       extraConfig = ''
-        DYNAMIC_FTRACE=y
-        DEBUG_FS=y
-        FTRACE=y
-        FUNCTION_TRACER=y
-        FUNCTION_GRAPH_TRACER=y
-        IRQSOFF_TRACER=y
-        PREEMPT_TRACER=y
-        SCHED_TRACER=y
-        STACK_TRACER=y
-        BLK_DEV_IO_TRACE=y
-        FUNCTION_PROFILER=y
-        FTRACE_MCOUNT_RECORD=y
+        DYNAMIC_FTRACE y
+        DEBUG_FS y
+        FTRACE y
+        FUNCTION_TRACER y
+        FUNCTION_GRAPH_TRACER y
+        IRQSOFF_TRACER y
+        PREEMPT_TRACER y
+        SCHED_TRACER y
+        STACK_TRACER y
+        BLK_DEV_IO_TRACE y
+        FUNCTION_PROFILER y
+        FTRACE_MCOUNT_RECORD y
       '';
     }
   ];
