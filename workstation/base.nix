@@ -26,8 +26,8 @@
       efi.canTouchEfiVariables = true;
       timeout = 3;
     };
-    # kernelPackages = pkgs.linuxPackages_latest;
-    supportedFilesystems = [ "ntfs" "bcachefs" ];
+    kernelPackages = pkgs.linuxPackages_latest;
+    supportedFilesystems = [ "ntfs" ];
   };
   networking = {
     firewall.enable = false;
