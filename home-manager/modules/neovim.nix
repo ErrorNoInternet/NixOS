@@ -255,6 +255,12 @@
           error_diagnostic = {
             bg = '#${config.colorScheme.colors.base01}'
           },
+          duplicate_selected = {
+            bg = '#${config.colorScheme.colors.base03}'
+          },
+          duplicate = {
+            bg = '#${config.colorScheme.colors.base01}'
+          },
         }
       }
       EOF
