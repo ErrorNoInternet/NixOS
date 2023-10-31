@@ -7,11 +7,6 @@
     hostId = "102f58f5";
   };
 
-  fileSystems."/mnt/data" = {
-    device = "/dev/disk/by-uuid/b5a83e11-2299-4b20-b324-d4484014f2d3";
-    fsType = "auto";
-    options = [ "defaults" "nofail" ];
-  };
   fileSystems."/mnt/pi-drive1" = {
     device = "192.168.0.100:/mnt/drive1";
     fsType = "nfs";
