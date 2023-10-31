@@ -117,10 +117,10 @@ in
     })
 
     # development utilities
+    (python3.withPackages(ps: with ps; [ jedi ]))
     gcc
     go
     jetbrains.idea-community
-    python3
     python310Packages.bpython
     rustup
     virt-manager
