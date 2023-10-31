@@ -30,9 +30,10 @@
       la = "ls -a";
       lla = "ls -al";
       grep = "grep --color";
-
-      switch = "sudo nixos-rebuild switch";
-      home-switch = "home-manager switch";
+  
+      md = "sudo cryptsetup luksOpen /dev/disk/by-uuid/9cbb87fd-6e5a-45b3-88ee-22d369738be5 luks-btank; sudo mount /dev/mapper/luks-btank /mnt/data";
+      switch = "sudo nixos-rebuild switch --flake .";
+      home-switch = "home-manager switch --flake .";
       f = "fastfetch";
       cm = "cmatrix -C blue";
       py = "python3";
