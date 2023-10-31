@@ -79,8 +79,7 @@
     killall
     pulseaudio
     xdg-user-dirs
-
-    python310Packages.jedi
+    cryptsetup
   ];
   programs.zsh = {
     enable = true;
