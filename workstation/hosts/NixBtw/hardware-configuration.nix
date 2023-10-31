@@ -19,6 +19,8 @@
       options = [ "subvol=root" ];
     };
 
+  boot.initrd.luks.devices."luks-NixBtw".device = "/dev/disk/by-uuid/d3f64a12-e62f-43e2-8351-417602765f32";
+
   fileSystems."/home" =
     { device = "/dev/disk/by-uuid/47502804-f00d-4f0c-b63f-bd7971039dbb";
       fsType = "btrfs";
