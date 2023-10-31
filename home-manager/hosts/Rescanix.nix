@@ -72,16 +72,20 @@ in
     compsize
     cpu-x
     croc
+    ddrescue
     drm_info
     duf
+    duperemove
     eza
     fastfetch
     ffmpeg_6-full
+    fio
     firefox
     gcc
     geekbench
     gimp
     gptfdisk
+    hyperfine
     hyprland-autoname-workspaces
     hyprpicker
     inputs.hsize.packages.${pkgs.system}.hsize
@@ -91,12 +95,16 @@ in
     intel-gpu-tools
     jq
     kdiskmark
+    linuxPackages_latest.perf
     lm_sensors
     lshw
+    lsof
     mangohud
     mesa-demos
+    multipath-tools
     nmap
     nvtop
+    patchelf
     pavucontrol
     powertop
     prismlauncher
@@ -107,11 +115,14 @@ in
     rustup
     slurp
     smartmontools
+    sqlite
     sshfs
+    steam-run
     superTuxKart
     swayidle
     swaylock-effects
     swww
+    sysstat
     timg
     unigine-heaven
     vulkan-tools
