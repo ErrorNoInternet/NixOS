@@ -255,6 +255,18 @@
           error_diagnostic = {
             bg = '#${config.colorScheme.colors.base01}'
           },
+          hint_selected = {
+            bg = '#${config.colorScheme.colors.base03}'
+          },
+          hint = {
+            bg = '#${config.colorScheme.colors.base01}'
+          },
+          hint_diagnostic_selected = {
+            bg = '#${config.colorScheme.colors.base03}'
+          },
+          hint_diagnostic = {
+            bg = '#${config.colorScheme.colors.base01}'
+          },
           duplicate_selected = {
             bg = '#${config.colorScheme.colors.base03}'
           },
