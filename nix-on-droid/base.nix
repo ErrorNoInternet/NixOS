@@ -9,7 +9,6 @@
     cmatrix
     neofetch
 
-    # unixtools.ping
     croc
     curl
     dig
@@ -26,6 +25,7 @@
     nmap
     openssh
     perl
+    procps
     wget
 
     gcc
