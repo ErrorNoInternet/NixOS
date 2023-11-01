@@ -13,6 +13,7 @@ in
     ../modules/neovim.nix
     ../modules/tmux.nix
     ../modules/zoxide.nix
+    inputs.nix-colors.homeManagerModules.default
   ];
 
   colorScheme = inputs.nix-colors.colorSchemes.nord;
