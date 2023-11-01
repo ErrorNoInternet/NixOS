@@ -146,6 +146,8 @@
       autocmd FileType rust imap <buffer> <F10> <esc> :wa<CR>:term cd %:p:h:h && cargo run<CR>
       autocmd FileType rust map <buffer> <F8> :wa<CR>:term cd %:p:h:h && cargo run --release<CR>
       autocmd FileType rust imap <buffer> <F8> <esc> :wa<CR>:term cd %:p:h:h && cargo run --release<CR>
+      autocmd FileType rust map <buffer> <F11> :wa<CR>:term cd %:p:h:h && cargo build<CR>
+      autocmd FileType rust imap <buffer> <F11> <esc> :wa<CR>:term cd %:p:h:h && cargo build<CR>
       let g:rustfmt_autosave = 1
 
       "Nix indentation
