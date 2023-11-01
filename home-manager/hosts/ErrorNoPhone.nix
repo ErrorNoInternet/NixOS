@@ -1,3 +1,5 @@
+{ inputs, ... }:
+
 let
   custom = {
     predefinedColorScheme = "Nord";
