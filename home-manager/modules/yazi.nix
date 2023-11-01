@@ -46,7 +46,7 @@
           { exec = ''${pkgs.exiftool}/bin/exiftool "$1"; echo "press enter to exit"; read''; block = true; }
         ];
         fallback = [
-          { exec = ''xdg-open "$@"''; display_name = "open"; }
+          { exec = ''xdg-open "$@"''; }
           { exec = ''${pkgs.file}/bin/file "$1"; echo "press enter to exit"; read''; block = true; }
         ];
       };
