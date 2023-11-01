@@ -159,6 +159,7 @@
       lua vim.g.nord_disable_background = true
       lua vim.o.termguicolors = true
       colorscheme ${lib.strings.toLower custom.predefinedColorScheme}
+      highlight CocFloating guibg=#${config.colorScheme.colors.base01}
       highlight clear CursorLine
       if !exists('g:airline_symbols')
         let g:airline_symbols = {}
