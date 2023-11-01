@@ -12,4 +12,6 @@ in
     ../modules/tmux.nix
     ../modules/zoxide.nix
   ];
+
+  colorScheme = inputs.nix-colors.colorSchemes.nord;
 }
