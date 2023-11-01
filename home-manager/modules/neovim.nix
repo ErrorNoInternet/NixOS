@@ -15,6 +15,7 @@
       auto-pairs
       bufferline-nvim
       gruvbox-nvim
+      markdown-preview-nvim
       nerdtree
       nord-nvim
       nvim-colorizer-lua
