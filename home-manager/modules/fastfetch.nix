@@ -22,6 +22,7 @@
     ".config/fastfetch/config.conf" = {
       text = ''
 --disk-folders /
+--logo-padding-right 2
 
 --structure title:separator:os:kernel:uptime:packages:shell:display:wm:theme:icons:cursor:terminalfont:terminal:processes:memory:disk:break:colors
 '';
