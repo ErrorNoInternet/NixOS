@@ -15,7 +15,7 @@
     extraConfig = {
       init.defaultBranch = "main";
       pull.rebase = false;
-      feature.manyFiles = true;
+      index.version = 4;
     };
   };
 }
