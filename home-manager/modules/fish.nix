@@ -30,6 +30,7 @@
     shellAbbrs = {
       s = "sudo";
       g = "git";
+      gc = "git commit -m";
     };
     shellInit = ''
       set -U fish_greeting
