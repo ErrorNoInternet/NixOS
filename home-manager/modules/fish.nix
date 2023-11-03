@@ -44,7 +44,7 @@
 
       set tide_pwd_color_dirs blue
       set tide_pwd_color_anchors blue
-      set tide_character_color blue
+      set tide_character_color cyan
       set tide_time_color cyan
 
       any-nix-shell fish --info-right | source
