@@ -28,6 +28,7 @@
       cava = "TERM=kitty cava";
     };
     shellAbbrs = {
+      s = "sudo";
       g = "git";
     };
     shellInit = ''
