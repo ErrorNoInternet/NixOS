@@ -9,6 +9,7 @@ in
   _module.args = { inherit custom; };
   imports = [
     ../modules/bat.nix
+    ../modules/fastfetch.nix
     ../modules/fish.nix
     ../modules/neovim.nix
     ../modules/nix-on-droid/zsh.nix
