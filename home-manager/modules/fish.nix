@@ -48,7 +48,7 @@
       set tide_time_color cyan
 
       any-nix-shell fish --info-right | source
-      if test (ps | grep fish | wc -l) -eq 0
+      if test (ps | grep fish | wc -l) -eq 1
         mf
       end
     '';
