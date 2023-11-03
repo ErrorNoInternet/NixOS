@@ -30,6 +30,7 @@
     shellAbbrs = {
       s = "sudo";
       g = "git";
+      ga = "git add";
       gc = "git commit -m";
       gp = "git push";
     };
