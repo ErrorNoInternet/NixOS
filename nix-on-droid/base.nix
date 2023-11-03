@@ -4,7 +4,7 @@
   system.stateVersion = "23.05";
   environment.motd = "";
 
-  user.shell = "${pkgs.zsh}/bin/zsh";
+  user.shell = "${pkgs.fish}/bin/fish";
   environment.packages = with pkgs; [
     cmatrix
     neofetch

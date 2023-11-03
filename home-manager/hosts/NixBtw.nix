@@ -31,6 +31,7 @@ in
     ../modules/dunst.nix
     ../modules/fastfetch.nix
     ../modules/fcitx.nix
+    ../modules/fish.nix
     ../modules/git.nix
     ../modules/gtk.nix
     ../modules/hyprland-autoname-workspaces.nix

@@ -134,7 +134,7 @@
           ./server/modules/nfs.nix
           ./server/modules/printing.nix
           ./server/modules/samba.nix
-          ./server/modules/zsh.nix
+          ./server/modules/fish.nix
           ./shared/modules/caches/ErrorNoBinaries.nix
           ./shared/modules/raspberry-pi.nix
         ];

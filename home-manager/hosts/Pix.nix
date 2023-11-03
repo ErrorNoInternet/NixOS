@@ -11,11 +11,12 @@ in
     ../modules/bat.nix
     ../modules/btop.nix
     ../modules/fastfetch.nix
+    ../modules/fish.nix
     ../modules/neovim.nix
     ../modules/tmux.nix
+    ../modules/yazi.nix
     ../modules/zoxide.nix
     ../modules/zsh.nix
-    ../modules/yazi.nix
   ];
 
   home.username = "snowflake";
