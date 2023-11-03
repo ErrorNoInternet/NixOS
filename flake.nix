@@ -75,6 +75,7 @@
           ./workstation/modules/android-development.nix
           ./workstation/modules/bluetooth.nix
           ./workstation/modules/clamav.nix
+          ./workstation/modules/fish.nix
           ./workstation/modules/gaming.nix
           ./workstation/modules/hyprland.nix
           ./workstation/modules/nvidia-options.nix
@@ -97,6 +98,7 @@
           ./workstation/locations/china.nix
           ./workstation/modules/bluetooth.nix
           ./workstation/modules/clamav.nix
+          ./workstation/modules/fish.nix
           ./workstation/modules/gaming.nix
           ./workstation/modules/hyprland.nix
           ./workstation/modules/nvidia-options.nix

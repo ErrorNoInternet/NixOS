@@ -81,18 +81,12 @@
     xdg-user-dirs
     cryptsetup
   ];
-  programs.zsh = {
-    enable = true;
-    enableCompletion = true;
-  };
-  programs.fish.enable = true;
   programs.dconf.enable = true;
   programs.light.enable = true;
   programs.gnupg.agent.enable = true;
   services.gnome.gnome-keyring.enable = true;
   services.openssh.enable = true;
 
-  environment.shells = with pkgs; [ fish zsh ];
   programs.neovim.defaultEditor = true;
   security.pam.services.swaylock = {};
   services.logind.lidSwitch = "ignore";
@@ -136,7 +130,6 @@
     initialPassword = "snowflake";
     isNormalUser = true;
     extraGroups = [ "wheel" "video" ];
-    shell = pkgs.fish;
   };
 
   environment.etc."current-nixos".source = ./.;
