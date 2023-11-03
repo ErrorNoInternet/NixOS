@@ -13,6 +13,7 @@
     curl
     dig
     eza
+    fastfetch
     gawk
     git
     gnugrep
@@ -27,6 +28,7 @@
     perl
     procps
     wget
+    which
 
     gcc
     python3
