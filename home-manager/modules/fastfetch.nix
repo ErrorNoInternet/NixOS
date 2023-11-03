@@ -2,23 +2,23 @@
   home.file = {
     ".config/fastfetch/minimal.conf" = {
       text = ''
---os-key " system"
+--os-key " system  "
 --os-format "{2} {9} ({12})"
---kernel-key " kernel"
+--kernel-key " kernel  "
 --kernel-format "{1} {2}"
---uptime-key " uptime"
+--uptime-key " uptime  "
 --packages-key "󰆧 packages"
 --packages-format "{9}+{10} (nix)"
---disk-key " storage"
+--disk-key " storage "
 --disk-format "{1} / {2} ({3})"
 --terminal-key " terminal"
 --disk-folders /
 --logo-padding-right 3
---key-width 13
---separator ""
-
+--key-width 14
 --set-keyless colors=\e[37m  \e[36m  \e[35m  \e[34m  \e[33m  \e[32m  \e[31m  \e[30m
+--separator " "
 --logo nixos_small
+
 --structure os:kernel:uptime:packages:disk:terminal:colors
 '';
     };
