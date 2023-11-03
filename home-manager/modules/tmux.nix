@@ -21,6 +21,7 @@
       set -ga terminal-overrides ",xterm*:RGB"
       set -ga update-environment TERM
       set -ga update-environment TERM_PROGRAM
+      set -g focus-events off
 
       set -g pane-active-border-style 'fg=colour4'
 
