@@ -31,6 +31,7 @@
       s = "sudo";
       g = "git";
       gc = "git commit -m";
+      gp = "git push";
     };
     shellInit = ''
       set -U fish_greeting
