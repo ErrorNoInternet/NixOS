@@ -88,6 +88,7 @@
       Rescanix = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs pkgs; };
         modules = [
+          ./shared/modules/aarch64-emulation.nix
           ./shared/modules/btrfs-compression.nix
           ./shared/modules/caches/ErrorNoBinaries.nix
           ./shared/modules/caches/hyprland.nix
