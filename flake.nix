@@ -22,7 +22,6 @@
     nix-colors.url = "github:misterio77/nix-colors";
     nix-gaming.url = "github:fufexan/nix-gaming";
     spicetify-nix.url = "github:the-argus/spicetify-nix";
-    waybar.url = "github:Alexays/Waybar";
     yazi.url = "github:sxyazi/yazi";
   };
 
