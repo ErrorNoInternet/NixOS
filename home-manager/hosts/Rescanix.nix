@@ -44,6 +44,7 @@ in
     ../modules/obs-studio.nix
     ../modules/rofi.nix
     ../modules/tmux.nix
+    ../modules/virt-manager.nix
     ../modules/waybar.nix
     ../modules/yazi.nix
     ../modules/zoxide.nix
@@ -126,6 +127,7 @@ in
     sysstat
     timg
     unigine-heaven
+    virt-manager
     vulkan-tools
     wf-recorder
     wl-clipboard
