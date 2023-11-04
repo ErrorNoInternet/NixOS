@@ -47,6 +47,7 @@
       bind \cH backward-kill-word
       bind \e\[3\;5~ kill-word
 
+      set fish_cursor_default line
       set tide_pwd_color_dirs blue
       set tide_pwd_color_anchors blue
       set tide_character_color cyan
