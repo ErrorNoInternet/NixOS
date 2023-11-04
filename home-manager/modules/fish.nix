@@ -31,6 +31,7 @@
       s = "sudo";
       g = "git";
       gd = "git diff";
+      gdc = "git diff --cached";
       ga = "git add";
       gap = "git add -p";
       gc = "git commit -m";
