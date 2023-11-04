@@ -30,8 +30,11 @@
     shellAbbrs = {
       s = "sudo";
       g = "git";
+      gd = "git diff";
       ga = "git add";
+      gap = "git add -p";
       gc = "git commit -m";
+      gca = "git commit --amend";
       gp = "git push";
     };
     shellInit = ''

@@ -7,9 +7,6 @@
       key = "2486BFB7B1E6A4A3";
       signByDefault = true;
     };
-    aliases = {
-      "ca" = "commit --amend";
-    };
     difftastic.enable = true;
     extraConfig = {
       init.defaultBranch = "main";
