@@ -14,6 +14,7 @@ in
     ../modules/neovim.nix
     ../modules/nix-on-droid/zsh.nix
     ../modules/tmux.nix
+    ../modules/yazi.nix
     ../modules/zoxide.nix
     inputs.nix-colors.homeManagerModules.default
   ];
