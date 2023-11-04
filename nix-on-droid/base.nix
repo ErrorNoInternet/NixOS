@@ -17,6 +17,7 @@
     file
     gawk
     git
+    glibc
     gnugrep
     gnupg
     gnutar
