@@ -34,39 +34,31 @@
       coc-sh
     ];
     extraConfig = ''
-      "Basic Configuration
-      syntax on
-      set number
-      set mouse=a
-      set mousemoveevent
+      filetype plugin indent on
+      set completeopt-=preview
       set cursorline
+      set encoding=utf-8
+      set expandtab
+      set fileencoding=utf-8
       set guicursor=
       set laststatus=2
+      set mouse=a
+      set mousemoveevent
       set noshowmode
-      set completeopt-=preview
-
-      filetype plugin indent on
-      set expandtab
-      set tabstop=4
-      set softtabstop=4
+      set noswapfile
+      set number
       set shiftwidth=4
       set smartindent
+      set softtabstop=4
+      set tabstop=4
+      syntax on
 
-      set noswapfile
-      set encoding=utf-8
-      set fileencoding=utf-8
-
-      autocmd TermOpen * startinsert
-
-      let g:python3_host_prog="/usr/bin/python3"
-      let g:semshi#error_sign=v:false
-      let NERDTreeMinimalUI=1
-      let g:presence_file_explorer_text  = "Browsing a folder"
-      let g:presence_reading_text    = "Running some code"
-      let g:presence_buttons       = 0
+      let g:presence_buttons = 0
+      let g:presence_file_explorer_text = "Browsing a folder"
+      let g:presence_reading_text = "Running some code"
       let g:suda_smart_edit = 1
+      let NERDTreeMinimalUI=1
 
-      "Mappings
       nnoremap <C-n> <esc>:bnext<CR>
       nnoremap <C-p> <esc>:bprevious<CR>
       noremap <silent> <C-S> <esc>:w<CR>
@@ -77,49 +69,41 @@
       nnoremap <leader>l :NERDTreeFocus<CR>
       nnoremap <C-l> :NERDTreeToggle<CR>
 
-      "Neovide
       set guifont=JetBrainsMonoNL\ Nerd\ Font:h9
       let g:neovide_remember_window_size = v:true
       let g:neovide_cursor_vfx_mode = "pixiedust"
       let g:neovide_cursor_vfx_particle_density = 20
       let g:neovide_floating_opacity = 0.9
 
-      "Python IDE
+      autocmd TermOpen * startinsert
+
       autocmd FileType python map <buffer> <F10> :wa<CR>:term python3 %<CR>
       autocmd FileType python imap <buffer> <F10> <esc>:wa<CR>:term python3 %<CR>
       autocmd FileType python map <buffer> <F8> :wa<CR>:term pypy3 %<CR>
       autocmd FileType python imap <buffer> <F8> <esc>:wa<CR>:term pypy3 %<CR>
       autocmd FileType python setlocal tabstop=4
 
-      "Lua IDE
       autocmd FileType lua map <buffer> <F10> :wa<CR>:term lua %<CR>
       autocmd FileType lua imap <buffer> <F10> <esc>:wa<CR>:term lua %<CR>
 
-      "SH IDE
       autocmd FileType sh map <buffer> <F10> :wa<CR>:term sh %<CR>
       autocmd FileType sh imap <buffer> <F10> <esc>:wa<CR>:term sh %<CR>
 
-      "Java IDE
       autocmd FileType java map <buffer> <F10> :wa<CR>:term jcompile<CR>
       autocmd FileType java imap <buffer> <F10> <esc>:wa<CR>:term jcompile<CR>
 
-      "C IDE
       autocmd FileType c map <buffer> <F10> :wa<CR>:term gcc -lm % -o %:t:r && ./%:t:r<CR>
       autocmd FileType c imap <buffer> <F10> <esc> :wa<CR>:term gcc -lm % -o %:t:r && ./%:t:r<CR>
 
-      "C++ IDE
       autocmd FileType cpp map <buffer> <F10> :wa<CR>:term g++ -lm % -o %:t:r && ./%:t:r<CR>
       autocmd FileType cpp imap <buffer> <F10> <esc> :wa<CR>:term g++ -lm % -o %:t:r && ./%:t:r<CR>
 
-      "C# IDE
       autocmd FileType cs map <buffer> <F10> :wa<CR>:term mcs % -out:%:t:r && ./%:t:r<CR>
       autocmd FileType cs imap <buffer> <F10> <esc> :wa<CR>:term mcs % -out:%:t:r && ./%:t:r<CR>
 
-      "JavaScript IDE
       autocmd FileType javascript map <buffer> <F10> :wa<CR>:term node %<CR>
       autocmd FileType javascript imap <buffer> <F10> <esc> :wa<CR>:term node %<CR>
 
-      "Go IDE
       autocmd FileType go map <buffer> <F10> :wa<CR>:term go run .<CR>
       autocmd FileType go imap <buffer> <F10> <esc> :wa<CR>:term go run .<CR>
       let g:go_highlight_array_whitespace_error = 1
@@ -142,7 +126,6 @@
       let g:go_highlight_diagnostic_errors = 1
       let g:go_highlight_diagnostic_warnings = 1
 
-      "Rust IDE
       autocmd FileType rust map <buffer> <F10> :wa<CR>:term cd %:p:h:h && cargo run<CR>
       autocmd FileType rust imap <buffer> <F10> <esc> :wa<CR>:term cd %:p:h:h && cargo run<CR>
       autocmd FileType rust map <buffer> <F8> :wa<CR>:term cd %:p:h:h && cargo run --release<CR>
@@ -151,16 +134,15 @@
       autocmd FileType rust imap <buffer> <F11> <esc> :wa<CR>:term cd %:p:h:h && cargo build<CR>
       let g:rustfmt_autosave = 1
 
-      "Nix indentation
       autocmd FileType nix setlocal shiftwidth=2 softtabstop=2 expandtab
 
-      "Themes
       lua vim.g.nord_italic = false
       lua vim.g.nord_disable_background = true
       lua vim.o.termguicolors = true
       colorscheme ${lib.strings.toLower custom.predefinedColorScheme}
-      highlight CocFloating guibg=#${config.colorScheme.colors.base01}
       highlight clear CursorLine
+      highlight CocFloating guibg=#${config.colorScheme.colors.base01}
+
       if !exists('g:airline_symbols')
         let g:airline_symbols = {}
       endif
@@ -186,6 +168,7 @@
           endif
         endfor
       endfunction
+
       lua << EOF
       require("colorizer").setup {
         filetypes = {'*'},
@@ -196,6 +179,7 @@
           hsl_fn   = true;
         }
       }
+
       require("bufferline").setup {
         options = {
           tab_size = 18,
