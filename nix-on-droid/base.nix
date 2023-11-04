@@ -14,6 +14,7 @@
     dig
     eza
     fastfetch
+    file
     gawk
     git
     gnugrep
@@ -29,8 +30,10 @@
     procps
     wget
     which
+    xxd
 
     gcc
+    go
     python3
     rustup
   ];
