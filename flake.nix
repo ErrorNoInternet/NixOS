@@ -174,6 +174,11 @@
         pkgs = pkgsArm;
         extraSpecialArgs = { inherit inputs; };
         modules = [
+          {
+            nixpkgs.config = {
+              allowUnsupportedSystem = true;
+            };
+          }
           agenix.homeManagerModules.default
           ./home-manager/base.nix
           ./home-manager/hosts/Pix.nix

@@ -17,10 +17,8 @@ in
     ../modules/yazi.nix
     ../modules/zoxide.nix
     ../modules/zsh.nix
-    inputs.nix-colors.homeManagerModules.default
   ];
 
-  colorScheme = inputs.nix-colors.colorSchemes.nord;
   home.username = "snowflake";
   home.homeDirectory = "/home/snowflake";
 
