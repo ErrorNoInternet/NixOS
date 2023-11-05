@@ -37,6 +37,7 @@
       gc = "git commit -m";
       gca = "git commit --amend";
       gp = "git push";
+      gl = "git log";
     };
     shellInit = ''
       set -U fish_greeting
