@@ -1,6 +1,3 @@
 {
-  services.clamav = {
-    daemon.enable = true;
-    updater.enable = true;
-  };
+  services.clamav.updater.enable = true;
 }
