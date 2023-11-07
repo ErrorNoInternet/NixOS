@@ -9,9 +9,9 @@
 --uptime-key " uptime  "
 --packages-key "󰆧 packages"
 --packages-format "{9}+{10} (nix)"
---disk-key " storage "
+--memory-key "󰍛 memory  "
+--disk-key "󱥎 storage "
 --disk-format "{1} / {2} ({3})"
---terminal-key " terminal"
 --disk-folders /
 --logo-padding-right 3
 --key-width 14
@@ -19,7 +19,7 @@
 --separator " "
 --logo nixos_small
 
---structure os:kernel:uptime:packages:disk:terminal:colors
+--structure os:kernel:uptime:packages:memory:disk:colors
 '';
     };
     ".config/fastfetch/config.conf" = {
