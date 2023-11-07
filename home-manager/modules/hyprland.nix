@@ -12,7 +12,7 @@
       #   "LIBVA_DRIVER_NAME,nvidia"
       #   "__GLX_VENDOR_LIBRARY_NAME,nvidia"
       #   "WLR_NO_HARDWARE_CURSORS,1"
-      #   "WLR_DRM_DEVICES,/dev/dri/card0"
+      #   "WLR_DRM_DEVICES,/dev/dri/by-path/pci-0000:01:00.0-card"
       # ];
       monitor = [
         "eDP-1,1920x1080@60,1680x0,1"
