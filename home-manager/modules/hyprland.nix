@@ -3,17 +3,17 @@
 {
   wayland.windowManager.hyprland = {
     enable = true;
-    # enableNvidiaPatches = true;
+    enableNvidiaPatches = true;
     package = inputs.hyprland.packages.${pkgs.system}.hyprland;
     settings = {
       "$mainMod" = "ALT";
-      # env = [
-      #   "XDG_SESSION_TYPE,wayland"
-      #   "LIBVA_DRIVER_NAME,nvidia"
-      #   "__GLX_VENDOR_LIBRARY_NAME,nvidia"
-      #   "WLR_NO_HARDWARE_CURSORS,1"
-      #   "WLR_DRM_DEVICES,/dev/dri/by-path/pci-0000:01:00.0-card"
-      # ];
+      env = [
+        "XDG_SESSION_TYPE,wayland"
+        "LIBVA_DRIVER_NAME,nvidia"
+        "__GLX_VENDOR_LIBRARY_NAME,nvidia"
+        "WLR_NO_HARDWARE_CURSORS,1"
+        "WLR_DRM_DEVICES,/dev/dri/by-path/pci-0000:01:00.0-card"
+      ];
       monitor = [
         "eDP-1,1920x1080@60,1680x0,1"
         "VGA-1,1680x1050@60,0x0,1"
