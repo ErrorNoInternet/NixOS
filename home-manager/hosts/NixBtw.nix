@@ -3,7 +3,7 @@
 let
   custom = {
     font = "JetBrainsMono Nerd Font";
-    opacity = ".7";
+    opacity = ".75";
     subtleOpacity = ".9";
     predefinedColorScheme = "Nord";
     pointerCursor = {
