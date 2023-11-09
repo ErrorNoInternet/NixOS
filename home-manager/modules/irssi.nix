@@ -18,4 +18,10 @@
       };
     };
   };
+  home.file.".irssi/default.theme".text = ''
+    abstracts = {
+      sb_background = "%4%k";
+      sb_foreground = "%*";
+    };
+  '';
 }
