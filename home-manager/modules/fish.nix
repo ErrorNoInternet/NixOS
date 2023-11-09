@@ -12,7 +12,7 @@
       l = "ls -l";
       ll = "ls -l";
       la = "ls -a";
-      lla = "ls -al";
+      lla = "ls -la";
       grep = "grep --color";
 
       md = "sudo cryptsetup luksOpen /dev/disk/by-uuid/9cbb87fd-6e5a-45b3-88ee-22d369738be5 luks-btank && sudo mount /dev/mapper/luks-btank /mnt/data";
@@ -38,6 +38,7 @@
       gca = "git commit --amend";
       gp = "git push";
       gl = "git log";
+      nv = "nvim";
     };
     shellInit = ''
       set -U fish_greeting
