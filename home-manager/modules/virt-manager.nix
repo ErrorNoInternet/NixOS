@@ -23,5 +23,10 @@
       enable-memory-poll = true;
       enable-net-poll = true;
     };
+    "org/virt-manager/virt-manager/vmlist-fields" = {
+      disk-usage = true;
+      memory-usage = true;
+      network-traffic = true;
+    };
   };
 }
