@@ -101,7 +101,9 @@ in
     jq
     nmap
     nvtop
+    procs
     pv
+    ripgrep
     timg
 
     # graphical utilities

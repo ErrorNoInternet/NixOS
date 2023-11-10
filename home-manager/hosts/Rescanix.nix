@@ -111,10 +111,12 @@ in
     pavucontrol
     powertop
     prismlauncher
+    procs
     pv
     python3
     radeontop
     ripdrag
+    ripgrep
     rustup
     slurp
     smartmontools

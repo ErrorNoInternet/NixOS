@@ -37,10 +37,15 @@
   environment.systemPackages = with pkgs; [
     btop
     curl
+    dua
+    duf
+    fd
     file
     git
     lsof
     neovim
+    procs
+    ripgrep
     sysstat
     tmux
     unzip

@@ -15,6 +15,7 @@
     dua
     eza
     fastfetch
+    fd
     file
     gawk
     git
@@ -30,6 +31,8 @@
     openssh
     perl
     procps
+    procs
+    ripgrep
     wget
     which
     xxd
