@@ -40,7 +40,7 @@
         follow_mouse = 1;
         accel_profile = "flat";
         sensitivity = 0.8;
-        repeat_delay = 300;
+        repeat_delay = 250;
         repeat_rate = 40;
       };
       general = {
