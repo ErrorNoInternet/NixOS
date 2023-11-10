@@ -31,6 +31,7 @@ in
 
     # system utilities
     croc
+    dua
     duf
     eza
     inputs.hsize.packages.${pkgs.system}.hsize

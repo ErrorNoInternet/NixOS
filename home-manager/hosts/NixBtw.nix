@@ -92,6 +92,7 @@ in
     bandwhich
     compsize
     croc
+    dua
     duf
     eza
     fd

@@ -12,6 +12,7 @@
     croc
     curl
     dig
+    dua
     eza
     fastfetch
     file

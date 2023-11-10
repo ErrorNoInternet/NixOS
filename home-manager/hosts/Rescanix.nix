@@ -76,6 +76,7 @@ in
     croc
     ddrescue
     drm_info
+    dua
     duf
     duperemove
     eza
