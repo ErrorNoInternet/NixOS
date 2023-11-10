@@ -141,7 +141,7 @@
   '';
   systemd.services.attic-cache = {
     wantedBy = [ "multi-user.target" ];
-    description = "Attic Nix binary cache";
+    description = "Attic - a Nix binary cache";
     serviceConfig = {
       Type = "simple";
       Restart = "always";

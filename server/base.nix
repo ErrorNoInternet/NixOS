@@ -45,6 +45,7 @@
     lsof
     neovim
     procs
+    pueue
     ripgrep
     sysstat
     tmux
@@ -52,6 +53,16 @@
     wget
     zip
   ];
+
+  systemd.services.pueued = {
+    wantedBy = [ "multi-user.target" ];
+    description = "pueue daemon";
+    serviceConfig = {
+      Type = "simple";
+      Restart = "always";
+      ExecStart = ''${pkgs.pueue}/bin/pueued'';
+    };
+  };
 
   services = {
     openssh.enable = true;
@@ -78,6 +89,7 @@
       };
     };
   };
+
   users.users = {
     root.password = "snowflake";
     snowflake = {
