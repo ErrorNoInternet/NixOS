@@ -70,16 +70,17 @@
   environment.systemPackages = with pkgs; [
     libsForQt5.qt5.qtgraphicaleffects
 
-    vim
-    neovim
-    wget
+    cryptsetup
     curl
-    unzip
     file
     killall
+    neovim
     pulseaudio
+    ripgrep
+    unzip
+    vim
+    wget
     xdg-user-dirs
-    cryptsetup
   ];
   programs.dconf.enable = true;
   programs.light.enable = true;

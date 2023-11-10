@@ -103,7 +103,6 @@ in
     nvtop
     procs
     pv
-    ripgrep
     timg
 
     # graphical utilities

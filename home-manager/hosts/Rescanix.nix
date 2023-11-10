@@ -116,7 +116,6 @@ in
     python3
     radeontop
     ripdrag
-    ripgrep
     rustup
     slurp
     smartmontools
