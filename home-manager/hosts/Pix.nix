@@ -35,7 +35,6 @@ in
     inputs.hsize.packages.${pkgs.system}.hsize
     jq
     nmap
-    nvtop
     timg
 
     # development utilities
