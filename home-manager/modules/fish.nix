@@ -40,7 +40,7 @@
       gp = "git push";
       gl = "git log";
       nv = "nvim";
-      ns = "nix shell nixpkgs#";
+      ns = "nix shell";
     };
     shellInit = ''
       set -U fish_greeting
