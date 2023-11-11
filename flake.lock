@@ -472,11 +472,11 @@
         "nixpkgs": "nixpkgs_5"
       },
       "locked": {
-        "lastModified": 1698687579,
-        "narHash": "sha256-BWqQQLhpuQolMiLMTcsc8cNlNzI9+MG/uc184IlP2nA=",
+        "lastModified": 1699207529,
+        "narHash": "sha256-FedgUGYiA4ZapIywsLSFgvXGyoFraBB44bI63+F00QE=",
         "owner": "hyprwm",
         "repo": "contrib",
-        "rev": "bfd3e0efc1af9654808e644b157eb3c170c26fa1",
+        "rev": "e2cb3559cf435bd26585405de0c6b23855786337",
         "type": "github"
       },
       "original": {
