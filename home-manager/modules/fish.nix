@@ -52,6 +52,7 @@
 
       set fish_cursor_default line
       set tide_color_truncated_dirs blue
+      set tide_pwd_color_truncated_dirs blue
       set tide_pwd_color_dirs blue
       set tide_pwd_color_anchors blue
       set tide_character_color cyan
