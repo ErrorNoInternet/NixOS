@@ -39,6 +39,7 @@
       gca = "git commit --amend";
       gp = "git push";
       gl = "git log";
+      gs = "git show";
       nv = "nvim";
       ns = "nix shell";
     };
