@@ -151,6 +151,7 @@
           ./home-manager/base.nix
           ./home-manager/hosts/NixBtw.nix
           ./home-manager/locations/china.nix
+          ./home-manager/modules/nix.nix
           ./home-manager/modules/spicetify.nix
           ./shared/modules/caches/ErrorNoBinaries.nix
           ./shared/modules/caches/nix-gaming.nix
@@ -164,6 +165,7 @@
           ./home-manager/base.nix
           ./home-manager/hosts/Rescanix.nix
           ./home-manager/locations/china.nix
+          ./home-manager/modules/nix.nix
           ./home-manager/modules/spicetify.nix
           ./shared/modules/caches/nix-gaming.nix
           ./shared/modules/caches/ErrorNoBinaries.nix
@@ -182,6 +184,7 @@
           ./home-manager/base.nix
           ./home-manager/hosts/Pix.nix
           ./home-manager/locations/china.nix
+          ./home-manager/modules/nix.nix
           ./shared/modules/caches/ErrorNoBinaries.nix
         ];
       };

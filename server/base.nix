@@ -8,6 +8,14 @@
       auto-optimise-store = true;
       experimental-features = [ "nix-command" "flakes" ];
     };
+    registry =
+      lib.mapAttrs'
+        (name: flake:
+          let
+            name' = if (name == "self") then "config" else name;
+          in
+          lib.nameValuePair name' { inherit flake; })
+        inputs;
     gc = {
       automatic = true;
       dates = "weekly";
