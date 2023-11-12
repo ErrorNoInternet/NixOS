@@ -60,6 +60,7 @@
         blur = {
           enabled = true;
           passes = 2;
+          size = 12;
         };
       };
       animations = {
