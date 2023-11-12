@@ -173,7 +173,7 @@
       require("colorizer").setup {
         filetypes = {'*'},
         user_default_options = {
-          names  = false;
+          names    = false;
           RRGGBBAA = true;
           rgb_fn   = true;
           hsl_fn   = true;
@@ -199,68 +199,29 @@
           }
         },
         highlights = {
-          fill = {
-            bg = '#${config.colorScheme.colors.base01}'
-          },
-          background = {
-            bg = '#${config.colorScheme.colors.base01}',
-          },
           separator = {
             fg = '#${config.colorScheme.colors.base00}',
             bg = '#${config.colorScheme.colors.base01}'
           },
-          indicator_selected = {
-            bg = '#${config.colorScheme.colors.base03}'
-          },
-          close_button_selected = {
-            bg = '#${config.colorScheme.colors.base03}'
-          },
-          modified_selected = {
-            bg = '#${config.colorScheme.colors.base03}'
-          },
-          close_button = {
-            bg = '#${config.colorScheme.colors.base01}'
-          },
-          modified = {
-            bg = '#${config.colorScheme.colors.base01}'
-          },
-          buffer_selected = {
-            bg = '#${config.colorScheme.colors.base03}',
-            italic = false
-          },
-          buffer = {
-            bg = '#${config.colorScheme.colors.base01}'
-          },
-          error_selected = {
-            bg = '#${config.colorScheme.colors.base03}'
-          },
-          error = {
-            bg = '#${config.colorScheme.colors.base01}'
-          },
-          error_diagnostic_selected = {
-            bg = '#${config.colorScheme.colors.base03}'
-          },
-          error_diagnostic = {
-            bg = '#${config.colorScheme.colors.base01}'
-          },
-          hint_selected = {
-            bg = '#${config.colorScheme.colors.base03}'
-          },
-          hint = {
-            bg = '#${config.colorScheme.colors.base01}'
-          },
-          hint_diagnostic_selected = {
-            bg = '#${config.colorScheme.colors.base03}'
-          },
-          hint_diagnostic = {
-            bg = '#${config.colorScheme.colors.base01}'
-          },
-          duplicate_selected = {
-            bg = '#${config.colorScheme.colors.base03}'
-          },
-          duplicate = {
-            bg = '#${config.colorScheme.colors.base01}'
-          },
+          fill = { bg = '#${config.colorScheme.colors.base01}' },
+          background = { bg = '#${config.colorScheme.colors.base01}', },
+          indicator_selected = { bg = '#${config.colorScheme.colors.base03}' },
+          close_button_selected = { bg = '#${config.colorScheme.colors.base03}' },
+          modified_selected = { bg = '#${config.colorScheme.colors.base03}' },
+          close_button = { bg = '#${config.colorScheme.colors.base01}' },
+          modified = { bg = '#${config.colorScheme.colors.base01}' },
+          buffer_selected = { bg = '#${config.colorScheme.colors.base03}', italic = false },
+          buffer = { bg = '#${config.colorScheme.colors.base01}' },
+          error_selected = { bg = '#${config.colorScheme.colors.base03}' },
+          error = { bg = '#${config.colorScheme.colors.base01}' },
+          error_diagnostic_selected = { bg = '#${config.colorScheme.colors.base03}' },
+          error_diagnostic = { bg = '#${config.colorScheme.colors.base01}' },
+          hint_selected = { bg = '#${config.colorScheme.colors.base03}' },
+          hint = { bg = '#${config.colorScheme.colors.base01}' },
+          hint_diagnostic_selected = { bg = '#${config.colorScheme.colors.base03}' },
+          hint_diagnostic = { bg = '#${config.colorScheme.colors.base01}' },
+          duplicate_selected = { bg = '#${config.colorScheme.colors.base03}' },
+          duplicate = { bg = '#${config.colorScheme.colors.base01}' },
         }
       }
       EOF
