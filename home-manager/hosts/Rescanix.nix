@@ -93,6 +93,7 @@ in
     hyprpicker
     inputs.hsize.packages.${pkgs.system}.hsize
     inputs.hyprwm-contrib.packages.${pkgs.system}.grimblast
+    inputs.hyprwm-contrib.packages.${pkgs.system}.scratchpad
     inputs.nix-gaming.packages.${pkgs.system}.osu-lazer-bin
     inputs.nix-gaming.packages.${pkgs.system}.wine-ge
     intel-gpu-tools

@@ -68,22 +68,23 @@ in
 
   home.packages = with pkgs; [
     # rice
-    fastfetch
-    cmatrix
     cava
+    cmatrix
+    fastfetch
 
     # desktop
+    (import ../derivations/brightness.nix { inherit pkgs; })
+    (import ../derivations/pavolume.nix { inherit pkgs; })
+    (import ../derivations/swaylock.nix { inherit config custom pkgs; })
     cliphist
     hyprland-autoname-workspaces
     hyprpicker
     inputs.hyprwm-contrib.packages.${pkgs.system}.grimblast
+    inputs.hyprwm-contrib.packages.${pkgs.system}.scratchpad
     pavucontrol
     swayidle
     swww
     wl-clipboard
-    (import ../derivations/brightness.nix { inherit pkgs; })
-    (import ../derivations/pavolume.nix { inherit pkgs; })
-    (import ../derivations/swaylock.nix { inherit config custom pkgs; })
 
     # system utilities
     (import ../../workstation/derivations/tbw.nix { inherit pkgs; })
