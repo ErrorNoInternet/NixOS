@@ -98,6 +98,8 @@
       bind = [
         "$mainMod, D, exec, rofi -show drun || pkill rofi"
         "$mainMod, Z, exec, rofi -show drun || pkill rofi"
+        "$mainMod, S, exec, scratchpad"
+        "$mainMod SHIFT, S, exec, scratchpad -g"
         "$mainMod, G, exec, cliphist list | rofi -dmenu | cliphist decode | wl-copy"
         "$mainMod, code:60, exec, rofi -show emoji"
         ", PRINT, exec, grimblast --freeze copy area"
