@@ -106,6 +106,7 @@
 
         "$mainMod, L, exec, custom-swaylock 0 1"
         "$mainMod, RETURN, exec, kitty"
+        "$mainMod SHIFT, RETURN, exec, kitty --class=kitty-floating"
 
         "$mainMod, TAB, workspace, previous"
         "$mainMod SHIFT, F, fullscreen"
@@ -173,12 +174,13 @@
         ",switch:off:Lid Switch, exec, swaylock 0 1"
       ];
       windowrulev2 = [
-        "float,class:^(pavucontrol)$"
+        "float,class:^(branchdialog)$"
         "float,class:^(confirm)$"
         "float,class:^(dialog)$"
-        "float,class:^(branchdialog)$"
-        "float,class:^(notification)$"
         "float,class:^(error)$"
+        "float,class:^(notification)$"
+        "float,class:^(pavucontrol)$"
+        "float,class:floating"
         "float,title:^(mpv)$"
 
         "opacity ${custom.subtleOpacity} ${custom.subtleOpacity},class:^(discord)$"
