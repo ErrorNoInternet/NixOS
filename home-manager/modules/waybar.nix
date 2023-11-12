@@ -119,7 +119,7 @@
       }
 
       window#waybar {
-        background-color: rgba(${builtins.toString (lib.intersperse ", " (inputs.nix-colors.lib.conversions.hexToRGB config.colorScheme.colors.base02))}, ${custom.opacity});
+        background-color: rgba(${builtins.toString (lib.intersperse ", " (inputs.nix-colors.lib.conversions.hexToRGB config.colorScheme.colors.base02))}, ${custom.barOpacity});
       }
 
       #workspaces {

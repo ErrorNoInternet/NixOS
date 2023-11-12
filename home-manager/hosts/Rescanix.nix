@@ -5,6 +5,7 @@ let
     font = "JetBrainsMono Nerd Font";
     opacity = ".8";
     subtleOpacity = ".9";
+    barOpacity = ".7";
     predefinedColorScheme = "Nord";
     pointerCursor = {
       name = "Bibata-Modern-Classic";
