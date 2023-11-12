@@ -6,6 +6,7 @@
     enable = true;
     plugins = with pkgs; [
       { name = "tide"; src = fishPlugins.tide.src; }
+      { name = "autopair"; src = fishPlugins.autopair.src; }
     ];
     shellAliases = {
       ls = "eza --git --icons";
