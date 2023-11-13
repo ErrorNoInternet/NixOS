@@ -9,7 +9,10 @@
 
   boot.loader = {
     timeout = lib.mkForce 5;
-    systemd-boot.memtest86.enable = true;
+    systemd-boot = {
+      memtest86.enable = true;
+      netbootxyz.enable = true;
+    };
   };
   services.xserver.desktopManager.plasma5.enable = true;
   environment.systemPackages = with pkgs; [];
