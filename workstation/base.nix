@@ -30,7 +30,10 @@
   i18n.defaultLocale = "en_US.UTF-8";
   boot = {
     loader = {
-      systemd-boot.enable = true;
+      systemd-boot = {
+        enable = true;
+        consoleMode = "max";
+      };
       efi.canTouchEfiVariables = true;
       timeout = 3;
     };
