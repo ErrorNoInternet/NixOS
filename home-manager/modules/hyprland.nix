@@ -8,15 +8,15 @@
     settings = {
       "$mainMod" = "ALT";
       env = [
-      #  "XDG_SESSION_TYPE,wayland"
-      #  "LIBVA_DRIVER_NAME,nvidia"
       #  "__GLX_VENDOR_LIBRARY_NAME,nvidia"
-      #  "WLR_NO_HARDWARE_CURSORS,1"
-      #  "WLR_DRM_DEVICES,/dev/dri/by-path/pci-0000:01:00.0-card"
       #  "__NV_PRIME_RENDER_OFFLOAD,1"
-      #  "_NV_PRIME_RENDER_OFFLOAD_PROVIDER,NVIDIA-G0"
-      #  "_GLX_VENDOR_LIBRARY_NAME,nvidia"
-      #  "_VK_LAYER_NV_optimus,NVIDIA_only"
+      #  "__NV_PRIME_RENDER_OFFLOAD_PROVIDER,NVIDIA-G0"
+      #  "__VK_LAYER_NV_optimus,NVIDIA_only"
+      #  "GBM_BACKEND,nvidia-drm"
+      #  "LIBVA_DRIVER_NAME,nvidia"
+      #  "WLR_DRM_DEVICES,/dev/dri/card1"
+      #  "WLR_NO_HARDWARE_CURSORS,1"
+      #  "XDG_SESSION_TYPE,wayland"
       ];
       monitor = [
         "eDP-1,1920x1080@60,1680x0,1"
