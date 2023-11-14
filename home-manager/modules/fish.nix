@@ -43,6 +43,7 @@
       gs = "git show";
       nv = "nvim";
       ns = "nix shell";
+      nd = "nix develop -c fish";
     };
     shellInit = ''
       set -U fish_greeting
