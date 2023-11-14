@@ -31,6 +31,7 @@
     };
     shellAbbrs = {
       s = "sudo";
+      nv = "nvim";
       g = "git";
       gd = "git diff";
       gdc = "git diff --cached";
@@ -41,7 +42,7 @@
       gp = "git push";
       gl = "git log";
       gs = "git show";
-      nv = "nvim";
+      gr = "git restore";
       ns = "nix shell";
       nd = "nix develop -c fish";
     };
