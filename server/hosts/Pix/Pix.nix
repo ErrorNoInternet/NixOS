@@ -9,6 +9,7 @@
   environment.systemPackages = with pkgs; [
     compsize
     duperemove
+    smartmontools
     xxd
   ];
 
