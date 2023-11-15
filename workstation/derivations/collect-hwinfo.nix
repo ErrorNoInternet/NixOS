@@ -15,6 +15,7 @@ pkgs.writeShellApplication {
     set -x
 
     ${pkgs.util-linux}/bin/lscpu > lscpu 2>&1
+    ${pkgs.util-linux}/bin/lscpu -e > lscpu-extended 2>&1
     cat /proc/cpuinfo > cpuinfo
 
     ${pkgs.util-linux}/bin/lsmem > lsmem 2>&1
