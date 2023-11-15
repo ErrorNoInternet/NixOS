@@ -21,9 +21,9 @@ pkgs.writeShellApplication {
     ${pkgs.util-linux}/bin/lsmem > lsmem 2>&1
     cat /proc/meminfo > meminfo
 
-    ${pkgs.pciutils}/bin/lspci -v > lspci 2>&1
+    ${pkgs.pciutils}/bin/lspci -vv > lspci 2>&1
 
-    ${pkgs.usbutils}/bin/lsusb -v > lsusb 2>&1
+    ${pkgs.usbutils}/bin/lsusb -vv > lsusb 2>&1
 
     ${pkgs.dmidecode}/bin/dmidecode > dmidecode 2>&1
 
@@ -33,6 +33,8 @@ pkgs.writeShellApplication {
 
     ${pkgs.lshw}/bin/lshw > lshw 2>&1
     ${pkgs.lshw}/bin/lshw --short > lshw-short 2>&1
+
+    ${pkgs.eza}/bin/eza --icons=always --no-permissions --no-user --no-time -lT /sys/class > sys-class
 
     for device in $(${pkgs.util-linux}/bin/lsblk -l -oNAME | tail -n+2); do
         ${pkgs.smartmontools}/bin/smartctl -x "/dev/$device" > smartctl/"$device" 2>&1
