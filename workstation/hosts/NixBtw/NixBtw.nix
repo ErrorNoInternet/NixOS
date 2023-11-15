@@ -19,6 +19,7 @@
   };
 
   nix.gc.automatic = false;
+  boot.kernelPackages = pkgs.linuxPackages_testing;
 
   services.udev.extraRules = ''
     SUBSYSTEMS=="usb|hidraw", ATTRS{idVendor}=="1770", ATTRS{idProduct}=="ff00", TAG+="uaccess", TAG+="MSI_3Zone_Laptop"
@@ -31,6 +32,4 @@
     script = "intel_gpu_frequency -m";
     wantedBy = [ "multi-user.target" ];
   };
-
-  boot.kernelPackages = pkgs.linuxPackages_testing;
 }
