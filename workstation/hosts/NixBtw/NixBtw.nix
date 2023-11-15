@@ -31,4 +31,6 @@
     script = "intel_gpu_frequency -m";
     wantedBy = [ "multi-user.target" ];
   };
+
+  boot.kernelPackages = pkgs.linuxPackages_testing;
 }
