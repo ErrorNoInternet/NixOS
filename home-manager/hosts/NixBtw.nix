@@ -128,7 +128,6 @@ in
     jetbrains.idea-community
     python310Packages.bpython
     rustup
-    virt-manager
 
     # games
     prismlauncher
