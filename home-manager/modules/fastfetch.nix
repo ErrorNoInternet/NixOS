@@ -12,6 +12,7 @@
         --disk-key "󱥎 storage "
         --disk-format "{1} / {2} ({3})"
         --disk-folders /
+        --logo-padding-left 1
         --logo-padding-right 3
         --key-width 14
         --set-keyless colors=\e[37m  \e[36m  \e[35m  \e[34m  \e[33m  \e[32m  \e[31m  \e[30m
