@@ -17,6 +17,7 @@
       gruvbox-nvim
       markdown-preview-nvim
       nerdtree
+      nix-develop-nvim
       nord-nvim
       nvim-colorizer-lua
       presence-nvim
