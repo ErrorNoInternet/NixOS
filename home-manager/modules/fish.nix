@@ -22,6 +22,7 @@
       home-switch = "home-manager switch --flake .";
       f = "fastfetch";
       mf = "fastfetch --load-config ~/.config/fastfetch/minimal.conf";
+      mfa = "fastfetch --load-config ~/.config/fastfetch/nix-on-droid_minimal.conf";
       cm = "cmatrix -C blue";
       py = "python3";
       timg = "timg -pk";
@@ -65,7 +66,11 @@
 
       any-nix-shell fish --info-right | source
       if test (ps | grep fish | wc -l) -eq 1
-        mf
+        if test -e /android/system/bin/linker64
+          mfa
+        else
+          mf
+        end
       end
     '';
   };
