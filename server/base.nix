@@ -1,13 +1,8 @@
-{ config, lib, pkgs, ... }:
+{ config, inputs, lib, pkgs, ... }:
 
 {
   nixpkgs.config.allowUnfree = true;
   nix = {
-    settings = {
-      trusted-users = [ "root" "@wheel" ];
-      auto-optimise-store = true;
-      experimental-features = [ "nix-command" "flakes" ];
-    };
     registry =
       lib.mapAttrs'
         (name: flake:
@@ -16,10 +11,15 @@
           in
           lib.nameValuePair name' { inherit flake; })
         inputs;
+    settings = {
+      experimental-features = [ "nix-command" "flakes" ];
+      trusted-users = [ "root" "@wheel" ];
+      auto-optimise-store = true;
+    };
     gc = {
-      automatic = true;
+      automatic = lib.mkDefault true;
       dates = "weekly";
-      options = "--delete-older-than 14d";
+      options = "--delete-older-than 30d";
     };
     extraOptions = ''
       min-free = ${toString (1024 * 1024 * 1024 * 5)}
