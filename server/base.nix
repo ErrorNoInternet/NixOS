@@ -11,6 +11,7 @@
           in
           lib.nameValuePair name' { inherit flake; })
         inputs;
+    nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
     settings = {
       experimental-features = [ "nix-command" "flakes" ];
       trusted-users = [ "root" "@wheel" ];
@@ -61,6 +62,7 @@
     wget
     zip
   ];
+  programs.command-not-found.enable = false;
 
   systemd.services.pueued = {
     wantedBy = [ "multi-user.target" ];
