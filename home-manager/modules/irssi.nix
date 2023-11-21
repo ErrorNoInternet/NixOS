@@ -1,16 +1,19 @@
+let
+  nickname = "ErrorNoInternet";
+in
 {
   programs.irssi = {
     enable = true;
     networks = {
       liberachat = {
-        nick = "ErrorNoInternet";
+        nick = "${nickname}";
         server = {
           address = "irc.libera.chat";
           port = 6697;
         };
       };
       oftc = {
-        nick = "ErrorNoInternet";
+        nick = "${nickname}";
         server = {
           address = "irc.oftc.net";
           port = 6697;
