@@ -9,7 +9,7 @@
       { name = "autopair"; src = fishPlugins.autopair.src; }
     ];
     shellAliases = {
-      ls = "eza --git --icons";
+      ls = "${pkgs.eza}/bin/eza --git --icons";
       l = "ls -l";
       ll = "ls -l";
       la = "ls -a";
@@ -20,15 +20,15 @@
       md = "sudo cryptsetup luksOpen /dev/disk/by-uuid/9cbb87fd-6e5a-45b3-88ee-22d369738be5 luks-btank && sudo mount /dev/mapper/luks-btank /mnt/data";
       nixos-switch = "sudo nixos-rebuild switch --flake .";
       home-switch = "home-manager switch --flake .";
-      f = "fastfetch";
-      mf = "fastfetch --load-config ~/.config/fastfetch/minimal.conf";
-      mfa = "fastfetch --load-config ~/.config/fastfetch/nix-on-droid_minimal.conf";
-      cm = "cmatrix -C blue";
+      f = "${pkgs.fastfetch}/bin/fastfetch";
+      mf = "${pkgs.fastfetch}/bin/fastfetch --load-config ~/.config/fastfetch/minimal.conf";
+      mfa = "${pkgs.fastfetch}/bin/fastfetch --load-config ~/.config/fastfetch/nix-on-droid_minimal.conf";
+      cm = "${pkgs.cmatrix}/bin/cmatrix -C blue";
       py = "python3";
-      timg = "timg -pk";
-      lsimg = "timg --grid=6 --upscale --title --center --frames=1";
-      drg = "ripdrag -xa";
-      cava = "TERM=kitty cava";
+      timg = "${pkgs.timg}/bin/timg -pk";
+      lsimg = "${pkgs.timg}/bin/timg --grid=6 --upscale --title --center --frames=1";
+      drg = "${pkgs.ripdrag}/bin/ripdrag -xa";
+      cava = "TERM=kitty ${pkgs.cava}/bin/cava";
     };
     shellAbbrs = {
       s = "sudo";
