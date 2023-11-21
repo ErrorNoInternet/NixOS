@@ -34,6 +34,7 @@ in
     ../modules/fcitx.nix
     ../modules/fish.nix
     ../modules/git.nix
+    ../modules/gnupg.nix
     ../modules/gtk.nix
     ../modules/hyprland-autoname-workspaces.nix
     ../modules/hyprland.nix
