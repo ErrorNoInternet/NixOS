@@ -12,11 +12,11 @@
       DEFAULT = " "
 
       [class]
-      DEFAULT = " "
       "Brave-browser" = " "
       "discord" = "󰙯 "
       "firefox" = " "
       "Gimp-2.10" = " "
+      "ImHex" = "󱊧"
       "jetbrains-idea-ce" = ""
       "kitty" = ""
       "libreoffice*" = "󰈙 "
@@ -35,7 +35,9 @@
       "steam" = " "
       "thunderbird" = "󰇮 "
       "virt-manager" = " "
+      "xdg-desktop-portal-gtk" = "󱈄"
       "zoom" = "󰬡 "
+      DEFAULT = " "
 
       [exclude]
       "" = "^$"
