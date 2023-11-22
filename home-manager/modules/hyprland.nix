@@ -170,14 +170,18 @@
         ",switch:off:Lid Switch, exec, swaylock 0 1"
       ];
       windowrulev2 = [
-        "float,class:^(branchdialog)$"
-        "float,class:^(confirm)$"
-        "float,class:^(dialog)$"
-        "float,class:^(error)$"
-        "float,class:^(notification)$"
-        "float,class:^(pavucontrol)$"
-        "float,class:floating"
-        "float,title:^(mpv)$"
+        "float           ,class:floating"
+        "float           ,class:(branchdialog)"
+        "float           ,class:(confirm)"
+        "float           ,class:(dialog)"
+        "float           ,class:(error)"
+        "float           ,class:(notification)"
+        "float           ,class:(pavucontrol)"
+        "float           ,title:(mpv)"
+        "size 1200 750   ,class:(xdg-desktop-portal-gtk)"
+        "float           ,class:(xdg-desktop-portal-gtk)"
+        "center          ,class:(xdg-desktop-portal-gtk)"
+        "animation slide ,class:(xdg-desktop-portal-gtk)"
 
         "opacity ${custom.subtleOpacity} ${custom.subtleOpacity},class:^(discord)$"
       ];
