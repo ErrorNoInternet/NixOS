@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 {
   environment.variables.HOSTNAME = "Rescanix";
@@ -14,6 +14,6 @@
       netbootxyz.enable = true;
     };
   };
+  boot.kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
   services.xserver.desktopManager.plasma5.enable = true;
-  environment.systemPackages = with pkgs; [];
 }
