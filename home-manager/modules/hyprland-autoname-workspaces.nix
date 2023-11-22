@@ -12,6 +12,8 @@
       DEFAULT = " "
 
       [class]
+      DEFAULT = " "
+      ".supertuxkart-wrapped" = "󰵹"
       "Brave-browser" = " "
       "discord" = "󰙯 "
       "firefox" = " "
@@ -37,7 +39,6 @@
       "virt-manager" = " "
       "xdg-desktop-portal-gtk" = "󱈄"
       "zoom" = "󰬡 "
-      DEFAULT = " "
 
       [exclude]
       "" = "^$"
