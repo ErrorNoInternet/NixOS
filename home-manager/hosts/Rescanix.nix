@@ -59,7 +59,7 @@ in
 
   home.packages = with pkgs; [
     (hashcat.override { cudaSupport = true; })
-    (import ../../workstation/derivations/collect-hwinfo.nix { inherit pkgs; })
+    (import ../../workstation/derivations/savehw.nix { inherit pkgs; })
     (import ../../workstation/derivations/passgen.nix { inherit pkgs; })
     (import ../../workstation/derivations/tbw.nix { inherit pkgs; })
     (import ../derivations/brightness.nix { inherit pkgs; })
