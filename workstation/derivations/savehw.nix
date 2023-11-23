@@ -22,14 +22,16 @@ pkgs.writeShellApplication {
     cat /proc/meminfo > meminfo
 
     ${pkgs.pciutils}/bin/lspci -vvv > lspci 2>&1
-
     ${pkgs.usbutils}/bin/lsusb -v > lsusb 2>&1
-
-    ${pkgs.dmidecode}/bin/dmidecode > dmidecode 2>&1
 
     ${pkgs.util-linux}/bin/lsblk -f > lsblk 2>&1
     ${pkgs.util-linux}/bin/fdisk -l > fdisk 2>&1
     cat /proc/scsi/scsi > scsi
+
+    ${pkgs.drm_info}/bin/drm_info > drm_info 2>&1
+    ${pkgs.drm_info}/bin/drm_info -j > drm_info-json 2>&1
+
+    ${pkgs.dmidecode}/bin/dmidecode > dmidecode 2>&1
 
     ${pkgs.lshw}/bin/lshw > lshw 2>&1
     ${pkgs.lshw}/bin/lshw --short > lshw-short 2>&1
