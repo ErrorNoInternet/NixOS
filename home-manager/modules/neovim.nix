@@ -77,13 +77,26 @@
       let g:neovide_cursor_vfx_particle_density = 20
       let g:neovide_floating_opacity = 0.9
 
+      function FormatCBuffer()
+        let cursor_pos = getpos('.')
+        :%!clang-format
+        call setpos('.', cursor_pos)
+      endfunction
+      function FormatPythonBuffer()
+        let cursor_pos = getpos('.')
+        :%!${pkgs.black}/bin/black - 2>/dev/null
+        call setpos('.', cursor_pos)
+      endfunction
+
       autocmd TermOpen * startinsert
+      autocmd BufWritePre *.h,*.hpp,*.c,*.cpp,*.vert,*.frag :call FormatCBuffer()
 
       autocmd FileType python map <buffer> <F10> :wa<CR>:term python3 %<CR>
       autocmd FileType python imap <buffer> <F10> <esc>:wa<CR>:term python3 %<CR>
       autocmd FileType python map <buffer> <F8> :wa<CR>:term pypy3 %<CR>
       autocmd FileType python imap <buffer> <F8> <esc>:wa<CR>:term pypy3 %<CR>
       autocmd FileType python setlocal tabstop=4
+      autocmd BufWritePre *.py :call FormatPythonBuffer()
 
       autocmd FileType lua map <buffer> <F10> :wa<CR>:term lua %<CR>
       autocmd FileType lua imap <buffer> <F10> <esc>:wa<CR>:term lua %<CR>
