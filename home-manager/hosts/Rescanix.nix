@@ -87,7 +87,6 @@ in
     ffmpeg_6-full
     fio
     firefox
-    gcc
     geekbench
     gimp
     gptfdisk

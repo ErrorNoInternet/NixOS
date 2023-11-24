@@ -126,7 +126,6 @@ in
     (python3.withPackages(ps: with ps; [ jedi ]))
     clang
     clang-tools
-    gcc
     go
     jetbrains.idea-community
     python310Packages.bpython
