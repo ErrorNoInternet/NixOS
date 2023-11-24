@@ -89,14 +89,14 @@
       endfunction
 
       autocmd TermOpen * startinsert
-      autocmd BufWritePre *.h,*.hpp,*.c,*.cpp,*.vert,*.frag :call FormatCBuffer()
 
+      autocmd FileType python setlocal tabstop=4
       autocmd FileType python map <buffer> <F10> :wa<CR>:term python3 %<CR>
       autocmd FileType python imap <buffer> <F10> <esc>:wa<CR>:term python3 %<CR>
       autocmd FileType python map <buffer> <F8> :wa<CR>:term pypy3 %<CR>
       autocmd FileType python imap <buffer> <F8> <esc>:wa<CR>:term pypy3 %<CR>
-      autocmd FileType python setlocal tabstop=4
-      autocmd BufWritePre *.py :call FormatPythonBuffer()
+      autocmd FileType python map <buffer> <F2> :w<CR>:call FormatPythonBuffer()<CR>
+      autocmd FileType python imap <buffer> <F2> <esc>:w<CR>:call FormatPythonBuffer()<CR>
 
       autocmd FileType lua map <buffer> <F10> :wa<CR>:term lua %<CR>
       autocmd FileType lua imap <buffer> <F10> <esc>:wa<CR>:term lua %<CR>
@@ -109,9 +109,13 @@
 
       autocmd FileType c map <buffer> <F10> :wa<CR>:term clang -lm % -o %:t:r && ./%:t:r<CR>
       autocmd FileType c imap <buffer> <F10> <esc> :wa<CR>:term clang -lm % -o %:t:r && ./%:t:r<CR>
+      autocmd FileType c map <buffer> <F2> :w<CR>:call FormatCBuffer()<CR>
+      autocmd FileType c imap <buffer> <F2> <esc>:w<CR>:call FormatCBuffer()<CR>
 
       autocmd FileType cpp map <buffer> <F10> :wa<CR>:term clang -lm % -o %:t:r && ./%:t:r<CR>
       autocmd FileType cpp imap <buffer> <F10> <esc> :wa<CR>:term clang -lm % -o %:t:r && ./%:t:r<CR>
+      autocmd FileType cpp map <buffer> <F2> :w<CR>:call FormatCBuffer()<CR>
+      autocmd FileType cpp imap <buffer> <F2> <esc>:w<CR>:call FormatCBuffer()<CR>
 
       autocmd FileType cs map <buffer> <F10> :wa<CR>:term mcs % -out:%:t:r && ./%:t:r<CR>
       autocmd FileType cs imap <buffer> <F10> <esc> :wa<CR>:term mcs % -out:%:t:r && ./%:t:r<CR>
@@ -121,25 +125,28 @@
 
       autocmd FileType go map <buffer> <F10> :wa<CR>:term go run .<CR>
       autocmd FileType go imap <buffer> <F10> <esc> :wa<CR>:term go run .<CR>
+      autocmd FileType go map <buffer> <F2> :w<CR>:GoFmt<CR>
+      autocmd FileType go imap <buffer> <F2> <esc>:w<CR>:GoFmt<CR>
+      let g:go_fmt_autosave = 0
       let g:go_highlight_array_whitespace_error = 1
-      let g:go_highlight_chan_whitespace_error = 1
-      let g:go_highlight_extra_types = 1
-      let g:go_highlight_space_tab_error = 1
-      let g:go_highlight_trailing_whitespace_error = 0
-      let g:go_highlight_operators = 1
-      let g:go_highlight_functions = 1
-      let g:go_highlight_function_parameters = 1
-      let g:go_highlight_function_calls = 1
-      let g:go_highlight_types = 1
-      let g:go_highlight_fields = 1
       let g:go_highlight_build_constraints = 1
-      let g:go_highlight_generate_tags = 1
-      let g:go_highlight_string_spellcheck = 1
-      let g:go_highlight_format_strings = 1
-      let g:go_highlight_variable_declarations = 1
-      let g:go_highlight_variable_assignments = 1
+      let g:go_highlight_chan_whitespace_error = 1
       let g:go_highlight_diagnostic_errors = 1
       let g:go_highlight_diagnostic_warnings = 1
+      let g:go_highlight_extra_types = 1
+      let g:go_highlight_fields = 1
+      let g:go_highlight_format_strings = 1
+      let g:go_highlight_function_calls = 1
+      let g:go_highlight_function_parameters = 1
+      let g:go_highlight_functions = 1
+      let g:go_highlight_generate_tags = 1
+      let g:go_highlight_operators = 1
+      let g:go_highlight_space_tab_error = 1
+      let g:go_highlight_string_spellcheck = 1
+      let g:go_highlight_trailing_whitespace_error = 1
+      let g:go_highlight_types = 1
+      let g:go_highlight_variable_assignments = 1
+      let g:go_highlight_variable_declarations = 1
 
       autocmd FileType rust map <buffer> <F10> :wa<CR>:term cd %:p:h:h && cargo run<CR>
       autocmd FileType rust imap <buffer> <F10> <esc> :wa<CR>:term cd %:p:h:h && cargo run<CR>
@@ -147,7 +154,8 @@
       autocmd FileType rust imap <buffer> <F8> <esc> :wa<CR>:term cd %:p:h:h && cargo run --release<CR>
       autocmd FileType rust map <buffer> <F11> :wa<CR>:term cd %:p:h:h && cargo build<CR>
       autocmd FileType rust imap <buffer> <F11> <esc> :wa<CR>:term cd %:p:h:h && cargo build<CR>
-      let g:rustfmt_autosave = 1
+      autocmd FileType rust map <buffer> <F2> :w<CR>:RustFmt<CR>
+      autocmd FileType rust imap <buffer> <F2> <esc>:w<CR>:RustFmt<CR>
 
       autocmd FileType nix setlocal shiftwidth=2 softtabstop=2 expandtab
 
