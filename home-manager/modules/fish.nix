@@ -34,6 +34,7 @@
       s = "sudo";
       nv = "nvim";
       g = "git";
+      gcl = "git clone";
       gd = "git diff";
       gdc = "git diff --cached";
       ga = "git add";
