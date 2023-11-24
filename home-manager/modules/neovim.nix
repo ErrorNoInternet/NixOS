@@ -79,7 +79,7 @@
 
       function FormatCBuffer()
         let cursor_pos = getpos('.')
-        :%!clang-format
+        :%!${pkgs.clang-tools}/bin/clang-format
         call setpos('.', cursor_pos)
       endfunction
       function FormatPythonBuffer()
