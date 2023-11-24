@@ -28,6 +28,7 @@
       vim-devicons
       vim-go
 
+      coc-clangd
       coc-go
       coc-html
       coc-python
@@ -93,8 +94,8 @@
       autocmd FileType java map <buffer> <F10> :wa<CR>:term jcompile<CR>
       autocmd FileType java imap <buffer> <F10> <esc>:wa<CR>:term jcompile<CR>
 
-      autocmd FileType c map <buffer> <F10> :wa<CR>:term gcc -lm % -o %:t:r && ./%:t:r<CR>
-      autocmd FileType c imap <buffer> <F10> <esc> :wa<CR>:term gcc -lm % -o %:t:r && ./%:t:r<CR>
+      autocmd FileType c map <buffer> <F10> :wa<CR>:term clang -lm % -o %:t:r && ./%:t:r<CR>
+      autocmd FileType c imap <buffer> <F10> <esc> :wa<CR>:term clang -lm % -o %:t:r && ./%:t:r<CR>
 
       autocmd FileType cpp map <buffer> <F10> :wa<CR>:term g++ -lm % -o %:t:r && ./%:t:r<CR>
       autocmd FileType cpp imap <buffer> <F10> <esc> :wa<CR>:term g++ -lm % -o %:t:r && ./%:t:r<CR>

@@ -70,6 +70,8 @@ in
     blender
     brave
     cava
+    clang
+    clang-tools
     cliphist
     cmatrix
     compsize
