@@ -110,8 +110,8 @@
       autocmd FileType c map <buffer> <F10> :wa<CR>:term clang -lm % -o %:t:r && ./%:t:r<CR>
       autocmd FileType c imap <buffer> <F10> <esc> :wa<CR>:term clang -lm % -o %:t:r && ./%:t:r<CR>
 
-      autocmd FileType cpp map <buffer> <F10> :wa<CR>:term g++ -lm % -o %:t:r && ./%:t:r<CR>
-      autocmd FileType cpp imap <buffer> <F10> <esc> :wa<CR>:term g++ -lm % -o %:t:r && ./%:t:r<CR>
+      autocmd FileType cpp map <buffer> <F10> :wa<CR>:term clang -lm % -o %:t:r && ./%:t:r<CR>
+      autocmd FileType cpp imap <buffer> <F10> <esc> :wa<CR>:term clang -lm % -o %:t:r && ./%:t:r<CR>
 
       autocmd FileType cs map <buffer> <F10> :wa<CR>:term mcs % -out:%:t:r && ./%:t:r<CR>
       autocmd FileType cs imap <buffer> <F10> <esc> :wa<CR>:term mcs % -out:%:t:r && ./%:t:r<CR>
