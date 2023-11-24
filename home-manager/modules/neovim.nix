@@ -237,16 +237,23 @@
           modified = { bg = '#${config.colorScheme.colors.base01}' },
           buffer_selected = { bg = '#${config.colorScheme.colors.base03}', italic = false },
           buffer = { bg = '#${config.colorScheme.colors.base01}' },
+          duplicate_selected = { bg = '#${config.colorScheme.colors.base03}' },
+          duplicate = { bg = '#${config.colorScheme.colors.base01}' },
+
           error_selected = { bg = '#${config.colorScheme.colors.base03}' },
           error = { bg = '#${config.colorScheme.colors.base01}' },
           error_diagnostic_selected = { bg = '#${config.colorScheme.colors.base03}' },
           error_diagnostic = { bg = '#${config.colorScheme.colors.base01}' },
+
+          warning_selected = { bg = '#${config.colorScheme.colors.base03}' },
+          warning = { bg = '#${config.colorScheme.colors.base01}' },
+          warning_diagnostic_selected = { bg = '#${config.colorScheme.colors.base03}' },
+          warning_diagnostic = { bg = '#${config.colorScheme.colors.base01}' },
+
           hint_selected = { bg = '#${config.colorScheme.colors.base03}' },
           hint = { bg = '#${config.colorScheme.colors.base01}' },
           hint_diagnostic_selected = { bg = '#${config.colorScheme.colors.base03}' },
           hint_diagnostic = { bg = '#${config.colorScheme.colors.base01}' },
-          duplicate_selected = { bg = '#${config.colorScheme.colors.base03}' },
-          duplicate = { bg = '#${config.colorScheme.colors.base01}' },
         }
       }
       EOF
