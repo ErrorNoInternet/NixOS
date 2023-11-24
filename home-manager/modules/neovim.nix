@@ -107,11 +107,13 @@
       autocmd FileType java map <buffer> <F10> :wa<CR>:term jcompile<CR>
       autocmd FileType java imap <buffer> <F10> <esc>:wa<CR>:term jcompile<CR>
 
+      autocmd FileType c setlocal shiftwidth=2 softtabstop=2 expandtab
       autocmd FileType c map <buffer> <F10> :wa<CR>:term clang -lm % -o %:t:r && ./%:t:r<CR>
       autocmd FileType c imap <buffer> <F10> <esc> :wa<CR>:term clang -lm % -o %:t:r && ./%:t:r<CR>
       autocmd FileType c map <buffer> <F2> :w<CR>:call FormatCBuffer()<CR>
       autocmd FileType c imap <buffer> <F2> <esc>:w<CR>:call FormatCBuffer()<CR>
 
+      autocmd FileType cpp setlocal shiftwidth=2 softtabstop=2 expandtab
       autocmd FileType cpp map <buffer> <F10> :wa<CR>:term clang -lm % -o %:t:r && ./%:t:r<CR>
       autocmd FileType cpp imap <buffer> <F10> <esc> :wa<CR>:term clang -lm % -o %:t:r && ./%:t:r<CR>
       autocmd FileType cpp map <buffer> <F2> :w<CR>:call FormatCBuffer()<CR>
