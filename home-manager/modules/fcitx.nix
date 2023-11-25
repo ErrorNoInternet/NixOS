@@ -59,7 +59,7 @@ in
       EnumerateSkipFirst=False
 
       [Hotkey/TriggerKeys]
-      0=Control+Shift_L
+      0=Control+space
       1=Zenkaku_Hankaku
       2=Hangul
 
