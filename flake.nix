@@ -158,6 +158,7 @@
           ./home-manager/modules/nix.nix
           ./home-manager/modules/spicetify.nix
           ./shared/modules/caches/ErrorNoBinaries.nix
+          ./shared/modules/caches/hyprland.nix
           ./shared/modules/caches/nix-gaming.nix
         ];
       };
@@ -171,8 +172,9 @@
           ./home-manager/locations/china.nix
           ./home-manager/modules/nix.nix
           ./home-manager/modules/spicetify.nix
-          ./shared/modules/caches/nix-gaming.nix
           ./shared/modules/caches/ErrorNoBinaries.nix
+          ./shared/modules/caches/hyprland.nix
+          ./shared/modules/caches/nix-gaming.nix
         ];
       };
       "snowflake@Pix" = home-manager.lib.homeManagerConfiguration {
