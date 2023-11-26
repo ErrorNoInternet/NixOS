@@ -62,6 +62,7 @@
       NixBtw = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs pkgs; };
         modules = [
+          ./shared/base.nix
           ./shared/modules/aarch64-emulation.nix
           ./shared/modules/btrfs-subvolume-compression.nix
           ./shared/modules/caches/ErrorNoBinaries.nix
@@ -87,6 +88,7 @@
       Rescanix = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs pkgs; };
         modules = [
+          ./shared/base.nix
           ./shared/modules/aarch64-emulation.nix
           ./shared/modules/btrfs-compression.nix
           ./shared/modules/caches/ErrorNoBinaries.nix
@@ -120,6 +122,7 @@
           ./server/locations/china.nix
           ./server/modules/bootloader.nix
           ./server/modules/minecraft-server.nix
+          ./shared/base.nix
           ./shared/modules/caches/ErrorNoBinaries.nix
           ./shared/modules/wireless.nix
         ];
@@ -133,10 +136,11 @@
           ./server/hosts/Pix/Pix.nix
           ./server/locations/china.nix
           ./server/modules/attic-cache.nix
+          ./server/modules/fish.nix
           ./server/modules/nfs.nix
           ./server/modules/printing.nix
           ./server/modules/samba.nix
-          ./server/modules/fish.nix
+          ./shared/base.nix
           ./shared/modules/caches/ErrorNoBinaries.nix
           ./shared/modules/raspberry-pi.nix
         ];
