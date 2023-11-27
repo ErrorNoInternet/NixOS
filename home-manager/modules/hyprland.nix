@@ -93,7 +93,6 @@
       misc = {
         disable_hyprland_logo = true;
         disable_splash_rendering = true;
-        vfr = false;
         animate_manual_resizes = true;
         animate_mouse_windowdragging = true;
       };
