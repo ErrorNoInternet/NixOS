@@ -129,7 +129,7 @@ in {
     clang-tools
     go
     jetbrains.idea-community
-    python310Packages.bpython
+    python3Packages.bpython
     rustup
 
     # games

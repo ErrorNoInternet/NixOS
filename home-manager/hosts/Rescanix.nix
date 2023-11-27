@@ -62,12 +62,13 @@ in {
 
   home.packages = with pkgs; [
     (hashcat.override {cudaSupport = true;})
-    (import ../../workstation/derivations/savehw.nix {inherit pkgs;})
     (import ../../workstation/derivations/passgen.nix {inherit pkgs;})
+    (import ../../workstation/derivations/savehw.nix {inherit pkgs;})
     (import ../../workstation/derivations/tbw.nix {inherit pkgs;})
     (import ../derivations/brightness.nix {inherit pkgs;})
     (import ../derivations/pavolume.nix {inherit pkgs;})
     (import ../derivations/swaylock.nix {inherit config custom pkgs;})
+    (python3.withPackages (ps: with ps; [jedi]))
     _7zz
     bandwhich
     blender
@@ -117,7 +118,7 @@ in {
     prismlauncher
     procs
     pv
-    python3
+    python3Packages.bpython
     radeontop
     ripdrag
     rustup
