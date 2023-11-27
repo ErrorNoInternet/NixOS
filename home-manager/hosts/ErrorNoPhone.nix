@@ -9,6 +9,7 @@ in {
     ../modules/comma.nix
     ../modules/fastfetch.nix
     ../modules/fish.nix
+    ../modules/git.nix
     ../modules/neovim.nix
     ../modules/nix-on-droid/zsh.nix
     ../modules/tmux.nix

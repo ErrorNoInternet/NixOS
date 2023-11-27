@@ -20,7 +20,6 @@
     fd
     file
     gawk
-    git
     glibc
     gnugrep
     gnupg
