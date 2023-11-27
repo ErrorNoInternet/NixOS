@@ -68,9 +68,9 @@
           ./shared/base.nix
           ./shared/modules/aarch64-emulation.nix
           ./shared/modules/btrfs-subvolume-compression.nix
-          ./shared/modules/caches/ErrorNoBinaries.nix
-          ./shared/modules/caches/hyprland.nix
-          ./shared/modules/caches/nix-gaming.nix
+          ./shared/caches/ErrorNoBinaries.nix
+          ./shared/caches/hyprland.nix
+          ./shared/caches/nix-gaming.nix
           ./workstation/base.nix
           ./workstation/hosts/NixBtw/hardware-configuration.nix
           ./workstation/hosts/NixBtw/NixBtw.nix
@@ -94,9 +94,9 @@
           ./shared/base.nix
           ./shared/modules/aarch64-emulation.nix
           ./shared/modules/btrfs-compression.nix
-          ./shared/modules/caches/ErrorNoBinaries.nix
-          ./shared/modules/caches/hyprland.nix
-          ./shared/modules/caches/nix-gaming.nix
+          ./shared/caches/ErrorNoBinaries.nix
+          ./shared/caches/hyprland.nix
+          ./shared/caches/nix-gaming.nix
           ./workstation/base.nix
           ./workstation/hosts/Rescanix/hardware-configuration.nix
           ./workstation/hosts/Rescanix/Rescanix.nix
@@ -126,7 +126,7 @@
           ./server/modules/bootloader.nix
           ./server/modules/minecraft-server.nix
           ./shared/base.nix
-          ./shared/modules/caches/ErrorNoBinaries.nix
+          ./shared/caches/ErrorNoBinaries.nix
           ./shared/modules/wireless.nix
         ];
       };
@@ -147,7 +147,7 @@
           ./server/modules/printing.nix
           ./server/modules/samba.nix
           ./shared/base.nix
-          ./shared/modules/caches/ErrorNoBinaries.nix
+          ./shared/caches/ErrorNoBinaries.nix
           ./shared/modules/raspberry-pi.nix
         ];
       };
@@ -164,9 +164,9 @@
           ./home-manager/modules/comma.nix
           ./home-manager/modules/nix.nix
           ./home-manager/modules/spicetify.nix
-          ./shared/modules/caches/ErrorNoBinaries.nix
-          ./shared/modules/caches/hyprland.nix
-          ./shared/modules/caches/nix-gaming.nix
+          ./shared/caches/ErrorNoBinaries.nix
+          ./shared/caches/hyprland.nix
+          ./shared/caches/nix-gaming.nix
         ];
       };
       "ryan@Rescanix" = home-manager.lib.homeManagerConfiguration {
@@ -180,9 +180,9 @@
           ./home-manager/modules/comma.nix
           ./home-manager/modules/nix.nix
           ./home-manager/modules/spicetify.nix
-          ./shared/modules/caches/ErrorNoBinaries.nix
-          ./shared/modules/caches/hyprland.nix
-          ./shared/modules/caches/nix-gaming.nix
+          ./shared/caches/ErrorNoBinaries.nix
+          ./shared/caches/hyprland.nix
+          ./shared/caches/nix-gaming.nix
         ];
       };
       "snowflake@Pix" = home-manager.lib.homeManagerConfiguration {
@@ -200,7 +200,7 @@
           ./home-manager/locations/china.nix
           ./home-manager/modules/comma.nix
           ./home-manager/modules/nix.nix
-          ./shared/modules/caches/ErrorNoBinaries.nix
+          ./shared/caches/ErrorNoBinaries.nix
         ];
       };
     };
