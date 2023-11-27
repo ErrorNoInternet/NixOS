@@ -1,3 +1,4 @@
-{ pkgs, secrets }:
-
-{}
+{
+  pkgs,
+  secrets,
+}: {}

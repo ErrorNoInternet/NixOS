@@ -1,7 +1,5 @@
-{ pkgs, ... }:
-
-{
-  home.packages = [ pkgs.virt-manager ];
+{pkgs, ...}: {
+  home.packages = [pkgs.virt-manager];
   dconf.settings = {
     "org/virt-manager/virt-manager" = {
       xmleditor-enabled = true;

@@ -32,14 +32,15 @@
     nix-on-droid,
     agenix,
     ...
-  } @ inputs:
-  let
+  } @ inputs: let
     overlays = [
       (self: super: {
         openrgb = super.openrgb.overrideAttrs (oldAttrs: {
-          patches = (oldAttrs.patches or []) ++ [
-            ./patches/openrgb-hidapi-libusb.patch
-          ];
+          patches =
+            (oldAttrs.patches or [])
+            ++ [
+              ./patches/openrgb-hidapi-libusb.patch
+            ];
         });
       })
     ];
@@ -56,13 +57,12 @@
         allowUnsupportedSystem = true;
       };
     };
-  in
-  {
+  in {
     formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
 
     nixosConfigurations = {
       NixBtw = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs pkgs; };
+        specialArgs = {inherit inputs pkgs;};
         modules = [
           ./shared/base.nix
           ./shared/modules/aarch64-emulation.nix
@@ -88,7 +88,7 @@
         ];
       };
       Rescanix = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs pkgs; };
+        specialArgs = {inherit inputs pkgs;};
         modules = [
           ./shared/base.nix
           ./shared/modules/aarch64-emulation.nix
@@ -115,7 +115,7 @@
         ];
       };
       Crix = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit pkgs; };
+        specialArgs = {inherit pkgs;};
         modules = [
           agenix.nixosModules.default
           ./server/base.nix
@@ -130,7 +130,10 @@
         ];
       };
       Pix = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; pkgs = pkgsArm; };
+        specialArgs = {
+          inherit inputs;
+          pkgs = pkgsArm;
+        };
         modules = [
           agenix.nixosModules.default
           ./server/base.nix
@@ -151,7 +154,7 @@
     homeConfigurations = {
       "ryan@NixBtw" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
-        extraSpecialArgs = { inherit inputs; };
+        extraSpecialArgs = {inherit inputs;};
         modules = [
           agenix.homeManagerModules.default
           ./home-manager/base.nix
@@ -166,7 +169,7 @@
       };
       "ryan@Rescanix" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
-        extraSpecialArgs = { inherit inputs; };
+        extraSpecialArgs = {inherit inputs;};
         modules = [
           agenix.homeManagerModules.default
           ./home-manager/base.nix
@@ -181,7 +184,7 @@
       };
       "snowflake@Pix" = home-manager.lib.homeManagerConfiguration {
         pkgs = pkgsArm;
-        extraSpecialArgs = { inherit inputs; };
+        extraSpecialArgs = {inherit inputs;};
         modules = [
           {
             nixpkgs.config = {
@@ -198,7 +201,7 @@
       };
     };
     nixOnDroidConfigurations.ErrorNoPhone = nix-on-droid.lib.nixOnDroidConfiguration {
-      extraSpecialArgs = { inherit inputs; };
+      extraSpecialArgs = {inherit inputs;};
       modules = [
         ./nix-on-droid/base.nix
         ./nix-on-droid/hosts/ErrorNoPhone.nix

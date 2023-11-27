@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   age.secrets.nheko-access-token.file = ../../secrets/nheko-access-token.age;
   home.activation."nheko-access-token" = ''
     secret=$(cat "${config.age.secrets.nheko-access-token.path}")

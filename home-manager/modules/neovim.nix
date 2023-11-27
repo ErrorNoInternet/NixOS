@@ -1,6 +1,10 @@
-{ config, custom, lib, pkgs, ... }:
-
 {
+  config,
+  custom,
+  lib,
+  pkgs,
+  ...
+}: {
   programs.neovim = {
     enable = true;
     defaultEditor = true;

@@ -1,12 +1,16 @@
-{ pkgs, ... }:
-
-{
-  home.packages = with pkgs; [ any-nix-shell ];
+{pkgs, ...}: {
+  home.packages = with pkgs; [any-nix-shell];
   programs.fish = {
     enable = true;
     plugins = with pkgs; [
-      { name = "tide"; src = fishPlugins.tide.src; }
-      { name = "autopair"; src = fishPlugins.autopair.src; }
+      {
+        name = "tide";
+        src = fishPlugins.tide.src;
+      }
+      {
+        name = "autopair";
+        src = fishPlugins.autopair.src;
+      }
     ];
     shellAliases = {
       ls = "${pkgs.eza}/bin/eza --git --icons";

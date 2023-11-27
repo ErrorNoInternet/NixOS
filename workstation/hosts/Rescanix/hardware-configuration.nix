@@ -1,9 +1,13 @@
-{ config, lib, pkgs, modulesPath, ... }:
-
 {
-  imports =
-    [ (modulesPath + "/installer/scan/not-detected.nix")
-    ];
+  config,
+  lib,
+  pkgs,
+  modulesPath,
+  ...
+}: {
+  imports = [
+    (modulesPath + "/installer/scan/not-detected.nix")
+  ];
 
   boot.initrd.availableKernelModules = [
     "ahci"
@@ -16,26 +20,26 @@
     "virtio_pci"
     "xhci_pci"
   ];
-  boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-intel" ];
-  boot.extraModulePackages = [ ];
+  boot.initrd.kernelModules = [];
+  boot.kernelModules = ["kvm-intel"];
+  boot.extraModulePackages = [];
 
-  fileSystems."/" =
-    { device = "/dev/disk/by-uuid/69696969-6969-6969-6969-696969696969";
-      fsType = "btrfs";
-    };
+  fileSystems."/" = {
+    device = "/dev/disk/by-uuid/69696969-6969-6969-6969-696969696969";
+    fsType = "btrfs";
+  };
 
-  fileSystems."/efi" =
-    { device = "systemd-1";
-      fsType = "autofs";
-    };
+  fileSystems."/efi" = {
+    device = "systemd-1";
+    fsType = "autofs";
+  };
 
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/6969-6969";
-      fsType = "vfat";
-    };
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-uuid/6969-6969";
+    fsType = "vfat";
+  };
 
-  swapDevices = [ ];
+  swapDevices = [];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's

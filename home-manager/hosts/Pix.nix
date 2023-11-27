@@ -1,12 +1,13 @@
-{ inputs, pkgs, ... }:
-
-let
+{
+  inputs,
+  pkgs,
+  ...
+}: let
   custom = {
     predefinedColorScheme = "Nord";
   };
-in
-{
-  _module.args = { inherit custom; };
+in {
+  _module.args = {inherit custom;};
   imports = [
     ../modules/bat.nix
     ../modules/btop.nix

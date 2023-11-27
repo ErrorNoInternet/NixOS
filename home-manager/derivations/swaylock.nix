@@ -1,8 +1,11 @@
-{ config, custom, pkgs }:
-
+{
+  config,
+  custom,
+  pkgs,
+}:
 pkgs.writeShellApplication {
   name = "custom-swaylock";
-  runtimeInputs = [ pkgs.swaylock-effects ];
+  runtimeInputs = [pkgs.swaylock-effects];
   text = ''
     swaylock \
       --indicator-radius 90 \

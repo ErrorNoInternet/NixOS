@@ -1,6 +1,6 @@
 {
   boot = {
-    supportedFilesystems = [ "zfs" ];
+    supportedFilesystems = ["zfs"];
     zfs.forceImportRoot = false;
   };
 }

@@ -1,6 +1,4 @@
-{ config, ... }:
-
-{
+{config, ...}: {
   age.secrets.wireless-networks.file = ../../secrets/wireless-networks.age;
 
   networking = {

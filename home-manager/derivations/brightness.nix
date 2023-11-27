@@ -1,8 +1,7 @@
-{ pkgs }:
-
+{pkgs}:
 pkgs.writeShellApplication {
   name = "brightness";
-  runtimeInputs = [ pkgs.light ];
+  runtimeInputs = [pkgs.light];
   text = ''
     if [[ $1 == "up" ]]; then
       for _ in {0..5}; do

@@ -3,5 +3,5 @@
     libvirtd.enable = true;
     spiceUSBRedirection.enable = true;
   };
-  users.users.ryan.extraGroups = [ "libvirtd" ];
+  users.users.ryan.extraGroups = ["libvirtd"];
 }

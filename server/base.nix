@@ -1,14 +1,18 @@
-{ config, inputs, lib, pkgs, ... }:
-
 {
+  config,
+  inputs,
+  lib,
+  pkgs,
+  ...
+}: {
   boot = {
-    kernelParams = [ "console=tty0" ];
-    supportedFilesystems = [ "ntfs" ];
+    kernelParams = ["console=tty0"];
+    supportedFilesystems = ["ntfs"];
   };
   networking = {
     firewall = {
       enable = true;
-      allowedTCPPorts = [ 22 ];
+      allowedTCPPorts = [22];
     };
   };
   zramSwap = {
@@ -37,7 +41,7 @@
   programs.command-not-found.enable = false;
 
   systemd.services.pueued = {
-    wantedBy = [ "multi-user.target" ];
+    wantedBy = ["multi-user.target"];
     description = "pueue daemon";
     serviceConfig = {
       Type = "simple";
@@ -50,7 +54,7 @@
     openssh.enable = true;
     fail2ban = {
       enable = true;
-      ignoreIP = [ "192.168.0.101" ];
+      ignoreIP = ["192.168.0.101"];
       maxretry = 6;
       bantime-increment = {
         enable = true;
@@ -76,7 +80,7 @@
     root.password = "snowflake";
     snowflake = {
       isNormalUser = true;
-      extraGroups = [ "wheel" ];
+      extraGroups = ["wheel"];
       initialPassword = "snowflake";
       openssh.authorizedKeys.keys = [
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDzdpxex2GlFVf5G2qsh3Ixa/XCMjnbq4JSTmAev7WYJ"

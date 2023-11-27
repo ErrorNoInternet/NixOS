@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   networking.firewall.allowedTCPPorts = [
     # wsdd
     5357

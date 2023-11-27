@@ -1,7 +1,6 @@
 let
   nickname = "ErrorNoInternet";
-in
-{
+in {
   programs.irssi = {
     enable = true;
     networks = {

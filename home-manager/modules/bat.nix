@@ -1,6 +1,4 @@
-{ custom, ... }:
-
-{
+{custom, ...}: {
   programs.bat = {
     enable = true;
     config = {

@@ -1,6 +1,11 @@
-{ config, custom, inputs, lib, pkgs, ... }:
-
 {
+  config,
+  custom,
+  inputs,
+  lib,
+  pkgs,
+  ...
+}: {
   wayland.windowManager.hyprland = {
     enable = true;
     # enableNvidiaPatches = true;
@@ -8,15 +13,15 @@
     settings = {
       "$mainMod" = "ALT";
       env = [
-      #  "__GLX_VENDOR_LIBRARY_NAME,nvidia"
-      #  "__NV_PRIME_RENDER_OFFLOAD,1"
-      #  "__NV_PRIME_RENDER_OFFLOAD_PROVIDER,NVIDIA-G0"
-      #  "__VK_LAYER_NV_optimus,NVIDIA_only"
-      #  "GBM_BACKEND,nvidia-drm"
-      #  "LIBVA_DRIVER_NAME,nvidia"
-      #  "WLR_DRM_DEVICES,/dev/dri/card1"
-      #  "WLR_NO_HARDWARE_CURSORS,1"
-      #  "XDG_SESSION_TYPE,wayland"
+        #  "__GLX_VENDOR_LIBRARY_NAME,nvidia"
+        #  "__NV_PRIME_RENDER_OFFLOAD,1"
+        #  "__NV_PRIME_RENDER_OFFLOAD_PROVIDER,NVIDIA-G0"
+        #  "__VK_LAYER_NV_optimus,NVIDIA_only"
+        #  "GBM_BACKEND,nvidia-drm"
+        #  "LIBVA_DRIVER_NAME,nvidia"
+        #  "WLR_DRM_DEVICES,/dev/dri/card1"
+        #  "WLR_NO_HARDWARE_CURSORS,1"
+        #  "XDG_SESSION_TYPE,wayland"
       ];
       monitor = [
         "eDP-1,1920x1080@60,1680x0,1"

@@ -1,6 +1,10 @@
-{ config, inputs, lib, pkgs, ... }:
-
-let
+{
+  config,
+  inputs,
+  lib,
+  pkgs,
+  ...
+}: let
   custom = {
     font = "JetBrainsMono Nerd Font";
     opacity = ".8";
@@ -14,16 +18,15 @@ let
     };
     gtkTheme = {
       name = "Colloid-Dark-${custom.predefinedColorScheme}";
-      package = pkgs.colloid-gtk-theme.override { tweaks = [ "${lib.strings.toLower custom.predefinedColorScheme}" ]; };
+      package = pkgs.colloid-gtk-theme.override {tweaks = ["${lib.strings.toLower custom.predefinedColorScheme}"];};
     };
     gtkIconTheme = {
       name = "Colloid-${lib.strings.toLower custom.predefinedColorScheme}-dark";
-      package = pkgs.colloid-icon-theme.override { schemeVariants = [ "nord" ]; };
+      package = pkgs.colloid-icon-theme.override {schemeVariants = ["nord"];};
     };
   };
-in
-{
-  _module.args = { inherit custom; };
+in {
+  _module.args = {inherit custom;};
   imports = [
     ../modules/bat.nix
     ../modules/btop.nix
@@ -75,9 +78,9 @@ in
     fastfetch
 
     # desktop
-    (import ../derivations/brightness.nix { inherit pkgs; })
-    (import ../derivations/pavolume.nix { inherit pkgs; })
-    (import ../derivations/swaylock.nix { inherit config custom pkgs; })
+    (import ../derivations/brightness.nix {inherit pkgs;})
+    (import ../derivations/pavolume.nix {inherit pkgs;})
+    (import ../derivations/swaylock.nix {inherit config custom pkgs;})
     cliphist
     hyprland-autoname-workspaces
     hyprpicker
@@ -89,8 +92,8 @@ in
     wl-clipboard
 
     # system utilities
-    (import ../../workstation/derivations/tbw.nix { inherit pkgs; })
-    (import ../derivations/preview-file.nix { inherit pkgs; })
+    (import ../../workstation/derivations/tbw.nix {inherit pkgs;})
+    (import ../derivations/preview-file.nix {inherit pkgs;})
     _7zz
     bandwhich
     compsize
@@ -123,7 +126,7 @@ in
     })
 
     # development utilities
-    (python3.withPackages(ps: with ps; [ jedi ]))
+    (python3.withPackages (ps: with ps; [jedi]))
     clang
     clang-tools
     go

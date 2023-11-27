@@ -1,5 +1,4 @@
-{ pkgs }:
-
+{pkgs}:
 pkgs.writeShellApplication {
   name = "preview-file";
   runtimeInputs = with pkgs; [

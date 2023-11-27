@@ -1,3 +1,3 @@
 {
-  fileSystems."/".options = [ "compress=zstd" ];
+  fileSystems."/".options = ["compress=zstd"];
 }

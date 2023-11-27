@@ -1,6 +1,8 @@
-{ config, custom, ... }:
-
 {
+  config,
+  custom,
+  ...
+}: {
   programs.kitty = {
     enable = true;
     font = {

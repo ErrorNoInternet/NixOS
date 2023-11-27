@@ -1,6 +1,8 @@
-{ lib, pkgs, ... }:
-
 {
+  lib,
+  pkgs,
+  ...
+}: {
   environment.variables.HOSTNAME = "NixBtw";
   networking = {
     hostName = "NixBtw";
@@ -10,12 +12,12 @@
   fileSystems."/mnt/pi-drive1" = {
     device = "192.168.0.100:/mnt/drive1";
     fsType = "nfs";
-    options = [ "x-systemd.automount" "noauto" ];
+    options = ["x-systemd.automount" "noauto"];
   };
   fileSystems."/mnt/pi-drive3" = {
     device = "192.168.0.100:/mnt/drive3";
     fsType = "nfs";
-    options = [ "x-systemd.automount" "noauto" ];
+    options = ["x-systemd.automount" "noauto"];
   };
 
   nix.gc.automatic = false;
@@ -30,6 +32,6 @@
       intel-gpu-tools
     ];
     script = "intel_gpu_frequency -m";
-    wantedBy = [ "multi-user.target" ];
+    wantedBy = ["multi-user.target"];
   };
 }

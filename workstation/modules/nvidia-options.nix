@@ -11,7 +11,7 @@
         driSupport = true;
         driSupport32Bit = true;
       };
-      services.xserver.videoDrivers = [ "nvidia" ];
+      services.xserver.videoDrivers = ["nvidia"];
       hardware.nvidia = {
         modesetting.enable = true;
         prime.offload.enable = false;

@@ -1,6 +1,9 @@
-{ config, lib, pkgs, ... }:
-
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   environment.variables.HOSTNAME = "Rescanix";
   networking = {
     hostName = "Rescanix";

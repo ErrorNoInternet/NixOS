@@ -1,6 +1,9 @@
-{ inputs, lib, pkgs, ... }:
-
 {
+  inputs,
+  lib,
+  pkgs,
+  ...
+}: {
   boot = {
     loader = {
       systemd-boot = {
@@ -11,7 +14,7 @@
       timeout = 3;
     };
     kernelPackages = lib.mkDefault pkgs.linuxPackages_latest;
-    supportedFilesystems = [ "ntfs" ];
+    supportedFilesystems = ["ntfs"];
   };
   networking = {
     firewall.enable = false;
@@ -35,12 +38,12 @@
   };
   services.xserver = {
     enable = true;
-    excludePackages = [ pkgs.xterm ];
+    excludePackages = [pkgs.xterm];
     displayManager = {
       lightdm.enable = false;
       sddm = {
         enable = true;
-        theme = "${import ./derivations/sddm-theme.nix { inherit pkgs; }}";
+        theme = "${import ./derivations/sddm-theme.nix {inherit pkgs;}}";
       };
     };
   };
@@ -78,7 +81,7 @@
   services.logind.lidSwitch = "ignore";
   fonts = {
     packages = with pkgs; [
-      (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+      (nerdfonts.override {fonts = ["JetBrainsMono"];})
       noto-fonts
       noto-fonts-cjk-sans
       noto-fonts-cjk-serif
@@ -97,13 +100,13 @@
           "JetBrainsMono Nerd Font"
           "Noto Sans CJK SC"
         ];
-        monospace = [ "JetBrainsMono Nerd Font" ];
-        emoji = [ "Twitter Color Emoji" ];
+        monospace = ["JetBrainsMono Nerd Font"];
+        emoji = ["Twitter Color Emoji"];
       };
     };
   };
 
-  environment.etc."xdg/user-dirs.defaults".text=''
+  environment.etc."xdg/user-dirs.defaults".text = ''
     DESKTOP=
     TEMPLATES=
     PUBLICSHARE=
@@ -115,7 +118,7 @@
   users.users.ryan = {
     initialPassword = "snowflake";
     isNormalUser = true;
-    extraGroups = [ "wheel" "video" ];
+    extraGroups = ["wheel" "video"];
   };
 
   environment.etc."current-nixos".source = ./.;

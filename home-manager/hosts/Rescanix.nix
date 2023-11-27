@@ -1,6 +1,10 @@
-{ config, inputs, lib, pkgs, ... }:
-
-let
+{
+  config,
+  inputs,
+  lib,
+  pkgs,
+  ...
+}: let
   custom = {
     font = "JetBrainsMono Nerd Font";
     opacity = ".8";
@@ -14,16 +18,15 @@ let
     };
     gtkTheme = {
       name = "Colloid-Dark-${custom.predefinedColorScheme}";
-      package = pkgs.colloid-gtk-theme.override { tweaks = [ "${lib.strings.toLower custom.predefinedColorScheme}" ]; };
+      package = pkgs.colloid-gtk-theme.override {tweaks = ["${lib.strings.toLower custom.predefinedColorScheme}"];};
     };
     gtkIconTheme = {
       name = "Colloid-${lib.strings.toLower custom.predefinedColorScheme}-dark";
-      package = pkgs.colloid-icon-theme.override { schemeVariants = [ "nord" ]; };
+      package = pkgs.colloid-icon-theme.override {schemeVariants = ["nord"];};
     };
   };
-in
-{
-  _module.args = { inherit custom; };
+in {
+  _module.args = {inherit custom;};
   imports = [
     ../modules/bat.nix
     ../modules/btop.nix
@@ -58,13 +61,13 @@ in
   home.homeDirectory = "/home/ryan";
 
   home.packages = with pkgs; [
-    (hashcat.override { cudaSupport = true; })
-    (import ../../workstation/derivations/savehw.nix { inherit pkgs; })
-    (import ../../workstation/derivations/passgen.nix { inherit pkgs; })
-    (import ../../workstation/derivations/tbw.nix { inherit pkgs; })
-    (import ../derivations/brightness.nix { inherit pkgs; })
-    (import ../derivations/pavolume.nix { inherit pkgs; })
-    (import ../derivations/swaylock.nix { inherit config custom pkgs; })
+    (hashcat.override {cudaSupport = true;})
+    (import ../../workstation/derivations/savehw.nix {inherit pkgs;})
+    (import ../../workstation/derivations/passgen.nix {inherit pkgs;})
+    (import ../../workstation/derivations/tbw.nix {inherit pkgs;})
+    (import ../derivations/brightness.nix {inherit pkgs;})
+    (import ../derivations/pavolume.nix {inherit pkgs;})
+    (import ../derivations/swaylock.nix {inherit config custom pkgs;})
     _7zz
     bandwhich
     blender

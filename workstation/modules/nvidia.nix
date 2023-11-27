@@ -1,11 +1,15 @@
-({ config, lib, ... }: {
+({
+  config,
+  lib,
+  ...
+}: {
   config = lib.mkIf (config.specialisation != {}) {
     hardware.opengl = {
       enable = true;
       driSupport = true;
       driSupport32Bit = true;
     };
-    services.xserver.videoDrivers = [ "nvidia" ];
+    services.xserver.videoDrivers = ["nvidia"];
     hardware.nvidia = {
       modesetting.enable = true;
       prime = {

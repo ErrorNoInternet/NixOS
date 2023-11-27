@@ -1,6 +1,11 @@
-{ config, custom, inputs, lib, pkgs, ... }:
-
 {
+  config,
+  custom,
+  inputs,
+  lib,
+  pkgs,
+  ...
+}: {
   programs.waybar = {
     enable = true;
     systemd = {
@@ -48,7 +53,7 @@
         format-icons = {
           urgent = "";
           active = "";
-          default  = "";
+          default = "";
           sort-by-number = true;
         };
       };
@@ -103,7 +108,7 @@
         icon-size = 20;
         spacing = 8;
       };
-      "custom/launcher"= {
+      "custom/launcher" = {
         format = "";
         on-click = "${pkgs.rofi}/bin/rofi -show drun";
         tooltip = false;

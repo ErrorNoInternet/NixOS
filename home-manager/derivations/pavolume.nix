@@ -1,8 +1,7 @@
-{ pkgs }:
-
+{pkgs}:
 pkgs.writeShellApplication {
   name = "pavolume";
-  runtimeInputs = [ pkgs.pulseaudio ];
+  runtimeInputs = [pkgs.pulseaudio];
   text = ''
     sink="@DEFAULT_SINK@"
 

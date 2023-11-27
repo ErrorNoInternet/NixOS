@@ -1,6 +1,8 @@
-{ inputs, pkgs, ... }:
-
 {
+  inputs,
+  pkgs,
+  ...
+}: {
   environment.etc."attic-cache.toml".text = ''
     # Socket address to listen on
     listen = "[::]:7455"
@@ -140,7 +142,7 @@
     default-retention-period = "3 months"
   '';
   systemd.services.attic-cache = {
-    wantedBy = [ "multi-user.target" ];
+    wantedBy = ["multi-user.target"];
     description = "Attic - a Nix binary cache";
     serviceConfig = {
       Type = "simple";

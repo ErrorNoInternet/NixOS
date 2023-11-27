@@ -1,20 +1,24 @@
-{ inputs, lib, ... }:
-
 {
+  inputs,
+  lib,
+  ...
+}: {
   nixpkgs.config.allowUnfree = true;
   nix = {
     registry =
       lib.mapAttrs'
-        (name: flake:
-          let
-            name' = if (name == "self") then "config" else name;
-          in
-          lib.nameValuePair name' { inherit flake; })
-        inputs;
-    nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
+      (name: flake: let
+        name' =
+          if (name == "self")
+          then "config"
+          else name;
+      in
+        lib.nameValuePair name' {inherit flake;})
+      inputs;
+    nixPath = ["nixpkgs=${inputs.nixpkgs}"];
     settings = {
-      experimental-features = [ "nix-command" "flakes" ];
-      trusted-users = [ "root" "@wheel" ];
+      experimental-features = ["nix-command" "flakes"];
+      trusted-users = ["root" "@wheel"];
       auto-optimise-store = true;
     };
     gc = {
