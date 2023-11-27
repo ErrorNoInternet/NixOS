@@ -45,8 +45,8 @@
         follow_mouse = 1;
         accel_profile = "flat";
         sensitivity = 0.8;
-        repeat_delay = 250;
-        repeat_rate = 40;
+        repeat_delay = 200;
+        repeat_rate = 45;
       };
       general = {
         gaps_in = 6;
