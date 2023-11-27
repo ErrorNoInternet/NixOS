@@ -1,4 +1,5 @@
-{
+{pkgs, ...}: {
+  home.packages = [pkgs.fastfetch];
   home.file = {
     ".config/fastfetch/minimal.conf".text = ''
       --os-key " system  "

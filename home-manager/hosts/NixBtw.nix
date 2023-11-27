@@ -73,9 +73,7 @@ in {
 
   home.packages = with pkgs; [
     # rice
-    cava
     cmatrix
-    fastfetch
 
     # desktop
     (import ../derivations/brightness.nix {inherit pkgs;})

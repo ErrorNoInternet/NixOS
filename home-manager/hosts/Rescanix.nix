@@ -72,7 +72,6 @@ in {
     bandwhich
     blender
     brave
-    cava
     clang
     clang-tools
     cliphist
@@ -86,7 +85,6 @@ in {
     duf
     duperemove
     eza
-    fastfetch
     ffmpeg_6-full
     fio
     firefox
