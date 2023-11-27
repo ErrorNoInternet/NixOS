@@ -64,7 +64,7 @@
         "col.shadow" = "rgb(${config.colorScheme.colors.base00})";
         blur = {
           enabled = true;
-          passes = 3;
+          passes = 2;
           size = 10;
         };
       };
