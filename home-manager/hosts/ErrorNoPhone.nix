@@ -6,6 +6,7 @@ in {
   _module.args = {inherit custom;};
   imports = [
     ../modules/bat.nix
+    ../modules/comma.nix
     ../modules/fastfetch.nix
     ../modules/fish.nix
     ../modules/neovim.nix

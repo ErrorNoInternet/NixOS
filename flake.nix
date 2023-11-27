@@ -14,6 +14,7 @@
     };
     agenix.url = "github:ryantm/agenix";
 
+    nix-index-database.url = "github:nix-community/nix-index-database";
     attic.url = "github:zhaofengli/attic";
     hsize.url = "github:ErrorNoInternet/hsize";
     hyprland.url = "github:hyprwm/Hyprland";
@@ -160,6 +161,7 @@
           ./home-manager/base.nix
           ./home-manager/hosts/NixBtw.nix
           ./home-manager/locations/china.nix
+          ./home-manager/modules/comma.nix
           ./home-manager/modules/nix.nix
           ./home-manager/modules/spicetify.nix
           ./shared/modules/caches/ErrorNoBinaries.nix
@@ -175,6 +177,7 @@
           ./home-manager/base.nix
           ./home-manager/hosts/Rescanix.nix
           ./home-manager/locations/china.nix
+          ./home-manager/modules/comma.nix
           ./home-manager/modules/nix.nix
           ./home-manager/modules/spicetify.nix
           ./shared/modules/caches/ErrorNoBinaries.nix
@@ -195,6 +198,7 @@
           ./home-manager/base.nix
           ./home-manager/hosts/Pix.nix
           ./home-manager/locations/china.nix
+          ./home-manager/modules/comma.nix
           ./home-manager/modules/nix.nix
           ./shared/modules/caches/ErrorNoBinaries.nix
         ];
