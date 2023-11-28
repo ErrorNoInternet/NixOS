@@ -20,14 +20,7 @@ in {
   home.homeDirectory = "/home/snowflake";
 
   home.packages = with pkgs; [
-    # rice
-    fastfetch
-
     # system utilities
-    croc
-    inputs.hsize.packages.${pkgs.system}.hsize
-    jq
     nmap
-    timg
   ];
 }

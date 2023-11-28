@@ -16,7 +16,12 @@
   home = {
     packages = with pkgs; [
       cmatrix
+      croc
       eza
+      fd
+      dua
+      jq
+      inputs.hsize.packages.${pkgs.system}.hsize
     ];
     sessionVariables = {
       TERMINAL = "kitty";

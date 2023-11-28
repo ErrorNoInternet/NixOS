@@ -28,6 +28,7 @@
 in {
   _module.args = {inherit custom;};
   imports = [
+    ../modules/cursor.nix
     ../profiles/development
     ../profiles/wm
     ../programs/btop.nix
@@ -49,82 +50,64 @@ in {
   ];
 
   colorScheme = inputs.nix-colors.colorSchemes.nord;
-  home.username = "ryan";
-  home.homeDirectory = "/home/ryan";
-
-  home.packages = with pkgs; [
-    (hashcat.override {cudaSupport = true;})
-    _7zz
-    bandwhich
-    blender
-    brave
-    compsize
-    config.packages.passgen
-    config.packages.savehw
-    config.packages.tbw
-    cpu-x
-    croc
-    ddrescue
-    drm_info
-    dua
-    duf
-    duperemove
-    ffmpeg_6-full
-    fio
-    firefox
-    geekbench
-    gimp
-    gptfdisk
-    hyperfine
-    hyprland-autoname-workspaces
-    hyprpicker
-    inputs.hsize.packages.${pkgs.system}.hsize
-    inputs.hyprwm-contrib.packages.${pkgs.system}.grimblast
-    inputs.hyprwm-contrib.packages.${pkgs.system}.scratchpad
-    inputs.nix-gaming.packages.${pkgs.system}.osu-lazer-bin
-    inputs.nix-gaming.packages.${pkgs.system}.wine-ge
-    intel-gpu-tools
-    jq
-    kdiskmark
-    linuxPackages_latest.perf
-    lm_sensors
-    lshw
-    lsof
-    mangohud
-    mesa-demos
-    multipath-tools
-    nmap
-    nvtop
-    patchelf
-    pavucontrol
-    powertop
-    prismlauncher
-    procs
-    pv
-    python3Packages.bpython
-    radeontop
-    smartmontools
-    sqlite
-    sshfs
-    steam-run
-    superTuxKart
-    sysstat
-    timg
-    unigine-heaven
-    virt-manager
-    vulkan-tools
-  ];
-
-  home.sessionVariables = {
-    TERMINAL = "kitty";
-    BROWSER = "firefox";
-  };
-
-  home.pointerCursor = {
-    name = custom.pointerCursor.name;
-    package = custom.pointerCursor.package;
-    size = custom.pointerCursor.size;
-    x11.enable = true;
-    gtk.enable = true;
+  home = {
+    username = "ryan";
+    homeDirectory = "/home/ryan";
+    packages = with pkgs; [
+      (hashcat.override {cudaSupport = true;})
+      _7zz
+      bandwhich
+      blender
+      brave
+      compsize
+      config.packages.passgen
+      config.packages.savehw
+      config.packages.tbw
+      cpu-x
+      ddrescue
+      drm_info
+      duf
+      duperemove
+      ffmpeg_6-full
+      fio
+      firefox
+      geekbench
+      gimp
+      gptfdisk
+      hyperfine
+      hyprpicker
+      inputs.hyprwm-contrib.packages.${pkgs.system}.scratchpad
+      inputs.nix-gaming.packages.${pkgs.system}.osu-lazer-bin
+      inputs.nix-gaming.packages.${pkgs.system}.wine-ge
+      intel-gpu-tools
+      kdiskmark
+      linuxPackages_latest.perf
+      lm_sensors
+      lshw
+      lsof
+      mangohud
+      mesa-demos
+      multipath-tools
+      nmap
+      nvtop
+      patchelf
+      pavucontrol
+      powertop
+      prismlauncher
+      procs
+      pv
+      python3Packages.bpython
+      radeontop
+      smartmontools
+      sqlite
+      sshfs
+      steam-run
+      superTuxKart
+      sysstat
+      timg
+      unigine-heaven
+      virt-manager
+      vulkan-tools
+    ];
   };
 }

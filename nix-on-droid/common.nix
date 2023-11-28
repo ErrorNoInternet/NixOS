@@ -10,12 +10,8 @@
   environment.packages = with pkgs; [
     neofetch
 
-    croc
     curl
     dig
-    dua
-    eza
-    fd
     file
     gawk
     glibc
@@ -23,7 +19,6 @@
     gnupg
     gnutar
     gzip
-    inputs.hsize.packages.${pkgs.system}.hsize
     iproute2
     ncurses
     nmap

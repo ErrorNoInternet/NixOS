@@ -1,4 +1,5 @@
-{
+{pkgs, ...}: {
+  home.packages = [pkgs.hyprland-autoname-workspaces];
   home.file = {
     ".config/hyprland-autoname-workspaces/config.toml".text = ''
       version = "1.1.7"

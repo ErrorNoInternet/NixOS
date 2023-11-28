@@ -29,6 +29,7 @@
 in {
   _module.args = {inherit custom;};
   imports = [
+    ../modules/cursor.nix
     ../profiles/development
     ../profiles/wm
     ../programs/btop.nix
@@ -66,7 +67,6 @@ in {
     };
     packages = with pkgs; [
       # desktop
-      hyprland-autoname-workspaces
       hyprpicker
       inputs.hyprwm-contrib.packages.${pkgs.system}.scratchpad
 
@@ -75,13 +75,8 @@ in {
       _7zz
       bandwhich
       compsize
-      croc
-      dua
       duf
-      fd
       ffmpeg_6-full
-      inputs.hsize.packages.${pkgs.system}.hsize
-      jq
       nmap
       nvtop
       procs
