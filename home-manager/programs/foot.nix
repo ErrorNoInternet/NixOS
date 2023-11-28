@@ -8,6 +8,7 @@
     settings = {
       main = {
         font = "${custom.font}:size=9";
+        pad = "0x0 center";
         shell = "tmux";
       };
       cursor = {
