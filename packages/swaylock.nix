@@ -1,6 +1,7 @@
 {
-  colorScheme ? null,
-  font ? null,
+  inputs,
+  colorScheme ? inputs.nix-colors.colorSchemes.default-dark,
+  font ? "monospace",
   swaylock-effects,
   writeShellApplication,
   ...

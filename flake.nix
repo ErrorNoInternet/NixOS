@@ -19,7 +19,6 @@
     hsize.url = "github:ErrorNoInternet/hsize";
     hyprland.url = "github:hyprwm/Hyprland";
     hyprwm-contrib.url = "github:hyprwm/contrib";
-    joshuto.url = "github:kamiyaa/joshuto";
     nix-colors.url = "github:misterio77/nix-colors";
     nix-gaming.url = "github:fufexan/nix-gaming";
     spicetify-nix.url = "github:the-argus/spicetify-nix";

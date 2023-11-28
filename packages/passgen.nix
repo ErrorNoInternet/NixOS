@@ -1,9 +1,9 @@
-{rustPlatform, ...}:
+{fetchFromGitHub, rustPlatform, ...}:
 rustPlatform.buildRustPackage rec {
   pname = "passgen";
   version = "0.1.0";
   cargoHash = "sha256-YtrlsvdxlBp8YSD/G3oxwSFjPxK8KNAv8mKT4X5twRM=";
-  src = pkgs.fetchFromGitHub {
+  src = fetchFromGitHub {
     owner = "ErrorNoInternet";
     repo = pname;
     rev = "d5a8324a37471a41eb6e203756daf2a4b94a0b55";

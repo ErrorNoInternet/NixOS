@@ -1,0 +1,19 @@
+name: Nix flake
+
+on: [push, pull_request, workflow_dispatch]
+
+jobs:
+  checks:
+    name: Check Nix flake
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: cachix/install-nix-action@v20
+        with:
+          install_url: https://nixos.org/nix/install
+          extra_nix_config: |
+            auto-optimise-store = true
+            access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
+            experimental-features = nix-command flakes
+      - run: nix flake check --all-systems

@@ -42,7 +42,6 @@ in {
     ../programs/gtk.nix
     ../programs/imv.nix
     ../programs/irssi.nix
-    ../programs/joshuto.nix
     ../programs/kdeconnect.nix
     ../programs/kitty.nix
     ../programs/libreoffice.nix
