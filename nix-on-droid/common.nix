@@ -28,7 +28,7 @@
     xxd
   ];
   home-manager = {
-    config = ../home-manager/base.nix;
+    config = ../home-manager/common.nix;
     useUserPackages = true;
   };
 }
