@@ -1,7 +1,6 @@
 {
   fetchFromGitHub,
   rustPlatform,
-  ...
 }:
 rustPlatform.buildRustPackage rec {
   pname = "passgen";

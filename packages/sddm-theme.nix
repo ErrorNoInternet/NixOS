@@ -1,7 +1,6 @@
 {
   fetchFromGitHub,
   stdenv,
-  ...
 }:
 stdenv.mkDerivation {
   name = "sddm-theme";

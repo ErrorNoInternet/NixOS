@@ -1,7 +1,6 @@
 {
   writeShellApplication,
   pulseaudio,
-  ...
 }:
 writeShellApplication {
   name = "pavolume";
