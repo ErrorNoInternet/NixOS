@@ -1,7 +1,4 @@
-{
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   environment.variables.HOSTNAME = "NixBtw";
   networking = {
     hostName = "NixBtw";

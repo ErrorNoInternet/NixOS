@@ -16,11 +16,12 @@ in {
   ];
 
   colorScheme = inputs.nix-colors.colorSchemes.nord;
-  home.username = "snowflake";
-  home.homeDirectory = "/home/snowflake";
-
-  home.packages = with pkgs; [
-    # system utilities
-    nmap
-  ];
+  home = {
+    username = "snowflake";
+    homeDirectory = "/home/snowflake";
+    packages = with pkgs; [
+      # system utilities
+      nmap
+    ];
+  };
 }

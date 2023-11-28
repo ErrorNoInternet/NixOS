@@ -1,4 +1,8 @@
-{fetchFromGitHub, rustPlatform, ...}:
+{
+  fetchFromGitHub,
+  rustPlatform,
+  ...
+}:
 rustPlatform.buildRustPackage rec {
   pname = "passgen";
   version = "0.1.0";

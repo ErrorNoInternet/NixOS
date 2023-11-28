@@ -1,8 +1,8 @@
 {
-  config,
   inputs,
   lib,
   pkgs,
+  self,
   ...
 }: let
   custom = {
@@ -63,9 +63,6 @@ in {
       blender
       brave
       compsize
-      config.packages.passgen
-      config.packages.savehw
-      config.packages.tbw
       cpu-x
       ddrescue
       drm_info
@@ -101,6 +98,9 @@ in {
       pv
       python3Packages.bpython
       radeontop
+      self.packages.${pkgs.system}.passgen
+      self.packages.${pkgs.system}.savehw
+      self.packages.${pkgs.system}.tbw
       smartmontools
       sqlite
       sshfs
