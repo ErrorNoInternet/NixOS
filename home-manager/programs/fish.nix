@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{config, pkgs, ...}: {
   home.packages = with pkgs; [any-nix-shell];
   programs.fish = {
     enable = true;
@@ -32,7 +32,7 @@
       timg = "${pkgs.timg}/bin/timg -pk";
       lsimg = "${pkgs.timg}/bin/timg --grid=6 --upscale --title --center --frames=1";
       drg = "${pkgs.ripdrag}/bin/ripdrag -xa";
-      cava = "TERM=kitty ${pkgs.cava}/bin/cava";
+      cava = "TERM=${config.home.sessionVariables.TERMINAL} ${pkgs.cava}/bin/cava";
     };
     shellAbbrs = {
       s = "sudo";

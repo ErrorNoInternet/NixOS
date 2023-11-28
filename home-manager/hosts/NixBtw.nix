@@ -37,13 +37,13 @@ in {
     ../programs/desktop-entries.nix
     ../programs/fastfetch.nix
     ../programs/fcitx.nix
+    ../programs/foot.nix
     ../programs/git.nix
     ../programs/gnupg.nix
     ../programs/gtk.nix
     ../programs/imv.nix
     ../programs/irssi.nix
     ../programs/kdeconnect.nix
-    ../programs/kitty.nix
     ../programs/libreoffice.nix
     ../programs/mpv.nix
     ../programs/nheko.nix

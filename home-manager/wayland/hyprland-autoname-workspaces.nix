@@ -18,6 +18,7 @@
       "Brave-browser" = " "
       "discord" = "󰙯 "
       "firefox" = " "
+      "foot" = ""
       "Gimp-2.10" = " "
       "ImHex" = "󱊧"
       "jetbrains-idea-ce" = ""

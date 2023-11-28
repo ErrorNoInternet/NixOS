@@ -36,11 +36,11 @@ in {
     ../programs/desktop-entries.nix
     ../programs/fastfetch.nix
     ../programs/fcitx.nix
+    ../programs/foot.nix
     ../programs/git.nix
     ../programs/gtk.nix
     ../programs/imv.nix
     ../programs/kdeconnect.nix
-    ../programs/kitty.nix
     ../programs/mpv.nix
     ../programs/obs-studio.nix
     ../programs/virt-manager.nix

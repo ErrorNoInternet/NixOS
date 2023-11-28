@@ -8,7 +8,7 @@
     baseIndex = 1;
     clock24 = true;
     escapeTime = 0;
-    historyLimit = 100000;
+    historyLimit = 1000000;
     keyMode = "vi";
     mouse = true;
     terminal = "tmux-256color";

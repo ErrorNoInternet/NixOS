@@ -25,7 +25,7 @@
       progress
     ];
     sessionVariables = {
-      TERMINAL = "kitty";
+      TERMINAL = "foot";
       BROWSER = "firefox";
     };
   };
