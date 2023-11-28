@@ -51,7 +51,7 @@
           pkgs = import nixpkgs {
             inherit system;
             overlays = [
-              (self: super: {
+              (_: super: {
                 openrgb = super.openrgb.overrideAttrs (oldAttrs: {
                   patches =
                     (oldAttrs.patches or [])

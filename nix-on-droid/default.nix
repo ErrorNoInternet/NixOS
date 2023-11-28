@@ -13,6 +13,7 @@ in {
     ErrorNoPhone = nixOnDroidConfiguration {
       extraSpecialArgs = {inherit inputs;};
       modules = [
+        defaultModule
         ./hosts/ErrorNoPhone.nix
       ];
     };

@@ -1,5 +1,5 @@
 {inputs, ...}: let
-  defaultModule = {config, ...}: {
+  defaultModule = {
     imports = [
       inputs.agenix.nixosModules.default
       ../shared

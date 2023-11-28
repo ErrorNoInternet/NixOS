@@ -1,4 +1,2 @@
 {
-  pkgs,
-  secrets,
 }: {}

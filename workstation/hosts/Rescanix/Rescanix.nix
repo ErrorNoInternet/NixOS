@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  pkgs,
   ...
 }: {
   environment.variables.HOSTNAME = "Rescanix";

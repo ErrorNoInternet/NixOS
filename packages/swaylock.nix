@@ -1,7 +1,6 @@
 {
   colorScheme ? null,
   font ? null,
-  inputs,
   swaylock-effects,
   writeShellApplication,
   ...

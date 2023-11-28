@@ -1,6 +1,4 @@
 {
-  config,
-  custom,
   inputs,
   ...
 }: {
