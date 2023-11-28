@@ -6,7 +6,7 @@
       ./locations/china.nix
     ];
   };
-  inherit (inputs.nixpkgs.lib) nixOnDroidConfiguration;
+  inherit (inputs.nix-on-droid.lib) nixOnDroidConfiguration;
 in {
   flake.nixOnDroidConfigurations = {
     ErrorNoPhone = nixOnDroidConfiguration {
