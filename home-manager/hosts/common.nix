@@ -6,11 +6,13 @@
   imports = [
     inputs.nix-colors.homeManagerModules.default
     ../programs/bat.nix
-    ../programs/neovim.nix
+    ../programs/comma.nix
+    ../programs/fastfetch.nix
     ../programs/fish.nix
+    ../programs/neovim.nix
     ../programs/tmux.nix
-    ../programs/zoxide.nix
     ../programs/yazi.nix
+    ../programs/zoxide.nix
   ];
 
   home = {

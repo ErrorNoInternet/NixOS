@@ -60,6 +60,7 @@
     cryptsetup
     curl
     file
+    git
     killall
     neovim
     pulseaudio

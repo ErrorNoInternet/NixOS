@@ -12,7 +12,6 @@ in {
     ./common.nix
     ../profiles/development
     ../programs/btop.nix
-    ../programs/fastfetch.nix
   ];
 
   colorScheme = inputs.nix-colors.colorSchemes.nord;

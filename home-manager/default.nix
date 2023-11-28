@@ -9,7 +9,6 @@
       ../shared/caches/ErrorNoBinaries.nix
       ./common.nix
       ./locations/china.nix
-      ./programs/comma.nix
       ./programs/nix.nix
     ];
   };

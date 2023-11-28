@@ -37,7 +37,6 @@ in {
     ../programs/btop.nix
     ../programs/cava.nix
     ../programs/desktop-entries.nix
-    ../programs/fastfetch.nix
     ../programs/fcitx.nix
     ../programs/foot.nix
     ../programs/git.nix
