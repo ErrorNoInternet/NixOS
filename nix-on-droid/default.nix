@@ -6,10 +6,9 @@
       ./locations/china.nix
     ];
   };
+  inherit (inputs.nixpkgs.lib) nixOnDroidConfiguration;
 in {
-  flake.nixOnDroidConfigurations = let
-    inherit (inputs.nixpkgs.lib) nixOnDroidConfiguration;
-  in {
+  flake.nixOnDroidConfigurations = {
     ErrorNoPhone = nixOnDroidConfiguration {
       extraSpecialArgs = {inherit inputs;};
       modules = [
