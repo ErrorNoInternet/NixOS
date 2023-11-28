@@ -9,6 +9,7 @@
       ../shared/caches/ErrorNoBinaries.nix
       ./common.nix
       ./locations/china.nix
+      ./programs/nix.nix
     ];
   };
   inherit (inputs.home-manager.lib) homeManagerConfiguration;
