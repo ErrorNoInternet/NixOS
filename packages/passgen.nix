@@ -1,5 +1,5 @@
-{pkgs}:
-pkgs.rustPlatform.buildRustPackage rec {
+{rustPlatform, ...}:
+rustPlatform.buildRustPackage rec {
   pname = "passgen";
   version = "0.1.0";
   cargoHash = "sha256-YtrlsvdxlBp8YSD/G3oxwSFjPxK8KNAv8mKT4X5twRM=";

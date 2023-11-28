@@ -7,7 +7,7 @@
     enable = true;
     font = {
       name = "${custom.font}";
-      size = 9.5;
+      size = 9;
     };
     settings = {
       background_opacity = custom.opacity;

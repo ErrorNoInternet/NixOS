@@ -28,32 +28,24 @@
 in {
   _module.args = {inherit custom;};
   imports = [
-    ../modules/bat.nix
-    ../modules/btop.nix
-    ../modules/cava.nix
-    ../modules/desktop-entries.nix
-    ../modules/dunst.nix
-    ../modules/fastfetch.nix
-    ../modules/fcitx.nix
-    ../modules/fish.nix
-    ../modules/git.nix
-    ../modules/gtk.nix
-    ../modules/hyprland-autoname-workspaces.nix
-    ../modules/hyprland.nix
-    ../modules/imv.nix
-    ../modules/kdeconnect.nix
-    ../modules/kitty.nix
-    ../modules/mpv.nix
-    ../modules/neovim.nix
-    ../modules/obs-studio.nix
-    ../modules/rofi.nix
-    ../modules/tmux.nix
-    ../modules/virt-manager.nix
-    ../modules/waybar.nix
-    ../modules/yazi.nix
-    ../modules/zoxide.nix
-    ../modules/zsh.nix
-    inputs.nix-colors.homeManagerModules.default
+    ../profiles/development
+    ../profiles/wm
+    ../programs/btop.nix
+    ../programs/cava.nix
+    ../programs/desktop-entries.nix
+    ../programs/fastfetch.nix
+    ../programs/fcitx.nix
+    ../programs/git.nix
+    ../programs/gtk.nix
+    ../programs/imv.nix
+    ../programs/kdeconnect.nix
+    ../programs/kitty.nix
+    ../programs/mpv.nix
+    ../programs/obs-studio.nix
+    ../programs/virt-manager.nix
+    ../wayland/hyprland-autoname-workspaces.nix
+    ../wayland/hyprland.nix
+    ./common.nix
   ];
 
   colorScheme = inputs.nix-colors.colorSchemes.nord;
@@ -62,22 +54,14 @@ in {
 
   home.packages = with pkgs; [
     (hashcat.override {cudaSupport = true;})
-    (import ../../workstation/derivations/passgen.nix {inherit pkgs;})
-    (import ../../workstation/derivations/savehw.nix {inherit pkgs;})
-    (import ../../workstation/derivations/tbw.nix {inherit pkgs;})
-    (import ../derivations/brightness.nix {inherit pkgs;})
-    (import ../derivations/pavolume.nix {inherit pkgs;})
-    (import ../derivations/swaylock.nix {inherit config custom pkgs;})
-    (python3.withPackages (ps: with ps; [jedi]))
     _7zz
     bandwhich
     blender
     brave
-    clang
-    clang-tools
-    cliphist
-    cmatrix
     compsize
+    config.packages.passgen
+    config.packages.savehw
+    config.packages.tbw
     cpu-x
     croc
     ddrescue
@@ -85,7 +69,6 @@ in {
     dua
     duf
     duperemove
-    eza
     ffmpeg_6-full
     fio
     firefox
@@ -120,24 +103,16 @@ in {
     pv
     python3Packages.bpython
     radeontop
-    ripdrag
-    rustup
-    slurp
     smartmontools
     sqlite
     sshfs
     steam-run
     superTuxKart
-    swayidle
-    swaylock-effects
-    swww
     sysstat
     timg
     unigine-heaven
     virt-manager
     vulkan-tools
-    wf-recorder
-    wl-clipboard
   ];
 
   home.sessionVariables = {

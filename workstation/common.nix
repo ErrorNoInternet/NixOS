@@ -1,4 +1,5 @@
 {
+  self,
   inputs,
   lib,
   pkgs,
@@ -43,7 +44,7 @@
       lightdm.enable = false;
       sddm = {
         enable = true;
-        theme = "${import ./derivations/sddm-theme.nix {inherit pkgs;}}";
+        theme = "${self.packages.${pkgs.system}.sddm-theme}";
       };
     };
   };

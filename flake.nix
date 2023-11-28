@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    flake-parts.url = "github:hercules-ci/flake-parts";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -13,7 +14,6 @@
       inputs.home-manager.follows = "home-manager";
     };
     agenix.url = "github:ryantm/agenix";
-
     nix-index-database.url = "github:nix-community/nix-index-database";
     attic.url = "github:zhaofengli/attic";
     hsize.url = "github:ErrorNoInternet/hsize";
@@ -28,190 +28,50 @@
 
   outputs = {
     self,
+    flake-parts,
     nixpkgs,
-    home-manager,
-    nix-on-droid,
-    agenix,
     ...
-  } @ inputs: let
-    overlays = [
-      (self: super: {
-        openrgb = super.openrgb.overrideAttrs (oldAttrs: {
-          patches =
-            (oldAttrs.patches or [])
-            ++ [
-              ./patches/openrgb-hidapi-libusb.patch
-            ];
-        });
-      })
-    ];
-    pkgs = import nixpkgs {
-      inherit overlays;
-      system = "x86_64-linux";
-      config.allowUnfree = true;
-    };
-    pkgsArm = import nixpkgs {
-      inherit overlays;
-      system = "aarch64-linux";
-      config = {
-        allowUnfree = true;
-        allowUnsupportedSystem = true;
-      };
-    };
-  in {
-    formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
-
-    nixosConfigurations = {
-      NixBtw = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs pkgs;};
-        modules = [
-          ./shared/base.nix
-          ./shared/modules/aarch64-emulation.nix
-          ./shared/modules/btrfs-subvolume-compression.nix
-          ./shared/caches/ErrorNoBinaries.nix
-          ./shared/caches/hyprland.nix
-          ./shared/caches/nix-gaming.nix
-          ./workstation/base.nix
-          ./workstation/hosts/NixBtw/hardware-configuration.nix
-          ./workstation/hosts/NixBtw/NixBtw.nix
-          ./workstation/locations/china.nix
-          ./workstation/modules/android-development.nix
-          ./workstation/modules/bluetooth.nix
-          ./workstation/modules/clamav.nix
-          ./workstation/modules/fish.nix
-          ./workstation/modules/gaming.nix
-          ./workstation/modules/hyprland.nix
-          ./workstation/modules/nvidia-options.nix
-          ./workstation/modules/nvidia.nix
-          ./workstation/modules/openrgb.nix
-          ./workstation/modules/video-acceleration.nix
-          ./workstation/modules/virtualization.nix
-        ];
-      };
-      Rescanix = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs pkgs;};
-        modules = [
-          ./shared/base.nix
-          ./shared/modules/aarch64-emulation.nix
-          ./shared/modules/btrfs-compression.nix
-          ./shared/caches/ErrorNoBinaries.nix
-          ./shared/caches/hyprland.nix
-          ./shared/caches/nix-gaming.nix
-          ./workstation/base.nix
-          ./workstation/hosts/Rescanix/hardware-configuration.nix
-          ./workstation/hosts/Rescanix/Rescanix.nix
-          ./workstation/locations/china.nix
-          ./workstation/modules/bluetooth.nix
-          ./workstation/modules/clamav.nix
-          ./workstation/modules/fish.nix
-          ./workstation/modules/gaming.nix
-          ./workstation/modules/hyprland.nix
-          ./workstation/modules/nvidia-options.nix
-          ./workstation/modules/nvidia.nix
-          ./workstation/modules/openrgb.nix
-          ./workstation/modules/video-acceleration.nix
-          ./workstation/modules/virtualization.nix
-          ./workstation/modules/vm-guest.nix
-          ./workstation/modules/zfs.nix
-        ];
-      };
-      Crix = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit pkgs;};
-        modules = [
-          agenix.nixosModules.default
-          ./server/base.nix
-          ./server/hosts/Crix/Crix.nix
-          ./server/hosts/Crix/hardware-configuration.nix
-          ./server/locations/china.nix
-          ./server/modules/bootloader.nix
-          ./server/modules/minecraft-server.nix
-          ./shared/base.nix
-          ./shared/caches/ErrorNoBinaries.nix
-          ./shared/modules/wireless.nix
-        ];
-      };
-      Pix = nixpkgs.lib.nixosSystem {
-        specialArgs = {
-          inherit inputs;
-          pkgs = pkgsArm;
-        };
-        modules = [
-          agenix.nixosModules.default
-          ./server/base.nix
-          ./server/hosts/Pix/hardware-configuration.nix
-          ./server/hosts/Pix/Pix.nix
-          ./server/locations/china.nix
-          ./server/modules/attic-cache.nix
-          ./server/modules/fish.nix
-          ./server/modules/nfs.nix
-          ./server/modules/printing.nix
-          ./server/modules/samba.nix
-          ./shared/base.nix
-          ./shared/caches/ErrorNoBinaries.nix
-          ./shared/modules/raspberry-pi.nix
-        ];
-      };
-    };
-    homeConfigurations = {
-      "ryan@NixBtw" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        extraSpecialArgs = {inherit inputs;};
-        modules = [
-          agenix.homeManagerModules.default
-          ./home-manager/base.nix
-          ./home-manager/hosts/NixBtw.nix
-          ./home-manager/locations/china.nix
-          ./home-manager/modules/comma.nix
-          ./home-manager/modules/nix.nix
-          ./home-manager/modules/spicetify.nix
-          ./shared/caches/ErrorNoBinaries.nix
-          ./shared/caches/hyprland.nix
-          ./shared/caches/nix-gaming.nix
-        ];
-      };
-      "ryan@Rescanix" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        extraSpecialArgs = {inherit inputs;};
-        modules = [
-          agenix.homeManagerModules.default
-          ./home-manager/base.nix
-          ./home-manager/hosts/Rescanix.nix
-          ./home-manager/locations/china.nix
-          ./home-manager/modules/comma.nix
-          ./home-manager/modules/nix.nix
-          ./home-manager/modules/spicetify.nix
-          ./shared/caches/ErrorNoBinaries.nix
-          ./shared/caches/hyprland.nix
-          ./shared/caches/nix-gaming.nix
-        ];
-      };
-      "snowflake@Pix" = home-manager.lib.homeManagerConfiguration {
-        pkgs = pkgsArm;
-        extraSpecialArgs = {inherit inputs;};
-        modules = [
-          {
-            nixpkgs.config = {
-              allowUnsupportedSystem = true;
-            };
-          }
-          agenix.homeManagerModules.default
-          ./home-manager/base.nix
-          ./home-manager/hosts/Pix.nix
-          ./home-manager/locations/china.nix
-          ./home-manager/modules/comma.nix
-          ./home-manager/modules/nix.nix
-          ./shared/caches/ErrorNoBinaries.nix
-        ];
-      };
-    };
-    nixOnDroidConfigurations.ErrorNoPhone = nix-on-droid.lib.nixOnDroidConfiguration {
-      extraSpecialArgs = {inherit inputs;};
-      modules = [
-        ./nix-on-droid/base.nix
-        ./nix-on-droid/hosts/ErrorNoPhone.nix
-        ./nix-on-droid/locations/china.nix
-        ./nix-on-droid/modules/caches/ErrorNoBinaries.nix
+  } @ inputs:
+    flake-parts.lib.mkFlake {inherit inputs;} {
+      imports = [
+        ./packages
+        ./workstation
+        ./server
+        ./home-manager
+        ./nix-on-droid
       ];
+      systems = ["x86_64-linux" "aarch64-linux"];
+      perSystem = {
+        pkgs,
+        system,
+        ...
+      }: {
+        _module.args = {
+          inherit self;
+          pkgs = import nixpkgs {
+            inherit system;
+            overlays = [
+              (self: super: {
+                openrgb = super.openrgb.overrideAttrs (oldAttrs: {
+                  patches =
+                    (oldAttrs.patches or [])
+                    ++ [
+                      ./pkgs/patches/openrgb-force-libusb.patch
+                    ];
+                });
+              })
+            ];
+          };
+        };
+        formatter = pkgs.alejandra;
+
+        devShells.default = pkgs.mkShell {
+          packages = with pkgs; [
+            alejandra
+            git
+          ];
+          name = "configuration.nix";
+        };
+      };
     };
-  };
 }

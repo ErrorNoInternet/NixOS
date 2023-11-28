@@ -60,8 +60,9 @@
       syntax on
 
       let g:presence_buttons = 0
-      let g:presence_file_explorer_text = "Browsing a folder"
+      let g:presence_neovim_image_text = "Neovim"
       let g:presence_reading_text = "Running some code"
+      let g:presence_file_explorer_text = "Browsing a folder"
       let g:suda_smart_edit = 1
       let NERDTreeMinimalUI=1
 

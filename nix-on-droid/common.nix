@@ -8,7 +8,6 @@
 
   user.shell = "${pkgs.fish}/bin/fish";
   environment.packages = with pkgs; [
-    cmatrix
     neofetch
 
     croc
@@ -16,7 +15,6 @@
     dig
     dua
     eza
-    fastfetch
     fd
     file
     gawk
@@ -37,11 +35,6 @@
     wget
     which
     xxd
-
-    gcc
-    go
-    python3
-    rustup
   ];
   home-manager = {
     config = ../home-manager/base.nix;

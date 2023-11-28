@@ -3,7 +3,6 @@
   lib,
   ...
 }: {
-  nixpkgs.config.allowUnfree = true;
   nix = {
     registry =
       lib.mapAttrs'

@@ -1,7 +1,11 @@
-{pkgs}:
-pkgs.writeShellApplication {
+{
+  writeShellApplication,
+  pulseaudio,
+  ...
+}:
+writeShellApplication {
   name = "pavolume";
-  runtimeInputs = [pkgs.pulseaudio];
+  runtimeInputs = [pulseaudio];
   text = ''
     sink="@DEFAULT_SINK@"
 

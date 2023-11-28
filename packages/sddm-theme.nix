@@ -1,7 +1,11 @@
-{pkgs}:
-pkgs.stdenv.mkDerivation {
+{
+  fetchFromGitHub,
+  stdenv,
+  ...
+}:
+stdenv.mkDerivation {
   name = "sddm-theme";
-  src = pkgs.fetchFromGitHub {
+  src = fetchFromGitHub {
     owner = "aczw";
     repo = "sddm-theme-corners";
     rev = "a76d4517f163bbc7787f51ab074a0357bbf5e527";
