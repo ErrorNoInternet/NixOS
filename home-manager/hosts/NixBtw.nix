@@ -8,10 +8,13 @@
 }: let
   custom = {
     font = "JetBrainsMono Nerd Font";
+    predefinedColorScheme = "Nord";
     opacity = ".8";
     subtleOpacity = ".9";
     barOpacity = ".7";
-    predefinedColorScheme = "Nord";
+    terminal = "foot";
+    terminalFloating = "foot -a foot-floating";
+    browser = "firefox";
     pointerCursor = {
       name = "Bibata-Modern-Classic";
       package = pkgs.bibata-cursors;
@@ -105,5 +108,9 @@ in {
       # ABSOLUTELY PROPRIETARY
       zoom-us
     ];
+    sessionVariables = {
+      TERMINAL = "${custom.terminal}";
+      BROWSER = "${custom.browser}";
+    };
   };
 }

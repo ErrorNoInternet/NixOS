@@ -24,9 +24,5 @@
       jq
       progress
     ];
-    sessionVariables = {
-      TERMINAL = "foot";
-      BROWSER = "firefox";
-    };
   };
 }

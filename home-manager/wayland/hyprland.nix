@@ -108,8 +108,8 @@
         ", PRINT, exec, grimblast --freeze copy area"
 
         "$mainMod, L, exec, custom-swaylock 0 1"
-        "$mainMod, RETURN, exec, ${config.home.sessionVariables.TERMINAL}"
-        "$mainMod, RETURN, exec, ${config.home.sessionVariables.TERMINAL} -a ${config.home.sessionVariables.TERMINAL}-floating"
+        "$mainMod, RETURN, exec, ${custom.terminal}"
+        "$mainMod, RETURN, exec, ${custom.terminalFloating}"
 
         "$mainMod, TAB, workspace, previous"
         "$mainMod SHIFT, F, fullscreen"
