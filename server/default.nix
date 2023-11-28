@@ -19,7 +19,7 @@ in {
         ./hosts/Crix/hardware-configuration.nix
         ./locations/china.nix
         ./modules/bootloader.nix
-        ./modules/minecraft-server.nix
+        ./profiles/minecraft-server.nix
       ];
     };
     Pix = nixosSystem {
