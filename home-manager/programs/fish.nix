@@ -54,6 +54,7 @@
       gs = "git show";
       gr = "git restore";
       ns = "nix shell";
+      nr = "nix run";
       nd = "nix develop -c fish";
     };
     shellInit = ''
