@@ -10,6 +10,7 @@
 in {
   flake.nixosConfigurations = {
     Crix = nixosSystem {
+      specialArgs = {inherit inputs;};
       modules = [
         defaultModule
         ../shared/caches/ErrorNoBinaries.nix
@@ -22,6 +23,7 @@ in {
       ];
     };
     Pix = nixosSystem {
+      specialArgs = {inherit inputs;};
       modules = [
         defaultModule
         ../shared/caches/ErrorNoBinaries.nix
