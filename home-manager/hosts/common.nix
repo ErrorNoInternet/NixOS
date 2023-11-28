@@ -17,11 +17,12 @@
     packages = with pkgs; [
       cmatrix
       croc
+      dua
       eza
       fd
-      dua
-      jq
       inputs.hsize.packages.${pkgs.system}.hsize
+      jq
+      progress
     ];
     sessionVariables = {
       TERMINAL = "kitty";
