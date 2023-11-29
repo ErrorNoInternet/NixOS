@@ -38,7 +38,7 @@
       "Spotify" = " "
       "steam" = " "
       "thunderbird" = "󰇮 "
-      "virt-manager" = " "
+      "virt-manager" = " "
       "xdg-desktop-portal-gtk" = "󱈄"
       "zoom" = "󰬡 "
 
