@@ -28,7 +28,7 @@
         ",preferred,auto,auto"
       ];
       exec-once = [
-        "sleep 1; swww init"
+        "hyprpaper"
         "hyprctl setcursor ${custom.pointerCursor.name} ${builtins.toString custom.pointerCursor.size}"
         "swayidle -w timeout 600 'custom-swaylock 10 10' before-sleep 'custom-swaylock 0 1'"
         "hyprland-autoname-workspaces"
