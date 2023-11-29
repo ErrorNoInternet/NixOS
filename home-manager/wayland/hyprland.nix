@@ -109,7 +109,7 @@
 
         "$mainMod, L, exec, custom-swaylock 0 1"
         "$mainMod, RETURN, exec, ${custom.terminal}"
-        "$mainMod, RETURN, exec, ${custom.terminalFloating}"
+        "$mainMod SHIFT, RETURN, exec, ${custom.terminalFloating}"
 
         "$mainMod, TAB, workspace, previous"
         "$mainMod SHIFT, F, fullscreen"
