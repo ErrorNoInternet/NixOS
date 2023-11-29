@@ -34,7 +34,7 @@
       cm = "${pkgs.cmatrix}/bin/cmatrix -C blue";
       py = "python3";
       timg = "${pkgs.timg}/bin/timg -ps";
-      lsimg = "${pkgs.timg}/bin/timg --grid=6 --upscale --title --center --frames=1";
+      lsimg = "${pkgs.timg}/bin/timg -ps --grid=6 --upscale --title --center --frames=1";
       drg = "${pkgs.ripdrag}/bin/ripdrag -xa";
       cava = "TERM=${custom.terminal} ${pkgs.cava}/bin/cava";
     };
