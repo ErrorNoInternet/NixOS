@@ -16,6 +16,7 @@
         blink = "yes";
         color = "${config.colorScheme.colors.base04} ${config.colorScheme.colors.base04}";
       };
+      mouse.hide-when-typing = "yes";
       colors = {
         alpha = "${custom.opacity}";
         background = "${config.colorScheme.colors.base00}";
