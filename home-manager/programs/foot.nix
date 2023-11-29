@@ -14,6 +14,7 @@
       cursor = {
         style = "beam";
         blink = "yes";
+        color = "${config.colorScheme.colors.base04} ${config.colorScheme.colors.base04}";
       };
       colors = {
         alpha = "${custom.opacity}";
