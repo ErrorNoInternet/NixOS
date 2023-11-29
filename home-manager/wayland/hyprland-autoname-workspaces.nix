@@ -19,7 +19,7 @@
       "discord" = "󰙯 "
       "firefox" = " "
       "foot" = ""
-      "Gimp-2.10" = " "
+      "Gimp" = " "
       "ImHex" = "󱊧"
       "jetbrains-idea-ce" = ""
       "kitty" = ""
