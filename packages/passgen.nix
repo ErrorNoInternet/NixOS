@@ -9,7 +9,7 @@ rustPlatform.buildRustPackage rec {
   src = fetchFromGitHub {
     owner = "ErrorNoInternet";
     repo = pname;
-    rev = "35dc9480941fc471bca2d4a96a3123d84e38e374";
-    hash = "sha256-5jcaWf8A0mW0HixnbxZjqg/6YH8WTG4LRUtYXYsma7o=";
+    rev = "3ea4efc48abdf0a39afa531c3d72b71da1193941";
+    hash = "sha256-fVKER6eO3P1amTKg9q4yEB4zVPks/T9ND/h+sPnepEI=";
   };
 }
