@@ -69,7 +69,7 @@
             alejandra
             git
           ];
-          name = "configuration.nix";
+          name = "configuration.nix-shell";
         };
       };
     };
