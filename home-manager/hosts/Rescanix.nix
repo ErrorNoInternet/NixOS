@@ -75,6 +75,7 @@ in {
       gptfdisk
       hyperfine
       hyprpicker
+      imagemagick
       inputs.hyprwm-contrib.packages.${pkgs.system}.scratchpad
       inputs.nix-gaming.packages.${pkgs.system}.osu-lazer-bin
       inputs.nix-gaming.packages.${pkgs.system}.wine-ge
