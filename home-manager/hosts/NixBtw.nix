@@ -103,9 +103,6 @@ in {
       superTuxKart
       inputs.nix-gaming.packages.${pkgs.system}.osu-lazer-bin
       inputs.nix-gaming.packages.${pkgs.system}.wine-ge
-
-      # ABSOLUTELY PROPRIETARY
-      zoom-us
     ];
     sessionVariables = {
       TERMINAL = "${custom.terminal}";
