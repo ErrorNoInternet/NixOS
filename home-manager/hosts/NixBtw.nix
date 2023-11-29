@@ -13,7 +13,7 @@
     subtleOpacity = ".9";
     barOpacity = ".7";
     terminal = "foot";
-    terminalFloating = "foot -a foot-floating";
+    terminalFloating = "foot -a foot-floating -w 1000x600";
     browser = "firefox";
     pointerCursor = {
       name = "Bibata-Modern-Classic";
