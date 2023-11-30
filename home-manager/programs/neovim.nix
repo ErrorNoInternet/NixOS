@@ -19,6 +19,7 @@
       auto-pairs
       bufferline-nvim
       gruvbox-nvim
+      indent-blankline-nvim
       markdown-preview-nvim
       nerdtree
       nix-develop-nvim
@@ -208,6 +209,14 @@
           rgb_fn   = true;
           hsl_fn   = true;
         }
+      }
+
+      require("ibl").setup {
+        indent = { char = '' },
+        scope = {
+          show_start = false;
+          show_end = false;
+        },
       }
 
       require("bufferline").setup {
