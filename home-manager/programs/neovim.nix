@@ -31,6 +31,7 @@
       vim-airline
       vim-airline-themes
       vim-devicons
+      vim-fugitive
       vim-go
 
       coc-clangd
@@ -173,11 +174,12 @@
       colorscheme ${lib.strings.toLower custom.predefinedColorScheme}
       highlight clear CursorLine
       highlight CocFloating guibg=#${config.colorScheme.colors.base01}
+      let g:airline_theme = 'nord_minimal'
 
       if !exists('g:airline_symbols')
         let g:airline_symbols = {}
       endif
-      let g:airline_theme = 'nord_minimal'
+      let g:airline#extensions#branch#enabled = 1
       let g:airline_powerline_fonts = 1
       let g:airline_skip_empty_sections = 1
       let g:airline_symbols.maxlinenr = '''
