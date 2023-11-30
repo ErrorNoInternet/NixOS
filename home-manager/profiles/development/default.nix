@@ -4,6 +4,7 @@
     clang
     clang-tools
     go
+    linuxPackages_latest.perf
     python3Packages.bpython
     rustup
   ];
