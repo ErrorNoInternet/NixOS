@@ -33,16 +33,16 @@ in {
   _module.args = {inherit custom;};
   imports = [
     ../modules/cursor.nix
+    ../modules/desktop-entries.nix
+    ../modules/gtk.nix
     ../profiles/development
     ../profiles/wm
     ../programs/btop.nix
     ../programs/cava.nix
-    ../programs/desktop-entries.nix
     ../programs/fcitx.nix
     ../programs/foot.nix
     ../programs/git.nix
     ../programs/gnupg.nix
-    ../programs/gtk.nix
     ../programs/imv.nix
     ../programs/irssi.nix
     ../programs/kdeconnect.nix
