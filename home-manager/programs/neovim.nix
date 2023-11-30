@@ -161,6 +161,8 @@
       autocmd FileType rust imap <buffer> <F10> <esc> :wa<CR>:term cd %:p:h:h && cargo run<CR>
       autocmd FileType rust map <buffer> <F8> :wa<CR>:term cd %:p:h:h && cargo run --release<CR>
       autocmd FileType rust imap <buffer> <F8> <esc> :wa<CR>:term cd %:p:h:h && cargo run --release<CR>
+      autocmd FileType rust map <buffer> <F9> :wa<CR>:term rustc % && ./%:t:r<CR>
+      autocmd FileType rust imap <buffer> <F9> <esc> :wa<CR>:term rustc % && ./%:t:r<CR>
       autocmd FileType rust map <buffer> <F11> :wa<CR>:term cd %:p:h:h && cargo build<CR>
       autocmd FileType rust imap <buffer> <F11> <esc> :wa<CR>:term cd %:p:h:h && cargo build<CR>
       autocmd FileType rust map <buffer> <F2> :w<CR>:RustFmt<CR>:w<CR>
