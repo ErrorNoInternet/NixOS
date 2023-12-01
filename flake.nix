@@ -45,23 +45,7 @@
         system,
         ...
       }: {
-        _module.args = {
-          inherit self;
-          pkgs = import nixpkgs {
-            inherit system;
-            overlays = [
-              (_: super: {
-                openrgb = super.openrgb.overrideAttrs (oldAttrs: {
-                  patches =
-                    (oldAttrs.patches or [])
-                    ++ [
-                      ./pkgs/patches/openrgb-force-libusb.patch
-                    ];
-                });
-              })
-            ];
-          };
-        };
+        _module.args = { inherit self; };
         formatter = pkgs.alejandra;
 
         devShells.default = pkgs.mkShell {
