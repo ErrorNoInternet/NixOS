@@ -37,7 +37,6 @@
     wget
     zip
   ];
-  programs.command-not-found.enable = false;
 
   systemd.services.pueued = {
     wantedBy = ["multi-user.target"];

@@ -70,7 +70,6 @@
     wget
     xdg-user-dirs
   ];
-  programs.command-not-found.enable = false;
   programs.dconf.enable = true;
   programs.light.enable = true;
   programs.gnupg.agent.enable = true;
