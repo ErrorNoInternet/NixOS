@@ -4,8 +4,8 @@
     config = {
       no-keepaspect-window = "";
 
-      demuxer-max-bytes = "75MiB";
-      demuxer-max-back-bytes = "25MiB";
+      demuxer-max-bytes = "150MiB";
+      demuxer-max-back-bytes = "50MiB";
 
       sub-scale = 0.4;
       ytdl-raw-options = "write-auto-sub=";
