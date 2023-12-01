@@ -77,10 +77,12 @@
 
       any-nix-shell fish --info-right | source
       if test (ps | grep fish | wc -l) -eq 1
-        if test -e /android/system/bin/linker64
-          mfa
-        else
-          mf
+        if test (tmux list-windows | wc -l) -eq 1
+          if test -e /android/system/bin/linker64
+            mfa
+          else
+            mf
+          end
         end
       end
     '';
