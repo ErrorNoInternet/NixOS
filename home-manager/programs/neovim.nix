@@ -59,7 +59,7 @@
       set smartindent
       set softtabstop=4
       set tabstop=4
-      syntax on
+      syntax enable
 
       let g:presence_buttons = 0
       let g:presence_neovim_image_text = "Neovim"
@@ -94,7 +94,6 @@
         :%!${pkgs.black}/bin/black - 2>/dev/null
         call setpos('.', cursor_pos)
       endfunction
-
       autocmd TermOpen * startinsert
 
       autocmd FileType python setlocal tabstop=4
@@ -246,15 +245,23 @@
             fg = '#${config.colorScheme.colors.base00}',
             bg = '#${config.colorScheme.colors.base01}'
           },
+          indicator_selected = {
+            fg = '#${config.colorScheme.colors.base0C}',
+            bg = '#${config.colorScheme.colors.base03}',
+          },
+
           fill = { bg = '#${config.colorScheme.colors.base01}' },
-          background = { bg = '#${config.colorScheme.colors.base01}', },
-          indicator_selected = { bg = '#${config.colorScheme.colors.base03}' },
+          background = { bg = '#${config.colorScheme.colors.base01}' },
+
           close_button_selected = { bg = '#${config.colorScheme.colors.base03}' },
-          modified_selected = { bg = '#${config.colorScheme.colors.base03}' },
           close_button = { bg = '#${config.colorScheme.colors.base01}' },
+
+          modified_selected = { bg = '#${config.colorScheme.colors.base03}' },
           modified = { bg = '#${config.colorScheme.colors.base01}' },
+
           buffer_selected = { bg = '#${config.colorScheme.colors.base03}', italic = false },
           buffer = { bg = '#${config.colorScheme.colors.base01}' },
+
           duplicate_selected = { bg = '#${config.colorScheme.colors.base03}' },
           duplicate = { bg = '#${config.colorScheme.colors.base01}' },
 
