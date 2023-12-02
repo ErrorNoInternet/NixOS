@@ -93,6 +93,11 @@
         :%!${pkgs.black}/bin/black - 2>/dev/null
         call setpos('.', cursor_pos)
       endfunction
+      function FormatNixBuffer()
+        let cursor_pos = getpos('.')
+        :%!${pkgs.alejandra}/bin/alejandra - 2>/dev/null
+        call setpos('.', cursor_pos)
+      endfunction
       autocmd TermOpen * startinsert
 
       autocmd FileType python setlocal tabstop=4
@@ -167,6 +172,8 @@
       autocmd FileType rust imap <buffer> <F2> <esc>:w<CR>:RustFmt<CR>:w<CR>
 
       autocmd FileType nix setlocal shiftwidth=2 softtabstop=2 expandtab
+      autocmd FileType nix map <buffer> <F2> :w<CR>:call FormatNixBuffer()<CR>:w<CR>
+      autocmd FileType nix imap <buffer> <F2> <esc>:w<CR>:call FormatNixBuffer()<CR>:w<CR>
 
       lua << END
       require("colorizer").setup {
