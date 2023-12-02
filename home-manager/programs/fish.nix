@@ -15,10 +15,6 @@
         name = "autopair";
         src = fishPlugins.autopair.src;
       }
-      {
-        name = "colored_man_pages";
-        src = fishPlugins.colored-man-pages;
-      }
     ];
     shellAliases = {
       ls = "${pkgs.eza}/bin/eza --git --icons";
