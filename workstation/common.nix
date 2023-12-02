@@ -121,7 +121,7 @@
   users.users.ryan = {
     initialPassword = "snowflake";
     isNormalUser = true;
-    extraGroups = ["wheel" "video"];
+    extraGroups = ["wheel" "video" "networkmanager"];
   };
 
   environment.etc."current-nixos".source = ./.;
