@@ -1,6 +1,5 @@
 name: Nix Builds
 concurrency: nix-builds
-
 on:
   push:
     paths:

@@ -1,5 +1,15 @@
 name: Nix Checks
-on: [push, pull_request, workflow_dispatch]
+on:
+  push:
+    paths:
+      - home-manager/**
+      - nix-on-droid/**
+      - packages/**
+      - server/**
+      - workstation/**
+      - flake.nix
+  pull_request:
+  workflow_dispatch:
 
 jobs:
   checks:
