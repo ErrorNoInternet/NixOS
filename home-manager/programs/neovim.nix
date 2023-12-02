@@ -16,7 +16,6 @@
       };
     };
     plugins = with pkgs.vimPlugins; [
-      nvim-autopairs
       bufferline-nvim
       gruvbox-nvim
       indent-blankline-nvim
@@ -25,6 +24,7 @@
       nerdtree
       nix-develop-nvim
       nord-nvim
+      nvim-autopairs
       nvim-colorizer-lua
       presence-nvim
       rust-vim
@@ -168,7 +168,7 @@
 
       autocmd FileType nix setlocal shiftwidth=2 softtabstop=2 expandtab
 
-      lua << EOF
+      lua << END
       require("colorizer").setup {
         filetypes = {'*'},
         user_default_options = {
@@ -249,7 +249,7 @@
           hint_diagnostic = { bg = '#${config.colorScheme.colors.base01}' },
         }
       }
-      EOF
+      END
 
       lua vim.g.nord_italic = false
       lua vim.g.nord_disable_background = true
