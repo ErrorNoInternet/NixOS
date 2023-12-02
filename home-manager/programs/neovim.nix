@@ -16,10 +16,11 @@
       };
     };
     plugins = with pkgs.vimPlugins; [
-      auto-pairs
+      nvim-autopairs
       bufferline-nvim
       gruvbox-nvim
       indent-blankline-nvim
+      lualine-nvim
       markdown-preview-nvim
       nerdtree
       nix-develop-nvim
@@ -28,8 +29,6 @@
       presence-nvim
       rust-vim
       suda-vim
-      vim-airline
-      vim-airline-themes
       vim-devicons
       vim-fugitive
       vim-go
@@ -169,40 +168,6 @@
 
       autocmd FileType nix setlocal shiftwidth=2 softtabstop=2 expandtab
 
-      lua vim.g.nord_italic = false
-      lua vim.g.nord_disable_background = true
-      lua vim.o.termguicolors = true
-      colorscheme ${lib.strings.toLower custom.predefinedColorScheme}
-      highlight clear CursorLine
-      highlight CocFloating guibg=#${config.colorScheme.colors.base01}
-      let g:airline_theme = 'nord_minimal'
-
-      if !exists('g:airline_symbols')
-        let g:airline_symbols = {}
-      endif
-      let g:airline#extensions#branch#enabled = 1
-      let g:airline_powerline_fonts = 1
-      let g:airline_skip_empty_sections = 1
-      let g:airline_symbols.maxlinenr = '''
-      let g:airline_symbols.colnr = ' C:'
-      let g:airline_symbols.linenr = " L:"
-      let g:airline_left_sep = ''
-      let g:airline_left_alt_sep = ''
-      let g:airline_right_sep = ''
-      let g:airline_right_alt_sep = ''
-      let g:airline_theme_patch_func = 'AirlineThemePatch'
-      let s:saved_theme = []
-      function! AirlineThemePatch(palette)
-        for colors in values(a:palette)
-          if has_key(colors, 'airline_c') && len(s:saved_theme) ==# 0
-            let s:saved_theme = colors.airline_c
-          endif
-          if has_key(colors, 'airline_term')
-            let colors.airline_term = s:saved_theme
-          endif
-        endfor
-      endfunction
-
       lua << EOF
       require("colorizer").setup {
         filetypes = {'*'},
@@ -221,6 +186,10 @@
           show_end = false;
         },
       }
+
+      require("nvim-autopairs").setup()
+
+      require("lualine").setup()
 
       require("bufferline").setup {
         options = {
@@ -246,7 +215,6 @@
             bg = '#${config.colorScheme.colors.base01}'
           },
           indicator_selected = {
-            fg = '#${config.colorScheme.colors.base0C}',
             bg = '#${config.colorScheme.colors.base03}',
           },
 
@@ -282,6 +250,18 @@
         }
       }
       EOF
+
+      lua vim.g.nord_italic = false
+      lua vim.g.nord_disable_background = true
+      lua vim.o.termguicolors = true
+      colorscheme ${lib.strings.toLower custom.predefinedColorScheme}
+      highlight clear CursorLine
+      highlight MatchParen guifg=#${config.colorScheme.colors.base0D} guibg=#${config.colorScheme.colors.base03}
+      highlight Function gui=bold
+      highlight Macro gui=bold
+      highlight RustEnumVariant guifg=#${config.colorScheme.colors.base0C}
+      highlight CocFloating guibg=#${config.colorScheme.colors.base01}
+      highlight @ibl.indent.char.1 guifg=#${config.colorScheme.colors.base00}
     '';
   };
 }
