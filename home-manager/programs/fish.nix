@@ -6,14 +6,14 @@
   home.packages = with pkgs; [any-nix-shell];
   programs.fish = {
     enable = true;
-    plugins = with pkgs; [
+    plugins = with pkgs.fishPlugins; [
       {
         name = "tide";
-        src = fishPlugins.tide.src;
+        src = tide.src;
       }
       {
         name = "autopair";
-        src = fishPlugins.autopair.src;
+        src = autopair.src;
       }
     ];
     shellAliases = {
