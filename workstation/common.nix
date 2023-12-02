@@ -15,7 +15,9 @@
     };
     kernelPackages = lib.mkDefault pkgs.linuxPackages_latest;
     supportedFilesystems = ["ntfs"];
-    sysctl.kernel.sysrq = 1;
+    kernel.sysctl = {
+      "kernel.sysrq" = 1;
+    };
   };
   networking = {
     firewall.enable = false;
