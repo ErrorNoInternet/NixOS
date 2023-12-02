@@ -1,0 +1,66 @@
+name: Nix Builds
+concurrency: nix-builds
+
+on:
+  push:
+    paths:
+      - flake.lock
+  workflow_dispatch:
+
+jobs:
+  build-nixos:
+    name: NixOS
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        include:
+          - host: NixBtw
+          - host: Rescanix
+
+    steps:
+      - name: "Set up directories"
+        run: |
+          sudo mkdir /nix
+          sudo rm -rf "$AGENT_TOOLSDIRECTORY"
+          sudo rm -rf /home/linuxbrew
+          sudo rm -rf /home/runner/.rustup
+          sudo rm -rf /usr/local/.ghcup
+          sudo rm -rf /usr/local/lib/heroku
+          sudo rm -rf /usr/local/lib/node_modules
+          sudo rm -rf /usr/local/share/boost
+          sudo rm -rf /usr/local/share/chromium
+          sudo rm -rf /usr/local/share/powershell
+          sudo rm -rf /var/lib/docker/overlay2
+
+      - name: "Maximize disk space"
+        uses: easimon/maximize-build-space@v8
+        with:
+          root-reserve-mb: 20480
+          swap-size-mb: 128
+          build-mount-path: /nix
+          remove-dotnet: "true"
+          remove-android: "true"
+          remove-haskell: "true"
+          remove-codeql: "true"
+          remove-docker-images: "true"
+
+      - uses: actions/checkout@v3
+
+      - name: "Install Nix"
+        uses: cachix/install-nix-action@v20
+        with:
+          install_url: https://nixos.org/nix/install
+          extra_nix_config: |
+            auto-optimise-store = true
+            access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
+            experimental-features = nix-command flakes
+
+      - name: "Install Cachix"
+        uses: cachix/cachix-action@v12
+        with:
+          name: errornobinaries
+          authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
+
+      - name: "Build for ${{ matrix.host }} (NixOS)"
+        run: nix build .#nixosConfigurations.${{ matrix.host }}.config.system.build.toplevel
