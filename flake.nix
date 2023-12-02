@@ -45,7 +45,7 @@
         system,
         ...
       }: {
-        _module.args = { inherit self; };
+        _module.args = {inherit self;};
         formatter = pkgs.alejandra;
 
         devShells.default = pkgs.mkShell {
