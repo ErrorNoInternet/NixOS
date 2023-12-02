@@ -30,7 +30,10 @@ in {
       ];
     };
     "ryan@Rescanix" = homeManagerConfiguration {
-      pkgs = import inputs.nixpkgs {system = "x86_64-linux";};
+      pkgs = import inputs.nixpkgs {
+        system = "x86_64-linux";
+        config.allowUnfree = true;
+      };
       extraSpecialArgs = {inherit inputs self;};
       modules = [
         defaultModule
