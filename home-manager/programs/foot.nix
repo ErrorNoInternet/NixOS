@@ -10,6 +10,7 @@
         font = "${custom.font}:size=9";
         pad = "0x0 center";
         shell = "tmux";
+        initial-window-size-pixels = "1920x1080";
       };
       cursor = {
         style = "beam";
