@@ -6,7 +6,7 @@
     ];
     trustedPublicKeys = [
       "ErrorNoBinaries:im2fJ1t41XAwp2S+DMgSI0VFKxS+jpz/XIOs/s9iLFg="
-      "errornobinaries.cachix.org-1:H2M3PQPDikFPKfMlsfzKKfT5oZchHwPfYMhynYpJctw="
+      "errornobinaries.cachix.org-1:84oagGNCIsXxBTYmfTiP+lvWje7lIS294iqAtCpFsbU="
     ];
   };
 }
