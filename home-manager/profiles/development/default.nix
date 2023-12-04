@@ -3,6 +3,7 @@
     (python3.withPackages (ps: with ps; [jedi]))
     clang
     clang-tools
+    gdb
     go
     linuxPackages_latest.perf
     man-pages
