@@ -39,10 +39,7 @@
         ./nix-on-droid
       ];
       systems = ["x86_64-linux" "aarch64-linux"];
-      perSystem = {
-        pkgs,
-        ...
-      }: {
+      perSystem = {pkgs, ...}: {
         _module.args = {inherit self;};
         formatter = pkgs.alejandra;
 
