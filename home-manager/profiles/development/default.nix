@@ -5,6 +5,7 @@
     clang-tools
     gdb
     go
+    libllvm
     linuxPackages_latest.perf
     man-pages
     python3Packages.bpython
