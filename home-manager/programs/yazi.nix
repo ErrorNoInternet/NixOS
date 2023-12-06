@@ -10,10 +10,8 @@
     enableZshIntegration = true;
     theme = {
       status = {
-        separator = {
-          opening = "";
-          closing = "";
-        };
+        separator_open = "";
+        separator_close = "";
       };
     };
     settings = {
