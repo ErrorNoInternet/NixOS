@@ -53,7 +53,7 @@
       gl = "git log";
       gs = "git show";
       gr = "git restore";
-      gb = "git blame";
+      gbl = "git blame";
       ns = "nix shell";
       nr = "nix run";
       nd = "nix develop -c fish";
