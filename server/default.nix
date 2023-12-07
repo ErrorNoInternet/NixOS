@@ -1,9 +1,10 @@
 {inputs, ...}: let
   defaultModule = {
     imports = [
-      inputs.agenix.nixosModules.default
       ../shared
+      ../shared/caches/ErrorNoBinaries.nix
       ./common.nix
+      inputs.agenix.nixosModules.default
     ];
   };
   inherit (inputs.nixpkgs.lib) nixosSystem;
