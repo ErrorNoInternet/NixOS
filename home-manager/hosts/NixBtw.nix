@@ -62,8 +62,6 @@ in {
     username = "ryan";
     homeDirectory = "/home/ryan";
     file = {
-      downloads.source = config.lib.file.mkOutOfStoreSymlink "/mnt/data/downloads";
-      data.source = config.lib.file.mkOutOfStoreSymlink "/mnt/data";
       "pictures/wallpapers".source = ../../other/wallpapers;
     };
     packages = with pkgs; [
