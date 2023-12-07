@@ -75,6 +75,19 @@
       set tide_character_color cyan
       set tide_time_color cyan
 
+      function mkcd -d "create a directory and set cwd"
+        command mkdir $argv
+        if test $status = 0
+          switch $argv[(count $argv)]
+            case '-*'
+
+            case '*'
+              cd $argv[(count $argv)]
+              return
+          end
+        end
+      end
+
       any-nix-shell fish --info-right | source
       if test (ps | grep fish | wc -l) -le 1
         if test (tmux list-windows | wc -l) -le 1 && test (tmux list-panes | wc -l) -le 1
