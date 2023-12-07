@@ -47,6 +47,7 @@
           packages = with pkgs; [
             alejandra
             git
+            neovim
           ];
           name = "configuration.nix-shell";
         };
