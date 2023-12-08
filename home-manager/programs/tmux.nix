@@ -13,6 +13,8 @@
     mouse = true;
     terminal = "tmux-256color";
     extraConfig = ''
+      set -g pane-active-border-style 'fg=colour4'
+
       set -g allow-passthrough on
       set -g repeat-time 0
       set -g set-clipboard on
@@ -20,8 +22,6 @@
       set -ga update-environment TERM
       set -ga update-environment TERM_PROGRAM
       set -g focus-events off
-
-      set -g pane-active-border-style 'fg=colour4'
 
       bind '"' split-window -v -c "#{pane_current_path}"
       bind '%' split-window -h -c "#{pane_current_path}"
