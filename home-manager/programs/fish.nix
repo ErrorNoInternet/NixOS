@@ -23,6 +23,7 @@
       la = "ls -a";
       lla = "ls -la";
       grep = "grep --color";
+      ip = "ip --color";
       q = "exit";
 
       md = "sudo cryptsetup luksOpen /dev/disk/by-uuid/9cbb87fd-6e5a-45b3-88ee-22d369738be5 luks-btank && sudo mount /dev/mapper/luks-btank /mnt/data";
