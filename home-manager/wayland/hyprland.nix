@@ -109,7 +109,7 @@
 
         "$mainMod, L, exec, custom-swaylock 0 1"
         "$mainMod, RETURN, exec, ${custom.terminal}"
-        "$mainMod SHIFT, RETURN, exec, ${custom.terminalFloating}"
+        "$mainMod SHIFT, RETURN, exec, [float; center] ${custom.terminal}"
 
         "$mainMod, TAB, workspace, previous"
         "$mainMod SHIFT, F, fullscreen"
@@ -173,18 +173,18 @@
         ",switch:off:Lid Switch, exec, swaylock 0 1"
       ];
       windowrulev2 = [
-        "float           ,class:floating"
+        "animation slide ,class:(xdg-desktop-portal-gtk)"
+        "center          ,class:(xdg-desktop-portal-gtk)"
         "float           ,class:(branchdialog)"
         "float           ,class:(confirm)"
         "float           ,class:(dialog)"
         "float           ,class:(error)"
+        "float           ,class:(mpv)"
         "float           ,class:(notification)"
         "float           ,class:(pavucontrol)"
-        "float           ,title:(mpv)"
-        "size 1200 750   ,class:(xdg-desktop-portal-gtk)"
         "float           ,class:(xdg-desktop-portal-gtk)"
-        "center          ,class:(xdg-desktop-portal-gtk)"
-        "animation slide ,class:(xdg-desktop-portal-gtk)"
+        "size 1000 600   ,class:(foot)"
+        "size 1200 750   ,class:(xdg-desktop-portal-gtk)"
 
         "opacity ${custom.subtleOpacity} ${custom.subtleOpacity},class:^(discord)$"
       ];
