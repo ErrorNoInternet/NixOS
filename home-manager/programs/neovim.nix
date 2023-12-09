@@ -100,6 +100,8 @@
       nnoremap <leader>l :NERDTreeFocus<CR>
       nnoremap <C-l> :NERDTreeToggle<CR>
       nmap <leader>a <Plug>(coc-codeaction-selected)<CR>
+      nmap <leader>n <Plug>(coc-diagnostic-next)<CR>
+      nmap <leader>p <Plug>(coc-diagnostic-prev)<CR>
 
       autocmd FileType python setlocal tabstop=4
       autocmd FileType python map <buffer> <F10> :wa<CR>:term python3 %<CR>
