@@ -90,15 +90,15 @@
       endfunction
 
       autocmd TermOpen * startinsert
-      nnoremap <C-n> <esc>:bnext<CR>
-      nnoremap <C-p> <esc>:bprevious<CR>
-      noremap <silent> <C-S> <esc>:w<CR>
-      vnoremap <silent> <C-S> <C-C>:w<CR>
-      inoremap <silent> <C-S> <C-O>:w<CR>
-      inoremap <silent><expr> <tab> coc#pum#visible() ? coc#pum#confirm() : "\<tab>"
-      nnoremap <F3> :set hlsearch!<CR>
-      nnoremap <leader>l :NERDTreeFocus<CR>
-      nnoremap <C-l> :NERDTreeToggle<CR>
+      nmap <C-n> <esc>:bnext<CR>
+      nmap <C-p> <esc>:bprevious<CR>
+      nmap <silent> <C-S> <esc>:w<CR>
+      vmap <silent> <C-S> <C-C>:w<CR>
+      imap <silent> <C-S> <C-O>:w<CR>
+      nmap <F3> :set hlsearch!<CR>
+      nmap <leader>l :NERDTreeFocus<CR>
+      nmap <C-l> :NERDTreeToggle<CR>
+      imap <silent><expr> <tab> coc#pum#visible() ? coc#pum#confirm() : "\<tab>"
       nmap <leader>a <Plug>(coc-codeaction-selected)<CR>
       nmap <leader>n <Plug>(coc-diagnostic-next)<CR>
       nmap <leader>p <Plug>(coc-diagnostic-prev)<CR>
