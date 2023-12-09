@@ -16,8 +16,37 @@
   ];
 
   networking.firewall = {
-    allowedTCPPorts = [7455 1010 1011 1012 8080 8081 8082 22122 56450 56451];
-    allowedUDPPorts = [8080 1010 1011 1012 8081 8082];
+    allowedTCPPorts = [
+      # services
+      1010
+      1011
+      1012
+      22122
+
+      # testing
+      8080
+      8081
+      8082
+      8083
+      8084
+
+      # backups
+      56450
+      56451
+    ];
+    allowedUDPPorts = [
+      # services
+      1010
+      1011
+      1012
+
+      # testing
+      8080
+      8081
+      8082
+      8083
+      8084
+    ];
   };
 
   fileSystems = {

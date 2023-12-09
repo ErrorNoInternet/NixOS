@@ -2,10 +2,13 @@
   inputs,
   pkgs,
   ...
-}: {
+}: let
+  port = 7455;
+in {
+  networking.firewall.allowedTCPPorts = [port];
   environment.etc."attic-cache.toml".text = ''
     # Socket address to listen on
-    listen = "[::]:7455"
+    listen = "[::]:${builtins.toString port}"
 
     # Allowed `Host` headers
     #
