@@ -67,16 +67,6 @@
       let g:suda_smart_edit = 1
       let NERDTreeMinimalUI=1
 
-      nnoremap <C-n> <esc>:bnext<CR>
-      nnoremap <C-p> <esc>:bprevious<CR>
-      noremap <silent> <C-S> <esc>:w<CR>
-      vnoremap <silent> <C-S> <C-C>:w<CR>
-      inoremap <silent> <C-S> <C-O>:w<CR>
-      inoremap <silent><expr> <tab> coc#pum#visible() ? coc#pum#confirm() : "\<tab>"
-      nnoremap <F3> :set hlsearch!<CR>
-      nnoremap <leader>l :NERDTreeFocus<CR>
-      nnoremap <C-l> :NERDTreeToggle<CR>
-
       set guifont=JetBrainsMonoNL\ Nerd\ Font:h9
       let g:neovide_remember_window_size = v:true
       let g:neovide_cursor_vfx_mode = "pixiedust"
@@ -98,7 +88,18 @@
         :%!${pkgs.alejandra}/bin/alejandra - 2>/dev/null
         call setpos('.', cursor_pos)
       endfunction
+
       autocmd TermOpen * startinsert
+      nnoremap <C-n> <esc>:bnext<CR>
+      nnoremap <C-p> <esc>:bprevious<CR>
+      noremap <silent> <C-S> <esc>:w<CR>
+      vnoremap <silent> <C-S> <C-C>:w<CR>
+      inoremap <silent> <C-S> <C-O>:w<CR>
+      inoremap <silent><expr> <tab> coc#pum#visible() ? coc#pum#confirm() : "\<tab>"
+      nnoremap <F3> :set hlsearch!<CR>
+      nnoremap <leader>l :NERDTreeFocus<CR>
+      nnoremap <C-l> :NERDTreeToggle<CR>
+      nmap <leader>a <Plug>(coc-codeaction-selected)<CR>
 
       autocmd FileType python setlocal tabstop=4
       autocmd FileType python map <buffer> <F10> :wa<CR>:term python3 %<CR>
