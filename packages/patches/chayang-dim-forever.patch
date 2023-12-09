@@ -1,0 +1,12 @@
+diff --git a/main.c b/main.c
+index 4180f69..81f43ea 100644
+--- a/main.c
++++ b/main.c
+@@ -46,7 +46,6 @@ static void repaint_output(struct chayang_output *output) {
+ 	int64_t delta = now_ms() - output->chayang->start_time_ms;
+ 	double progress = (double)delta / output->chayang->delay_ms;
+ 	if (progress >= 1) {
+-		output->chayang->running = false;
+ 		return;
+ 	}
+ 

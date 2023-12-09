@@ -19,6 +19,7 @@
       colorScheme = config.colorScheme;
       font = custom.font;
     })
+    (chayang.overrideAttrs (oldAttrs: {patches = (oldAttrs.patches or []) ++ [../../../packages/patches/chayang-dim-forever.patch];}))
     cliphist
     inputs.hyprwm-contrib.packages.${pkgs.system}.grimblast
     pavucontrol
