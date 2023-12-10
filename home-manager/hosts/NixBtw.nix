@@ -81,7 +81,6 @@ in {
       timg
 
       # graphical utilities
-      brave
       firefox
       gimp
       imhex
