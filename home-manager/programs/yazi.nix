@@ -34,41 +34,96 @@
         max_height = 1024;
         cache_dir = "";
       };
+      open.rules = [
+        {
+          name = "*/";
+          use = ["edit" "open" "reveal"];
+        }
+        {
+          mime = "text/*";
+          use = ["edit" "reveal"];
+        }
+        {
+          mime = "image/*";
+          use = ["open" "reveal"];
+        }
+        {
+          mime = "video/*";
+          use = ["play" "reveal"];
+        }
+        {
+          mime = "audio/*";
+          use = ["play" "reveal"];
+        }
+        {
+          mime = "inode/x-empty";
+          use = ["edit" "reveal"];
+        }
+        {
+          mime = "application/json";
+          use = ["edit" "reveal"];
+        }
+        {
+          mime = "application/zip";
+          use = ["extract" "reveal"];
+        }
+        {
+          mime = "application/gzip";
+          use = ["extract" "reveal"];
+        }
+        {
+          mime = "application/x-tar";
+          use = ["extract" "reveal"];
+        }
+        {
+          mime = "application/x-bzip";
+          use = ["extract" "reveal"];
+        }
+        {
+          mime = "application/x-bzip2";
+          use = ["extract" "reveal"];
+        }
+        {
+          mime = "application/x-7z-compressed";
+          use = ["extract" "reveal"];
+        }
+        {
+          mime = "application/x-rar";
+          use = ["extract" "reveal"];
+        }
+        {
+          mime = "*";
+          use = ["open" "reveal"];
+        }
+      ];
       opener = {
-        folder = [
+        open = [
           {exec = ''xdg-open "$@"'';}
         ];
-        text = [
+        edit = [
           {
             exec = ''$EDITOR "$@"'';
             block = true;
           }
         ];
-        image = [
-          {exec = ''imv "$@"'';}
+        reveal = [
           {
             exec = ''${pkgs.exiftool}/bin/exiftool "$1"; echo "press enter to exit"; read'';
             block = true;
           }
         ];
-        video = [
-          {exec = ''mpv "$@"'';}
+        extract = [
           {
-            exec = ''${pkgs.exiftool}/bin/exiftool "$1"; echo "press enter to exit"; read'';
-            block = true;
+            exec = ''${pkgs.unar}/bin/unar "$1"'';
           }
         ];
-        audio = [
-          {exec = ''mpv "$@"'';}
+        play = [
           {
-            exec = ''${pkgs.exiftool}/bin/exiftool "$1"; echo "press enter to exit"; read'';
-            block = true;
+            exec = ''${pkgs.mpv}/bin/mpv --force-window=yes "$@"'';
+            orphan = true;
           }
-        ];
-        fallback = [
-          {exec = ''xdg-open "$@"'';}
           {
-            exec = ''${pkgs.file}/bin/file "$1"; echo "press enter to exit"; read'';
+            exec = ''${pkgs.mediainfo}/bin/mediainfo "$1"; echo "press enter to exit"; read'';
             block = true;
           }
         ];
