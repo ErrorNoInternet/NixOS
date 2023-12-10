@@ -13,6 +13,10 @@
         separator_open = "";
         separator_close = "";
       };
+      manager.preview_hovered = {
+        bg = "darkgray";
+        underline = false;
+      };
     };
     settings = {
       manager = {
