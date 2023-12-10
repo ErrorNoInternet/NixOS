@@ -328,6 +328,11 @@
           desc = "rename a file or directory";
         }
         {
+          on = ["R"];
+          exec = "shell --confirm '${pkgs.ripdrag}/bin/ripdrag -xa \"$@\"'";
+          desc = "drag files using ripdrag";
+        }
+        {
           on = [":"];
           exec = "shell --block";
           desc = "run a blocking shell command";
