@@ -276,46 +276,46 @@
           desc = "Inverse selection of all files";
         }
 
-        # Operation
+        # operations
         {
           on = ["o"];
           exec = "open";
-          desc = "Open the selected files";
+          desc = "open the selected files";
         }
         {
           on = ["<Enter>"];
           exec = "open";
-          desc = "Open the selected files";
+          desc = "open the selected files";
         }
         {
           on = ["y"];
           exec = "yank";
-          desc = "Copy the selected files";
+          desc = "copy the selected files";
         }
         {
           on = ["x"];
           exec = "yank --cut";
-          desc = "Cut the selected files";
+          desc = "cut the selected files";
         }
         {
           on = ["p"];
           exec = "paste";
-          desc = "Paste the files";
+          desc = "paste the files";
         }
         {
           on = ["P"];
           exec = "paste --force";
-          desc = "Paste the files (overwrite if the destination exists)";
+          desc = "paste the files (overwrite if the destination exists)";
         }
         {
           on = ["d"];
           exec = "remove";
-          desc = "Move the files to the trash";
+          desc = "move the files to the trash";
         }
         {
           on = ["D"];
           exec = "remove --permanently";
-          desc = "Permanently delete the files";
+          desc = "permanently delete the files";
         }
         {
           on = ["a"];
@@ -345,7 +345,7 @@
         {
           on = ["Z"];
           exec = "jump fzf";
-          desc = "jump to a directory; or reveal a file using fzf";
+          desc = "reveal files with fzf";
         }
 
         # Copy
