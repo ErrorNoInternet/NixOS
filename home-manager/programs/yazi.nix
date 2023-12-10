@@ -131,16 +131,6 @@
           exec = "arrow 50%";
           desc = "Move cursor down half page";
         }
-        {
-          on = ["<C-b>"];
-          exec = "arrow -100%";
-          desc = "Move cursor up one page";
-        }
-        {
-          on = ["<C-f>"];
-          exec = "arrow 100%";
-          desc = "Move cursor down one page";
-        }
 
         {
           on = ["h"];
@@ -152,7 +142,6 @@
           exec = "enter";
           desc = "Enter the child directory";
         }
-
         {
           on = ["H"];
           exec = "back";
@@ -163,7 +152,6 @@
           exec = "forward";
           desc = "Go forward to the next directory";
         }
-
         {
           on = ["<C-k>"];
           exec = "peek -5";
@@ -195,7 +183,6 @@
           exec = "enter";
           desc = "Enter the child directory";
         }
-
         {
           on = ["g" "g"];
           exec = "arrow -99999999";
@@ -266,16 +253,6 @@
           desc = "Paste the files (overwrite if the destination exists)";
         }
         {
-          on = ["-"];
-          exec = "link";
-          desc = "Symlink the absolute path of files";
-        }
-        {
-          on = ["_"];
-          exec = "link --relative";
-          desc = "Symlink the relative path of files";
-        }
-        {
           on = ["d"];
           exec = "remove";
           desc = "Move the files to the trash";
@@ -288,54 +265,54 @@
         {
           on = ["a"];
           exec = "create";
-          desc = "Create a file or directory (ends with / for directories)";
+          desc = "create a file or directory (ends with / for directories)";
         }
         {
           on = ["r"];
           exec = "rename";
-          desc = "Rename a file or directory";
+          desc = "rename a file or directory";
         }
         {
           on = [":"];
           exec = "shell --block";
-          desc = "Run a shell command (block the UI until the command finishes)";
+          desc = "run a blocking shell command";
         }
         {
           on = ["."];
           exec = "hidden toggle";
-          desc = "Toggle the visibility of hidden files";
+          desc = "toggle hidden files";
         }
         {
           on = ["z"];
           exec = "jump zoxide";
-          desc = "Jump to a directory using zoxide";
+          desc = "jump to a directory using zoxide";
         }
         {
           on = ["Z"];
           exec = "jump fzf";
-          desc = "Jump to a directory; or reveal a file using fzf";
+          desc = "jump to a directory; or reveal a file using fzf";
         }
 
         # Copy
         {
           on = ["c" "c"];
           exec = "copy path";
-          desc = "Copy the absolute path";
+          desc = "copy the absolute path";
         }
         {
           on = ["c" "d"];
           exec = "copy dirname";
-          desc = "Copy the path of the parent directory";
+          desc = "copy parent directory path";
         }
         {
           on = ["c" "f"];
           exec = "copy filename";
-          desc = "Copy the name of the file";
+          desc = "copy file name";
         }
         {
           on = ["c" "n"];
           exec = "copy name_without_ext";
-          desc = "Copy the name of the file without the extension";
+          desc = "copy file name without extension";
         }
 
         # Find
@@ -471,7 +448,6 @@
           exec = "tab_switch 1 --relative";
           desc = "Switch to the next tab";
         }
-
         {
           on = ["{"];
           exec = "tab_swap -1";
