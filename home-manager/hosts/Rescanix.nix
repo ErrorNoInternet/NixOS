@@ -32,6 +32,7 @@ in {
   imports = [
     ../modules/cursor.nix
     ../modules/gtk.nix
+    ../modules/mimeapps.nix
     ../profiles/development
     ../profiles/wm
     ../programs/btop.nix

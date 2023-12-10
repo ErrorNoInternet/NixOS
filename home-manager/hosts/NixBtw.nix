@@ -33,6 +33,7 @@ in {
     ../modules/cursor.nix
     ../modules/desktop-entries.nix
     ../modules/gtk.nix
+    ../modules/mimeapps.nix
     ../profiles/development
     ../profiles/wm
     ../programs/btop.nix
