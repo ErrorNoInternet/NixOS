@@ -1,5 +1,3 @@
-diff --git a/main.c b/main.c
-index 4180f69..81f43ea 100644
 --- a/main.c
 +++ b/main.c
 @@ -46,7 +46,6 @@ static void repaint_output(struct chayang_output *output) {
