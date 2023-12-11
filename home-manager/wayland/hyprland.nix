@@ -56,6 +56,20 @@
         "col.inactive_border" = "rgb(${config.colorScheme.colors.base03})";
         layout = "dwindle";
       };
+      group = {
+        "col.border_active" = "rgb(${config.colorScheme.colors.base0D})";
+        "col.border_inactive" = "rgb(${config.colorScheme.colors.base03})";
+        "col.border_locked_active" = "rgb(${config.colorScheme.colors.base0F})";
+        "col.border_locked_inactive" = "rgb(${config.colorScheme.colors.base03})";
+        groupbar = {
+          gradients = false;
+          render_titles = false;
+          "col.active" = "rgb(${config.colorScheme.colors.base0D})";
+          "col.inactive" = "rgb(${config.colorScheme.colors.base03})";
+          "col.locked_active" = "rgb(${config.colorScheme.colors.base0F})";
+          "col.locked_inactive" = "rgb(${config.colorScheme.colors.base03})";
+        };
+      };
       decoration = {
         rounding = 10;
         drop_shadow = true;
@@ -117,6 +131,7 @@
         "$mainMod, F, fullscreen, 1"
         "$mainMod, V, togglefloating"
         "$mainMod, W, togglesplit"
+        "$mainMod, T, togglegroup"
         "$mainMod SHIFT, Q, killactive"
 
         "$mainMod, left, movefocus, l"
@@ -132,6 +147,14 @@
         "$mainMod SHIFT, L, movewindow, r"
         "$mainMod SHIFT, K, movewindow, u"
         "$mainMod SHIFT, J, movewindow, d"
+
+        "$mainMod CTRL, left, changegroupactive, b"
+        "$mainMod CTRL, right, changegroupactive, f"
+        "$mainMod SHIFT, T, lockgroups, toggle"
+        "$mainMod CTRL SHIFT, left, movewindoworgroup, l"
+        "$mainMod CTRL SHIFT, right, movewindoworgroup, r"
+        "$mainMod CTRL SHIFT, up, movewindoworgroup, u"
+        "$mainMod CTRL SHIFT, down, movewindoworgroup, d"
 
         "$mainMod, 1, workspace, 1"
         "$mainMod, 2, workspace, 2"
