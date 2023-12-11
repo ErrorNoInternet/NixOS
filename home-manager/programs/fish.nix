@@ -50,6 +50,7 @@
       gap = "git add -p";
       gc = "git commit -m";
       gca = "git commit --amend";
+      gco = "git checkout";
       gp = "git push";
       gpl = "git pull";
       gl = "git log";
