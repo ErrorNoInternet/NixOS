@@ -51,6 +51,7 @@
       gc = "git commit -m";
       gca = "git commit --amend";
       gp = "git push";
+      gpl = "git pull";
       gl = "git log";
       gs = "git show";
       gr = "git restore";
