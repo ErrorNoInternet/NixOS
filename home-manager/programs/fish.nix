@@ -91,10 +91,10 @@
 
       any-nix-shell fish --info-right | source
       if test (ps | grep fish | wc -l) -le 1
-        if test (tmux list-windows | wc -l) -le 1 && test (tmux list-panes | wc -l) -le 1
-          if test -e /android/system/bin/linker64
-            mfa
-          else
+        if test -e /android/system/bin/linker64
+          mfa
+        else
+          if test (tmux list-windows | wc -l) -le 1 && test (tmux list-panes | wc -l) -le 1
             mf
           end
         end
