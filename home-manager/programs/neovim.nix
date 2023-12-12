@@ -199,7 +199,9 @@
 
       require("nvim-autopairs").setup()
 
-      require("lualine").setup()
+      require("lualine").setup {
+        sections = { lualine_c = { "filename", "g:coc_status" } }
+      }
 
       require("bufferline").setup {
         options = {
