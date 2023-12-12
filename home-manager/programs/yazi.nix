@@ -392,6 +392,18 @@
           on = ["N"];
           exec = "find_arrow --previous";
         }
+        {
+          on = ["s"];
+          exec = "search fd";
+        }
+        {
+          on = ["S"];
+          exec = "search rg";
+        }
+        {
+          on = ["<C-s>"];
+          exec = "search none";
+        }
 
         # Sorting
         {
