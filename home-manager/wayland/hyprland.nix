@@ -206,6 +206,7 @@
         "float           ,class:(confirm)"
         "float           ,class:(dialog)"
         "float           ,class:(error)"
+        "float           ,class:(imv)"
         "float           ,class:(mpv)"
         "float           ,class:(notification)"
         "float           ,class:(pavucontrol)"
