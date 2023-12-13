@@ -3,7 +3,6 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    flake-parts.url = "github:hercules-ci/flake-parts";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -14,13 +13,15 @@
       inputs.home-manager.follows = "home-manager";
     };
     agenix.url = "github:ryantm/agenix";
-    nix-index-database.url = "github:nix-community/nix-index-database";
     attic.url = "github:zhaofengli/attic";
+    flake-parts.url = "github:hercules-ci/flake-parts";
     hsize.url = "github:ErrorNoInternet/hsize";
     hyprland.url = "github:hyprwm/Hyprland";
     hyprwm-contrib.url = "github:hyprwm/contrib";
     nix-colors.url = "github:misterio77/nix-colors";
     nix-gaming.url = "github:fufexan/nix-gaming";
+    nix-index-database.url = "github:nix-community/nix-index-database";
+    shadower.url = "github:n3oney/shadower";
     spicetify-nix.url = "github:the-argus/spicetify-nix";
     yazi.url = "github:sxyazi/yazi";
   };

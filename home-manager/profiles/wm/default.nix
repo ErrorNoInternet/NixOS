@@ -21,6 +21,7 @@
     })
     cliphist
     inputs.hyprwm-contrib.packages.${pkgs.system}.grimblast
+    inputs.shadower.packages.${pkgs.system}.shadower
     pavucontrol
     ripdrag
     self.packages.${pkgs.system}.brightness
