@@ -1,5 +1,4 @@
 {
-  config,
   lib,
   pkgs,
   ...
@@ -22,7 +21,10 @@
         netbootxyz.enable = true;
       };
     };
-    kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
+    kernelParams = [
+      "boot.shell_on_fail"
+    ];
+    supportedFilesystems = ["exfat" "xfs"];
   };
 
   services.printing = {
