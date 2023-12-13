@@ -63,6 +63,7 @@ in {
       compsize
       cpu-x
       ddrescue
+      dmidecode
       drm_info
       duf
       duperemove
@@ -93,6 +94,7 @@ in {
       nvtop
       patchelf
       pavucontrol
+      pciutils
       powertop
       prismlauncher
       procs
@@ -111,6 +113,8 @@ in {
       sysstat
       timg
       unigine-heaven
+      usbutils
+      util-linux
       virt-manager
       vulkan-tools
     ];
