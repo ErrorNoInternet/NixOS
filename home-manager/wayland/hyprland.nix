@@ -30,8 +30,8 @@
       exec-once = [
         "hyprpaper"
         "hyprctl setcursor ${custom.pointerCursor.name} ${builtins.toString custom.pointerCursor.size}"
-        "swayidle -w timeout 600 'custom-swaylock 10 10' before-sleep 'custom-swaylock 0 1'"
-        "swayidle -w timeout 600 'chayang -d 300'"
+        "swayidle -w timeout 540 'chayang -d 60 && sleep 1 && custom-swaylock 0 0 && hyprctl dispatch dpms off'"
+        "swayidle -w before-sleep 'custom-swaylock 0 1'"
         "hyprland-autoname-workspaces"
         "wl-paste --type text --watch cliphist store"
         "wl-paste --type image --watch cliphist store"
@@ -109,6 +109,8 @@
         disable_splash_rendering = true;
         animate_manual_resizes = true;
         animate_mouse_windowdragging = true;
+        mouse_move_enables_dpms = true;
+        key_press_enables_dpms = true;
       };
       binds = {
         allow_workspace_cycles = true;
