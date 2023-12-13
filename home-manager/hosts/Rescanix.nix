@@ -66,6 +66,8 @@ in {
       drm_info
       duf
       duperemove
+      efibootmgr
+      efivar
       ffmpeg_6-full
       fio
       firefox
@@ -97,6 +99,7 @@ in {
       pv
       python3Packages.bpython
       radeontop
+      sdparm
       self.packages.${pkgs.system}.passgen
       self.packages.${pkgs.system}.savehw
       self.packages.${pkgs.system}.tbw
