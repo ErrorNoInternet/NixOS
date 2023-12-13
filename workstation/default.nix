@@ -27,8 +27,7 @@ in {
         ../shared/caches/nix-gaming.nix
         ../shared/modules/aarch64-emulation.nix
         ../shared/modules/btrfs-subvolume-compression.nix
-        ./hosts/NixBtw/hardware-configuration.nix
-        ./hosts/NixBtw/NixBtw.nix
+        ./hosts/NixBtw
         ./modules/bluetooth.nix
         ./modules/nvidia-options.nix
         ./modules/nvidia.nix
@@ -54,8 +53,7 @@ in {
         ../shared/caches/nix-gaming.nix
         ../shared/modules/aarch64-emulation.nix
         ../shared/modules/btrfs-compression.nix
-        ./hosts/Rescanix/hardware-configuration.nix
-        ./hosts/Rescanix/Rescanix.nix
+        ./hosts/Rescanix
         ./modules/bluetooth.nix
         ./modules/nvidia-options.nix
         ./modules/nvidia.nix

@@ -3,6 +3,10 @@
   pkgs,
   ...
 }: {
+  imports = [
+    ./hardware-configuration.nix
+  ];
+
   networking.hostName = "Pix";
   environment.variables.HOSTNAME = "Pix";
 

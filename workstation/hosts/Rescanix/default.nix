@@ -4,6 +4,10 @@
   pkgs,
   ...
 }: {
+  imports = [
+    ./hardware-configuration.nix
+  ];
+
   environment.variables.HOSTNAME = "Rescanix";
   networking = {
     hostName = "Rescanix";

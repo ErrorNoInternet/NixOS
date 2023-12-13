@@ -16,8 +16,7 @@ in {
         defaultModule
         ../shared/caches/ErrorNoBinaries.nix
         ../shared/modules/wireless.nix
-        ./hosts/Crix/Crix.nix
-        ./hosts/Crix/hardware-configuration.nix
+        ./hosts/Crix
         ./locations/china.nix
         ./modules/bootloader.nix
         ./profiles/minecraft-server.nix
@@ -29,8 +28,7 @@ in {
         defaultModule
         ../shared/caches/ErrorNoBinaries.nix
         ../shared/modules/raspberry-pi.nix
-        ./hosts/Pix/hardware-configuration.nix
-        ./hosts/Pix/Pix.nix
+        ./hosts/Pix
         ./locations/china.nix
         ./modules/attic-cache.nix
         ./modules/nfs.nix
