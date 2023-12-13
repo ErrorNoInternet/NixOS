@@ -30,8 +30,9 @@
       exec-once = [
         "hyprpaper"
         "hyprctl setcursor ${custom.pointerCursor.name} ${builtins.toString custom.pointerCursor.size}"
-        "swayidle -w timeout 540 'chayang -d 60 && sleep 1 && custom-swaylock 0 0 && hyprctl dispatch dpms off'"
-        "swayidle -w before-sleep 'custom-swaylock 0 1'"
+        "swayidle -w timeout 570 'custom-swaylock 30 30' before-sleep 'custom-swaylock 0 1'"
+        "swayidle -w timeout 1200 'hyprctl dispatch dpms off'"
+        "swayidle -w "
         "hyprland-autoname-workspaces"
         "wl-paste --type text --watch cliphist store"
         "wl-paste --type image --watch cliphist store"

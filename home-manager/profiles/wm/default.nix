@@ -19,7 +19,6 @@
       colorScheme = config.colorScheme;
       font = custom.font;
     })
-    chayang
     cliphist
     inputs.hyprwm-contrib.packages.${pkgs.system}.grimblast
     pavucontrol
