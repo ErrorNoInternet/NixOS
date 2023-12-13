@@ -124,7 +124,7 @@
         "$mainMod, G, exec, cliphist list | rofi -dmenu | cliphist decode | wl-copy"
         "$mainMod, code:60, exec, rofi -show emoji"
         ", PRINT, exec, grimblast --freeze save area - | wl-copy"
-        "SHIFT, PRINT, exec, grimblast --freeze save area - | shadower -c0x0000007F | wl-copy"
+        "SHIFT, PRINT, exec, grimblast --freeze save area - | shadower -c0x0000007F -r12 | wl-copy"
 
         "$mainMod, L, exec, custom-swaylock 0 1"
         "$mainMod, RETURN, exec, ${custom.terminal}"
