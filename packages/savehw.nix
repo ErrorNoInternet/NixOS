@@ -7,11 +7,15 @@ pkgs.writeShellApplication {
       exit 1
     fi
 
+    set -x
+    set +o errexit
+    set +o nounset
+    set +o pipefail
+
     folder="savehw_$(date +'%Y-%b-%d_%H-%M-%S' | tr '[:upper:]' '[:lower:]')"
     mkdir "$folder"
     cd "$folder"
     mkdir smartctl
-    set -x
 
     ${pkgs.util-linux}/bin/lscpu > lscpu 2>&1
     ${pkgs.util-linux}/bin/lscpu -e > lscpu-extended 2>&1
