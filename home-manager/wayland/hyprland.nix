@@ -28,6 +28,7 @@
         ",preferred,auto,auto"
       ];
       exec-once = [
+        "sleep 1 && waybar"
         "hyprpaper"
         "hyprctl setcursor ${custom.pointerCursor.name} ${builtins.toString custom.pointerCursor.size}"
         "swayidle -w timeout 570 'custom-swaylock 30 30' before-sleep 'custom-swaylock 0 1'"
