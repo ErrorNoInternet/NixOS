@@ -4,10 +4,11 @@
   inputs,
   pkgs,
   ...
-}: {
+}: let
+  hostname = builtins.getEnv "HOSTNAME";
+in {
   wayland.windowManager.hyprland = {
     enable = true;
-    # enableNvidiaPatches = true;
     package = inputs.hyprland.packages.${pkgs.system}.hyprland;
     settings = {
       "$mainMod" = "ALT";
@@ -22,11 +23,16 @@
         #  "WLR_NO_HARDWARE_CURSORS,1"
         #  "XDG_SESSION_TYPE,wayland"
       ];
-      monitor = [
-        "eDP-1,1920x1080@60,1680x0,1"
-        "VGA-1,1680x1050@60,0x0,1"
-        ",preferred,auto,auto"
-      ];
+      monitor =
+        if hostname == "Rescanix"
+        then [
+          ",preferred,auto,auto"
+        ]
+        else [
+          "eDP-1,1920x1080@60,1680x0,1"
+          "VGA-1,1680x1050@60,0x0,1"
+          ",preferred,auto,auto"
+        ];
       exec-once = [
         "sleep 1 && waybar"
         "hyprpaper"
