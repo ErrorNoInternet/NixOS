@@ -54,6 +54,9 @@ in {
   home = {
     username = "ryan";
     homeDirectory = "/home/ryan";
+    file = {
+      "pictures/wallpapers".source = ../../other/wallpapers;
+    };
     packages = with pkgs; [
       (hashcat.override {cudaSupport = true;})
       _7zz
