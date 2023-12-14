@@ -68,6 +68,7 @@
     neovim
     pulseaudio
     ripgrep
+    tmux
     unzip
     vim
     wget
