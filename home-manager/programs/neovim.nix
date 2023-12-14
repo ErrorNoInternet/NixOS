@@ -92,6 +92,12 @@
       autocmd TermOpen * startinsert
       nmap <C-n> <esc>:bnext<CR>
       nmap <C-p> <esc>:bprevious<CR>
+      nmap <c-j> :m .+1<CR>==
+      nmap <c-k> :m .-2<CR>==
+      imap <c-j> <Esc>:m .+1<CR>==gi
+      imap <c-k> <Esc>:m .-2<CR>==gi
+      vmap <c-j> :m '>+1<CR>gv=gv
+      vmap <c-k> :m '<-2<CR>gv=gv
       nmap <silent> <C-S> <esc>:w<CR>
       vmap <silent> <C-S> <C-C>:w<CR>
       imap <silent> <C-S> <C-O>:w<CR>
