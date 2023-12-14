@@ -6,6 +6,7 @@
   ...
 }: let
   custom = {
+    hostname = "Rescanix";
     font = "JetBrainsMono Nerd Font";
     predefinedColorScheme = "Nord";
     opacity = ".8";

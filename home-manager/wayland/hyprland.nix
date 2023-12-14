@@ -4,9 +4,7 @@
   inputs,
   pkgs,
   ...
-}: let
-  hostname = builtins.getEnv "HOSTNAME";
-in {
+}: {
   wayland.windowManager.hyprland = {
     enable = true;
     package = inputs.hyprland.packages.${pkgs.system}.hyprland;
@@ -24,7 +22,7 @@ in {
         #  "XDG_SESSION_TYPE,wayland"
       ];
       monitor =
-        if hostname == "Rescanix"
+        if custom.hostname == "Rescanix"
         then [
           ",preferred,auto,auto"
         ]
