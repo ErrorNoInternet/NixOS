@@ -7,7 +7,7 @@ pkgs.writeShellApplication {
       exit 1
     fi
 
-    folder="hwinfo_$(date +'%Y-%b-%d_%H-%M-%S' | tr '[:upper:]' '[:lower:]')"
+    folder="savehw_$(date +'%Y-%b-%d_%H-%M-%S' | tr '[:upper:]' '[:lower:]')"
     mkdir "$folder"
     cd "$folder"
     mkdir smartctl
