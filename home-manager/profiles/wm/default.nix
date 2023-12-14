@@ -12,6 +12,7 @@
     ../../programs/rofi.nix
     ../../wayland/hyprpaper.nix
     ../../wayland/waybar.nix
+    ../../wayland/wlogout.nix
   ];
 
   home.packages = with pkgs; [

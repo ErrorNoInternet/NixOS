@@ -117,6 +117,9 @@
         allow_workspace_cycles = true;
       };
       bind = [
+        "$mainMod CTRL SHIFT, code:22, exec, hyprctl dispatch exit"
+        "$mainMod, escape, exec, wlogout -p layer-shell"
+
         "$mainMod, D, exec, rofi -show drun || pkill rofi"
         "$mainMod, Z, exec, rofi -show drun || pkill rofi"
         "$mainMod, S, exec, scratchpad"
