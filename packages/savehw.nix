@@ -33,12 +33,13 @@ pkgs.writeShellApplication {
     ${pkgs.dmidecode}/bin/dmidecode > dmidecode 2>&1
 
     ${pkgs.lshw}/bin/lshw > lshw 2>&1
-    ${pkgs.lshw}/bin/lshw --short > lshw-short 2>&1
+    ${pkgs.lshw}/bin/lshw -short > lshw-short 2>&1
+    ${pkgs.lshw}/bin/lshw -json > lshw-json 2>&1
 
     ${pkgs.eza}/bin/eza --icons=always --no-permissions --no-user --no-time -lT /sys/class > sys-class
 
     for device in $(${pkgs.util-linux}/bin/lsblk -l -oNAME | tail -n+2); do
-        ${pkgs.smartmontools}/bin/smartctl -x "/dev/$device" > smartctl/"$device" 2>&1
+        ${pkgs.smartmontools}/bin/smartctl -x "/dev/$device" > "smartctl/$device" 2>&1
     done
     cd ..
   '';
