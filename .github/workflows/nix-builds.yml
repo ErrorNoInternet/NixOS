@@ -92,7 +92,7 @@ jobs:
       - name: "Maximize disk space"
         uses: easimon/maximize-build-space@v8
         with:
-          root-reserve-mb: 20480
+          root-reserve-mb: 30720
           swap-size-mb: 1024
           build-mount-path: /nix
           remove-dotnet: "true"
@@ -119,4 +119,4 @@ jobs:
           authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
 
       - name: "Build for ${{ matrix.host }} (home-manager)"
-        run: nix build .#homeConfigurations.${{ matrix.host }}.activationPackage
+        run: nix build --max-jobs 1 .#homeConfigurations.${{ matrix.host }}.activationPackage
