@@ -30,8 +30,8 @@
       nixos-switch = "sudo nixos-rebuild switch --flake .";
       home-switch = "home-manager switch --flake .";
       f = "${pkgs.fastfetch}/bin/fastfetch";
-      mf = "${pkgs.fastfetch}/bin/fastfetch --load-config ~/.config/fastfetch/minimal.conf";
-      mfa = "${pkgs.fastfetch}/bin/fastfetch --load-config ~/.config/fastfetch/nix-on-droid_minimal.conf";
+      mf = "${pkgs.fastfetch}/bin/fastfetch -c ~/.config/fastfetch/minimal.jsonc";
+      mfa = "${pkgs.fastfetch}/bin/fastfetch -c ~/.config/fastfetch/nix-on-droid_minimal.jsonc";
       cm = "${pkgs.cmatrix}/bin/cmatrix -C blue";
       py = "python3";
       timg = "${pkgs.timg}/bin/timg -ps";

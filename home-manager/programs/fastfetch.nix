@@ -1,52 +1,136 @@
 {pkgs, ...}: {
   home.packages = [pkgs.fastfetch];
   home.file = {
-    ".config/fastfetch/minimal.conf".text = ''
-      --os-key " system  "
-      --os-format "{2} {9} ({12})"
-      --kernel-key " kernel  "
-      --kernel-format "{1} {2}"
-      --uptime-key " uptime  "
-      --packages-key "󰆧 packages"
-      --packages-format "{9}+{10} (nix)"
-      --memory-key "󰍛 memory  "
-      --disk-key "󱥎 storage "
-      --disk-format "{1} / {2} ({3})"
-      --disk-folders /
-      --logo-padding-left 1
-      --logo-padding-right 3
-      --key-width 14
-      --set-keyless colors=\e[37m  \e[36m  \e[35m  \e[34m  \e[33m  \e[32m  \e[31m  \e[30m
-      --separator " "
-      --logo nixos_small
-
-      --structure os:kernel:uptime:packages:memory:disk:colors
+    ".config/fastfetch/minimal.jsonc".text = ''
+      {
+        "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+        "logo": {
+          "source": "nixos_small",
+          "padding": {
+            "left": 1,
+            "right": 3
+          }
+        },
+        "display": {
+          "separator": " ",
+          "keyWidth": 14
+        },
+        "modules": [
+          {
+            "type": "os",
+            "key": " system  ",
+            "format": "{2} {9} ({12})"
+          },
+          {
+            "type": "kernel",
+            "key": " kernel  ",
+            "format": "{1} {2}"
+          },
+          {
+            "type": "uptime",
+            "key": " uptime  "
+          },
+          {
+            "type": "command",
+            "key": "󰆧 packages",
+            "text": "(nix-store --query --requisites /run/current-system | wc -l | tr -d '\n') && echo ' (nix; /run/current-system)'"
+          },
+          {
+            "type": "memory",
+            "key": "󰍛 memory  "
+          },
+          {
+            "type": "disk",
+            "key": "󱥎 storage ",
+            "format": "{1} / {2} ({3})",
+            "folders": "/"
+          },
+          {
+            "type": "custom",
+            "format": "\u001B[37m  \u001B[36m  \u001B[35m  \u001B[34m  \u001B[33m  \u001B[32m  \u001B[31m  \u001B[30m"
+          }
+        ]
+      }
     '';
-    ".config/fastfetch/nix-on-droid_minimal.conf".text = ''
-      --command-key " system  "
-      --command-text "echo Android $(/android/system/bin/linker64 /android/system/bin/getprop ro.build.version.release)"
-      --kernel-key " kernel  "
-      --kernel-format "{1} {2}"
-      --uptime-key " uptime  "
-      --packages-key "󰆧 packages"
-      --packages-format "{9}+{10} (nix)"
-      --memory-key "󰍛 memory  "
-      --disk-key "󱥎 storage "
-      --disk-format "{1} / {2} ({3})"
-      --disk-folders /
-      --logo-padding-left 1
-      --logo-padding-right 3
-      --key-width 14
-      --set-keyless colors=\e[37m  \e[36m  \e[35m  \e[34m  \e[33m  \e[32m  \e[31m  \e[30m
-      --separator " "
-      --logo nixos_old_small
-
-      --structure command:kernel:uptime:packages:memory:disk:colors
+    ".config/fastfetch/nix-on-droid_minimal.jsonc".text = ''
+      {
+        "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+        "logo": {
+          "source": "nixos_old_small",
+          "padding": {
+            "left": 1,
+            "right": 3
+          }
+        },
+        "display": {
+          "separator": " ",
+          "keyWidth": 14
+        },
+        "modules": [
+          {
+            "type": "command",
+            "key": " system  ",
+            "text": "echo Android $(/android/system/bin/linker64 /android/system/bin/getprop ro.build.version.release)"
+          },
+          {
+            "type": "kernel",
+            "key": " kernel  ",
+            "format": "{1} {2}"
+          },
+          {
+            "type": "uptime",
+            "key": " uptime  "
+          },
+          {
+            "type": "command",
+            "key": "󰆧 packages",
+            "text": "(nix-store --query --requisites ~/.nix-profile | wc -l | tr -d '\n') && echo ' (nix; ~/.nix-profile)'"
+          },
+          {
+            "type": "memory",
+            "key": "󰍛 memory  "
+          },
+          {
+            "type": "disk",
+            "key": "󱥎 storage ",
+            "format": "{1} / {2} ({3})",
+            "folders": "/"
+          },
+          {
+            "type": "custom",
+            "format": "\u001B[37m  \u001B[36m  \u001B[35m  \u001B[34m  \u001B[33m  \u001B[32m  \u001B[31m  \u001B[30m"
+          }
+        ]
+      }
     '';
-    ".config/fastfetch/config.conf".text = ''
-      --disk-folders /
-
-      --structure title:separator:os:kernel:uptime:packages:shell:display:wm:theme:icons:cursor:terminalfont:terminal:processes:memory:disk:break:colors
+    ".config/fastfetch/config.jsonc".text = ''
+      {
+        "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+        "modules": [
+          "title",
+          "separator",
+          "os",
+          "kernel",
+          "uptime",
+          "packages",
+          "shell",
+          "display",
+          "wm",
+          "theme",
+          "icons",
+          "cursor",
+          "terminalfont",
+          "terminal",
+          "processes",
+          "memory",
+          {
+            "type": "disk",
+            "folders": "/"
+          },
+          "break",
+          "colors"
+        ]
+      }
     '';
   };
 }
