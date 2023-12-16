@@ -11,7 +11,6 @@
     coc = {
       enable = true;
       settings = {
-        "inlayHint.enable" = false;
         "rust-analyzer.checkOnSave.enable" = false;
       };
     };
