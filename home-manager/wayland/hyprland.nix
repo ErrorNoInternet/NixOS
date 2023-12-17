@@ -32,12 +32,11 @@
           ",preferred,auto,auto"
         ];
       exec-once = [
-        "sleep 1 && waybar"
+        "sleep 0.5 && waybar"
         "hyprpaper"
         "hyprctl setcursor ${custom.pointerCursor.name} ${builtins.toString custom.pointerCursor.size}"
         "swayidle -w timeout 570 'custom-swaylock 30 30' before-sleep 'custom-swaylock 0 1'"
         "swayidle -w timeout 1200 'hyprctl dispatch dpms off'"
-        "swayidle -w "
         "hyprland-autoname-workspaces"
         "wl-paste --watch cliphist -max-items 1000 store"
       ];
