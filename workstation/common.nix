@@ -74,15 +74,31 @@
     wget
     xdg-user-dirs
   ];
-  programs.dconf.enable = true;
-  programs.light.enable = true;
-  programs.gnupg.agent.enable = true;
-  services.gnome.gnome-keyring.enable = true;
-  services.openssh.enable = true;
+  programs = {
+    dconf.enable = true;
+    light.enable = true;
+    gnupg.agent.enable = true;
+    neovim.defaultEditor = true;
+  };
+  services = {
+    logind.lidSwitch = "ignore";
+    openssh.enable = true;
+    gnome.gnome-keyring.enable = true;
+  };
+  security = {
+    pam = {
+      services.swaylock = {};
+      loginLimits = [
+        {
+          domain = "*";
+          type = "soft";
+          item = "core";
+          value = "204800";
+        }
+      ];
+    };
+  };
 
-  programs.neovim.defaultEditor = true;
-  security.pam.services.swaylock = {};
-  services.logind.lidSwitch = "ignore";
   fonts = {
     packages = with pkgs; [
       (nerdfonts.override {fonts = ["JetBrainsMono"];})
