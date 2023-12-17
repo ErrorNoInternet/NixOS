@@ -39,8 +39,7 @@
         "swayidle -w timeout 1200 'hyprctl dispatch dpms off'"
         "swayidle -w "
         "hyprland-autoname-workspaces"
-        "wl-paste --type text --watch cliphist store"
-        "wl-paste --type image --watch cliphist store"
+        "wl-paste --watch cliphist -max-items 1000 store"
       ];
       input = {
         touchpad = {
@@ -127,14 +126,14 @@
 
         "$mainMod, D, exec, rofi -show drun || pkill rofi"
         "$mainMod, Z, exec, rofi -show drun || pkill rofi"
-        "$mainMod, S, exec, scratchpad"
-        "$mainMod SHIFT, S, exec, scratchpad -g"
         "$mainMod, G, exec, cliphist list | rofi -dmenu | cliphist decode | wl-copy"
         "$mainMod, code:60, exec, rofi -show emoji"
         ", PRINT, exec, grimblast --freeze save area - | wl-copy"
         "SHIFT, PRINT, exec, grimblast --freeze save area - | shadower -c0x0000007F -r12 | wl-copy"
 
         "$mainMod, L, exec, custom-swaylock 0 1"
+        "$mainMod, S, exec, scratchpad"
+        "$mainMod SHIFT, S, exec, scratchpad -g"
         "$mainMod, RETURN, exec, ${custom.terminal}"
         "$mainMod SHIFT, RETURN, exec, [float; center] ${custom.terminal}"
 
