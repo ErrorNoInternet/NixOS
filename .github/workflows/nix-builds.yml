@@ -36,7 +36,7 @@ jobs:
         uses: easimon/maximize-build-space@v8
         with:
           root-reserve-mb: 20480
-          swap-size-mb: 128
+          overprovision-lvm: "true"
           build-mount-path: /nix
           remove-dotnet: "true"
           remove-android: "true"
