@@ -1,5 +1,5 @@
 {
-  description = "ErrorNoInternet's NixOS flake";
+  description = "ErrorNoInternet's Nix flake";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
