@@ -42,24 +42,27 @@
     shellAbbrs = {
       s = "sudo";
       nv = "nvim";
+
+      nd = "nix develop -c fish";
+      nr = "nix run";
+      ns = "nix shell";
+
       g = "git";
-      gcl = "git clone";
-      gd = "git diff";
-      gdc = "git diff --cached";
       ga = "git add";
       gap = "git add -p";
+      gbl = "git blame";
       gc = "git commit -m";
       gca = "git commit --amend";
+      gcl = "git clone";
       gco = "git checkout";
+      gd = "git diff";
+      gdc = "git diff --cached";
+      gl = "git log";
       gp = "git push";
       gpl = "git pull";
-      gl = "git log";
-      gs = "git show";
       gr = "git restore";
-      gbl = "git blame";
-      ns = "nix shell";
-      nr = "nix run";
-      nd = "nix develop -c fish";
+      gs = "git show";
+      gst = "git status";
     };
     shellInit = ''
       set -U fish_greeting
