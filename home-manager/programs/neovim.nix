@@ -76,7 +76,7 @@
 
       function FormatCBuffer()
         let cursor_pos = getpos('.')
-        :%!${pkgs.clang-tools}/bin/clang-format
+        :%!${pkgs.clang-tools}/bin/clang-format -style="{BasedOnStyle: llvm, IndentWidth: 4}"
         call setpos('.', cursor_pos)
       endfunction
       function FormatPythonBuffer()
