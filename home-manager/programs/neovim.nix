@@ -31,6 +31,7 @@
       vim-devicons
       vim-fugitive
       vim-go
+      vim-sort-motion
 
       coc-clangd
       coc-go
