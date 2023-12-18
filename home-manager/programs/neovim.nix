@@ -32,6 +32,7 @@
       vim-fugitive
       vim-go
       vim-sort-motion
+      vim-wordmotion
 
       coc-clangd
       coc-go
