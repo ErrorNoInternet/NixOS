@@ -32,9 +32,9 @@ in {
   _module.args = {inherit custom;};
   imports = [
     ../modules/cursor.nix
-    ../modules/desktop-entries.nix
     ../modules/gtk.nix
     ../modules/mimeapps.nix
+    ../modules/nvidia-desktop-entries.nix
     ../profiles/development
     ../profiles/wm
     ../programs/btop.nix
