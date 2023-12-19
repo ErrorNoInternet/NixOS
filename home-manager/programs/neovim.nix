@@ -11,7 +11,7 @@
     coc = {
       enable = true;
       settings = {
-        "rust-analyzer.checkOnSave.enable" = false;
+        "rust-analyzer.checkOnSave.command" = "clippy";
       };
     };
     plugins = with pkgs.vimPlugins; [
@@ -282,6 +282,7 @@
       highlight Function gui=bold
       highlight Macro gui=bold
       highlight RustEnumVariant guifg=#${config.colorScheme.colors.base0C}
+      highlight CocInlayHint guifg=#${config.colorScheme.colors.base07}
       highlight CocFloating guibg=#${config.colorScheme.colors.base01}
       highlight @ibl.indent.char.1 guifg=#${config.colorScheme.colors.base00}
     '';
