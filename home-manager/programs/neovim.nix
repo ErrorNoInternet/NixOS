@@ -11,6 +11,7 @@
     coc = {
       enable = true;
       settings = {
+        "notification.disabledProgressSources" = ["*"];
         "rust-analyzer.checkOnSave.command" = "clippy";
       };
     };
