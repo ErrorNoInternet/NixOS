@@ -282,8 +282,9 @@
       highlight Function gui=bold
       highlight Macro gui=bold
       highlight RustEnumVariant guifg=#${config.colorScheme.colors.base0C}
-      highlight CocInlayHint guifg=#${config.colorScheme.colors.base07}
       highlight CocFloating guibg=#${config.colorScheme.colors.base01}
+      highlight CocSearch guifg=#${config.colorScheme.colors.base0D}
+      highlight CocInlayHint guifg=#${config.colorScheme.colors.base07}
       highlight @ibl.indent.char.1 guifg=#${config.colorScheme.colors.base00}
     '';
   };
