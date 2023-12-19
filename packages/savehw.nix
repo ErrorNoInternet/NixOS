@@ -40,6 +40,8 @@ pkgs.writeShellApplication {
     ${pkgs.lshw}/bin/lshw -short > lshw-short 2>&1
     ${pkgs.lshw}/bin/lshw -json > lshw-json 2>&1
 
+    ${pkgs.kmod}/bin/lsmod > lsmod 2>&1
+
     ${pkgs.eza}/bin/eza --icons=always --no-permissions --no-user --no-time -lT /sys/class > sys-class
 
     for device in $(${pkgs.util-linux}/bin/lsblk -l -oNAME | tail -n+2); do
