@@ -78,6 +78,7 @@ in {
       firefox
       geekbench
       gimp
+      gparted
       gptfdisk
       hyperfine
       hyprpicker
@@ -96,6 +97,7 @@ in {
       nmap
       nvtop
       osu-lazer-bin
+      parted
       patchelf
       pavucontrol
       pciutils
