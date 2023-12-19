@@ -96,10 +96,10 @@ in {
       jetbrains.idea-community
 
       # games
+      inputs.nix-gaming.packages.${pkgs.system}.wine-ge
+      osu-lazer-bin
       prismlauncher
       superTuxKart
-      inputs.nix-gaming.packages.${pkgs.system}.osu-lazer-bin
-      inputs.nix-gaming.packages.${pkgs.system}.wine-ge
     ];
     sessionVariables = {
       TERMINAL = "${custom.terminal}";

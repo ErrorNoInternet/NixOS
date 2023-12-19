@@ -83,7 +83,6 @@ in {
       hyprpicker
       imagemagick
       inputs.hyprwm-contrib.packages.${pkgs.system}.scratchpad
-      inputs.nix-gaming.packages.${pkgs.system}.osu-lazer-bin
       inputs.nix-gaming.packages.${pkgs.system}.wine-ge
       intel-gpu-tools
       kdiskmark
@@ -96,6 +95,7 @@ in {
       multipath-tools
       nmap
       nvtop
+      osu-lazer-bin
       patchelf
       pavucontrol
       pciutils
