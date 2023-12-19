@@ -101,6 +101,8 @@
       vmap <c-k> :m '<-2<CR>gv=gv
       imap <C-h> <esc>ldbi
       nmap <C-h> dbi
+      imap <C-Del> <esc>ldwi
+      nmap <C-Del> dwi
       nmap <silent> <C-S> <esc>:w<CR>
       vmap <silent> <C-S> <C-C>:w<CR>
       imap <silent> <C-S> <C-O>:w<CR>
