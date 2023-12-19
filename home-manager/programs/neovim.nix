@@ -95,11 +95,11 @@
       nmap <C-p> <esc>:bprevious<CR>
       nmap <c-j> :m .+1<CR>==
       nmap <c-k> :m .-2<CR>==
-      imap <c-j> <Esc>:m .+1<CR>==gi
-      imap <c-k> <Esc>:m .-2<CR>==gi
+      imap <c-j> <esc>:m .+1<CR>==gi
+      imap <c-k> <esc>:m .-2<CR>==gi
       vmap <c-j> :m '>+1<CR>gv=gv
       vmap <c-k> :m '<-2<CR>gv=gv
-      imap <C-h> <esc>diwi
+      imap <C-h> <esc>ldbi
       nmap <C-h> dbi
       nmap <silent> <C-S> <esc>:w<CR>
       vmap <silent> <C-S> <C-C>:w<CR>
