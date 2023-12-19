@@ -56,7 +56,8 @@
       gcl = "git clone";
       gco = "git checkout";
       gd = "git diff";
-      gdc = "git diff --cached";
+      gdc = "git diff --compact-summary";
+      gds = "git diff --staged";
       gl = "git log";
       gp = "git push";
       gpl = "git pull";
