@@ -37,14 +37,8 @@ in {
     ../modules/nvidia-desktop-entries.nix
     ../profiles/development
     ../profiles/wm
-    ../programs/btop.nix
-    ../programs/cava.nix
     ../programs/fcitx.nix
-    ../programs/foot.nix
-    ../programs/git.nix
-    ../programs/gnupg.nix
     ../programs/imv.nix
-    ../programs/irssi.nix
     ../programs/kdeconnect.nix
     ../programs/libreoffice.nix
     ../programs/mpv.nix
@@ -52,6 +46,12 @@ in {
     ../programs/obs-studio.nix
     ../programs/thunderbird.nix
     ../programs/virt-manager.nix
+    ../terminal/btop.nix
+    ../terminal/cava.nix
+    ../terminal/foot.nix
+    ../terminal/git.nix
+    ../terminal/gnupg.nix
+    ../terminal/irssi.nix
     ../wayland/hyprland-autoname-workspaces.nix
     ../wayland/hyprland.nix
     ./common.nix

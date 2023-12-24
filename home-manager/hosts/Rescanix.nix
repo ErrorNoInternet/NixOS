@@ -36,16 +36,16 @@ in {
     ../modules/mimeapps.nix
     ../profiles/development
     ../profiles/wm
-    ../programs/btop.nix
-    ../programs/cava.nix
     ../programs/fcitx.nix
-    ../programs/foot.nix
-    ../programs/git.nix
     ../programs/imv.nix
     ../programs/kdeconnect.nix
     ../programs/mpv.nix
     ../programs/obs-studio.nix
     ../programs/virt-manager.nix
+    ../terminal/btop.nix
+    ../terminal/cava.nix
+    ../terminal/foot.nix
+    ../terminal/git.nix
     ../wayland/hyprland-autoname-workspaces.nix
     ../wayland/hyprland.nix
     ./common.nix
