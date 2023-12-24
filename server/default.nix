@@ -3,6 +3,7 @@
     imports = [
       ../shared
       ../shared/caches/ErrorNoBinaries.nix
+      ../shared/caches/nix-community.nix
       ./common.nix
       inputs.agenix.nixosModules.default
     ];

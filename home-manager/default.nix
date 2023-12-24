@@ -5,11 +5,12 @@
 }: let
   defaultModule = {
     imports = [
-      inputs.agenix.homeManagerModules.default
       ../shared/caches/ErrorNoBinaries.nix
+      ../shared/caches/nix-community.nix
       ./common.nix
       ./locations/china.nix
       ./programs/nix.nix
+      inputs.agenix.homeManagerModules.default
     ];
   };
   inherit (inputs.home-manager.lib) homeManagerConfiguration;

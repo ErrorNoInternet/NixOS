@@ -8,6 +8,7 @@
     imports = [
       ../shared
       ../shared/caches/ErrorNoBinaries.nix
+      ../shared/caches/nix-community.nix
       ./common.nix
       ./locations/china.nix
     ];
