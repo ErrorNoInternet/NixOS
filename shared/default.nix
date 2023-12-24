@@ -27,7 +27,7 @@
     };
     extraOptions = ''
       min-free = ${toString (1024 * 1024 * 1024 * 5)}
-      max-free = ${toString (1024 * 1024 * 1024 * 10)}
+      max-free = ${toString (1024 * 1024 * 1024 * 20)}
     '';
   };
   i18n.defaultLocale = "en_US.UTF-8";
