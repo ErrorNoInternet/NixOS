@@ -22,13 +22,13 @@
         #  "XDG_SESSION_TYPE,wayland"
       ];
       monitor =
-        if custom.hostname == "Rescanix"
+        if custom.hostname == "NixBtw"
         then [
+          "eDP-1,1920x1080@60,1680x0,1"
+          "VGA-1,1680x1050@60,0x0,1"
           ",preferred,auto,auto"
         ]
         else [
-          "eDP-1,1920x1080@60,1680x0,1"
-          "VGA-1,1680x1050@60,0x0,1"
           ",preferred,auto,auto"
         ];
       exec-once = [
