@@ -42,6 +42,7 @@
     shellAbbrs = {
       s = "sudo";
       nv = "nvim";
+      pwdc = "pwd | tr -d '\n' | wl-copy";
 
       nd = "nix develop -c fish";
       nr = "nix run";
