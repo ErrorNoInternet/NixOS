@@ -31,6 +31,9 @@
 in {
   _module.args = {inherit custom;};
   imports = [
+    ../../shared/caches/all.nix
+    ../common.nix
+    ../locations/china.nix
     ../modules/cursor.nix
     ../modules/gtk.nix
     ../modules/mimeapps.nix
@@ -52,9 +55,10 @@ in {
     ../terminal/git.nix
     ../terminal/gnupg.nix
     ../terminal/irssi.nix
+    ../terminal/nix.nix
     ../wayland/hyprland-autoname-workspaces.nix
     ../wayland/hyprland.nix
-    ./common.nix
+    inputs.agenix.homeManagerModules.default
   ];
 
   colorScheme = inputs.nix-colors.colorSchemes.nord;

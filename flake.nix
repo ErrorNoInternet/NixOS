@@ -36,7 +36,6 @@
         ./packages
         ./workstation
         ./server
-        ./home-manager
         ./nix-on-droid
       ];
       systems = ["x86_64-linux" "aarch64-linux"];

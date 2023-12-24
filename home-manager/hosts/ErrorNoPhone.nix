@@ -6,9 +6,9 @@
 in {
   _module.args = {inherit custom;};
   imports = [
+    ../common.nix
     ../profiles/development
     ../programs/git.nix
-    ./common.nix
   ];
 
   colorScheme = inputs.nix-colors.colorSchemes.nord;

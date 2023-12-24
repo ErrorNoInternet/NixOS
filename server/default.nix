@@ -1,4 +1,8 @@
-{inputs, ...}: let
+{
+  inputs,
+  self,
+  ...
+}: let
   defaultModule = {
     imports = [
       ../shared
@@ -6,6 +10,14 @@
       ../shared/caches/nix-community.nix
       ./common.nix
       inputs.agenix.nixosModules.default
+      inputs.home-manager.nixosModules.home-manager
+      {
+        home-manager = {
+          useGlobalPkgs = true;
+          useUserPackages = true;
+          extraSpecialArgs = {inherit inputs self;};
+        };
+      }
     ];
   };
   inherit (inputs.nixpkgs.lib) nixosSystem;
@@ -21,6 +33,7 @@ in {
         ./locations/china.nix
         ./modules/bootloader.nix
         ./profiles/minecraft-server.nix
+        {home-manager.users.snowflake = import ../home-manager/hosts/Crix.nix;}
       ];
     };
     Pix = nixosSystem {
@@ -36,6 +49,7 @@ in {
         ./modules/printing.nix
         ./modules/samba.nix
         ./programs/fish.nix
+        {home-manager.users.snowflake = import ../home-manager/hosts/Pix.nix;}
       ];
     };
   };

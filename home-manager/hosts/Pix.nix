@@ -10,9 +10,14 @@
 in {
   _module.args = {inherit custom;};
   imports = [
-    ./common.nix
+    ../../shared/caches/ErrorNoBinaries.nix
+    ../../shared/caches/nix-community.nix
+    ../common.nix
+    ../locations/china.nix
     ../profiles/development
     ../programs/btop.nix
+    ../terminal/nix.nix
+    inputs.agenix.homeManagerModules.default
   ];
 
   colorScheme = inputs.nix-colors.colorSchemes.nord;

@@ -11,6 +11,14 @@
       ../shared/caches/nix-community.nix
       ./common.nix
       ./locations/china.nix
+      inputs.home-manager.nixosModules.home-manager
+      {
+        home-manager = {
+          useGlobalPkgs = true;
+          useUserPackages = true;
+          extraSpecialArgs = {inherit inputs self;};
+        };
+      }
     ];
   };
   inherit (inputs.nixpkgs.lib) nixosSystem;
@@ -40,6 +48,7 @@ in {
         ./programs/fish.nix
         ./programs/hyprland.nix
         ./programs/openrgb.nix
+        {home-manager.users.ryan = import ../home-manager/hosts/NixBtw.nix;}
       ];
     };
     Rescanix = nixosSystem {
@@ -67,6 +76,7 @@ in {
         ./programs/fish.nix
         ./programs/hyprland.nix
         ./programs/openrgb.nix
+        {home-manager.users.ryan = import ../home-manager/hosts/Rescanix.nix;}
       ];
     };
   };

@@ -27,8 +27,9 @@
     which
     xxd
   ];
+
   home-manager = {
-    config = ../home-manager/common.nix;
+    config = {home.stateVersion = "23.05";};
     useUserPackages = true;
   };
 }
