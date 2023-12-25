@@ -68,20 +68,20 @@
       cpu = {
         format = "󰻠 {usage}%";
         format-alt = "󰻠 {avg_frequency} GHz";
-        interval = 5;
+        interval = 3;
       };
       memory = {
         format = "󰍛 {}%";
         format-alt = "󰍛 {used}/{total} GiB";
         tooltip-format = "swap: {swapUsed}/{swapTotal} GiB";
-        interval = 5;
+        interval = 3;
       };
       "network#usage" = {
         format = "󱚻  {bandwidthTotalBytes}";
         format-alt = "󱚻  {bandwidthUpBytes}  {bandwidthDownBytes} ";
         tooltip-format = "{bandwidthUpBits}  {bandwidthDownBits} ";
         format-disconnected = "󱚻  ?";
-        interval = 1;
+        interval = 3;
       };
       "network#status" = {
         format-wifi = "  {signalStrength}%";
