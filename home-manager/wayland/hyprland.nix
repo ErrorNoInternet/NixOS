@@ -9,7 +9,14 @@
     enable = true;
     package = inputs.hyprland.packages.${pkgs.system}.hyprland;
     settings = {
-      "$mainMod" = "ALT";
+      "$mainMod" =
+        if custom.hostname == "NixBtw"
+        then [
+          "ALT"
+        ]
+        else [
+          "SUPER"
+        ];
       env = [
         #  "__GLX_VENDOR_LIBRARY_NAME,nvidia"
         #  "__NV_PRIME_RENDER_OFFLOAD,1"
