@@ -128,7 +128,7 @@
       };
       bind = [
         "$mainMod CTRL SHIFT, code:22, exec, hyprctl dispatch exit"
-        "$mainMod, escape, exec, wlogout -p layer-shell"
+        "$mainMod, escape, exec, wleave -p layer-shell -f -m 300"
 
         "$mainMod, D, exec, rofi -show drun || pkill rofi"
         "$mainMod, Z, exec, rofi -show drun || pkill rofi"
