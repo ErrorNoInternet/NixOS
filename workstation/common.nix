@@ -18,6 +18,7 @@
     kernel.sysctl = {
       "kernel.sysrq" = 1;
     };
+    tmp.useTmpfs = true;
   };
   networking = {
     firewall.enable = false;
