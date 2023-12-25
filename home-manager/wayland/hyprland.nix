@@ -29,7 +29,7 @@
           ",preferred,auto,auto"
         ]
         else [
-          ",preferred,auto,auto"
+          ",preferred,auto,1"
         ];
       exec-once = [
         "sleep 0.5 && waybar"
