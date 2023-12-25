@@ -3,8 +3,8 @@
   lib,
   ...
 }: {
-  nix = {
-    registry =
+  nix = let
+    mappedRegistry =
       lib.mapAttrs'
       (name: flake: let
         name' =
@@ -14,11 +14,14 @@
       in
         lib.nameValuePair name' {inherit flake;})
       inputs;
+  in {
+    registry = mappedRegistry // {default = mappedRegistry.nixpkgs;};
     nixPath = ["nixpkgs=${inputs.nixpkgs}"];
     settings = {
       experimental-features = ["nix-command" "flakes"];
       trusted-users = ["root" "@wheel"];
       auto-optimise-store = true;
+      log-lines = 50;
     };
     gc = {
       automatic = lib.mkDefault true;
@@ -26,8 +29,8 @@
       options = "--delete-older-than 30d";
     };
     extraOptions = ''
-      min-free = ${toString (1024 * 1024 * 1024 * 5)}
-      max-free = ${toString (1024 * 1024 * 1024 * 20)}
+      min-free = ${toString (5 * 1024 * 1024 * 1024)}
+      max-free = ${toString (20 * 1024 * 1024 * 1024)}
     '';
   };
   i18n.defaultLocale = "en_US.UTF-8";

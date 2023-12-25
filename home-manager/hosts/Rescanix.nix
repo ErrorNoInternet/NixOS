@@ -50,7 +50,6 @@ in {
     ../terminal/cava.nix
     ../terminal/foot.nix
     ../terminal/git.nix
-    ../terminal/nix.nix
     ../wayland/hyprland-autoname-workspaces.nix
     ../wayland/hyprland.nix
     inputs.agenix.homeManagerModules.default

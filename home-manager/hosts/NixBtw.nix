@@ -55,7 +55,6 @@ in {
     ../terminal/git.nix
     ../terminal/gnupg.nix
     ../terminal/irssi.nix
-    ../terminal/nix.nix
     ../wayland/hyprland-autoname-workspaces.nix
     ../wayland/hyprland.nix
     inputs.agenix.homeManagerModules.default
