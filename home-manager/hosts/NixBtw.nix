@@ -47,6 +47,7 @@ in {
     ../programs/mpv.nix
     ../programs/nheko.nix
     ../programs/obs-studio.nix
+    ../programs/spicetify.nix
     ../programs/thunderbird.nix
     ../programs/virt-manager.nix
     ../terminal/btop.nix
