@@ -7,6 +7,7 @@
   ...
 }: let
   sleep = "0.25";
+  height = 0.5;
 in {
   programs.wlogout = {
     enable = true;
@@ -17,42 +18,42 @@ in {
         text = "Lock";
         action = "sleep ${sleep} && custom-swaylock 0 1";
         keybind = "l";
-        height = 0.5;
+        height = height;
       }
       {
         label = "shutdown";
         text = "Shutdown";
         action = "sleep ${sleep} && systemctl poweroff";
         keybind = "s";
-        height = 0.5;
+        height = height;
       }
       {
         label = "logout";
         text = "Logout";
         action = "sleep ${sleep} && hyprctl dispatch exit";
         keybind = "e";
-        height = 0.5;
+        height = height;
       }
       {
         label = "reboot";
         text = "Reboot";
         action = "sleep ${sleep} && systemctl reboot";
         keybind = "r";
-        height = 0.5;
+        height = height;
       }
       {
         label = "suspend";
         text = "Suspend";
         action = "sleep ${sleep} && systemctl suspend";
         keybind = "u";
-        height = 0.5;
+        height = height;
       }
       {
         label = "hibernate";
         text = "Hibernate";
         action = "sleep ${sleep} && systemctl hibernate";
         keybind = "h";
-        height = 0.5;
+        height = height;
       }
     ];
     style = ''
