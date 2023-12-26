@@ -15,7 +15,7 @@ in {
     ../common.nix
     ../locations/china.nix
     ../profiles/development
-    ../programs/btop.nix
+    ../terminal/btop.nix
     inputs.agenix.homeManagerModules.default
   ];
 

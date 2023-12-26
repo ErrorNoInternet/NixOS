@@ -8,7 +8,7 @@ in {
   imports = [
     ../common.nix
     ../profiles/development
-    ../programs/git.nix
+    ../terminal/git.nix
   ];
 
   colorScheme = inputs.nix-colors.colorSchemes.nord;
