@@ -74,6 +74,14 @@
     vim
     wget
     xdg-user-dirs
+
+    (btrfs-progs.overrideAttrs (oldAttrs: {
+      patches =
+        (oldAttrs.patches or [])
+        ++ [
+          ../packages/patches/btrfs-progs-receive-selinux.patch
+        ];
+    }))
   ];
   programs = {
     dconf.enable = true;
