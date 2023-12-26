@@ -54,6 +54,7 @@
       gbl = "git blame";
       gc = "git commit -m";
       gca = "git commit --amend";
+      gcf = "git clean -f";
       gcl = "git clone";
       gco = "git checkout";
       gd = "git diff";
