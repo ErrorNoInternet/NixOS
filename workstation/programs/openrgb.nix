@@ -6,7 +6,7 @@
         patches =
           (oldAttrs.patches or [])
           ++ [
-            ../../packages/patches/openrgb-force-libusb.patch
+            ../../packages/patches/openrgb_force-libusb.patch
           ];
       }))
   ];

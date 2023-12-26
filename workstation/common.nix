@@ -79,7 +79,7 @@
       patches =
         (oldAttrs.patches or [])
         ++ [
-          ../packages/patches/btrfs-progs-receive-selinux.patch
+          ../packages/patches/btrfs-progs_receive-selinux.patch
         ];
     }))
   ];
