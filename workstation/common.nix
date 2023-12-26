@@ -82,6 +82,14 @@
           ../packages/patches/btrfs-progs_receive-selinux.patch
         ];
     }))
+
+    (nixVersions.nix_2_19.overrideAttrs (oldAttrs: {
+      patches =
+        (oldAttrs.patches or [])
+        ++ [
+          ../packages/patches/nix_default-flake.patch
+        ];
+    }))
   ];
   programs = {
     dconf.enable = true;

@@ -3,7 +3,6 @@
   pkgs,
   ...
 }: {
-  home.packages = with pkgs; [any-nix-shell];
   programs.fish = {
     enable = true;
     plugins = with pkgs.fishPlugins; [
@@ -17,6 +16,7 @@
       }
     ];
     shellAliases = {
+      q = "exit";
       ls = "${pkgs.eza}/bin/eza --git --icons";
       l = "ls -l";
       ll = "ls -l";
@@ -24,7 +24,7 @@
       lla = "ls -la";
       grep = "grep --color";
       ip = "ip --color";
-      q = "exit";
+      nix = "nix --default-flake nixpkgs";
 
       md = "sudo cryptsetup luksOpen /dev/disk/by-uuid/9cbb87fd-6e5a-45b3-88ee-22d369738be5 luks-btank && sudo mount /dev/mapper/luks-btank /mnt/data";
       nrs = "sudo nixos-rebuild switch --fast --flake .";
@@ -96,7 +96,6 @@
         end
       end
 
-      any-nix-shell fish --info-right | source
       if test (ps | grep fish | wc -l) -le 1
         if test -e /android/system/bin/linker64
           mfa

@@ -1,0 +1,255 @@
+diff --git a/src/libcmd/installables.cc b/src/libcmd/installables.cc
+index 6e670efea..84fd51a88 100644
+--- a/src/libcmd/installables.cc
++++ b/src/libcmd/installables.cc
+@@ -43,6 +43,23 @@ void completeFlakeInputPath(
+     }
+ }
+ 
++std::string InstallablesSettings::getDefaultFlake(std::string_view url)
++{
++    std::string res = defaultFlake;
++    if (res == "") {
++        throw UsageError("don't know how to handle installable '%s' without flake URL, because the option 'default-flake' is not set", url);
++    }
++    return res;
++}
++
++InstallablesSettings installablesSettings;
++
++static GlobalConfig::Register rInstallablesSettings(&installablesSettings);
++
++const static std::regex attrPathRegex(
++    R"((?:[a-zA-Z0-9_"-][a-zA-Z0-9_".-]*(?:\^((\*)|([a-z]+(,[a-z]+)*)))?))",
++    std::regex::ECMAScript);
++
+ MixFlakeOptions::MixFlakeOptions()
+ {
+     auto category = "Common flake-related options";
+@@ -322,22 +339,36 @@ void completeFlakeRefWithFragment(
+     /* Look for flake output attributes that match the
+        prefix. */
+     try {
++        bool isAttrPath = std::regex_match(prefix.begin(), prefix.end(), attrPathRegex);
+         auto hash = prefix.find('#');
++
+         if (hash == std::string::npos) {
+             completeFlakeRef(completions, evalState->store, prefix);
+-        } else {
++        }
++
++        if (isAttrPath || hash != std::string::npos) {
+             completions.setType(AddCompletions::Type::Attrs);
+ 
+-            auto fragment = prefix.substr(hash + 1);
++            auto fragment =
++                isAttrPath
++                ? prefix
++                : prefix.substr(hash + 1);
++
+             std::string prefixRoot = "";
+             if (fragment.starts_with(".")){
+                 fragment = fragment.substr(1);
+                 prefixRoot = ".";
+             }
+-            auto flakeRefS = std::string(prefix.substr(0, hash));
+ 
+-            // TODO: ideally this would use the command base directory instead of assuming ".".
+-            auto flakeRef = parseFlakeRef(expandTilde(flakeRefS), absPath("."));
++            auto flakeRefS =
++                isAttrPath
++                ? std::string(installablesSettings.getDefaultFlake(prefix))
++                : expandTilde(std::string(prefix.substr(0, hash)));
++
++            // FIXME: do tilde expansion.
++            auto flakeRef = parseFlakeRef(
++                flakeRefS,
++                isAttrPath ? std::optional<std::string>{} : absPath("."));
+ 
+             auto evalCache = openEvalCache(*evalState,
+                 std::make_shared<flake::LockedFlake>(lockFlake(*evalState, flakeRef, lockFlags)));
+@@ -347,6 +378,7 @@ void completeFlakeRefWithFragment(
+             if (prefixRoot == "."){
+                 attrPathPrefixes.clear();
+             }
++
+             /* Complete 'fragment' relative to all the
+                attrpath prefixes as well as the root of the
+                flake. */
+@@ -371,7 +403,13 @@ void completeFlakeRefWithFragment(
+                         auto attrPath2 = (*attr)->getAttrPath(attr2);
+                         /* Strip the attrpath prefix. */
+                         attrPath2.erase(attrPath2.begin(), attrPath2.begin() + attrPathPrefix.size());
+-                        completions.add(flakeRefS + "#" + prefixRoot + concatStringsSep(".", evalState->symbols.resolve(attrPath2)));
++
++                        std::string resolvedAttrPath2 = prefixRoot + concatStringsSep(".", evalState->symbols.resolve(attrPath2));
++
++                        if (isAttrPath)
++                            completions.add(resolvedAttrPath2);
++                        else
++                            completions.add(flakeRefS + "#" + resolvedAttrPath2);
+                     }
+                 }
+             }
+@@ -408,7 +446,7 @@ void completeFlakeRef(AddCompletions & completions, ref<Store> store, std::strin
+             if (!hasPrefix(prefix, "flake:") && hasPrefix(from, "flake:")) {
+                 std::string from2(from, 6);
+                 if (hasPrefix(from2, prefix))
+-                    completions.add(from2);
++                    completions.add(from2 + "#");
+             } else {
+                 if (hasPrefix(from, prefix))
+                     completions.add(from);
+@@ -525,7 +563,13 @@ Installables SourceExprCommand::parseInstallables(
+             }
+ 
+             try {
+-                auto [flakeRef, fragment] = parseFlakeRefWithFragment(std::string { prefix }, absPath(getCommandBaseDir()));
++                bool isAttrPath = std::regex_match(std::string { prefix }, attrPathRegex);
++
++                auto [flakeRef, fragment] =
++                    isAttrPath
++                    ? std::pair { parseFlakeRef(installablesSettings.getDefaultFlake(s), {}), std::string { prefix } }
++                    : parseFlakeRefWithFragment(std::string { prefix }, absPath(getCommandBaseDir()));
++
+                 result.push_back(make_ref<InstallableFlake>(
+                         this,
+                         getEvalState(),
+diff --git a/src/libcmd/installables.hh b/src/libcmd/installables.hh
+index e087f935c..79e20ebb7 100644
+--- a/src/libcmd/installables.hh
++++ b/src/libcmd/installables.hh
+@@ -12,6 +12,16 @@
+ 
+ namespace nix {
+ 
++struct InstallablesSettings : Config
++{
++    Setting<std::string> defaultFlake{this, "", "default-flake",
++        "The default flake URL when using the command line interface"};
++
++    std::string getDefaultFlake(std::string_view url);
++};
++
++extern InstallablesSettings installablesSettings;
++
+ struct DrvInfo;
+ 
+ enum class Realise {
+diff --git a/src/nix/search.cc b/src/nix/search.cc
+index ef0139e09..3760a97cb 100644
+--- a/src/nix/search.cc
++++ b/src/nix/search.cc
+@@ -23,8 +23,9 @@ std::string wrap(std::string prefix, std::string s)
+     return concatStrings(prefix, s, ANSI_NORMAL);
+ }
+ 
+-struct CmdSearch : InstallableValueCommand, MixJSON
++struct CmdSearch : SourceExprCommand, MixJSON
+ {
++    std::string _installable{installablesSettings.defaultFlake};
+     std::vector<std::string> res;
+     std::vector<std::string> excludeRes;
+ 
+@@ -40,6 +41,24 @@ struct CmdSearch : InstallableValueCommand, MixJSON
+                 excludeRes.push_back(s);
+             }},
+         });
++
++        bool hasInstallable = false;
++
++        addFlag({
++            .longName = "installable",
++            .shortName = 'i',
++            .description = "Search within this installable",
++            .labels = {"installable"},
++            .handler = {[this, &hasInstallable](std::string ss) {
++                hasInstallable = true;
++                _installable = ss;
++            }},
++            .completer = completePath
++        });
++
++        if (hasInstallable && (file || expr)) {
++            throw UsageError("'--installable' cannot be used together with '--file' or '--expr'");
++        }
+     }
+ 
+     std::string description() override
+@@ -62,11 +81,18 @@ struct CmdSearch : InstallableValueCommand, MixJSON
+         };
+     }
+ 
+-    void run(ref<Store> store, ref<InstallableValue> installable) override
++    void run(ref<Store> store) override
+     {
++        if (_installable == "" && ! file && ! expr) {
++            throw UsageError("nothing to search from, set 'default-flake' option or specify one of '--installable', '--file', '--expr'");
++        }
++
+         settings.readOnlyMode = true;
+         evalSettings.enableImportFromDerivation.setDefault(false);
+ 
++        auto installable = InstallableValue::require(
++            parseInstallable(store, (file || expr) ? "" : _installable));
++
+         // Empty search string should match all packages
+         // Use "^" here instead of ".*" due to differences in resulting highlighting
+         // (see #1893 -- libc++ claims empty search string is not in POSIX grammar)
+diff --git a/tests/functional/search.sh b/tests/functional/search.sh
+index 8742f8736..df27e1a64 100644
+--- a/tests/functional/search.sh
++++ b/tests/functional/search.sh
+@@ -3,40 +3,40 @@ source common.sh
+ clearStore
+ clearCache
+ 
+-(( $(nix search -f search.nix '' hello | wc -l) > 0 ))
++(( $(nix search -f search.nix hello | wc -l) > 0 ))
+ 
+ # Check descriptions are searched
+-(( $(nix search -f search.nix '' broken | wc -l) > 0 ))
++(( $(nix search -f search.nix broken | wc -l) > 0 ))
+ 
+ # Check search that matches nothing
+-(( $(nix search -f search.nix '' nosuchpackageexists | wc -l) == 0 ))
++(( $(nix search -f search.nix nosuchpackageexists | wc -l) == 0 ))
+ 
+ # Search for multiple arguments
+-(( $(nix search -f search.nix '' hello empty | wc -l) == 2 ))
++(( $(nix search -f search.nix hello empty | wc -l) == 2 ))
+ 
+ # Multiple arguments will not exist
+-(( $(nix search -f search.nix '' hello broken | wc -l) == 0 ))
++(( $(nix search -f search.nix hello broken | wc -l) == 0 ))
+ 
+ ## Search expressions
+ 
+ # Check that empty search string matches all
+-nix search -f search.nix '' |grepQuiet foo
+-nix search -f search.nix '' |grepQuiet bar
+-nix search -f search.nix '' |grepQuiet hello
++nix search -f search.nix |grep -q foo
++nix search -f search.nix |grep -q bar
++nix search -f search.nix |grep -q hello
+ 
+ ## Tests for multiple regex/match highlighting
+ 
+ e=$'\x1b' # grep doesn't support \e, \033 or even \x1b
+ # Multiple overlapping regexes
+-(( $(nix search -f search.nix '' 'oo' 'foo' 'oo' | grep -c "$e\[32;1mfoo$e\\[0;1m") == 1 ))
+-(( $(nix search -f search.nix '' 'broken b' 'en bar' | grep -c "$e\[32;1mbroken bar$e\\[0m") == 1 ))
++(( $(nix search -f search.nix 'oo' 'foo' 'oo' | grep -c "$e\[32;1mfoo$e\\[0;1m") == 1 ))
++(( $(nix search -f search.nix 'broken b' 'en bar' | grep -c "$e\[32;1mbroken bar$e\\[0m") == 1 ))
+ 
+ # Multiple matches
+ # Searching for 'o' should yield the 'o' in 'broken bar', the 'oo' in foo and 'o' in hello
+-(( $(nix search -f search.nix '' 'o' | grep -Eoc "$e\[32;1mo{1,2}$e\[(0|0;1)m") == 3 ))
++(( $(nix search -f search.nix 'o' | grep -Eoc "$e\[32;1mo{1,2}$e\[(0|0;1)m") == 3 ))
+ # Searching for 'b' should yield the 'b' in bar and the two 'b's in 'broken bar'
+ # NOTE: This does not work with `grep -c` because it counts the two 'b's in 'broken bar' as one matched line
+-(( $(nix search -f search.nix '' 'b' | grep -Eo "$e\[32;1mb$e\[(0|0;1)m" | wc -l) == 3 ))
++(( $(nix search -f search.nix 'b' | grep -Eo "$e\[32;1mb$e\[(0|0;1)m" | wc -l) == 3 ))
+ 
+ ## Tests for --exclude
+ (( $(nix search -f search.nix -e hello | grep -c hello) == 0 ))
