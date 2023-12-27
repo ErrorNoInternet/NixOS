@@ -213,6 +213,7 @@
         key = "<leader>t";
         action = ":TroubleToggle<CR>";
       }
+
       {
         mode = "n";
         options.silent = true;
@@ -230,6 +231,18 @@
         options.silent = true;
         key = "<leader>fb";
         action = ":Telescope buffers<CR>";
+      }
+      {
+        mode = "n";
+        options.silent = true;
+        key = "<leader>fc";
+        action = ":Telescope git_bcommits<CR>";
+      }
+      {
+        mode = "n";
+        options.silent = true;
+        key = "<leader>fC";
+        action = ":Telescope git_commits<CR>";
       }
     ];
     autoCmd = [
