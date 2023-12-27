@@ -9,15 +9,26 @@
     };
     keymaps = [
       {
-        mode = "n";
+        mode = "";
+        key = "<C-n>";
+        action = "<cmd>:bnext<CR>";
+      }
+      {
+        mode = "";
+        key = "<C-p>";
+        action = "<cmd>:bprevious<CR>";
+      }
+      {
+        mode = "i";
         key = "<C-n>";
         action = "<esc>:bnext<CR>";
       }
       {
-        mode = "n";
+        mode = "i";
         key = "<C-p>";
         action = "<esc>:bprevious<CR>";
       }
+
       {
         mode = "n";
         key = "<c-j>";
@@ -48,6 +59,7 @@
         key = "<c-k>";
         action = ":m '<-2<CR>gv=gv";
       }
+
       {
         mode = "n";
         key = "gs";
