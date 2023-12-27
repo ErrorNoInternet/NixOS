@@ -63,4 +63,4 @@ jobs:
           authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
 
       - name: "Build for ${{ matrix.host }} (NixOS)"
-        run: nix build --max-jobs 1 .#nixosConfigurations.${{ matrix.host }}.config.system.build.toplevel
+        run: nix build -j 1 --cores 1 .#nixosConfigurations.${{ matrix.host }}.config.system.build.toplevel
