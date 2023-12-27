@@ -1,3 +1,5 @@
+diff --git a/cmds/receive.c b/cmds/receive.c
+index e4430b07..8110ea54 100644
 --- a/cmds/receive.c
 +++ b/cmds/receive.c
 @@ -868,8 +868,8 @@ static int process_remove_xattr(const char *path, const char *name, void *user)
