@@ -1,4 +1,8 @@
-{config, pkgs, ...}: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   system.stateVersion = "23.05";
   environment.motd = "";
 

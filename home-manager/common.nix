@@ -1,7 +1,6 @@
 {
   inputs,
   pkgs,
-  config,
   ...
 }: {
   imports = [
@@ -28,6 +27,6 @@
       nh
       progress
     ];
-    stateVersion = "23.05" ;
+    stateVersion = "23.05";
   };
 }
