@@ -1,80 +1,621 @@
 {
   config,
-  custom,
-  lib,
+  inputs,
   pkgs,
   ...
 }: {
-  programs.neovim = {
+  programs.nixvim = {
     enable = true;
+    package = inputs.neovim.packages.${pkgs.system}.neovim;
     defaultEditor = true;
-    coc = {
+
+    colorschemes.nord = {
       enable = true;
-      settings = {
-        "notification.disabledProgressSources" = ["*"];
-        "rust-analyzer.checkOnSave.command" = "clippy";
-      };
+      disable_background = true;
+      italic = false;
     };
-    plugins = with pkgs.vimPlugins; [
-      bufferline-nvim
-      gruvbox-nvim
-      indent-blankline-nvim
-      lualine-nvim
-      markdown-preview-nvim
-      nerdtree
-      nix-develop-nvim
-      nord-nvim
-      nvim-autopairs
-      nvim-colorizer-lua
-      presence-nvim
-      rust-vim
+    plugins = {
+      coq-nvim = {
+        enable = true;
+        autoStart = "shut-up";
+      };
+      crates-nvim = {
+        enable = true;
+        extraOptions.src.coq.enabled = true;
+      };
+      bufferline = {
+        enable = true;
+        highlights = {
+          separator = {
+            fg = "#${config.colorScheme.colors.base00}";
+            bg = "#${config.colorScheme.colors.base01}";
+          };
+          indicatorSelected = {
+            bg = "#${config.colorScheme.colors.base03}";
+          };
+
+          fill = {bg = "#${config.colorScheme.colors.base01}";};
+          background = {bg = "#${config.colorScheme.colors.base01}";};
+
+          closeButtonSelected = {bg = "#${config.colorScheme.colors.base03}";};
+          closeButtonVisible = {bg = "#${config.colorScheme.colors.base01}";};
+          closeButton = {bg = "#${config.colorScheme.colors.base01}";};
+
+          modifiedSelected = {bg = "#${config.colorScheme.colors.base03}";};
+          modified = {bg = "#${config.colorScheme.colors.base01}";};
+
+          bufferSelected = {
+            bg = "#${config.colorScheme.colors.base03}";
+            italic = false;
+          };
+          bufferVisible = {bg = "#${config.colorScheme.colors.base01}";};
+
+          duplicateSelected = {bg = "#${config.colorScheme.colors.base03}";};
+          duplicate = {bg = "#${config.colorScheme.colors.base01}";};
+
+          errorSelected = {bg = "#${config.colorScheme.colors.base03}";};
+          error = {bg = "#${config.colorScheme.colors.base01}";};
+          errorDiagnosticSelected = {bg = "#${config.colorScheme.colors.base03}";};
+          errorDiagnostic = {bg = "#${config.colorScheme.colors.base01}";};
+
+          warningSelected = {bg = "#${config.colorScheme.colors.base03}";};
+          warning = {bg = "#${config.colorScheme.colors.base01}";};
+          warningDiagnosticSelected = {bg = "#${config.colorScheme.colors.base03}";};
+          warningDiagnostic = {bg = "#${config.colorScheme.colors.base01}";};
+
+          hintSelected = {bg = "#${config.colorScheme.colors.base03}";};
+          hint = {bg = "#${config.colorScheme.colors.base01}";};
+          hintDiagnosticSelected = {bg = "#${config.colorScheme.colors.base03}";};
+          hintDiagnostic = {bg = "#${config.colorScheme.colors.base01}";};
+        };
+      };
+      fidget = {
+        enable = true;
+        extraOptions = {
+          notification.window.winblend = 0;
+          progress.lsp.progress_ringbuf_size = 1024;
+        };
+      };
+      indent-blankline = {
+        enable = true;
+        extraOptions = {
+          indent.char = "";
+          scope = {
+            show_start = false;
+            show_end = false;
+          };
+        };
+      };
+      leap.enable = true;
+      lualine.enable = true;
+      markdown-preview.enable = true;
+      nix-develop.enable = true;
+      nvim-autopairs.enable = true;
+      nvim-colorizer = {
+        enable = true;
+        fileTypes = ["*"];
+        userDefaultOptions = {
+          names = false;
+          RRGGBBAA = true;
+          rgb_fn = true;
+          hsl_fn = true;
+        };
+      };
+      nvim-tree.enable = true;
+      presence-nvim = {
+        enable = true;
+        neovimImageText = "Neovim";
+        readingText = "Running some code";
+        fileExplorerText = "Browsing a folder";
+      };
+      lsp = {
+        enable = true;
+        servers = {
+          bashls.enable = true;
+          clangd.enable = true;
+          gopls.enable = true;
+          html.enable = true;
+          nil_ls.enable = true;
+          pyright.enable = true;
+          rust-analyzer = {
+            enable = true;
+            installCargo = false;
+            installRustc = false;
+            installLanguageServer = false;
+          };
+        };
+        keymaps.lspBuf = {
+          "gd" = "definition";
+          "gD" = "references";
+          "gt" = "type_definition";
+          "gi" = "implementation";
+          "K" = "hover";
+        };
+      };
+      rust-tools = {
+        enable = true;
+        serverPackage = pkgs.hello;
+        server = {
+          check.command = "clippy";
+        };
+      };
+      telescope.enable = true;
+      treesitter.enable = true;
+      trouble.enable = true;
+    };
+    extraPlugins = with pkgs.vimPlugins; [
+      actions-preview-nvim
+      nvim-lspconfig
       suda-vim
-      vim-devicons
-      vim-fugitive
       vim-go
       vim-sort-motion
       vim-wordmotion
-
-      coc-clangd
-      coc-go
-      coc-html
-      coc-python
-      coc-rust-analyzer
-      coc-sh
+      vim-textobj-user
+      (pkgs.vimUtils.buildVimPlugin {
+        pname = "vim-textobj-indent";
+        version = "2023-01-18";
+        src = pkgs.fetchFromGitHub {
+          owner = "kana";
+          repo = "vim-textobj-indent";
+          rev = "deb76867c302f933c8f21753806cbf2d8461b548";
+          sha256 = "sha256-oFzUPG+IOkbKZ2gU/kduQ3G/LsLDlEjFhRP0BHBE+1Q=";
+        };
+      })
     ];
-    extraConfig = ''
-      filetype plugin indent on
-      set completeopt-=preview
-      set cursorline
-      set encoding=utf-8
-      set expandtab
-      set fileencoding=utf-8
-      set guicursor=
-      set laststatus=2
-      set mouse=a
-      set mousemoveevent
-      set noshowmode
-      set noswapfile
-      set number
-      set shiftwidth=4
-      set smartindent
-      set softtabstop=4
-      set tabstop=4
-      syntax enable
+    extraConfigLuaPre = ''
+      require("actions-preview").setup()
+    '';
+    options = {
+      cursorline = true;
+      encoding = "utf8";
+      expandtab = true;
+      guicursor = "";
+      number = true;
+      shiftwidth = 4;
+      shortmess = "ltToOCFcI";
+      showmode = false;
+      smartindent = true;
+      smoothscroll = true;
+      swapfile = false;
+      tabstop = 4;
+    };
+    globals = {
+      suda_smart_edit = 1;
 
-      let g:presence_buttons = 0
-      let g:presence_neovim_image_text = "Neovim"
-      let g:presence_reading_text = "Running some code"
-      let g:presence_file_explorer_text = "Browsing a folder"
-      let g:suda_smart_edit = 1
-      let NERDTreeMinimalUI=1
+      go_fmt_autosave = 0;
+      go_highlight_array_whitespace_error = 1;
+      go_highlight_build_constraints = 1;
+      go_highlight_chan_whitespace_error = 1;
+      go_highlight_diagnostic_errors = 1;
+      go_highlight_diagnostic_warnings = 1;
+      go_highlight_extra_types = 1;
+      go_highlight_fields = 1;
+      go_highlight_format_strings = 1;
+      go_highlight_function_calls = 1;
+      go_highlight_function_parameters = 1;
+      go_highlight_functions = 1;
+      go_highlight_generate_tags = 1;
+      go_highlight_operators = 1;
+      go_highlight_space_tab_error = 1;
+      go_highlight_string_spellcheck = 1;
+      go_highlight_trailing_whitespace_error = 1;
+      go_highlight_types = 1;
+      go_highlight_variable_assignments = 1;
+      go_highlight_variable_declarations = 1;
+    };
+    extraConfigLuaPost = ''
+      vim.g.coq_settings = {
+        ["clients.snippets.warn"] = {},
+        ["keymap.pre_select"] = true,
+      }
+    '';
+    highlight = {
+      CursorLine.bg = "none";
+      MatchParen = {
+        fg = "#${config.colorScheme.colors.base0D}";
+        bg = "#${config.colorScheme.colors.base03}";
+      };
+      "@variable".bold = false;
+      Function.bold = true;
+      Macro = {
+        fg = "#${config.colorScheme.colors.base0D}";
+        bold = true;
+      };
+      RustEnumVariant.fg = "#${config.colorScheme.colors.base0C}";
+      CocFloating.bg = "#${config.colorScheme.colors.base01}";
+      CocSearch.fg = "#${config.colorScheme.colors.base0D}";
+      CocInlayHint.fg = "#${config.colorScheme.colors.base07}";
+      "@ibl.indent.char.1".fg = "#${config.colorScheme.colors.base00}";
+    };
+    keymaps = [
+      {
+        mode = "n";
+        key = "<C-n>";
+        action = "<esc>:bnext<CR>";
+      }
+      {
+        mode = "n";
+        key = "<C-p>";
+        action = "<esc>:bprevious<CR>";
+      }
+      {
+        mode = "n";
+        key = "<c-j>";
+        action = ":m .+1<CR>==";
+      }
+      {
+        mode = "n";
+        key = "<c-k>";
+        action = ":m .-2<CR>==";
+      }
+      {
+        mode = "i";
+        key = "<c-j>";
+        action = "<esc>:m .+1<CR>==gi";
+      }
+      {
+        mode = "i";
+        key = "<c-k>";
+        action = "<esc>:m .-2<CR>==gi";
+      }
+      {
+        mode = "v";
+        key = "<c-j>";
+        action = ":m '>+1<CR>gv=gv";
+      }
+      {
+        mode = "v";
+        key = "<c-k>";
+        action = ":m '<-2<CR>gv=gv";
+      }
+      {
+        mode = "n";
+        key = "gs";
+        action = "<Plug>SortMotion";
+      }
+      {
+        mode = "x";
+        key = "gs";
+        action = "<Plug>SortMotionVisual";
+      }
+      {
+        mode = "n";
+        key = "gss";
+        action = "<Plug>SortLines";
+      }
+      {
+        mode = "i";
+        key = "<M-BS>";
+        action = "<esc>ldbi";
+      }
+      {
+        mode = "n";
+        key = "<M-BS>";
+        action = "dbi";
+      }
+      {
+        mode = "i";
+        key = "<C-Del>";
+        action = "<esc>ldwi";
+      }
+      {
+        mode = "n";
+        key = "<C-Del>";
+        action = "dwi";
+      }
+      {
+        mode = "n";
+        options.silent = true;
+        key = "<F3>";
+        action = ":nohl<CR>";
+      }
+      {
+        mode = "n";
+        options.silent = true;
+        key = "<C-S>";
+        action = ":w<CR>";
+      }
+      {
+        mode = "v";
+        options.silent = true;
+        key = "<C-S>";
+        action = "<C-C>:w<CR>";
+      }
+      {
+        mode = "i";
+        options.silent = true;
+        key = "<C-S>";
+        action = "<C-O>:w<CR>";
+      }
+      {
+        mode = "n";
+        options.silent = true;
+        key = "<C-D>";
+        action = ":bd<CR>";
+      }
+      {
+        mode = "n";
+        options.silent = true;
+        key = "<C-l>";
+        action = ":NvimTreeToggle<CR>";
+      }
+      {
+        mode = "n";
+        options.silent = true;
+        key = "<leader>l";
+        action = ":NvimTreeFocus<CR>";
+      }
+      {
+        mode = "n";
+        options.silent = true;
+        key = "<leader>a";
+        action = ":lua require('actions-preview').code_actions()<CR>";
+      }
+      {
+        mode = "n";
+        options.silent = true;
+        key = "<leader>ca";
+        action = ":lua require('crates').show_popup()<CR>";
+      }
+      {
+        mode = "n";
+        options.silent = true;
+        key = "<leader>t";
+        action = ":TroubleToggle<CR>";
+      }
+      {
+        mode = "n";
+        options.silent = true;
+        key = "<leader>ff";
+        action = ":Telescope find_files<CR>";
+      }
+      {
+        mode = "n";
+        options.silent = true;
+        key = "<leader>fg";
+        action = ":Telescope live_grep<CR>";
+      }
+      {
+        mode = "n";
+        options.silent = true;
+        key = "<leader>fb";
+        action = ":Telescope buffers<CR>";
+      }
+    ];
+    autoCmd = [
+      {
+        event = ["TermOpen"];
+        pattern = ["*"];
+        command = "startinsert";
+      }
 
-      set guifont=JetBrainsMonoNL\ Nerd\ Font:h9
-      let g:neovide_remember_window_size = v:true
-      let g:neovide_cursor_vfx_mode = "pixiedust"
-      let g:neovide_cursor_vfx_particle_density = 20
-      let g:neovide_floating_opacity = 0.9
+      {
+        event = ["FileType"];
+        pattern = ["python"];
+        command = "setlocal tabstop=4";
+      }
+      {
+        event = ["FileType"];
+        pattern = ["python"];
+        command = "map <buffer> <F10> :wa<CR>:term python3 %<CR>";
+      }
+      {
+        event = ["FileType"];
+        pattern = ["python"];
+        command = "imap <buffer> <F10> <esc>:wa<CR>:term python3 %<CR>";
+      }
+      {
+        event = ["FileType"];
+        pattern = ["python"];
+        command = "map <buffer> <F8> :wa<CR>:term pypy3 %<CR>";
+      }
+      {
+        event = ["FileType"];
+        pattern = ["python"];
+        command = "imap <buffer> <F8> <esc>:wa<CR>:term pypy3 %<CR>";
+      }
+      {
+        event = ["FileType"];
+        pattern = ["python"];
+        command = "map <buffer> <F2> :w<CR>:call FormatPythonBuffer()<CR>:w<CR>";
+      }
+      {
+        event = ["FileType"];
+        pattern = ["python"];
+        command = "imap <buffer> <F2> <esc>:w<CR>:call FormatPythonBuffer()<CR>:w<CR>";
+      }
 
+      {
+        event = ["FileType"];
+        pattern = ["lua"];
+        command = "map <buffer> <F10> :wa<CR>:term lua %<CR>";
+      }
+      {
+        event = ["FileType"];
+        pattern = ["lua"];
+        command = "imap <buffer> <F10> <esc>:wa<CR>:term lua %<CR>";
+      }
+
+      {
+        event = ["FileType"];
+        pattern = ["sh"];
+        command = "map <buffer> <F10> :wa<CR>:term sh %<CR>";
+      }
+      {
+        event = ["FileType"];
+        pattern = ["sh"];
+        command = "imap <buffer> <F10> <esc>:wa<CR>:term sh %<CR>";
+      }
+
+      {
+        event = ["FileType"];
+        pattern = ["java"];
+        command = "map <buffer> <F10> :wa<CR>:term jcompile<CR>";
+      }
+      {
+        event = ["FileType"];
+        pattern = ["java"];
+        command = "imap <buffer> <F10> <esc>:wa<CR>:term jcompile<CR>";
+      }
+
+      {
+        event = ["FileType"];
+        pattern = ["c"];
+        command = "map <buffer> <F10> :wa<CR>:term clang -lm % -o %:t:r && ./%:t:r<CR>";
+      }
+      {
+        event = ["FileType"];
+        pattern = ["c"];
+        command = "imap <buffer> <F10> <esc> :wa<CR>:term clang -lm % -o %:t:r && ./%:t:r<CR>";
+      }
+      {
+        event = ["FileType"];
+        pattern = ["c"];
+        command = "map <buffer> <F2> :w<CR>:call FormatCBuffer()<CR>:w<CR>";
+      }
+      {
+        event = ["FileType"];
+        pattern = ["c"];
+        command = "imap <buffer> <F2> <esc>:w<CR>:call FormatCBuffer()<CR>:w<CR>";
+      }
+
+      {
+        event = ["FileType"];
+        pattern = ["cpp"];
+        command = "setlocal shiftwidth=2 softtabstop=2 expandtab";
+      }
+      {
+        event = ["FileType"];
+        pattern = ["cpp"];
+        command = "map <buffer> <F10> :wa<CR>:term clang -lm % -o %:t:r && ./%:t:r<CR>";
+      }
+      {
+        event = ["FileType"];
+        pattern = ["cpp"];
+        command = "imap <buffer> <F10> <esc> :wa<CR>:term clang -lm % -o %:t:r && ./%:t:r<CR>";
+      }
+      {
+        event = ["FileType"];
+        pattern = ["cpp"];
+        command = "map <buffer> <F2> :w<CR>:call FormatCBuffer()<CR>:w<CR>";
+      }
+      {
+        event = ["FileType"];
+        pattern = ["cpp"];
+        command = "imap <buffer> <F2> <esc>:w<CR>:call FormatCBuffer()<CR>:w<CR>";
+      }
+
+      {
+        event = ["FileType"];
+        pattern = ["cs"];
+        command = "map <buffer> <F10> :wa<CR>:term mcs % -out:%:t:r && ./%:t:r<CR>";
+      }
+      {
+        event = ["FileType"];
+        pattern = ["cs"];
+        command = "imap <buffer> <F10> <esc> :wa<CR>:term mcs % -out:%:t:r && ./%:t:r<CR>";
+      }
+
+      {
+        event = ["FileType"];
+        pattern = ["javascript"];
+        command = "map <buffer> <F10> :wa<CR>:term node %<CR>";
+      }
+      {
+        event = ["FileType"];
+        pattern = ["javascript"];
+        command = "imap <buffer> <F10> <esc> :wa<CR>:term node %<CR>";
+      }
+
+      {
+        event = ["FileType"];
+        pattern = ["go"];
+        command = "map <buffer> <F10> :wa<CR>:term go run .<CR>";
+      }
+      {
+        event = ["FileType"];
+        pattern = ["go"];
+        command = "imap <buffer> <F10> <esc> :wa<CR>:term go run .<CR>";
+      }
+      {
+        event = ["FileType"];
+        pattern = ["go"];
+        command = "map <buffer> <F2> :w<CR>:GoFmt<CR>:w<CR>";
+      }
+      {
+        event = ["FileType"];
+        pattern = ["go"];
+        command = "imap <buffer> <F2> <esc>:w<CR>:GoFmt<CR>:w<CR>";
+      }
+
+      {
+        event = ["FileType"];
+        pattern = ["rust"];
+        command = "map <buffer> <F10> :wa<CR>:term cd %:p:h:h && cargo run<CR>";
+      }
+      {
+        event = ["FileType"];
+        pattern = ["rust"];
+        command = "imap <buffer> <F10> <esc> :wa<CR>:term cd %:p:h:h && cargo run<CR>";
+      }
+      {
+        event = ["FileType"];
+        pattern = ["rust"];
+        command = "map <buffer> <F8> :wa<CR>:term cd %:p:h:h && cargo run --release<CR>";
+      }
+      {
+        event = ["FileType"];
+        pattern = ["rust"];
+        command = "imap <buffer> <F8> <esc> :wa<CR>:term cd %:p:h:h && cargo run --release<CR>";
+      }
+      {
+        event = ["FileType"];
+        pattern = ["rust"];
+        command = "map <buffer> <F9> :wa<CR>:term rustc % && ./%:t:r<CR>";
+      }
+      {
+        event = ["FileType"];
+        pattern = ["rust"];
+        command = "imap <buffer> <F9> <esc> :wa<CR>:term rustc % && ./%:t:r<CR>";
+      }
+      {
+        event = ["FileType"];
+        pattern = ["rust"];
+        command = "map <buffer> <F11> :wa<CR>:term cd %:p:h:h && cargo build<CR>";
+      }
+      {
+        event = ["FileType"];
+        pattern = ["rust"];
+        command = "imap <buffer> <F11> <esc> :wa<CR>:term cd %:p:h:h && cargo build<CR>";
+      }
+      {
+        event = ["FileType"];
+        pattern = ["rust"];
+        command = "map <buffer> <F2> :w<CR>:RustFmt<CR>:w<CR>";
+      }
+      {
+        event = ["FileType"];
+        pattern = ["rust"];
+        command = "imap <buffer> <F2> <esc>:w<CR>:RustFmt<CR>:w<CR>";
+      }
+
+      {
+        event = ["FileType"];
+        pattern = ["nix"];
+        command = "setlocal shiftwidth=2 softtabstop=2 expandtab";
+      }
+      {
+        event = ["FileType"];
+        pattern = ["nix"];
+        command = "map <buffer> <F2> :w<CR>:call FormatNixBuffer()<CR>:w<CR>";
+      }
+      {
+        event = ["FileType"];
+        pattern = ["nix"];
+        command = "imap <buffer> <F2> <esc>:w<CR>:call FormatNixBuffer()<CR>:w<CR>";
+      }
+    ];
+    extraConfigVim = ''
       function FormatCBuffer()
         let cursor_pos = getpos('.')
         :%!${pkgs.clang-tools}/bin/clang-format -style="{BasedOnStyle: llvm, IndentWidth: 4}"
@@ -91,202 +632,10 @@
         call setpos('.', cursor_pos)
       endfunction
 
-      autocmd TermOpen * startinsert
-      nmap <C-n> <esc>:bnext<CR>
-      nmap <C-p> <esc>:bprevious<CR>
-      nmap <c-j> :m .+1<CR>==
-      nmap <c-k> :m .-2<CR>==
-      imap <c-j> <esc>:m .+1<CR>==gi
-      imap <c-k> <esc>:m .-2<CR>==gi
-      vmap <c-j> :m '>+1<CR>gv=gv
-      vmap <c-k> :m '<-2<CR>gv=gv
-      imap <C-h> <esc>ldbi
-      nmap <C-h> dbi
-      imap <C-Del> <esc>ldwi
-      nmap <C-Del> dwi
-      nmap <silent> <C-S> <esc>:w<CR>
-      vmap <silent> <C-S> <C-C>:w<CR>
-      imap <silent> <C-S> <C-O>:w<CR>
-      nmap <F3> :set hlsearch!<CR>
-      nmap <leader>l :NERDTreeFocus<CR>
-      nmap <C-l> :NERDTreeToggle<CR>
-      imap <silent><expr> <tab> coc#pum#visible() ? coc#pum#confirm() : "\<tab>"
-      nmap <leader>a <Plug>(coc-codeaction-selected)<CR>
-      nmap <leader>n <Plug>(coc-diagnostic-next)<CR>
-      nmap <leader>p <Plug>(coc-diagnostic-prev)<CR>
+      aunmenu PopUp.How-to\ disable\ mouse
+      aunmenu PopUp.-1-
 
-      autocmd FileType python setlocal tabstop=4
-      autocmd FileType python map <buffer> <F10> :wa<CR>:term python3 %<CR>
-      autocmd FileType python imap <buffer> <F10> <esc>:wa<CR>:term python3 %<CR>
-      autocmd FileType python map <buffer> <F8> :wa<CR>:term pypy3 %<CR>
-      autocmd FileType python imap <buffer> <F8> <esc>:wa<CR>:term pypy3 %<CR>
-      autocmd FileType python map <buffer> <F2> :w<CR>:call FormatPythonBuffer()<CR>:w<CR>
-      autocmd FileType python imap <buffer> <F2> <esc>:w<CR>:call FormatPythonBuffer()<CR>:w<CR>
-
-      autocmd FileType lua map <buffer> <F10> :wa<CR>:term lua %<CR>
-      autocmd FileType lua imap <buffer> <F10> <esc>:wa<CR>:term lua %<CR>
-
-      autocmd FileType sh map <buffer> <F10> :wa<CR>:term sh %<CR>
-      autocmd FileType sh imap <buffer> <F10> <esc>:wa<CR>:term sh %<CR>
-
-      autocmd FileType java map <buffer> <F10> :wa<CR>:term jcompile<CR>
-      autocmd FileType java imap <buffer> <F10> <esc>:wa<CR>:term jcompile<CR>
-
-      autocmd FileType c map <buffer> <F10> :wa<CR>:term clang -lm % -o %:t:r && ./%:t:r<CR>
-      autocmd FileType c imap <buffer> <F10> <esc> :wa<CR>:term clang -lm % -o %:t:r && ./%:t:r<CR>
-      autocmd FileType c map <buffer> <F2> :w<CR>:call FormatCBuffer()<CR>:w<CR>
-      autocmd FileType c imap <buffer> <F2> <esc>:w<CR>:call FormatCBuffer()<CR>:w<CR>
-
-      autocmd FileType cpp setlocal shiftwidth=2 softtabstop=2 expandtab
-      autocmd FileType cpp map <buffer> <F10> :wa<CR>:term clang -lm % -o %:t:r && ./%:t:r<CR>
-      autocmd FileType cpp imap <buffer> <F10> <esc> :wa<CR>:term clang -lm % -o %:t:r && ./%:t:r<CR>
-      autocmd FileType cpp map <buffer> <F2> :w<CR>:call FormatCBuffer()<CR>:w<CR>
-      autocmd FileType cpp imap <buffer> <F2> <esc>:w<CR>:call FormatCBuffer()<CR>:w<CR>
-
-      autocmd FileType cs map <buffer> <F10> :wa<CR>:term mcs % -out:%:t:r && ./%:t:r<CR>
-      autocmd FileType cs imap <buffer> <F10> <esc> :wa<CR>:term mcs % -out:%:t:r && ./%:t:r<CR>
-
-      autocmd FileType javascript map <buffer> <F10> :wa<CR>:term node %<CR>
-      autocmd FileType javascript imap <buffer> <F10> <esc> :wa<CR>:term node %<CR>
-
-      autocmd FileType go map <buffer> <F10> :wa<CR>:term go run .<CR>
-      autocmd FileType go imap <buffer> <F10> <esc> :wa<CR>:term go run .<CR>
-      autocmd FileType go map <buffer> <F2> :w<CR>:GoFmt<CR>:w<CR>
-      autocmd FileType go imap <buffer> <F2> <esc>:w<CR>:GoFmt<CR>:w<CR>
-      let g:go_fmt_autosave = 0
-      let g:go_highlight_array_whitespace_error = 1
-      let g:go_highlight_build_constraints = 1
-      let g:go_highlight_chan_whitespace_error = 1
-      let g:go_highlight_diagnostic_errors = 1
-      let g:go_highlight_diagnostic_warnings = 1
-      let g:go_highlight_extra_types = 1
-      let g:go_highlight_fields = 1
-      let g:go_highlight_format_strings = 1
-      let g:go_highlight_function_calls = 1
-      let g:go_highlight_function_parameters = 1
-      let g:go_highlight_functions = 1
-      let g:go_highlight_generate_tags = 1
-      let g:go_highlight_operators = 1
-      let g:go_highlight_space_tab_error = 1
-      let g:go_highlight_string_spellcheck = 1
-      let g:go_highlight_trailing_whitespace_error = 1
-      let g:go_highlight_types = 1
-      let g:go_highlight_variable_assignments = 1
-      let g:go_highlight_variable_declarations = 1
-
-      autocmd FileType rust map <buffer> <F10> :wa<CR>:term cd %:p:h:h && cargo run<CR>
-      autocmd FileType rust imap <buffer> <F10> <esc> :wa<CR>:term cd %:p:h:h && cargo run<CR>
-      autocmd FileType rust map <buffer> <F8> :wa<CR>:term cd %:p:h:h && cargo run --release<CR>
-      autocmd FileType rust imap <buffer> <F8> <esc> :wa<CR>:term cd %:p:h:h && cargo run --release<CR>
-      autocmd FileType rust map <buffer> <F9> :wa<CR>:term rustc % && ./%:t:r<CR>
-      autocmd FileType rust imap <buffer> <F9> <esc> :wa<CR>:term rustc % && ./%:t:r<CR>
-      autocmd FileType rust map <buffer> <F11> :wa<CR>:term cd %:p:h:h && cargo build<CR>
-      autocmd FileType rust imap <buffer> <F11> <esc> :wa<CR>:term cd %:p:h:h && cargo build<CR>
-      autocmd FileType rust map <buffer> <F2> :w<CR>:RustFmt<CR>:w<CR>
-      autocmd FileType rust imap <buffer> <F2> <esc>:w<CR>:RustFmt<CR>:w<CR>
-
-      autocmd FileType nix setlocal shiftwidth=2 softtabstop=2 expandtab
-      autocmd FileType nix map <buffer> <F2> :w<CR>:call FormatNixBuffer()<CR>:w<CR>
-      autocmd FileType nix imap <buffer> <F2> <esc>:w<CR>:call FormatNixBuffer()<CR>:w<CR>
-
-      lua << END
-      require("colorizer").setup {
-        filetypes = {'*'},
-        user_default_options = {
-          names    = false;
-          RRGGBBAA = true;
-          rgb_fn   = true;
-          hsl_fn   = true;
-        }
-      }
-
-      require("ibl").setup {
-        indent = { char = '' },
-        scope = {
-          show_start = false;
-          show_end = false;
-        },
-      }
-
-      require("nvim-autopairs").setup()
-
-      require("lualine").setup {
-        sections = { lualine_c = { "filename", "g:coc_status" } }
-      }
-
-      require("bufferline").setup {
-        options = {
-          tab_size = 18,
-          truncate_names = true,
-          separator_style = "thin",
-          show_close_icon = false,
-          show_tab_indicators = false,
-          diagnostics = "coc",
-          diagnostics_update_in_insert = true,
-          diagnostics_indicator = function(count, level, diagnostics_dict, context)
-            return "(" .. count .. ")"
-          end,
-          hover = {
-            enabled = true,
-            delay = 0,
-            reveal = {'close'}
-          }
-        },
-        highlights = {
-          separator = {
-            fg = '#${config.colorScheme.colors.base00}',
-            bg = '#${config.colorScheme.colors.base01}'
-          },
-          indicator_selected = {
-            bg = '#${config.colorScheme.colors.base03}',
-          },
-
-          fill = { bg = '#${config.colorScheme.colors.base01}' },
-          background = { bg = '#${config.colorScheme.colors.base01}' },
-
-          close_button_selected = { bg = '#${config.colorScheme.colors.base03}' },
-          close_button = { bg = '#${config.colorScheme.colors.base01}' },
-
-          modified_selected = { bg = '#${config.colorScheme.colors.base03}' },
-          modified = { bg = '#${config.colorScheme.colors.base01}' },
-
-          buffer_selected = { bg = '#${config.colorScheme.colors.base03}', italic = false },
-          buffer = { bg = '#${config.colorScheme.colors.base01}' },
-
-          duplicate_selected = { bg = '#${config.colorScheme.colors.base03}' },
-          duplicate = { bg = '#${config.colorScheme.colors.base01}' },
-
-          error_selected = { bg = '#${config.colorScheme.colors.base03}' },
-          error = { bg = '#${config.colorScheme.colors.base01}' },
-          error_diagnostic_selected = { bg = '#${config.colorScheme.colors.base03}' },
-          error_diagnostic = { bg = '#${config.colorScheme.colors.base01}' },
-
-          warning_selected = { bg = '#${config.colorScheme.colors.base03}' },
-          warning = { bg = '#${config.colorScheme.colors.base01}' },
-          warning_diagnostic_selected = { bg = '#${config.colorScheme.colors.base03}' },
-          warning_diagnostic = { bg = '#${config.colorScheme.colors.base01}' },
-
-          hint_selected = { bg = '#${config.colorScheme.colors.base03}' },
-          hint = { bg = '#${config.colorScheme.colors.base01}' },
-          hint_diagnostic_selected = { bg = '#${config.colorScheme.colors.base03}' },
-          hint_diagnostic = { bg = '#${config.colorScheme.colors.base01}' },
-        }
-      }
-      END
-
-      lua vim.g.nord_italic = false
-      lua vim.g.nord_disable_background = true
-      lua vim.o.termguicolors = true
-      colorscheme ${lib.strings.toLower custom.predefinedColorScheme}
-      highlight clear CursorLine
-      highlight MatchParen guifg=#${config.colorScheme.colors.base0D} guibg=#${config.colorScheme.colors.base03}
-      highlight Function gui=bold
-      highlight Macro gui=bold
-      highlight RustEnumVariant guifg=#${config.colorScheme.colors.base0C}
-      highlight CocFloating guibg=#${config.colorScheme.colors.base01}
-      highlight CocSearch guifg=#${config.colorScheme.colors.base0D}
-      highlight CocInlayHint guifg=#${config.colorScheme.colors.base07}
-      highlight @ibl.indent.char.1 guifg=#${config.colorScheme.colors.base00}
+      echo ""
     '';
   };
 }

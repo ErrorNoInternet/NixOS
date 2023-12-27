@@ -53,6 +53,7 @@ in {
     ../wayland/hyprland-autoname-workspaces.nix
     ../wayland/hyprland.nix
     inputs.agenix.homeManagerModules.default
+    inputs.nixvim.homeManagerModules.nixvim
   ];
 
   colorScheme = inputs.nix-colors.colorSchemes.nord;
