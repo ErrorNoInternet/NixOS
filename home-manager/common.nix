@@ -29,4 +29,7 @@
     ];
     stateVersion = "23.05";
   };
+
+  programs.man.generateCaches = false;
+  manual.manpages.enable = false;
 }
