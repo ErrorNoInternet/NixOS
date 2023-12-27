@@ -1,4 +1,4 @@
-name: Nix Checks
+name: Lint
 on:
   push:
     paths:
@@ -13,7 +13,7 @@ on:
 
 jobs:
   checks:
-    name: Run Checks
+    name: Code
     runs-on: ubuntu-latest
 
     steps:
@@ -25,16 +25,9 @@ jobs:
           install_url: https://nixos.org/nix/install
           extra_nix_config: |
             access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
-            store = /home/runner/nix-store
             auto-optimise-store = true
             experimental-features = nix-command flakes
-            log-lines = 500
-
-      - uses: actions/cache@v3
-        with:
-          key: ${{ runner.os }}-build-${{ hashFiles('**.lock') }}
-          path:
-            /home/runner/nix-store
+            log-lines = 500Lin
 
       - name: Check formatting
         run: nix run nixpkgs#alejandra -- -c .
@@ -42,7 +35,3 @@ jobs:
       - name: Check for dead code
         if: always()
         run: nix run nixpkgs#deadnix -- -f
-
-      - name: Check all flake outputs
-        if: always()
-        run: NIX_STORE=/home/runner/nix-store nix flake check --all-systems

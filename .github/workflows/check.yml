@@ -1,0 +1,41 @@
+name: Check
+on:
+  push:
+    paths:
+      - home-manager/**
+      - nix-on-droid/**
+      - packages/**
+      - server/**
+      - workstation/**
+      - flake.nix
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  checks:
+    name: Outputs
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install Nix
+        uses: cachix/install-nix-action@v20
+        with:
+          install_url: https://nixos.org/nix/install
+          extra_nix_config: |
+            access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
+            store = /home/runner/nix-store
+            auto-optimise-store = true
+            experimental-features = nix-command flakes
+            log-lines = 500
+
+      - uses: actions/cache@v3
+        with:
+          key: ${{ runner.os }}-build-${{ hashFiles('**.lock') }}
+          path:
+            /home/runner/nix-store
+
+      - name: Check all flake outputs
+        if: always()
+        run: NIX_STORE=/home/runner/nix-store nix flake check --all-systems

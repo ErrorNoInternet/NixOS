@@ -1,5 +1,4 @@
-name: Nix Builds
-concurrency: nix-builds
+name: Build
 on:
   push:
     paths:
