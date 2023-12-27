@@ -185,7 +185,7 @@
       {
         mode = "n";
         options.silent = true;
-        key = "<leader>m";
+        key = "<C-m>";
         action = ":MinimapToggle<CR>";
       }
       {

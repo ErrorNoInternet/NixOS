@@ -74,8 +74,7 @@
       minimap-vim
     ];
     globals = {
-      minimap_auto_start = 1;
-      minimap_width = 14;
+      minimap_width = 16;
       minimap_highlight_search = 1;
       minimap_git_colors = 1;
       minimap_base_highlight = "CustomMinimapHighlight";
