@@ -27,8 +27,8 @@
       nix = "nix --default-flake nixpkgs";
 
       md = "sudo cryptsetup luksOpen /dev/disk/by-uuid/9cbb87fd-6e5a-45b3-88ee-22d369738be5 luks-btank && sudo mount /dev/mapper/luks-btank /mnt/data";
-      nrs = "sudo nixos-rebuild switch --fast --flake .";
-      nrt = "sudo nixos-rebuild test --fast --flake .";
+      nrs = "${pkgs.nh}/bin/nh os switch -v .";
+      nrt = "${pkgs.nh}/bin/nh os test -v .";
       f = "${pkgs.fastfetch}/bin/fastfetch";
       mf = "${pkgs.fastfetch}/bin/fastfetch -c ~/.config/fastfetch/minimal.jsonc";
       mfa = "${pkgs.fastfetch}/bin/fastfetch -c ~/.config/fastfetch/nix-on-droid_minimal.jsonc";

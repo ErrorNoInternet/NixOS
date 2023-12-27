@@ -24,6 +24,7 @@
       fd
       inputs.hsize.packages.${pkgs.system}.hsize
       jq
+      nh
       progress
     ];
     stateVersion = "23.05";
