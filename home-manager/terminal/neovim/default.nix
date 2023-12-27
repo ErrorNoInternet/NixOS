@@ -18,7 +18,13 @@
 
   programs.nixvim = {
     enable = true;
-    package = inputs.neovim.packages.${pkgs.system}.neovim;
+    package = inputs.neovim.packages.${pkgs.system}.neovim.overrideAttrs (oldAttrs: {
+      patches =
+        (oldAttrs.patches or [])
+        ++ [
+          ../../../packages/patches/neovim_no-fold-numbers.patch
+        ];
+    });
     defaultEditor = true;
   };
 }

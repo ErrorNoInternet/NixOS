@@ -1,5 +1,19 @@
 {config, ...}: {
   programs.nixvim = {
+    options = {
+      cursorline = true;
+      foldlevelstart = 99;
+      guicursor = "";
+      number = true;
+      shortmess = "ltToOCFcI";
+      showmode = false;
+      smoothscroll = true;
+    };
+    extraConfigLuaPre = ''
+      vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
+      vim.o.foldcolumn = '1'
+    '';
+
     colorschemes.nord = {
       enable = true;
       disable_background = true;
@@ -14,6 +28,8 @@
     '';
 
     plugins = {
+      nvim-ufo.enable = true;
+
       undotree.enable = true;
 
       fidget = {

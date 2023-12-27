@@ -1,6 +1,7 @@
 {config, ...}: {
   programs.nixvim.highlight = {
     CursorLine.bg = "none";
+    FoldColumn.fg = "#${config.colorScheme.colors.base03}";
     MatchParen = {
       fg = "#${config.colorScheme.colors.base0D}";
       bg = "#${config.colorScheme.colors.base03}";
