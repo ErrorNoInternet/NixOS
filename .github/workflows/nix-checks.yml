@@ -45,4 +45,4 @@ jobs:
 
       - name: Check all flake outputs
         if: always()
-        run: nix flake check --impure --all-systems
+        run: NIX_STORE=/home/runner/nix-store nix flake check --all-systems
