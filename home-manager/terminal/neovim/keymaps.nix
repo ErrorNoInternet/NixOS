@@ -156,7 +156,7 @@
         mode = "n";
         options.silent = true;
         key = "<C-D>";
-        action = ":bd<CR>";
+        action = ":MinimapClose<CR>:NvimTreeClose<CR>:bd<CR>";
       }
       {
         mode = "n";
