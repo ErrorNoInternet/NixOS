@@ -184,12 +184,6 @@
         key = "<C-m>";
         action = ":MinimapToggle<CR>";
       }
-      {
-        mode = "c";
-        options.silent = true;
-        key = "<cr>";
-        action = "<cr>:MinimapRefresh<cr>";
-      }
 
       {
         mode = "n";
