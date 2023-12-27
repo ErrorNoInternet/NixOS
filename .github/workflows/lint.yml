@@ -27,7 +27,7 @@ jobs:
             access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
             auto-optimise-store = true
             experimental-features = nix-command flakes
-            log-lines = 500Lin
+            log-lines = 500
 
       - name: Check formatting
         run: nix run nixpkgs#alejandra -- -c .
