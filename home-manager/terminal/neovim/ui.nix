@@ -5,7 +5,7 @@
   programs.nixvim = {
     options = {
       cursorline = true;
-      foldcolumn = 1;
+      foldcolumn = "1";
       foldlevelstart = 99;
       guicursor = "";
       number = true;
