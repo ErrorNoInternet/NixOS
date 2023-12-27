@@ -144,6 +144,12 @@
       {
         mode = "n";
         options.silent = true;
+        key = "<leader>u";
+        action = ":UndotreeToggle<CR>";
+      }
+      {
+        mode = "n";
+        options.silent = true;
         key = "<leader>a";
         action = ":lua require('actions-preview').code_actions()<CR>";
       }

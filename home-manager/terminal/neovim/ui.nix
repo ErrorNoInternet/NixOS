@@ -14,6 +14,8 @@
     '';
 
     plugins = {
+      undotree.enable = true;
+
       fidget = {
         enable = true;
         extraOptions = {
