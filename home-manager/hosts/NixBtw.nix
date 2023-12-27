@@ -31,7 +31,7 @@
 in {
   _module.args = {inherit custom;};
   imports = [
-    ../../shared/caches/all.nix
+    ../../shared/caches
     ../common.nix
     ../locations/china.nix
     ../modules/cursor.nix
