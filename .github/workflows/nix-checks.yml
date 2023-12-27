@@ -18,11 +18,19 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - uses: cachix/install-nix-action@v20
+
+      - name: Install Nix
+        uses: cachix/install-nix-action@v20
         with:
           install_url: https://nixos.org/nix/install
           extra_nix_config: |
             auto-optimise-store = true
             access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
             experimental-features = nix-command flakes
-      - run: nix flake check --all-systems
+
+      - name: Check formatting
+        run: nix-shell -p alejandra --run "alejandra -c ."
+
+      - name: Check all flake outputs
+        if: always()
+        run: nix flake check --all-systems

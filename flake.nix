@@ -25,7 +25,7 @@
     nixvim.url = "github:nix-community/nixvim";
     shadower.url = "github:n3oney/shadower";
     spicetify-nix.url = "github:the-argus/spicetify-nix";
-    yazi.url = "github:sxyazi/yazi";
+    yazi.url = "github:sxyazi/yazi" ;
   };
 
   outputs = {
