@@ -1,10 +1,6 @@
 {
   programs.nixvim = {
     plugins.lsp.keymaps.lspBuf = {
-      "gd" = "definition";
-      "gD" = "references";
-      "gt" = "type_definition";
-      "gi" = "implementation";
       "K" = "hover";
     };
     keymaps = [
@@ -207,11 +203,48 @@
         key = "<leader>ca";
         action = ":lua require('crates').show_popup()<CR>";
       }
+
       {
         mode = "n";
         options.silent = true;
-        key = "<leader>t";
-        action = ":TroubleToggle<CR>";
+        key = "<leader>tt";
+        action = ":Trouble document_diagnostics<CR>";
+      }
+      {
+        mode = "n";
+        options.silent = true;
+        key = "<leader>tw";
+        action = ":Trouble workspace_diagnostics<CR>";
+      }
+      {
+        mode = "n";
+        options.silent = true;
+        key = "<leader>td";
+        action = ":Trouble lsp_definitions<CR>";
+      }
+      {
+        mode = "n";
+        options.silent = true;
+        key = "<leader>tD";
+        action = ":Trouble lsp_references<CR>";
+      }
+      {
+        mode = "n";
+        options.silent = true;
+        key = "<leader>ti";
+        action = ":Trouble lsp_implementations<CR>";
+      }
+      {
+        mode = "n";
+        options.silent = true;
+        key = "<leader>tT";
+        action = ":Trouble lsp_type_definitions<CR>";
+      }
+      {
+        mode = "n";
+        options.silent = true;
+        key = "<leader>tq";
+        action = ":Trouble quickfix<CR>";
       }
 
       {
