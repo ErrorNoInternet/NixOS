@@ -134,6 +134,7 @@
       };
       rust-tools = {
         enable = true;
+        # TODO: replace with null once PR is merged
         serverPackage = pkgs.hello;
         server = {
           check.command = "clippy";
