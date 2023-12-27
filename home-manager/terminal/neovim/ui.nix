@@ -1,4 +1,11 @@
-{config, ...}: {
+{
+  config,
+  pkgs,
+  ...
+}: {
+  home.packages = with pkgs; [
+    code-minimap
+  ];
   programs.nixvim = {
     options = {
       cursorline = true;
@@ -17,6 +24,7 @@
     colorschemes.nord = {
       enable = true;
       disable_background = true;
+      borders = true;
       italic = false;
     };
 
@@ -64,52 +72,33 @@
 
       lualine.enable = true;
 
-      bufferline = {
-        enable = true;
-        highlights = {
-          separator = {
-            fg = "#${config.colorScheme.colors.base00}";
-            bg = "#${config.colorScheme.colors.base01}";
-          };
-          indicatorSelected = {
-            bg = "#${config.colorScheme.colors.base03}";
-          };
+      bufferline.enable = true;
+    };
+    extraPlugins = with pkgs.vimPlugins; [
+      minimap-vim
+    ];
+    globals = {
+      minimap_auto_start = 1;
+      minimap_auto_start_win_enter = 1;
+      minimap_width = 14;
+      minimap_highlight_search = 1;
+      minimap_git_colors = 1;
+      minimap_background_processing = 1;
+      minimap_base_highlight = "CustomMinimapHighlight";
 
-          fill = {bg = "#${config.colorScheme.colors.base01}";};
-          background = {bg = "#${config.colorScheme.colors.base01}";};
+      minimap_diff_color = "CustomMinimapDiffLine";
+      minimap_diffadd_color = "CustomMinimapDiffAdded";
+      minimap_diffremove_color = "CustomMinimapDiffRemoved";
 
-          closeButtonSelected = {bg = "#${config.colorScheme.colors.base03}";};
-          closeButtonVisible = {bg = "#${config.colorScheme.colors.base01}";};
-          closeButton = {bg = "#${config.colorScheme.colors.base01}";};
+      minimap_range_color = "CustomMinimapRange";
+      minimap_range_diff_color = "CustomMinimapRangeDiffLine";
+      minimap_range_diffadd_color = "CustomMinimapRangeDiffAdded";
+      minimap_range_diffremove_color = "CustomMinimapRangeDiffRemoved";
 
-          modifiedSelected = {bg = "#${config.colorScheme.colors.base03}";};
-          modified = {bg = "#${config.colorScheme.colors.base01}";};
-
-          bufferSelected = {
-            bg = "#${config.colorScheme.colors.base03}";
-            italic = false;
-          };
-          bufferVisible = {bg = "#${config.colorScheme.colors.base01}";};
-
-          duplicateSelected = {bg = "#${config.colorScheme.colors.base03}";};
-          duplicate = {bg = "#${config.colorScheme.colors.base01}";};
-
-          errorSelected = {bg = "#${config.colorScheme.colors.base03}";};
-          error = {bg = "#${config.colorScheme.colors.base01}";};
-          errorDiagnosticSelected = {bg = "#${config.colorScheme.colors.base03}";};
-          errorDiagnostic = {bg = "#${config.colorScheme.colors.base01}";};
-
-          warningSelected = {bg = "#${config.colorScheme.colors.base03}";};
-          warning = {bg = "#${config.colorScheme.colors.base01}";};
-          warningDiagnosticSelected = {bg = "#${config.colorScheme.colors.base03}";};
-          warningDiagnostic = {bg = "#${config.colorScheme.colors.base01}";};
-
-          hintSelected = {bg = "#${config.colorScheme.colors.base03}";};
-          hint = {bg = "#${config.colorScheme.colors.base01}";};
-          hintDiagnosticSelected = {bg = "#${config.colorScheme.colors.base03}";};
-          hintDiagnostic = {bg = "#${config.colorScheme.colors.base01}";};
-        };
-      };
+      minimap_cursor_color = "CustomMinimapCursor";
+      minimap_cursor_diff_color = "CustomMinimapCursorDiffLine";
+      minimap_cursor_diffadd_color = "CustomMinimapCursorDiffAdded";
+      minimap_cursor_diffremove_color = "CustomMinimapCursorDiffRemoved";
     };
   };
 }

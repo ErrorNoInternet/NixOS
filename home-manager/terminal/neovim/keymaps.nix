@@ -9,22 +9,32 @@
     };
     keymaps = [
       {
+        mode = "n";
+        key = ",";
+        action = ":qa!";
+      }
+
+      {
         mode = "";
+        options.silent = true;
         key = "<C-n>";
         action = "<cmd>:bnext<CR>";
       }
       {
         mode = "";
+        options.silent = true;
         key = "<C-p>";
         action = "<cmd>:bprevious<CR>";
       }
       {
         mode = "i";
+        options.silent = true;
         key = "<C-n>";
         action = "<esc>:bnext<CR>";
       }
       {
         mode = "i";
+        options.silent = true;
         key = "<C-p>";
         action = "<esc>:bprevious<CR>";
       }
@@ -104,13 +114,13 @@
         mode = "i";
         options.silent = true;
         key = "<F4>";
-        action = "<esc>:nohl<CR>i";
+        action = "<esc>:nohl<CR>:MinimapRefresh<CR>i";
       }
       {
         mode = "n";
         options.silent = true;
         key = "<F4>";
-        action = ":nohl<CR>";
+        action = ":nohl<CR>:MinimapRefresh<CR>";
       }
       {
         mode = "i";
@@ -166,6 +176,20 @@
         key = "<leader>u";
         action = ":UndotreeToggle<CR>";
       }
+
+      {
+        mode = "n";
+        options.silent = true;
+        key = "<leader>m";
+        action = ":MinimapToggle<CR>";
+      }
+      {
+        mode = "c";
+        options.silent = true;
+        key = "<cr>";
+        action = "<cr>:MinimapRefresh<cr>";
+      }
+
       {
         mode = "n";
         options.silent = true;
