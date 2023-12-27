@@ -37,11 +37,11 @@ jobs:
             /home/runner/nix-store
 
       - name: Check formatting
-        run: nix shell nixpkgs#alejandra -c alejandra -c .
+        run: nix run nixpkgs#alejandra -- -c .
 
       - name: Check for dead code
         if: always()
-        run: nix run github:astro/deadnix -- -f
+        run: nix run nixpkgs#deadnix -- -f
 
       - name: Check all flake outputs
         if: always()
