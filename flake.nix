@@ -48,6 +48,7 @@
         devShells.default = pkgs.mkShell {
           packages = with pkgs; [
             alejandra
+            bat
             git
             neovim
           ];
