@@ -45,4 +45,4 @@ jobs:
 
       - name: Check all flake outputs
         if: always()
-        run: nix --impure flake check --all-systems
+        run: nix flake check --impure --all-systems
