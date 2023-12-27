@@ -33,9 +33,9 @@ jobs:
       - name: Set up cache
         uses: actions/cache@v3
         with:
+          key: ${{ runner.os }}-build-${{ hashFiles('**.lock') }}
           path:
             /home/runner/nix-store
-        key: ${{ runner.os }}-build-${{ hashFiles('**.lock') }}
 
       - name: Check formatting
         run: nix shell nixpkgs#alejandra -c alejandra -c .
