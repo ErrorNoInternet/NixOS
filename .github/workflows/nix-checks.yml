@@ -25,6 +25,7 @@ jobs:
           install_url: https://nixos.org/nix/install
           extra_nix_config: |
             access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
+            store = /home/runner/nix-store
             auto-optimise-store = true
             experimental-features = nix-command flakes
             log-lines = 500
@@ -33,15 +34,15 @@ jobs:
         with:
           key: ${{ runner.os }}-build-${{ hashFiles('**.lock') }}
           path:
-            ~/nix-store
+            /home/runner/nix-store
 
       - name: Check formatting
-        run: nix --store ~/nix-store run nixpkgs#alejandra -- -c .
+        run: nix run nixpkgs#alejandra -- -c .
 
       - name: Check for dead code
         if: always()
-        run: nix --store ~/nix-store run nixpkgs#deadnix -- -f
+        run: nix run nixpkgs#deadnix -- -f
 
       - name: Check all flake outputs
         if: always()
-        run: nix --store ~/nix-store flake check --all-systems
+        run: nix --impure flake check --all-systems
