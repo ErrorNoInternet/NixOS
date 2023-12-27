@@ -32,8 +32,6 @@
     '';
 
     plugins = {
-      nvim-ufo.enable = true;
-
       undotree.enable = true;
 
       fidget = {
@@ -71,7 +69,22 @@
     };
     extraPlugins = with pkgs.vimPlugins; [
       minimap-vim
+      nvim-ufo
     ];
+    extraConfigLuaPost = ''
+      local capabilities = vim.lsp.protocol.make_client_capabilities()
+      capabilities.textDocument.foldingRange = {
+          dynamicRegistration = false,
+          lineFoldingOnly = true,
+      }
+      local language_servers = require("lspconfig").util.available_servers()
+      for _, ls in ipairs(language_servers) do
+          require('lspconfig')[ls].setup({
+              capabilities = capabilities
+          })
+      end
+      require('ufo').setup()
+    '';
     globals = {
       minimap_width = 16;
       minimap_highlight_search = 1;
