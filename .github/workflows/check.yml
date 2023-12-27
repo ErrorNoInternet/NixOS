@@ -38,4 +38,4 @@ jobs:
 
       - name: Check all flake outputs
         if: always()
-        run: NIX_STORE=/home/runner/nix-store nix --option substituters https://cache.nixos.org flake check --all-systems
+        run: NIX_STORE=/home/runner/nix-store NIX_CONFIG="substituters = https://cache.nixos.org" nix flake check --all-systems
