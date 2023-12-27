@@ -8,6 +8,11 @@
 
       treesitter.enable = true;
 
+      treesitter-context = {
+        enable = true;
+        maxLines = 1;
+      };
+
       trouble.enable = true;
 
       crates-nvim = {
