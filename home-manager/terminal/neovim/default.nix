@@ -6,8 +6,7 @@
   imports = [
     ./autocmd.nix
     ./development.nix
-    ./extra.nix
-    ./globals.nix
+    ./extras.nix
     ./highlights.nix
     ./keymaps.nix
     ./lsp.nix

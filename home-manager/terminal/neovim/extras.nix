@@ -11,5 +11,6 @@
     extraPlugins = with pkgs.vimPlugins; [
       suda-vim
     ];
+    nixvim.globals.suda_smart_edit = 1;
   };
 }
