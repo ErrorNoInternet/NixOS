@@ -99,11 +99,36 @@
         key = "<C-Del>";
         action = "wdbi";
       }
+
+      {
+        mode = "i";
+        options.silent = true;
+        key = "<F4>";
+        action = "<esc>:nohl<CR>i";
+      }
+      {
+        mode = "n";
+        options.silent = true;
+        key = "<F4>";
+        action = ":nohl<CR>";
+      }
+      {
+        mode = "i";
+        options.silent = true;
+        key = "<F3>";
+        action = "<esc>:w<CR>";
+      }
       {
         mode = "n";
         options.silent = true;
         key = "<F3>";
-        action = ":nohl<CR>";
+        action = ":w<CR>";
+      }
+      {
+        mode = "i";
+        options.silent = true;
+        key = "<C-S>";
+        action = "<esc>:w<CR>";
       }
       {
         mode = "n";
@@ -111,17 +136,11 @@
         key = "<C-S>";
         action = ":w<CR>";
       }
+
       {
-        mode = "v";
-        options.silent = true;
-        key = "<C-S>";
-        action = "<C-C>:w<CR>";
-      }
-      {
-        mode = "i";
-        options.silent = true;
-        key = "<C-S>";
-        action = "<C-O>:w<CR>";
+        mode = "n";
+        key = "<space>";
+        action = "za";
       }
       {
         mode = "n";
