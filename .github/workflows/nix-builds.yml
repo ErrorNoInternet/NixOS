@@ -51,9 +51,10 @@ jobs:
         with:
           install_url: https://nixos.org/nix/install
           extra_nix_config: |
-            auto-optimise-store = true
             access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
+            auto-optimise-store = true
             experimental-features = nix-command flakes
+            log-lines = 500
 
       - name: "Install Cachix"
         uses: cachix/cachix-action@v12
