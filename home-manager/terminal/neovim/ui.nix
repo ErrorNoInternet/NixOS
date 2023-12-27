@@ -5,6 +5,7 @@
   programs.nixvim = {
     options = {
       cursorline = true;
+      foldcolumn = 1;
       foldlevelstart = 99;
       guicursor = "";
       number = true;
@@ -14,7 +15,6 @@
     };
     extraConfigLuaPre = ''
       vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
-      vim.o.foldcolumn = '1'
     '';
 
     colorschemes.nord = {
@@ -67,7 +67,6 @@
       };
 
       lualine.enable = true;
-
       bufferline.enable = true;
     };
     extraPlugins = with pkgs.vimPlugins; [

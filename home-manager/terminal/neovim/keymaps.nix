@@ -110,6 +110,11 @@
         key = "<C-Del>";
         action = "wdbi";
       }
+      {
+        mode = "n";
+        key = "<space>";
+        action = "za";
+      }
 
       {
         mode = "i";
@@ -148,11 +153,6 @@
         action = ":w<CR>";
       }
 
-      {
-        mode = "n";
-        key = "<space>";
-        action = "za";
-      }
       {
         mode = "n";
         options.silent = true;
@@ -272,6 +272,7 @@
         action = ":Telescope git_commits<CR>";
       }
     ];
+
     autoCmd = [
       {
         event = ["FileType"];

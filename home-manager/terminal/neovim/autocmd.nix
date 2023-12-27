@@ -5,6 +5,7 @@
       pattern = ["*"];
       command = "startinsert";
     }
+
     {
       event = ["FileType"];
       pattern = ["nix"];
