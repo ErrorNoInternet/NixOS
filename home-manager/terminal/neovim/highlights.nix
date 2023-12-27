@@ -25,10 +25,6 @@
         bg = "#${config.colorScheme.colors.base01}";
         fg = "#${config.colorScheme.colors.base04}";
       };
-      CustomMinimapRange = {
-        bg = "#${config.colorScheme.colors.base02}";
-        fg = "#${config.colorScheme.colors.base04}";
-      };
       CustomMinimapDiffLine = {
         bg = "#${config.colorScheme.colors.base01}";
         fg = "#${config.colorScheme.colors.base0E}";
@@ -40,6 +36,11 @@
       CustomMinimapDiffRemoved = {
         bg = "#${config.colorScheme.colors.base01}";
         fg = "#${config.colorScheme.colors.base08}";
+      };
+
+      CustomMinimapRange = {
+        bg = "#${config.colorScheme.colors.base02}";
+        fg = "#${config.colorScheme.colors.base04}";
       };
       CustomMinimapRangeDiffLine = {
         bg = "#${config.colorScheme.colors.base02}";
@@ -53,6 +54,7 @@
         bg = "#${config.colorScheme.colors.base02}";
         fg = "#${config.colorScheme.colors.base08}";
       };
+
       CustomMinimapCursor = {
         bg = "#${config.colorScheme.colors.base03}";
         fg = "#${config.colorScheme.colors.base06}";
@@ -70,6 +72,7 @@
         fg = "#${config.colorScheme.colors.base08}";
       };
     };
+
     plugins.bufferline.highlights = {
       separator = {
         fg = "#${config.colorScheme.colors.base00}";
