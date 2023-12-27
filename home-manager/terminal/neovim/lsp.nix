@@ -41,6 +41,7 @@
           lua-ls.enable = true;
           nil_ls.enable = true;
           pyright.enable = true;
+          yamlls.enable = true;
           rust-analyzer = {
             enable = true;
             installCargo = false;
