@@ -11,6 +11,11 @@
       {
         mode = "n";
         key = ",";
+        action = ":wqa!";
+      }
+      {
+        mode = "n";
+        key = ".";
         action = ":qa!";
       }
 
