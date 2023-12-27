@@ -207,7 +207,7 @@
     extraConfigLuaPost = ''
       vim.g.coq_settings = {
         ["clients.snippets.warn"] = {},
-        ["keymap.pre_select"] = true,
+        ["keymap.jump_to_mark"] = "<c-g>",
       }
     '';
     highlight = {
@@ -286,21 +286,25 @@
       }
       {
         mode = "i";
-        key = "<M-BS>";
-        action = "<esc>ldbi";
+        options.remap = true;
+        key = "<C-h>";
+        action = "<esc>dbi<del>";
       }
       {
         mode = "n";
-        key = "<M-BS>";
-        action = "dbi";
+        options.remap = true;
+        key = "<C-h>";
+        action = "dbi<del>";
       }
       {
         mode = "i";
+        options.remap = true;
         key = "<C-Del>";
         action = "<esc>ldwi";
       }
       {
         mode = "n";
+        options.remap = true;
         key = "<C-Del>";
         action = "dwi";
       }
