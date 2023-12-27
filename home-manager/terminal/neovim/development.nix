@@ -3,7 +3,11 @@
     plugins = {
       markdown-preview.enable = true;
       nix-develop.enable = true;
-      nvim-tree.enable = true;
+
+      nvim-tree = {
+        enable = true;
+        disableNetrw = true;
+      };
     };
     extraPlugins = with pkgs.vimPlugins; [
       nvim-autopairs

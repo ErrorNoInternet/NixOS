@@ -82,7 +82,6 @@
       minimap_width = 14;
       minimap_highlight_search = 1;
       minimap_git_colors = 1;
-      minimap_background_processing = 1;
       minimap_base_highlight = "CustomMinimapHighlight";
 
       minimap_diff_color = "CustomMinimapDiffLine";
