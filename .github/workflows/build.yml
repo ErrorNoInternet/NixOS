@@ -50,7 +50,6 @@ jobs:
         with:
           install_url: https://nixos.org/nix/install
           extra_nix_config: |
-            access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
             auto-optimise-store = true
             experimental-features = nix-command flakes
             log-lines = 500
