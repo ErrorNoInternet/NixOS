@@ -79,13 +79,13 @@
         mode = "i";
         options.remap = true;
         key = "<C-Del>";
-        action = "<esc>ldwi";
+        action = "<esc><right>wdbi";
       }
       {
         mode = "n";
         options.remap = true;
         key = "<C-Del>";
-        action = "dwi";
+        action = "wdbi";
       }
       {
         mode = "n";
