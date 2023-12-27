@@ -37,8 +37,8 @@ in {
     ../modules/cursor.nix
     ../modules/gtk.nix
     ../modules/mimeapps.nix
-    ../profiles/development
-    ../profiles/wm
+    ../profiles/development.nix
+    ../profiles/wm.nix
     ../programs/fcitx.nix
     ../programs/imv.nix
     ../programs/kdeconnect.nix

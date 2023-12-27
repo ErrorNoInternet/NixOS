@@ -7,7 +7,7 @@ in {
   _module.args = {inherit custom;};
   imports = [
     ../common.nix
-    ../profiles/development
+    ../profiles/development.nix
     ../terminal/git.nix
   ];
 

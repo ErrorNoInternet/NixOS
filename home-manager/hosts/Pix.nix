@@ -14,7 +14,7 @@ in {
     ../../shared/caches/nix-community.nix
     ../common.nix
     ../locations/china.nix
-    ../profiles/development
+    ../profiles/development.nix
     ../terminal/btop.nix
     inputs.agenix.homeManagerModules.default
     inputs.nixvim.homeManagerModules.nixvim

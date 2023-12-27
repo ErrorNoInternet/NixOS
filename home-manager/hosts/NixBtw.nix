@@ -38,8 +38,8 @@ in {
     ../modules/gtk.nix
     ../modules/mimeapps.nix
     ../modules/nvidia-desktop-entries.nix
-    ../profiles/development
-    ../profiles/wm
+    ../profiles/development.nix
+    ../profiles/wm.nix
     ../programs/fcitx.nix
     ../programs/imv.nix
     ../programs/kdeconnect.nix
