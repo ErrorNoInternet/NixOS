@@ -7,12 +7,12 @@
   ...
 }: {
   imports = [
-    ../../modules/cursor.nix
-    ../../programs/dunst.nix
-    ../../programs/rofi.nix
-    ../../wayland/hyprpaper.nix
-    ../../wayland/waybar.nix
-    ../../wayland/wleave.nix
+    ../modules/cursor.nix
+    ../programs/dunst.nix
+    ../programs/rofi.nix
+    ../wayland/hyprpaper.nix
+    ../wayland/waybar.nix
+    ../wayland/wleave.nix
   ];
 
   home.packages = with pkgs; [
