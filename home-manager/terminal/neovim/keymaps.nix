@@ -17,6 +17,17 @@
 
       {
         mode = "";
+        key = "<S-down>";
+        action = "10j";
+      }
+      {
+        mode = "";
+        key = "<S-up>";
+        action = "10k";
+      }
+
+      {
+        mode = "";
         options.silent = true;
         key = "<C-n>";
         action = "<cmd>:bnext<CR>";
