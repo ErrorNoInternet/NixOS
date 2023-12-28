@@ -78,9 +78,8 @@
         fg = "#${config.colorScheme.colors.base00}";
         bg = "#${config.colorScheme.colors.base01}";
       };
-      indicatorSelected = {
-        bg = "#${config.colorScheme.colors.base03}";
-      };
+      indicatorSelected.bg = "#${config.colorScheme.colors.base03}";
+      indicatorVisible.bg = "#${config.colorScheme.colors.base01}";
 
       fill = {bg = "#${config.colorScheme.colors.base01}";};
       background = {bg = "#${config.colorScheme.colors.base01}";};
