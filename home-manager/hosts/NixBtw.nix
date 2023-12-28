@@ -38,7 +38,7 @@ in {
     ../modules/gtk.nix
     ../modules/mimeapps.nix
     ../modules/nvidia-desktop-entries.nix
-    ../profiles/development.nix
+    ../profiles/development
     ../profiles/wm.nix
     ../programs/fcitx.nix
     ../programs/imv.nix

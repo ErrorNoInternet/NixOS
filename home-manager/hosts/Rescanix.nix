@@ -37,7 +37,7 @@ in {
     ../modules/cursor.nix
     ../modules/gtk.nix
     ../modules/mimeapps.nix
-    ../profiles/development.nix
+    ../profiles/development
     ../profiles/wm.nix
     ../programs/fcitx.nix
     ../programs/imv.nix

@@ -3,6 +3,10 @@
   pkgs,
   ...
 }: {
+  imports = [
+    ./clang-format.nix
+  ];
+
   home.packages = with pkgs; [
     (python3.withPackages (ps: with ps; [jedi]))
     cachix
