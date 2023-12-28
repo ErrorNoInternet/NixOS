@@ -262,6 +262,12 @@
       {
         mode = "n";
         options.silent = true;
+        key = "<leader>fs";
+        action = ":Telescope lsp_workspace_symbols<CR>";
+      }
+      {
+        mode = "n";
+        options.silent = true;
         key = "<leader>fc";
         action = ":Telescope git_bcommits<CR>";
       }
