@@ -17,13 +17,6 @@
       vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
     '';
 
-    colorschemes.nord = {
-      enable = true;
-      disable_background = true;
-      borders = true;
-      italic = false;
-    };
-
     extraConfigVim = ''
       aunmenu PopUp.How-to\ disable\ mouse
       aunmenu PopUp.-1-
@@ -31,7 +24,20 @@
       echo ""
     '';
 
+    colorschemes.nord = {
+      enable = true;
+      disable_background = true;
+      borders = true;
+      italic = false;
+    };
+
     plugins = {
+      nvim-tree = {
+        enable = true;
+        disableNetrw = true;
+        extraOptions.view.signcolumn = "no";
+      };
+
       undotree.enable = true;
 
       fidget = {
