@@ -277,6 +277,12 @@
         key = "<leader>fC";
         action = ":Telescope git_commits<CR>";
       }
+      {
+        mode = "n";
+        options.silent = true;
+        key = "<leader>fS";
+        action = ":Telescope git_status<CR>";
+      }
     ];
 
     autoCmd = [
