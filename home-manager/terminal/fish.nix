@@ -51,6 +51,7 @@
       g = "git";
       ga = "git add";
       gap = "git add -p";
+      gb = "git branch";
       gbl = "git blame";
       gc = "git commit -m";
       gca = "git commit --amend";
