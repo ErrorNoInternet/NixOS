@@ -42,5 +42,24 @@
       remap('i', '<cr>', 'v:lua.MUtils.CR()', { expr = true, noremap = true })
       remap('i', '<bs>', 'v:lua.MUtils.BS()', { expr = true, noremap = true })
     '';
+    extraConfigVim = ''
+      function FormatCBuffer()
+        let cursor_pos = getpos('.')
+        :%!${pkgs.clang-tools}/bin/clang-format --fallback-style="{BasedOnStyle: llvm, IndentWidth: 4}"
+        call setpos('.', cursor_pos)
+      endfunction
+
+      function FormatPythonBuffer()
+        let cursor_pos = getpos('.')
+        :%!${pkgs.black}/bin/black - 2>/dev/null
+        call setpos('.', cursor_pos)
+      endfunction
+
+      function FormatNixBuffer()
+        let cursor_pos = getpos('.')
+        :%!${pkgs.alejandra}/bin/alejandra - 2>/dev/null
+        call setpos('.', cursor_pos)
+      endfunction
+    '';
   };
 }
