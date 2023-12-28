@@ -65,6 +65,7 @@
       gp = "git push";
       gpl = "git pull";
       gr = "git restore";
+      gre = "git reset";
       gs = "git show";
       gst = "git status";
     };
