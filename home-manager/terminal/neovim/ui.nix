@@ -32,6 +32,11 @@
     };
 
     plugins = {
+      vim-bbye = {
+        enable = true;
+        keymapsSilent = true;
+      };
+
       nvim-tree = {
         enable = true;
         disableNetrw = true;
