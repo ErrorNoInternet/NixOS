@@ -156,6 +156,12 @@
       {
         mode = "n";
         options.silent = true;
+        key = ";bd";
+        action = ":bd<CR>";
+      }
+      {
+        mode = "n";
+        options.silent = true;
         key = "<C-D>";
         action = ":Bdelete<CR>";
       }
