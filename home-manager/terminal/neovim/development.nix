@@ -45,7 +45,7 @@
     extraConfigVim = ''
       function FormatCBuffer()
         let cursor_pos = getpos('.')
-        :%!${pkgs.clang-tools}/bin/clang-format --fallback-style="{BasedOnStyle: llvm, IndentWidth: 4}"
+        :%!${pkgs.clang-tools}/bin/clang-format"
         call setpos('.', cursor_pos)
       endfunction
 
