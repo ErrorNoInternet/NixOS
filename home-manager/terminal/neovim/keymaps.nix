@@ -207,43 +207,43 @@
       {
         mode = "n";
         options.silent = true;
-        key = "<leader>tt";
+        key = "<leader>xt";
         action = ":Trouble document_diagnostics<CR>";
       }
       {
         mode = "n";
         options.silent = true;
-        key = "<leader>tw";
+        key = "<leader>xw";
         action = ":Trouble workspace_diagnostics<CR>";
       }
       {
         mode = "n";
         options.silent = true;
-        key = "<leader>td";
+        key = "<leader>xd";
         action = ":Trouble lsp_definitions<CR>";
       }
       {
         mode = "n";
         options.silent = true;
-        key = "<leader>tD";
+        key = "<leader>xD";
         action = ":Trouble lsp_references<CR>";
       }
       {
         mode = "n";
         options.silent = true;
-        key = "<leader>ti";
+        key = "<leader>xi";
         action = ":Trouble lsp_implementations<CR>";
       }
       {
         mode = "n";
         options.silent = true;
-        key = "<leader>tT";
+        key = "<leader>xT";
         action = ":Trouble lsp_type_definitions<CR>";
       }
       {
         mode = "n";
         options.silent = true;
-        key = "<leader>tq";
+        key = "<leader>xq";
         action = ":Trouble quickfix<CR>";
       }
 
