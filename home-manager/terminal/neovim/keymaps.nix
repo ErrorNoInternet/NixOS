@@ -218,7 +218,7 @@
       {
         mode = "n";
         options.silent = true;
-        key = "<leader>xt";
+        key = "<leader>xx";
         action = ":Trouble document_diagnostics<CR>";
       }
       {
