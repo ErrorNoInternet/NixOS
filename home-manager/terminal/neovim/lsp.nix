@@ -23,9 +23,7 @@
       rust-tools = {
         enable = true;
         serverPackage = null;
-        server = {
-          check.command = "clippy";
-        };
+        server.check.command = "clippy";
       };
 
       lsp = {
