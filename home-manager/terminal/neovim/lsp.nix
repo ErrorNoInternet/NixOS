@@ -10,7 +10,9 @@
 
       treesitter-context = {
         enable = true;
-        maxLines = 1;
+        minWindowHeight = 16;
+        maxLines = 3;
+        multilineThreshold = 1;
       };
 
       trouble.enable = true;
