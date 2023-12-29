@@ -89,8 +89,8 @@
         "col.shadow" = "rgb(${config.colorScheme.colors.base00})";
         blur = {
           enabled = true;
-          passes = 2;
-          size = 10;
+          passes = 3;
+          size = 8;
         };
       };
       animations = {
@@ -227,8 +227,6 @@
         "float           ,class:(xdg-desktop-portal-gtk)"
         "size 1000 600   ,class:(foot)"
         "size 1200 750   ,class:(xdg-desktop-portal-gtk)"
-
-        "opacity ${custom.subtleOpacity} ${custom.subtleOpacity},class:^(discord)$"
       ];
     };
     extraConfig = ''
@@ -249,6 +247,8 @@
       submap=reset
 
       layerrule=blur,waybar
+      layerrule=blur,rofi
+      layerrule=ignorezero,rofi
     '';
   };
 }

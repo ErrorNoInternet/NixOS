@@ -9,9 +9,10 @@
     hostname = "Rescanix";
     font = "JetBrainsMono Nerd Font";
     predefinedColorScheme = "Nord";
-    opacity = ".8";
-    subtleOpacity = ".9";
-    barOpacity = ".7";
+    opacity = "0.8";
+    subtleOpacity = "0.9";
+    barOpacity = "0.7";
+    menuOpacity = "0.3";
     terminal = "foot";
     browser = "firefox";
     pointerCursor = {
