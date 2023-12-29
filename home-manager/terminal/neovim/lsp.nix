@@ -11,16 +11,6 @@
           {name = "path";}
         ];
         snippet.expand = "luasnip";
-        mappingPresets = [
-          "insert"
-          "cmdline"
-        ];
-        mapping = {
-          "<CR>" = "cmp.mapping.confirm({ select = true })";
-          "<Tab>" = "cmp.mapping.select_next_item()";
-          "<C-f>" = "cmp.mapping.scroll_docs(4)";
-          "<C-g>" = "cmp.mapping.scroll_docs(-4)";
-        };
       };
       cmp_luasnip.enable = true;
       luasnip.enable = true;

@@ -1,7 +1,21 @@
 {
   programs.nixvim = {
-    plugins.lsp.keymaps.lspBuf = {
-      "K" = "hover";
+    plugins = {
+      nvim-cmp = {
+        mappingPresets = [
+          "insert"
+          "cmdline"
+        ];
+        mapping = {
+          "<CR>" = "cmp.mapping.confirm()";
+          "<Tab>" = "cmp.mapping.select_next_item()";
+          "<C-f>" = "cmp.mapping.scroll_docs(4)";
+          "<C-g>" = "cmp.mapping.scroll_docs(-4)";
+        };
+      };
+      lsp.keymaps.lspBuf = {
+        "K" = "hover";
+      };
     };
     keymaps = [
       {
