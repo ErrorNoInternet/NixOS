@@ -198,6 +198,17 @@
       }
 
       {
+        mode = "";
+        key = "<S-Tab>";
+        action = "<cmd>lua require('luasnip').jump(1)<Cr>";
+      }
+      {
+        mode = "i";
+        key = "<S-Tab>";
+        action = "<cmd>lua require('luasnip').jump(1)<Cr>";
+      }
+
+      {
         mode = "n";
         options.silent = true;
         key = "<leader>a";

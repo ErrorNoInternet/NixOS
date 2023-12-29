@@ -6,20 +6,24 @@
         sources = [
           {name = "buffer";}
           {name = "crates";}
+          {name = "luasnip";}
           {name = "nvim_lsp";}
           {name = "path";}
         ];
+        snippet.expand = "luasnip";
         mappingPresets = [
           "insert"
           "cmdline"
         ];
         mapping = {
           "<CR>" = "cmp.mapping.confirm({ select = true })";
-          "<Tab>" = "cmp.mapping.confirm({ select = true })";
+          "<Tab>" = "cmp.mapping.select_next_item()";
           "<C-f>" = "cmp.mapping.scroll_docs(4)";
           "<C-g>" = "cmp.mapping.scroll_docs(-4)";
         };
       };
+      cmp_luasnip.enable = true;
+      luasnip.enable = true;
 
       treesitter.enable = true;
 
@@ -67,13 +71,14 @@
     };
     extraPlugins = with pkgs.vimPlugins; [
       actions-preview-nvim
+      friendly-snippets
       nvim-lspconfig
       vim-go
     ];
-    extraConfigLuaPre = ''
-      require("actions-preview").setup()
-    '';
     extraConfigLuaPost = ''
+      require("actions-preview").setup()
+      require("luasnip.loaders.from_vscode").lazy_load()
+
       cmp.setup.cmdline({ '/', '?' }, {
         mapping = cmp.mapping.preset.cmdline(),
         sources = {
@@ -82,7 +87,6 @@
       })
 
       cmp.setup.cmdline(':', {
-        mapping = cmp.mapping.preset.cmdline(),
         sources = {
           { name = 'path' }
         }
