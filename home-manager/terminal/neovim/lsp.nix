@@ -1,9 +1,25 @@
 {pkgs, ...}: {
   programs.nixvim = {
     plugins = {
-      coq-nvim = {
+      cmp-cmdline.enable = true;
+      nvim-cmp = {
         enable = true;
-        autoStart = "shut-up";
+        sources = [
+          {name = "buffer";}
+          {name = "crates";}
+          {name = "nvim_lsp";}
+          {name = "path";}
+        ];
+        mappingPresets = [
+          "insert"
+          "cmdline"
+        ];
+        mapping = {
+          "<CR>" = "cmp.mapping.confirm({ select = true })";
+          "<Tab>" = "cmp.mapping.confirm({ select = true })";
+          "<C-f>" = "cmp.mapping.scroll_docs(4)";
+          "<C-g>" = "cmp.mapping.scroll_docs(-4)";
+        };
       };
 
       treesitter.enable = true;
@@ -19,7 +35,7 @@
 
       crates-nvim = {
         enable = true;
-        extraOptions.src.coq.enabled = true;
+        extraOptions.src.cmp.enabled = true;
       };
 
       rust-tools = {
@@ -59,11 +75,21 @@
       require("actions-preview").setup()
     '';
     extraConfigLuaPost = ''
-      vim.g.coq_settings = {
-        ["clients.snippets.warn"] = {},
-        ["keymap.recommended"] = false,
-        ["keymap.jump_to_mark"] = "<c-g>",
-      }
+      cmp.setup.cmdline({ '/', '?' }, {
+        mapping = cmp.mapping.preset.cmdline(),
+        sources = {
+          { name = 'buffer' }
+        }
+      })
+
+      cmp.setup.cmdline(':', {
+        mapping = cmp.mapping.preset.cmdline(),
+        sources = cmp.config.sources({
+          { name = 'path' }
+        }, {
+          { name = 'cmdline' }
+        })
+      })
     '';
     globals = {
       go_fmt_autosave = 0;
