@@ -75,7 +75,18 @@
         };
       };
 
-      lualine.enable = true;
+      lualine = {
+        enable = true;
+        componentSeparators = {
+          left = "|";
+          right = "|";
+        };
+        sectionSeparators = {
+          left = "";
+          right = "";
+        };
+      };
+
       bufferline.enable = true;
     };
     extraPlugins = with pkgs.vimPlugins; [
