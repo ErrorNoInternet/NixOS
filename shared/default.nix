@@ -3,8 +3,8 @@
   lib,
   ...
 }: {
-  nix = let
-    mappedRegistry =
+  nix = {
+    registry =
       lib.mapAttrs'
       (name: flake: let
         name' =
@@ -14,14 +14,12 @@
       in
         lib.nameValuePair name' {inherit flake;})
       inputs;
-  in {
-    registry = mappedRegistry // {default = mappedRegistry.nixpkgs;};
     nixPath = ["nixpkgs=${inputs.nixpkgs}"];
     settings = {
       experimental-features = ["nix-command" "flakes"];
       trusted-users = ["root" "@wheel"];
       auto-optimise-store = true;
-      log-lines = 50;
+      log-lines = 100;
       min-free = 5 * 1024 * 1024 * 1024;
       max-free = 20 * 1024 * 1024 * 1024;
     };
