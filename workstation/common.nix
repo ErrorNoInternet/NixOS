@@ -158,6 +158,6 @@
     extraGroups = ["wheel" "video" "networkmanager"];
   };
 
-  environment.etc."current-nixos".source = ./.;
+  environment.etc."nixos/current".source = ./.;
   system.stateVersion = "23.05";
 }
