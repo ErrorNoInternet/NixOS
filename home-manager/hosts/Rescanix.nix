@@ -95,7 +95,6 @@ in {
       linuxPackages_latest.perf
       lm_sensors
       lshw
-      lsof
       mangohud
       mesa-demos
       multipath-tools

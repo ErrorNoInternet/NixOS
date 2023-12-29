@@ -77,6 +77,7 @@
     file
     git
     killall
+    lsof
     neovim
     pulseaudio
     ripgrep
