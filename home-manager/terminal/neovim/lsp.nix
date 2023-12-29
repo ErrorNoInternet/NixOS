@@ -1,7 +1,6 @@
 {pkgs, ...}: {
   programs.nixvim = {
     plugins = {
-      cmp-cmdline.enable = true;
       nvim-cmp = {
         enable = true;
         sources = [
@@ -84,11 +83,9 @@
 
       cmp.setup.cmdline(':', {
         mapping = cmp.mapping.preset.cmdline(),
-        sources = cmp.config.sources({
+        sources = {
           { name = 'path' }
-        }, {
-          { name = 'cmdline' }
-        })
+        }
       })
     '';
     globals = {
