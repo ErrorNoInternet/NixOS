@@ -24,7 +24,7 @@
       lla = "ls -la";
       grep = "grep --color";
       ip = "ip --color";
-      nix = "nix --default-flake nixpkgs";
+      nix = "nix --default-flake flake:nixpkgs";
 
       md = "sudo cryptsetup luksOpen /dev/disk/by-uuid/9cbb87fd-6e5a-45b3-88ee-22d369738be5 luks-btank && sudo mount /dev/mapper/luks-btank /mnt/data";
       nrs = "${pkgs.nh}/bin/nh os switch -v .";
