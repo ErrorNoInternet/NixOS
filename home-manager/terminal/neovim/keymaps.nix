@@ -25,7 +25,7 @@
       }
       {
         mode = "n";
-        key = ".";
+        key = "-";
         action = ":qa!";
       }
 
