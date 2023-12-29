@@ -89,6 +89,7 @@
       closeButton = {bg = "#${config.colorScheme.colors.base01}";};
 
       modifiedSelected = {bg = "#${config.colorScheme.colors.base03}";};
+      modifiedVisible = {bg = "#${config.colorScheme.colors.base03}";};
       modified = {bg = "#${config.colorScheme.colors.base01}";};
 
       bufferSelected = {
