@@ -16,7 +16,7 @@ in {
       {
         label = "lock";
         text = "Lock";
-        action = "sleep ${sleep} && custom-swaylock 0 1";
+        action = "sleep ${sleep} && swaylock --grace 0 --fade-in 1";
         keybind = "l";
         height = height;
       }

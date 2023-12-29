@@ -42,7 +42,7 @@
         "sleep 0.5 && waybar"
         "hyprpaper"
         "hyprctl setcursor ${custom.pointerCursor.name} ${builtins.toString custom.pointerCursor.size}"
-        "swayidle -w timeout 570 'custom-swaylock 30 30' before-sleep 'custom-swaylock 0 1'"
+        "swayidle -w timeout 570 'swaylock --grace 30 --fade-in 30' before-sleep 'swaylock --grace 0 --fade-in 1'"
         "swayidle -w timeout 1200 'hyprctl dispatch dpms off'"
         "hyprland-autoname-workspaces"
         "wl-paste --watch cliphist -max-items 1000 store"
@@ -137,7 +137,7 @@
         ", PRINT, exec, grimblast --freeze save area - | wl-copy"
         "SHIFT, PRINT, exec, grimblast --freeze save area - | shadower -c0x0000007F -r12 | wl-copy"
 
-        "$mainMod, L, exec, custom-swaylock 0 1"
+        "$mainMod, L, exec, swaylock --grace 0 --fade-in 1"
         "$mainMod, S, exec, scratchpad"
         "$mainMod SHIFT, S, exec, scratchpad -g"
         "$mainMod, RETURN, exec, ${custom.terminal}"

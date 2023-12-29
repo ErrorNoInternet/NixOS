@@ -7,7 +7,6 @@
       pavolume = pkgs.callPackage ./pavolume.nix {};
       savehw = pkgs.callPackage ./savehw.nix {};
       sddm-theme = pkgs.callPackage ./sddm-theme.nix {};
-      swaylock = pkgs.callPackage ./swaylock.nix {inherit inputs;};
       tbw = pkgs.callPackage ./tbw.nix {};
     };
   };
