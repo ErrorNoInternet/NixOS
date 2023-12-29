@@ -20,6 +20,12 @@
     };
     tmp.useTmpfs = true;
   };
+
+  zramSwap = {
+    enable = true;
+    memoryPercent = 100;
+  };
+
   networking = {
     firewall.enable = false;
     networkmanager.enable = true;
@@ -28,29 +34,34 @@
       "1.0.0.1#one.one.one.one"
     ];
   };
-  zramSwap = {
-    enable = true;
-    memoryPercent = 100;
-  };
-  services.pipewire = {
-    enable = true;
-    pulse.enable = true;
-    alsa = {
+
+  services = {
+    pipewire = {
       enable = true;
-      support32Bit = true;
-    };
-  };
-  services.xserver = {
-    enable = true;
-    excludePackages = [pkgs.xterm];
-    displayManager = {
-      lightdm.enable = false;
-      sddm = {
+      pulse.enable = true;
+      alsa = {
         enable = true;
-        theme = "${self.packages.${pkgs.system}.sddm-theme}";
+        support32Bit = true;
+      };
+    };
+
+    xserver = {
+      enable = true;
+      excludePackages = [pkgs.xterm];
+      displayManager = {
+        lightdm.enable = false;
+        sddm = {
+          enable = true;
+          theme = "${self.packages.${pkgs.system}.sddm-theme}";
+        };
       };
     };
   };
+
+  systemd.coredump.extraConfig = ''
+    ProcessSizeMax=4G
+    ExternalSizeMax=512M
+  '';
 
   xdg.portal = {
     enable = true;
@@ -102,19 +113,7 @@
     openssh.enable = true;
     gnome.gnome-keyring.enable = true;
   };
-  security = {
-    pam = {
-      services.swaylock = {};
-      loginLimits = [
-        {
-          domain = "*";
-          type = "soft";
-          item = "core";
-          value = "204800";
-        }
-      ];
-    };
-  };
+  security.pam.services.swaylock = {};
 
   fonts = {
     packages = with pkgs; [
