@@ -66,8 +66,6 @@
 
       "inputbar" = {
         background-color = mkLiteral "#${config.colorScheme.colors.base02}";
-        border = mkLiteral "0px";
-        border-color = mkLiteral "#${config.colorScheme.colors.base03}";
         border-radius = mkLiteral "0px";
         children = map mkLiteral ["prompt" "entry"];
         expand = mkLiteral "false";
