@@ -121,11 +121,6 @@
         key = "<C-Del>";
         action = "wdbi";
       }
-      {
-        mode = "n";
-        key = "<space>";
-        action = "za";
-      }
 
       {
         mode = "i";
