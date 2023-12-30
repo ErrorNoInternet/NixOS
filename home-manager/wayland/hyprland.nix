@@ -230,9 +230,13 @@
       ];
     };
     extraConfig = ''
+      bind=$mainMod CTRL SHIFT, escape, submap, clean
+      submap=clean
+      bind=$mainMod CTRL SHIFT, escape, submap, reset
+      submap=reset
+
       bind=$mainMod,R,submap,resize
       submap=resize
-
       binde=,left,resizeactive,-40 0
       binde=,right,resizeactive,40 0
       binde=,up,resizeactive,0 -40
@@ -241,7 +245,6 @@
       binde=,L,resizeactive,40 0
       binde=,K,resizeactive,0 -40
       binde=,J,resizeactive,0 40
-
       bind=,escape,submap,reset
       bind=$mainMod,R,submap,reset
       submap=reset
