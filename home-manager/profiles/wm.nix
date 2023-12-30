@@ -21,6 +21,7 @@
     pavucontrol
     ripdrag
     self.packages.${pkgs.system}.brightness
+    self.packages.${pkgs.system}.hyprgamemode
     self.packages.${pkgs.system}.pavolume
     slurp
     swayidle
