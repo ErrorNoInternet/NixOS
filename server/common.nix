@@ -8,16 +8,45 @@
     kernelParams = ["console=tty0"];
     supportedFilesystems = ["ntfs"];
   };
+
   networking = {
     firewall = {
       enable = true;
       allowedTCPPorts = [22];
     };
   };
+
   zramSwap = {
     enable = true;
     memoryPercent = 100;
   };
+
+  services = {
+    openssh.enable = true;
+    fail2ban = {
+      enable = true;
+      ignoreIP = ["192.168.0.101"];
+      maxretry = 6;
+      bantime-increment = {
+        enable = true;
+        multipliers = "1 2 6 12 24 72 144 288 864 2016";
+        rndtime = "5m";
+      };
+      jails = {
+        DEFAULT.settings = {
+          findtime = "15m";
+          # TODO: wait for upstream fix
+          bantime = lib.mkForce "5m";
+        };
+        sshd = lib.mkForce ''
+          enabled = true
+          mode = aggressive
+          port = ${lib.strings.concatMapStringsSep "," (p: toString p) config.services.openssh.ports}
+        '';
+      };
+    };
+  };
+
   environment.systemPackages = with pkgs; [
     btop
     curl
@@ -48,32 +77,6 @@
     };
   };
 
-  services = {
-    openssh.enable = true;
-    fail2ban = {
-      enable = true;
-      ignoreIP = ["192.168.0.101"];
-      maxretry = 6;
-      bantime-increment = {
-        enable = true;
-        multipliers = "1 2 6 12 24 72 144 288 864 2016";
-        rndtime = "5m";
-      };
-      jails = {
-        DEFAULT.settings = {
-          findtime = "15m";
-          # TODO: wait for upstream fix
-          bantime = lib.mkForce "5m";
-        };
-        sshd = lib.mkForce ''
-          enabled = true
-          mode = aggressive
-          port = ${lib.strings.concatMapStringsSep "," (p: toString p) config.services.openssh.ports}
-        '';
-      };
-    };
-  };
-
   users.users = {
     root.password = "snowflake";
     snowflake = {
@@ -86,6 +89,6 @@
     };
   };
 
-  environment.etc."current-nixos".source = ./.;
+  environment.etc."nixos/current".source = ./.;
   system.stateVersion = "23.05";
 }
