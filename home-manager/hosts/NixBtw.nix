@@ -42,7 +42,6 @@ in {
     ../profiles/development
     ../profiles/wm.nix
     ../programs/fcitx.nix
-    ../programs/imv.nix
     ../programs/kdeconnect.nix
     ../programs/libreoffice.nix
     ../programs/mpv.nix

@@ -41,7 +41,6 @@ in {
     ../profiles/development
     ../profiles/wm.nix
     ../programs/fcitx.nix
-    ../programs/imv.nix
     ../programs/kdeconnect.nix
     ../programs/mpv.nix
     ../programs/obs-studio.nix

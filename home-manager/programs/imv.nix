@@ -1,5 +1,0 @@
-{
-  programs.imv = {
-    enable = true;
-  };
-}

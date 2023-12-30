@@ -24,6 +24,7 @@
     self.packages.${pkgs.system}.pavolume
     slurp
     swayidle
+    vimiv-qt
     wf-recorder
     wl-clipboard
   ];
