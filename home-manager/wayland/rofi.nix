@@ -60,7 +60,7 @@
         margin = mkLiteral "0px 0px 0px 0px";
         padding = mkLiteral "10px 15px 10px 10px";
         placeholder = "Search...";
-        placeholder-color = mkLiteral "#${config.colorScheme.colors.base03}";
+        placeholder-color = mkLiteral "#${config.colorScheme.colors.base04}";
         text-color = mkLiteral "#${config.colorScheme.colors.base06}";
       };
 
@@ -85,8 +85,6 @@
 
       "mainbox" = {
         background-color = mkLiteral "${base00RGBA}";
-        border = mkLiteral "0px";
-        border-color = mkLiteral "#${config.colorScheme.colors.base03}";
         border-radius = mkLiteral "0px";
         children = map mkLiteral ["inputbar" "listview"];
         padding = mkLiteral "0px";

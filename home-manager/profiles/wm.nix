@@ -7,8 +7,8 @@
   imports = [
     ../modules/cursor.nix
     ../programs/dunst.nix
-    ../programs/rofi.nix
     ../wayland/hyprpaper.nix
+    ../wayland/rofi.nix
     ../wayland/swaylock.nix
     ../wayland/waybar.nix
     ../wayland/wleave.nix
