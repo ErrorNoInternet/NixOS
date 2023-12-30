@@ -1,4 +1,4 @@
-name: Build ARM
+name: Build (ARM)
 on:
   push:
     paths:
