@@ -137,6 +137,7 @@
         ", PRINT, exec, grimblast --freeze save area - | wl-copy"
         "SHIFT, PRINT, exec, grimblast --freeze save area - | shadower -c0x0000007F -r12 | wl-copy"
 
+        "$mainMod, F1, exec, hyprgamemode"
         "$mainMod, L, exec, swaylock --grace 0 --fade-in 1"
         "$mainMod, S, exec, scratchpad"
         "$mainMod SHIFT, S, exec, scratchpad -g"
