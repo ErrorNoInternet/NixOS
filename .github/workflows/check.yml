@@ -14,19 +14,19 @@ on:
 jobs:
   checks:
     name: Flake outputs
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     steps:
-      - uses: actions/checkout@v3
-
       - name: Install Nix
         uses: cachix/install-nix-action@v20
         with:
           install_url: https://nixos.org/nix/install
           extra_nix_config: |
-            auto-optimise-store = true
             experimental-features = nix-command flakes
+            auto-optimise-store = true
             log-lines = 500
+
+      - uses: actions/checkout@v4
 
       - name: Check all flake outputs
         if: always()
