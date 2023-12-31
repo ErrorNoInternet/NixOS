@@ -7,7 +7,7 @@
     ./terminal/bat.nix
     ./terminal/comma.nix
     ./terminal/fastfetch.nix
-    ./terminal/fish.nix
+    ./terminal/fish
     ./terminal/neovim
     ./terminal/tmux.nix
     ./terminal/yazi.nix
