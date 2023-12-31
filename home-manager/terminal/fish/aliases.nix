@@ -23,9 +23,10 @@
     q = "exit";
     timg = "${pkgs.timg}/bin/timg -ps";
 
-    md = "sudo cryptsetup luksOpen /dev/disk/by-uuid/9cbb87fd-6e5a-45b3-88ee-22d369738be5 luks-btank && sudo mount /dev/mapper/luks-btank /mnt/data";
     nrs = "${pkgs.nh}/bin/nh os switch -v .";
     nrt = "${pkgs.nh}/bin/nh os test -v .";
-    pwdc = "pwd | tr -d '\\n' | wl-copy";
+    pwdc = "pwd | tr -d '\\n' | ${pkgs.wl-clipboard}/bin/wl-copy";
+
+    md = "sudo cryptsetup luksOpen /dev/disk/by-uuid/9cbb87fd-6e5a-45b3-88ee-22d369738be5 luks-btank && sudo mount /dev/mapper/luks-btank /mnt/data";
   };
 }
