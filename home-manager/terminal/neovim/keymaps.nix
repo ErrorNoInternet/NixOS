@@ -411,12 +411,12 @@
       {
         event = ["FileType"];
         pattern = ["cpp"];
-        command = "map <buffer> <F10> :wa<CR>:term clang -lm % -o %:t:r && ./%:t:r<CR>";
+        command = "map <buffer> <F10> :wa<CR>:term clang++ % -o %:t:r && ./%:t:r<CR>";
       }
       {
         event = ["FileType"];
         pattern = ["cpp"];
-        command = "imap <buffer> <F10> <esc> :wa<CR>:term clang -lm % -o %:t:r && ./%:t:r<CR>";
+        command = "imap <buffer> <F10> <esc> :wa<CR>:term clang++ % -o %:t:r && ./%:t:r<CR>";
       }
       {
         event = ["FileType"];
