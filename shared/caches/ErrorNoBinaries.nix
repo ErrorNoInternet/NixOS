@@ -1,11 +1,8 @@
 {
   nix.settings = {
-    trusted-substituters = [
-      "http://192.168.0.100:7455/ErrorNoBinaries"
-      "https://errornobinaries.cachix.org"
-    ];
     substituters = [
       "http://192.168.0.100:7455/ErrorNoBinaries"
+      "http://errornointernet.dynv6.net:7455/ErrorNoBinaries"
       "https://errornobinaries.cachix.org"
     ];
     trusted-public-keys = [
