@@ -39,6 +39,7 @@
       nrs = "${pkgs.nh}/bin/nh os switch -v .";
       nrt = "${pkgs.nh}/bin/nh os test -v .";
       pwdc = "pwd | tr -d '\\n' | wl-copy";
+      ggr = "${pkgs.git-graph}/bin/git-graph --color always --no-pager | ${pkgs.less}/bin/less";
     };
     shellAbbrs = {
       s = "sudo";
