@@ -27,7 +27,7 @@ in {
       chunking.nar-size-threshold = 0;
       garbage-collection = {
         interval = "7 days";
-        default-retention-period = "2 months";
+        default-retention-period = "3 months";
       };
     };
   };
