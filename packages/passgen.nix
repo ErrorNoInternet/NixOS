@@ -5,11 +5,11 @@
 rustPlatform.buildRustPackage rec {
   pname = "passgen";
   version = "0.1.0";
-  cargoHash = "sha256-YtrlsvdxlBp8YSD/G3oxwSFjPxK8KNAv8mKT4X5twRM=";
+  cargoHash = "sha256-/z7QD76wtFiReGmhmhPp3K4E88kFxzkHtXvof5phTEY=";
   src = fetchFromGitHub {
     owner = "ErrorNoInternet";
     repo = pname;
-    rev = "2abfd4a99aa90c2b2e41a17ef3f6602dbb595db6";
-    hash = "sha256-hXTTw2rMS3IYXc8xOOIoKVGe3c/1U3/BK1OL7jDZAvQ=";
+    rev = "e222f7604edd06a2bc6e366ed91c37c1297173ff";
+    hash = "sha256-Uy0fZUcv3bbM5lack+NMTui9qjFPzCQ+AKnD849lPlU=";
   };
 }
