@@ -27,5 +27,6 @@
     gre = "git reset";
     gs = "git show";
     gst = "git status";
+    gsw = "git switch";
   };
 }
