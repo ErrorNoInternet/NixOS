@@ -226,8 +226,8 @@
         "float           ,class:(pavucontrol)"
         "float           ,class:(vimiv)"
         "float           ,class:(xdg-desktop-portal-gtk)"
-        "size 1000 600   ,class:(foot)"
-        "size 1200 750   ,class:(xdg-desktop-portal-gtk)"
+        "size 50% 55%    ,class:(foot)"
+        "size 60% 60%    ,class:(xdg-desktop-portal-gtk)"
       ];
     };
     extraConfig = ''
