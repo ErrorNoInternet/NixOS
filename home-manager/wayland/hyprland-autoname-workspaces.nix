@@ -1,49 +1,81 @@
 {pkgs, ...}: {
-  home.packages = [pkgs.hyprland-autoname-workspaces];
-  home.file = {
-    ".config/hyprland-autoname-workspaces/config.toml".text = ''
-      version = "1.1.7"
+  home = {
+    packages = [pkgs.hyprland-autoname-workspaces];
+    file = {
+      ".config/hyprland-autoname-workspaces/config.toml".text = ''
+        version = "1.1.11"
 
-      [format]
-      dedup = true
-      client = "{icon}"
-      client_active = "{icon}"
+        [class]
+        ".supertuxkart-wrapped" = "󰵹"
+        "Minecraft.*" = "󰍳 "
+        "Mullvad VPN" = "󰖂 "
+        "libreoffice*" = "󰈙 "
+        "org.kde.kdenlive" = "󰸬 "
+        "org.prismlauncher.PrismLauncher" = "󰍳 "
+        "org.qbittorrent.qBittorrent" = "󰰛 "
+        "osu!" = " "
+        Brave-browser = " "
+        DEFAULT = " "
+        Gimp = " "
+        ImHex = "󱊧"
+        Rofi = " "
+        Spotify = " "
+        discord = "󰙯 "
+        firefox = " "
+        foot = ""
+        jetbrains-idea-ce = ""
+        kitty = ""
+        mpv = " "
+        nheko = " "
+        openrgb = " "
+        pavucontrol = " "
+        steam = " "
+        thunderbird = "󰇮 "
+        virt-manager = " "
+        xdg-desktop-portal-gtk = "󱈄"
+        zoom = "󰬡 "
 
-      [class_active]
-      DEFAULT = " "
+        [class_active]
+        DEFAULT = " "
 
-      [class]
-      DEFAULT = " "
-      ".supertuxkart-wrapped" = "󰵹"
-      "Brave-browser" = " "
-      "discord" = "󰙯 "
-      "firefox" = " "
-      "foot" = ""
-      "Gimp" = " "
-      "ImHex" = "󱊧"
-      "jetbrains-idea-ce" = ""
-      "kitty" = ""
-      "libreoffice*" = "󰈙 "
-      "Minecraft.*" = "󰍳 "
-      "mpv" = " "
-      "Mullvad VPN" = "󰖂 "
-      "nheko" = " "
-      "openrgb" = " "
-      "org.kde.kdenlive" = "󰸬 "
-      "org.prismlauncher.PrismLauncher" = "󰍳 "
-      "org.qbittorrent.qBittorrent" = "󰰛 "
-      "osu!" = " "
-      "pavucontrol" = " "
-      "Rofi" = " "
-      "Spotify" = " "
-      "steam" = " "
-      "thunderbird" = "󰇮 "
-      "virt-manager" = " "
-      "xdg-desktop-portal-gtk" = "󱈄"
-      "zoom" = "󰬡 "
+        [initial_class]
 
-      [exclude]
-      "" = "^$"
-    '';
+        [initial_class_active]
+
+        [workspaces_name]
+
+        [title_in_class]
+
+        [title_in_class_active]
+
+        [title_in_initial_class]
+
+        [title_in_initial_class_active]
+
+        [initial_title_in_class]
+
+        [initial_title_in_class_active]
+
+        [initial_title_in_initial_class]
+
+        [initial_title_in_initial_class_active]
+
+        [exclude]
+        "" = "^$"
+
+        [format]
+        dedup = true
+        dedup_inactive_fullscreen = false
+        delim = " "
+        workspace = "{id}:{delim}{clients}"
+        workspace_empty = "{id}"
+        client = "{icon}"
+        client_fullscreen = "[{icon}]"
+        client_active = "{icon}"
+        client_dup = "{icon}{counter_sup}"
+        client_dup_active = "*{icon}*{delim}{icon}{counter_unfocused_sup}"
+        client_dup_fullscreen = "[{icon}]{delim}{icon}{counter_unfocused_sup}"
+      '';
+    };
   };
 }
