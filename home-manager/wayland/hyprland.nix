@@ -9,7 +9,7 @@
     enable = true;
     package = inputs.hyprland.packages.${pkgs.system}.hyprland;
     settings = {
-      "$mainMod" =
+      "$mod" =
         if custom.hostname == "NixBtw"
         then [
           "ALT"
@@ -127,81 +127,81 @@
         allow_workspace_cycles = true;
       };
       bind = [
-        "$mainMod CTRL SHIFT, code:22, exec, hyprctl dispatch exit"
-        "$mainMod, escape, exec, wleave -p layer-shell -f -m 300"
+        "$mod CTRL SHIFT, code:22, exec, hyprctl dispatch exit"
+        "$mod, escape, exec, wleave -p layer-shell -f -m 300"
 
-        "$mainMod, D, exec, rofi -show drun || pkill rofi"
-        "$mainMod, Z, exec, rofi -show drun || pkill rofi"
-        "$mainMod, G, exec, cliphist list | rofi -dmenu | cliphist decode | wl-copy"
-        "$mainMod, code:60, exec, rofi -show emoji"
+        "$mod, D, exec, rofi -show drun || pkill rofi"
+        "$mod, Z, exec, rofi -show drun || pkill rofi"
+        "$mod, G, exec, cliphist list | rofi -dmenu | cliphist decode | wl-copy"
+        "$mod, code:60, exec, rofi -show emoji"
         ", PRINT, exec, grimblast --freeze save area - | wl-copy"
         "SHIFT, PRINT, exec, grimblast --freeze save area - | shadower -c0x0000007F -r12 | wl-copy"
 
-        "$mainMod, F1, exec, hyprgamemode"
-        "$mainMod, L, exec, swaylock --grace 0 --fade-in 1"
-        "$mainMod, S, exec, scratchpad"
-        "$mainMod SHIFT, S, exec, scratchpad -g"
-        "$mainMod, RETURN, exec, ${custom.terminal}"
-        "$mainMod SHIFT, RETURN, exec, [float; center] ${custom.terminal}"
+        "$mod, F1, exec, hyprgamemode"
+        "$mod, L, exec, swaylock --grace 0 --fade-in 1"
+        "$mod, S, exec, scratchpad"
+        "$mod SHIFT, S, exec, scratchpad -g"
+        "$mod, RETURN, exec, ${custom.terminal}"
+        "$mod SHIFT, RETURN, exec, [float; center] ${custom.terminal}"
 
-        "$mainMod, TAB, workspace, previous"
-        "$mainMod SHIFT, F, fullscreen"
-        "$mainMod, F, fullscreen, 1"
-        "$mainMod, V, togglefloating"
-        "$mainMod, W, togglesplit"
-        "$mainMod, T, togglegroup"
-        "$mainMod SHIFT, Q, killactive"
+        "$mod, TAB, workspace, previous"
+        "$mod SHIFT, F, fullscreen"
+        "$mod, F, fullscreen, 1"
+        "$mod, V, togglefloating"
+        "$mod, W, togglesplit"
+        "$mod, T, togglegroup"
+        "$mod SHIFT, Q, killactive"
 
-        "$mainMod, left, movefocus, l"
-        "$mainMod, right, movefocus, r"
-        "$mainMod, up, movefocus, u"
-        "$mainMod, down, movefocus, d"
+        "$mod, left, movefocus, l"
+        "$mod, right, movefocus, r"
+        "$mod, up, movefocus, u"
+        "$mod, down, movefocus, d"
 
-        "$mainMod SHIFT, left, movewindow, l"
-        "$mainMod SHIFT, right, movewindow, r"
-        "$mainMod SHIFT, up, movewindow, u"
-        "$mainMod SHIFT, down, movewindow, d"
-        "$mainMod SHIFT, H, movewindow, l"
-        "$mainMod SHIFT, L, movewindow, r"
-        "$mainMod SHIFT, K, movewindow, u"
-        "$mainMod SHIFT, J, movewindow, d"
+        "$mod SHIFT, left, movewindow, l"
+        "$mod SHIFT, right, movewindow, r"
+        "$mod SHIFT, up, movewindow, u"
+        "$mod SHIFT, down, movewindow, d"
+        "$mod SHIFT, H, movewindow, l"
+        "$mod SHIFT, L, movewindow, r"
+        "$mod SHIFT, K, movewindow, u"
+        "$mod SHIFT, J, movewindow, d"
 
-        "$mainMod CTRL, left, changegroupactive, b"
-        "$mainMod CTRL, right, changegroupactive, f"
-        "$mainMod SHIFT, T, lockgroups, toggle"
-        "$mainMod CTRL SHIFT, left, movewindoworgroup, l"
-        "$mainMod CTRL SHIFT, right, movewindoworgroup, r"
-        "$mainMod CTRL SHIFT, up, movewindoworgroup, u"
-        "$mainMod CTRL SHIFT, down, movewindoworgroup, d"
+        "$mod CTRL, left, changegroupactive, b"
+        "$mod CTRL, right, changegroupactive, f"
+        "$mod SHIFT, T, lockgroups, toggle"
+        "$mod CTRL SHIFT, left, movewindoworgroup, l"
+        "$mod CTRL SHIFT, right, movewindoworgroup, r"
+        "$mod CTRL SHIFT, up, movewindoworgroup, u"
+        "$mod CTRL SHIFT, down, movewindoworgroup, d"
 
-        "$mainMod, 1, workspace, 1"
-        "$mainMod, 2, workspace, 2"
-        "$mainMod, 3, workspace, 3"
-        "$mainMod, 4, workspace, 4"
-        "$mainMod, 5, workspace, 5"
-        "$mainMod, 6, workspace, 6"
-        "$mainMod, 7, workspace, 7"
-        "$mainMod, 8, workspace, 8"
-        "$mainMod, 9, workspace, 9"
-        "$mainMod, 0, workspace, 10"
+        "$mod, 1, workspace, 1"
+        "$mod, 2, workspace, 2"
+        "$mod, 3, workspace, 3"
+        "$mod, 4, workspace, 4"
+        "$mod, 5, workspace, 5"
+        "$mod, 6, workspace, 6"
+        "$mod, 7, workspace, 7"
+        "$mod, 8, workspace, 8"
+        "$mod, 9, workspace, 9"
+        "$mod, 0, workspace, 10"
 
-        "$mainMod SHIFT, 1, movetoworkspace, 1"
-        "$mainMod SHIFT, 2, movetoworkspace, 2"
-        "$mainMod SHIFT, 3, movetoworkspace, 3"
-        "$mainMod SHIFT, 4, movetoworkspace, 4"
-        "$mainMod SHIFT, 5, movetoworkspace, 5"
-        "$mainMod SHIFT, 6, movetoworkspace, 6"
-        "$mainMod SHIFT, 7, movetoworkspace, 7"
-        "$mainMod SHIFT, 8, movetoworkspace, 8"
-        "$mainMod SHIFT, 9, movetoworkspace, 9"
-        "$mainMod SHIFT, 0, movetoworkspace, 10"
+        "$mod SHIFT, 1, movetoworkspace, 1"
+        "$mod SHIFT, 2, movetoworkspace, 2"
+        "$mod SHIFT, 3, movetoworkspace, 3"
+        "$mod SHIFT, 4, movetoworkspace, 4"
+        "$mod SHIFT, 5, movetoworkspace, 5"
+        "$mod SHIFT, 6, movetoworkspace, 6"
+        "$mod SHIFT, 7, movetoworkspace, 7"
+        "$mod SHIFT, 8, movetoworkspace, 8"
+        "$mod SHIFT, 9, movetoworkspace, 9"
+        "$mod SHIFT, 0, movetoworkspace, 10"
 
-        "$mainMod, mouse_down, workspace, e-1"
-        "$mainMod, mouse_up, workspace, e+1"
+        "$mod, mouse_down, workspace, e-1"
+        "$mod, mouse_up, workspace, e+1"
       ];
       bindm = [
-        "$mainMod, mouse:272, movewindow"
-        "$mainMod, mouse:273, resizewindow"
+        "$mod, mouse:272, movewindow"
+        "$mod, mouse:273, resizewindow"
       ];
       bindle = [
         ",XF86AudioMute, exec, pavolume toggle"
@@ -231,12 +231,12 @@
       ];
     };
     extraConfig = ''
-      bind=$mainMod CTRL SHIFT, escape, submap, clean
+      bind=$mod CTRL SHIFT, escape, submap, clean
       submap=clean
-      bind=$mainMod CTRL SHIFT, escape, submap, reset
+      bind=$mod CTRL SHIFT, escape, submap, reset
       submap=reset
 
-      bind=$mainMod,R,submap,resize
+      bind=$mod,R,submap,resize
       submap=resize
       binde=,left,resizeactive,-40 0
       binde=,right,resizeactive,40 0
@@ -247,7 +247,7 @@
       binde=,K,resizeactive,0 -40
       binde=,J,resizeactive,0 40
       bind=,escape,submap,reset
-      bind=$mainMod,R,submap,reset
+      bind=$mod,R,submap,reset
       submap=reset
 
       layerrule=blur,waybar
