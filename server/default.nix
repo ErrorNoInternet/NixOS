@@ -35,7 +35,7 @@ in {
         ../shared/modules/raspberry-pi.nix
         ./hosts/Pix
         ./locations/china.nix
-        ./modules/attic-cache.nix
+        ./modules/attic-server.nix
         ./modules/nfs.nix
         ./modules/printing.nix
         ./modules/samba.nix

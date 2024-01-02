@@ -10,6 +10,7 @@ in {
   age.secrets.attic-server-token.file = ../../secrets/attic-server-token.age;
 
   networking.firewall.allowedTCPPorts = [port];
+  systemd.services.atticd.serviceConfig.ReadWritePaths = "${storage}";
   services.atticd = {
     enable = true;
     credentialsFile = config.age.secrets.attic-server-token.path;
