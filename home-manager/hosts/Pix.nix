@@ -17,7 +17,6 @@ in {
     ../profiles/development
     ../terminal/btop.nix
     inputs.agenix.homeManagerModules.default
-    inputs.nixvim.homeManagerModules.nixvim
   ];
 
   colorScheme = inputs.nix-colors.colorSchemes.nord;
