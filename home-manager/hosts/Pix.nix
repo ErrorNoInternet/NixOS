@@ -4,6 +4,7 @@
   ...
 }: let
   custom = {
+    hostname = "Pix";
     predefinedColorScheme = "Nord";
     terminal = "foot";
   };
