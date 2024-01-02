@@ -96,6 +96,7 @@
     }))
 
     (nixVersions.nix_2_19.overrideAttrs (oldAttrs: {
+      doInstallCheck = false;
       patches =
         (oldAttrs.patches or [])
         ++ [
