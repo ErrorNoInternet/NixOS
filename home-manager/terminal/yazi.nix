@@ -308,12 +308,12 @@
           desc = "paste the files (overwrite if the destination exists)";
         }
         {
-          on = ["d"];
+          on = ["D"];
           exec = "remove";
           desc = "move the files to the trash";
         }
         {
-          on = ["D"];
+          on = ["d"];
           exec = "remove --permanently";
           desc = "permanently delete the files";
         }
