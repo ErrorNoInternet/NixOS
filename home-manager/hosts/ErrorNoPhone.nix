@@ -1,5 +1,6 @@
 {inputs, ...}: let
   custom = {
+    hostname = "ErrorNoPhone";
     predefinedColorScheme = "Nord";
     terminal = "foot";
   };
