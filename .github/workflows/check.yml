@@ -29,5 +29,4 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Check all flake outputs
-        if: always()
         run: nix flake check --all-systems
