@@ -9,8 +9,8 @@
         mapping = {
           "<CR>" = "cmp.mapping.confirm()";
           "<Tab>" = "cmp.mapping.select_next_item()";
-          "<C-f>" = "cmp.mapping.scroll_docs(4)";
-          "<C-g>" = "cmp.mapping.scroll_docs(-4)";
+          "<C-down>" = "cmp.mapping.scroll_docs(4)";
+          "<C-up>" = "cmp.mapping.scroll_docs(-4)";
         };
       };
       lsp.keymaps.lspBuf = {
@@ -213,12 +213,12 @@
 
       {
         mode = "";
-        key = "<S-Tab>";
+        key = "<C-f>";
         action = "<cmd>lua require('luasnip').jump(1)<Cr>";
       }
       {
         mode = "i";
-        key = "<S-Tab>";
+        key = "<C-f>";
         action = "<cmd>lua require('luasnip').jump(1)<Cr>";
       }
 
