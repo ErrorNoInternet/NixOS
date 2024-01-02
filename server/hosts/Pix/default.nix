@@ -6,11 +6,10 @@
   imports = [
     ./hardware-configuration.nix
   ];
+  age.secrets.ddns.file = ../../../secrets/ddns.age;
 
   networking.hostName = "Pix";
   environment.variables.HOSTNAME = "Pix";
-
-  age.secrets.ddns.file = ../../../secrets/ddns.age;
 
   environment.systemPackages = with pkgs; [
     compsize

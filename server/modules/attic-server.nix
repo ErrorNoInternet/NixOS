@@ -4,22 +4,22 @@
   ...
 }: let
   port = 7455;
-  storage = "/mnt/drive1/Ryan/nix/attic";
+  storagePath = "/mnt/drive1/Ryan/nix/attic";
 in {
   imports = [inputs.attic.nixosModules.atticd];
   age.secrets.attic-server-token.file = ../../secrets/attic-server-token.age;
 
   networking.firewall.allowedTCPPorts = [port];
-  systemd.services.atticd.serviceConfig.ReadWritePaths = "${storage}";
+  systemd.services.atticd.serviceConfig.ReadWritePaths = "${storagePath}";
   services.atticd = {
     enable = true;
     credentialsFile = config.age.secrets.attic-server-token.path;
     settings = {
       listen = "[::]:${builtins.toString port}";
-      database.url = "sqlite://${storage}/server.db";
+      database.url = "sqlite://${storagePath}/server.db";
       storage = {
         type = "local";
-        path = "${storage}/storage";
+        path = "${storagePath}/storage";
       };
       compression = {
         type = "zstd";
