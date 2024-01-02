@@ -59,7 +59,7 @@ jobs:
           authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
 
       - name: "Set up Attic cache"
-        uses: ryanccn/attic-action@v0
+        uses: ErrorNoInternet/attic-action@v0
         with:
           endpoint: ${{ secrets.ATTIC_ENDPOINT }}
           cache: ${{ secrets.ATTIC_CACHE }}
