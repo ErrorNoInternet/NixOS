@@ -1,6 +1,5 @@
 {
   custom,
-  lib,
   pkgs,
   ...
 }: {
