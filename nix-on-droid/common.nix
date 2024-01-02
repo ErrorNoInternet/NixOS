@@ -1,8 +1,9 @@
 {pkgs, ...}: {
-  system.stateVersion = "23.05";
-  environment.motd = "";
-
+  nix.extraOptions = ''
+    experimental-features = nix-command flakes
+  '';
   user.shell = "${pkgs.fish}/bin/fish";
+
   environment.packages = with pkgs; [
     neofetch
 
@@ -32,4 +33,7 @@
     config = {home.stateVersion = "23.05";};
     useUserPackages = true;
   };
+
+  environment.motd = "";
+  system.stateVersion = "23.05";
 }
