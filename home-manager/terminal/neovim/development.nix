@@ -20,6 +20,12 @@
         call setpos('.', cursor_pos)
       endfunction
 
+      function FormatZigBuffer()
+        let cursor_pos = getpos('.')
+        :%!${pkgs.zig}/bin/zig fmt --stdin
+        call setpos('.', cursor_pos)
+      endfunction
+
       function FormatPythonBuffer()
         let cursor_pos = getpos('.')
         :%!${pkgs.black}/bin/black - 2>/dev/null

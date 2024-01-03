@@ -20,5 +20,6 @@
     man-pages
     python3Packages.bpython
     rustup
+    zig
   ];
 }

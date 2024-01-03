@@ -37,6 +37,11 @@
         server.check.command = "clippy";
       };
 
+      zig = {
+        enable = true;
+        formatOnSave = false;
+      };
+
       lsp = {
         enable = true;
         servers = {
@@ -50,6 +55,7 @@
           nil_ls.enable = true;
           pyright.enable = true;
           yamlls.enable = true;
+          zls.enable = true;
           rust-analyzer = {
             enable = true;
             installCargo = false;

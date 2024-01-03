@@ -525,6 +525,57 @@
 
       {
         event = ["FileType"];
+        pattern = ["zig"];
+        command = "map <buffer> <F10> :wa<CR>:term cd %:p:h:h && zig build run<CR>";
+      }
+      {
+        event = ["FileType"];
+        pattern = ["zig"];
+        command = "imap <buffer> <F10> <esc> :wa<CR>:term cd %:p:h:h && zig build run<CR>";
+      }
+      {
+        event = ["FileType"];
+        pattern = ["zig"];
+        command = "map <buffer> <F8> :wa<CR>:term cd %:p:h:h && zig build run -Doptimize=ReleaseFast<CR>";
+      }
+      {
+        event = ["FileType"];
+        pattern = ["zig"];
+        command = "imap <buffer> <F8> <esc> :wa<CR>:term cd %:p:h:h && zig build run -Doptimize=ReleaseFast<CR>";
+      }
+      {
+        event = ["FileType"];
+        pattern = ["zig"];
+        command = "map <buffer> <F9> :wa<CR>:term zig build-exe % && ./%:t:r<CR>";
+      }
+      {
+        event = ["FileType"];
+        pattern = ["zig"];
+        command = "imap <buffer> <F9> <esc> :wa<CR>:term zig build-exe % && ./%:t:r<CR>";
+      }
+      {
+        event = ["FileType"];
+        pattern = ["zig"];
+        command = "map <buffer> <F11> :wa<CR>:term cd %:p:h:h && zig build<CR>";
+      }
+      {
+        event = ["FileType"];
+        pattern = ["zig"];
+        command = "imap <buffer> <F11> <esc> :wa<CR>:term cd %:p:h:h && zig build<CR>";
+      }
+      {
+        event = ["FileType"];
+        pattern = ["zig"];
+        command = "map <buffer> <F2> :w<CR>:call FormatZigBuffer()<CR>:w<CR>";
+      }
+      {
+        event = ["FileType"];
+        pattern = ["zig"];
+        command = "imap <buffer> <F2> <esc>:w<CR>:call FormatZigBuffer()<CR>:w<CR>";
+      }
+
+      {
+        event = ["FileType"];
         pattern = ["nix"];
         command = "map <buffer> <F2> :w<CR>:call FormatNixBuffer()<CR>:w<CR>";
       }
