@@ -135,7 +135,7 @@
         "$mod, G, exec, cliphist list | rofi -dmenu | cliphist decode | wl-copy"
         "$mod, code:60, exec, rofi -show emoji"
         ", PRINT, exec, grimblast --freeze save area - | wl-copy"
-        "SHIFT, PRINT, exec, grimblast --freeze save area - | shadower -c0x0000007F -r12 | wl-copy"
+        "SHIFT, PRINT, exec, grimblast --freeze save area - | shadower -r12 | wl-copy"
 
         "$mod, F1, exec, hyprgamemode"
         "$mod, L, exec, swaylock --grace 0 --fade-in 1"
