@@ -55,6 +55,7 @@
     fd
     file
     git
+    killall
     lsof
     neovim
     procs
