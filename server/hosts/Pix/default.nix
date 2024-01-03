@@ -12,13 +12,6 @@
   networking.hostName = "Pix";
   environment.variables.HOSTNAME = "Pix";
 
-  environment.systemPackages = with pkgs; [
-    compsize
-    duperemove
-    smartmontools
-    xxd
-  ];
-
   networking.firewall = {
     allowedTCPPorts = [
       # services
