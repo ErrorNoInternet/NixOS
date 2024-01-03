@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   imports = [
-    ./abbreviations.nix
+    ./abbreviations
     ./aliases.nix
     ./functions.nix
     ./keymaps.nix
