@@ -4,7 +4,7 @@
   ...
 }: {
   imports = [
-    ./hardware-configuration.nix
+    ./hardware.nix
   ];
 
   environment.variables.HOSTNAME = "Rescanix";

@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   imports = [
-    ./hardware-configuration.nix
+    ./hardware.nix
   ];
 
   environment.variables.HOSTNAME = "NixBtw";
