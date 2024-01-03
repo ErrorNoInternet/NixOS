@@ -59,43 +59,24 @@
       fsType = "btrfs";
       options = ["subvol=root" "x-systemd.automount" "noauto"];
     };
-    "/mnt/snapshots/drive1" = {
-      device = "/dev/disk/by-uuid/fc102db2-60b8-43e1-8b21-40a589edfdda";
-      fsType = "btrfs";
-      options = ["subvol=snapshots" "x-systemd.automount" "noauto"];
-    };
     "/mnt/drive3" = {
       device = "/dev/disk/by-uuid/6a03c0f9-5c76-4a08-9091-aba7239a6429";
       fsType = "btrfs";
       options = ["subvol=root" "x-systemd.automount" "noauto"];
     };
-    "/mnt/snapshots/drive3" = {
-      device = "/dev/disk/by-uuid/6a03c0f9-5c76-4a08-9091-aba7239a6429";
-      fsType = "btrfs";
-      options = ["subvol=snapshots" "x-systemd.automount" "noauto"];
-    };
   };
 
-  systemd = {
-    timers."update-ddns" = {
-      wantedBy = ["timers.target"];
-      timerConfig = {
-        OnBootSec = "1m";
-        OnUnitActiveSec = "6h";
-        Unit = "update-ddns.service";
+  services.snapper = {
+    configs = {
+      drive1 = {
+        SUBVOLUME = "/mnt/drive1";
+        TIMELINE_CREATE = true;
+        TIMELINE_CLEANUP = true;
       };
-    };
-    services."update-ddns" = {
-      script = ''
-        TOKEN="$(head -n1 ${config.age.secrets.ddns.path})"
-        ZONES="$(tail -n+2 ${config.age.secrets.ddns.path})"
-        for ZONE in $ZONES; do
-          ${pkgs.curl}/bin/curl -4Lv "https://ipv4.dynv6.com/api/update?ipv4=auto&token=$TOKEN&zone=$ZONE"
-        done
-      '';
-      serviceConfig = {
-        Type = "oneshot";
-        User = "root";
+      drive3 = {
+        SUBVOLUME = "/mnt/drive3";
+        TIMELINE_CREATE = true;
+        TIMELINE_CLEANUP = true;
       };
     };
   };
@@ -148,4 +129,28 @@
   systemd.tmpfiles.rules = [
     "d /var/spool/samba 1777 root root -"
   ];
+
+  systemd = {
+    timers."update-ddns" = {
+      wantedBy = ["timers.target"];
+      timerConfig = {
+        OnBootSec = "1m";
+        OnUnitActiveSec = "6h";
+        Unit = "update-ddns.service";
+      };
+    };
+    services."update-ddns" = {
+      script = ''
+        TOKEN="$(head -n1 ${config.age.secrets.ddns.path})"
+        ZONES="$(tail -n+2 ${config.age.secrets.ddns.path})"
+        for ZONE in $ZONES; do
+          ${pkgs.curl}/bin/curl -4Lv "https://ipv4.dynv6.com/api/update?ipv4=auto&token=$TOKEN&zone=$ZONE"
+        done
+      '';
+      serviceConfig = {
+        Type = "oneshot";
+        User = "root";
+      };
+    };
+  };
 }
