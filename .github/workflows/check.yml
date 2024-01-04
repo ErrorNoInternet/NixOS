@@ -19,19 +19,16 @@ jobs:
     runs-on: ubuntu-22.04
 
     steps:
-      - name: Install Nix
-        uses: cachix/install-nix-action@v20
-        with:
-          install_url: https://nixos.org/nix/install
-          extra_nix_config: |
-            experimental-features = nix-command flakes
-            auto-optimise-store = true
-            log-lines = 500
-
       - uses: actions/checkout@v4
 
+      - name: Install Nix
+        uses: DeterminateSystems/nix-installer-action@v4
+        with:
+          extra-conf: |
+            log-lines = 500
+
       - name: Set up Magic Nix Cache
-        uses: DeterminateSystems/magic-nix-cache-action@main
+        uses: DeterminateSystems/magic-nix-cache-action@v2
 
       - name: Check all flake outputs
         run: nix flake check --all-systems
