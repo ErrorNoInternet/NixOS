@@ -20,7 +20,7 @@ in {
       credentialsFile = config.age.secrets.attic-server-token.path;
       settings = {
         listen = "[::]:${builtins.toString insecurePort}";
-        api-endpoint = "https://${host}:${securePort}/";
+        api-endpoint = "https://${host}:${builtins.toString securePort}/";
 
         database.url = "sqlite://${storagePath}/server.db";
         storage = {
