@@ -109,6 +109,7 @@ in {
       procs
       pv
       python3Packages.bpython
+      qrencode
       radeontop
       sdparm
       self.packages.${pkgs.system}.passgen
@@ -126,6 +127,7 @@ in {
       util-linux
       virt-manager
       vulkan-tools
+      zbar
     ];
     sessionVariables = {
       TERMINAL = "${custom.terminal}";
