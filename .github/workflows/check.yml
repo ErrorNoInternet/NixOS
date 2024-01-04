@@ -2,12 +2,14 @@ name: Check
 on:
   push:
     paths:
-      - home-manager/**
-      - nix-on-droid/**
-      - packages/**
-      - server/**
-      - workstation/**
       - flake.nix
+      - droid/**
+      - home/**
+      - packages/**
+      - secrets/**
+      - server/**
+      - shared/**
+      - workstation/**
   pull_request:
   workflow_dispatch:
 
