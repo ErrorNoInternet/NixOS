@@ -4,14 +4,14 @@
   ...
 }: let
   host = "errornointernet.dynv6.net";
-  securePort = 7455;
   insecurePort = 7454;
-  storagePath = "/mnt/drive1/Ryan/nix/attic";
+  securePort = 7455;
+  storagePath = "/mnt/drive1/Ryan/nix/attic/";
 in {
   imports = [inputs.attic.nixosModules.atticd];
   age.secrets.attic-server-token.file = ../../secrets/attic-server-token.age;
 
-  networking.firewall.allowedTCPPorts = [securePort insecurePort];
+  networking.firewall.allowedTCPPorts = [insecurePort securePort];
   systemd.services.atticd.serviceConfig.ReadWritePaths = "${storagePath}";
 
   services = {
@@ -50,6 +50,8 @@ in {
       recommendedTlsSettings = true;
       virtualHosts."${host}" = {
         forceSSL = true;
+        sslCertificate = "/etc/letsencrypt/live/${host}/fullchain.pem";
+        sslCertificateKey = "/etc/letsencrypt/live/${host}/privkey.pem";
         listen = [
           {
             addr = "0.0.0.0";
@@ -57,11 +59,8 @@ in {
             ssl = true;
           }
         ];
-        sslCertificate = "/etc/letsencrypt/live/${host}/fullchain.pem";
-        sslCertificateKey = "/etc/letsencrypt/live/${host}/privkey.pem";
         locations."/" = {
           proxyPass = "http://localhost:${builtins.toString insecurePort}";
-          proxyWebsockets = true;
           extraConfig = ''
             proxy_pass_header Authorization;
           '';
