@@ -48,7 +48,7 @@ in {
         ./programs/fish.nix
         ./programs/hyprland.nix
         ./programs/openrgb.nix
-        {home-manager.users.ryan = import ../home-manager/hosts/NixBtw.nix;}
+        {home-manager.users.ryan = import ../home/hosts/NixBtw.nix;}
       ];
     };
     Rescanix = nixosSystem {
@@ -76,7 +76,7 @@ in {
         ./programs/fish.nix
         ./programs/hyprland.nix
         ./programs/openrgb.nix
-        {home-manager.users.ryan = import ../home-manager/hosts/Rescanix.nix;}
+        {home-manager.users.ryan = import ../home/hosts/Rescanix.nix;}
       ];
     };
   };

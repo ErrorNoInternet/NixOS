@@ -38,13 +38,13 @@
         ./packages
         ./workstation
         ./server
-        ./nix-on-droid
+        ./droid
       ];
       systems = ["x86_64-linux" "aarch64-linux"];
       perSystem = {pkgs, ...}: {
         _module.args = {inherit self;};
-        formatter = pkgs.alejandra;
 
+        formatter = pkgs.alejandra;
         devShells.default = pkgs.mkShell {
           packages = with pkgs; [
             alejandra

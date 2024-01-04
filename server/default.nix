@@ -48,7 +48,7 @@ in {
             extraSpecialArgs = {inherit inputs self;};
           };
         }
-        {home-manager.users.snowflake = import ../home-manager/hosts/Pix.nix;}
+        {home-manager.users.snowflake = import ../home/hosts/Pix.nix;}
       ];
     };
   };

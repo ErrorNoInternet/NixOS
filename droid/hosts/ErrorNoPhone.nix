@@ -3,7 +3,7 @@
   home-manager = {
     extraSpecialArgs = {inherit inputs;};
     sharedModules = [
-      ../../home-manager/hosts/ErrorNoPhone.nix
+      ../../home/hosts/ErrorNoPhone.nix
     ];
   };
 }

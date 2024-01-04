@@ -17,7 +17,7 @@
     ls = "${pkgs.eza}/bin/eza --git --icons";
     lsimg = "${pkgs.timg}/bin/timg -ps --grid=6 --upscale --title --center --frames=1";
     mf = "${pkgs.fastfetch}/bin/fastfetch -c ~/.config/fastfetch/minimal.jsonc";
-    mfa = "${pkgs.fastfetch}/bin/fastfetch -c ~/.config/fastfetch/nix-on-droid_minimal.jsonc";
+    mfd = "${pkgs.fastfetch}/bin/fastfetch -c ~/.config/fastfetch/nix-on-droid_minimal.jsonc";
     py = "python3";
     q = "exit";
     timg = "${pkgs.timg}/bin/timg -ps";

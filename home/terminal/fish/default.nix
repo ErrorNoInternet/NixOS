@@ -20,7 +20,7 @@
 
       if test (ps | grep fish | wc -l) -le 1
         if test -e /android/system/bin/linker64
-          mfa
+          mfd
         else
           if test (tmux list-windows 2> /dev/null | wc -l) -le 1 &&
              test (tmux list-panes 2> /dev/null | wc -l) -le 1
