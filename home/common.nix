@@ -10,7 +10,7 @@
     ./terminal/fish
     ./terminal/neovim
     ./terminal/tmux.nix
-    ./terminal/yazi.nix
+    ./terminal/yazi
     ./terminal/zoxide.nix
     inputs.nix-colors.homeManagerModules.default
     inputs.nixvim.homeManagerModules.nixvim
