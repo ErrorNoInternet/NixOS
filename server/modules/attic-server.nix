@@ -62,7 +62,9 @@ in {
         locations."/" = {
           proxyPass = "http://localhost:${builtins.toString insecurePort}";
           proxyWebsockets = true;
-          extraConfig = "proxy_pass_header Authorization;";
+          extraConfig = ''
+            proxy_pass_header Authorization;
+          '';
         };
       };
     };
