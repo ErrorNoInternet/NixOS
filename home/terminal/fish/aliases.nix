@@ -20,6 +20,7 @@
     mfd = "${pkgs.fastfetch}/bin/fastfetch -c ~/.config/fastfetch/nix-on-droid_minimal.jsonc";
     py = "python3";
     q = "exit";
+    scc = "${pkgs.scc}/bin/scc --no-cocomo";
     timg = "${pkgs.timg}/bin/timg -ps";
 
     nix =
