@@ -13,6 +13,7 @@
     clang
     clang-tools
     gdb
+    gnumake
     go
     inputs.attic.packages.${pkgs.system}.attic
     libllvm
