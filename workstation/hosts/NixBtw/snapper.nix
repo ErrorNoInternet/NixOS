@@ -1,5 +1,5 @@
 {pkgs, ...}: {
-  environment.systemPackages = with pkgs; [ snapper ];
+  environment.systemPackages = with pkgs; [snapper];
 
   services.snapper = {
     configs = {
