@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   imports = [
     ./hardware.nix
+    ./snapper.nix
   ];
 
   environment.variables.HOSTNAME = "NixBtw";
