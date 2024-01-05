@@ -56,6 +56,8 @@
         };
       };
     };
+
+    dbus.implementation = "broker";
   };
 
   systemd.coredump.extraConfig = ''
