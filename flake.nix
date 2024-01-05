@@ -12,6 +12,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     agenix.url = "github:ryantm/agenix";
     attic.url = "github:zhaofengli/attic";
     flake-parts.url = "github:hercules-ci/flake-parts";
@@ -21,7 +25,6 @@
     neovim.url = "github:neovim/neovim?dir=contrib";
     nix-colors.url = "github:misterio77/nix-colors";
     nix-gaming.url = "github:fufexan/nix-gaming";
-    nix-index-database.url = "github:nix-community/nix-index-database";
     nixvim.url = "github:nix-community/nixvim";
     shadower.url = "github:n3oney/shadower";
     spicetify-nix.url = "github:the-argus/spicetify-nix";
