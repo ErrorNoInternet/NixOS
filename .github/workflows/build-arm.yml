@@ -53,7 +53,6 @@ jobs:
             system = aarch64-linux
 
       - name: Set up Attic
-        continue-on-error: true
         uses: ErrorNoInternet/attic-action@v0
         with:
           endpoint: "${{ secrets.ATTIC_ENDPOINT }}"
