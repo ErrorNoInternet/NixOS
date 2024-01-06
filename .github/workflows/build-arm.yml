@@ -16,21 +16,6 @@ jobs:
           - host: Pix
 
     steps:
-      - name: Set up directories
-        run: |
-          sudo mkdir /nix
-          sudo chown root:root /nix
-          sudo rm -rf "$AGENT_TOOLSDIRECTORY"
-          sudo rm -rf /home/linuxbrew
-          sudo rm -rf /home/runner/.rustup
-          sudo rm -rf /usr/local/.ghcup
-          sudo rm -rf /usr/local/lib/heroku
-          sudo rm -rf /usr/local/lib/node_modules
-          sudo rm -rf /usr/local/share/boost
-          sudo rm -rf /usr/local/share/chromium
-          sudo rm -rf /usr/local/share/powershell
-          sudo rm -rf /var/lib/docker/overlay2
-
       - name: Maximize disk space
         uses: easimon/maximize-build-space@v8
         with:
@@ -42,6 +27,20 @@ jobs:
           remove-haskell: "true"
           remove-codeql: "true"
           remove-docker-images: "true"
+
+      - name: Set up directories
+        run: |
+          sudo chown root:root /nix
+          sudo rm -rf "$AGENT_TOOLSDIRECTORY"
+          sudo rm -rf /home/linuxbrew
+          sudo rm -rf /home/runner/.rustup
+          sudo rm -rf /usr/local/.ghcup
+          sudo rm -rf /usr/local/lib/heroku
+          sudo rm -rf /usr/local/lib/node_modules
+          sudo rm -rf /usr/local/share/boost
+          sudo rm -rf /usr/local/share/chromium
+          sudo rm -rf /usr/local/share/powershell
+          sudo rm -rf /var/lib/docker/overlay2
 
       - name: Install QEMU
         run: sudo apt-get install -y qemu-user-static
