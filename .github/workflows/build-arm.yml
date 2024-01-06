@@ -19,6 +19,7 @@ jobs:
       - name: Set up directories
         run: |
           sudo mkdir /nix
+          sudo chown root:root /nix
           sudo rm -rf "$AGENT_TOOLSDIRECTORY"
           sudo rm -rf /home/linuxbrew
           sudo rm -rf /home/runner/.rustup
