@@ -16,11 +16,6 @@
     };
   };
 
-  zramSwap = {
-    enable = true;
-    memoryPercent = 100;
-  };
-
   services = {
     openssh.enable = true;
     fail2ban = {

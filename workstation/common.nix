@@ -21,11 +21,6 @@
     tmp.useTmpfs = true;
   };
 
-  zramSwap = {
-    enable = true;
-    memoryPercent = 100;
-  };
-
   networking = {
     firewall.enable = false;
     networkmanager.enable = true;

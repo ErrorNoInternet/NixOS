@@ -3,6 +3,11 @@
   lib,
   ...
 }: {
+  i18n.defaultLocale = "en_US.UTF-8";
+  documentation.nixos.enable = false;
+  services.getty.helpLine = lib.mkForce "";
+  programs.command-not-found.enable = false;
+
   nix = {
     registry =
       lib.mapAttrs'
@@ -29,8 +34,9 @@
       options = "--delete-older-than 30d";
     };
   };
-  i18n.defaultLocale = "en_US.UTF-8";
-  services.getty.helpLine = lib.mkForce "";
-  documentation.nixos.enable = false;
-  programs.command-not-found.enable = false;
+
+  zramSwap = {
+    enable = true;
+    memoryPercent = 200;
+  };
 }
