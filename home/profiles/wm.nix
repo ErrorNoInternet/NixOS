@@ -5,7 +5,7 @@
   ...
 }: {
   imports = [
-    ../modules/cursor.nix
+    ../desktop/cursor.nix
     ../programs/dunst.nix
     ../wayland/hyprpaper.nix
     ../wayland/rofi.nix

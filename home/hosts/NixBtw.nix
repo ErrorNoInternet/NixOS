@@ -34,11 +34,11 @@ in {
   imports = [
     ../../shared/caches
     ../common.nix
+    ../desktop/cursor.nix
+    ../desktop/gtk.nix
+    ../desktop/mimeapps.nix
+    ../desktop/nvidia-desktop-entries.nix
     ../locations/china.nix
-    ../modules/cursor.nix
-    ../modules/gtk.nix
-    ../modules/mimeapps.nix
-    ../modules/nvidia-desktop-entries.nix
     ../profiles/development
     ../profiles/wm.nix
     ../programs/fcitx.nix
