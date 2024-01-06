@@ -390,12 +390,32 @@
       {
         event = ["FileType"];
         pattern = ["c"];
-        command = "map <buffer> <F10> :wa<CR>:term clang -lm % -o %:t:r && ./%:t:r<CR>";
+        command = "map <buffer> <F10> :wa<CR>:term clang -g -lm % -o %:t:r && ./%:t:r<CR>";
       }
       {
         event = ["FileType"];
         pattern = ["c"];
-        command = "imap <buffer> <F10> <esc> :wa<CR>:term clang -lm % -o %:t:r && ./%:t:r<CR>";
+        command = "imap <buffer> <F10> <esc> :wa<CR>:term clang -g -lm % -o %:t:r && ./%:t:r<CR>";
+      }
+      {
+        event = ["FileType"];
+        pattern = ["c"];
+        command = "map <buffer> <F8> :wa<CR>:term clang -O3 -lm % -o %:t:r && ./%:t:r<CR>";
+      }
+      {
+        event = ["FileType"];
+        pattern = ["c"];
+        command = "imap <buffer> <F8> <esc> :wa<CR>:term clang -O3 -lm % -o %:t:r && ./%:t:r<CR>";
+      }
+      {
+        event = ["FileType"];
+        pattern = ["c"];
+        command = "map <buffer> <F11> :wa<CR>:term clang -lm % -o %:t:r<CR>";
+      }
+      {
+        event = ["FileType"];
+        pattern = ["c"];
+        command = "imap <buffer> <F11> <esc> :wa<CR>:term clang -lm % -o %:t:r<CR>";
       }
       {
         event = ["FileType"];
@@ -411,12 +431,32 @@
       {
         event = ["FileType"];
         pattern = ["cpp"];
-        command = "map <buffer> <F10> :wa<CR>:term clang++ % -o %:t:r && ./%:t:r<CR>";
+        command = "map <buffer> <F10> :wa<CR>:term clang++ -g % -o %:t:r && ./%:t:r<CR>";
       }
       {
         event = ["FileType"];
         pattern = ["cpp"];
-        command = "imap <buffer> <F10> <esc> :wa<CR>:term clang++ % -o %:t:r && ./%:t:r<CR>";
+        command = "imap <buffer> <F10> <esc> :wa<CR>:term clang++ -g % -o %:t:r && ./%:t:r<CR>";
+      }
+      {
+        event = ["FileType"];
+        pattern = ["cpp"];
+        command = "map <buffer> <F8> :wa<CR>:term clang++ -O3 % -o %:t:r && ./%:t:r<CR>";
+      }
+      {
+        event = ["FileType"];
+        pattern = ["cpp"];
+        command = "imap <buffer> <F8> <esc> :wa<CR>:term clang++ -O3 % -o %:t:r && ./%:t:r<CR>";
+      }
+      {
+        event = ["FileType"];
+        pattern = ["cpp"];
+        command = "map <buffer> <F11> :wa<CR>:term clang++ % -o %:t:r<CR>";
+      }
+      {
+        event = ["FileType"];
+        pattern = ["cpp"];
+        command = "imap <buffer> <F11> <esc> :wa<CR>:term clang++ % -o %:t:r<CR>";
       }
       {
         event = ["FileType"];
