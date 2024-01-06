@@ -1,6 +1,5 @@
 {
   inputs,
-  pkgs,
   self,
   ...
 }: let
