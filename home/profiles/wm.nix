@@ -6,7 +6,7 @@
 }: {
   imports = [
     ../desktop/cursor.nix
-    ../programs/dunst.nix
+    ../wayland/dunst.nix
     ../wayland/hyprpaper.nix
     ../wayland/rofi.nix
     ../wayland/swaylock.nix
