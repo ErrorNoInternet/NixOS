@@ -55,7 +55,7 @@
         kb_layout = "us";
         follow_mouse = 1;
         accel_profile = "flat";
-        sensitivity = 0.8;
+        sensitivity = 0.75;
         repeat_delay = 200;
         repeat_rate = 45;
       };
