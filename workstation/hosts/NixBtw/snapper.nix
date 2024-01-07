@@ -1,6 +1,18 @@
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [snapper];
-
+  systemd.services = {
+    snapper-cleanup = {
+      restartIfChanged = false;
+      serviceConfig = {
+        Type = "notify";
+        Restart = "no";
+      };
+    };
+    snapperd = {
+      restartIfChanged = false;
+      serviceConfig.Restart = "no";
+    };
+  };
   services.snapper = {
     snapshotInterval = "*:0/30";
     configs = {
