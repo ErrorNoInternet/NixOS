@@ -215,8 +215,6 @@
         ",switch:off:Lid Switch, exec, swaylock 0 1"
       ];
       windowrulev2 = [
-        "animation slide ,class:(xdg-desktop-portal-gtk)"
-        "center          ,class:(xdg-desktop-portal-gtk)"
         "float           ,class:(branchdialog)"
         "float           ,class:(confirm)"
         "float           ,class:(dialog)"
@@ -225,9 +223,22 @@
         "float           ,class:(notification)"
         "float           ,class:(pavucontrol)"
         "float           ,class:(vimiv)"
-        "float           ,class:(xdg-desktop-portal-gtk)"
         "size 50% 55%    ,class:(foot)"
-        "size 60% 60%    ,class:(xdg-desktop-portal-gtk)"
+
+        "animation slide ,class:(xdg-desktop-portal-gtk)"
+        "center          ,class:(xdg-desktop-portal-gtk)"
+        "float           ,class:(xdg-desktop-portal-gtk)"
+        "size 60% 65%    ,class:(xdg-desktop-portal-gtk)"
+
+        "animation slide ,title:(File Upload)"
+        "center          ,title:(File Upload)"
+        "float           ,title:(File Upload)"
+        "size 60% 65%    ,title:(File Upload)"
+
+        "animation slide ,title:(Open)"
+        "center          ,title:(Open)"
+        "float           ,title:(Open)"
+        "size 60% 65%    ,title:(Open)"
       ];
     };
     extraConfig = ''
