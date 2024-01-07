@@ -2,7 +2,7 @@
   environment.systemPackages = with pkgs; [snapper];
 
   services.snapper = {
-    snapshotInterval = "30 minutes";
+    snapshotInterval = "30min";
     configs = {
       backups = {
         SUBVOLUME = "/mnt/data/backups";
