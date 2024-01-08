@@ -17,7 +17,11 @@
 
       treesitter.enable = true;
 
-      barbecue.enable = true;
+      barbecue = {
+        enable = true;
+        showDirname = false;
+        showBasename = false;
+      };
 
       trouble.enable = true;
 
