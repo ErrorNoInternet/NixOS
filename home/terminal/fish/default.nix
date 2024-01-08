@@ -16,6 +16,7 @@
       }
     ];
     interactiveShellInit = ''
+      set -x _ZO_MAXAGE 20000
       set -x _ZO_RESOLVE_SYMLINKS 1
 
       if test (ps | grep fish | wc -l) -le 1
