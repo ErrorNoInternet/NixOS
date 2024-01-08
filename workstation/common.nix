@@ -74,6 +74,7 @@
     neovim
     pulseaudio
     ripgrep
+    sysstat
     tmux
     unzip
     vim
