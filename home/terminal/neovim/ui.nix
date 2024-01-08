@@ -91,7 +91,7 @@
         enable = true;
         minimumPadding = 1;
         maximumPadding = 3;
-        icons.button = " ";
+        icons.button = false;
       };
     };
     extraPlugins = with pkgs.vimPlugins; [

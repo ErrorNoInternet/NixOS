@@ -8,15 +8,10 @@
         fg = "#${config.colorScheme.colors.base0D}";
         bg = "#${config.colorScheme.colors.base01}";
       };
-      BufferInactive = {
-        fg = "#${config.colorScheme.colors.base03}";
-        bg = "#${config.colorScheme.colors.base01}";
-      };
       BufferInactiveSign = {
         fg = "#${config.colorScheme.colors.base03}";
-        bg = "#${config.colorScheme.colors.base01}";
+        bg = "#${config.colorScheme.colors.base00}";
       };
-      BufferTabpageFill.bg = "#${config.colorScheme.colors.base01}";
 
       NvimTreeNormal.bg = "#${config.colorScheme.colors.base01}";
       NvimTreeCursorLine.bg = "#${config.colorScheme.colors.base03}";
