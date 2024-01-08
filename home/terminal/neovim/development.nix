@@ -22,7 +22,12 @@
 
       function FormatZigBuffer()
         let cursor_pos = getpos('.')
-        :%!${pkgs.zig}/bin/zig fmt --stdin
+        let formatted = system('${pkgs.zig}/bin/zig fmt --stdin', join(getline(1, '$'), "\n"))
+        if v:shell_error == 0
+          call setline(1, split(formatted, "\n"))
+        else
+          echohl ErrorMsg | echo "format error: " . formatted | echohl None
+        endif
         call setpos('.', cursor_pos)
       endfunction
 
