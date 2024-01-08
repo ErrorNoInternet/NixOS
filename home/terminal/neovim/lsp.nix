@@ -19,8 +19,13 @@
 
       barbecue = {
         enable = true;
-        showDirname = false;
-        showBasename = false;
+        package = pkgs.vimPlugins.barbecue-nvim.overrideAttrs (oldAttrs: {
+          patches =
+            (oldAttrs.patches or [])
+            ++ [
+              ../../../packages/patches/barbecue-nvim_hide-empty.patch
+            ];
+        });
       };
 
       trouble.enable = true;
