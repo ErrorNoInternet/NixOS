@@ -1,6 +1,7 @@
 {
   programs.nixvim = {
     plugins = {
+      vim-bbye.keymaps.bdelete = "<C-D>";
       nvim-cmp = {
         mappingPresets = [
           "insert"
@@ -176,14 +177,8 @@
       {
         mode = "n";
         options.silent = true;
-        key = ";bd";
+        key = ";d";
         action = ":bd<CR>";
-      }
-      {
-        mode = "n";
-        options.silent = true;
-        key = "<C-D>";
-        action = ":Bdelete<CR>";
       }
       {
         mode = "n";
