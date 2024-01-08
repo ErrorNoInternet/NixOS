@@ -239,6 +239,11 @@
         "center          ,title:(Open)"
         "float           ,title:(Open)"
         "size 60% 65%    ,title:(Open)"
+
+        "animation slide ,title:(Save As)"
+        "center          ,title:(Save As)"
+        "float           ,title:(Save As)"
+        "size 60% 65%    ,title:(Save As)"
       ];
     };
     extraConfig = ''
