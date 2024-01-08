@@ -9,6 +9,7 @@
       foldlevelstart = 99;
       guicursor = "";
       number = true;
+      scrolloff = 5;
       shortmess = "ltToOCFcI";
       showmode = false;
       smoothscroll = true;
