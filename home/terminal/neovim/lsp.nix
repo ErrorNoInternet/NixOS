@@ -64,15 +64,22 @@
           };
         };
       };
+
+      lsp-format.enable = true;
+
+      lspsaga = {
+        enable = true;
+        lightbulb.enable = false;
+        symbolInWinbar.enable = false;
+      };
     };
     extraPlugins = with pkgs.vimPlugins; [
-      actions-preview-nvim
+      vim-go
+
       friendly-snippets
       nvim-lspconfig
-      vim-go
     ];
     extraConfigLuaPost = ''
-      require("actions-preview").setup()
       require("luasnip.loaders.from_vscode").lazy_load()
 
       cmp.setup.cmdline({ '/', '?' }, {
@@ -81,8 +88,8 @@
           { name = 'buffer' }
         }
       })
-
       cmp.setup.cmdline(':', {
+        autocomplete = false,
         sources = {
           { name = 'path' }
         }

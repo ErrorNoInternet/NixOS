@@ -220,8 +220,32 @@
       {
         mode = "n";
         options.silent = true;
+        key = "<leader>o";
+        action = ":Lspsaga outline<CR>";
+      }
+      {
+        mode = "n";
+        options.silent = true;
+        key = "<leader>pd";
+        action = ":Lspsaga peek_definition<CR>";
+      }
+      {
+        mode = "n";
+        options.silent = true;
+        key = "<leader>pD";
+        action = ":Lspsaga finder<CR>";
+      }
+      {
+        mode = "n";
+        options.silent = true;
+        key = "<leader>r";
+        action = ":Lspsaga rename<CR>";
+      }
+      {
+        mode = "n";
+        options.silent = true;
         key = "<leader>a";
-        action = ":lua require('actions-preview').code_actions()<CR>";
+        action = ":Lspsaga code_action<CR>";
       }
       {
         mode = "n";
