@@ -87,7 +87,12 @@
         };
       };
 
-      bufferline.enable = true;
+      barbar = {
+        enable = true;
+        minimumPadding = 1;
+        maximumPadding = 3;
+        icons.button = " ";
+      };
     };
     extraPlugins = with pkgs.vimPlugins; [
       minimap-vim

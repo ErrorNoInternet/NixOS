@@ -4,6 +4,20 @@
       CursorLine.bg = "none";
       WinSeparator.link = "VertSplit";
 
+      BufferCurrentSign = {
+        fg = "#${config.colorScheme.colors.base0D}";
+        bg = "#${config.colorScheme.colors.base01}";
+      };
+      BufferInactive = {
+        fg = "#${config.colorScheme.colors.base03}";
+        bg = "#${config.colorScheme.colors.base01}";
+      };
+      BufferInactiveSign = {
+        fg = "#${config.colorScheme.colors.base03}";
+        bg = "#${config.colorScheme.colors.base01}";
+      };
+      BufferTabpageFill.bg = "#${config.colorScheme.colors.base01}";
+
       NvimTreeNormal.bg = "#${config.colorScheme.colors.base01}";
       NvimTreeCursorLine.bg = "#${config.colorScheme.colors.base03}";
 
@@ -71,50 +85,6 @@
         bg = "#${config.colorScheme.colors.base03}";
         fg = "#${config.colorScheme.colors.base08}";
       };
-    };
-
-    plugins.bufferline.highlights = {
-      separator = {
-        fg = "#${config.colorScheme.colors.base00}";
-        bg = "#${config.colorScheme.colors.base01}";
-      };
-      indicatorSelected.bg = "#${config.colorScheme.colors.base03}";
-      indicatorVisible.bg = "#${config.colorScheme.colors.base01}";
-
-      fill = {bg = "#${config.colorScheme.colors.base01}";};
-      background = {bg = "#${config.colorScheme.colors.base01}";};
-
-      closeButtonSelected = {bg = "#${config.colorScheme.colors.base03}";};
-      closeButtonVisible = {bg = "#${config.colorScheme.colors.base01}";};
-      closeButton = {bg = "#${config.colorScheme.colors.base01}";};
-
-      modifiedSelected = {bg = "#${config.colorScheme.colors.base03}";};
-      modifiedVisible = {bg = "#${config.colorScheme.colors.base03}";};
-      modified = {bg = "#${config.colorScheme.colors.base01}";};
-
-      bufferSelected = {
-        bg = "#${config.colorScheme.colors.base03}";
-        italic = false;
-      };
-      bufferVisible = {bg = "#${config.colorScheme.colors.base01}";};
-
-      duplicateSelected = {bg = "#${config.colorScheme.colors.base03}";};
-      duplicate = {bg = "#${config.colorScheme.colors.base01}";};
-
-      errorSelected = {bg = "#${config.colorScheme.colors.base03}";};
-      error = {bg = "#${config.colorScheme.colors.base01}";};
-      errorDiagnosticSelected = {bg = "#${config.colorScheme.colors.base03}";};
-      errorDiagnostic = {bg = "#${config.colorScheme.colors.base01}";};
-
-      warningSelected = {bg = "#${config.colorScheme.colors.base03}";};
-      warning = {bg = "#${config.colorScheme.colors.base01}";};
-      warningDiagnosticSelected = {bg = "#${config.colorScheme.colors.base03}";};
-      warningDiagnostic = {bg = "#${config.colorScheme.colors.base01}";};
-
-      hintSelected = {bg = "#${config.colorScheme.colors.base03}";};
-      hint = {bg = "#${config.colorScheme.colors.base01}";};
-      hintDiagnosticSelected = {bg = "#${config.colorScheme.colors.base03}";};
-      hintDiagnostic = {bg = "#${config.colorScheme.colors.base01}";};
     };
   };
 }

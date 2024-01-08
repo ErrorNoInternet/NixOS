@@ -1,7 +1,17 @@
 {
   programs.nixvim = {
     plugins = {
+      barbar.keymaps = {
+        silent = true;
+        next = "<C-n>";
+        previous = "<C-p>";
+        moveNext = "<M-n>";
+        movePrevious = "<M-p>";
+        pick = "<leader>b";
+      };
+
       vim-bbye.keymaps.bdelete = "<C-D>";
+
       nvim-cmp = {
         mappingPresets = [
           "insert"
@@ -14,6 +24,7 @@
           "<C-up>" = "cmp.mapping.scroll_docs(-4)";
         };
       };
+
       lsp.keymaps.lspBuf = {
         "K" = "hover";
       };
@@ -39,31 +50,6 @@
         mode = "";
         key = "<S-up>";
         action = "10k";
-      }
-
-      {
-        mode = "";
-        options.silent = true;
-        key = "<C-n>";
-        action = "<cmd>:bnext<CR>";
-      }
-      {
-        mode = "";
-        options.silent = true;
-        key = "<C-p>";
-        action = "<cmd>:bprevious<CR>";
-      }
-      {
-        mode = "i";
-        options.silent = true;
-        key = "<C-n>";
-        action = "<esc>:bnext<CR>";
-      }
-      {
-        mode = "i";
-        options.silent = true;
-        key = "<C-p>";
-        action = "<esc>:bprevious<CR>";
       }
 
       {

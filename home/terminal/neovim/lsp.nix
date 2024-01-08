@@ -17,12 +17,7 @@
 
       treesitter.enable = true;
 
-      treesitter-context = {
-        enable = true;
-        minWindowHeight = 16;
-        maxLines = 3;
-        multilineThreshold = 1;
-      };
+      barbecue.enable = true;
 
       trouble.enable = true;
 
