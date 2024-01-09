@@ -4,8 +4,8 @@
   ...
 }: {
   options = {
-    mimeapps =  {
-      image =  {
+    mimeapps = {
+      image = {
         enable = lib.mkEnableOption "";
 
         opener = lib.mkOption {

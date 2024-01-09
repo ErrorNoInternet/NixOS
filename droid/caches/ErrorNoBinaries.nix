@@ -6,15 +6,21 @@
   options.caches.ErrorNoBinaries = {
     enable = lib.mkEnableOption "";
 
-    internal = lib.mkEnableOption "" // {
-      default = true;
-    };
-    external = lib.mkEnableOption "" // {
-      default = true;
-    };
-    cachix = lib.mkEnableOption "" // {
-      default = true;
-    };
+    internal =
+      lib.mkEnableOption ""
+      // {
+        default = true;
+      };
+    external =
+      lib.mkEnableOption ""
+      // {
+        default = true;
+      };
+    cachix =
+      lib.mkEnableOption ""
+      // {
+        default = true;
+      };
   };
 
   config = lib.mkIf config.caches.ErrorNoBinaries.enable {
@@ -31,4 +37,3 @@
     };
   };
 }
-

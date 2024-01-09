@@ -6,8 +6,8 @@
   ...
 }: {
   options = {
-    nvidia =  {
-      desktopEntries =  {
+    nvidia = {
+      desktopEntries = {
         enable = lib.mkEnableOption "";
       };
     };

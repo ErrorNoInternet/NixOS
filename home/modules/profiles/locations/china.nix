@@ -1,4 +1,8 @@
-{config, lib, ...}: let
+{
+  config,
+  lib,
+  ...
+}: let
   inherit (lib) mkEnableOption mkIf;
 in {
   options.profiles.locations.china = {
