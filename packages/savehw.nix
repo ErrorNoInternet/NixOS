@@ -34,6 +34,7 @@ pkgs.writeShellApplication {
     ${pkgs.drm_info}/bin/drm_info > drm_info 2>&1
     ${pkgs.drm_info}/bin/drm_info -j > drm_info-json 2>&1
 
+    ${pkgs.systemd}/bin/udevadm info -e > udevadm-info 2>&1
     ${pkgs.dmidecode}/bin/dmidecode > dmidecode 2>&1
 
     ${pkgs.lshw}/bin/lshw > lshw 2>&1
