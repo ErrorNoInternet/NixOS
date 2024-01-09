@@ -93,7 +93,6 @@
         }
       })
       cmp.setup.cmdline(':', {
-        autocomplete = false,
         sources = {
           { name = 'path' }
         }
