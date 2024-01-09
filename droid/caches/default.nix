@@ -1,0 +1,5 @@
+{
+  imports = [
+    ./ErrorNoBinaries.nix
+  ];
+}

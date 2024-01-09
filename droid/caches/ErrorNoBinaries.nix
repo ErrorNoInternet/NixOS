@@ -1,14 +1,34 @@
 {
-  nix = {
-    substituters = [
-      "http://192.168.0.100:7454/ErrorNoBinaries"
-      "https://errornointernet.dynv6.net:7455/ErrorNoBinaries"
+  config,
+  lib,
+  ...
+}: {
+  options.caches.ErrorNoBinaries = {
+    enable = lib.mkEnableOption "";
 
-      "https://errornobinaries.cachix.org"
-    ];
-    trustedPublicKeys = [
-      "ErrorNoBinaries:im2fJ1t41XAwp2S+DMgSI0VFKxS+jpz/XIOs/s9iLFg="
-      "errornobinaries.cachix.org-1:84oagGNCIsXxBTYmfTiP+lvWje7lIS294iqAtCpFsbU="
-    ];
+    internal = lib.mkEnableOption "" // {
+      default = true;
+    };
+    external = lib.mkEnableOption "" // {
+      default = true;
+    };
+    cachix = lib.mkEnableOption "" // {
+      default = true;
+    };
+  };
+
+  config = lib.mkIf config.caches.ErrorNoBinaries.enable {
+    nix = {
+      substituters = [
+        (lib.mkIf config.caches.ErrorNoBinaries.internal "http://192.168.0.100:7454/ErrorNoBinaries")
+        (lib.mkIf config.caches.ErrorNoBinaries.external "https://errornointernet.dynv6.net:7455/ErrorNoBinaries")
+        (lib.mkIf config.caches.ErrorNoBinaries.cachix "https://errornobinaries.cachix.org")
+      ];
+      trustedPublicKeyseys = [
+        "ErrorNoBinaries:im2fJ1t41XAwp2S+DMgSI0VFKxS+jpz/XIOs/s9iLFg="
+        "errornobinaries.cachix.org-1:84oagGNCIsXxBTYmfTiP+lvWje7lIS294iqAtCpFsbU="
+      ];
+    };
   };
 }
+
