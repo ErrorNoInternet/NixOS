@@ -5,14 +5,11 @@
 }: let
   custom = {
     hostname = "Pix";
-    predefinedColorScheme = "Nord";
     terminal = "foot";
   };
 in {
   _module.args = {inherit custom;};
   imports = [
-    ../../shared/caches/ErrorNoBinaries.nix
-    ../../shared/caches/nix-community.nix
     ../common.nix
     ../locations/china.nix
     ../profiles/development
@@ -20,7 +17,21 @@ in {
     inputs.agenix.homeManagerModules.default
   ];
 
-  colorScheme = inputs.nix-colors.colorSchemes.nord;
+  colors = {
+    schemeName = "Nord";
+    scheme = inputs.nix-colors.colorSchemes.nord;
+  };
+
+  caches = {
+    ErrorNoBinaries = {
+      enable = true;
+      internal = true;
+      external = false;
+      cachix = true;
+    };
+    nix-community.enable = true;
+  };
+
   home = {
     username = "snowflake";
     homeDirectory = "/home/snowflake";

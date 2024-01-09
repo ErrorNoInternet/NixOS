@@ -2,6 +2,7 @@
   config,
   custom,
   inputs,
+  lib,
   pkgs,
   ...
 }: {
@@ -39,13 +40,13 @@
           ",preferred,auto,1"
         ];
       exec-once = [
-        "sleep 0.5 && waybar"
-        "hyprpaper"
-        "hyprctl setcursor ${custom.pointerCursor.name} ${builtins.toString custom.pointerCursor.size}"
+        "sleep 0.5 && ${lib.getExe pkgs.waybar}"
+        (lib.mkIf config.wallpaper.enable "${lib.getExe pkgs.hyprpaper}")
+        "hyprctl setcursor ${config.cursor.name} ${builtins.toString config.cursor.size}"
         "swayidle -w timeout 570 'swaylock --grace 30 --fade-in 30' before-sleep 'swaylock --grace 0 --fade-in 1'"
         "swayidle -w timeout 1200 'hyprctl dispatch dpms off'"
-        "hyprland-autoname-workspaces"
-        "wl-paste --watch cliphist -max-items 1000 store"
+        "${lib.getExe pkgs.hyprland-autoname-workspaces}"
+        "${pkgs.wl-clipboard}/bin/wl-paste --watch ${lib.getExe pkgs.cliphist} -max-items 1000 store"
       ];
       input = {
         touchpad = {
@@ -141,8 +142,8 @@
         "$mod, L, exec, swaylock --grace 0 --fade-in 1"
         "$mod, S, exec, scratchpad"
         "$mod SHIFT, S, exec, scratchpad -g"
-        "$mod, RETURN, exec, ${custom.terminal}"
-        "$mod SHIFT, RETURN, exec, [float; center] ${custom.terminal}"
+        "$mod, RETURN, exec, ${config.terminal.name}"
+        "$mod SHIFT, RETURN, exec, [float; center] ${config.terminal.name}"
 
         "$mod, TAB, workspace, previous"
         "$mod SHIFT, F, fullscreen"

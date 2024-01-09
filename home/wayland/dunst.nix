@@ -1,18 +1,14 @@
-{
-  config,
-  custom,
-  ...
-}: {
+{config, ...}: {
   services.dunst = {
     enable = true;
-    iconTheme = custom.gtkIconTheme;
+    iconTheme = config.gtkCustomization.iconTheme;
     settings = {
       global = {
         origin = "top-right";
         offset = "10x10";
         follow = "mouse";
         notification_limit = 8;
-        font = "${custom.font} 9";
+        font = "${config.font.name} 9";
         corner_radius = 10;
         icon_corner_radius = 5;
         mouse_left_click = "close_current";

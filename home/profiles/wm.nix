@@ -5,14 +5,16 @@
   ...
 }: {
   imports = [
-    ../desktop/cursor.nix
     ../wayland/dunst.nix
-    ../wayland/hyprpaper.nix
     ../wayland/rofi.nix
     ../wayland/swaylock.nix
     ../wayland/waybar.nix
     ../wayland/wleave.nix
   ];
+
+  cursor.enable = true;
+
+  wallpaper.enable = true;
 
   home.packages = with pkgs; [
     cliphist

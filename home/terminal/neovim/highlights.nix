@@ -1,84 +1,85 @@
-{config, ...}: {
+{config, ...}:
+with config.colorScheme.colors; {
   programs.nixvim = {
     highlight = {
       CursorLine.bg = "none";
       WinSeparator.link = "VertSplit";
 
       BufferCurrentSign = {
-        fg = "#${config.colorScheme.colors.base0D}";
-        bg = "#${config.colorScheme.colors.base01}";
+        fg = "#${base0D}";
+        bg = "#${base01}";
       };
       BufferInactiveSign = {
-        fg = "#${config.colorScheme.colors.base03}";
-        bg = "#${config.colorScheme.colors.base00}";
+        fg = "#${base03}";
+        bg = "#${base00}";
       };
 
-      NvimTreeNormal.bg = "#${config.colorScheme.colors.base01}";
-      NvimTreeCursorLine.bg = "#${config.colorScheme.colors.base03}";
+      NvimTreeNormal.bg = "#${base01}";
+      NvimTreeCursorLine.bg = "#${base03}";
 
-      "@ibl.indent.char.1".fg = "#${config.colorScheme.colors.base00}";
-      FoldColumn.fg = "#${config.colorScheme.colors.base03}";
+      "@ibl.indent.char.1".fg = "#${base00}";
+      FoldColumn.fg = "#${base03}";
       MatchParen = {
-        fg = "#${config.colorScheme.colors.base0D}";
-        bg = "#${config.colorScheme.colors.base03}";
+        fg = "#${base0D}";
+        bg = "#${base03}";
       };
       "@variable".bold = false;
       Function.bold = true;
       Macro = {
-        fg = "#${config.colorScheme.colors.base0D}";
+        fg = "#${base0D}";
         bold = true;
       };
-      RustEnumVariant.fg = "#${config.colorScheme.colors.base0C}";
+      RustEnumVariant.fg = "#${base0C}";
 
       CustomMinimapHighlight = {
-        bg = "#${config.colorScheme.colors.base01}";
-        fg = "#${config.colorScheme.colors.base04}";
+        bg = "#${base01}";
+        fg = "#${base04}";
       };
       CustomMinimapDiffLine = {
-        bg = "#${config.colorScheme.colors.base01}";
-        fg = "#${config.colorScheme.colors.base0E}";
+        bg = "#${base01}";
+        fg = "#${base0E}";
       };
       CustomMinimapDiffAdded = {
-        bg = "#${config.colorScheme.colors.base01}";
-        fg = "#${config.colorScheme.colors.base0B}";
+        bg = "#${base01}";
+        fg = "#${base0B}";
       };
       CustomMinimapDiffRemoved = {
-        bg = "#${config.colorScheme.colors.base01}";
-        fg = "#${config.colorScheme.colors.base08}";
+        bg = "#${base01}";
+        fg = "#${base08}";
       };
 
       CustomMinimapRange = {
-        bg = "#${config.colorScheme.colors.base02}";
-        fg = "#${config.colorScheme.colors.base04}";
+        bg = "#${base02}";
+        fg = "#${base04}";
       };
       CustomMinimapRangeDiffLine = {
-        bg = "#${config.colorScheme.colors.base02}";
-        fg = "#${config.colorScheme.colors.base0E}";
+        bg = "#${base02}";
+        fg = "#${base0E}";
       };
       CustomMinimapRangeDiffAdded = {
-        bg = "#${config.colorScheme.colors.base02}";
-        fg = "#${config.colorScheme.colors.base0B}";
+        bg = "#${base02}";
+        fg = "#${base0B}";
       };
       CustomMinimapRangeDiffRemoved = {
-        bg = "#${config.colorScheme.colors.base02}";
-        fg = "#${config.colorScheme.colors.base08}";
+        bg = "#${base02}";
+        fg = "#${base08}";
       };
 
       CustomMinimapCursor = {
-        bg = "#${config.colorScheme.colors.base03}";
-        fg = "#${config.colorScheme.colors.base06}";
+        bg = "#${base03}";
+        fg = "#${base06}";
       };
       CustomMinimapCursorDiffLine = {
-        bg = "#${config.colorScheme.colors.base03}";
-        fg = "#${config.colorScheme.colors.base0E}";
+        bg = "#${base03}";
+        fg = "#${base0E}";
       };
       CustomMinimapCursorDiffAdded = {
-        bg = "#${config.colorScheme.colors.base03}";
-        fg = "#${config.colorScheme.colors.base0B}";
+        bg = "#${base03}";
+        fg = "#${base0B}";
       };
       CustomMinimapCursorDiffRemoved = {
-        bg = "#${config.colorScheme.colors.base03}";
-        fg = "#${config.colorScheme.colors.base08}";
+        bg = "#${base03}";
+        fg = "#${base08}";
       };
     };
   };

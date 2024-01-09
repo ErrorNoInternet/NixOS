@@ -1,6 +1,6 @@
-{custom, ...}: {
+{config, ...}: {
   programs.bat = {
     enable = true;
-    config.theme = "${custom.predefinedColorScheme}";
+    config.theme = "${config.colors.schemeName}";
   };
 }

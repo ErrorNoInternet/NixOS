@@ -1,42 +1,22 @@
 {
   inputs,
-  lib,
   pkgs,
   self,
   ...
 }: let
   custom = {
     hostname = "Rescanix";
-    font = "JetBrainsMono Nerd Font";
-    predefinedColorScheme = "Nord";
     opacity = "0.8";
     subtleOpacity = "0.9";
     barOpacity = "0.7";
     menuOpacity = "0.3";
     terminal = "foot";
     browser = "firefox";
-    pointerCursor = {
-      name = "Bibata-Modern-Classic";
-      package = pkgs.bibata-cursors;
-      size = 16;
-    };
-    gtkTheme = {
-      name = "Colloid-Dark-${custom.predefinedColorScheme}";
-      package = pkgs.colloid-gtk-theme.override {tweaks = ["${lib.strings.toLower custom.predefinedColorScheme}"];};
-    };
-    gtkIconTheme = {
-      name = "Colloid-${lib.strings.toLower custom.predefinedColorScheme}-dark";
-      package = pkgs.colloid-icon-theme.override {schemeVariants = ["nord"];};
-    };
   };
 in {
   _module.args = {inherit custom;};
   imports = [
-    ../../shared/caches
     ../common.nix
-    ../desktop/cursor.nix
-    ../desktop/gtk.nix
-    ../desktop/mimeapps.nix
     ../locations/china.nix
     ../profiles/development
     ../profiles/wm.nix
@@ -55,13 +35,27 @@ in {
     inputs.agenix.homeManagerModules.default
   ];
 
-  colorScheme = inputs.nix-colors.colorSchemes.nord;
+  caches = {
+    ErrorNoBinaries.enable = true;
+    hyprland.enable = true;
+    nix-community.enable = true;
+    nix-gaming.enable = true;
+  };
+
+  colors = {
+    schemeName = "Nord";
+    scheme = inputs.nix-colors.colorSchemes.nord;
+  };
+
+  gtkCustomization.enable = true;
+
+  mimeapps.image.enable = true;
+
+  nvidia.desktopEntries.enable = true;
+
   home = {
     username = "ryan";
     homeDirectory = "/home/ryan";
-    file = {
-      "pictures/wallpapers".source = ../../other/wallpapers;
-    };
     packages = with pkgs; [
       (hashcat.override {cudaSupport = true;})
       _7zz

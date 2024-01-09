@@ -58,7 +58,11 @@ in {
     ];
     style = ''
       window {
-        background-color: rgba(${builtins.toString (lib.intersperse ", " (inputs.nix-colors.lib.conversions.hexToRGB config.colorScheme.colors.base00))}, ${custom.opacity});
+        background-color: rgba(${builtins.toString (
+        lib.intersperse ", " (
+          inputs.nix-colors.lib.conversions.hexToRGB config.colorScheme.colors.base00
+        )
+      )}, ${builtins.toString config.opacity.normal});
       }
 
       button {

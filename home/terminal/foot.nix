@@ -1,13 +1,10 @@
-{
-  config,
-  custom,
-  ...
-}: {
+{config, ...}:
+with config.colorScheme.colors; {
   programs.foot = {
     enable = true;
     settings = {
       main = {
-        font = "${custom.font}:size=9";
+        font = "${config.font.name}:size=9";
         pad = "0x0 center";
         shell = "tmux";
         initial-window-size-pixels = "1920x1080";
@@ -15,29 +12,29 @@
       cursor = {
         style = "beam";
         blink = "yes";
-        color = "${config.colorScheme.colors.base04} ${config.colorScheme.colors.base04}";
+        color = "${base04} ${base04}";
       };
       mouse.hide-when-typing = "yes";
       colors = {
-        alpha = "${custom.opacity}";
-        background = "${config.colorScheme.colors.base00}";
-        foreground = "${config.colorScheme.colors.base04}";
-        regular0 = "${config.colorScheme.colors.base01}";
-        regular1 = "${config.colorScheme.colors.base08}";
-        regular2 = "${config.colorScheme.colors.base0B}";
-        regular3 = "${config.colorScheme.colors.base0A}";
-        regular4 = "${config.colorScheme.colors.base0D}";
-        regular5 = "${config.colorScheme.colors.base0E}";
-        regular6 = "${config.colorScheme.colors.base0C}";
-        regular7 = "${config.colorScheme.colors.base05}";
-        bright0 = "${config.colorScheme.colors.base03}";
-        bright1 = "${config.colorScheme.colors.base08}";
-        bright2 = "${config.colorScheme.colors.base0B}";
-        bright3 = "${config.colorScheme.colors.base0A}";
-        bright4 = "${config.colorScheme.colors.base0D}";
-        bright5 = "${config.colorScheme.colors.base0E}";
-        bright6 = "${config.colorScheme.colors.base07}";
-        bright7 = "${config.colorScheme.colors.base06}";
+        alpha = "${builtins.toString config.opacity.normal}";
+        background = "${base00}";
+        foreground = "${base04}";
+        regular0 = "${base01}";
+        regular1 = "${base08}";
+        regular2 = "${base0B}";
+        regular3 = "${base0A}";
+        regular4 = "${base0D}";
+        regular5 = "${base0E}";
+        regular6 = "${base0C}";
+        regular7 = "${base05}";
+        bright0 = "${base03}";
+        bright1 = "${base08}";
+        bright2 = "${base0B}";
+        bright3 = "${base0A}";
+        bright4 = "${base0D}";
+        bright5 = "${base0E}";
+        bright6 = "${base07}";
+        bright7 = "${base06}";
       };
     };
   };

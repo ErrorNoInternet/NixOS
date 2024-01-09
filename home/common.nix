@@ -4,6 +4,7 @@
   ...
 }: {
   imports = [
+    ./modules
     ./terminal/bat.nix
     ./terminal/comma.nix
     ./terminal/fastfetch.nix
@@ -12,7 +13,6 @@
     ./terminal/tmux.nix
     ./terminal/yazi
     ./terminal/zoxide.nix
-    inputs.nix-colors.homeManagerModules.default
     inputs.nixvim.homeManagerModules.nixvim
   ];
 

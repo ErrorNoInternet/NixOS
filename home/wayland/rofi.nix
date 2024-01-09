@@ -1,32 +1,36 @@
 {
   config,
-  custom,
   inputs,
   lib,
   pkgs,
   ...
-}: {
+}:
+with config.colorScheme.colors; {
   programs.rofi = {
     enable = true;
     package = pkgs.rofi-wayland;
     plugins = [pkgs.rofi-emoji];
+
     theme = let
       inherit (config.lib.formats.rasi) mkLiteral;
-      base00RGBA = "rgba(${builtins.toString (lib.intersperse ", " (inputs.nix-colors.lib.conversions.hexToRGB config.colorScheme.colors.base00))}, ${custom.menuOpacity})";
+      base00RGBA = "rgba(${builtins.toString
+        (lib.intersperse ", " (
+          inputs.nix-colors.lib.conversions.hexToRGB base00
+        ))}, ${builtins.toString config.opacity.menu})";
     in {
       "*" = {
         background-color = mkLiteral "${base00RGBA}";
-        text-color = mkLiteral "#${config.colorScheme.colors.base06}";
+        text-color = mkLiteral "#${base06}";
       };
 
       "configuration" = {
         disable-history = mkLiteral "false";
         display-drun = "";
         drun-display-format = "{name}";
-        font = "${custom.font} 9";
+        font = "${config.font.name} 9";
         fullscreen = mkLiteral "false";
         hide-scrollbar = mkLiteral "true";
-        icon-theme = "${custom.gtkIconTheme.name}";
+        icon-theme = "${config.gtkCustomization.iconTheme.name}";
         show-icons = mkLiteral "true";
         sidebar-mode = mkLiteral "false";
       };
@@ -34,10 +38,10 @@
       "window" = {
         background-color = mkLiteral "${base00RGBA}";
         border = mkLiteral "2px";
-        border-color = mkLiteral "#${config.colorScheme.colors.base0D}";
+        border-color = mkLiteral "#${base0D}";
         border-radius = mkLiteral "16px";
         location = mkLiteral "center";
-        text-color = mkLiteral "#${config.colorScheme.colors.base06}";
+        text-color = mkLiteral "#${base06}";
         transparency = "real";
         width = mkLiteral "500px";
         x-offset = mkLiteral "0";
@@ -45,32 +49,32 @@
       };
 
       "prompt" = {
-        background-color = mkLiteral "#${config.colorScheme.colors.base01}";
+        background-color = mkLiteral "#${base01}";
         enabled = mkLiteral "true";
-        font = "${custom.font} 9";
+        font = "${config.font.name} 9";
         padding = mkLiteral "10px 15px 10px 15px";
-        text-color = mkLiteral "#${config.colorScheme.colors.base06}";
+        text-color = mkLiteral "#${base06}";
       };
 
       "entry" = {
-        background-color = mkLiteral "#${config.colorScheme.colors.base01}";
+        background-color = mkLiteral "#${base01}";
         blink = mkLiteral "true";
         expand = mkLiteral "true";
         horizontal-align = mkLiteral "0";
         margin = mkLiteral "0px 0px 0px 0px";
         padding = mkLiteral "10px 15px 10px 10px";
         placeholder = "Search...";
-        placeholder-color = mkLiteral "#${config.colorScheme.colors.base04}";
-        text-color = mkLiteral "#${config.colorScheme.colors.base06}";
+        placeholder-color = mkLiteral "#${base04}";
+        text-color = mkLiteral "#${base06}";
       };
 
       "inputbar" = {
-        background-color = mkLiteral "#${config.colorScheme.colors.base02}";
+        background-color = mkLiteral "#${base02}";
         border-radius = mkLiteral "0px";
         children = map mkLiteral ["prompt" "entry"];
         expand = mkLiteral "false";
         spacing = mkLiteral "0px";
-        text-color = mkLiteral "#${config.colorScheme.colors.base06}";
+        text-color = mkLiteral "#${base06}";
       };
 
       "listview" = {
@@ -96,7 +100,7 @@
         border-radius = mkLiteral "10px";
         orientation = mkLiteral "horizontal";
         padding = mkLiteral "6px";
-        text-color = mkLiteral "#${config.colorScheme.colors.base06}";
+        text-color = mkLiteral "#${base06}";
       };
 
       "element-icon" = {
@@ -116,9 +120,9 @@
       };
 
       "element selected" = {
-        background-color = mkLiteral "#${config.colorScheme.colors.base06}";
+        background-color = mkLiteral "#${base06}";
         border-radius = mkLiteral "10px";
-        text-color = mkLiteral "#${config.colorScheme.colors.base00}";
+        text-color = mkLiteral "#${base00}";
       };
     };
   };

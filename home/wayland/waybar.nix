@@ -1,6 +1,5 @@
 {
   config,
-  custom,
   inputs,
   lib,
   pkgs,
@@ -114,13 +113,17 @@
       * {
         border: none;
         border-radius: 0px;
-        font-family: ${custom.font};
+        font-family: ${config.font.name};
         font-size: 12px;
         min-height: 0;
       }
 
       window#waybar {
-        background-color: rgba(${builtins.toString (lib.intersperse ", " (inputs.nix-colors.lib.conversions.hexToRGB config.colorScheme.colors.base02))}, ${custom.barOpacity});
+        background-color: rgba(${builtins.toString (
+        lib.intersperse ", " (
+          inputs.nix-colors.lib.conversions.hexToRGB config.colorScheme.colors.base02
+        )
+      )}, ${builtins.toString config.opacity.bar});
       }
 
       #workspaces {

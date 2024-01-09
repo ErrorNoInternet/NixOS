@@ -1,6 +1,5 @@
 {
   config,
-  custom,
   pkgs,
   ...
 }: {
@@ -12,7 +11,7 @@
       screenshot = true;
       effect-blur = "10x10";
 
-      font = "${custom.font}";
+      font = "${config.font.name}";
       font-size = 25;
 
       indicator-radius = 90;
