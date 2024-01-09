@@ -1,9 +1,13 @@
 {pkgs, ...}: {
   programs.nixvim = {
     plugins = {
-      markdown-preview.enable = true;
       nix-develop.enable = true;
+
       nvim-autopairs.enable = true;
+
+      todo-comments.enable = true;
+
+      markdown-preview.enable = true;
     };
     extraConfigLuaPost = ''
       local cmp_autopairs = require('nvim-autopairs.completion.cmp')
