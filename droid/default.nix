@@ -4,6 +4,7 @@
       extraSpecialArgs = {inherit inputs;};
       modules = [
         ./common.nix
+        ./hosts/${name}.nix
       ];
     };
 in {

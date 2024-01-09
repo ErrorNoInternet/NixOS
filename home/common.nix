@@ -18,7 +18,6 @@
   ];
 
   home = {
-    stateVersion = "23.05";
     packages = with pkgs; [
       cmatrix
       croc
@@ -30,6 +29,7 @@
       nh
       progress
     ];
+    stateVersion = "23.05";
   };
 
   programs.man.generateCaches = false;
