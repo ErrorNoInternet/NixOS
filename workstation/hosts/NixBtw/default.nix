@@ -2,7 +2,21 @@
   imports = [
     ./hardware.nix
     ./snapper.nix
+
+    ../../../shared/modules/aarch64-emulation.nix
+    ../../../shared/modules/btrfs-subvolume-compression.nix
+    ../../modules/bluetooth.nix
+    ../../modules/nvidia-options.nix
+    ../../modules/nvidia.nix
+    ../../modules/video-acceleration.nix
+    ../../modules/virtualization.nix
+    ../../programs/clamav.nix
+    ../../programs/fish.nix
+    ../../programs/hyprland.nix
+    ../../programs/openrgb.nix
   ];
+
+  caches.hyprland.enable = true;
 
   environment.variables.HOSTNAME = "NixBtw";
   networking = {

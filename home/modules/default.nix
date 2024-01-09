@@ -4,7 +4,6 @@
     ./colors.nix
     ./desktop
     ./flags.nix
-    ./locations
     ./profiles
   ];
 }

@@ -1,9 +1,24 @@
 {
-  self,
+  inputs,
   lib,
   pkgs,
+  self,
   ...
 }: {
+  imports = [
+    ../shared
+    ../shared/caches
+    ./profiles
+    inputs.home-manager.nixosModules.home-manager
+    {
+      home-manager = {
+        useGlobalPkgs = true;
+        useUserPackages = true;
+        extraSpecialArgs = {inherit inputs self;};
+      };
+    }
+  ];
+
   boot = {
     loader = {
       systemd-boot = {
