@@ -4,6 +4,7 @@ with config.colorScheme.colors; {
     highlight = {
       CursorLine.bg = "none";
       WinSeparator.link = "VertSplit";
+      Title.bg = "#${base00}";
 
       BufferCurrentSign = {
         fg = "#${base0D}";
