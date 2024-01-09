@@ -6,7 +6,7 @@
 }: {
   programs.fish.shellAliases = {
     cava = "TERM=${config.terminal.name} ${lib.getExe pkgs.cava}";
-    cm = "${lib.getExe pkgs.cmatrix} -C blue";
+    cm = "${pkgs.cmatrix}/bin/cmatrix -C blue";
     drg = "${lib.getExe pkgs.ripdrag} -xa";
     f = "${lib.getExe pkgs.fastfetch}";
     grep = "grep --color";
@@ -21,7 +21,7 @@
     mfd = "${lib.getExe pkgs.fastfetch} -c ~/.config/fastfetch/nix-on-droid_minimal.jsonc";
     py = "python3";
     q = "exit";
-    scc = "${lib.getExe pkgs.scc} --no-cocomo";
+    scc = "${pkgs.scc}/bin/scc --no-cocomo";
     timg = "${lib.getExe pkgs.timg} -ps";
 
     nix =

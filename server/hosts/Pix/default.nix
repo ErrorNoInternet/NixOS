@@ -6,11 +6,20 @@
   imports = [
     ./hardware.nix
     ./drives.nix
+
+    ../../../shared/modules/raspberry-pi.nix
+    ../../modules/attic-server.nix
+    ../../modules/nfs.nix
+    ../../modules/printing.nix
+    ../../modules/samba.nix
+    ../../programs/fish.nix
   ];
   age.secrets.ddns.file = ../../../secrets/ddns.age;
 
   networking.hostName = "Pix";
   environment.variables.HOSTNAME = "Pix";
+
+  caches.ErrorNoBinaries.external = false;
 
   networking.firewall = {
     allowedTCPPorts = [

@@ -3,43 +3,20 @@
   self,
   ...
 }: let
-  defaultModule = {
-    imports = [
-      ../shared
-      ../shared/caches/ErrorNoBinaries.nix
-      ../shared/caches/nix-community.nix
-      ./common.nix
-      inputs.agenix.nixosModules.default
-    ];
-  };
-  inherit (inputs.nixpkgs.lib) nixosSystem;
-in {
-  flake.nixosConfigurations = {
-    Crix = nixosSystem {
-      specialArgs = {inherit inputs;};
+  mkSystem = name:
+    inputs.nixpkgs.lib.nixosSystem {
+      specialArgs = {inherit inputs self;};
       modules = [
-        defaultModule
-        ../shared/caches/ErrorNoBinaries.nix
-        ../shared/modules/wireless.nix
-        ./hosts/Crix
-        ./locations/china.nix
-        ./modules/bootloader.nix
-        ./profiles/minecraft-server.nix
+        ./common.nix
+        ./hosts/${name}
       ];
     };
-    Pix = nixosSystem {
-      specialArgs = {inherit inputs;};
+  mkHmSystem = name:
+    inputs.nixpkgs.lib.nixosSystem {
+      specialArgs = {inherit inputs self;};
       modules = [
-        defaultModule
-        ../shared/caches/ErrorNoBinaries.nix
-        ../shared/modules/raspberry-pi.nix
-        ./hosts/Pix
-        ./locations/china.nix
-        ./modules/attic-server.nix
-        ./modules/nfs.nix
-        ./modules/printing.nix
-        ./modules/samba.nix
-        ./programs/fish.nix
+        ./common.nix
+        ./hosts/${name}
         inputs.home-manager.nixosModules.home-manager
         {
           home-manager = {
@@ -48,8 +25,12 @@ in {
             extraSpecialArgs = {inherit inputs self;};
           };
         }
-        {home-manager.users.snowflake = import ../home/hosts/Pix.nix;}
+        {home-manager.users.snowflake = import ../home/hosts/${name}.nix;}
       ];
     };
+in {
+  flake.nixosConfigurations = {
+    Crix = mkSystem "Crix";
+    Pix = mkHmSystem "Pix";
   };
 }

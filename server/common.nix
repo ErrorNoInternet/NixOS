@@ -1,9 +1,21 @@
 {
   config,
+  inputs,
   lib,
   pkgs,
   ...
 }: {
+  imports = [
+    ../shared
+    ../shared/caches
+    inputs.agenix.nixosModules.default
+  ];
+
+  caches = {
+    ErrorNoBinaries.enable = true;
+    nix-community.enable = true;
+  };
+
   boot = {
     kernelParams = ["console=tty0"];
     supportedFilesystems = ["ntfs"];

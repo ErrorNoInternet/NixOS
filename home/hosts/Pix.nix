@@ -5,7 +5,7 @@
 }: {
   imports = [
     ../common.nix
-    ../terminal/btop.nix
+    ../programs/terminal/btop.nix
   ];
 
   colors = {

@@ -40,9 +40,7 @@
     scheme = inputs.nix-colors.colorSchemes.nord;
   };
 
-  desktop.monitors = [
-    {}
-  ];
+  desktop.monitors = [{}];
 
   home = {
     username = "ryan";
