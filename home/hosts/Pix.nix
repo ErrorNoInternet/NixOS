@@ -2,19 +2,10 @@
   inputs,
   pkgs,
   ...
-}: let
-  custom = {
-    hostname = "Pix";
-    terminal = "foot";
-  };
-in {
-  _module.args = {inherit custom;};
+}: {
   imports = [
     ../common.nix
-    ../locations/china.nix
-    ../profiles/development
     ../terminal/btop.nix
-    inputs.agenix.homeManagerModules.default
   ];
 
   colors = {

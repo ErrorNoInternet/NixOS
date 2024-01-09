@@ -23,7 +23,7 @@
           patches =
             (oldAttrs.patches or [])
             ++ [
-              ../../../packages/patches/barbecue-nvim_hide-empty.patch
+              ../../../../packages/patches/barbecue-nvim_hide-empty.patch
             ];
         });
       };

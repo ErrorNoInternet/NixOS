@@ -3,37 +3,30 @@
   pkgs,
   self,
   ...
-}: let
-  custom = {
-    hostname = "Rescanix";
-    opacity = "0.8";
-    subtleOpacity = "0.9";
-    barOpacity = "0.7";
-    menuOpacity = "0.3";
-    terminal = "foot";
-    browser = "firefox";
-  };
-in {
-  _module.args = {inherit custom;};
+}: {
   imports = [
     ../common.nix
-    ../locations/china.nix
-    ../profiles/development
-    ../profiles/wm.nix
     ../programs/fcitx.nix
     ../programs/kdeconnect.nix
     ../programs/mpv.nix
     ../programs/obs-studio.nix
     ../programs/spicetify.nix
+    ../programs/terminal/btop.nix
+    ../programs/terminal/cava.nix
+    ../programs/terminal/foot.nix
+    ../programs/terminal/git.nix
     ../programs/virt-manager.nix
-    ../terminal/btop.nix
-    ../terminal/cava.nix
-    ../terminal/foot.nix
-    ../terminal/git.nix
     ../wayland/hyprland-autoname-workspaces.nix
     ../wayland/hyprland.nix
-    inputs.agenix.homeManagerModules.default
   ];
+
+  profiles = {
+    windowManager.enable = true;
+    desktop = {
+      enable = true;
+      enableNvidia = true;
+    };
+  };
 
   caches = {
     ErrorNoBinaries.enable = true;
@@ -47,11 +40,9 @@ in {
     scheme = inputs.nix-colors.colorSchemes.nord;
   };
 
-  gtkCustomization.enable = true;
-
-  mimeapps.image.enable = true;
-
-  nvidia.desktopEntries.enable = true;
+  desktop.monitors = [
+    {}
+  ];
 
   home = {
     username = "ryan";
@@ -123,9 +114,5 @@ in {
       vulkan-tools
       zbar
     ];
-    sessionVariables = {
-      TERMINAL = "${custom.terminal}";
-      BROWSER = "${custom.browser}";
-    };
   };
 }

@@ -3,19 +3,21 @@
   lib,
   pkgs,
   ...
-}: {
+}: let
+  inherit (lib) mkEnableOption mkOption mkIf;
+in {
   options = {
     gtkCustomization = {
-      enable = lib.mkEnableOption "";
+      enable = mkEnableOption "";
 
-      theme = lib.mkOption {
+      theme = mkOption {
         default = {
           name = "Colloid-Dark-${config.colors.schemeName}";
           package = pkgs.colloid-gtk-theme.override {tweaks = ["${lib.strings.toLower config.colors.schemeName}"];};
         };
       };
 
-      iconTheme = lib.mkOption {
+      iconTheme = mkOption {
         default = {
           name = "Colloid-${lib.strings.toLower config.colors.schemeName}-dark";
           package = pkgs.colloid-icon-theme.override {schemeVariants = ["${lib.strings.toLower config.colors.schemeName}"];};
@@ -24,7 +26,7 @@
     };
   };
 
-  config = lib.mkIf config.gtkCustomization.enable {
+  config = mkIf config.gtkCustomization.enable {
     gtk = {
       enable = true;
       theme = config.gtkCustomization.theme;

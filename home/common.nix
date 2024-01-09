@@ -5,14 +5,15 @@
 }: {
   imports = [
     ./modules
-    ./terminal/bat.nix
-    ./terminal/comma.nix
-    ./terminal/fastfetch.nix
-    ./terminal/fish
-    ./terminal/neovim
-    ./terminal/tmux.nix
-    ./terminal/yazi
-    ./terminal/zoxide.nix
+    ./programs/terminal/bat.nix
+    ./programs/terminal/comma.nix
+    ./programs/terminal/fastfetch.nix
+    ./programs/terminal/fish
+    ./programs/terminal/neovim
+    ./programs/terminal/tmux.nix
+    ./programs/terminal/yazi
+    ./programs/terminal/zoxide.nix
+    inputs.agenix.homeManagerModules.default
     inputs.nixvim.homeManagerModules.nixvim
   ];
 

@@ -1,44 +1,37 @@
 {
   config,
-  custom,
   inputs,
   lib,
   pkgs,
   ...
-}: {
+}:
+with config.colorScheme.colors; {
   wayland.windowManager.hyprland = {
     enable = true;
     package = inputs.hyprland.packages.${pkgs.system}.hyprland;
     settings = {
-      "$mod" =
-        if custom.hostname == "NixBtw"
-        then [
-          "ALT"
-        ]
-        else [
-          "SUPER"
-        ];
-      env = [
-        #  "__GLX_VENDOR_LIBRARY_NAME,nvidia"
-        #  "__NV_PRIME_RENDER_OFFLOAD,1"
-        #  "__NV_PRIME_RENDER_OFFLOAD_PROVIDER,NVIDIA-G0"
-        #  "__VK_LAYER_NV_optimus,NVIDIA_only"
-        #  "GBM_BACKEND,nvidia-drm"
-        #  "LIBVA_DRIVER_NAME,nvidia"
-        #  "WLR_DRM_DEVICES,/dev/dri/card1"
-        #  "WLR_NO_HARDWARE_CURSORS,1"
-        #  "XDG_SESSION_TYPE,wayland"
-      ];
+      "$mod" = config.desktop.modifierKey;
       monitor =
-        if custom.hostname == "NixBtw"
-        then [
-          "eDP-1,1920x1080@60,1680x0,1"
-          "VGA-1,1680x1050@60,0x0,1"
-          ",preferred,auto,auto"
-        ]
-        else [
-          ",preferred,auto,1"
-        ];
+        map (
+          defined: let
+            resolution =
+              if defined.width == null || defined.height == null
+              then "preferred"
+              else "${builtins.toString defined.width}${builtins.toString defined.height}@${
+                builtins.toString (
+                  if defined.refreshRate == 0
+                  then 60
+                  else defined.refreshRate
+                )
+              }";
+            position = "${builtins.toString defined.x}x${builtins.toString defined.y}";
+          in "${defined.name},${
+            if defined.enabled
+            then "${resolution},${position},${builtins.toString defined.scale}"
+            else "disable"
+          }"
+        )
+        (config.desktop.monitors);
       exec-once = [
         "sleep 0.5 && ${lib.getExe pkgs.waybar}"
         (lib.mkIf config.wallpaper.enable "${lib.getExe pkgs.hyprpaper}")
@@ -64,22 +57,22 @@
         gaps_in = 6;
         gaps_out = 10;
         border_size = 2;
-        "col.active_border" = "rgb(${config.colorScheme.colors.base0D})";
-        "col.inactive_border" = "rgb(${config.colorScheme.colors.base03})";
+        "col.active_border" = "rgb(${base0D})";
+        "col.inactive_border" = "rgb(${base03})";
         layout = "dwindle";
       };
       group = {
-        "col.border_active" = "rgb(${config.colorScheme.colors.base0D})";
-        "col.border_inactive" = "rgb(${config.colorScheme.colors.base03})";
-        "col.border_locked_active" = "rgb(${config.colorScheme.colors.base0F})";
-        "col.border_locked_inactive" = "rgb(${config.colorScheme.colors.base03})";
+        "col.border_active" = "rgb(${base0D})";
+        "col.border_inactive" = "rgb(${base03})";
+        "col.border_locked_active" = "rgb(${base0F})";
+        "col.border_locked_inactive" = "rgb(${base03})";
         groupbar = {
           gradients = false;
           render_titles = false;
-          "col.active" = "rgb(${config.colorScheme.colors.base0D})";
-          "col.inactive" = "rgb(${config.colorScheme.colors.base03})";
-          "col.locked_active" = "rgb(${config.colorScheme.colors.base0F})";
-          "col.locked_inactive" = "rgb(${config.colorScheme.colors.base03})";
+          "col.active" = "rgb(${base0D})";
+          "col.inactive" = "rgb(${base03})";
+          "col.locked_active" = "rgb(${base0F})";
+          "col.locked_inactive" = "rgb(${base03})";
         };
       };
       decoration = {
@@ -87,7 +80,7 @@
         drop_shadow = true;
         shadow_range = 25;
         shadow_render_power = 2;
-        "col.shadow" = "rgb(${config.colorScheme.colors.base00})";
+        "col.shadow" = "rgb(${base00})";
         blur = {
           enabled = true;
           passes = 3;

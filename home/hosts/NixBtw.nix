@@ -3,19 +3,9 @@
   pkgs,
   self,
   ...
-}: let
-  custom = {
-    hostname = "NixBtw";
-    terminal = "foot";
-    browser = "firefox";
-  };
-in {
-  _module.args = {inherit custom;};
+}: {
   imports = [
     ../common.nix
-    ../locations/china.nix
-    ../profiles/development
-    ../profiles/wm.nix
     ../programs/fcitx.nix
     ../programs/kdeconnect.nix
     ../programs/libreoffice.nix
@@ -23,18 +13,25 @@ in {
     ../programs/nheko.nix
     ../programs/obs-studio.nix
     ../programs/spicetify.nix
+    ../programs/terminal/btop.nix
+    ../programs/terminal/cava.nix
+    ../programs/terminal/foot.nix
+    ../programs/terminal/git.nix
+    ../programs/terminal/gnupg.nix
+    ../programs/terminal/irssi.nix
     ../programs/thunderbird.nix
     ../programs/virt-manager.nix
-    ../terminal/btop.nix
-    ../terminal/cava.nix
-    ../terminal/foot.nix
-    ../terminal/git.nix
-    ../terminal/gnupg.nix
-    ../terminal/irssi.nix
     ../wayland/hyprland-autoname-workspaces.nix
     ../wayland/hyprland.nix
-    inputs.agenix.homeManagerModules.default
   ];
+
+  profiles = {
+    windowManager.enable = true;
+    desktop = {
+      enable = true;
+      enableNvidia = true;
+    };
+  };
 
   caches = {
     ErrorNoBinaries.enable = true;
@@ -48,11 +45,22 @@ in {
     scheme = inputs.nix-colors.colorSchemes.nord;
   };
 
-  gtkCustomization.enable = true;
-
-  mimeapps.image.enable = true;
-
-  nvidia.desktopEntries.enable = true;
+  desktop = {
+    modifierKey = "ALT";
+    monitors = [
+      {
+        name = "eDP-1";
+        width = 1920;
+        height = 1080;
+        x = 1680;
+      }
+      {
+        name = "VGA-1";
+        width = 1680;
+        height = 1050;
+      }
+    ];
+  };
 
   home = {
     username = "ryan";
@@ -94,9 +102,5 @@ in {
       prismlauncher
       superTuxKart
     ];
-    sessionVariables = {
-      TERMINAL = "${custom.terminal}";
-      BROWSER = "${custom.browser}";
-    };
   };
 }

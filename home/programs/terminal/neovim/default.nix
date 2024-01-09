@@ -21,7 +21,7 @@
       patches =
         (oldAttrs.patches or [])
         ++ [
-          ../../../packages/patches/neovim_no-fold-numbers.patch
+          ../../../../packages/patches/neovim_no-fold-numbers.patch
         ];
     });
     defaultEditor = true;
