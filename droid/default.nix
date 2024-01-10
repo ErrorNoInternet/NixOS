@@ -12,7 +12,7 @@
             extraSpecialArgs = {inherit inputs;};
             sharedModules = [
               ../home/common.nix
-              ../../home/hosts/${name}.nix
+              ../home/hosts/${name}.nix
             ];
           };
         }
