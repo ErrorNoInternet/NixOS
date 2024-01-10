@@ -1,5 +1,4 @@
 {
-  inputs,
   lib,
   pkgs,
   self,
@@ -9,15 +8,12 @@
     ../shared
     ../shared/caches
     ./profiles
-    inputs.home-manager.nixosModules.home-manager
-    {
-      home-manager = {
-        useGlobalPkgs = true;
-        useUserPackages = true;
-        extraSpecialArgs = {inherit inputs self;};
-      };
-    }
   ];
+
+  caches = {
+    ErrorNoBinaries.enable = true;
+    nix-community.enable = true;
+  };
 
   boot = {
     loader = {
@@ -77,6 +73,7 @@
       xdg-desktop-portal-gtk
     ];
   };
+
   environment.systemPackages = with pkgs; [
     libsForQt5.qt5.qtgraphicaleffects
 
@@ -113,12 +110,14 @@
         ];
     }))
   ];
+
   programs = {
     dconf.enable = true;
     light.enable = true;
     gnupg.agent.enable = true;
     neovim.defaultEditor = true;
   };
+
   services = {
     logind.lidSwitch = "ignore";
     openssh.enable = true;

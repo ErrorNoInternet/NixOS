@@ -1,29 +1,74 @@
-let
-  nickname = "ErrorNoInternet";
+{
+  config,
+  lib,
+  ...
+}: let
+  inherit (lib) mkEnableOption mkOption mkIf types;
 in {
-  programs.irssi = {
-    enable = true;
-    networks = {
-      liberachat = {
-        nick = "${nickname}";
-        server = {
+  options.customPrograms.terminal.irssi = {
+    enable = mkEnableOption "";
+
+    nickname = mkOption {
+      default = "ErrorNoInternet";
+      type = types.str;
+    };
+
+    networks = mkOption {
+      default = [
+        {
+          name = "libera";
           address = "irc.libera.chat";
-          port = 6697;
-        };
-      };
-      oftc = {
-        nick = "${nickname}";
-        server = {
+        }
+        {
+          name = "oftc";
           address = "irc.oftc.net";
-          port = 6697;
+        }
+      ];
+      type = types.listOf (types.submodule {
+        options = {
+          nickname = mkOption {
+            default = "${config.customPrograms.terminal.irssi.nickname}";
+            type = types.str;
+          };
+
+          name = mkOption {
+            default = "${config.address}";
+            type = types.str;
+          };
+
+          address = mkOption {
+            type = types.str;
+          };
+
+          port = mkOption {
+            default = 6697;
+            type = types.int;
+          };
         };
-      };
+      });
     };
   };
-  home.file.".irssi/default.theme".text = ''
-    abstracts = {
-      sb_background = "%4%k";
-      sb_foreground = "%*";
+
+  config = mkIf config.customPrograms.terminal.irssi.enable {
+    programs.irssi = {
+      enable = true;
+      networks = builtins.listToAttrs (map (network: {
+          name = "${network.name}";
+          value = {
+            nick = "${network.nickname}";
+            server = {
+              address = "${network.address}";
+              port = network.port;
+            };
+          };
+        })
+        config.customPrograms.terminal.irssi.networks);
     };
-  '';
+    home.file.".irssi/default.theme".text = ''
+      abstracts = {
+        sb_background = "%4%k";
+        sb_foreground = "%*";
+      };
+    '';
+  };
 }

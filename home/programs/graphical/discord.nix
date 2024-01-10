@@ -1,0 +1,271 @@
+{
+  config,
+  lib,
+  ...
+}: let
+  inherit (lib) mkEnableOption mkIf;
+in {
+  options.customPrograms.graphical.discord.enable = mkEnableOption "";
+
+  config = mkIf config.customPrograms.graphical.discord.enable {
+    home.file.".config/Vencord/settings/settings.json" = builtins.toJSON {
+      notifyAboutUpdates = true;
+      autoUpdate = false;
+      autoUpdateNotification = true;
+      useQuickCss = false;
+      themeLinks = [
+        "https://raw.githubusercontent.com/orblazer/discord-nordic/master/nordic.vencord.css"
+      ];
+      enableReactDevtools = false;
+      frameless = false;
+      transparent = false;
+      winCtrlQ = false;
+      macosTranslucency = false;
+      disableMinSize = false;
+      winNativeTitleBar = false;
+      plugins = {
+        BadgeAPI.enabled = true;
+        CommandsAPI.enabled = true;
+        ContextMenuAPI.enabled = true;
+        MemberListDecoratorsAPI.enabled = true;
+        MessageAccessoriesAPI.enabled = true;
+        MessageDecorationsAPI.enabled = true;
+        MessageEventsAPI.enabled = true;
+        MessagePopoverAPI.enabled = true;
+        NoticesAPI.enabled = true;
+        SettingsStoreAPI.enabled = true;
+        NoTrack.enabled = true;
+        Settings = {
+          enabled = true;
+          settingsLocation = "aboveActivity";
+        };
+        AnonymiseFileNames = {
+          enabled = false;
+          method = 0;
+          randomisedLength = 10;
+          consistent = "image";
+        };
+        BetterFolders = {
+          enabled = true;
+          sidebar = true;
+          sidebarAnim = true;
+          closeAllFolders = false;
+          closeAllHomeButton = false;
+          closeOthers = false;
+          forceOpen = false;
+          showFolderIcon = 1;
+          keepIcons = false;
+        };
+        BetterNotesBox = {
+          enabled = true;
+          hide = false;
+          noSpellCheck = true;
+        };
+        BiggerStreamPreview.enabled = true;
+        CallTimer = {
+          enabled = true;
+          format = "human";
+        };
+        CrashHandler = {
+          enabled = true;
+          attemptToPreventCrashes = true;
+          attemptToNavigateToHome = false;
+        };
+        EmoteCloner.enabled = true;
+        Experiments = {
+          enabled = true;
+          enableIsStaff = false;
+          forceStagingBanner = false;
+        };
+        FakeNitro = {
+          enabled = true;
+          enableEmojiBypass = true;
+          emojiSize = 48;
+          transformEmojis = true;
+          enableStickerBypass = true;
+          stickerSize = 160;
+          transformStickers = true;
+          transformCompoundSentence = false;
+          enableStreamQualityBypass = true;
+        };
+        FavoriteEmojiFirst.enabled = true;
+        ForceOwnerCrown.enabled = true;
+        GifPaste.enabled = true;
+        ImageZoom = {
+          enabled = true;
+          saveZoomValues = true;
+          preventCarouselFromClosingOnClick = true;
+          invertScroll = true;
+          nearestNeighbour = false;
+          square = false;
+          zoom = 2.0;
+          size = 792;
+          zoomSpeed = 0.5;
+        };
+        KeepCurrentChannel.enabled = true;
+        LoadingQuotes = {
+          enabled = true;
+          replaceEvents = true;
+        };
+        MemberCount.enabled = true;
+        MessageLinkEmbeds = {
+          enabled = true;
+          automodEmbeds = "never";
+          listMode = "blacklist";
+          idList = "";
+        };
+        MessageLogger = {
+          enabled = true;
+          deleteStyle = "overlay";
+          ignoreBots = false;
+          ignoreSelf = false;
+          ignoreUsers = "";
+          ignoreChannels = "";
+          ignoreGuilds = "";
+        };
+        MoreUserTags = {
+          enabled = true;
+          tagSettings = {
+            WEBHOOK = {
+              text = "Webhook";
+              showInChat = true;
+              showInNotChat = true;
+            };
+            OWNER = {
+              text = "Owner";
+              showInChat = true;
+              showInNotChat = true;
+            };
+            ADMINISTRATOR = {
+              text = "Admin";
+              showInChat = true;
+              showInNotChat = true;
+            };
+            "MODERATOR_STAFF" = {
+              text = "Staff";
+              showInChat = false;
+              showInNotChat = false;
+            };
+            MODERATOR = {
+              text = "Mod";
+              showInChat = true;
+              showInNotChat = true;
+            };
+            "VOICE_MODERATOR" = {
+              text = "VC Mod";
+              showInChat = false;
+              showInNotChat = true;
+            };
+          };
+        };
+        MutualGroupDMs.enabled = true;
+        NoF1.enabled = true;
+        NoReplyMention = {
+          enabled = true;
+          userList = "372809091208445953";
+          shouldPingListed = false;
+          inverseShiftReply = false;
+        };
+        PermissionsViewer = {
+          enabled = true;
+          permissionsSortOrder = 0;
+          defaultPermissionsDropdownState = false;
+        };
+        PlatformIndicators = {
+          enabled = true;
+          list = true;
+          badges = true;
+          messages = false;
+          colorMobileIndicator = true;
+        };
+        RelationshipNotifier = {
+          enabled = true;
+          notices = true;
+          offlineRemovals = true;
+          friends = true;
+          friendRequestCancels = true;
+          servers = true;
+          groups = true;
+        };
+        SearchReply.enabled = true;
+        SendTimestamps.enabled = true;
+        ShikiCodeblocks = {
+          enabled = true;
+          useDevIcon = "GREYSCALE";
+          theme = "https://raw.githubusercontent.com/shikijs/shiki/0b28ad8ccfbf2615f2d9d38ea8255416b8ac3043/packages/shiki/themes/github-dark-dimmed.json";
+          tryHljs = "SECONDARY";
+          bgOpacity = 100;
+        };
+        ShowHiddenChannels = {
+          enabled = true;
+          hideUnreads = true;
+          showMode = 1;
+          defaultAllowedUsersAndRolesDropdownState = true;
+        };
+        SilentTyping = {
+          enabled = true;
+          showIcon = false;
+          isEnabled = true;
+        };
+        SortFriendRequests = {
+          enabled = true;
+          showDates = false;
+        };
+        SupportHelper.enabled = true;
+        Translate = {
+          enabled = true;
+          autoTranslate = false;
+          receivedInput = "auto";
+          receivedOutput = "en";
+          sentInput = "auto";
+          sentOutput = "en";
+        };
+        TypingIndicator = {
+          enabled = true;
+          includeMutedChannels = true;
+          includeBlockedUsers = false;
+        };
+        TypingTweaks = {
+          enabled = true;
+          showAvatars = true;
+          showRoleColors = true;
+          alternativeFormatting = true;
+        };
+        UserVoiceShow = {
+          enabled = true;
+          showInUserProfileModal = true;
+          showVoiceChannelSectionHeader = true;
+        };
+        UwUifier = {
+          enabled = true;
+          uwuEveryMessage = false;
+        };
+        ValidUser.enabled = true;
+        ViewIcons = {
+          enabled = true;
+          format = "png";
+          imgSize = "4096";
+        };
+        ViewRaw = {
+          enabled = true;
+          clickMethod = "Left";
+        };
+        ShowTimeouts.enabled = true;
+        NoTypingAnimation.enabled = true;
+      };
+      notifications = {
+        timeout = 5000;
+        position = "bottom-right";
+        useNative = "not-focused";
+        logLimit = 50;
+      };
+      cloud = {
+        authenticated = false;
+        url = "https://api.vencord.dev/";
+        settingsSync = false;
+        settingsSyncVersion = 1704773064108;
+      };
+      enabledThemes = [];
+    };
+  };
+}

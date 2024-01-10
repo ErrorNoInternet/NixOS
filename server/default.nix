@@ -11,21 +11,29 @@
         ./hosts/${name}
       ];
     };
+
   mkHmSystem = name:
     inputs.nixpkgs.lib.nixosSystem {
       specialArgs = {inherit inputs self;};
       modules = [
         ./common.nix
         ./hosts/${name}
+
         inputs.home-manager.nixosModules.home-manager
         {
           home-manager = {
             useGlobalPkgs = true;
             useUserPackages = true;
             extraSpecialArgs = {inherit inputs self;};
+
+            users.snowflake = {...}: {
+              imports = [
+                ../home/common.nix
+                ../home/hosts/${name}.nix
+              ];
+            };
           };
         }
-        {home-manager.users.snowflake = import ../home/hosts/${name}.nix;}
       ];
     };
 in {

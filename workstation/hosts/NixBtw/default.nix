@@ -16,13 +16,13 @@
     ../../programs/openrgb.nix
   ];
 
-  caches.hyprland.enable = true;
-
   environment.variables.HOSTNAME = "NixBtw";
   networking = {
     hostName = "NixBtw";
     hostId = "102f58f5";
   };
+
+  nix.gc.automatic = false;
 
   fileSystems."/mnt/pi-drive1" = {
     device = "192.168.0.100:/mnt/drive1";
@@ -35,7 +35,6 @@
     options = ["x-systemd.automount" "noauto"];
   };
 
-  nix.gc.automatic = false;
   boot.kernelPackages = pkgs.linuxPackages_testing;
 
   services.udev.extraRules = ''
@@ -43,9 +42,7 @@
   '';
 
   systemd.services.lock_intel_gpu_frequency = {
-    path = with pkgs; [
-      intel-gpu-tools
-    ];
+    path = [pkgs.intel-gpu-tools];
     script = "intel_gpu_frequency -m";
     wantedBy = ["multi-user.target"];
   };

@@ -1,5 +1,7 @@
 {
+  config,
   inputs,
+  lib,
   pkgs,
   ...
 }: {
@@ -12,18 +14,21 @@
     ./lsp.nix
     ./options.nix
     ./shortcuts.nix
-    ./ui.nix
+    ./visual.nix
+    inputs.nixvim.homeManagerModules.nixvim
   ];
 
-  programs.nixvim = {
-    enable = true;
-    package = inputs.neovim.packages.${pkgs.system}.neovim.overrideAttrs (oldAttrs: {
-      patches =
-        (oldAttrs.patches or [])
-        ++ [
-          ../../../../packages/patches/neovim_no-fold-numbers.patch
-        ];
-    });
-    defaultEditor = true;
+  config = lib.mkIf config.customPrograms.terminal.fish.enable {
+    programs.nixvim = {
+      enable = true;
+      package = inputs.neovim.packages.${pkgs.system}.neovim.overrideAttrs (oldAttrs: {
+        patches =
+          (oldAttrs.patches or [])
+          ++ [
+            ../../../../packages/patches/neovim_no-fold-numbers.patch
+          ];
+      });
+      defaultEditor = true;
+    };
   };
 }

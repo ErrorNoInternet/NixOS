@@ -3,17 +3,17 @@
   lib,
   ...
 }: let
-  inherit (lib) mkEnableOption;
+  inherit (lib) mkEnableOption mkIf;
 in {
   options.profiles.desktop = {
     enable = mkEnableOption "";
     enableNvidia = mkEnableOption "";
   };
 
-  config = {
-    cursor.enable = config.profiles.desktop.enable;
-    gtkCustomization.enable = config.profiles.desktop.enable;
-    mimeapps.image.enable = config.profiles.desktop.enable;
+  config = mkIf config.profiles.desktop.enable {
+    cursor.enable = true;
+    gtkCustomization.enable = true;
+    mimeapps.image.enable = true;
 
     nvidia.desktopEntries.enable = config.profiles.desktop.enableNvidia;
   };

@@ -4,21 +4,12 @@
   self,
   ...
 }: {
-  imports = [
-    ../common.nix
-    ../programs/fcitx.nix
-    ../programs/kdeconnect.nix
-    ../programs/mpv.nix
-    ../programs/obs-studio.nix
-    ../programs/spicetify.nix
-    ../programs/terminal/btop.nix
-    ../programs/terminal/cava.nix
-    ../programs/terminal/foot.nix
-    ../programs/terminal/git.nix
-    ../programs/virt-manager.nix
-    ../wayland/hyprland-autoname-workspaces.nix
-    ../wayland/hyprland.nix
-  ];
+  caches.nix-gaming.enable = true;
+
+  colors = {
+    schemeName = "Nord";
+    scheme = inputs.nix-colors.colorSchemes.nord;
+  };
 
   profiles = {
     windowManager.enable = true;
@@ -28,19 +19,29 @@
     };
   };
 
-  caches = {
-    ErrorNoBinaries.enable = true;
+  desktop = {
     hyprland.enable = true;
-    nix-community.enable = true;
-    nix-gaming.enable = true;
+    monitors = [{}];
   };
 
-  colors = {
-    schemeName = "Nord";
-    scheme = inputs.nix-colors.colorSchemes.nord;
-  };
+  customPrograms = {
+    graphical = {
+      kdeconnect.enable = true;
+      libreoffice.enable = true;
+      nheko.enable = true;
+      obsStudio.enable = true;
+      spotify.enable = true;
+      thunderbird.enable = true;
+      virtManager.enable = true;
+    };
 
-  desktop.monitors = [{}];
+    terminal = {
+      cava.enable = true;
+      git.enable = true;
+      gpg.enable = true;
+      irssi.enable = true;
+    };
+  };
 
   home = {
     username = "ryan";

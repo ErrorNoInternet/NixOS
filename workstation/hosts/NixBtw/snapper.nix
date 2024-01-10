@@ -1,5 +1,5 @@
 {pkgs, ...}: {
-  environment.systemPackages = with pkgs; [snapper];
+  environment.systemPackages = [pkgs.snapper];
   systemd.services = {
     snapper-cleanup = {
       restartIfChanged = false;

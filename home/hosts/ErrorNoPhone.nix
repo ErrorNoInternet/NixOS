@@ -1,7 +1,5 @@
 {
-  imports = [
-    ../common.nix
-    ../programs/terminal/git.nix
-  ];
   flags.nixOnDroid = true;
+
+  customPrograms.terminal.git.enable = true;
 }

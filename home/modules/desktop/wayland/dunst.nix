@@ -2,12 +2,12 @@
   config,
   lib,
   ...
-}:
-with config.colorScheme.colors; {
+}: {
   config = lib.mkIf config.profiles.windowManager.enable {
-    services.dunst = {
+    services.dunst = with config.colorScheme.colors; {
       enable = true;
       iconTheme = config.gtkCustomization.iconTheme;
+
       settings = {
         global = {
           origin = "top-right";

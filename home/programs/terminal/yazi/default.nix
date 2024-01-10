@@ -1,18 +1,22 @@
 {
+  config,
   inputs,
+  lib,
   pkgs,
   ...
 }: {
   imports = [
     ./keymaps.nix
     ./open.nix
-    ./ui.nix
+    ./visual.nix
   ];
 
-  programs.yazi = {
-    enable = true;
-    package = inputs.yazi.packages.${pkgs.system}.yazi;
-    enableFishIntegration = true;
-    enableZshIntegration = true;
+  config = lib.mkIf config.customPrograms.terminal.fish.enable {
+    programs.yazi = {
+      enable = true;
+      package = inputs.yazi.packages.${pkgs.system}.yazi;
+      enableFishIntegration = true;
+      enableZshIntegration = true;
+    };
   };
 }

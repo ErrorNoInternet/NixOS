@@ -4,9 +4,7 @@
   lib,
   ...
 }: {
-  imports = [
-    inputs.nix-colors.homeManagerModules.default
-  ];
+  imports = [inputs.nix-colors.homeManagerModules.default];
 
   options = {
     colors = {

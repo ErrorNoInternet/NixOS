@@ -3,25 +3,12 @@
   pkgs,
   ...
 }: {
-  imports = [
-    ../common.nix
-    ../programs/terminal/btop.nix
-  ];
-
   colors = {
     schemeName = "Nord";
     scheme = inputs.nix-colors.colorSchemes.nord;
   };
 
-  caches = {
-    ErrorNoBinaries = {
-      enable = true;
-      internal = true;
-      external = false;
-      cachix = true;
-    };
-    nix-community.enable = true;
-  };
+  caches.ErrorNoBinaries.external = false;
 
   home = {
     username = "snowflake";

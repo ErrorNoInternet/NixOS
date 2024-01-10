@@ -4,8 +4,9 @@
   pkgs,
   ...
 }: let
+  inherit (lib) mkEnableOption mkOption mkIf types;
+
   pathPrefix = "~/pictures/wallpapers/";
-  inherit (lib) mkOption mkEnableOption mkIf types;
 in {
   options.wallpaper = {
     enable = mkEnableOption "";

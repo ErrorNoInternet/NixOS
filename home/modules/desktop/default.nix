@@ -11,6 +11,7 @@ in {
     ./opacity.nix
     ./terminal.nix
     ./wallpaper.nix
+    ./wayland
   ];
 
   options.desktop = {

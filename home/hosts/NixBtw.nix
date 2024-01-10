@@ -4,26 +4,12 @@
   self,
   ...
 }: {
-  imports = [
-    ../common.nix
-    ../programs/fcitx.nix
-    ../programs/kdeconnect.nix
-    ../programs/libreoffice.nix
-    ../programs/mpv.nix
-    ../programs/nheko.nix
-    ../programs/obs-studio.nix
-    ../programs/spicetify.nix
-    ../programs/terminal/btop.nix
-    ../programs/terminal/cava.nix
-    ../programs/terminal/foot.nix
-    ../programs/terminal/git.nix
-    ../programs/terminal/gnupg.nix
-    ../programs/terminal/irssi.nix
-    ../programs/thunderbird.nix
-    ../programs/virt-manager.nix
-    ../wayland/hyprland-autoname-workspaces.nix
-    ../wayland/hyprland.nix
-  ];
+  caches.nix-gaming.enable = true;
+
+  colors = {
+    schemeName = "Nord";
+    scheme = inputs.nix-colors.colorSchemes.nord;
+  };
 
   profiles = {
     windowManager.enable = true;
@@ -33,19 +19,8 @@
     };
   };
 
-  caches = {
-    ErrorNoBinaries.enable = true;
-    hyprland.enable = true;
-    nix-community.enable = true;
-    nix-gaming.enable = true;
-  };
-
-  colors = {
-    schemeName = "Nord";
-    scheme = inputs.nix-colors.colorSchemes.nord;
-  };
-
   desktop = {
+    hyprland.enable = true;
     modifierKey = "ALT";
     monitors = [
       {
@@ -61,6 +36,25 @@
       }
       {}
     ];
+  };
+
+  customPrograms = {
+    graphical = {
+      kdeconnect.enable = true;
+      libreoffice.enable = true;
+      nheko.enable = true;
+      obsStudio.enable = true;
+      spotify.enable = true;
+      thunderbird.enable = true;
+      virtManager.enable = true;
+    };
+
+    terminal = {
+      cava.enable = true;
+      git.enable = true;
+      gpg.enable = true;
+      irssi.enable = true;
+    };
   };
 
   home = {

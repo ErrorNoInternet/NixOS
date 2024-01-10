@@ -3,12 +3,12 @@
   lib,
   pkgs,
   ...
-}:
-with config.colorScheme.colors; {
+}: {
   config = lib.mkIf config.profiles.windowManager.enable {
-    programs.swaylock = {
+    programs.swaylock = with config.colorScheme.colors; {
       enable = true;
       package = pkgs.swaylock-effects;
+
       settings = {
         clock = true;
         screenshot = true;

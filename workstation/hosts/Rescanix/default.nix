@@ -20,10 +20,6 @@
     ../../programs/openrgb.nix
   ];
 
-  caches.hyprland.enable = true;
-
-  profiles.vmGuest.enable = true;
-
   environment.variables.HOSTNAME = "Rescanix";
   networking = {
     hostName = "Rescanix";
@@ -48,5 +44,8 @@
     enable = true;
     drivers = with pkgs; [hplip];
   };
+
+  profiles.vmGuest.enable = true;
+
   services.xserver.desktopManager.plasma5.enable = true;
 }

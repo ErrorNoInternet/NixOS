@@ -4,34 +4,31 @@
   ...
 }: {
   imports = [
+    ../shared/caches
     ./modules
-    ./programs/terminal/bat.nix
-    ./programs/terminal/comma.nix
-    ./programs/terminal/fastfetch.nix
-    ./programs/terminal/fish
-    ./programs/terminal/neovim
-    ./programs/terminal/tmux.nix
-    ./programs/terminal/yazi
-    ./programs/terminal/zoxide.nix
+    ./programs
     inputs.agenix.homeManagerModules.default
-    inputs.nixvim.homeManagerModules.nixvim
   ];
 
-  home = {
-    packages = with pkgs; [
-      cmatrix
-      croc
-      dua
-      eza
-      fd
-      inputs.hsize.packages.${pkgs.system}.hsize
-      jq
-      nh
-      progress
-    ];
-    stateVersion = "23.05";
+  caches = {
+    ErrorNoBinaries.enable = true;
+    nix-community.enable = true;
   };
+
+  home.packages = with pkgs; [
+    cmatrix
+    croc
+    dua
+    eza
+    fd
+    inputs.hsize.packages.${pkgs.system}.hsize
+    jq
+    nh
+    progress
+  ];
 
   programs.man.generateCaches = false;
   manual.manpages.enable = false;
+
+  home.stateVersion = "23.05";
 }

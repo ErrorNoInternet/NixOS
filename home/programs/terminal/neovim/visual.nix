@@ -1,7 +1,5 @@
 {pkgs, ...}: {
-  home.packages = with pkgs; [
-    code-minimap
-  ];
+  home.packages = [pkgs.code-minimap];
   programs.nixvim = {
     options = {
       cursorline = true;

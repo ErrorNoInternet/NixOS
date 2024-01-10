@@ -20,7 +20,7 @@ in {
     networking.extraHosts = ''
       185.199.111.133 raw.githubusercontent.com
     '';
-    environment.systemPackages = with pkgs; [mullvad-vpn];
+    environment.systemPackages = [pkgs.mullvad-vpn];
     services.mullvad-vpn.enable = true;
   };
 }

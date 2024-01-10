@@ -13,7 +13,22 @@
       modules = [
         ./common.nix
         ./hosts/${name}
-        {home-manager.users.ryan = import ../home/hosts/${name}.nix;}
+
+        inputs.home-manager.nixosModules.home-manager
+        {
+          home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = true;
+            extraSpecialArgs = {inherit inputs self;};
+
+            users.ryan = {...}: {
+              imports = [
+                ../home/common.nix
+                ../home/hosts/${name}.nix
+              ];
+            };
+          };
+        }
       ];
     };
 in {

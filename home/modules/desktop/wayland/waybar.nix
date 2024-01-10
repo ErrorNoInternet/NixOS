@@ -4,10 +4,9 @@
   lib,
   pkgs,
   ...
-}:
-with config.colorScheme.colors; {
+}: {
   config = lib.mkIf config.profiles.windowManager.enable {
-    programs.waybar = {
+    programs.waybar = with config.colorScheme.colors; {
       enable = true;
       settings.mainBar = {
         position = "top";
