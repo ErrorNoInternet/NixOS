@@ -5,9 +5,9 @@
 }: let
   inherit (lib) mkEnableOption mkIf;
 in {
-  options.profiles.vmGuest.enable = mkEnableOption "";
+  options.workstation.profiles.vmGuest.enable = mkEnableOption "";
 
-  config = mkIf config.profiles.vmGuest.enable {
+  config = mkIf config.workstation.profiles.vmGuest.enable {
     services.spice-vdagentd.enable = true;
   };
 }

@@ -19,12 +19,9 @@
     };
   };
 
-  desktop = {
-    hyprland.enable = true;
-    monitors = [{}];
-  };
+  desktop.monitors = [{}];
 
-  customPrograms = {
+  home.programs = {
     graphical = {
       kdeconnect.enable = true;
       libreoffice.enable = true;

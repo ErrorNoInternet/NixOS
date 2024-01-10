@@ -1,16 +1,11 @@
 {
-  imports = [
-    ./hardware.nix
-
-    ../../../shared/modules/wireless.nix
-    ../../modules/bootloader.nix
-    ../../profiles/minecraft-server.nix
-  ];
-
-  networking.hostName = "Crix";
-  environment.variables.HOSTNAME = "Crix";
-
   caches.ErrorNoBinaries.external = false;
 
   services.logind.lidSwitch = "ignore";
+  shared.modules.wireless.enable = true;
+  server.modules = {
+    bootloader.enable = true;
+
+    servers.minecraft.enable = true;
+  };
 }

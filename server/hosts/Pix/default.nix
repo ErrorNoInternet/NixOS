@@ -1,25 +1,27 @@
 {
-  config,
-  pkgs,
-  ...
-}: {
   imports = [
-    ./hardware.nix
+    ./ddns.nix
     ./drives.nix
-
-    ../../../shared/modules/raspberry-pi.nix
-    ../../modules/attic-server.nix
-    ../../modules/nfs.nix
-    ../../modules/printing.nix
-    ../../modules/samba.nix
-    ../../programs/fish.nix
   ];
-  age.secrets.ddns.file = ../../../secrets/ddns.age;
-
-  networking.hostName = "Pix";
-  environment.variables.HOSTNAME = "Pix";
 
   caches.ErrorNoBinaries.external = false;
+
+  shared = {
+    flags.raspberryPi = true;
+    modules = {
+      emulation.linux.aarch64 = false;
+      btrfs.compression.enable = false;
+    };
+  };
+
+  server.modules = {
+    servers = {
+      attic.enable = true;
+      nfs.enable = true;
+      samba.enable = true;
+    };
+    printing.enable = true;
+  };
 
   networking.firewall = {
     allowedTCPPorts = [
@@ -54,29 +56,5 @@
       8083
       8084
     ];
-  };
-
-  systemd = {
-    timers."update-ddns" = {
-      wantedBy = ["timers.target"];
-      timerConfig = {
-        OnBootSec = "1m";
-        OnUnitActiveSec = "6h";
-        Unit = "update-ddns.service";
-      };
-    };
-    services."update-ddns" = {
-      script = ''
-        TOKEN="$(head -n1 ${config.age.secrets.ddns.path})"
-        ZONES="$(tail -n+2 ${config.age.secrets.ddns.path})"
-        for ZONE in $ZONES; do
-          ${pkgs.curl}/bin/curl -4Lv "https://ipv4.dynv6.com/api/update?ipv4=auto&token=$TOKEN&zone=$ZONE"
-        done
-      '';
-      serviceConfig = {
-        Type = "oneshot";
-        User = "root";
-      };
-    };
   };
 }

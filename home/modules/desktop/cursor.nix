@@ -3,29 +3,29 @@
   lib,
   pkgs,
   ...
-}: {
-  options = {
-    cursor = {
-      enable = lib.mkEnableOption "";
+}: let
+  inherit (lib) mkEnableOption mkOption mkIf types;
+in {
+  options.cursor = {
+    enable = mkEnableOption "";
 
-      name = lib.mkOption {
-        default = "Bibata-Modern-Classic";
-        type = lib.types.str;
-      };
+    name = mkOption {
+      default = "Bibata-Modern-Classic";
+      type = types.str;
+    };
 
-      package = lib.mkOption {
-        default = pkgs.bibata-cursors;
-        type = lib.types.package;
-      };
+    package = mkOption {
+      default = pkgs.bibata-cursors;
+      type = types.package;
+    };
 
-      size = lib.mkOption {
-        default = 16;
-        type = lib.types.int;
-      };
+    size = mkOption {
+      default = 16;
+      type = types.int;
     };
   };
 
-  config = lib.mkIf config.cursor.enable {
+  config = mkIf config.cursor.enable {
     home.pointerCursor = {
       name = config.cursor.name;
       package = config.cursor.package;

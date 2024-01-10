@@ -7,7 +7,9 @@
 }: {
   imports = [
     ../shared
-    ../shared/caches
+    ./modules
+    ./profiles
+    ./programs
     inputs.agenix.nixosModules.default
   ];
 

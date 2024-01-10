@@ -1,28 +1,8 @@
 {pkgs, ...}: {
   imports = [
-    ./hardware.nix
     ./snapper.nix
-
-    ../../../shared/modules/aarch64-emulation.nix
-    ../../../shared/modules/btrfs-subvolume-compression.nix
-    ../../modules/bluetooth.nix
-    ../../modules/nvidia-options.nix
-    ../../modules/nvidia.nix
-    ../../modules/video-acceleration.nix
-    ../../modules/virtualization.nix
-    ../../programs/clamav.nix
-    ../../programs/fish.nix
-    ../../programs/hyprland.nix
-    ../../programs/openrgb.nix
   ];
-
-  environment.variables.HOSTNAME = "NixBtw";
-  networking = {
-    hostName = "NixBtw";
-    hostId = "102f58f5";
-  };
-
-  nix.gc.automatic = false;
+  host.id = "102f58f5";
 
   fileSystems."/mnt/pi-drive1" = {
     device = "192.168.0.100:/mnt/drive1";
@@ -46,4 +26,10 @@
     script = "intel_gpu_frequency -m";
     wantedBy = ["multi-user.target"];
   };
+
+  shared.modules.btrfs.compression.subvolumeLayout = true;
+
+  workstation.desktops.hyprland.enable = true;
+
+  nix.gc.automatic = false;
 }

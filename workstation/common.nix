@@ -1,4 +1,5 @@
 {
+  inputs,
   lib,
   pkgs,
   self,
@@ -6,14 +7,11 @@
 }: {
   imports = [
     ../shared
-    ../shared/caches
+    ./modules
     ./profiles
+    ./programs
+    inputs.agenix.nixosModules.default
   ];
-
-  caches = {
-    ErrorNoBinaries.enable = true;
-    nix-community.enable = true;
-  };
 
   boot = {
     loader = {

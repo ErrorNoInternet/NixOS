@@ -11,7 +11,7 @@
     ./visual.nix
   ];
 
-  config = lib.mkIf config.customPrograms.terminal.fish.enable {
+  config = lib.mkIf config.home.programs.terminal.fish.enable {
     programs.yazi = {
       enable = true;
       package = inputs.yazi.packages.${pkgs.system}.yazi;

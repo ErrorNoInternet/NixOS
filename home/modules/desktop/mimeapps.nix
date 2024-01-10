@@ -2,30 +2,30 @@
   config,
   lib,
   ...
-}: {
-  options = {
-    mimeapps = {
-      image = {
-        enable = lib.mkEnableOption "";
+}: let
+  inherit (lib) mkEnableOption mkOption mkIf types;
+in {
+  options.mimeapps = {
+    image = {
+      enable = mkEnableOption "";
 
-        opener = lib.mkOption {
-          default = "vimiv.desktop";
-          type = lib.types.str;
-        };
+      opener = mkOption {
+        default = "vimiv.desktop";
+        type = types.str;
       };
     };
   };
 
-  config = lib.mkIf config.mimeapps.image.enable {
+  config = mkIf config.mimeapps.image.enable {
     xdg.mimeApps = {
       enable = true;
-      defaultApplications = {
-        "image/gif" = [config.mimeapps.image.opener];
-        "image/jpeg" = [config.mimeapps.image.opener];
-        "image/png" = [config.mimeapps.image.opener];
-        "image/svg+xml" = [config.mimeapps.image.opener];
-        "image/tiff" = [config.mimeapps.image.opener];
-        "image/webp" = [config.mimeapps.image.opener];
+      defaultApplications = with config.mimeapps; {
+        "image/gif" = [image.opener];
+        "image/jpeg" = [image.opener];
+        "image/png" = [image.opener];
+        "image/svg+xml" = [image.opener];
+        "image/tiff" = [image.opener];
+        "image/webp" = [image.opener];
       };
     };
   };

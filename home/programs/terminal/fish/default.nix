@@ -14,14 +14,14 @@ in {
     ./visual.nix
   ];
 
-  options.customPrograms.terminal.fish.enable =
+  options.home.programs.terminal.fish.enable =
     mkEnableOption ""
     // {
       default = true;
     };
 
-  config = mkIf (config.customPrograms.terminal.fish.enable
-    || config.customPrograms.terminal.foot.enable) {
+  config = mkIf (config.home.programs.terminal.fish.enable
+    || config.home.programs.terminal.foot.enable) {
     programs.fish = {
       enable = true;
       plugins = with pkgs.fishPlugins; [

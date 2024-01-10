@@ -1,7 +1,8 @@
 {lib, ...}: let
   inherit (lib) mkEnableOption;
 in {
-  options.flags = {
+  options.shared.flags = {
+    raspberryPi = mkEnableOption "";
     nixOnDroid = mkEnableOption "";
   };
 }

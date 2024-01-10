@@ -1,5 +1,5 @@
 {
   flags.nixOnDroid = true;
 
-  customPrograms.terminal.git.enable = true;
+  home.programs.terminal.git.enable = true;
 }

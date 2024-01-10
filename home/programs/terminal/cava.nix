@@ -9,9 +9,9 @@
     mkIf
     ;
 in {
-  options.customPrograms.terminal.cava.enable = mkEnableOption "";
+  options.home.programs.terminal.cava.enable = mkEnableOption "";
 
-  config = mkIf config.customPrograms.terminal.cava.enable {
+  config = mkIf config.home.programs.terminal.cava.enable {
     programs.cava = {
       enable = true;
       settings = {

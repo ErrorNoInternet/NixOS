@@ -5,7 +5,7 @@
 }: let
   inherit (lib) mkEnableOption mkOption mkIf types;
 in {
-  options.customPrograms.terminal.irssi = {
+  options.home.programs.terminal.irssi = {
     enable = mkEnableOption "";
 
     nickname = mkOption {
@@ -27,7 +27,7 @@ in {
       type = types.listOf (types.submodule {
         options = {
           nickname = mkOption {
-            default = "${config.customPrograms.terminal.irssi.nickname}";
+            default = "${config.home.programs.terminal.irssi.nickname}";
             type = types.str;
           };
 
@@ -49,7 +49,7 @@ in {
     };
   };
 
-  config = mkIf config.customPrograms.terminal.irssi.enable {
+  config = mkIf config.home.programs.terminal.irssi.enable {
     programs.irssi = {
       enable = true;
       networks = builtins.listToAttrs (map (network: {
@@ -62,7 +62,7 @@ in {
             };
           };
         })
-        config.customPrograms.terminal.irssi.networks);
+        config.home.programs.terminal.irssi.networks);
     };
     home.file.".irssi/default.theme".text = ''
       abstracts = {

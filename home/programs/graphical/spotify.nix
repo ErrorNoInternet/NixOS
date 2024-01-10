@@ -11,9 +11,9 @@
 in {
   imports = [inputs.spicetify-nix.homeManagerModule];
 
-  options.customPrograms.graphical.spotify.enable = mkEnableOption "";
+  options.home.programs.graphical.spotify.enable = mkEnableOption "";
 
-  config = mkIf config.customPrograms.graphical.spotify.enable {
+  config = mkIf config.home.programs.graphical.spotify.enable {
     programs.spicetify = {
       enable = true;
       theme = spicePkgs.themes.Nord;

@@ -5,9 +5,9 @@
 }: let
   inherit (lib) mkEnableOption mkIf;
 in {
-  options.customPrograms.graphical.discord.enable = mkEnableOption "";
+  options.home.programs.graphical.discord.enable = mkEnableOption "";
 
-  config = mkIf config.customPrograms.graphical.discord.enable {
+  config = mkIf config.home.programs.graphical.discord.enable {
     home.file.".config/Vencord/settings/settings.json" = builtins.toJSON {
       notifyAboutUpdates = true;
       autoUpdate = false;

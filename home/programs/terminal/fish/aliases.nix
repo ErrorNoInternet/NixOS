@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  osConfig,
   pkgs,
   ...
 }: {
@@ -25,7 +26,7 @@
     timg = "${lib.getExe pkgs.timg} -ps";
 
     nix =
-      if config.flags.nixOnDroid
+      if osConfig.shared.flags.nixOnDroid
       then "nix"
       else "nix --default-flake flake:nixpkgs";
 

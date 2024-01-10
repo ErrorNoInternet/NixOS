@@ -5,9 +5,9 @@
 }: let
   inherit (lib) mkEnableOption mkIf;
 in {
-  options.customPrograms.terminal.gpg.enable = mkEnableOption "";
+  options.home.programs.terminal.gpg.enable = mkEnableOption "";
 
-  config = mkIf config.customPrograms.terminal.gpg.enable {
+  config = mkIf config.home.programs.terminal.gpg.enable {
     programs.gpg = {
       enable = true;
       settings = {

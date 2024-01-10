@@ -7,7 +7,7 @@
 }: let
   inherit (lib) mkOption mkIf types;
 in {
-  options.customPrograms.wayland.wleave = {
+  options.home.programs.wayland.wleave = {
     sleep = mkOption {
       default = 0.25;
       type = types.float;
@@ -20,7 +20,7 @@ in {
   };
 
   config = mkIf config.profiles.windowManager.enable {
-    programs.wlogout = with config.customPrograms.wayland.wleave;
+    programs.wlogout = with config.home.programs.wayland.wleave;
     with config.colorScheme.colors; {
       enable = true;
       package = pkgs.wleave;

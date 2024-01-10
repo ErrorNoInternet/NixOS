@@ -2,8 +2,16 @@
   config,
   lib,
   ...
-}: {
-  config = lib.mkIf (config.specialisation != {}) {
+}: let
+  inherit (lib) mkEnableOption mkIf;
+in {
+  options.workstation.modules.nvidia.enable =
+    mkEnableOption ""
+    // {
+      default = true;
+    };
+
+  config = mkIf (config.specialisation != {} && config.workstation.modules.nvidia.enable) {
     services.xserver.videoDrivers = ["nvidia"];
     hardware = {
       opengl = {

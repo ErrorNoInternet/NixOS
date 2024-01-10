@@ -52,6 +52,7 @@
           packages = with pkgs; [
             alejandra
             bat
+            deadnix
             git
             neovim
           ];

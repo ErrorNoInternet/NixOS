@@ -9,6 +9,8 @@
       modules = [
         ./common.nix
         ./hosts/${name}
+        ./hosts/${name}/hardware.nix
+        {host.name = "${name}";}
       ];
     };
 
@@ -18,6 +20,8 @@
       modules = [
         ./common.nix
         ./hosts/${name}
+        ./hosts/${name}/hardware.nix
+        {host.name = "${name}";}
 
         inputs.home-manager.nixosModules.home-manager
         {

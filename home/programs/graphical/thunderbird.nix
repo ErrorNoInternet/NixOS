@@ -5,9 +5,9 @@
 }: let
   inherit (lib) mkEnableOption mkIf;
 in {
-  options.customPrograms.graphical.thunderbird.enable = mkEnableOption "";
+  options.home.programs.graphical.thunderbird.enable = mkEnableOption "";
 
-  config = mkIf config.customPrograms.graphical.thunderbird.enable {
+  config = mkIf config.home.programs.graphical.thunderbird.enable {
     programs.thunderbird = {
       enable = true;
       profiles = {

@@ -4,16 +4,12 @@
   lib,
   pkgs,
   ...
-}: {
-  options = {
-    nvidia = {
-      desktopEntries = {
-        enable = lib.mkEnableOption "";
-      };
-    };
-  };
+}: let
+  inherit (lib) mkEnableOption mkIf;
+in {
+  options.nvidia.desktopEntries.enable = mkEnableOption "";
 
-  config = lib.mkIf config.nvidia.desktopEntries.enable {
+  config = mkIf config.nvidia.desktopEntries.enable {
     xdg.desktopEntries = {
       supertuxkart = {
         name = "SuperTuxKart (nvidia-offload)";

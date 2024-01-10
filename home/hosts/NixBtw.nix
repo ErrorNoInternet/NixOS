@@ -20,7 +20,6 @@
   };
 
   desktop = {
-    hyprland.enable = true;
     modifierKey = "ALT";
     monitors = [
       {
@@ -38,7 +37,7 @@
     ];
   };
 
-  customPrograms = {
+  home.programs = {
     graphical = {
       kdeconnect.enable = true;
       libreoffice.enable = true;

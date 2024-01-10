@@ -18,7 +18,7 @@
     inputs.nixvim.homeManagerModules.nixvim
   ];
 
-  config = lib.mkIf config.customPrograms.terminal.fish.enable {
+  config = lib.mkIf config.home.programs.terminal.fish.enable {
     programs.nixvim = {
       enable = true;
       package = inputs.neovim.packages.${pkgs.system}.neovim.overrideAttrs (oldAttrs: {
