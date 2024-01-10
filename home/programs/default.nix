@@ -2,5 +2,6 @@
   imports = [
     ./graphical
     ./terminal
+    ./wayland
   ];
 }
