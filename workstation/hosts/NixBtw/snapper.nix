@@ -3,10 +3,7 @@
   systemd.services = {
     snapper-cleanup = {
       restartIfChanged = false;
-      serviceConfig = {
-        Type = "notify";
-        Restart = "no";
-      };
+      serviceConfig.Restart = "no";
     };
     snapperd = {
       restartIfChanged = false;
