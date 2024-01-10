@@ -1,7 +1,7 @@
 {
   imports = [
-    ./aarch64-emulation.nix
-    ./btrfs-compression.nix
+    ./btrfs.nix
+    ./emulation.nix
     ./flags.nix
     ./host.nix
     ./raspberry-pi.nix
