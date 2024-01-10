@@ -84,29 +84,14 @@
     neovim
     pulseaudio
     ripgrep
+    self.packages.${system}.btrfs-progs
+    self.packages.${system}.nix
     sysstat
     tmux
     unzip
     vim
     wget
     xdg-user-dirs
-
-    (btrfs-progs.overrideAttrs (oldAttrs: {
-      patches =
-        (oldAttrs.patches or [])
-        ++ [
-          ../packages/patches/btrfs-progs_receive-selinux.patch
-        ];
-    }))
-
-    (nixVersions.nix_2_19.overrideAttrs (oldAttrs: {
-      doInstallCheck = false;
-      patches =
-        (oldAttrs.patches or [])
-        ++ [
-          ../packages/patches/nix_default-flake.patch
-        ];
-    }))
   ];
 
   programs = {

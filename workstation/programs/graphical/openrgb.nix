@@ -28,7 +28,7 @@ in {
           patches =
             (oldAttrs.patches or [])
             ++ optional (config.workstation.programs.openrgb.enablePatches != null) [
-              ../../packages/patches/openrgb_force-libusb.patch
+              ../../../packages/patches/openrgb_force-libusb.patch
             ];
         }))
     ];

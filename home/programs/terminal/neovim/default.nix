@@ -3,6 +3,7 @@
   inputs,
   lib,
   pkgs,
+  self,
   ...
 }: {
   imports = [
@@ -21,13 +22,7 @@
   config = lib.mkIf config.home.programs.terminal.fish.enable {
     programs.nixvim = {
       enable = true;
-      package = inputs.neovim.packages.${pkgs.system}.neovim.overrideAttrs (oldAttrs: {
-        patches =
-          (oldAttrs.patches or [])
-          ++ [
-            ../../../../packages/patches/neovim_no-fold-numbers.patch
-          ];
-      });
+      package = self.packages.${pkgs.system}.neovim;
       defaultEditor = true;
     };
   };

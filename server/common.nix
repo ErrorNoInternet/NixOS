@@ -3,6 +3,7 @@
   inputs,
   lib,
   pkgs,
+  self,
   ...
 }: {
   imports = [
@@ -70,28 +71,13 @@
     procs
     pueue
     ripgrep
+    self.packages.${system}.btrfs-progs
+    self.packages.${system}.nix
     sysstat
     tmux
     unzip
     wget
     zip
-
-    (btrfs-progs.overrideAttrs (oldAttrs: {
-      patches =
-        (oldAttrs.patches or [])
-        ++ [
-          ../packages/patches/btrfs-progs_receive-selinux.patch
-        ];
-    }))
-
-    (nixVersions.nix_2_19.overrideAttrs (oldAttrs: {
-      doInstallCheck = false;
-      patches =
-        (oldAttrs.patches or [])
-        ++ [
-          ../packages/patches/nix_default-flake.patch
-        ];
-    }))
   ];
 
   systemd.services.pueued = {

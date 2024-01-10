@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  self,
+  ...
+}: {
   programs.nixvim = {
     plugins = {
       nvim-cmp = {
@@ -19,13 +23,7 @@
 
       barbecue = {
         enable = true;
-        package = pkgs.vimPlugins.barbecue-nvim.overrideAttrs (oldAttrs: {
-          patches =
-            (oldAttrs.patches or [])
-            ++ [
-              ../../../../packages/patches/barbecue-nvim_hide-empty.patch
-            ];
-        });
+        package = self.packages.${pkgs.system}.barbecue-nvim;
       };
 
       trouble.enable = true;
