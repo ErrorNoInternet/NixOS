@@ -1,9 +1,4 @@
 {pkgs, ...}: {
-  imports = [
-    ../shared/modules/flags.nix
-  ];
-  shared.flags.nixOnDroid = true;
-
   environment.motd = "";
   nix.extraOptions = ''
     experimental-features = nix-command flakes
@@ -37,7 +32,10 @@
 
   home-manager = {
     useUserPackages = true;
-    config = {home.stateVersion = "23.05";};
+    config.home = {
+      flags.nixOnDroid = true;
+      stateVersion = "23.05";
+    };
   };
   system.stateVersion = "23.05";
 }

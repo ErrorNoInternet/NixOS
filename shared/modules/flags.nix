@@ -3,6 +3,5 @@
 in {
   options.shared.flags = {
     raspberryPi = mkEnableOption "";
-    nixOnDroid = mkEnableOption "";
   };
 }
