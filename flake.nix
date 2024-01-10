@@ -44,11 +44,17 @@
         ./server
         ./droid
       ];
+
+      flake = {
+        homeManagerModules.default = import ./modules/home-manager.nix;
+      };
+
       systems = ["x86_64-linux" "aarch64-linux"];
       perSystem = {pkgs, ...}: {
         _module.args = {inherit self;};
 
         formatter = pkgs.alejandra;
+
         devShells.default = pkgs.mkShell {
           packages = with pkgs; [
             alejandra
