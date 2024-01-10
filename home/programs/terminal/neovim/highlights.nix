@@ -3,7 +3,10 @@
     highlight = {
       CursorLine.bg = "none";
       WinSeparator.link = "VertSplit";
-      Title.bg = "#${base00}";
+      Title = {
+        bg = "#${base00}";
+        bold = true;
+      };
 
       BufferCurrentSign = {
         fg = "#${base0D}";
