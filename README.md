@@ -4,7 +4,6 @@ Nix flake for my workstations, servers, home-manager configuration, and a lot mo
 
 ## 📁 Contents
 
-- [modules](/modules): NixOS and home-manager modules to be used externally
 - [packages](/packages): some patches and bash scripts to make my life easier
 - [shared](/shared): shared modules (and binary caches) applied everywhere
 - [workstation](/workstation): system configuration for my laptops and desktops
