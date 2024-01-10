@@ -1,6 +1,6 @@
 {
   lib,
-  osConfig ? {},
+  osConfig,
   pkgs,
   ...
 }: {

@@ -9,7 +9,10 @@
 
         {
           home-manager = {
-            extraSpecialArgs = {inherit inputs;};
+            extraSpecialArgs = {
+              inherit inputs;
+              osConfig = {};
+            };
             sharedModules = [
               ../home/common.nix
               ../home/hosts/${name}.nix
