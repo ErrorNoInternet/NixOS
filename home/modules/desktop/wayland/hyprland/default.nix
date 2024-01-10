@@ -1,7 +1,7 @@
 {
   inputs,
   lib,
-  osConfig,
+  osConfig ? {},
   pkgs,
   ...
 }: {
