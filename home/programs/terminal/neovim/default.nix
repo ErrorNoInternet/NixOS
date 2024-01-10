@@ -5,7 +5,9 @@
   pkgs,
   self,
   ...
-}: {
+}: let
+  inherit (lib) mkEnableOption mkIf;
+in {
   imports = [
     ./autocmd.nix
     ./development.nix
@@ -19,7 +21,13 @@
     inputs.nixvim.homeManagerModules.nixvim
   ];
 
-  config = lib.mkIf config.home.programs.terminal.fish.enable {
+  options.home.programs.terminal.neovim.enable =
+    mkEnableOption ""
+    // {
+      default = config.home.programs.terminal.fish.enable;
+    };
+
+  config = mkIf config.home.programs.terminal.neovim.enable {
     programs.nixvim = {
       enable = true;
       package = self.packages.${pkgs.system}.neovim;
