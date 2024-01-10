@@ -286,6 +286,12 @@
       {
         mode = "n";
         options.silent = true;
+        key = "<leader>ft";
+        action = ":TodoTelescope<CR>";
+      }
+      {
+        mode = "n";
+        options.silent = true;
         key = "<leader>ff";
         action = ":Telescope find_files<CR>";
       }
