@@ -243,6 +243,18 @@
       {
         mode = "n";
         options.silent = true;
+        key = "<leader>xn";
+        action = ":Trouble<CR>:lua require('trouble').next({skip_groups = true, jump = true})<CR>";
+      }
+      {
+        mode = "n";
+        options.silent = true;
+        key = "<leader>xp";
+        action = ":Trouble<CR>:lua require('trouble').previous({skip_groups = true, jump = true})<CR>";
+      }
+      {
+        mode = "n";
+        options.silent = true;
         key = "<leader>xx";
         action = ":Trouble document_diagnostics<CR>";
       }
