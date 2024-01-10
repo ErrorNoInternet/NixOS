@@ -1,4 +1,9 @@
 {pkgs, ...}: {
+  imports = [
+    ../shared/modules/flags.nix
+  ];
+  shared.flags.nixOnDroid = true;
+
   environment.motd = "";
   nix.extraOptions = ''
     experimental-features = nix-command flakes
