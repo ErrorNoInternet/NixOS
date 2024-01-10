@@ -15,6 +15,7 @@
     gds = "git diff --staged";
     gl = "git log";
     gp = "git push";
+    gpf = "git push --force-with-lease";
     gpl = "git pull";
     gr = "git restore";
     gre = "git reset";
