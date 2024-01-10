@@ -13,7 +13,7 @@ in {
         default = true;
       };
 
-    enablePatches =
+    forceLibusb =
       mkEnableOption ""
       // {
         default = true;
@@ -27,7 +27,7 @@ in {
         (oldAttrs: {
           patches =
             (oldAttrs.patches or [])
-            ++ optional (config.workstation.programs.openrgb.enablePatches != null) [
+            ++ optional (config.workstation.programs.openrgb.forceLibusb != null) [
               ../../../packages/patches/openrgb_force-libusb.patch
             ];
         }))
