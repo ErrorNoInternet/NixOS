@@ -31,6 +31,7 @@
   ];
 
   home-manager = {
+    useGlobalPkgs = true;
     useUserPackages = true;
     config.home = {
       flags.nixOnDroid = true;

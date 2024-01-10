@@ -19,15 +19,11 @@
     lsimg = "${lib.getExe pkgs.timg} -ps --grid=6 --upscale --title --center --frames=1";
     mf = "${lib.getExe pkgs.fastfetch} -c ~/.config/fastfetch/minimal.jsonc";
     mfd = "${lib.getExe pkgs.fastfetch} -c ~/.config/fastfetch/nix-on-droid_minimal.jsonc";
+    nix = "nix --default-flake flake:nixpkgs";
     py = "python3";
     q = "exit";
     scc = "${pkgs.scc}/bin/scc --no-cocomo";
     timg = "${lib.getExe pkgs.timg} -ps";
-
-    nix =
-      if config.home.flags.nixOnDroid
-      then "nix"
-      else "nix --default-flake flake:nixpkgs";
 
     nrs = "${lib.getExe pkgs.nh} os switch -v .";
     nrt = "${lib.getExe pkgs.nh} os test -v .";
