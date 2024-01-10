@@ -21,6 +21,7 @@
     flake-parts.url = "github:hercules-ci/flake-parts";
     hsize.url = "github:ErrorNoInternet/hsize";
     hyprland.url = "github:hyprwm/Hyprland";
+    hyprpaper.url = "github:hyprwm/hyprpaper";
     hyprwm-contrib.url = "github:hyprwm/contrib";
     neovim.url = "github:neovim/neovim?dir=contrib";
     nix-colors.url = "github:misterio77/nix-colors";

@@ -1,5 +1,6 @@
 {
   config,
+  inputs,
   lib,
   pkgs,
   ...
@@ -19,7 +20,7 @@ in {
 
   config = mkIf config.wallpaper.enable {
     home = {
-      packages = [pkgs.hyprpaper];
+      packages = [inputs.hyprpaper.packages.${pkgs.system}.hyprpaper];
       file = {
         "pictures/wallpapers".source = ../../../other/wallpapers;
 
