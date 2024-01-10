@@ -5,6 +5,17 @@
       modules = [
         ./common.nix
         ./hosts/${name}.nix
+        {environment.sessionVariables.HOSTNAME = "${name}";}
+
+        {
+          home-manager = {
+            extraSpecialArgs = {inherit inputs;};
+            sharedModules = [
+              ../home/common.nix
+              ../../home/hosts/${name}.nix
+            ];
+          };
+        }
       ];
     };
 in {

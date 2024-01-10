@@ -31,8 +31,8 @@
   ];
 
   home-manager = {
-    config = {home.stateVersion = "23.05";};
     useUserPackages = true;
+    config = {home.stateVersion = "23.05";};
   };
   system.stateVersion = "23.05";
 }
