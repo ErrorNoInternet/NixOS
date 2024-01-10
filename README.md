@@ -4,12 +4,13 @@ Nix flake for my workstations, servers, home-manager configuration, and a lot mo
 
 ## 📁 Contents
 
-- [shared](/shared): shared modules (and binary caches) applied everywhere
+- [modules](/modules): NixOS and home-manager modules to be used externally
 - [packages](/packages): some patches and bash scripts to make my life easier
+- [shared](/shared): shared modules (and binary caches) applied everywhere
 - [workstation](/workstation): system configuration for my laptops and desktops
 - [server](/server): system configuration for some of my dedicated servers 
-- [home](/home): user configuration for my workstations and servers
-- [droid](/droid): terminal configuration for my phone ([Nix-on-Droid](https://github.com/nix-community/nix-on-droid))
+- [droid](/droid): terminal configuration for my phone ([nix-on-droid](https://github.com/nix-community/nix-on-droid))
+- [home](/home): user configuration for my workstation, servers, and nix-on-droid
 - [other](/other): other (configuration) files that don't fit in Nix expressions
 
 ## 🖥️ Screenshots
