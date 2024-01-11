@@ -99,7 +99,6 @@
     wget
     xdg-user-dirs
   ];
-
   programs = {
     dconf.enable = true;
     light.enable = true;
@@ -150,6 +149,7 @@
     PICTURES=
     VIDEOS=
   '';
+
   users.users.ryan = {
     initialPassword = "snowflake";
     isNormalUser = true;

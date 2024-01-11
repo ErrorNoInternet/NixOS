@@ -30,7 +30,6 @@
     hyprwm-contrib.url = "github:hyprwm/contrib";
     neovim.url = "github:neovim/neovim?dir=contrib";
     nix-gaming.url = "github:fufexan/nix-gaming";
-
     shadower.url = "github:n3oney/shadower";
     yazi.url = "github:sxyazi/yazi";
 
@@ -50,11 +49,13 @@
         ./server
         ./droid
       ];
+
       systems = ["x86_64-linux" "aarch64-linux"];
       perSystem = {pkgs, ...}: {
         _module.args = {inherit self;};
 
         formatter = pkgs.alejandra;
+
         devShells.default = pkgs.mkShell {
           packages = with pkgs; [
             alejandra
