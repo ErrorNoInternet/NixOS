@@ -70,6 +70,7 @@
       imagemagick
       inputs.hyprwm-contrib.packages.${pkgs.system}.scratchpad
       inputs.nix-gaming.packages.${pkgs.system}.wine-ge
+      inputs.overmask.packages.${pkgs.system}.overmask
       intel-gpu-tools
       iperf
       kdiskmark
