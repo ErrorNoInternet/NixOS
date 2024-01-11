@@ -25,11 +25,13 @@
         lib.nameValuePair name' {inherit flake;})
       inputs;
     nixPath = ["nixpkgs=${inputs.nixpkgs}"];
+
     settings = {
       experimental-features = ["nix-command" "flakes"];
       trusted-users = ["root" "@wheel"];
       auto-optimise-store = true;
-      log-lines = 100;
+      log-lines = 500;
+
       min-free = 5 * 1024 * 1024 * 1024;
       max-free = 20 * 1024 * 1024 * 1024;
     };

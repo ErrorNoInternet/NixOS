@@ -22,8 +22,10 @@
       efi.canTouchEfiVariables = true;
       timeout = 3;
     };
+
     kernelPackages = lib.mkDefault pkgs.linuxPackages_latest;
     supportedFilesystems = ["ntfs"];
+
     kernel.sysctl = {
       "kernel.sysrq" = 1;
     };
