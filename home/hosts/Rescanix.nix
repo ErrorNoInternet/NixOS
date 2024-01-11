@@ -71,6 +71,7 @@
       inputs.hyprwm-contrib.packages.${pkgs.system}.scratchpad
       inputs.nix-gaming.packages.${pkgs.system}.wine-ge
       intel-gpu-tools
+      iperf
       kdiskmark
       linuxPackages_latest.perf
       lm_sensors
