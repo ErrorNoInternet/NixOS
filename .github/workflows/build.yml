@@ -50,7 +50,7 @@ jobs:
             log-lines = 500
 
       - name: Set up Attic
-        uses: ryanccn/attic-action@v0
+        uses: ErrorNoInternet/attic-action@v0
         with:
           endpoint: ${{ secrets.ATTIC_ENDPOINT }}
           cache: ${{ secrets.ATTIC_CACHE }}
