@@ -6,7 +6,7 @@
       map (
         defined: let
           resolution =
-            if defined.width == null || defined.height == null
+            if defined.width == 0 || defined.height == 0
             then "preferred"
             else "${builtins.toString defined.width}${builtins.toString defined.height}@${
               builtins.toString (
