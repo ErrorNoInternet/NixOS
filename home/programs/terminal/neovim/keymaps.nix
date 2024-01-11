@@ -343,6 +343,19 @@
         key = "<leader>fS";
         action = ":Telescope git_status<CR>";
       }
+
+      {
+        mode = "n";
+        options.silent = true;
+        key = "<F2>";
+        action = ":lua vim.lsp.buf.format()<CR>:w<CR>";
+      }
+      {
+        mode = "i";
+        options.silent = true;
+        key = "<F2>";
+        action = "<esc>:lua vim.lsp.buf.format()<CR>:w<CR>";
+      }
     ];
 
     autoCmd = [
