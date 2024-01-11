@@ -43,7 +43,7 @@
         TIMELINE_CLEANUP = true;
         QGROUP = "1/0";
 
-        TIMELINE_LIMIT_HOURLY = "1-12";
+        TIMELINE_LIMIT_HOURLY = "1-24";
         TIMELINE_LIMIT_DAILY = "1-3";
         TIMELINE_LIMIT_MONTHLY = 0;
         TIMELINE_LIMIT_YEARLY = 0;
@@ -65,7 +65,7 @@
         TIMELINE_CLEANUP = true;
         QGROUP = "1/0";
 
-        TIMELINE_LIMIT_HOURLY = 12;
+        TIMELINE_LIMIT_HOURLY = 24;
         TIMELINE_LIMIT_DAILY = "1-3";
         TIMELINE_LIMIT_MONTHLY = 0;
         TIMELINE_LIMIT_YEARLY = 0;
@@ -110,7 +110,7 @@
         TIMELINE_CLEANUP = true;
         QGROUP = "1/0";
 
-        TIMELINE_LIMIT_HOURLY = "1-12";
+        TIMELINE_LIMIT_HOURLY = "1-24";
         TIMELINE_LIMIT_DAILY = 0;
         TIMELINE_LIMIT_MONTHLY = 0;
         TIMELINE_LIMIT_YEARLY = 0;
