@@ -29,7 +29,11 @@
     kernel.sysctl = {
       "kernel.sysrq" = 1;
     };
-    tmp.useTmpfs = true;
+
+    tmp = {
+      useTmpfs = true;
+      tmpfsSize = "100%";
+    };
   };
 
   networking = {
