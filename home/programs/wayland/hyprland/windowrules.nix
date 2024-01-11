@@ -19,13 +19,8 @@ in {
       "float,        class:(vimiv)"
       "size 50% 55%, class:(foot)"
     ]
-    ++ (map (
-        dialog: ''
-          animation slide, ${dialog}
-          center,          ${dialog}
-          float,           ${dialog}
-          size 60% 65%,    ${dialog}
-        ''
-      )
-      dialogs);
+    ++ (map (dialog: "animation slide, ${dialog}") dialogs)
+    ++ (map (dialog: "center,          ${dialog}") dialogs)
+    ++ (map (dialog: "float,           ${dialog}") dialogs)
+    ++ (map (dialog: "size 60% 65%,    ${dialog}") dialogs);
 }
