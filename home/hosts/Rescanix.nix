@@ -79,6 +79,7 @@
       mesa-demos
       multipath-tools
       nmap
+      nvme-cli
       nvtop
       osu-lazer-bin
       parted
