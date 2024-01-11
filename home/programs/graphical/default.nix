@@ -1,5 +1,6 @@
 {
   imports = [
+    ./discord.nix
     ./fcitx.nix
     ./kdeconnect.nix
     ./libreoffice.nix

@@ -39,6 +39,7 @@
 
   home.programs = {
     graphical = {
+      discord.enable = true;
       kdeconnect.enable = true;
       libreoffice.enable = true;
       nheko.enable = true;
@@ -82,10 +83,6 @@
       gimp
       imhex
       qbittorrent
-      (discord-canary.override {
-        withOpenASAR = true;
-        withVencord = true;
-      })
 
       # development utilities
       jetbrains.idea-community
