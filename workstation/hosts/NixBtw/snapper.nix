@@ -14,7 +14,7 @@
     snapshotInterval = "*:0/30";
     configs = {
       home = {
-        SUBVOLUME = "/home/ryan";
+        SUBVOLUME = "/home";
         TIMELINE_CREATE = true;
         TIMELINE_CLEANUP = true;
 
