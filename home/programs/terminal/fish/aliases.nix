@@ -25,6 +25,7 @@
     scc = "${pkgs.scc}/bin/scc --no-cocomo";
     timg = "${lib.getExe pkgs.timg} -ps";
 
+    clo = "curl -LO";
     nrs = "${lib.getExe pkgs.nh} os switch -v .";
     nrt = "${lib.getExe pkgs.nh} os test -v .";
     pwdc = "pwd | tr -d '\\n' | ${pkgs.wl-clipboard}/bin/wl-copy";
