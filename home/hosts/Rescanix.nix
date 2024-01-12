@@ -106,6 +106,7 @@
       superTuxKart
       sysstat
       timg
+      tree
       unigine-heaven
       usbutils
       util-linux
