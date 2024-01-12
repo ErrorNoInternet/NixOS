@@ -13,6 +13,10 @@
     inputs.agenix.nixosModules.default
   ];
 
+  specialisation.outside.configuration = {
+    caches.ErrorNoBinaries.internal = false;
+  };
+
   boot = {
     loader = {
       systemd-boot = {

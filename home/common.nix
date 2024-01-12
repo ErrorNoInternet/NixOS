@@ -10,11 +10,6 @@
     inputs.agenix.homeManagerModules.default
   ];
 
-  caches = {
-    ErrorNoBinaries.enable = true;
-    nix-community.enable = true;
-  };
-
   home.packages = with pkgs; [
     cmatrix
     croc

@@ -6,7 +6,11 @@
   inherit (lib) mkEnableOption mkIf;
 in {
   options.caches.ErrorNoBinaries = {
-    enable = mkEnableOption "";
+    enable =
+      mkEnableOption ""
+      // {
+        default = true;
+      };
 
     internal =
       mkEnableOption ""
