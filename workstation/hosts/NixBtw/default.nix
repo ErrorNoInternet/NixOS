@@ -27,8 +27,6 @@
     wantedBy = ["multi-user.target"];
   };
 
-  shared.modules.btrfs.compression.subvolumeLayout = true;
-
   workstation.desktops.hyprland.enable = true;
 
   nix.gc.automatic = false;

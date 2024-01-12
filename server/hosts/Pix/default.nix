@@ -8,10 +8,7 @@
 
   shared = {
     flags.raspberryPi = true;
-    modules = {
-      emulation.linux.aarch64 = false;
-      btrfs.compression.enable = false;
-    };
+    modules.emulation.linux.aarch64 = false;
   };
 
   server.modules = {

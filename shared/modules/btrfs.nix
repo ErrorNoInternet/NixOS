@@ -12,7 +12,11 @@ in {
         default = true;
       };
 
-    subvolumeLayout = mkEnableOption "";
+    subvolumeLayout =
+      mkEnableOption ""
+      // {
+        default = true;
+      };
   };
 
   config = mkIf config.shared.modules.btrfs.compression.enable {
