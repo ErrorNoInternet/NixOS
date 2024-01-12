@@ -67,5 +67,5 @@ jobs:
 
       - uses: actions/checkout@v4
 
-      - name: Build for ${{ matrix.host }} (NixOS)
+      - name: Build for ${{ matrix.host }}
         run: nix build .#nixosConfigurations.${{ matrix.host }}.config.system.build.toplevel
