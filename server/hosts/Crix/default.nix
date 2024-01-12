@@ -2,7 +2,10 @@
   caches.ErrorNoBinaries.external = false;
 
   services.logind.lidSwitch = "ignore";
-  shared.modules.wireless.enable = true;
+  shared.modules = {
+    btrfs.compression.subvolumeLayout = false;
+    wireless.enable = true;
+  };
   server.modules = {
     bootloader.enable = true;
 
