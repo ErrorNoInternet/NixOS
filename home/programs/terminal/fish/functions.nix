@@ -32,7 +32,6 @@
         while [ -L "$path" ]
           set path $(readlink -f "$path")
         end
-
         echo "$path"
       end
     end
