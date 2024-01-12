@@ -1,21 +1,13 @@
 {pkgs, ...}: {
   imports = [
+    ./nas-mount.nix
     ./snapper.nix
   ];
   host.id = "102f58f5";
 
-  fileSystems."/mnt/pi-drive1" = {
-    device = "192.168.0.100:/mnt/drive1";
-    fsType = "nfs";
-    options = ["x-systemd.automount" "noauto"];
+  specialisation.outside.configuration = {
+    absentFileSystems = ["/mnt/pi-drive1" "/mnt/pi-drive3"];
   };
-  fileSystems."/mnt/pi-drive3" = {
-    device = "192.168.0.100:/mnt/drive3";
-    fsType = "nfs";
-    options = ["x-systemd.automount" "noauto"];
-  };
-
-  boot.kernelPackages = pkgs.linuxPackages_testing;
 
   services.udev.extraRules = ''
     SUBSYSTEMS=="usb|hidraw", ATTRS{idVendor}=="1770", ATTRS{idProduct}=="ff00", TAG+="uaccess", TAG+="MSI_3Zone_Laptop"
@@ -29,5 +21,6 @@
 
   workstation.desktops.hyprland.enable = true;
 
+  boot.kernelPackages = pkgs.linuxPackages_testing;
   nix.gc.automatic = false;
 }
