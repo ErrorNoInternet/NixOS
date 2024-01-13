@@ -31,6 +31,7 @@ in {
         libllvm
         linuxPackages_latest.perf
         man-pages
+        nix-output-monitor
         python3Packages.bpython
         rustup
         scc

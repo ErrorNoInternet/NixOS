@@ -20,6 +20,7 @@
     mf = "${lib.getExe pkgs.fastfetch} -c ~/.config/fastfetch/minimal.jsonc";
     mfd = "${lib.getExe pkgs.fastfetch} -c ~/.config/fastfetch/nix-on-droid_minimal.jsonc";
     nix = "nix --default-flake flake:nixpkgs";
+    nom = "nom --default-flake flake:nixpkgs";
     py = "python3";
     q = "exit";
     scc = "${pkgs.scc}/bin/scc --no-cocomo";
