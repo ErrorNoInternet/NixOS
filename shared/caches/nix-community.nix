@@ -8,7 +8,7 @@ in {
   options.caches.nix-community.enable =
     mkEnableOption ""
     // {
-      default = true;
+      default = !config.caches.isHome;
     };
 
   config = mkIf config.caches.nix-community.enable {

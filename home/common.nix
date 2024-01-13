@@ -22,6 +22,7 @@
     progress
   ];
 
+  caches.isHome = true;
   programs.man.generateCaches = false;
   manual.manpages.enable = false;
 
