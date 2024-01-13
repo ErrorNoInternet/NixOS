@@ -25,8 +25,6 @@
     ];
   };
 
-  shared.modules.btrfs.compression.subvolumeLayout = false;
-
   services.printing = {
     enable = true;
     drivers = [pkgs.hplip];
