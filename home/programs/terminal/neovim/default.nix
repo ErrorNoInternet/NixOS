@@ -13,7 +13,7 @@ in {
     ./development.nix
     ./extras.nix
     ./highlights.nix
-    ./keymaps.nix
+    ./keymaps
     ./lsp.nix
     ./options.nix
     ./shortcuts.nix
