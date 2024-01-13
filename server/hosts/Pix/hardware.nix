@@ -8,7 +8,7 @@
   ];
 
   nixpkgs.overlays = let
-    ubootWithBtrfsAndZstd = oldAttrs: {
+    ubootWithBtrfsAndZstd = _: {
       extraConfig = ''
         CONFIG_CMD_BTRFS=y
         CONFIG_ZSTD=y
@@ -17,7 +17,7 @@
       '';
     };
   in [
-    (self: super: {
+    (_: super: {
       ubootRaspberryPi3_64bit = super.ubootRaspberryPi3_64bit.overrideAttrs ubootWithBtrfsAndZstd;
       ubootRaspberryPi4_64bit = super.ubootRaspberryPi4_64bit.overrideAttrs ubootWithBtrfsAndZstd;
     })
