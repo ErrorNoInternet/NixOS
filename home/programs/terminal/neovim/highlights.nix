@@ -20,6 +20,9 @@
       NvimTreeNormal.bg = "#${base01}";
       NvimTreeCursorLine.bg = "#${base03}";
 
+      RadarBackground.fg = "#${base03}";
+      RadarMark.fg = "#${base04}";
+
       "@ibl.indent.char.1".fg = "#${base00}";
       FoldColumn.fg = "#${base03}";
       MatchParen = {

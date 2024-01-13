@@ -31,6 +31,8 @@
     };
 
     plugins = {
+      mark-radar.enable = true;
+
       vim-bbye = {
         enable = true;
         keymapsSilent = true;
