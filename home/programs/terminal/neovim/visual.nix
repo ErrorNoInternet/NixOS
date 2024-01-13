@@ -81,8 +81,8 @@
           right = "|";
         };
         sectionSeparators = {
-          left = "";
-          right = "";
+          left = "";
+          right = "";
         };
       };
 
