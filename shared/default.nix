@@ -46,4 +46,9 @@
     enable = true;
     memoryPercent = 200;
   };
+
+  networking.hosts = {
+    "192.168.0.100" = ["Pix.local"];
+    "192.168.0.101" = ["NixBtw.local"];
+  };
 }
