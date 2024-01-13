@@ -1,7 +1,7 @@
 {
   imports = [
     ./bluetooth.nix
-    ./nvidia-specializations.nix
+    ./nvidia-specialisations.nix
     ./nvidia.nix
     ./video-acceleration.nix
     ./virtualization.nix
