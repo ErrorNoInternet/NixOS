@@ -37,7 +37,7 @@ in {
         zig
       ];
       sessionVariables = {
-        GOPATH = "~/.go";
+        GOPATH = "${config.home.homeDirectory}/.go";
       };
     };
   };
