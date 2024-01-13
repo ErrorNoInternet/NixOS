@@ -6,6 +6,7 @@
   imports = [
     ../shared/caches
     ./modules
+    ./profiles
     ./programs
     inputs.agenix.homeManagerModules.default
   ];
