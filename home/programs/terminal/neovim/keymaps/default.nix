@@ -158,7 +158,7 @@
       mode = "n";
       options.silent = true;
       key = "<leader>u";
-      action = ":UndotreeToggle<CR>";
+      action = ":UndotreeToggle<CR>:UndotreeFocus<CR>";
     }
 
     {

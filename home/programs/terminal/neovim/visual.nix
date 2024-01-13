@@ -112,6 +112,8 @@
       require('ufo').setup()
     '';
     globals = {
+      undotree_HelpLine = 0;
+
       minimap_width = 14;
       minimap_highlight_search = 1;
       minimap_git_colors = 1;
