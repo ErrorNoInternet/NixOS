@@ -9,7 +9,7 @@ Nix flake for my workstations, servers, home-manager configuration, and a lot mo
 - [workstation](/workstation): system configuration for my laptops and desktops
 - [server](/server): system configuration for some of my dedicated servers 
 - [droid](/droid): terminal configuration for my phone ([nix-on-droid](https://github.com/nix-community/nix-on-droid))
-- [home](/home): user configuration for my workstation, servers, and nix-on-droid
+- [home](/home): dotfiles (and more) for my workstations, servers, and phone
 - [other](/other): other (configuration) files that don't fit in Nix expressions
 
 ## 🖥️ Screenshots
