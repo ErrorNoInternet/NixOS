@@ -10,6 +10,10 @@
     inputs.agenix.homeManagerModules.default
   ];
 
+  specialisation.outside.configuration = {
+    caches.ErrorNoBinaries.internal = false;
+  };
+
   home.packages = with pkgs; [
     cmatrix
     croc
@@ -22,7 +26,6 @@
     progress
   ];
 
-  caches.isHome = true;
   programs.man.generateCaches = false;
   manual.manpages.enable = false;
 

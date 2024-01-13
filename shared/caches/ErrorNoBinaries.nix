@@ -9,23 +9,23 @@ in {
     enable =
       mkEnableOption ""
       // {
-        default = !config.caches.isHome;
+        default = true;
       };
 
     internal =
       mkEnableOption ""
       // {
-        default = !config.caches.isHome;
+        default = true;
       };
     external =
       mkEnableOption ""
       // {
-        default = !config.caches.isHome;
+        default = true;
       };
     cachix =
       mkEnableOption ""
       // {
-        default = !config.caches.isHome;
+        default = true;
       };
   };
 

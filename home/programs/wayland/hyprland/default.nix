@@ -16,6 +16,8 @@
 
   config = lib.mkIf (builtins.hasAttr "workstation" osConfig) (
     lib.mkIf osConfig.workstation.desktops.hyprland.enable {
+      caches.hyprland.enable = true;
+
       wayland.windowManager.hyprland = {
         enable = true;
         package = inputs.hyprland.packages.${pkgs.system}.hyprland;
