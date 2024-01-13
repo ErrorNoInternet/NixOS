@@ -26,19 +26,19 @@
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/69696969-6969-6969-6969-696969696969";
     fsType = "btrfs";
-    options = ["subvol=root"];
+    options = ["subvol=@"];
   };
 
   fileSystems."/home" = {
     device = "/dev/disk/by-uuid/69696969-6969-6969-6969-696969696969";
     fsType = "btrfs";
-    options = ["subvol=home"];
+    options = ["subvol=@home"];
   };
 
   fileSystems."/nix" = {
     device = "/dev/disk/by-uuid/69696969-6969-6969-6969-696969696969";
     fsType = "btrfs";
-    options = ["subvol=nix"];
+    options = ["subvol=@nix"];
   };
 
   fileSystems."/boot" = {
