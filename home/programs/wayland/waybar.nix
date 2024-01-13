@@ -167,7 +167,7 @@
           color: #${base04};
           margin: 4px 0px;
           margin-left: 7px;
-          border-radius: 16px 16px 16px 16px;
+          border-radius: 16px;
           padding: 0px 20px;
           font-weight: bold;
         }
