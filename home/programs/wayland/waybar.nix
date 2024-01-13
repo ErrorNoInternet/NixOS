@@ -189,6 +189,11 @@
           margin: 0px;
           font-size: 22px;
         }
+
+        #tooltip {
+          background-color: #${base00};
+          font-size: 22px;
+        }
       '';
     };
   };
