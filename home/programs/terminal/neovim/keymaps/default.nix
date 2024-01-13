@@ -27,6 +27,16 @@
       key = "<S-up>";
       action = "10k";
     }
+    {
+      mode = "";
+      key = "j";
+      action = "gj";
+    }
+    {
+      mode = "";
+      key = "k";
+      action = "gk";
+    }
 
     {
       mode = "n";
