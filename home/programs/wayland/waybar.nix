@@ -190,7 +190,7 @@
           font-size: 22px;
         }
 
-        #tooltip {
+        tooltip {
           background-color: #${base00};
           font-size: 22px;
         }
