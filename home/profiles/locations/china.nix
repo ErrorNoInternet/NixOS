@@ -5,9 +5,11 @@
 }: let
   inherit (lib) mkEnableOption mkIf;
 in {
-  options.profiles.locations.china = {
-    enable = mkEnableOption "";
-  };
+  options.profiles.locations.china.enable =
+    mkEnableOption ""
+    // {
+      default = true;
+    };
 
   config = mkIf config.profiles.locations.china.enable {
     nix.settings = {
