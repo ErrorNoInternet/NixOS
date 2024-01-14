@@ -1,4 +1,9 @@
 {pkgs, ...}: {
+  imports = [
+    ./caches
+    ./profiles
+  ];
+
   environment.motd = "";
   nix.extraOptions = ''
     experimental-features = nix-command flakes
