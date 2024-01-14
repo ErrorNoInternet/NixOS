@@ -10,9 +10,12 @@
   ];
 
   i18n.defaultLocale = "en_US.UTF-8";
-  documentation.nixos.enable = false;
   services.getty.helpLine = lib.mkForce "";
   programs.command-not-found.enable = false;
+  documentation = {
+    nixos.enable = false;
+    man.generateCaches = false;
+  };
 
   nix = {
     registry =
