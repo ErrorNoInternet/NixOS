@@ -19,6 +19,12 @@
           ++ [./patches/btrfs-progs_receive-selinux.patch];
       });
 
+      attic = inputs.attic.packages.${system}.attic.overrideAttrs (oldAttrs: {
+        patches =
+          (oldAttrs.patches or [])
+          ++ [./patches/attic_https-api-endpoint.patch];
+      });
+
       neovim = inputs.neovim.packages.${system}.neovim.overrideAttrs (oldAttrs: {
         patches =
           (oldAttrs.patches or [])

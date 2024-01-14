@@ -1,8 +1,8 @@
 {
   config,
-  inputs,
   lib,
   pkgs,
+  self,
   ...
 }: let
   inherit (lib) mkEnableOption mkIf;
@@ -27,7 +27,6 @@ in {
         gdb
         gnumake
         go
-        inputs.attic.packages.${pkgs.system}.attic
         libllvm
         linuxPackages_latest.perf
         man-pages
@@ -35,6 +34,7 @@ in {
         python3Packages.bpython
         rustup
         scc
+        self.packages.${system}.attic
         zig
       ];
       sessionVariables = {
