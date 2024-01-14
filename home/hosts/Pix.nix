@@ -8,8 +8,6 @@
     scheme = inputs.nix-colors.colorSchemes.nord;
   };
 
-  caches.ErrorNoBinaries.external = false;
-
   home = {
     username = "snowflake";
     homeDirectory = "/home/snowflake";

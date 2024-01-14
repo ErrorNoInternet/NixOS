@@ -1,6 +1,4 @@
 {
-  caches.ErrorNoBinaries.external = false;
-
   services.logind.lidSwitch = "ignore";
   shared.modules = {
     btrfs.compression.subvolumeLayout = false;

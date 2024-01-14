@@ -4,8 +4,6 @@
     ./drives.nix
   ];
 
-  caches.ErrorNoBinaries.external = false;
-
   shared = {
     flags.raspberryPi = true;
     modules.emulation.linux.aarch64 = false;
