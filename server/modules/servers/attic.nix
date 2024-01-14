@@ -73,6 +73,7 @@ in {
           enable = true;
           recommendedProxySettings = true;
           recommendedTlsSettings = true;
+          clientMaxBodySize = "10G";
           virtualHosts."${host}" = {
             forceSSL = true;
             sslCertificate = "/etc/letsencrypt/live/${host}/fullchain.pem";
