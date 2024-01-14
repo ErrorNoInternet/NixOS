@@ -76,6 +76,14 @@ jobs:
     name: Packages
     runs-on: ubuntu-22.04
 
+    strategy:
+      matrix:
+        include:
+          - package: nix
+          - package: passgen
+          - package: savehw
+          - package: tbw
+
     steps:
       - name: Install QEMU
         run: |
@@ -105,5 +113,5 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Build all packages
-        run: nix build .#packages.aarch64-linux.*
+      - name: Build packages
+        run: nix build .#packages.aarch64-linux.${{ matrix.package }}
