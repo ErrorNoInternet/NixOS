@@ -39,7 +39,7 @@ pkgs.writeShellApplication {
     sensors > dump/sensors 2>&1
 
     lsmem > dump/lsmem 2>&1
-    cat /proc/meminfo > meminfo 2>&1  
+    cat /proc/meminfo > meminfo 2>&1
 
     lspci -vvv > dump/lspci 2>&1
     lsusb -v > dump/lsusb 2>&1
