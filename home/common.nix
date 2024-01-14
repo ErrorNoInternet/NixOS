@@ -12,7 +12,10 @@
   ];
 
   specialisation.outside.configuration = {
-    caches.ErrorNoBinaries.internal = false;
+    caches.ErrorNoBinaries = {
+      internal = false;
+      external = true;
+    };
   };
 
   home.packages = with pkgs; [

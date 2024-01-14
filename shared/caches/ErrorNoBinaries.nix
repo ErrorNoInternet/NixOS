@@ -30,7 +30,7 @@ in {
     external =
       mkEnableOption ""
       // {
-        default = true;
+        default = false;
       };
     cachix =
       mkEnableOption ""

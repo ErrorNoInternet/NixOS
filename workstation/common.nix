@@ -14,7 +14,10 @@
   ];
 
   specialisation.outside.configuration = {
-    caches.ErrorNoBinaries.internal = false;
+    caches.ErrorNoBinaries = {
+      internal = false;
+      external = true;
+    };
   };
 
   boot = {
