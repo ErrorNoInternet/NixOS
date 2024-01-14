@@ -32,14 +32,11 @@ in {
   config = mkIf config.caches.ErrorNoBinaries.enable {
     nix = {
       substituters = with config.caches.ErrorNoBinaries; [
-        (mkIf internal "http://192.168.0.100:7454/ErrorNoBinaries")
-        (mkIf external "https://errornointernet.dynv6.net:7455/ErrorNoBinaries")
-        (mkIf cachix "https://errornobinaries.cachix.org")
+        (mkIf internal (import ../../shared/caches/ErrorNoBinaries.nix).substituters.internal)
+        (mkIf external (import ../../shared/caches/ErrorNoBinaries.nix).substituters.external)
+        (mkIf cachix (import ../../shared/caches/ErrorNoBinaries.nix).substituters.cachix)
       ];
-      trustedPublicKeys = [
-        "ErrorNoBinaries:im2fJ1t41XAwp2S+DMgSI0VFKxS+jpz/XIOs/s9iLFg="
-        "errornobinaries.cachix.org-1:84oagGNCIsXxBTYmfTiP+lvWje7lIS294iqAtCpFsbU="
-      ];
+      trustedPublicKeys = (import ../../shared/caches/ErrorNoBinaries.nix).publicKeys;
     };
   };
 }
