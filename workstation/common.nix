@@ -86,21 +86,10 @@
     libsForQt5.qt5.qtgraphicaleffects
 
     cryptsetup
-    curl
-    file
-    git
-    killall
-    lsof
-    neovim
+    home-manager
     pulseaudio
-    ripgrep
     self.packages.${system}.btrfs-progs
     self.packages.${system}.nix
-    sysstat
-    tmux
-    unzip
-    vim
-    wget
     xdg-user-dirs
   ];
   programs = {

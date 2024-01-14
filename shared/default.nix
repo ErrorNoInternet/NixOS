@@ -1,6 +1,7 @@
 {
   inputs,
   lib,
+  pkgs,
   ...
 }: {
   imports = [
@@ -51,4 +52,20 @@
     "192.168.0.100" = ["Pix.local"];
     "192.168.0.101" = ["NixBtw.local"];
   };
+
+  environment.systemPackages = with pkgs; [
+    curl
+    file
+    git
+    killall
+    lsof
+    neovim
+    ripgrep
+    sysstat
+    tmux
+    unzip
+    vim
+    wget
+    zip
+  ];
 }

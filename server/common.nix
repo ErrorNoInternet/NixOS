@@ -54,25 +54,13 @@
 
   environment.systemPackages = with pkgs; [
     btop
-    curl
     dua
     duf
     fd
-    file
-    git
-    killall
-    lsof
-    neovim
     procs
     pueue
-    ripgrep
     self.packages.${system}.btrfs-progs
     self.packages.${system}.nix
-    sysstat
-    tmux
-    unzip
-    wget
-    zip
   ];
 
   systemd.services.pueued = {
