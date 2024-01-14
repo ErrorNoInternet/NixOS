@@ -3,6 +3,7 @@ on:
   push:
     paths:
       - flake.lock
+      - packages/**
   workflow_dispatch:
 
 jobs:
