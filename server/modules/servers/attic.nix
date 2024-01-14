@@ -18,7 +18,7 @@ in {
 
     ports = {
       insecure = mkOption {
-        default = 7545;
+        default = 7454;
         type = types.numbers.between 0 65535;
       };
 
