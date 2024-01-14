@@ -43,6 +43,11 @@ jobs:
           sudo rm -rf /usr/local/share/powershell
           sudo rm -rf /var/lib/docker/overlay2
 
+      - name: Install QEMU
+        run: |
+          sudo apt update -y
+          sudo apt install -y qemu-user-static
+
       - name: Install Nix
         uses: DeterminateSystems/nix-installer-action@v9
         with:
