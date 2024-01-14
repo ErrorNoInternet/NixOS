@@ -113,5 +113,5 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Build packages
+      - name: Build package
         run: nix build .#packages.x86_64-linux.${{ matrix.package }}
