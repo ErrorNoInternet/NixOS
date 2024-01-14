@@ -68,7 +68,8 @@ jobs:
           name: errornobinaries
           authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
 
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
       - name: Build ${{ matrix.host }}
         run: nix build -j 2 --cores 2 .#nixosConfigurations.${{ matrix.host }}.config.system.build.toplevel
