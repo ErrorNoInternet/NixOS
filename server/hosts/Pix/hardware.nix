@@ -34,13 +34,6 @@
       "rootwait"
     ];
     initrd.kernelModules = ["zstd" "btrfs"];
-    loader = {
-      grub.enable = false;
-      generic-extlinux-compatible = {
-        enable = true;
-        configurationLimit = 20;
-      };
-    };
   };
 
   fileSystems = let
