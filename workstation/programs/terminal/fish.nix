@@ -15,6 +15,6 @@ in {
   config = mkIf config.workstation.programs.fish.enable {
     programs.fish.enable = true;
     environment.shells = [pkgs.fish];
-    users.users.ryan.shell = pkgs.fish;
+    users.users.error.shell = pkgs.fish;
   };
 }

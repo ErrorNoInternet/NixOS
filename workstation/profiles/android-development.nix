@@ -13,6 +13,6 @@ in {
 
   config = mkIf config.profiles.androidDevelopment.enable {
     programs.adb.enable = true;
-    users.users.ryan.extraGroups = ["adbusers"];
+    users.users.error.extraGroups = ["adbusers"];
   };
 }

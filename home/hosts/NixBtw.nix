@@ -58,8 +58,8 @@
   };
 
   home = {
-    username = "ryan";
-    homeDirectory = "/home/ryan";
+    username = "error";
+    homeDirectory = "/home/error";
     packages = with pkgs; [
       # desktop
       hyprpicker

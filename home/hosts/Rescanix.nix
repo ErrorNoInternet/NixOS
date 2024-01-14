@@ -41,8 +41,8 @@
   };
 
   home = {
-    username = "ryan";
-    homeDirectory = "/home/ryan";
+    username = "error";
+    homeDirectory = "/home/error";
     packages = with pkgs; [
       (hashcat.override {cudaSupport = true;})
       _7zz

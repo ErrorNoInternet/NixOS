@@ -146,7 +146,7 @@
     VIDEOS=
   '';
 
-  users.users.ryan = {
+  users.users.error = {
     initialPassword = "snowflake";
     isNormalUser = true;
     extraGroups = ["wheel" "video" "networkmanager"];

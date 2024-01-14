@@ -23,6 +23,6 @@ in {
       };
       spiceUSBRedirection.enable = true;
     };
-    users.users.ryan.extraGroups = ["libvirtd"];
+    users.users.error.extraGroups = ["libvirtd"];
   };
 }

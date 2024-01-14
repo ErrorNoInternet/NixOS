@@ -23,7 +23,7 @@
             useUserPackages = true;
             extraSpecialArgs = {inherit inputs self;};
 
-            users.ryan = {...}: {
+            users.error = {...}: {
               imports = [
                 ../home/common.nix
                 ../home/hosts/${name}.nix
