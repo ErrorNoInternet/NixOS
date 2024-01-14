@@ -53,8 +53,9 @@
     };
 
     extraConfig = ''
-      layerrule=blur,waybar
+      layerrule=blur,gtk-layer-shell
       layerrule=blur,rofi
+      layerrule=blur,waybar
       layerrule=ignorezero,rofi
     '';
   };
