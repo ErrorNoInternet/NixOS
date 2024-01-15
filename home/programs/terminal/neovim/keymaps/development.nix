@@ -23,12 +23,12 @@
     {
       event = ["FileType"];
       pattern = ["python"];
-      command = "map <buffer> <F2> :w<CR>:call FormatPythonBuffer()<CR>:w<CR>";
+      command = "map <buffer> <F2> :w<CR>:Neoformat python black<CR>:w<CR>";
     }
     {
       event = ["FileType"];
       pattern = ["python"];
-      command = "imap <buffer> <F2> <esc>:w<CR>:call FormatPythonBuffer()<CR>:w<CR>";
+      command = "imap <buffer> <F2> <esc>:w<CR>:Neoformat python black<CR>:w<CR>";
     }
 
     {
@@ -97,12 +97,12 @@
     {
       event = ["FileType"];
       pattern = ["c"];
-      command = "map <buffer> <F2> :w<CR>:call FormatCBuffer()<CR>:w<CR>";
+      command = "map <buffer> <F2> :w<CR>:Neoformat clangformat<CR>:w<CR>";
     }
     {
       event = ["FileType"];
       pattern = ["c"];
-      command = "imap <buffer> <F2> <esc>:w<CR>:call FormatCBuffer()<CR>:w<CR>";
+      command = "imap <buffer> <F2> <esc>:w<CR>:Neoformat clangformat<CR>:w<CR>";
     }
 
     {
@@ -138,12 +138,12 @@
     {
       event = ["FileType"];
       pattern = ["cpp"];
-      command = "map <buffer> <F2> :w<CR>:call FormatCBuffer()<CR>:w<CR>";
+      command = "map <buffer> <F2> :w<CR>:Neoformat clangformat<CR>:w<CR>";
     }
     {
       event = ["FileType"];
       pattern = ["cpp"];
-      command = "imap <buffer> <F2> <esc>:w<CR>:call FormatCBuffer()<CR>:w<CR>";
+      command = "imap <buffer> <F2> <esc>:w<CR>:Neoformat clangformat<CR>:w<CR>";
     }
 
     {
@@ -280,26 +280,16 @@
       pattern = ["zig"];
       command = "imap <buffer> <F11> <esc> :wa<CR>:term cd %:p:h:h && zig build<CR>";
     }
-    {
-      event = ["FileType"];
-      pattern = ["zig"];
-      command = "map <buffer> <F2> :w<CR>:call FormatZigBuffer()<CR>:w<CR>";
-    }
-    {
-      event = ["FileType"];
-      pattern = ["zig"];
-      command = "imap <buffer> <F2> <esc>:w<CR>:call FormatZigBuffer()<CR>:w<CR>";
-    }
 
     {
       event = ["FileType"];
       pattern = ["nix"];
-      command = "map <buffer> <F2> :w<CR>:call FormatNixBuffer()<CR>:w<CR>";
+      command = "map <buffer> <F2> :w<CR>:Neoformat alejandra<CR>:w<CR>";
     }
     {
       event = ["FileType"];
       pattern = ["nix"];
-      command = "imap <buffer> <F2> <esc>:w<CR>:call FormatNixBuffer()<CR>:w<CR>";
+      command = "imap <buffer> <F2> <esc>:w<CR>:Neoformat alejandra<CR>:w<CR>";
     }
   ];
 }
