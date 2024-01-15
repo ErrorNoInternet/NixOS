@@ -1,5 +1,5 @@
 name: Build (ARM)
-concurrency: nixos
+concurrency: build-arm
 on:
   push:
     paths:

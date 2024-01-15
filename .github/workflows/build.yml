@@ -1,5 +1,5 @@
 name: Build
-concurrency: nixos
+concurrency: build
 on:
   push:
     paths:
