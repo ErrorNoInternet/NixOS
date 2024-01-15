@@ -2,10 +2,6 @@
   programs.yazi.settings = {
     open.rules = [
       {
-        name = "*/";
-        use = ["edit" "open" "reveal"];
-      }
-      {
         mime = "text/*";
         use = ["edit" "reveal"];
       }
@@ -59,7 +55,7 @@
       }
       {
         mime = "*";
-        use = ["open" "reveal"];
+        use = ["edit" "open" "reveal"];
       }
     ];
     opener = {
