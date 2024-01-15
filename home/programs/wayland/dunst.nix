@@ -6,7 +6,7 @@
   config = lib.mkIf config.profiles.windowManager.enable {
     services.dunst = with config.colorScheme.colors; {
       enable = true;
-      iconTheme = config.gtkCustomization.iconTheme;
+      inherit (config.gtkCustomization) iconTheme;
 
       settings = {
         global = {

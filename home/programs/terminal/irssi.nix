@@ -58,7 +58,7 @@ in {
             nick = "${network.nickname}";
             server = {
               address = "${network.address}";
-              port = network.port;
+              inherit (network) port;
             };
           };
         })

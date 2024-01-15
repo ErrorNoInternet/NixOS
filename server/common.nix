@@ -46,7 +46,7 @@
         sshd = lib.mkForce ''
           enabled = true
           mode = aggressive
-          port = ${lib.strings.concatMapStringsSep "," (p: toString p) config.services.openssh.ports}
+          port = ${lib.strings.concatMapStringsSep "," toString config.services.openssh.ports}
         '';
       };
     };

@@ -30,42 +30,42 @@ in {
           text = "Lock";
           action = "sleep ${builtins.toString sleep} && swaylock --grace 0 --fade-in 1";
           keybind = "l";
-          height = height;
+          inherit height;
         }
         {
           label = "shutdown";
           text = "Shutdown";
           action = "sleep ${builtins.toString sleep} && systemctl poweroff";
           keybind = "s";
-          height = height;
+          inherit height;
         }
         {
           label = "logout";
           text = "Logout";
           action = "sleep ${builtins.toString sleep} && hyprctl dispatch exit";
           keybind = "e";
-          height = height;
+          inherit height;
         }
         {
           label = "reboot";
           text = "Reboot";
           action = "sleep ${builtins.toString sleep} && systemctl reboot";
           keybind = "r";
-          height = height;
+          inherit height;
         }
         {
           label = "suspend";
           text = "Suspend";
           action = "sleep ${builtins.toString sleep} && systemctl suspend";
           keybind = "u";
-          height = height;
+          inherit height;
         }
         {
           label = "hibernate";
           text = "Hibernate";
           action = "sleep ${builtins.toString sleep} && systemctl hibernate";
           keybind = "h";
-          height = height;
+          inherit height;
         }
       ];
       style = ''

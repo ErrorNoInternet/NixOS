@@ -22,7 +22,7 @@
           else "disable"
         }"
       )
-      (config.desktop.monitors);
+      config.desktop.monitors;
 
     input = {
       touchpad = {

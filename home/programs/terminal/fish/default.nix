@@ -28,7 +28,7 @@ in {
       plugins = with pkgs.fishPlugins; [
         {
           name = "autopair";
-          src = autopair.src;
+          inherit (autopair) src;
         }
       ];
       interactiveShellInit = ''

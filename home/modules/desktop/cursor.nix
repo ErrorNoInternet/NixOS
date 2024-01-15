@@ -27,9 +27,9 @@ in {
 
   config = mkIf config.cursor.enable {
     home.pointerCursor = {
-      name = config.cursor.name;
-      package = config.cursor.package;
-      size = config.cursor.size;
+      inherit (config.cursor) name;
+      inherit (config.cursor) package;
+      inherit (config.cursor) size;
       x11.enable = true;
       gtk.enable = true;
     };

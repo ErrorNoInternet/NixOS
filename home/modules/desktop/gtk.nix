@@ -29,8 +29,8 @@ in {
   config = mkIf config.gtkCustomization.enable {
     gtk = {
       enable = true;
-      theme = config.gtkCustomization.theme;
-      iconTheme = config.gtkCustomization.iconTheme;
+      inherit (config.gtkCustomization) theme;
+      inherit (config.gtkCustomization) iconTheme;
     };
   };
 }

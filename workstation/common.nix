@@ -85,16 +85,32 @@
     ];
   };
 
-  environment.systemPackages = with pkgs; [
-    libsForQt5.qt5.qtgraphicaleffects
+  environment = {
+    etc = {
+      "nixos/current".source = ./.;
 
-    cryptsetup
-    home-manager
-    pulseaudio
-    self.packages.${system}.btrfs-progs
-    self.packages.${system}.nix
-    xdg-user-dirs
-  ];
+      "xdg/user-dirs.defaults".text = ''
+        DESKTOP=
+        TEMPLATES=
+        PUBLICSHARE=
+        DOCUMENTS=
+        MUSIC=
+        PICTURES=
+        VIDEOS=
+      '';
+    };
+
+    systemPackages = with pkgs; [
+      libsForQt5.qt5.qtgraphicaleffects
+
+      cryptsetup
+      home-manager
+      pulseaudio
+      self.packages.${system}.btrfs-progs
+      self.packages.${system}.nix
+      xdg-user-dirs
+    ];
+  };
   programs = {
     dconf.enable = true;
     light.enable = true;
@@ -136,22 +152,10 @@
     };
   };
 
-  environment.etc."xdg/user-dirs.defaults".text = ''
-    DESKTOP=
-    TEMPLATES=
-    PUBLICSHARE=
-    DOCUMENTS=
-    MUSIC=
-    PICTURES=
-    VIDEOS=
-  '';
-
   users.users.error = {
     initialPassword = "snowflake";
     isNormalUser = true;
     extraGroups = ["wheel" "video" "networkmanager"];
   };
-
-  environment.etc."nixos/current".source = ./.;
   system.stateVersion = "23.05";
 }
