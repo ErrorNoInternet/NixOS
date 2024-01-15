@@ -111,7 +111,14 @@
               capabilities = capabilities
           })
       end
-      require('ufo').setup()
+      require('ufo').setup {
+        preview = {
+          win_config = {
+            winblend = 0,
+            winhighlight = "NvimTreeNormal:NvimTreeNormal",
+          },
+        },
+      }
     '';
     globals = {
       undotree_HelpLine = 0;
