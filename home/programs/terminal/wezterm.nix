@@ -11,12 +11,24 @@
       package = inputs.wezterm.packages.${pkgs.system}.default;
 
       extraConfig = ''
-        local wezterm = require 'wezterm'
-
         local config = {}
         if wezterm.config_builder then
           config = wezterm.config_builder()
         end
+
+        wezterm.on("window-resized", function(window, pane)
+          local window_dims = window:get_dimensions();
+          local overrides = window:get_config_overrides() or {}
+          local new_padding = {
+            left = math.floor((window_dims.pixel_width % 18) / 2),
+            right = 0,
+            top = math.floor((window_dims.pixel_height % 36) / 2),
+            bottom = 0
+          };
+          overrides.window_padding = new_padding
+          window:set_config_overrides(overrides)
+        end);
+
         config = {
           check_for_updates = false,
           default_prog = { "/etc/profiles/per-user/error/bin/tmux" },
@@ -26,13 +38,11 @@
           default_cursor_style = "SteadyBar",
 
           window_background_opacity = ${builtins.toString config.opacity.normal},
-          window_padding = {
-            left = 1,
-            right = 1,
-            top = 1,
-            bottom = 0,
-          },
           enable_tab_bar = false,
+
+          keys = {
+            { key = "T", mods = "CTRL|SHIFT", action = wezterm.action.DisableDefaultAssignment },
+          },
         }
 
         return config
