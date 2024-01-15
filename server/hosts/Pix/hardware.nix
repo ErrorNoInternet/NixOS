@@ -37,7 +37,7 @@
   };
 
   fileSystems = let
-    opts = ["noatime"];
+    opts = ["ssd_spread" "noatime"];
     fsType = "btrfs";
     device = "/dev/disk/by-label/NIXOS_SD";
   in {
