@@ -74,7 +74,7 @@ in {
           lib.intersperse ", " (
             inputs.nix-colors.lib.conversions.hexToRGB base00
           )
-        )}, ${builtins.toString config.opacity.subtle});
+        )}, ${builtins.toString config.opacity.bar});
         }
 
         button {
