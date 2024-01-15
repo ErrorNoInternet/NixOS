@@ -5,12 +5,14 @@
         allow_workspace_cycles = true;
       };
 
-      bind = [
+      bind = let
+        commands.rofi = "rofi -modes drun,window,run -show drun";
+      in [
         "$mod CTRL SHIFT, code:22, exec, hyprctl dispatch exit"
         "$mod, escape, exec, wleave -p layer-shell -f -m 300"
 
-        "$mod, D, exec, rofi -show drun || pkill rofi"
-        "$mod, Z, exec, rofi -show drun || pkill rofi"
+        "$mod, D, exec, ${commands.rofi} || pkill rofi"
+        "$mod, Z, exec, ${commands.rofi} || pkill rofi"
         "$mod, G, exec, cliphist list | rofi -dmenu | cliphist decode | wl-copy"
         "$mod, code:60, exec, rofi -show emoji"
         ", PRINT, exec, grimblast --freeze save area - | wl-copy"
