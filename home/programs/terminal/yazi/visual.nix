@@ -2,8 +2,8 @@
   programs.yazi = {
     theme = {
       status = {
-        separator_open = "";
-        separator_close = "";
+        separator_open = "";
+        separator_close = "";
       };
       manager.preview_hovered = {
         bg = "darkgray";
