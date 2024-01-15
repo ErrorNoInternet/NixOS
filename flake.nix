@@ -64,6 +64,7 @@
             deadnix
             git
             neovim
+            statix
           ];
           name = "configuration.nix-shell";
         };
