@@ -21,7 +21,8 @@ in {
     };
 
   config = mkIf (config.home.programs.terminal.fish.enable
-    || config.home.programs.terminal.foot.enable) {
+    || config.home.programs.terminal.foot.enable
+    || config.home.programs.terminal.wezterm.enable) {
     programs.fish = {
       enable = true;
       plugins = with pkgs.fishPlugins; [

@@ -12,6 +12,7 @@
     ./irssi.nix
     ./neovim
     ./tmux.nix
+    ./wezterm.nix
     ./yazi
     ./zoxide.nix
   ];
