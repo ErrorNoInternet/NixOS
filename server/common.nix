@@ -74,7 +74,7 @@
   };
 
   users.users = {
-    root.password = "snowflake";
+    root.initialPassword = "snowflake";
     snowflake = {
       isNormalUser = true;
       extraGroups = ["wheel"];

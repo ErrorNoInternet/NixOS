@@ -21,28 +21,26 @@
   };
 
   services = {
-    snapper = {
-      configs = {
-        drive1 = {
-          SUBVOLUME = "/mnt/drive1";
-          TIMELINE_CREATE = true;
-          TIMELINE_CLEANUP = true;
+    snapper.configs = {
+      drive1 = {
+        SUBVOLUME = "/mnt/drive1";
+        TIMELINE_CREATE = true;
+        TIMELINE_CLEANUP = true;
 
-          TIMELINE_LIMIT_HOURLY = 24;
-          TIMELINE_LIMIT_DAILY = 14;
-          TIMELINE_LIMIT_MONTHLY = 1;
-          TIMELINE_LIMIT_YEARLY = 0;
-        };
-        drive3 = {
-          SUBVOLUME = "/mnt/drive3";
-          TIMELINE_CREATE = true;
-          TIMELINE_CLEANUP = true;
+        TIMELINE_LIMIT_HOURLY = 24;
+        TIMELINE_LIMIT_DAILY = 14;
+        TIMELINE_LIMIT_MONTHLY = 1;
+        TIMELINE_LIMIT_YEARLY = 0;
+      };
+      drive3 = {
+        SUBVOLUME = "/mnt/drive3";
+        TIMELINE_CREATE = true;
+        TIMELINE_CLEANUP = true;
 
-          TIMELINE_LIMIT_HOURLY = 24;
-          TIMELINE_LIMIT_DAILY = 14;
-          TIMELINE_LIMIT_MONTHLY = 1;
-          TIMELINE_LIMIT_YEARLY = 0;
-        };
+        TIMELINE_LIMIT_HOURLY = 24;
+        TIMELINE_LIMIT_DAILY = 14;
+        TIMELINE_LIMIT_MONTHLY = 1;
+        TIMELINE_LIMIT_YEARLY = 0;
       };
     };
 

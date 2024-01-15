@@ -1,13 +1,4 @@
-{
-  inputs,
-  pkgs,
-  ...
-}: {
-  colors = {
-    schemeName = "Nord";
-    scheme = inputs.nix-colors.colorSchemes.nord;
-  };
-
+{pkgs, ...}: {
   home = {
     username = "snowflake";
     homeDirectory = "/home/snowflake";

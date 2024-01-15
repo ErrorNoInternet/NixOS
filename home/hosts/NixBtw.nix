@@ -6,11 +6,6 @@
 }: {
   caches.nix-gaming.enable = true;
 
-  colors = {
-    schemeName = "Nord";
-    scheme = inputs.nix-colors.colorSchemes.nord;
-  };
-
   profiles = {
     windowManager.enable = true;
     desktop = {
