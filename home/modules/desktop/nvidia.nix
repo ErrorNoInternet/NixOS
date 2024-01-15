@@ -11,14 +11,16 @@ in {
 
   config = mkIf config.nvidia.desktopEntries.enable {
     xdg.desktopEntries = {
-      supertuxkart = {
+      nvidia-supertuxkart = {
         name = "SuperTuxKart (nvidia-offload)";
         icon = "supertuxkart";
+        categories = ["Game"];
         exec = "nvidia-offload supertuxkart";
       };
-      osu-lazer = {
+      nvidia-osu-lazer = {
         name = "osu! (nvidia-offload)";
         icon = "${inputs.nix-gaming.packages.${pkgs.system}.osu-lazer-bin}/osu.png";
+        categories = ["Game"];
         exec = "nvidia-offload osu!";
       };
     };
