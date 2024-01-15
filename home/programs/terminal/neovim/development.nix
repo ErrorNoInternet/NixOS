@@ -14,6 +14,8 @@
 
       todo-comments.enable = true;
 
+      commentary.enable = true;
+
       nvim-autopairs.enable = true;
     };
     extraPlugins = with pkgs.vimPlugins; [
