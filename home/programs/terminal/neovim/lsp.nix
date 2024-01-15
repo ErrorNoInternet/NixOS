@@ -19,7 +19,13 @@
       cmp_luasnip.enable = true;
       luasnip.enable = true;
 
-      treesitter.enable = true;
+      treesitter = {
+        enable = true;
+        nixvimInjections = true;
+
+        indent = true;
+        incrementalSelection.enable = true;
+      };
 
       barbecue = {
         enable = true;
@@ -82,6 +88,9 @@
       friendly-snippets
       nvim-lspconfig
     ];
+    extraConfigLuaPre = ''
+      vim.highlight.priorities.semantic_tokens = 99
+    '';
     extraConfigLuaPost = ''
       require("luasnip.loaders.from_vscode").lazy_load()
 
