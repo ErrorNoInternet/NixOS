@@ -170,12 +170,5 @@
       key = "<leader>u";
       action = ":UndotreeToggle<CR>:UndotreeFocus<CR>";
     }
-
-    {
-      mode = "n";
-      options.silent = true;
-      key = "<C-m>";
-      action = ":MinimapToggle<CR>";
-    }
   ];
 }
