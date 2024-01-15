@@ -73,6 +73,7 @@
         enable = true;
         lightbulb.enable = false;
         symbolInWinbar.enable = false;
+        beacon.enable = false;
       };
     };
     extraPlugins = with pkgs.vimPlugins; [
