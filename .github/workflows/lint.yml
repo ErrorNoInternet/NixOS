@@ -34,6 +34,10 @@ jobs:
       - name: Check formatting
         run: nix run nixpkgs#alejandra -- -c .
 
-      - name: Check for dead code
+      - name: Run static code analysis
+        if: always()
+        run: nix run nixpkgs#statix -- check
+
+      - name: Scan for dead code
         if: always()
         run: nix run nixpkgs#deadnix -- -f
