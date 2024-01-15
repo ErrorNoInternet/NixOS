@@ -22,7 +22,7 @@
 
       HighlightUndo = {
         bg = "#${base03}";
-        fg = "#${base06}";
+        fg = "none";
       };
 
       RadarBackground.fg = "#${base03}";
