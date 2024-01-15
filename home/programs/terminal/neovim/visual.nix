@@ -96,10 +96,13 @@
       };
     };
     extraPlugins = with pkgs.vimPlugins; [
+      highlight-undo-nvim
       minimap-vim
       nvim-ufo
     ];
     extraConfigLuaPost = ''
+      require('highlight-undo').setup()
+
       local capabilities = vim.lsp.protocol.make_client_capabilities()
       capabilities.textDocument.foldingRange = {
           dynamicRegistration = false,

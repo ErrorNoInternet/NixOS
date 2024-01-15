@@ -20,6 +20,11 @@
       NvimTreeNormal.bg = "#${base01}";
       NvimTreeCursorLine.bg = "#${base03}";
 
+      HighlightUndo = {
+        bg = "#${base03}";
+        fg = "#${base06}";
+      };
+
       RadarBackground.fg = "#${base03}";
       RadarMark.fg = "#${base04}";
 
