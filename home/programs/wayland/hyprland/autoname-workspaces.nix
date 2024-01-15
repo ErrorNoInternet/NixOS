@@ -20,6 +20,7 @@
             "org.kde.kdenlive" = "󰸬 "
             "org.prismlauncher.PrismLauncher" = "󰍳 "
             "org.qbittorrent.qBittorrent" = "󰰛 "
+            "org.wezfurlong.wezterm" = ""
             "osu!" = " "
             Brave-browser = " "
             DEFAULT = " "
