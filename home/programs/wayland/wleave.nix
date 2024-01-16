@@ -26,45 +26,38 @@ in {
       package = pkgs.wleave;
       layout = [
         {
-          label = "lock";
-          text = "Lock";
-          action = "sleep ${builtins.toString sleep} && swaylock --grace 0 --fade-in 1";
-          keybind = "l";
-          inherit height;
-        }
-        {
-          label = "shutdown";
-          text = "Shutdown";
-          action = "sleep ${builtins.toString sleep} && systemctl poweroff";
+          label = "suspend";
+          text = "";
+          action = "sleep ${builtins.toString sleep} && systemctl suspend";
           keybind = "s";
           inherit height;
         }
         {
-          label = "logout";
-          text = "Logout";
-          action = "sleep ${builtins.toString sleep} && hyprctl dispatch exit";
-          keybind = "e";
-          inherit height;
-        }
-        {
           label = "reboot";
-          text = "Reboot";
+          text = "";
           action = "sleep ${builtins.toString sleep} && systemctl reboot";
           keybind = "r";
           inherit height;
         }
         {
-          label = "suspend";
-          text = "Suspend";
-          action = "sleep ${builtins.toString sleep} && systemctl suspend";
-          keybind = "u";
+          label = "shutdown";
+          text = "";
+          action = "sleep ${builtins.toString sleep} && systemctl poweroff";
+          keybind = "p";
           inherit height;
         }
         {
-          label = "hibernate";
-          text = "Hibernate";
-          action = "sleep ${builtins.toString sleep} && systemctl hibernate";
-          keybind = "h";
+          label = "logout";
+          text = "󰗽";
+          action = "sleep ${builtins.toString sleep} && hyprctl dispatch exit";
+          keybind = "e";
+          inherit height;
+        }
+        {
+          label = "lock";
+          text = "";
+          action = "sleep ${builtins.toString sleep} && swaylock --grace 0 --fade-in 1";
+          keybind = "l";
           inherit height;
         }
       ];
@@ -78,14 +71,14 @@ in {
         }
 
         button {
-          font-size: 18px;
+          font-size: 48px;
           background-color: #${base01};
           color: #${base04};
-          margin: 5px;
-          border-radius: 15px;
+          margin: 6px;
+          border-radius: 16px;
         }
 
-        button:active, button:focus, button:hover {
+        button:hover {
           background-color: #${base03};
           color: #${base0D};
           transition: all 0.2s ease-in-out;
