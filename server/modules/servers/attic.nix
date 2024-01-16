@@ -73,6 +73,7 @@ in {
           enable = true;
           recommendedProxySettings = true;
           recommendedTlsSettings = true;
+          recommendedZstdSettings = true;
           clientMaxBodySize = "10G";
           virtualHosts."${host}" = {
             forceSSL = true;
@@ -89,6 +90,9 @@ in {
               proxyPass = "http://localhost:${builtins.toString ports.insecure}";
               extraConfig = ''
                 proxy_pass_header Authorization;
+
+                zstd on;
+                zstd_types application/x-nix-archive;
               '';
             };
           };
