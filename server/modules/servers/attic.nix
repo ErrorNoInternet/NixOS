@@ -57,9 +57,9 @@ in {
               level = 3;
             };
             chunking = {
-              nar-size-threshold = 0;
-              min-size = 16 * 1024;
-              avg-size = 64 * 1024;
+              nar-size-threshold = 131072;
+              min-size = 64 * 1024;
+              avg-size = 128 * 1024;
               max-size = 256 * 1024;
             };
             garbage-collection = {
