@@ -92,7 +92,7 @@ in {
                 proxy_pass_header Authorization;
 
                 zstd on;
-                zstd_types application/x-nix-archive;
+                zstd_comp_level 3;
               '';
             };
           };
