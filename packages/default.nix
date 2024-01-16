@@ -25,7 +25,7 @@
           ++ [./patches/attic_https-api-endpoint.patch];
       });
 
-      yazi = inputs.yazi.packages.${system}.packages.yazi.overrideAttrs (oldAttrs: {
+      yazi = inputs.yazi.packages.${system}.yazi.overrideAttrs (oldAttrs: {
         patches =
           (oldAttrs.patches or [])
           ++ [./patches/yazi_cursor-shape.patch];
