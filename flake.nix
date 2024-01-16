@@ -62,6 +62,7 @@
             alejandra
             bat
             deadnix
+            delta
             git
             neovim
             statix
