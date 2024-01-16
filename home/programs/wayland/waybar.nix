@@ -8,6 +8,8 @@
   config = lib.mkIf config.profiles.windowManager.enable {
     programs.waybar = with config.colorScheme.colors; {
       enable = true;
+      package = inputs.waybar.packages.${pkgs.system}.waybar;
+
       settings.mainBar = {
         position = "top";
         layer = "top";
