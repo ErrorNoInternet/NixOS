@@ -92,6 +92,7 @@ in {
 
                 zstd on;
                 zstd_comp_level 3;
+                zstd_static on;
                 zstd_min_len 256;
                 zstd_types *;
               '';
