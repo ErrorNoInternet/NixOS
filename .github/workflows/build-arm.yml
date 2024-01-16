@@ -56,6 +56,9 @@ jobs:
             log-lines = 500
             system = aarch64-linux
 
+      - name: Set up Magic Nix Cache
+        uses: DeterminateSystems/magic-nix-cache-action@v2
+
       - name: Set up Attic
         uses: ErrorNoInternet/attic-action@v0
         with:
@@ -99,6 +102,9 @@ jobs:
           extra-conf: |
             log-lines = 500
             system = aarch64-linux
+
+      - name: Set up Magic Nix Cache
+        uses: DeterminateSystems/magic-nix-cache-action@v2
 
       - name: Set up Attic
         uses: ErrorNoInternet/attic-action@v0
