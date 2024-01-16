@@ -31,6 +31,7 @@
     neovim.url = "github:neovim/neovim?dir=contrib";
     nix-gaming.url = "github:fufexan/nix-gaming";
     shadower.url = "github:n3oney/shadower";
+    waybar.url = "github:Alexays/Waybar";
     wezterm.url = "github:happenslol/wezterm?dir=nix&ref=add-nix-flake";
     yazi.url = "github:sxyazi/yazi";
 
