@@ -17,6 +17,7 @@
     gp = "git push";
     gpf = "git push --force-with-lease";
     gpl = "git pull";
+    gps = "git push --set-upstream origin";
     gr = "git restore";
     gre = "git reset";
     grv = "git revert";
