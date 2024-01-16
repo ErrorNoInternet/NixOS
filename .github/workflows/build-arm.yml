@@ -53,8 +53,8 @@ jobs:
         uses: DeterminateSystems/nix-installer-action@v9
         with:
           extra-conf: |
-            log-lines = 500
             system = aarch64-linux
+            log-lines = 500
 
       - name: Set up Magic Nix Cache
         uses: DeterminateSystems/magic-nix-cache-action@v2
@@ -78,6 +78,7 @@ jobs:
       - name: Build ${{ matrix.host }}
         run: nix build .#nixosConfigurations.${{ matrix.host }}.config.system.build.toplevel
 
+
   build-packages:
     name: Packages
     runs-on: ubuntu-22.04
@@ -100,8 +101,8 @@ jobs:
         uses: DeterminateSystems/nix-installer-action@v9
         with:
           extra-conf: |
-            log-lines = 500
             system = aarch64-linux
+            log-lines = 500
 
       - name: Set up Magic Nix Cache
         uses: DeterminateSystems/magic-nix-cache-action@v2

@@ -78,6 +78,7 @@ jobs:
       - name: Build ${{ matrix.host }}
         run: nix build -j 2 --cores 2 .#nixosConfigurations.${{ matrix.host }}.config.system.build.toplevel
 
+
   build-packages:
     name: Packages
     runs-on: ubuntu-22.04
