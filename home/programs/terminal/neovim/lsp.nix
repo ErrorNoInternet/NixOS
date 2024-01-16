@@ -23,7 +23,6 @@
         enable = true;
         nixvimInjections = true;
 
-        indent = true;
         incrementalSelection.enable = true;
       };
 
@@ -80,6 +79,7 @@
         lightbulb.enable = false;
         symbolInWinbar.enable = false;
         beacon.enable = false;
+        ui.codeAction = "";
       };
     };
     extraPlugins = with pkgs.vimPlugins; [
