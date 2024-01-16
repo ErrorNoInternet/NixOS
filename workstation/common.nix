@@ -31,7 +31,10 @@
     };
 
     kernelPackages = lib.mkDefault pkgs.linuxPackages_latest;
-    supportedFilesystems = ["ntfs"];
+    supportedFilesystems = [
+      "bcachefs"
+      "ntfs"
+    ];
 
     kernel.sysctl = {
       "kernel.sysrq" = 1;

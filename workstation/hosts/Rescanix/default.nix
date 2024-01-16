@@ -15,8 +15,6 @@
     };
     kernelParams = ["boot.shell_on_fail"];
     supportedFilesystems = [
-      # TODO: wait for kernel 6.7
-      # "bcachefs"
       "apfs"
       "exfat"
       "f2fs"
