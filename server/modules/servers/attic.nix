@@ -73,6 +73,7 @@ in {
           enable = true;
           recommendedProxySettings = true;
           recommendedTlsSettings = true;
+          recommendedZstdSettings = true;
           clientMaxBodySize = "10G";
           virtualHosts."${host}" = {
             forceSSL = true;
