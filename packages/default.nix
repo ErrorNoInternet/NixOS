@@ -25,6 +25,12 @@
           ++ [./patches/attic_https-api-endpoint.patch];
       });
 
+      yazi = inputs.yazi.packages.${system}.packages.yazi.overrideAttrs (oldAttrs: {
+        patches =
+          (oldAttrs.patches or [])
+          ++ [./patches/yazi_cursor-shape.patch];
+      });
+
       neovim = inputs.neovim.packages.${system}.neovim.overrideAttrs (oldAttrs: {
         patches =
           (oldAttrs.patches or [])
