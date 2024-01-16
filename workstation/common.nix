@@ -32,8 +32,7 @@
 
     kernelPackages = lib.mkDefault pkgs.linuxPackages_latest;
     supportedFilesystems = [
-      # TODO: wait for kernel 6.7
-      # "bcachefs"
+      "bcachefs"
       "ntfs"
     ];
 
