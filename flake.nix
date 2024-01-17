@@ -59,6 +59,7 @@
         formatter = pkgs.alejandra;
 
         devShells.default = pkgs.mkShell {
+          name = "configuration.nix-shell";
           packages = with pkgs; [
             alejandra
             bat
@@ -68,7 +69,6 @@
             neovim
             statix
           ];
-          name = "configuration.nix-shell";
         };
       };
     };
