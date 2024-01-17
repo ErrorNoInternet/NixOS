@@ -76,7 +76,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Build ${{ matrix.host }}
-        run: cpulimit -il 100 nix build -j 1 --cores 1 .#nixosConfigurations.${{ matrix.host }}.config.system.build.toplevel
+        run: cpulimit -il 100 -- nix build -j 1 --cores 1 .#nixosConfigurations.${{ matrix.host }}.config.system.build.toplevel
 
 
   build-packages:
