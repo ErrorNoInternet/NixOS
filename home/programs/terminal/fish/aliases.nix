@@ -12,9 +12,8 @@
     grep = "grep --color";
     ip = "ip --color";
     l = "ls -l";
-    la = "ls -a";
+    la = "ls -la";
     ll = "ls -l";
-    lla = "ls -la";
     ls = "${lib.getExe pkgs.eza} --git --icons";
     lsimg = "${lib.getExe pkgs.timg} -ps --grid=6 --upscale --title --center --frames=1";
     mf = "${lib.getExe pkgs.fastfetch} -c ~/.config/fastfetch/minimal.jsonc";
