@@ -30,15 +30,7 @@
   };
 
   workstation = {
-    # TODO: remove once zfs supports 6.7
-    modules.zfs.enable =
-      if
-        (builtins.compareVersions
-          config.boot.zfs.package.latestCompatibleLinuxPackages.kernel.version
-          pkgs.linuxPackages_latest.kernel.version)
-        == -1
-      then false
-      else true;
+    modules.zfs.enable = true;
 
     profiles.vmGuest.enable = true;
 

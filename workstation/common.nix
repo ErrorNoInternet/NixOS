@@ -32,7 +32,6 @@
 
     kernelPackages = lib.mkDefault pkgs.linuxPackages_latest;
     supportedFilesystems = [
-      "bcachefs"
       "ntfs"
     ];
 
@@ -106,6 +105,7 @@
     systemPackages = with pkgs; [
       libsForQt5.qt5.qtgraphicaleffects
 
+      bcachefs-tools
       cryptsetup
       home-manager
       pulseaudio
