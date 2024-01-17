@@ -25,7 +25,7 @@
 
     colorschemes.nord = {
       enable = true;
-      disable_background = true;
+      disableBackground = true;
       borders = true;
       italic = false;
     };
