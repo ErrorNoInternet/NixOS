@@ -57,7 +57,7 @@ in {
               level = 3;
             };
             chunking = {
-              nar-size-threshold = 131072;
+              nar-size-threshold = 0;
               min-size = 64 * 1024;
               avg-size = 128 * 1024;
               max-size = 256 * 1024;
@@ -73,7 +73,6 @@ in {
           enable = true;
           recommendedProxySettings = true;
           recommendedTlsSettings = true;
-          recommendedZstdSettings = true;
           clientMaxBodySize = "10G";
           virtualHosts."${host}" = {
             forceSSL = true;
@@ -90,12 +89,6 @@ in {
               proxyPass = "http://localhost:${builtins.toString ports.insecure}";
               extraConfig = ''
                 proxy_pass_header Authorization;
-
-                zstd on;
-                zstd_comp_level 3;
-                zstd_static on;
-                zstd_min_length 256;
-                zstd_types *;
               '';
             };
           };
