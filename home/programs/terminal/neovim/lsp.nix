@@ -28,7 +28,7 @@
 
       barbecue = {
         enable = true;
-        package = self.packages.${pkgs.system}.barbecue-nvim;
+        package = self.packages.${pkgs.system}.vimPlugins.barbecue-nvim;
       };
 
       trouble.enable = true;

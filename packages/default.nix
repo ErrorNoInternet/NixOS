@@ -5,7 +5,7 @@
 
   systems = ["x86_64-linux" "aarch64-linux"];
   perSystem = {pkgs, ...}: {
-    packages = with pkgs; {
+    legacyPackages = with pkgs; {
       nix = nixVersions.nix_2_19.overrideAttrs (oldAttrs: {
         doInstallCheck = false;
         patches =
@@ -37,11 +37,13 @@
           ++ [./patches/neovim_no-fold-numbers.patch];
       });
 
-      barbecue-nvim = vimPlugins.barbecue-nvim.overrideAttrs (oldAttrs: {
-        patches =
-          (oldAttrs.patches or [])
-          ++ [./patches/barbecue-nvim_hide-empty.patch];
-      });
+      vimPlugins = with pkgs.vimPlugins; {
+        barbecue-nvim = barbecue-nvim.overrideAttrs (oldAttrs: {
+          patches =
+            (oldAttrs.patches or [])
+            ++ [./patches/barbecue-nvim_hide-empty.patch];
+        });
+      };
     };
   };
 }
