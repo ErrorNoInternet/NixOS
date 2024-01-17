@@ -1,5 +1,5 @@
 {config, ...}: {
-  wayland.windowManagers.hyprland.settings = {
+  wayland.windowManager.hyprland.settings = {
     "$mod" = config.desktop.modifierKey;
 
     input = {
