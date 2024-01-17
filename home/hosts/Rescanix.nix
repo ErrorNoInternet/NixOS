@@ -63,9 +63,9 @@
       hyperfine
       hyprpicker
       imagemagick
-      inputs.hyprwm-contrib.packages.${pkgs.system}.scratchpad
-      inputs.nix-gaming.packages.${pkgs.system}.wine-ge
-      inputs.overmask.packages.${pkgs.system}.overmask
+      inputs.hyprwm-contrib.packages.${system}.scratchpad
+      inputs.nix-gaming.packages.${system}.wine-ge
+      inputs.overmask.packages.${system}.overmask
       intel-gpu-tools
       iperf
       kdiskmark
@@ -91,9 +91,9 @@
       qrencode
       radeontop
       sdparm
-      self.packages.${pkgs.system}.passgen
-      self.packages.${pkgs.system}.savehw
-      self.packages.${pkgs.system}.tbw
+      self.packages.${system}.passgen
+      self.packages.${system}.savehw
+      self.packages.${system}.tbw
       smartmontools
       sqlite
       sshfs

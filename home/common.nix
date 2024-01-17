@@ -24,7 +24,7 @@
     dua
     eza
     fd
-    inputs.hsize.packages.${pkgs.system}.hsize
+    inputs.hsize.packages.${system}.hsize
     jq
     nh
     progress

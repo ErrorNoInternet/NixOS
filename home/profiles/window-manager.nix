@@ -15,13 +15,13 @@ in {
 
     home.packages = with pkgs; [
       cliphist
-      inputs.hyprwm-contrib.packages.${pkgs.system}.grimblast
-      inputs.shadower.packages.${pkgs.system}.shadower
+      inputs.hyprwm-contrib.packages.${system}.grimblast
+      inputs.shadower.packages.${system}.shadower
       pavucontrol
       ripdrag
-      self.packages.${pkgs.system}.brightness
-      self.packages.${pkgs.system}.hyprgamemode
-      self.packages.${pkgs.system}.pavolume
+      self.packages.${system}.brightness
+      self.packages.${system}.hyprgamemode
+      self.packages.${system}.pavolume
       slurp
       swayidle
       vimiv-qt

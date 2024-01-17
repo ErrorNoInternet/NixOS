@@ -59,8 +59,8 @@
     fd
     procs
     pueue
-    self.packages.${system}.btrfs-progs
-    self.packages.${system}.nix
+    self.legacyPackages.${system}.btrfs-progs
+    self.legacyPackages.${system}.nix
   ];
 
   systemd.services.pueued = {

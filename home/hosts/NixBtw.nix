@@ -58,10 +58,10 @@
     packages = with pkgs; [
       # desktop
       hyprpicker
-      inputs.hyprwm-contrib.packages.${pkgs.system}.scratchpad
+      inputs.hyprwm-contrib.packages.${system}.scratchpad
 
       # system utilities
-      self.packages.${pkgs.system}.tbw
+      self.packages.${system}.tbw
       _7zz
       bandwhich
       compsize
@@ -83,7 +83,7 @@
       jetbrains.idea-community
 
       # games
-      inputs.nix-gaming.packages.${pkgs.system}.wine-ge
+      inputs.nix-gaming.packages.${system}.wine-ge
       osu-lazer-bin
       prismlauncher
       superTuxKart
