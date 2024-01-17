@@ -8,6 +8,7 @@
   imports = [
     ./autoname-workspaces.nix
     ./execs.nix
+    ./input.nix
     ./keybinds.nix
     ./options.nix
     ./visual.nix

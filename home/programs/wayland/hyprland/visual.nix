@@ -38,6 +38,11 @@
         };
       };
 
+      misc = {
+        animate_manual_resizes = true;
+        animate_mouse_windowdragging = true;
+      };
+
       animations = {
         enabled = true;
         bezier = "customBezier, 0.05, 0.9, 0.1, 1.00";
