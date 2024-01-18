@@ -64,6 +64,7 @@
       hyprpicker
       imagemagick
       inputs.hyprwm-contrib.packages.${system}.scratchpad
+      inputs.nix-gaming.packages.${system}.osu-lazer-bin
       inputs.nix-gaming.packages.${system}.wine-ge
       inputs.overmask.packages.${system}.overmask
       intel-gpu-tools
@@ -78,7 +79,6 @@
       nmap
       nvme-cli
       nvtop
-      osu-lazer-bin
       parted
       patchelf
       pavucontrol

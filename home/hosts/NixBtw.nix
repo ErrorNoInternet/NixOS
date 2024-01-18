@@ -83,8 +83,8 @@
       jetbrains.idea-community
 
       # games
+      inputs.nix-gaming.packages.${system}.osu-lazer-bin
       inputs.nix-gaming.packages.${system}.wine-ge
-      osu-lazer-bin
       prismlauncher
       superTuxKart
     ];
