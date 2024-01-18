@@ -79,12 +79,12 @@
       }
       {
         on = ["<C-k>"];
-        exec = "peek -5";
+        exec = "seek -5";
         desc = "Peek up 5 units in the preview";
       }
       {
         on = ["<C-j>"];
-        exec = "peek 5";
+        exec = "seek 5";
         desc = "Peek down 5 units in the preview";
       }
 
@@ -278,52 +278,52 @@
       # Sorting
       {
         on = [";" "a"];
-        exec = "sort alphabetical --dir_first";
+        exec = "sort alphabetical --dir-first";
         desc = "Sort alphabetically";
       }
       {
         on = [";" "A"];
-        exec = "sort alphabetical --reverse --dir_first";
+        exec = "sort alphabetical --reverse --dir-first";
         desc = "Sort alphabetically (reverse)";
       }
       {
         on = [";" "c"];
-        exec = "sort created --dir_first";
+        exec = "sort created --dir-first";
         desc = "Sort by creation time";
       }
       {
         on = [";" "C"];
-        exec = "sort created --reverse --dir_first";
+        exec = "sort created --reverse --dir-first";
         desc = "Sort by creation time (reverse)";
       }
       {
         on = [";" "m"];
-        exec = "sort modified --dir_first";
+        exec = "sort modified --dir-first";
         desc = "Sort by modified time";
       }
       {
         on = [";" "M"];
-        exec = "sort modified --reverse --dir_first";
+        exec = "sort modified --reverse --dir-first";
         desc = "Sort by modified time (reverse)";
       }
       {
         on = [";" "n"];
-        exec = "sort natural --dir_first";
+        exec = "sort natural --dir-first";
         desc = "Sort naturally";
       }
       {
         on = [";" "N"];
-        exec = "sort natural --reverse --dir_first";
+        exec = "sort natural --reverse --dir-first";
         desc = "Sort naturally (reverse)";
       }
       {
         on = [";" "s"];
-        exec = "sort size --dir_first";
+        exec = "sort size --dir-first";
         desc = "Sort by size";
       }
       {
         on = [";" "S"];
-        exec = "sort size --reverse --dir_first";
+        exec = "sort size --reverse --dir-first";
         desc = "Sort by size (reverse)";
       }
 

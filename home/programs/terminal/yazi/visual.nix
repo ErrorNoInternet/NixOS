@@ -12,12 +12,12 @@
     };
     settings = {
       manager = {
-        layout = [1 4 4];
+        ratio = [2 4 4];
         sort_by = "modified";
         sort_sensitive = false;
         sort_reverse = true;
         sort_dir_first = true;
-        show_hidden = false;
+        show_hidden = true;
         show_symlink = true;
       };
       preview = {
