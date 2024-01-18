@@ -51,6 +51,8 @@
   };
 
   services = {
+    openssh.enable = true;
+
     pipewire = {
       enable = true;
       pulse.enable = true;
@@ -73,12 +75,10 @@
     };
 
     dbus.implementation = "broker";
-  };
+    gnome.gnome-keyring.enable = true;
 
-  systemd.coredump.extraConfig = ''
-    ProcessSizeMax=4G
-    ExternalSizeMax=512M
-  '';
+    logind.lidSwitch = "ignore";
+  };
 
   xdg.portal = {
     enable = true;
@@ -86,6 +86,12 @@
       xdg-desktop-portal-gtk
     ];
   };
+  security.pam.services.swaylock = {};
+
+  systemd.coredump.extraConfig = ''
+    ProcessSizeMax=4G
+    ExternalSizeMax=512M
+  '';
 
   environment = {
     etc = {
@@ -121,13 +127,6 @@
     neovim.defaultEditor = true;
   };
 
-  services = {
-    logind.lidSwitch = "ignore";
-    openssh.enable = true;
-    gnome.gnome-keyring.enable = true;
-  };
-  security.pam.services.swaylock = {};
-
   fonts = {
     packages = with pkgs; [
       (nerdfonts.override {fonts = ["JetBrainsMono"];})
@@ -160,5 +159,6 @@
     isNormalUser = true;
     extraGroups = ["wheel" "video" "networkmanager"];
   };
+
   system.stateVersion = "23.05";
 }
