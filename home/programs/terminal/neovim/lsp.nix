@@ -105,6 +105,7 @@
           { name = 'path' }
         }
       })
+      vim.keymap.set('c', '<tab>', '<C-z>', { silent = false })
     '';
     globals = {
       go_fmt_autosave = 0;
