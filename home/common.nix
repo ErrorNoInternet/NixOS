@@ -4,9 +4,10 @@
   ...
 }: {
   imports = [
-    ../shared/caches
-    ./modules
     ./profiles
+    ../shared/caches
+
+    ./modules
     ./programs
     inputs.agenix.homeManagerModules.default
   ];
