@@ -27,12 +27,17 @@
       {
         mode = "";
         key = "<C-f>";
-        action = "<cmd>lua require('luasnip').jump(1)<Cr>";
+        action = "<cmd>lua require('luasnip').jump(1)<CR>";
       }
       {
         mode = "i";
         key = "<C-f>";
-        action = "<cmd>lua require('luasnip').jump(1)<Cr>";
+        action = "<cmd>lua require('luasnip').jump(1)<CR>";
+      }
+      {
+        mode = "i";
+        key = "<C-t>";
+        action = "<Plug>luasnip-next-choice";
       }
 
       {
