@@ -1,22 +1,14 @@
-diff --git a/client/src/command/push.rs b/client/src/command/push.rs
-index 9e1e795..ca5d9f8 100644
---- a/client/src/command/push.rs
-+++ b/client/src/command/push.rs
-@@ -59,16 +59,11 @@ pub async fn run(opts: Opts) -> Result<()> {
+diff --git a/client/src/api/mod.rs b/client/src/api/mod.rs
+index a369a73..406cf77 100644
+--- a/client/src/api/mod.rs
++++ b/client/src/api/mod.rs
+@@ -71,8 +71,7 @@ impl ApiClient {
+     }
  
-     let (server_name, server, cache) = config.resolve_cache(&sub.cache)?;
+     /// Sets the API endpoint of this client.
+-    pub fn set_endpoint(&mut self, endpoint: &str) -> Result<()> {
+-        self.endpoint = Url::parse(endpoint)?;
++    pub fn set_endpoint(&mut self, _endpoint: &str) -> Result<()> {
+         Ok(())
+     }
  
--    let mut api = ApiClient::from_server_config(server.clone())?;
-+    let api = ApiClient::from_server_config(server.clone())?;
- 
-     // Confirm remote cache validity, query cache config
-     let cache_config = api.get_cache_config(cache).await?;
- 
--    if let Some(api_endpoint) = &cache_config.api_endpoint {
--        // Use delegated API endpoint
--        api.set_endpoint(api_endpoint)?;
--    }
--
-     let push_config = PushConfig {
-         num_workers: sub.jobs,
-         force_preamble: sub.force_preamble,
