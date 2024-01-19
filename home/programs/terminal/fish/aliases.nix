@@ -29,10 +29,5 @@
     nrs = "${lib.getExe pkgs.nh} os switch -v .";
     nrt = "${lib.getExe pkgs.nh} os test -v .";
     pwdc = "pwd | tr -d '\\n' | ${pkgs.wl-clipboard}/bin/wl-copy";
-
-    md = ''
-      sudo cryptsetup luksOpen /dev/disk/by-uuid/9cbb87fd-6e5a-45b3-88ee-22d369738be5 luks-btank1 &&
-      sudo cryptsetup luksOpen /dev/disk/by-uuid/5e2dcefa-ad4c-43ec-b58c-5660051a4010 luks-btank2 &&
-      sudo mount /dev/mapper/luks-btank1 ~/data'';
   };
 }
