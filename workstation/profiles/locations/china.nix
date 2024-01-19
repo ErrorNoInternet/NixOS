@@ -19,6 +19,7 @@ in {
     time.timeZone = "Asia/Shanghai";
     networking.extraHosts = ''
       185.199.111.133 raw.githubusercontent.com
+      192.30.255.112  github.com
     '';
     environment.systemPackages = [pkgs.mullvad-vpn];
     services.mullvad-vpn.enable = true;
