@@ -34,5 +34,5 @@
   #       == [linuxPackages_latest.kernel.version])
   #   then linuxPackages_latest
   #   else linuxPackages_testing;
-  boot.kernelPackages = pkgs.linuxPackages_zen;
+  boot.kernelPackages = pkgs.linuxPackages_6_6;
 }
