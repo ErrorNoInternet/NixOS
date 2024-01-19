@@ -17,6 +17,8 @@
 
     gestures = {
       workspace_swipe = true;
+      workspace_swipe_cancel_ratio = 0.25;
+      workspace_swipe_min_speed_to_force = 10;
     };
   };
 }
