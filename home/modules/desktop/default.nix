@@ -9,6 +9,7 @@ in {
     ./mimeapps.nix
     ./nvidia.nix
     ./opacity.nix
+    ./qt.nix
     ./terminal.nix
     ./wallpaper.nix
   ];
