@@ -13,6 +13,7 @@ jobs:
     runs-on: ubuntu-22.04
 
     strategy:
+      fail-fast: false
       matrix:
         include:
           - host: Pix
@@ -21,7 +22,7 @@ jobs:
       - name: Maximize disk space
         uses: easimon/maximize-build-space@v8
         with:
-          swap-size-mb: 16384
+          swap-size-mb: 8192
           build-mount-path: /nix
           overprovision-lvm: "true"
           remove-dotnet: "true"
@@ -84,6 +85,7 @@ jobs:
     runs-on: ubuntu-22.04
 
     strategy:
+      fail-fast: false
       matrix:
         include:
           - package: nix
