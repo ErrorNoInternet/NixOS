@@ -21,7 +21,7 @@
             "org.prismlauncher.PrismLauncher" = "󰍳 "
             "org.qbittorrent.qBittorrent" = "󰰛 "
             "org.wezfurlong.wezterm" = ""
-            "osu!" = " "
+            "osu!" = "  "
             Brave-browser = " "
             DEFAULT = " "
             Gimp = "󱇣 "
