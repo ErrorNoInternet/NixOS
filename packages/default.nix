@@ -44,6 +44,12 @@
             ++ [./patches/barbecue-nvim_hide-empty.patch];
         });
       };
+
+      nordic = nordic.overrideAttrs (oldAttrs: {
+        patches =
+          (oldAttrs.patches or [])
+          ++ [./patches/nordic_transparent-context-menu.patch];
+      });
     };
   };
 }

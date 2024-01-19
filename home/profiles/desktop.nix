@@ -12,8 +12,11 @@ in {
 
   config = mkIf config.profiles.desktop.enable {
     cursor.enable = true;
-    gtkCustomization.enable = true;
     mimeapps.image.enable = true;
+    toolkits = {
+      gtk.enable = true;
+      qt.enable = true;
+    };
 
     nvidia.desktopEntries.enable = config.profiles.desktop.enableNvidia;
   };
