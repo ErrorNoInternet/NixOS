@@ -14,6 +14,7 @@
         color_theme = "${lib.strings.toLower config.colors.schemeName}";
         io_mode = true;
         net_iface = "wlp5s0";
+        nvml_measure_pcie_speeds = false;
         proc_sorting = "cpu direct";
         swap_disk = false;
         theme_background = false;
