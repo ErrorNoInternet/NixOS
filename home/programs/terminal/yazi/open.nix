@@ -54,6 +54,10 @@
         use = ["extract" "reveal"];
       }
       {
+        mime = "application/*";
+        use = ["open" "edit" "reveal"];
+      }
+      {
         mime = "*";
         use = ["edit" "open" "reveal"];
       }
