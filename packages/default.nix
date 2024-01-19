@@ -29,7 +29,7 @@
       yazi = inputs.yazi.packages.${system}.yazi.overrideAttrs (oldAttrs: {
         patches =
           (oldAttrs.patches or [])
-          ++ [./patches/yazi_cursor-shape.patch];
+          ++ [./patches/yazi_default-cursor-shape.patch];
       });
 
       neovim = inputs.neovim.packages.${system}.neovim.overrideAttrs (oldAttrs: {
