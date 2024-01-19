@@ -22,17 +22,18 @@ jobs:
       - name: Maximize disk space
         uses: easimon/maximize-build-space@v10
         with:
-          swap-size-mb: 1024
-          root-reserve-mb: 40960
+          swap-size-mb: 4096
           build-mount-path: /nix
+          overprovision-lvm: "true"
           remove-dotnet: "true"
           remove-android: "true"
           remove-haskell: "true"
           remove-codeql: "true"
           remove-docker-images: "true"
 
-      - name: Delete unused directories
+      - name: Set up directories
         run: |
+          sudo chown root:root /nix
           sudo rm -rf "$AGENT_TOOLSDIRECTORY"
           sudo rm -rf /home/linuxbrew
           sudo rm -rf /home/runner/.rustup
@@ -44,12 +45,10 @@ jobs:
           sudo rm -rf /usr/local/share/powershell
           sudo rm -rf /var/lib/docker/overlay2
 
-      - name: Set up system
+      - name: Install QEMU
         run: |
           sudo apt update -y
           sudo apt install -y qemu-user-static
-          sudo chown root:root /nix
-          sudo sysctl vm.swappiness=200
 
       - name: Install Nix
         uses: DeterminateSystems/nix-installer-action@v9
