@@ -1,15 +1,22 @@
-{pkgs, ...}: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   environment.systemPackages = [pkgs.snapper];
-  systemd.services = {
-    snapper-cleanup = {
-      restartIfChanged = false;
-      serviceConfig.Restart = "no";
-    };
-    snapperd = {
-      restartIfChanged = false;
-      serviceConfig.Restart = "no";
+
+  systemd.timers = {
+    snapper-cleanup.enable = false;
+    custom-snapper-cleanup = {
+      wantedBy = ["timers.target"];
+      timerConfig = {
+        OnBootSec = "10m";
+        OnUnitActiveSec = config.services.snapper.cleanupInterval;
+        Unit = "snapper-cleanup.service";
+      };
     };
   };
+
   services.snapper = {
     snapshotInterval = "*:0/30";
     configs = {
