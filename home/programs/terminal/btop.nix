@@ -1,11 +1,14 @@
 {
   config,
   lib,
+  pkgs,
+  self,
   ...
 }: {
   config = lib.mkIf config.home.programs.terminal.fish.enable {
     programs.btop = {
       enable = true;
+      package = self.legacyPackages.${pkgs.system}.btop;
 
       settings = {
         color_theme = "${lib.strings.toLower config.colors.schemeName}";

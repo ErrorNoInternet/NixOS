@@ -19,10 +19,11 @@
           ++ [./patches/btrfs-progs_receive-selinux.patch];
       });
 
-      attic = inputs.attic.packages.${system}.attic.overrideAttrs (oldAttrs: {
-        patches =
-          (oldAttrs.patches or [])
-          ++ [./patches/attic_https-api-endpoint.patch];
+      btop = btop.overrideAttrs (oldAttrs: {
+        nativeBuildInputs = (oldAttrs.nativeBuildInputs or []) ++ [addOpenGLRunpath];
+        postFixup = ''
+          addOpenGLRunpath $out/bin/btop
+        '';
       });
 
       yazi = inputs.yazi.packages.${system}.yazi.overrideAttrs (oldAttrs: {
@@ -44,6 +45,12 @@
             ++ [./patches/barbecue-nvim_hide-empty.patch];
         });
       };
+
+      attic = inputs.attic.packages.${system}.attic.overrideAttrs (oldAttrs: {
+        patches =
+          (oldAttrs.patches or [])
+          ++ [./patches/attic_https-api-endpoint.patch];
+      });
 
       nordic = nordic.overrideAttrs (oldAttrs: {
         patches =
