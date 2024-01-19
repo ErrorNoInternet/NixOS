@@ -13,6 +13,7 @@ jobs:
     runs-on: ubuntu-22.04
 
     strategy:
+      fail-fast: false
       matrix:
         include:
           - host: NixBtw
@@ -20,20 +21,19 @@ jobs:
 
     steps:
       - name: Maximize disk space
-        uses: easimon/maximize-build-space@v8
+        uses: easimon/maximize-build-space@v10
         with:
-          swap-size-mb: 16384
+          swap-size-mb: 1024
+          root-reserve-mb: 40960
           build-mount-path: /nix
-          overprovision-lvm: "true"
           remove-dotnet: "true"
           remove-android: "true"
           remove-haskell: "true"
           remove-codeql: "true"
           remove-docker-images: "true"
 
-      - name: Set up directories
+      - name: Delete unused directories
         run: |
-          sudo chown root:root /nix
           sudo rm -rf "$AGENT_TOOLSDIRECTORY"
           sudo rm -rf /home/linuxbrew
           sudo rm -rf /home/runner/.rustup
@@ -45,10 +45,12 @@ jobs:
           sudo rm -rf /usr/local/share/powershell
           sudo rm -rf /var/lib/docker/overlay2
 
-      - name: Install QEMU
+      - name: Set up system
         run: |
           sudo apt update -y
           sudo apt install -y qemu-user-static
+          sudo chown root:root /nix
+          sudo sysctl vm.swappiness=200
 
       - name: Install Nix
         uses: DeterminateSystems/nix-installer-action@v9
@@ -76,7 +78,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Build ${{ matrix.host }}
-        run: NIX_BUILD_CORES=1 nix build -j 1 --cores 1 .#nixosConfigurations.${{ matrix.host }}.config.system.build.toplevel
+        run: nix build .#nixosConfigurations.${{ matrix.host }}.config.system.build.toplevel
 
 
   build-packages:
@@ -84,6 +86,7 @@ jobs:
     runs-on: ubuntu-22.04
 
     strategy:
+      fail-fast: false
       matrix:
         include:
           - package: nix
