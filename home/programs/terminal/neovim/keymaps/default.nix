@@ -20,12 +20,12 @@
     {
       mode = "";
       key = "<S-down>";
-      action = "10j";
+      action = "5j";
     }
     {
       mode = "";
       key = "<S-up>";
-      action = "10k";
+      action = "5k";
     }
     {
       mode = "";
