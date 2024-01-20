@@ -9,7 +9,7 @@
 in {
   options.home.programs.wayland.wleave = {
     sleep = mkOption {
-      default = 0.25;
+      default = 1.0;
       type = types.float;
     };
 
@@ -71,7 +71,7 @@ in {
         }
 
         button {
-          font-size: 48px;
+          font-size: 72px;
           background-color: #${base01};
           color: #${base04};
           margin: 6px;
