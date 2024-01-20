@@ -21,7 +21,7 @@ jobs:
 
     steps:
       - name: Maximize disk space
-        uses: ErrorNoInternet/maximize-build-space@v0
+        uses: ErrorNoInternet/maximize-build-space@v1
         with:
           swap-size-mb: 4096
           build-mount-path: /nix
