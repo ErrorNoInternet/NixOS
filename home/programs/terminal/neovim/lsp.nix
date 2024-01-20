@@ -26,6 +26,13 @@
         incrementalSelection.enable = true;
       };
 
+      treesitter-context = {
+        enable = true;
+        minWindowHeight = 12;
+        maxLines = 3;
+        multilineThreshold = 1;
+      };
+
       barbecue = {
         enable = true;
         package = self.legacyPackages.${pkgs.system}.vimPlugins.barbecue-nvim;
