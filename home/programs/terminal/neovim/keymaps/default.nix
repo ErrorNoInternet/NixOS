@@ -155,6 +155,12 @@
     {
       mode = "n";
       options.silent = true;
+      key = ";D";
+      action = ":bd!<CR>";
+    }
+    {
+      mode = "n";
+      options.silent = true;
       key = "<C-l>";
       action = ":NvimTreeToggle<CR>";
     }
