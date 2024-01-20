@@ -16,9 +16,7 @@ writeShellApplication {
         pactl set-sink-volume $sink +5%
       fi
     elif [[ $1 == "down" ]]; then
-      if [[ $((current_volume - 5)) -gt -5 ]]; then
-        pactl set-sink-volume $sink -5%
-      fi
+      pactl set-sink-volume $sink -5%
     elif [[ $1 == "toggle" ]]; then
       pactl set-sink-mute $sink toggle
     fi
