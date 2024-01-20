@@ -21,7 +21,7 @@ jobs:
 
     steps:
       - name: Maximize disk space
-        uses: easimon/maximize-build-space@v10
+        uses: ErrorNoInternet/maximize-build-space@v0
         with:
           swap-size-mb: 4096
           build-mount-path: /nix
