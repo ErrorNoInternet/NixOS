@@ -55,6 +55,7 @@ jobs:
         with:
           extra-conf: |
             system = aarch64-linux
+            substituters = https://nix-community.cachix.org
             log-lines = 500
             download-attempts = 10
             download-speed = 10000
@@ -109,6 +110,7 @@ jobs:
         with:
           extra-conf: |
             system = aarch64-linux
+            substituters = https://nix-community.cachix.org
             log-lines = 500
             download-attempts = 10
             download-speed = 10000
