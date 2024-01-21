@@ -91,13 +91,13 @@ jobs:
       fail-fast: false
       matrix:
         include:
+          - package: attic
+          - package: neovim
+          - package: nix
           - package: passgen
           - package: savehw
           - package: tbw
-          - package: nix
-          - package: attic
           - package: yazi
-          - package: neovim
 
     steps:
       - name: Install QEMU
