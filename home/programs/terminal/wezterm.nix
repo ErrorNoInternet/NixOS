@@ -33,7 +33,7 @@
           check_for_updates = false,
           default_prog = { "/etc/profiles/per-user/error/bin/tmux" },
 
-          color_scheme = "nord",
+          color_scheme = "Nord (base16)",
           font_size = 9,
           default_cursor_style = "SteadyBar",
 
