@@ -19,7 +19,7 @@ in {
     home.file.".gnupg/gpg-agent.conf".text = ''
       default-cache-ttl 86400
       max-cache-ttl 86400
-      pinentry-program ${lib.getExe pkgs.pinentry.curses}
+      pinentry-program ${pkgs.pinentry.curses}/bin/pinentry-curses
     '';
   };
 }
