@@ -56,6 +56,8 @@ jobs:
           extra-conf: |
             system = aarch64-linux
             log-lines = 500
+            download-attempts = 10
+            download-speed = 10000
 
       - name: Set up Magic Nix Cache
         uses: DeterminateSystems/magic-nix-cache-action@v2
@@ -108,6 +110,8 @@ jobs:
           extra-conf: |
             system = aarch64-linux
             log-lines = 500
+            download-attempts = 10
+            download-speed = 10000
 
       - name: Set up Magic Nix Cache
         uses: DeterminateSystems/magic-nix-cache-action@v2

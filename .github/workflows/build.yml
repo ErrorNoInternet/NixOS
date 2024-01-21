@@ -56,6 +56,8 @@ jobs:
         with:
           extra-conf: |
             log-lines = 500
+            download-attempts = 10
+            download-speed = 10000
 
       - name: Set up Magic Nix Cache
         uses: DeterminateSystems/magic-nix-cache-action@v2
@@ -107,6 +109,8 @@ jobs:
         with:
           extra-conf: |
             log-lines = 500
+            download-attempts = 10
+            download-speed = 10000
 
       - name: Set up Magic Nix Cache
         uses: DeterminateSystems/magic-nix-cache-action@v2
