@@ -13,15 +13,17 @@ in {
     };
 
   config = mkIf config.profiles.locations.china.enable {
+    time.timeZone = "Asia/Shanghai";
     nix.settings.substituters = [
       "https://mirror.sjtu.edu.cn/nix-channels/store"
     ];
-    time.timeZone = "Asia/Shanghai";
+    services.mullvad-vpn = {
+      enable = true;
+      package = pkgs.mullvad-vpn;
+    };
     networking.extraHosts = ''
       185.199.111.133 raw.githubusercontent.com
       192.30.255.112  github.com
     '';
-    environment.systemPackages = [pkgs.mullvad-vpn];
-    services.mullvad-vpn.enable = true;
   };
 }
