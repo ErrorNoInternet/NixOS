@@ -33,11 +33,6 @@
         multilineThreshold = 1;
       };
 
-      barbecue = {
-        enable = true;
-        package = self.legacyPackages.${pkgs.system}.vimPlugins.barbecue-nvim;
-      };
-
       trouble.enable = true;
 
       crates-nvim = {
