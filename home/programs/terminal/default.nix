@@ -8,7 +8,7 @@
     ./fish
     ./foot.nix
     ./git.nix
-    ./gnupg.nix
+    ./gpg.nix
     ./irssi.nix
     ./neovim
     ./tmux.nix

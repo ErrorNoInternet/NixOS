@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }: let
   inherit (lib) mkEnableOption mkIf;
@@ -15,5 +16,10 @@ in {
         default-key = "2486BFB7B1E6A4A3";
       };
     };
+    home.file.".gnupg/gpg-agent.conf".text = ''
+      default-cache-ttl 86400
+      max-cache-ttl 86400
+      pinentry-program ${lib.getExe pkgs.pinentry.curses}
+    '';
   };
 }
