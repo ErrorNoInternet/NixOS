@@ -38,14 +38,6 @@
           ++ [./patches/neovim_no-fold-numbers.patch];
       });
 
-      vimPlugins = with pkgs.vimPlugins; {
-        barbecue-nvim = barbecue-nvim.overrideAttrs (oldAttrs: {
-          patches =
-            (oldAttrs.patches or [])
-            ++ [./patches/barbecue-nvim_hide-empty.patch];
-        });
-      };
-
       attic = inputs.attic.packages.${system}.attic.overrideAttrs (oldAttrs: {
         patches =
           (oldAttrs.patches or [])

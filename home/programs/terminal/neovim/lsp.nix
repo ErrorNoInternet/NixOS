@@ -1,8 +1,4 @@
-{
-  pkgs,
-  self,
-  ...
-}: {
+{pkgs, ...}: {
   programs.nixvim = {
     plugins = {
       nvim-cmp = {
