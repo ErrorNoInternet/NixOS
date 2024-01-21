@@ -13,7 +13,7 @@ in {
     enable = mkEnableOption "";
 
     path = mkOption {
-      default = "${lib.strings.toLower config.colors.schemeName}/wallpaper1.png";
+      default = "${lib.strings.toLower config.colors.schemeName}/1.png";
       type = types.str;
     };
   };
