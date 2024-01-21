@@ -49,6 +49,12 @@
           (oldAttrs.patches or [])
           ++ [./patches/nordic_transparent-context-menu.patch];
       });
+
+      wezterm = inputs.wezterm.packages.${system}.default.overrideAttrs (oldAttrs: {
+        patches =
+          (oldAttrs.patches or [])
+          ++ [./patches/wezterm_optimized-build.patch];
+      });
     };
   };
 }

@@ -1,14 +1,14 @@
 {
   config,
-  inputs,
   lib,
   pkgs,
+  self,
   ...
 }: {
   config = lib.mkIf config.profiles.desktop.enable {
     programs.wezterm = {
       enable = true;
-      package = inputs.wezterm.packages.${pkgs.system}.default;
+      package = self.legacyPackages.${pkgs.system}.wezterm;
 
       extraConfig = ''
         local config = {}
