@@ -33,8 +33,9 @@
           check_for_updates = false,
           default_prog = { "/etc/profiles/per-user/error/bin/tmux" },
 
-          color_scheme = "Nord (base16)",
+          font = wezterm.font "JetBrainsMono Nerd Font",
           font_size = 9,
+          color_scheme = "Nord (base16)",
           default_cursor_style = "SteadyBar",
 
           window_background_opacity = ${builtins.toString config.opacity.normal},
