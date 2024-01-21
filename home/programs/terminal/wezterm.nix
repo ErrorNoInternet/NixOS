@@ -22,7 +22,7 @@
           local new_padding = {
             left = math.floor((window_dims.pixel_width % 18) / 2),
             right = 0,
-            top = math.floor((window_dims.pixel_height % 38) / 2),
+            top = math.floor((window_dims.pixel_height % 28) / 2),
             bottom = 0
           };
           overrides.window_padding = new_padding
