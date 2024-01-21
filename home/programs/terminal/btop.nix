@@ -19,6 +19,7 @@
         theme_background = false;
         update_ms = 1000;
         use_fstab = false;
+        vim_keys = true;
       };
     };
   };
