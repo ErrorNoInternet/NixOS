@@ -7,6 +7,7 @@ pkgs.writeShellApplication {
     drm_info
     eza
     glxinfo
+    inxi
     kmod
     lm_sensors
     lshw
@@ -15,6 +16,7 @@ pkgs.writeShellApplication {
     systemd
     usbutils
     util-linux
+    vulkan-tools
   ];
 
   text = ''
@@ -32,35 +34,47 @@ pkgs.writeShellApplication {
     mkdir "$folder"
     cd "$folder"
     mkdir dump
+    cwd=$(pwd)
 
     lscpu > dump/lscpu 2>&1
     lscpu -e > dump/lscpu-extended 2>&1
-    cat /proc/cpuinfo > cpuinfo 2>&1
+    cat /proc/cpuinfo > dump/cpuinfo 2>&1
     sensors > dump/sensors 2>&1
 
     lsmem > dump/lsmem 2>&1
-    cat /proc/meminfo > meminfo 2>&1
+    cat /proc/meminfo > dump/meminfo 2>&1
 
     lspci -vvv > dump/lspci 2>&1
     lsusb -v > dump/lsusb 2>&1
     lsblk -f > dump/lsblk 2>&1
     fdisk -l > dump/fdisk 2>&1
-    cat /proc/scsi/scsi > scsi 2>&1
+    cat /proc/scsi/scsi > dump/scsi 2>&1
 
     udevadm info -e > dump/udevadm-info 2>&1
     dmidecode > dump/dmidecode 2>&1
 
     lshw > dump/lshw 2>&1
     lshw -short > dump/lshw-short 2>&1
-    lshw -json > dump/lshw-json 2>&1
+    lshw -json > dump/lshw.json 2>&1
 
     inxi -iFv8 > dump/inxi-iFv8 2>&1
-    inxi -iFv8 --output json --output-file "$(pwd)/inxi-iFv8-json" > dump/inxi-iFv8-json.log 2>&1
-    inxi -iFv8 --output xml --output-file "$(pwd)/inxi-iFv8-xml" > dump/inxi-iFv8-xml.log 2>&1
+    inxi -iFv8 --output json --output-file "$cwd/dump/inxi-iFv8.json" > dump/inxi-iFv8.json.log 2>&1
 
     drm_info > dump/drm_info 2>&1
     drm_info -j > dump/drm_info-json 2>&1
-    glxinfo > dump/glxinfo 2>&1
+    # shellcheck disable=SC2024
+    sudo -u error glxinfo > dump/glxinfo 2>&1
+
+    # shellcheck disable=SC2024
+    sudo -u error DISPLAY="" vulkaninfo > dump/vulkaninfo 2>&1
+    # shellcheck disable=SC2024
+    sudo -u error DISPLAY="" vulkaninfo --summary > dump/vulkaninfo-summary 2>&1
+    # shellcheck disable=SC2024
+    sudo -u error DISPLAY="" vulkaninfo --json --output /tmp/vulkaninfo.json > dump/vulkaninfo.json.log 2>&1
+    mv /tmp/vulkaninfo.json "$cwd/dump/vulkaninfo.json"
+    # shellcheck disable=SC2024
+    sudo -u error DISPLAY="" vulkaninfo --html --output /tmp/vulkaninfo.html > dump/vulkaninfo.html.log 2>&1
+    mv /tmp/vulkaninfo.html "$cwd/dump/vulkaninfo.html"
 
     eza --icons=always --no-permissions --no-user --no-time -lT /dev > dump/dev 2>&1
     eza --icons=always --no-permissions --no-user --no-time -lT /sys/class > dump/sys-class 2>&1
