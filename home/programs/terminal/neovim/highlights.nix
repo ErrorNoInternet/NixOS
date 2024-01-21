@@ -42,6 +42,11 @@
       };
       RustEnumVariant.fg = "#${base0C}";
 
+      TreesitterContextLineNumber = {
+        fg = "#${base03}";
+        bg = "#${base00}";
+      };
+
       CustomMinimapHighlight = {
         bg = "#${base01}";
         fg = "#${base04}";
@@ -58,7 +63,6 @@
         bg = "#${base01}";
         fg = "#${base08}";
       };
-
       CustomMinimapRange = {
         bg = "#${base02}";
         fg = "#${base04}";
@@ -75,7 +79,6 @@
         bg = "#${base02}";
         fg = "#${base08}";
       };
-
       CustomMinimapCursor = {
         bg = "#${base03}";
         fg = "#${base06}";
