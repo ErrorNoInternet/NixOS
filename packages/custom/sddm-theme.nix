@@ -1,8 +1,8 @@
 {
+  stdenv,
   fetchFromGitHub,
-  mkDerivation,
 }:
-mkDerivation {
+stdenv.mkDerivation {
   name = "sddm-theme";
 
   src = fetchFromGitHub {
