@@ -32,7 +32,7 @@
     nix-gaming.url = "github:fufexan/nix-gaming";
     shadower.url = "github:n3oney/shadower";
     waybar.url = "github:Alexays/Waybar";
-    wezterm.url = "github:happenslol/wezterm?dir=nix&ref=add-nix-flake";
+    wezterm.url = "github:wez/wezterm?dir=nix";
     yazi.url = "github:sxyazi/yazi";
 
     hsize.url = "github:ErrorNoInternet/hsize";
