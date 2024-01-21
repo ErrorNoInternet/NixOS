@@ -1563,17 +1563,16 @@
       },
       "locked": {
         "dir": "nix",
-        "lastModified": 1705510373,
-        "narHash": "sha256-DAcXL/XQGDwCFNR+tAKs+wRGQkz1vs7JrUasbOnDa1k=",
-        "owner": "happenslol",
+        "lastModified": 1705857059,
+        "narHash": "sha256-ulZ4R6L8t4bV8e7lLnY6nwetxs0RDtZohu2q0xEMWUg=",
+        "owner": "wez",
         "repo": "wezterm",
-        "rev": "77201b2f5966c369d4109063c434b708725f8291",
+        "rev": "1d4a407df93f0d0e995cd9da5f7afb3c7978987f",
         "type": "github"
       },
       "original": {
         "dir": "nix",
-        "owner": "happenslol",
-        "ref": "add-nix-flake",
+        "owner": "wez",
         "repo": "wezterm",
         "type": "github"
       }
