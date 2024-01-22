@@ -8,8 +8,9 @@ on:
   workflow_dispatch:
 
 jobs:
-  build-nixos:
+  nixos:
     name: NixOS
+    needs: packages
     runs-on: ubuntu-22.04
 
     strategy:
@@ -83,7 +84,7 @@ jobs:
         run: nix run github:Mic92/nix-fast-build -- --no-nom --eval-workers 1 -j 2 --skip-cached --flake .#nixosConfigurations.${{ matrix.host }}.config.system.build.toplevel
 
 
-  build-packages:
+  packages:
     name: Packages
     runs-on: ubuntu-22.04
 
