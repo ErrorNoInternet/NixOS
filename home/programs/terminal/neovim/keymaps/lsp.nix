@@ -180,6 +180,12 @@
         key = "<leader>fS";
         action = ":Telescope git_status<CR>";
       }
+      {
+        mode = "n";
+        options.silent = true;
+        key = "<leader>tc";
+        action = ":TSContextToggle<CR>";
+      }
 
       {
         mode = "n";
