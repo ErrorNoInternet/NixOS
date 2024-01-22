@@ -14,7 +14,7 @@
     end
 
 
-    function un_store -d "turn a nix store symlink into a regular file"
+    function un-store -d "turn a nix store symlink into a regular file"
       for argi in (seq 1 $(count $argv))
         set name $argv[$argi]
         mv $name $name.store
@@ -22,7 +22,7 @@
       end
     end
 
-    function re_store -d "turn a regular file back into a nix store symlink"
+    function re-store -d "turn a regular file back into a nix store symlink"
       for argi in (seq 1 $(count $argv))
         set name $argv[$argi]
         switch $name
