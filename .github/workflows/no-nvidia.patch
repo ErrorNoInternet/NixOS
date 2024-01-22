@@ -1,0 +1,13 @@
+diff --git a/workstation/modules/nvidia.nix b/workstation/modules/nvidia.nix
+index b9ee2b7..94059d8 100644
+--- a/workstation/modules/nvidia.nix
++++ b/workstation/modules/nvidia.nix
+@@ -8,7 +8,7 @@ in {
+   options.workstation.modules.nvidia.enable =
+     mkEnableOption ""
+     // {
+-      default = true;
++      default = false;
+     };
+ 
+   config = mkIf (config.specialisation != {} && config.workstation.modules.nvidia.enable) {
