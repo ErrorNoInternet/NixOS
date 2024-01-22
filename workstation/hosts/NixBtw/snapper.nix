@@ -100,8 +100,8 @@
         TIMELINE_LIMIT_MONTHLY = 1;
         TIMELINE_LIMIT_YEARLY = 0;
       };
-      scripts = {
-        SUBVOLUME = "/mnt/data/scripts";
+      code = {
+        SUBVOLUME = "/mnt/data/code";
         TIMELINE_CREATE = true;
         TIMELINE_CLEANUP = true;
         QGROUP = "1/0";
