@@ -72,7 +72,7 @@ jobs:
           token: "${{ secrets.ATTIC_TOKEN }}"
 
       - name: Set up Cachix
-        uses: cachix/cachix-action@v12
+        uses: cachix/cachix-action@v14
         with:
           name: errornobinaries
           authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
@@ -127,7 +127,7 @@ jobs:
           token: "${{ secrets.ATTIC_TOKEN }}"
 
       - name: Set up Cachix
-        uses: cachix/cachix-action@v12
+        uses: cachix/cachix-action@v14
         with:
           name: errornobinaries
           authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
