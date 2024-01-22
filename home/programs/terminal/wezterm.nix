@@ -14,7 +14,7 @@ in {
   };
 
   config = mkIf config.profiles.desktop.enable {
-    programs.wezterm = with config.colorScheme.colors; {
+    programs.wezterm = {
       enable = true;
       package = self.legacyPackages.${pkgs.system}.wezterm;
 
@@ -37,9 +37,6 @@ in {
           window:set_config_overrides(overrides)
         end);
 
-        local custom_color_scheme = wezterm.color.get_builtin_schemes()["${cfg.color_scheme}"];
-        custom_color_scheme.cursor_border = "#${base01}";
-
         config = {
           check_for_updates = false,
           default_prog = { "/etc/profiles/per-user/error/bin/tmux" },
@@ -47,11 +44,7 @@ in {
           font = wezterm.font "JetBrainsMono Nerd Font",
           font_size = 9,
           default_cursor_style = "SteadyBar",
-
           color_scheme = "${cfg.color_scheme}",
-          color_schemes = {
-            ["${cfg.color_scheme}"] = custom_color_scheme,
-          },
 
           window_background_opacity = ${builtins.toString config.opacity.normal},
           enable_tab_bar = false,
