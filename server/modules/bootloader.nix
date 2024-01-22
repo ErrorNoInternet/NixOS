@@ -9,7 +9,11 @@ in {
 
   config = mkIf config.server.modules.bootloader.enable {
     boot.loader = {
-      systemd-boot.enable = true;
+      systemd-boot = {
+        enable = true;
+        configurationLimit = 500;
+        consoleMode = "max";
+      };
       efi.canTouchEfiVariables = true;
     };
   };
