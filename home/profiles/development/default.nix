@@ -25,6 +25,7 @@ in {
         clang
         clang-tools
         gdb
+        glibc.static
         gnumake
         go
         libllvm
