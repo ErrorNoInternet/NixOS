@@ -30,8 +30,8 @@ in {
           local new_padding = {
             left = math.floor((window_dims.pixel_width % 7) / 2),
             right = 0,
-            top = math.floor((window_dims.pixel_height % 16) / 2),
-            bottom = 0
+            top = math.floor(window_dims.pixel_height % 16) - 3,
+            bottom = 0,
           };
           overrides.window_padding = new_padding
           window:set_config_overrides(overrides)
