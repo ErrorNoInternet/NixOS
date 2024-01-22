@@ -14,7 +14,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  checks:
+  flake-outputs:
     name: Flake outputs
     runs-on: ubuntu-22.04
 
