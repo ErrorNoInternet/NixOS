@@ -14,7 +14,7 @@ in {
   };
 
   config = mkIf config.profiles.desktop.enable {
-    programs.wezterm = with config.colorScheme.colors; {
+    programs.wezterm = {
       enable = true;
       package = self.legacyPackages.${pkgs.system}.wezterm;
 
@@ -30,15 +30,12 @@ in {
           local new_padding = {
             left = math.floor((window_dims.pixel_width % 7) / 2),
             right = 0,
-            top = math.floor(window_dims.pixel_height % 16) - 3,
+            top = math.floor(window_dims.pixel_height % 16) - 2,
             bottom = 0,
           };
           overrides.window_padding = new_padding
           window:set_config_overrides(overrides)
         end);
-
-        local custom_color_scheme = wezterm.color.get_builtin_schemes()["${cfg.color_scheme}"];
-        custom_color_scheme.cursor_border = "#${base01}";
 
         config = {
           check_for_updates = false,
@@ -47,11 +44,7 @@ in {
           font = wezterm.font "JetBrainsMono Nerd Font",
           font_size = 9,
           default_cursor_style = "SteadyBar",
-
           color_scheme = "${cfg.color_scheme}",
-          color_schemes = {
-            ["${cfg.color_scheme}"] = custom_color_scheme,
-          },
 
           window_background_opacity = ${builtins.toString config.opacity.normal},
           enable_tab_bar = false,

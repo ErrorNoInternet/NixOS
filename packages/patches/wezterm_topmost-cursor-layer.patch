@@ -1,0 +1,13 @@
+diff --git a/wezterm-gui/src/termwindow/render/screen_line.rs b/wezterm-gui/src/termwindow/render/screen_line.rs
+index b7d4daa4f..8f5b3a637 100644
+--- a/wezterm-gui/src/termwindow/render/screen_line.rs
++++ b/wezterm-gui/src/termwindow/render/screen_line.rs
+@@ -350,7 +350,7 @@ impl crate::TermWindow {
+                 + (phys(params.cursor.x, num_cols, direction) as f32 * cell_width);
+ 
+             if cursor_shape.is_some() {
+-                let mut quad = layers.allocate(0).context("layers.allocate(0)")?;
++                let mut quad = layers.allocate(2).context("layers.allocate(2)")?;
+                 quad.set_hsv(hsv);
+                 quad.set_has_color(false);
+ 

@@ -15,6 +15,7 @@
     gds = "git diff --staged";
     gl = "git log";
     gp = "git push";
+    gpa = "git push --all";
     gpf = "git push --force-with-lease";
     gpl = "git pull";
     gps = "git push --set-upstream origin";
