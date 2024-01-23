@@ -27,8 +27,8 @@
         "ctrl+shift+right" = "send_text all \\x1b\\x5b\\x31\\x3b\\x33\\x43";
       };
       extraConfig = with config.colors.scheme.colors; ''
-        url_color             #0087BD
-        selection_foreground  #000000
+        url_color             #${base07}
+        selection_foreground  #${base00}
         selection_background  #${base0A}
         foreground            #${base04}
         background            #${base00}
