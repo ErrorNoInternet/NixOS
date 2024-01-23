@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   programs.nixvim = {helpers, ...}: {
     extraPackages = with pkgs; [
       alejandra
@@ -29,9 +33,8 @@
           dap-python.enable = true;
         };
         adapters.executables.lldb.command = "lldb-vscode";
-        configurations.rust = [
+        configurations.c = [
           {
-            name = "Launch";
             type = "lldb";
             request = "launch";
             program = helpers.mkRaw ''
@@ -42,6 +45,8 @@
             cwd = "\${workspaceFolder}";
           }
         ];
+        configurations.cpp = config.programs.nixvim.plugins.dap.configurations.cpp;
+        configurations.rust = config.programs.nixvim.plugins.dap.configurations.cpp;
       };
     };
     extraPlugins = with pkgs.vimPlugins; [
