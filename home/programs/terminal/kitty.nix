@@ -1,5 +1,6 @@
 {
   config,
+  inputs,
   lib,
   pkgs,
   self,
@@ -26,13 +27,16 @@
         "ctrl+shift+left" = "send_text all \\x1b\\x5b\\x31\\x3b\\x33\\x44";
         "ctrl+shift+right" = "send_text all \\x1b\\x5b\\x31\\x3b\\x33\\x43";
       };
-      extraConfig = with config.colors.scheme.colors; ''
-        url_color             #${base07}
-        selection_foreground  #${base00}
-        selection_background  #${base0A}
-        foreground            #${base04}
-        background            #${base00}
+      extraConfig = with config.colors.scheme.colors; let
+        base00Variation = "${builtins.replaceStrings [" "] [""]
+          (builtins.toString (lib.intersperse "," (map (v: v - 1) (inputs.nix-colors.lib.conversions.hexToRGB base00))))}";
+      in ''
+        background            real_rgb:${base00Variation}
         cursor                #${base0D}
+        foreground            #${base04}
+        selection_background  #${base0A}
+        selection_foreground  #${base00}
+        url_color             #${base07}
 
         color0   #${base01}
         color8   #${base03}

@@ -53,7 +53,10 @@
       kitty = kitty.overrideAttrs (oldAttrs: {
         patches =
           (oldAttrs.patches or [])
-          ++ [./patches/kitty_hide-resize-text.patch];
+          ++ [
+            ./patches/kitty_hide-resize-text.patch
+            ./patches/kitty_parse-base10-rgb.patch
+          ];
       });
 
       wezterm = inputs.wezterm.packages.${system}.default.overrideAttrs (oldAttrs: {

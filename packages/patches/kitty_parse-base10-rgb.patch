@@ -1,0 +1,27 @@
+diff --git a/kitty/rgb.py b/kitty/rgb.py
+index 5526ce563..d4a965063 100644
+--- a/kitty/rgb.py
++++ b/kitty/rgb.py
+@@ -41,6 +41,13 @@ def parse_rgb(spec: str) -> Optional[Color]:
+     return None
+ 
+ 
++def parse_real_rgb(spec: str) -> Optional[Color]:
++    colors = spec.split(',')
++    if len(colors) == 3:
++        return Color(*map(int, colors))
++    return None
++
++
+ def color_from_int(x: int) -> Color:
+     return Color((x >> 16) & 255, (x >> 8) & 255, x & 255)
+ 
+@@ -69,6 +76,8 @@ def to_color(raw: str, validate: bool = False) -> Optional[Color]:
+             val = parse_sharp(raw[1:])
+         elif raw.startswith('rgb:'):
+             val = parse_rgb(raw[4:])
++        elif raw.startswith('real_rgb:'):
++            val = parse_real_rgb(raw[9:])
+     if val is None and validate:
+         raise ValueError(f'Invalid color name: {raw}')
+     return val
