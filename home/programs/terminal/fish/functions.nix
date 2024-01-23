@@ -49,7 +49,7 @@
 
 
     function ggr -d "fancy git history graph"
-      ${pkgs.git-graph}/bin/git-graph --color always --no-pager $argv | ${pkgs.less}/bin/less
+      ${pkgs.git-graph}/bin/git-graph --color always -s ascii --no-pager $argv | ${pkgs.less}/bin/less
     end
 
 
