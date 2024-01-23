@@ -63,11 +63,11 @@ in {
       ];
       style = ''
         window {
-          background-color: rgba(${builtins.toString (
-          lib.intersperse ", " (
-            inputs.nix-colors.lib.conversions.hexToRGB base00
-          )
-        )}, ${builtins.toString config.opacity.bar});
+          background-color: rgba(${
+          inputs.nix-colors.lib.conversions.hexToRGBString
+          ","
+          base00
+        },${builtins.toString config.opacity.bar});
         }
 
         button {

@@ -122,11 +122,11 @@
         }
 
         window#waybar {
-          background-color: rgba(${builtins.toString (
-          lib.intersperse ", " (
-            inputs.nix-colors.lib.conversions.hexToRGB base02
-          )
-        )}, ${builtins.toString config.opacity.bar});
+          background-color: rgba(${
+          inputs.nix-colors.lib.conversions.hexToRGBString
+          ","
+          base02
+        },${builtins.toString config.opacity.bar});
         }
 
         #workspaces {

@@ -14,10 +14,11 @@
       theme = let
         inherit (config.lib.formats.rasi) mkLiteral;
 
-        base00RGBA = "rgba(${builtins.toString
-          (lib.intersperse ", " (
-            inputs.nix-colors.lib.conversions.hexToRGB base00
-          ))}, ${builtins.toString config.opacity.menu})";
+        base00RGBA = "rgba(${
+          inputs.nix-colors.lib.conversions.hexToRGBString
+          ","
+          base00
+        },${builtins.toString config.opacity.menu})";
       in {
         "*" = {
           background-color = mkLiteral "${base00RGBA}";
