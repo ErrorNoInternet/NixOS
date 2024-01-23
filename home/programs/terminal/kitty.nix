@@ -18,6 +18,7 @@
       };
       settings = {
         background_opacity = "${builtins.toString config.opacity.normal}";
+        confirm_os_window_close = 0;
         cursor_shape = "beam";
         enable_audio_bell = false;
         modify_font = "baseline 1";
