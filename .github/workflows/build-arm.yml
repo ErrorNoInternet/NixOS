@@ -57,6 +57,7 @@ jobs:
           extra-conf: |
             system = aarch64-linux
             substituters = https://nix-community.cachix.org
+            trusted-public-keys = nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=
             log-lines = 500
             download-attempts = 10
             download-speed = 10000
@@ -112,6 +113,7 @@ jobs:
           extra-conf: |
             system = aarch64-linux
             substituters = https://nix-community.cachix.org
+            trusted-public-keys = nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=
             log-lines = 500
             download-attempts = 10
             download-speed = 10000
