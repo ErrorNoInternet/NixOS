@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   programs.nixvim = {helpers, ...}: {
     extraPackages = with pkgs; [
       alejandra
@@ -32,21 +28,28 @@
 
           dap-python.enable = true;
         };
+
         adapters.executables.lldb.command = "lldb-vscode";
-        configurations.c = [
-          {
-            type = "lldb";
-            request = "launch";
-            program = helpers.mkRaw ''
-              function()
-                return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
-              end
-            '';
-            cwd = "\${workspaceFolder}";
-          }
-        ];
-        configurations.cpp = config.programs.nixvim.plugins.dap.configurations.cpp;
-        configurations.rust = config.programs.nixvim.plugins.dap.configurations.cpp;
+        configurations = let
+          lldb = ["rust" "c" "cpp" "zig"];
+        in
+          builtins.listToAttrs (map (language: {
+              name = "${language}";
+              value = [
+                {
+                  name = "Launch";
+                  request = "launch";
+                  type = "lldb";
+                  program = helpers.mkRaw ''
+                    function()
+                      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+                    end
+                  '';
+                  cwd = "\${workspaceFolder}";
+                }
+              ];
+            })
+            lldb);
       };
     };
     extraPlugins = with pkgs.vimPlugins; [
