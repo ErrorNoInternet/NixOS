@@ -81,7 +81,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Apply CI build patches
-        run: patch -p1 .github/workflows/*.patch
+        run: patch --verbose -p1 .github/workflows/*.patch
 
       - name: Build ${{ matrix.host }}
         run: nix run github:Mic92/nix-fast-build -- --no-nom --eval-workers 1 -j 2 --skip-cached --flake .#nixosConfigurations.${{ matrix.host }}.config.system.build.toplevel
