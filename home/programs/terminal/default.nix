@@ -10,6 +10,7 @@
     ./git.nix
     ./gpg.nix
     ./irssi.nix
+    ./kitty.nix
     ./neovim
     ./tmux.nix
     ./wezterm.nix

@@ -4,7 +4,7 @@
   ...
 }: {
   options.terminal.name = lib.mkOption {
-    default = "foot";
+    default = "kitty";
     type = lib.types.str;
   };
 

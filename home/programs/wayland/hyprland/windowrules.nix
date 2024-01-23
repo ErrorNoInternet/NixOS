@@ -1,4 +1,4 @@
-let
+{config, ...}: let
   dialogs = [
     "class:(.blueman-manager-wrapped)"
     "class:(xdg-desktop-portal-gtk)"
@@ -17,7 +17,7 @@ in {
       "float,        class:(notification)"
       "float,        class:(pavucontrol)"
       "float,        class:(vimiv)"
-      "size 50% 55%, class:(foot)"
+      "size 50% 55%, class:(${config.terminal.name})"
     ]
     ++ (map (dialog: "animation slide, ${dialog}") dialogs)
     ++ (map (dialog: "center,          ${dialog}") dialogs)
