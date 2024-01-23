@@ -3,8 +3,45 @@
     keymaps = [
       {
         mode = "n";
+        options.silent = true;
+        key = "<leader>dc";
+        action = ":lua require('dapui').toggle()<CR>";
+      }
+      {
+        mode = "n";
+        options.silent = true;
         key = "<leader>db";
         action = ":DapToggleBreakpoint<CR>";
+      }
+      {
+        mode = "n";
+        options.silent = true;
+        key = "<leader>dt";
+        action = ":DapTerminate<CR>";
+      }
+      {
+        mode = "n";
+        options.silent = true;
+        key = "<leader>dd";
+        action = ":DapContinue<CR>";
+      }
+      {
+        mode = "n";
+        options.silent = true;
+        key = "<leader>di";
+        action = ":DapStepInto<CR>";
+      }
+      {
+        mode = "n";
+        options.silent = true;
+        key = "<leader>do";
+        action = ":DapStepOut<CR>";
+      }
+      {
+        mode = "n";
+        options.silent = true;
+        key = "<leader>dO";
+        action = ":DapStepOver<CR>";
       }
     ];
 
