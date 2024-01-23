@@ -45,6 +45,8 @@ in {
             end
           end
         end
+
+        echo -en "\x1b[\x35 q"
       '';
     };
   };
