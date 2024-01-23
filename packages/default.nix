@@ -50,6 +50,12 @@
           ++ [./patches/nordic_transparent-context-menu.patch];
       });
 
+      kitty = kitty.overrideAttrs (oldAttrs: {
+        patches =
+          (oldAttrs.patches or [])
+          ++ [./patches/kitty_hide-resize-text.patch];
+      });
+
       wezterm = inputs.wezterm.packages.${system}.default.overrideAttrs (oldAttrs: {
         patches =
           (oldAttrs.patches or [])
