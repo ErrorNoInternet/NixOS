@@ -96,12 +96,12 @@
       {
         event = ["FileType"];
         pattern = ["c"];
-        command = "map <buffer> <F11> :wa<CR>:term clang -lm % -o %:t:r<CR>";
+        command = "map <buffer> <F11> :wa<CR>:term clang -g -lm % -o %:t:r<CR>";
       }
       {
         event = ["FileType"];
         pattern = ["c"];
-        command = "imap <buffer> <F11> <esc> :wa<CR>:term clang -lm % -o %:t:r<CR>";
+        command = "imap <buffer> <F11> <esc> :wa<CR>:term clang -g -lm % -o %:t:r<CR>";
       }
       {
         event = ["FileType"];
@@ -137,12 +137,12 @@
       {
         event = ["FileType"];
         pattern = ["cpp"];
-        command = "map <buffer> <F11> :wa<CR>:term clang++ % -o %:t:r<CR>";
+        command = "map <buffer> <F11> :wa<CR>:term clang++ -g % -o %:t:r<CR>";
       }
       {
         event = ["FileType"];
         pattern = ["cpp"];
-        command = "imap <buffer> <F11> <esc> :wa<CR>:term clang++ % -o %:t:r<CR>";
+        command = "imap <buffer> <F11> <esc> :wa<CR>:term clang++ -g % -o %:t:r<CR>";
       }
       {
         event = ["FileType"];
@@ -221,12 +221,12 @@
       {
         event = ["FileType"];
         pattern = ["rust"];
-        command = "map <buffer> <F9> :wa<CR>:term rustc % && ./%:t:r<CR>";
+        command = "map <buffer> <F9> :wa<CR>:term rustc -g % && ./%:t:r<CR>";
       }
       {
         event = ["FileType"];
         pattern = ["rust"];
-        command = "imap <buffer> <F9> <esc> :wa<CR>:term rustc % && ./%:t:r<CR>";
+        command = "imap <buffer> <F9> <esc> :wa<CR>:term rustc -g % && ./%:t:r<CR>";
       }
       {
         event = ["FileType"];
