@@ -9,38 +9,32 @@
       }
       {
         mode = "n";
-        options.silent = true;
         key = "<leader>db";
         action = ":DapToggleBreakpoint<CR>";
       }
       {
         mode = "n";
-        options.silent = true;
         key = "<leader>dt";
         action = ":DapTerminate<CR>";
       }
       {
         mode = "n";
-        options.silent = true;
         key = "<leader>dd";
         action = ":DapContinue<CR>";
       }
       {
         mode = "n";
-        options.silent = true;
         key = "<leader>di";
         action = ":DapStepInto<CR>";
       }
       {
         mode = "n";
-        options.silent = true;
-        key = "<leader>do";
+        key = "<leader>dO";
         action = ":DapStepOut<CR>";
       }
       {
         mode = "n";
-        options.silent = true;
-        key = "<leader>dO";
+        key = "<leader>do";
         action = ":DapStepOver<CR>";
       }
     ];
