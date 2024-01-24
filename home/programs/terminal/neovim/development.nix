@@ -52,7 +52,8 @@
                   '';
                   args = helpers.mkRaw ''
                     function()
-                      return vim.fn.input('Executable arguments: ')
+                      local arguments_string = vim.fn.input('Executable arguments: ')
+                      return vim.split(arguments_string, " +")
                     end
                   '';
 
