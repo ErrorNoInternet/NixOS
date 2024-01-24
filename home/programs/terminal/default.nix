@@ -7,6 +7,7 @@
     ./fastfetch.nix
     ./fish
     ./foot.nix
+    ./fzf.nix
     ./git.nix
     ./gpg.nix
     ./irssi.nix
