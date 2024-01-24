@@ -3,9 +3,13 @@
     keymaps = [
       {
         mode = "n";
-        options.silent = true;
         key = "<leader>dc";
         action = ":lua require('dapui').toggle()<CR>";
+      }
+      {
+        mode = "n";
+        key = "<leader>dk";
+        action = ":lua require('dapui').eval()<CR>";
       }
       {
         mode = "n";
