@@ -16,6 +16,12 @@
       {
         mode = "n";
         options.silent = true;
+        key = "<leader>df";
+        action = ":lua require('dapui').float_element()<CR>";
+      }
+      {
+        mode = "n";
+        options.silent = true;
         key = "<leader>db";
         action = ":DapToggleBreakpoint<CR>";
       }
