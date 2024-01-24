@@ -94,6 +94,7 @@ jobs:
       matrix:
         include:
           - package: attic
+          - package: btrfs-progs
           - package: neovim
           - package: nix
           - package: passgen
