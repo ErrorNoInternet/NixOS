@@ -9,7 +9,7 @@
   inherit (lib) mkOption mkIf types;
 in {
   options.home.programs.terminal.wezterm.color_scheme = mkOption {
-    default = "Nord (base16)";
+    default = "nord";
     type = types.str;
   };
 
