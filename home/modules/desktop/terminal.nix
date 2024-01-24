@@ -4,7 +4,7 @@
   ...
 }: {
   options.terminal.name = lib.mkOption {
-    default = "kitty";
+    default = "wezterm";
     type = lib.types.str;
   };
 
