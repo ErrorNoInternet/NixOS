@@ -32,6 +32,7 @@ in {
         linuxPackages_latest.perf
         man-pages
         nix-output-monitor
+        onefetch
         python3Packages.bpython
         rustup
         scc
