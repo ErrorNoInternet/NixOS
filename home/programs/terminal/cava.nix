@@ -14,14 +14,15 @@ in {
   config = mkIf config.home.programs.terminal.cava.enable {
     programs.cava = {
       enable = true;
+
       settings = {
-        color = {
+        color = with config.colors.scheme.colors; {
           gradient = 1;
           gradient_count = 4;
-          gradient_color_1 = "'#${config.colorScheme.colors.base0F}'";
-          gradient_color_2 = "'#${config.colorScheme.colors.base0D}'";
-          gradient_color_3 = "'#${config.colorScheme.colors.base0C}'";
-          gradient_color_4 = "'#${config.colorScheme.colors.base07}'";
+          gradient_color_1 = "'#${base0F}'";
+          gradient_color_2 = "'#${base0D}'";
+          gradient_color_3 = "'#${base0C}'";
+          gradient_color_4 = "'#${base07}'";
         };
       };
     };

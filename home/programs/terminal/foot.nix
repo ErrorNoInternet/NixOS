@@ -4,7 +4,7 @@
   ...
 }: {
   config = lib.mkIf config.profiles.desktop.enable {
-    programs.foot = with config.colorScheme.colors; {
+    programs.foot = with config.colors.scheme.colors; {
       enable = true;
       settings = {
         main = {
@@ -13,12 +13,12 @@
           shell = "tmux";
           initial-window-size-pixels = "1920x1080";
         };
+        mouse.hide-when-typing = "yes";
         cursor = {
           style = "beam";
           blink = "yes";
           color = "${base04} ${base04}";
         };
-        mouse.hide-when-typing = "yes";
         colors = {
           alpha = "${builtins.toString config.opacity.normal}";
           background = "${base00}";
