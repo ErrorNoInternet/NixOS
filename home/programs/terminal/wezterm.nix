@@ -24,21 +24,9 @@ in {
           config = wezterm.config_builder()
         end
 
-        wezterm.on("window-resized", function(window, _)
-          local window_dims = window:get_dimensions();
-          local overrides = window:get_config_overrides() or {}
-          local new_padding = {
-            left = math.floor((window_dims.pixel_width % 7) / 2),
-            right = 0,
-            top = math.floor(window_dims.pixel_height % 16) - 2,
-            bottom = 0,
-          };
-          overrides.window_padding = new_padding
-          window:set_config_overrides(overrides)
-        end);
-
         config = {
           check_for_updates = false,
+          automatically_reload_config = false,
           default_prog = { "/etc/profiles/per-user/error/bin/tmux" },
 
           font = wezterm.font "JetBrainsMono Nerd Font",
@@ -46,6 +34,12 @@ in {
           default_cursor_style = "SteadyBar",
           color_scheme = "${cfg.color_scheme}",
 
+          window_padding = {
+            top = "0.5cell",
+            bottom = 0,
+            left = "1cell",
+            right = "1cell",
+          },
           window_background_opacity = ${builtins.toString config.opacity.normal},
           enable_tab_bar = false,
 
