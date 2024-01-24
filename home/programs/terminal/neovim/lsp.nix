@@ -35,12 +35,6 @@
         extraOptions.src.cmp.enabled = true;
       };
 
-      rust-tools = {
-        enable = true;
-        serverPackage = null;
-        server.check.command = "clippy";
-      };
-
       zig = {
         enable = true;
         formatOnSave = false;
@@ -65,6 +59,8 @@
             installCargo = false;
             installRustc = false;
             installLanguageServer = false;
+
+            settings.check.command = "clippy";
           };
         };
       };
