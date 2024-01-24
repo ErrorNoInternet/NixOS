@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  lib,
+  pkgs,
+  ...
+}: {
   programs.nixvim = {helpers, ...}: {
     extraPackages = with pkgs; [
       alejandra
@@ -40,12 +44,38 @@
                   name = "Launch";
                   request = "launch";
                   type = "lldb";
+                  cwd = "\${workspaceFolder}";
                   program = helpers.mkRaw ''
                     function()
-                      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+                      return vim.fn.input('Executable path: ', vim.fn.getcwd() .. '/', 'file')
                     end
                   '';
-                  cwd = "\${workspaceFolder}";
+                  args = helpers.mkRaw ''
+                    function()
+                      return vim.fn.input('Executable arguments: ')
+                    end
+                  '';
+
+                  initCommands = lib.mkIf (language == "rust") (helpers.mkRaw ''
+                    function()
+                      local rustc_sysroot = vim.fn.trim(vim.fn.system('rustc --print sysroot'))
+
+                      local script_import = 'command script import "' .. rustc_sysroot .. '/lib/rustlib/etc/lldb_lookup.py"'
+                      local commands_file = rustc_sysroot .. '/lib/rustlib/etc/lldb_commands'
+
+                      local commands = {}
+                      local file = io.open(commands_file, 'r')
+                      if file then
+                        for line in file:lines() do
+                          table.insert(commands, line)
+                        end
+                        file:close()
+                      end
+                      table.insert(commands, 1, script_import)
+
+                      return commands
+                    end,
+                  '');
                 }
               ];
             })
