@@ -25,6 +25,8 @@ in {
         enable = true;
         openFirewall = true;
         extraConfig = ''
+          log level = 1 winbind:5
+
           create mask = 644
           directory mask = 755
           map to guest = bad user
