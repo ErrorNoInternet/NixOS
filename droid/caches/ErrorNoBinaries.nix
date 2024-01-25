@@ -4,6 +4,7 @@
   ...
 }: let
   inherit (lib) mkEnableOption mkIf;
+  values = (import ../../shared/caches/values.nix).ErrorNoBinaries;
 in {
   options.caches.ErrorNoBinaries = {
     enable =
@@ -30,15 +31,13 @@ in {
   };
 
   config = mkIf config.caches.ErrorNoBinaries.enable {
-    nix = let
-      shared = import ../../shared/caches/ErrorNoBinaries.nix {};
-    in {
+    nix = {
       substituters = with config.caches.ErrorNoBinaries; [
-        (mkIf internal shared.substituters.internal)
-        (mkIf external shared.substituters.external)
-        (mkIf cachix shared.substituters.cachix)
+        (mkIf internal values.substituters.internal)
+        (mkIf external values.substituters.external)
+        (mkIf cachix values.substituters.cachix)
       ];
-      trustedPublicKeys = shared.publicKeys;
+      trustedPublicKeys = values.publicKeys;
     };
   };
 }
