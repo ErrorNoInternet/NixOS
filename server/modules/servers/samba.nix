@@ -25,6 +25,15 @@ in {
         enable = true;
         openFirewall = true;
         extraConfig = ''
+          create mask = 644
+          directory mask = 755
+          map to guest = bad user
+
+          force group = users
+          force user = snowflake
+          valid users = snowflake
+          workgroup = WORKGROUP
+
           load printers = yes
           printing = cups
           printcap name = cups

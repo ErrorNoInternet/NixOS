@@ -53,16 +53,6 @@
 
     samba = {
       securityType = "user";
-      extraConfig = ''
-        create mask = 644
-        directory mask = 755
-        force group = users
-        force user = snowflake
-        map to guest = bad user
-        workgroup = WORKGROUP
-
-        valid users = snowflake
-      '';
       shares = {
         printers = {
           path = "/var/spool/samba";
