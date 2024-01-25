@@ -22,8 +22,8 @@
         "$mod, L, exec, swaylock --grace 0 --fade-in 1"
         "$mod, S, exec, scratchpad"
         "$mod SHIFT, S, exec, scratchpad -g"
-        "$mod, RETURN, exec, ${config.terminal.name}"
-        "$mod SHIFT, RETURN, exec, [float; center] ${config.terminal.name}"
+        "$mod, RETURN, exec, ${config.terminal.command}"
+        "$mod SHIFT, RETURN, exec, [float; center] ${config.terminal.command}"
 
         "$mod, TAB, workspace, previous"
         "$mod SHIFT, F, fullscreen"
