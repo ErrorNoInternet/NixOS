@@ -1,11 +1,9 @@
 {
-  config,
   lib,
   pkgs,
   ...
 }: {
   programs.fish.shellAliases = {
-    cava = "TERM=${config.terminal.name} ${lib.getExe pkgs.cava}";
     cm = "${pkgs.cmatrix}/bin/cmatrix -C blue";
     drg = "${lib.getExe pkgs.ripdrag} -xa";
     f = "${lib.getExe pkgs.fastfetch}";
