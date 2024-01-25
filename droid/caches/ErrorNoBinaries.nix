@@ -31,7 +31,7 @@ in {
 
   config = mkIf config.caches.ErrorNoBinaries.enable {
     nix = let
-      shared = import ../../shared/caches/ErrorNoBinaries.nix;
+      shared = import ../../shared/caches/ErrorNoBinaries.nix {};
     in {
       substituters = with config.caches.ErrorNoBinaries; [
         (mkIf internal shared.substituters.internal)
