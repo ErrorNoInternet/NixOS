@@ -11,16 +11,14 @@
       colors = with config.colors.scheme.colors; {
         "fg" = "#${base05}";
         "fg+" = "#${base05}";
-        "bg" = "#${base01}";
-        "bg+" = "#${base01}";
+        "header" = "#${base0B}";
         "hl" = "#${base0D}";
         "hl+" = "#${base0D}";
-        "info" = "#${base0A}";
-        "prompt" = "#${base08}";
-        "pointer" = "#${base0E}";
-        "marker" = "#${base0B}";
-        "spinner" = "#${base0E}";
-        "header" = "#${base0B}";
+        "info" = "#${base0D}";
+        "marker" = "#${base0F}";
+        "pointer" = "#${base0D}";
+        "prompt" = "#${base04}";
+        "spinner" = "#${base07}";
       };
     };
   };
