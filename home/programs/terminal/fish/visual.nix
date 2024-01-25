@@ -11,6 +11,8 @@
     '';
     interactiveShellInit = ''
       set fish_cursor_default line
+      set fish_color_autosuggestion brblack
+
       set tide_color_truncated_dirs blue
       set tide_pwd_color_truncated_dirs blue
       set tide_pwd_color_dirs blue
