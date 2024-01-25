@@ -41,6 +41,7 @@
             thunderbird = "󰇮 "
             vimiv = " "
             virt-manager = " "
+            wezterm = ""
             xdg-desktop-portal-gtk = "󱈄"
             zoom = "󰬡 "
 
