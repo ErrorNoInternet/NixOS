@@ -30,13 +30,15 @@ in {
   };
 
   config = mkIf config.caches.ErrorNoBinaries.enable {
-    nix = {
+    nix = let
+      shared = import ../../shared/caches/ErrorNoBinaries.nix;
+    in {
       substituters = with config.caches.ErrorNoBinaries; [
-        (mkIf internal (import ../../shared/caches/ErrorNoBinaries.nix).substituters.internal)
-        (mkIf external (import ../../shared/caches/ErrorNoBinaries.nix).substituters.external)
-        (mkIf cachix (import ../../shared/caches/ErrorNoBinaries.nix).substituters.cachix)
+        (mkIf internal shared.substituters.internal)
+        (mkIf external shared.substituters.external)
+        (mkIf cachix shared.substituters.cachix)
       ];
-      trustedPublicKeys = (import ../../shared/caches/ErrorNoBinaries.nix).publicKeys;
+      trustedPublicKeys = shared.publicKeys;
     };
   };
 }
