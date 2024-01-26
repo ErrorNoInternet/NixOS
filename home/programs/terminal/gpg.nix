@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  pkgs,
   ...
 }: let
   inherit (lib) mkEnableOption mkIf;
@@ -16,10 +15,14 @@ in {
         default-key = "2486BFB7B1E6A4A3";
       };
     };
-    home.file.".gnupg/gpg-agent.conf".text = ''
-      default-cache-ttl 86400
-      max-cache-ttl 86400
-      pinentry-program ${pkgs.pinentry.curses}/bin/pinentry-curses
-    '';
+    services.gpg-agent = {
+      enable = true;
+      enableFishIntegration = true;
+
+      verbose = true;
+      pinentryFlavor = "curses";
+      defaultCacheTtl = 86400;
+      maxCacheTtl = 86400 * 3;
+    };
   };
 }
