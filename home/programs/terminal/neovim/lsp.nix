@@ -1,20 +1,6 @@
 {pkgs, ...}: {
   programs.nixvim = {
     plugins = {
-      nvim-cmp = {
-        enable = true;
-        sources = [
-          {name = "buffer";}
-          {name = "crates";}
-          {name = "luasnip";}
-          {name = "nvim_lsp";}
-          {name = "path";}
-        ];
-        snippet.expand = "luasnip";
-      };
-      cmp_luasnip.enable = true;
-      luasnip.enable = true;
-
       treesitter = {
         enable = true;
         nixvimInjections = true;
@@ -29,6 +15,20 @@
       };
 
       trouble.enable = true;
+
+      nvim-cmp = {
+        enable = true;
+        sources = [
+          {name = "buffer";}
+          {name = "crates";}
+          {name = "luasnip";}
+          {name = "nvim_lsp";}
+          {name = "path";}
+        ];
+        snippet.expand = "luasnip";
+      };
+      cmp_luasnip.enable = true;
+      luasnip.enable = true;
 
       crates-nvim = {
         enable = true;
