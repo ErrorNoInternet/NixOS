@@ -36,7 +36,14 @@
       nvim-tree = {
         enable = true;
         disableNetrw = true;
-        extraOptions.view.signcolumn = "no";
+        diagnostics = {
+          enable = true;
+          showOnDirs = true;
+        };
+        extraOptions = {
+          view.signcolumn = "no";
+          renderer.icons.diagnostics_placement = "before";
+        };
       };
 
       undotree.enable = true;
