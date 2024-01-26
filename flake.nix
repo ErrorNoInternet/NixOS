@@ -22,21 +22,20 @@
     flake-parts.url = "github:hercules-ci/flake-parts";
     nix-colors.url = "github:misterio77/nix-colors";
     nixvim.url = "github:nix-community/nixvim";
-    spicetify-nix.url = "github:the-argus/spicetify-nix";
 
     attic.url = "github:zhaofengli/attic";
+    hsize.url = "github:ErrorNoInternet/hsize";
     hyprland.url = "github:hyprwm/Hyprland";
     hyprpaper.url = "github:hyprwm/hyprpaper";
     hyprwm-contrib.url = "github:hyprwm/contrib";
     neovim.url = "github:neovim/neovim?dir=contrib";
     nix-gaming.url = "github:fufexan/nix-gaming";
+    overmask.url = "github:ErrorNoInternet/overmask";
     shadower.url = "github:n3oney/shadower";
+    spicetify-nix.url = "github:the-argus/spicetify-nix";
     waybar.url = "github:Alexays/Waybar";
     wezterm.url = "github:wez/wezterm?dir=nix";
     yazi.url = "github:sxyazi/yazi";
-
-    hsize.url = "github:ErrorNoInternet/hsize";
-    overmask.url = "github:ErrorNoInternet/overmask";
   };
 
   outputs = {
