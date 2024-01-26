@@ -81,6 +81,10 @@
         };
       };
 
+      navic = {
+        enable = true;
+        lsp.autoAttach = true;
+      };
       lualine = {
         enable = true;
         componentSeparators = {
@@ -91,6 +95,8 @@
           left = "";
           right = "";
         };
+
+        sections.lualine_c = ["filename" "navic"];
       };
 
       barbar = {
