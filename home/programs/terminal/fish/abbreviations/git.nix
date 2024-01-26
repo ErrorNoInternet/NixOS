@@ -21,6 +21,8 @@
     gpl = "git pull";
     gps = "git push --set-upstream origin";
     gr = "git restore";
+    grb = "git rebase";
+    grbc = "git rebase --continue";
     gre = "git reset";
     grv = "git revert";
     gs = "git show";
