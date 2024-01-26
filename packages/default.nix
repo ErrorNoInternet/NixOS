@@ -42,7 +42,10 @@
       attic = inputs.attic.packages.${system}.attic.overrideAttrs (oldAttrs: {
         patches =
           (oldAttrs.patches or [])
-          ++ [./patches/attic_https-api-endpoint.patch];
+          ++ [
+            ./patches/attic_https-api-endpoint.patch
+            ./patches/attic_optimized_build.patch
+          ];
       });
 
       nordic = nordic.overrideAttrs (oldAttrs: {
