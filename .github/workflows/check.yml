@@ -15,7 +15,7 @@ on:
 
 jobs:
   flake-outputs:
-    name: Flake outputs
+    name: Flake
     runs-on: ubuntu-22.04
 
     steps:
@@ -31,5 +31,11 @@ jobs:
       - name: Set up Magic Nix Cache
         uses: DeterminateSystems/magic-nix-cache-action@v2
 
-      - name: Check all flake outputs
+      - name: Check Nix flake inputs
+        uses: DeterminateSystems/flake-checker-action@v5
+        with:
+          fail-mode: true
+          check-outdated: false
+
+      - name: Check Nix flake outputs
         run: nix flake check --all-systems
