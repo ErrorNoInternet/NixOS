@@ -17,8 +17,9 @@
         bg = "#${base00}";
       };
 
-      NvimTreeNormal.bg = "#${base01}";
       NvimTreeCursorLine.bg = "#${base03}";
+      NvimTreeNormal.bg = "#${base01}";
+      NvimTreeRootFolder.fg = "#${base0C}";
 
       HighlightUndo = {
         bg = "#${base03}";
