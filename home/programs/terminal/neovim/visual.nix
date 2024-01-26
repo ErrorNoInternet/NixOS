@@ -90,7 +90,15 @@
         enable = true;
         minimumPadding = 1;
         maximumPadding = 3;
-        icons.button = false;
+        icons = {
+          button = false;
+          diagnostics = {
+            error.enable = true;
+            hint.enable = true;
+            info.enable = true;
+            warn.enable = true;
+          };
+        };
       };
     };
     extraPlugins = with pkgs.vimPlugins; [
