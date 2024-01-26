@@ -58,7 +58,6 @@
           "windows, 1, 5, customBezier"
           "windowsOut, 1, 5, default, popin 80%"
           "border, 1, 5, default"
-          "borderangle, 1, 5, default"
           "fade, 1, 5, default"
           "workspaces, 1, 5, customBezier"
         ];
