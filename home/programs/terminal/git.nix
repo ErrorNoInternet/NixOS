@@ -10,6 +10,7 @@ in {
   config = mkIf config.home.programs.terminal.git.enable {
     programs.git = {
       enable = true;
+
       userName = "ErrorNoInternet";
       userEmail = "errornointernet@envs.net";
       signing = {
@@ -28,9 +29,9 @@ in {
         };
       };
       extraConfig = {
+        index.version = 4;
         init.defaultBranch = "main";
         pull.rebase = false;
-        index.version = 4;
       };
     };
   };
