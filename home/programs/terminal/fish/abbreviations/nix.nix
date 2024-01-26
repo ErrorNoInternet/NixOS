@@ -1,5 +1,6 @@
 {
   programs.fish.shellAbbrs = {
+    nb = "nix build";
     nd = "nix develop -c fish";
     nr = "nix run";
     nre = "nix repl";
