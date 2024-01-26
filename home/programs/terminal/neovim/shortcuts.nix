@@ -20,5 +20,8 @@
         };
       })
     ];
+    globals = {
+      sort_motion_flags = "i";
+    };
   };
 }
