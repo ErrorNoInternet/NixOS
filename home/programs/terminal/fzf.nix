@@ -10,6 +10,7 @@
 
       colors = with config.colors.scheme.colors; {
         "bg+" = "#${base03}";
+        "border" = "#${base03}";
         "fg" = "#${base05}";
         "fg+" = "#${base05}";
         "header" = "#${base0B}";
