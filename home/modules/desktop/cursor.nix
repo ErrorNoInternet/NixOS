@@ -4,6 +4,7 @@
   pkgs,
   ...
 }: let
+  cfg = config.cursor;
   inherit (lib) mkEnableOption mkOption mkIf types;
 in {
   options.cursor = {
@@ -25,11 +26,11 @@ in {
     };
   };
 
-  config = mkIf config.cursor.enable {
+  config = mkIf cfg.enable {
     home.pointerCursor = {
-      inherit (config.cursor) name;
-      inherit (config.cursor) package;
-      inherit (config.cursor) size;
+      inherit (cfg) name;
+      inherit (cfg) package;
+      inherit (cfg) size;
       x11.enable = true;
       gtk.enable = true;
     };
