@@ -4,6 +4,12 @@
       {
         mode = "n";
         options.silent = true;
+        key = "<leader>ds";
+        action = ":lua require('dapui').setup()<CR>";
+      }
+      {
+        mode = "n";
+        options.silent = true;
         key = "<leader>dc";
         action = ":lua require('dapui').toggle()<CR>";
       }
