@@ -86,7 +86,7 @@ jobs:
         run: patch --verbose -p1 < .github/workflows/no-nvidia.patch
 
       - name: Build ${{ matrix.host }}
-        run: nix run github:Mic92/nix-fast-build -- --no-nom --eval-workers 1 -j 2 --skip-cached --flake .#nixosConfigurations.${{ matrix.host }}.config.system.build.toplevel
+        run: nix run github:Mic92/nix-fast-build -- --no-nom --eval-workers 1 -j 1 --skip-cached --flake .#nixosConfigurations.${{ matrix.host }}.config.system.build.toplevel
 
 
   packages:
