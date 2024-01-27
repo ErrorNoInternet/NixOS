@@ -9,6 +9,7 @@
 in {
   imports = [
     ./clang-format.nix
+    ./clangd.nix
   ];
 
   options.profiles.development.enable =
