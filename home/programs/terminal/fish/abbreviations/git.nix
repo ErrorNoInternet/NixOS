@@ -25,6 +25,7 @@
     grb = "git rebase";
     grbc = "git rebase --continue";
     gre = "git reset";
+    greH = "git reset HEAD";
     grp = "git restore -p";
     grv = "git revert";
     gs = "git show";
