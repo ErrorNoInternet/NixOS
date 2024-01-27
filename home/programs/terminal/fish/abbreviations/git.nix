@@ -11,6 +11,7 @@
     gcf = "git clean -f";
     gcl = "git clone";
     gco = "git checkout";
+    gcob = "git checkout -b";
     gd = "git diff";
     gdc = "git diff --compact-summary";
     gds = "git diff --staged";
