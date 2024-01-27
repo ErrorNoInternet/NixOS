@@ -19,14 +19,6 @@
           ++ [./patches/btrfs-progs_receive-selinux.patch];
       });
 
-      # TODO: remove once nixpkgs PR is merged
-      btop = btop.overrideAttrs (oldAttrs: {
-        nativeBuildInputs = (oldAttrs.nativeBuildInputs or []) ++ [addOpenGLRunpath];
-        postFixup = ''
-          addOpenGLRunpath $out/bin/btop
-        '';
-      });
-
       yazi = inputs.yazi.packages.${system}.yazi.overrideAttrs (oldAttrs: {
         patches =
           (oldAttrs.patches or [])
@@ -44,7 +36,7 @@
           (oldAttrs.patches or [])
           ++ [
             ./patches/attic_https-api-endpoint.patch
-            ./patches/attic_optimized_build.patch
+            ./patches/attic_optimized-build.patch
           ];
       });
 
@@ -66,10 +58,7 @@
       wezterm = inputs.wezterm.packages.${system}.default.overrideAttrs (oldAttrs: {
         patches =
           (oldAttrs.patches or [])
-          ++ [
-            ./patches/wezterm_optimized-build.patch
-            ./patches/wezterm_topmost-cursor-layer.patch
-          ];
+          ++ [./patches/wezterm_optimized-build.patch];
       });
     };
   };
