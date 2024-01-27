@@ -58,10 +58,7 @@
       wezterm = inputs.wezterm.packages.${system}.default.overrideAttrs (oldAttrs: {
         patches =
           (oldAttrs.patches or [])
-          ++ [
-            ./patches/wezterm_optimized-build.patch
-            ./patches/wezterm_topmost-cursor-layer.patch
-          ];
+          ++ [./patches/wezterm_optimized-build.patch];
       });
     };
   };
