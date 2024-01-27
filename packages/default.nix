@@ -19,14 +19,6 @@
           ++ [./patches/btrfs-progs_receive-selinux.patch];
       });
 
-      # TODO: remove once nixpkgs PR is merged
-      btop = btop.overrideAttrs (oldAttrs: {
-        nativeBuildInputs = (oldAttrs.nativeBuildInputs or []) ++ [addOpenGLRunpath];
-        postFixup = ''
-          addOpenGLRunpath $out/bin/btop
-        '';
-      });
-
       yazi = inputs.yazi.packages.${system}.yazi.overrideAttrs (oldAttrs: {
         patches =
           (oldAttrs.patches or [])
