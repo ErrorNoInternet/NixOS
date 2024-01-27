@@ -41,6 +41,7 @@
     packages = with pkgs; [
       (hashcat.override {cudaSupport = true;})
       _7zz
+      amdgpu_top
       bandwhich
       blender
       brave
