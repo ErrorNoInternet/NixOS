@@ -1,6 +1,6 @@
 builds:
   exclude: []
   include:
-    - "legacyPackages.*"
+    - "*.aarch64-linux.*"
+    - "*.x86_64-linux.*"
     - "nixosConfigurations.*"
-    - "packages.*"
