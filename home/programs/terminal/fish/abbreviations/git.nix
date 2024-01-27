@@ -22,6 +22,7 @@
     gpa = "git push --all";
     gpf = "git push --force-with-lease";
     gpl = "git pull";
+    gpod = "git push origin --delete";
     gps = "git push --set-upstream origin";
     gr = "git restore";
     grb = "git rebase";
