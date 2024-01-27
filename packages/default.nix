@@ -36,7 +36,7 @@
           (oldAttrs.patches or [])
           ++ [
             ./patches/attic_https-api-endpoint.patch
-            ./patches/attic_optimized_build.patch
+            ./patches/attic_optimized-build.patch
           ];
       });
 
