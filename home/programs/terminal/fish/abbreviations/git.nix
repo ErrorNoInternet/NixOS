@@ -5,6 +5,8 @@
     ga = "git add";
     gap = "git add -p";
     gb = "git branch";
+    gbd = "git branch -d";
+    gbD = "git branch -D";
     gbl = "git blame";
     gc = "git commit -m";
     gca = "git commit --amend";
