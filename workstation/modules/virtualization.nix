@@ -1,5 +1,6 @@
 {
   config,
+  inputs,
   lib,
   pkgs,
   ...
@@ -16,9 +17,13 @@ in {
     virtualisation = {
       libvirtd = {
         enable = true;
-        qemu.ovmf.packages = with pkgs; [
-          OVMFFull.fd
-          pkgsCross.aarch64-multiplatform.OVMF.fd
+        qemu.ovmf.packages = let
+          pkgsArm = import inputs.nixpkgs {
+            system = "aarch64-linux";
+          };
+        in [
+          pkgs.OVMFFull.fd
+          pkgsArm.OVMFFull.fd
         ];
       };
       spiceUSBRedirection.enable = true;
