@@ -13,7 +13,7 @@ in {
     };
 
     command = mkOption {
-      default = "${cfg.name} start --class ${cfg.name}";
+      default = "${cfg.name} start --class ${cfg.name} --always-new-process";
       type = types.str;
     };
   };
