@@ -143,4 +143,4 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Build package
-        run: nix build .#${{ matrix.package }}
+        run: nix build -L .#${{ matrix.package }}
