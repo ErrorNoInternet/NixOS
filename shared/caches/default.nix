@@ -1,6 +1,7 @@
 {lib, ...}: {
   imports = [
     ./ErrorNoBinaries.nix
+    ./garnix.nix
     ./hyprland.nix
     ./nix-community.nix
     ./nix-gaming.nix
