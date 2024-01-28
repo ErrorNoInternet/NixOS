@@ -3,6 +3,12 @@
     keymaps = [
       {
         mode = "n";
+        key = "e";
+        action = "A;";
+      }
+
+      {
+        mode = "n";
         options.silent = true;
         key = "<leader>ds";
         action = ":lua require('dapui').setup()<CR>";
