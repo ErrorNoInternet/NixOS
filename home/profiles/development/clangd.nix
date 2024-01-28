@@ -12,7 +12,7 @@ in {
     };
 
   config = mkIf config.profiles.development.clangd.enable {
-    home.file.".clangd".text = ''
+    home.file.".config/clangd/config.yaml".text = ''
       CompileFlags:
         Add: [
           -std=c++20,
