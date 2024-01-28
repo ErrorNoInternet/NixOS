@@ -23,6 +23,7 @@
         enable_audio_bell = false;
         modify_font = "baseline 1";
         shell = "tmux";
+        window_padding_width = 5;
       };
       keybindings = {
         "ctrl+shift+left" = "send_text all \\x1b\\x5b\\x31\\x3b\\x33\\x44";
