@@ -24,5 +24,8 @@ in {
       defaultCacheTtl = 86400;
       maxCacheTtl = 86400 * 3;
     };
+    home.file.".gnupg/dirmngr.conf".text = ''
+      standard-resolver
+    '';
   };
 }
