@@ -15,7 +15,6 @@ in {
     home.file.".config/clangd/config.yaml".text = ''
       CompileFlags:
         Add: [
-          -std=c++20,
           -Wall,
 
           -DWLR_USE_UNSTABLE=1,
