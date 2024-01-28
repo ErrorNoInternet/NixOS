@@ -37,7 +37,7 @@
         }";
       in ''
         background            real_rgb:${base00Variation}
-        cursor                #${base0D}
+        cursor                #${base04}
         foreground            #${base04}
         selection_background  #${base0A}
         selection_foreground  #${base00}
