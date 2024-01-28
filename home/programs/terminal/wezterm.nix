@@ -16,7 +16,7 @@ in {
   config = mkIf config.profiles.desktop.enable {
     programs.wezterm = {
       enable = true;
-      package = self.legacyPackages.${pkgs.system}.wezterm;
+      package = self.packages.${pkgs.system}.wezterm;
 
       extraConfig = ''
         local config = {}

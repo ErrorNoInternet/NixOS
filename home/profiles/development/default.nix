@@ -37,7 +37,7 @@ in {
         python3Packages.bpython
         rustup
         scc
-        self.legacyPackages.${system}.attic
+        self.packages.${system}.attic
         zig
       ];
       sessionVariables = {

@@ -13,7 +13,7 @@ in {
     theme = mkOption {
       default = {
         name = "Nordic-darker";
-        package = self.legacyPackages.${pkgs.system}.nordic;
+        package = self.packages.${pkgs.system}.nordic;
       };
     };
 

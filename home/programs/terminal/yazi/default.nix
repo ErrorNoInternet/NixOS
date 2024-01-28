@@ -14,7 +14,7 @@
   config = lib.mkIf config.home.programs.terminal.fish.enable {
     programs.yazi = {
       enable = true;
-      package = self.legacyPackages.${pkgs.system}.yazi;
+      package = self.packages.${pkgs.system}.yazi;
 
       enableFishIntegration = config.home.programs.terminal.fish.enable;
     };

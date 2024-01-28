@@ -18,7 +18,7 @@
               osConfig = {};
             };
             sharedModules = [
-              {nix.package = self.legacyPackages.aarch64-linux.nix;}
+              {nix.package = self.packages.aarch64-linux.nix;}
               ../home/common.nix
               ../home/hosts/${name}.nix
             ];

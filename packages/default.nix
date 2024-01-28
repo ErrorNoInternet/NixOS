@@ -5,7 +5,7 @@
 
   systems = ["x86_64-linux" "aarch64-linux"];
   perSystem = {pkgs, ...}: {
-    legacyPackages = with pkgs; {
+    packages = with pkgs; {
       nix = nixVersions.nix_2_19.overrideAttrs (oldAttrs: {
         doInstallCheck = false;
         patches =

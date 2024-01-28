@@ -9,7 +9,7 @@
   config = lib.mkIf config.profiles.desktop.enable {
     programs.kitty = {
       enable = true;
-      package = self.legacyPackages.${pkgs.system}.kitty;
+      package = self.packages.${pkgs.system}.kitty;
       shellIntegration.enableFishIntegration = true;
 
       font = {

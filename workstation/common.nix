@@ -116,8 +116,8 @@
       cryptsetup
       home-manager
       pulseaudio
-      self.legacyPackages.${system}.btrfs-progs
-      self.legacyPackages.${system}.nix
+      self.packages.${system}.btrfs-progs
+      self.packages.${system}.nix
       xdg-user-dirs
     ];
   };

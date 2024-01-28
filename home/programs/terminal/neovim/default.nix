@@ -30,7 +30,7 @@ in {
   config = mkIf config.home.programs.terminal.neovim.enable {
     programs.nixvim = {
       enable = true;
-      package = self.legacyPackages.${pkgs.system}.neovim;
+      package = self.packages.${pkgs.system}.neovim;
       defaultEditor = true;
     };
   };
