@@ -30,8 +30,11 @@
         "ctrl+shift+right" = "send_text all \\x1b\\x5b\\x31\\x3b\\x33\\x43";
       };
       extraConfig = with config.colors.scheme.colors; let
-        base00Variation = "${builtins.replaceStrings [" "] [""]
-          (builtins.toString (lib.intersperse "," (map (v: v - 1) (inputs.nix-colors.lib.conversions.hexToRGB base00))))}";
+        base00Variation = "${
+          builtins.replaceStrings [" "] [""]
+          (builtins.toString (lib.intersperse
+              "," (map (v: v - 1) (inputs.nix-colors.lib.conversions.hexToRGB base00))))
+        }";
       in ''
         background            real_rgb:${base00Variation}
         cursor                #${base0D}
