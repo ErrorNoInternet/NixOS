@@ -60,7 +60,7 @@
             installRustc = false;
             installLanguageServer = false;
 
-            settings.check.command = "clippy";
+            settings.checkOnSave = false;
           };
         };
       };
