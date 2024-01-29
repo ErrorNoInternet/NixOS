@@ -3,7 +3,7 @@
     keymaps = [
       {
         mode = "n";
-        key = "e";
+        key = "+";
         action = "A;";
       }
 
