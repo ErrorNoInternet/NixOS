@@ -1,5 +1,5 @@
-name: Build (ARM)
-concurrency: build-arm
+name: Build
+concurrency: build
 on:
   push:
     paths:
@@ -18,7 +18,8 @@ jobs:
       max-parallel: 1
       matrix:
         include:
-          - host: Pix
+          - host: NixBtw
+          - host: Rescanix
 
     steps:
       - name: Maximize disk space
@@ -56,9 +57,8 @@ jobs:
         uses: DeterminateSystems/nix-installer-action@v9
         with:
           extra-conf: |
-            system = aarch64-linux
-            substituters = https://cache.garnix.io https://nix-community.cachix.org
-            trusted-public-keys = cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g= nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=
+            substituters = https://cache.garnix.io https://nix-community.cachix.org https://nix-gaming.cachix.org
+            trusted-public-keys = cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g= nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs= nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4=
             log-lines = 500
             download-attempts = 100
             download-speed = 10000
@@ -69,8 +69,8 @@ jobs:
       - name: Set up Attic
         uses: ErrorNoInternet/attic-action@v0
         with:
-          endpoint: "${{ secrets.ATTIC_ENDPOINT }}"
-          cache: "${{ secrets.ATTIC_CACHE }}"
+          endpoint: ${{ secrets.ATTIC_ENDPOINT }}
+          cache: ${{ secrets.ATTIC_CACHE }}
           token: "${{ secrets.ATTIC_TOKEN }}"
 
       - name: Set up Cachix
@@ -79,11 +79,14 @@ jobs:
           name: errornobinaries
           authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
 
-      - name: Checkout repository
+      - name: Clone repository
         uses: actions/checkout@v4
 
+      - name: Apply CI build patches
+        run: patch --verbose -p1 < .github/workflows/no-nvidia.patch
+
       - name: Build ${{ matrix.host }}
-        run: nix run github:Mic92/nix-fast-build -- --no-nom --eval-workers 1 -j 2 --skip-cached --flake .#nixosConfigurations.${{ matrix.host }}.config.system.build.toplevel
+        run: nix run github:Mic92/nix-fast-build -- --no-nom --eval-workers 1 -j 1 --skip-cached --flake .#nixosConfigurations.${{ matrix.host }}.config.system.build.toplevel
 
 
   packages:
@@ -96,11 +99,13 @@ jobs:
         include:
           - package: attic
           - package: btrfs-progs
+          - package: kitty
           - package: neovim
           - package: nix
           - package: passgen
           - package: savehw
           - package: tbw
+          - package: wezterm
           - package: yazi
 
     steps:
@@ -113,7 +118,6 @@ jobs:
         uses: DeterminateSystems/nix-installer-action@v9
         with:
           extra-conf: |
-            system = aarch64-linux
             substituters = https://cache.garnix.io https://nix-community.cachix.org
             trusted-public-keys = cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g= nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=
             log-lines = 500
@@ -136,7 +140,7 @@ jobs:
           name: errornobinaries
           authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
 
-      - name: Checkout repository
+      - name: Clone repository
         uses: actions/checkout@v4
 
       - name: Build package
