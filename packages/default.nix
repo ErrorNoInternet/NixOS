@@ -25,7 +25,7 @@
           ++ [./patches/yazi_default-cursor-shape.patch];
       });
 
-      neovim = inputs.neovim.packages.${system}.neovim.overrideAttrs (oldAttrs: {
+      neovim = inputs.neovim-nightly.packages.${system}.neovim.overrideAttrs (oldAttrs: {
         patches =
           (oldAttrs.patches or [])
           ++ [./patches/neovim_no-fold-numbers.patch];

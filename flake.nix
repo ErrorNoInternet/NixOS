@@ -28,7 +28,7 @@
     hyprland.url = "github:hyprwm/Hyprland";
     hyprpaper.url = "github:hyprwm/hyprpaper";
     hyprwm-contrib.url = "github:hyprwm/contrib";
-    neovim.url = "github:neovim/neovim?dir=contrib";
+    neovim-nightly.url = "github:nix-community/neovim-nightly-overlay";
     nix-gaming.url = "github:fufexan/nix-gaming";
     overmask.url = "github:ErrorNoInternet/overmask";
     shadower.url = "github:n3oney/shadower";
