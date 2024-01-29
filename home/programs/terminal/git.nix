@@ -29,6 +29,7 @@ in {
         };
       };
       extraConfig = {
+        core.filemode = true;
         index.version = 4;
         init.defaultBranch = "main";
         pull.rebase = false;
