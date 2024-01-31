@@ -8,6 +8,8 @@
       alejandra
       black
       clang-tools
+      taplo
+
       lldb
     ];
 

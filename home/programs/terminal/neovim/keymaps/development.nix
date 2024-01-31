@@ -396,6 +396,17 @@
 
       {
         event = ["FileType"];
+        pattern = ["toml"];
+        command = "map <buffer> <F2> :w<CR>:Neoformat taplo<CR>:w<CR>";
+      }
+      {
+        event = ["FileType"];
+        pattern = ["toml"];
+        command = "imap <buffer> <F2> <esc>:w<CR>:Neoformat taplo<CR>:w<CR>";
+      }
+
+      {
+        event = ["FileType"];
         pattern = ["nix"];
         command = "map <buffer> <F2> :w<CR>:Neoformat alejandra<CR>:w<CR>";
       }
