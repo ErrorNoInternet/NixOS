@@ -4,6 +4,13 @@
   ...
 }: {
   programs.nixvim = {helpers, ...}: {
+    extraPackages = with pkgs; [
+      alejandra
+      black
+      clang-tools
+      lldb
+    ];
+
     plugins = {
       markdown-preview.enable = true;
 
