@@ -33,7 +33,7 @@ in {
         go
         libllvm
         linuxPackages_latest.perf
-        lldb
+        lldb_17
         man-pages
         nix-output-monitor
         onefetch
