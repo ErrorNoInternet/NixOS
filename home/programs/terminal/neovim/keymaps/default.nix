@@ -184,5 +184,11 @@
       key = "<leader>fy";
       action = ":Telescope yank_history<CR>";
     }
+    {
+      mode = "n";
+      options.silent = true;
+      key = "<leader>fe";
+      action = ":Telescope spell_suggest<CR>";
+    }
   ];
 }

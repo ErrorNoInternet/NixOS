@@ -89,6 +89,12 @@
       {
         mode = "n";
         options.silent = true;
+        key = "<leader>fz";
+        action = ":Telescope current_buffer_fuzzy_find<CR>";
+      }
+      {
+        mode = "n";
+        options.silent = true;
         key = "<leader>fb";
         action = ":Telescope buffers<CR>";
       }
