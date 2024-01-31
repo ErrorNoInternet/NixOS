@@ -2,7 +2,11 @@
   programs.nixvim = {
     plugins = {
       leap.enable = true;
-      telescope.enable = true;
+
+      yanky = {
+        enable = true;
+        picker.telescope.enable = true;
+      };
     };
     extraPlugins = with pkgs.vimPlugins; [
       vim-wordmotion
