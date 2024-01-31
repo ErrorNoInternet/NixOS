@@ -1,6 +1,6 @@
 {lib, ...}: {
   options.font.name = lib.mkOption {
-    default = "JetBrainsMono Nerd Font Mono";
+    default = "JetBrainsMono Nerd Font";
     type = lib.types.str;
   };
 }

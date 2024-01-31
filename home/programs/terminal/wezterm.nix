@@ -29,7 +29,7 @@ in {
           automatically_reload_config = false,
           default_prog = { "/etc/profiles/per-user/error/bin/tmux" },
 
-          font = wezterm.font "${config.font.name}",
+          font = wezterm.font "JetBrainsMono Nerd Font",
           font_size = 9,
           default_cursor_style = "SteadyBar",
           color_scheme = "${cfg.color_scheme}",
