@@ -85,6 +85,10 @@
         enable = true;
         extensions.ui-select.enable = true;
       };
+      yanky = {
+        enable = true;
+        picker.telescope.enable = true;
+      };
 
       navic = {
         enable = true;
