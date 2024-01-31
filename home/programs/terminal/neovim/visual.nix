@@ -88,6 +88,10 @@
       yanky = {
         enable = true;
         picker.telescope.enable = true;
+        highlight = {
+          onPut = false;
+          onYank = false;
+        };
       };
 
       navic = {
