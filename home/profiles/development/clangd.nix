@@ -16,8 +16,6 @@ in {
       CompileFlags:
         Add: [
           -Wall,
-
-          -DWLR_USE_UNSTABLE=1,
         ]
     '';
   };
