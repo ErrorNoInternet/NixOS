@@ -112,18 +112,6 @@
     {
       mode = "i";
       options.silent = true;
-      key = "<F4>";
-      action = "<esc>:nohl<CR>:MinimapRefresh<CR>i";
-    }
-    {
-      mode = "n";
-      options.silent = true;
-      key = "<F4>";
-      action = ":nohl<CR>:MinimapRefresh<CR>";
-    }
-    {
-      mode = "i";
-      options.silent = true;
       key = "<F3>";
       action = "<esc>:w<CR>";
     }
@@ -158,6 +146,7 @@
       key = ";D";
       action = ":bd!<CR>";
     }
+
     {
       mode = "n";
       options.silent = true;

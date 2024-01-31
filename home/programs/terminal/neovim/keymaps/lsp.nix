@@ -135,44 +135,8 @@
       {
         mode = "n";
         options.silent = true;
-        key = "<leader>ft";
-        action = ":TodoTelescope<CR>";
-      }
-      {
-        mode = "n";
-        options.silent = true;
-        key = "<leader>ff";
-        action = ":Telescope find_files<CR>";
-      }
-      {
-        mode = "n";
-        options.silent = true;
-        key = "<leader>fg";
-        action = ":Telescope live_grep<CR>";
-      }
-      {
-        mode = "n";
-        options.silent = true;
-        key = "<leader>fb";
-        action = ":Telescope buffers<CR>";
-      }
-      {
-        mode = "n";
-        options.silent = true;
         key = "<leader>fs";
         action = ":Telescope lsp_workspace_symbols<CR>";
-      }
-      {
-        mode = "n";
-        options.silent = true;
-        key = "<leader>fc";
-        action = ":Telescope git_bcommits<CR>";
-      }
-      {
-        mode = "n";
-        options.silent = true;
-        key = "<leader>fC";
-        action = ":Telescope git_commits<CR>";
       }
       {
         mode = "n";
