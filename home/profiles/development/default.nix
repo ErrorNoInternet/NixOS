@@ -23,8 +23,8 @@ in {
       packages = with pkgs; [
         (python3.withPackages (ps: with ps; [jedi]))
         cachix
-        clang
         clang-tools
+        clang_17
         gdb
         glibc.static
         gnumake
