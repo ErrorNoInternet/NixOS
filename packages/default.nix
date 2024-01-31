@@ -58,7 +58,10 @@
       wezterm = inputs.wezterm.packages.${system}.default.overrideAttrs (oldAttrs: {
         patches =
           (oldAttrs.patches or [])
-          ++ [./patches/wezterm_optimized-build.patch];
+          ++ [
+            ./patches/wezterm_optimized-build.patch
+            ./patches/wezterm_smithay-0.17.patch
+          ];
       });
     };
   };
