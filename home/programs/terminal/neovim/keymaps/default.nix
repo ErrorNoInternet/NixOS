@@ -165,5 +165,24 @@
       key = "<leader>u";
       action = ":UndotreeToggle<CR>:UndotreeFocus<CR>";
     }
+    {
+      mode = "i";
+      options.silent = true;
+      key = "<F4>";
+      action = "<esc>:nohl<CR>:MinimapRefresh<CR>i";
+    }
+    {
+      mode = "n";
+      options.silent = true;
+      key = "<F4>";
+      action = ":nohl<CR>:MinimapRefresh<CR>";
+    }
+
+    {
+      mode = "n";
+      options.silent = true;
+      key = "<leader>fy";
+      action = ":Telescope yank_history<CR>";
+    }
   ];
 }

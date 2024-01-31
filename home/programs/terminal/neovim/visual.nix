@@ -81,6 +81,11 @@
         };
       };
 
+      telescope = {
+        enable = true;
+        extensions.ui-select.enable = true;
+      };
+
       navic = {
         enable = true;
         lsp.autoAttach = true;
