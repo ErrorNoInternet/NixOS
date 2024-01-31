@@ -44,7 +44,10 @@
         enable = true;
         servers = {
           bashls.enable = true;
-          clangd.enable = true;
+          clangd = {
+            enable = true;
+            installLanguageServer = false;
+          };
           cssls.enable = true;
           gopls.enable = true;
           html.enable = true;
@@ -52,8 +55,6 @@
           lua-ls.enable = true;
           nil_ls.enable = true;
           pyright.enable = true;
-          yamlls.enable = true;
-          zls.enable = true;
           rust-analyzer = {
             enable = true;
             installCargo = false;
@@ -62,6 +63,8 @@
 
             settings.checkOnSave = false;
           };
+          yamlls.enable = true;
+          zls.enable = true;
         };
       };
 
