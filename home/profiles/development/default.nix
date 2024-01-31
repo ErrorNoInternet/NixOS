@@ -25,15 +25,15 @@ in {
         alejandra
         black
         cachix
-        clang-tools_17
-        clang_17
+        clang
+        clang-tools
         gdb
         glibc.static
         gnumake
         go
         libllvm
         linuxPackages_latest.perf
-        lldb_17
+        lldb
         man-pages
         nix-output-monitor
         onefetch
