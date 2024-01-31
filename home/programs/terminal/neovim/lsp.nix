@@ -44,10 +44,7 @@
         enable = true;
         servers = {
           bashls.enable = true;
-          clangd = {
-            enable = true;
-            installLanguageServer = false;
-          };
+          clangd.enable = true;
           cssls.enable = true;
           gopls.enable = true;
           html.enable = true;
