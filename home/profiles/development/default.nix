@@ -22,8 +22,10 @@ in {
     home = {
       packages = with pkgs; [
         (python3.withPackages (ps: with ps; [jedi]))
+        alejandra
+        black
         cachix
-        clang-tools
+        clang-tools_17
         clang_17
         gdb
         glibc.static
@@ -31,6 +33,7 @@ in {
         go
         libllvm
         linuxPackages_latest.perf
+        lldb
         man-pages
         nix-output-monitor
         onefetch
