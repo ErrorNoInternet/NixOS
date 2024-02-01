@@ -33,9 +33,31 @@ in {
           inherit (autopair) src;
         }
       ];
-      interactiveShellInit = ''
+      interactiveShellInit = with config.colorScheme.colors; ''
         set -x _ZO_MAXAGE 20000
         set -x _ZO_RESOLVE_SYMLINKS 1
+
+        if test "$TERM" = "linux"
+          echo -e "
+          \e]P0${base01}
+          \e]P1${base08}
+          \e]P2${base0B}
+          \e]P3${base0A}
+          \e]P4${base0D}
+          \e]P5${base0E}
+          \e]P6${base0C}
+          \e]P7${base05}
+          \e]P8${base03}
+          \e]P9${base08}
+          \e]PA${base0B}
+          \e]PB${base0A}
+          \e]PC${base0D}
+          \e]PD${base0E}
+          \e]PE${base07}
+          \e]PF${base06}
+          "
+          clear
+        end
 
         if test (ps | grep fish | wc -l) -le 1
           if test -e /android/system/bin/linker64
