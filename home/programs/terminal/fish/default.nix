@@ -4,6 +4,7 @@
   pkgs,
   ...
 }: let
+  cfg = config.home.programs.terminal;
   inherit (lib) mkEnableOption mkIf;
 in {
   imports = [
@@ -20,10 +21,10 @@ in {
       default = true;
     };
 
-  config = mkIf (config.home.programs.terminal.fish.enable
-    || config.home.programs.terminal.foot.enable
-    || config.home.programs.terminal.wezterm.enable
-    || config.home.programs.terminal.kitty.enable) {
+  config = mkIf (cfg.fish.enable
+    || cfg.foot.enable
+    || cfg.wezterm.enable
+    || cfg.kitty.enable) {
     programs.fish = {
       enable = true;
       plugins = with pkgs.fishPlugins; [
