@@ -8,9 +8,21 @@
   cfg = config.home.programs.terminal.wezterm;
   inherit (lib) mkOption mkIf types;
 in {
-  options.home.programs.terminal.wezterm.color_scheme = mkOption {
-    default = "nord";
-    type = types.str;
+  options.home.programs.terminal.wezterm = {
+    font = mkOption {
+      default = config.font.name;
+      type = types.str;
+    };
+
+    colorScheme = mkOption {
+      default = config.colors.schemeName;
+      type = types.str;
+    };
+
+    backgroundOpacity = mkOption {
+      default = config.opacity.normal;
+      type = types.numbers.between 0 1;
+    };
   };
 
   config = mkIf config.profiles.desktop.enable {
@@ -29,9 +41,9 @@ in {
           automatically_reload_config = false,
           default_prog = { "/etc/profiles/per-user/error/bin/tmux" },
 
-          font = wezterm.font "JetBrainsMono Nerd Font",
+          font = wezterm.font "${cfg.font}",
           font_size = 9,
-          color_scheme = "${cfg.color_scheme}",
+          color_scheme = "${cfg.colorScheme} (base16)",
 
           window_padding = {
             top = "0.5cell",
@@ -39,7 +51,7 @@ in {
             left = "1cell",
             right = "1cell",
           },
-          window_background_opacity = ${builtins.toString config.opacity.normal},
+          window_background_opacity = ${builtins.toString cfg.backgroundOpacity},
           enable_tab_bar = false,
 
           keys = {
