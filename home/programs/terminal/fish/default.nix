@@ -33,8 +33,6 @@ in {
         }
       ];
       interactiveShellInit = ''
-        echo -en "\x1b[6 q"
-
         set -x _ZO_MAXAGE 20000
         set -x _ZO_RESOLVE_SYMLINKS 1
 

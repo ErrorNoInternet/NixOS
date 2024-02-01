@@ -31,7 +31,6 @@ in {
 
           font = wezterm.font "JetBrainsMono Nerd Font",
           font_size = 9,
-          default_cursor_style = "SteadyBar",
           color_scheme = "${cfg.color_scheme}",
 
           window_padding = {

@@ -15,7 +15,6 @@
         };
         mouse.hide-when-typing = "yes";
         cursor = {
-          style = "beam";
           blink = "yes";
           color = "${base04} ${base04}";
         };
