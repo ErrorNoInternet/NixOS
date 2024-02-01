@@ -30,12 +30,12 @@
         set -g pane-active-border-style 'fg=colour4'
 
         set -g allow-passthrough on
+        set -g focus-events off
         set -g repeat-time 0
         set -g set-clipboard on
         set -ga terminal-overrides ",xterm*:RGB"
         set -ga update-environment TERM
         set -ga update-environment TERM_PROGRAM
-        set -g focus-events off
 
         bind -n C-F3 set-option status
         bind '"' split-window -v -c "#{pane_current_path}"
