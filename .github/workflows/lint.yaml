@@ -14,8 +14,8 @@ on:
   workflow_dispatch:
 
 jobs:
-  nix-code:
-    name: Nix code
+  nix-expressions:
+    name: Nix expressions
     runs-on: ubuntu-22.04
 
     steps:
