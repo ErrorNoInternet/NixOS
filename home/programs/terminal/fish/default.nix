@@ -37,7 +37,7 @@ in {
         set -x _ZO_MAXAGE 20000
         set -x _ZO_RESOLVE_SYMLINKS 1
 
-        if test "$TERM" = "linux"
+        if not set -q TTY_COLORS_SET; and test "$TERM" = "linux"
           echo -e "
           \e]P0${base01}
           \e]P1${base08}
@@ -56,6 +56,7 @@ in {
           \e]PE${base07}
           \e]PF${base06}
           "
+          set -x TTY_COLORS_SET 1
           clear
         end
 
