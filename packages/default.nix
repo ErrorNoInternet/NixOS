@@ -19,11 +19,7 @@
           ++ [./patches/btrfs-progs_receive-selinux.patch];
       });
 
-      yazi = inputs.yazi.packages.${system}.yazi.overrideAttrs (oldAttrs: {
-        patches =
-          (oldAttrs.patches or [])
-          ++ [];
-      });
+      yazi = inputs.yazi.packages.${system}.yazi;
 
       neovim = inputs.neovim-nightly.packages.${system}.neovim.overrideAttrs (oldAttrs: {
         patches =
