@@ -23,7 +23,7 @@
     gpf = "git push --force-with-lease";
     gpl = "git pull";
     gpod = "git push origin --delete";
-    gps = "git push --set-upstream origin";
+    gps = "git push -u origin";
     gr = "git restore";
     grb = "git rebase";
     grbc = "git rebase --continue";
