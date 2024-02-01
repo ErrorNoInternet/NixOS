@@ -14,8 +14,8 @@ on:
   workflow_dispatch:
 
 jobs:
-  flake:
-    name: Flake
+  nix-flake:
+    name: Nix flake
     runs-on: ubuntu-22.04
 
     steps:
