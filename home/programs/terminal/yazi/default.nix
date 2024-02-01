@@ -1,8 +1,8 @@
 {
   config,
-  inputs,
   lib,
   pkgs,
+  self,
   ...
 }: {
   imports = [
@@ -14,7 +14,7 @@
   config = lib.mkIf config.home.programs.terminal.fish.enable {
     programs.yazi = {
       enable = true;
-      package = inputs.yazi.packages.${pkgs.system}.yazi;
+      package = self.packages.${pkgs.system}.yazi;
 
       enableFishIntegration = config.home.programs.terminal.fish.enable;
     };
