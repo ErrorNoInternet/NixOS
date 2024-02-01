@@ -8,7 +8,7 @@
       enable = true;
       enableFishIntegration = true;
 
-      colors = with config.colors.scheme.colors; {
+      colors = with config.colorScheme.colors; {
         "bg+" = "#${base03}";
         "border" = "#${base03}";
         "fg" = "#${base05}";

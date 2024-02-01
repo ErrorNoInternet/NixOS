@@ -4,7 +4,7 @@
   ...
 }: {
   config = lib.mkIf config.profiles.desktop.enable {
-    programs.foot = with config.colors.scheme.colors; {
+    programs.foot = with config.colorScheme.colors; {
       enable = true;
       settings = {
         main = {
