@@ -1741,11 +1741,11 @@
       },
       "locked": {
         "dir": "nix",
-        "lastModified": 1706498517,
-        "narHash": "sha256-q9jcPGV3SGWdqRBw7OxEe/5YjnpT/Xy7tmuDSY7rhTg=",
+        "lastModified": 1706713218,
+        "narHash": "sha256-7sVy8mW88Va+am057DfcisZOAy/S+7tBZ1pJ2QsSb3I=",
         "owner": "wez",
         "repo": "wezterm",
-        "rev": "1e552d764349522dabffeb240feb5b2728eff3d8",
+        "rev": "6e85ba49fdd0a550d1806289f8410b8b7047bf48",
         "type": "github"
       },
       "original": {
