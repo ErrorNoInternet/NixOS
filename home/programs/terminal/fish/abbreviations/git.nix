@@ -11,7 +11,7 @@
     gbl = "git blame";
     gc = "git commit -m";
     gca = "git commit --amend";
-    gcf = "git clean -f";
+    gcf = "git clean -f .";
     gcl = "git clone";
     gco = "git checkout";
     gcob = "git checkout -b";
@@ -28,7 +28,7 @@
     gr = "git restore";
     grb = "git rebase";
     grbc = "git rebase --continue";
-    gre = "git reset HEAD";
+    grh = "git reset HEAD";
     grp = "git restore -p";
     grv = "git revert";
     gs = "git show";
