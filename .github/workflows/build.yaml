@@ -64,7 +64,7 @@ jobs:
             download-speed = 10000
 
       - name: Set up Magic Nix Cache
-        uses: DeterminateSystems/magic-nix-cache-action@v2
+        uses: DeterminateSystems/magic-nix-cache-action@v3
 
       - name: Set up Attic
         uses: ErrorNoInternet/attic-action@v0
@@ -125,7 +125,7 @@ jobs:
             download-speed = 10000
 
       - name: Set up Magic Nix Cache
-        uses: DeterminateSystems/magic-nix-cache-action@v2
+        uses: DeterminateSystems/magic-nix-cache-action@v3
 
       - name: Set up Attic
         uses: ErrorNoInternet/attic-action@v0
