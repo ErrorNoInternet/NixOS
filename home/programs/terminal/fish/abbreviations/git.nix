@@ -1,6 +1,7 @@
 {
   programs.fish.shellAbbrs = {
     "ga." = "git add .";
+    "gr." = "git restore .";
     g = "git";
     ga = "git add";
     gap = "git add -p";
