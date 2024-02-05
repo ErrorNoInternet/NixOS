@@ -21,7 +21,7 @@ in {
 
   config = mkIf config.profiles.windowManager.enable {
     programs.wlogout = with config.home.programs.wayland.wleave;
-    with config.colorScheme.colors; {
+    with config.colors.scheme.palette; {
       enable = true;
       package = pkgs.wleave;
       layout = [

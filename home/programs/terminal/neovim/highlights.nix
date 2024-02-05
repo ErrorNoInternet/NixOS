@@ -1,5 +1,5 @@
 {config, ...}: {
-  programs.nixvim = with config.colors.scheme.colors; {
+  programs.nixvim = with config.colors.scheme.palette; {
     highlight = {
       CursorLine.bg = "none";
       WinSeparator.link = "VertSplit";

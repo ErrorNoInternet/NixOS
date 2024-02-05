@@ -6,7 +6,7 @@
   ...
 }: {
   config = lib.mkIf config.profiles.windowManager.enable {
-    programs.waybar = with config.colorScheme.colors; {
+    programs.waybar = with config.colors.scheme.palette; {
       enable = true;
       package = inputs.waybar.packages.${pkgs.system}.default;
 

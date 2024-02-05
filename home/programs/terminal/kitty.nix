@@ -29,7 +29,7 @@
         "ctrl+shift+left" = "send_text all \\x1b\\x5b\\x31\\x3b\\x33\\x44";
         "ctrl+shift+right" = "send_text all \\x1b\\x5b\\x31\\x3b\\x33\\x43";
       };
-      extraConfig = with config.colors.scheme.colors; let
+      extraConfig = with config.colors.scheme.palette; let
         base00Variation = "${
           builtins.replaceStrings [" "] [""]
           (builtins.toString (lib.intersperse

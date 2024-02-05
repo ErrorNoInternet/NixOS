@@ -5,7 +5,7 @@
   ...
 }: {
   config = lib.mkIf config.profiles.windowManager.enable {
-    programs.swaylock = with config.colorScheme.colors; {
+    programs.swaylock = with config.colors.scheme.palette; {
       enable = true;
       package = pkgs.swaylock-effects;
 
