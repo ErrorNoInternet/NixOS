@@ -19,9 +19,8 @@ in {
         driSupport = true;
         driSupport32Bit = true;
       };
-
       nvidia = {
-        package = config.boot.kernelPackages.nvidiaPackages.beta;
+        package = config.boot.kernelPackages.nvidiaPackages.production;
         modesetting.enable = true;
         prime = {
           offload = {
