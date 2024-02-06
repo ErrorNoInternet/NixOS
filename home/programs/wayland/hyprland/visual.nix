@@ -1,6 +1,6 @@
 {config, ...}: {
   wayland.windowManager.hyprland = {
-    settings = with config.colorScheme.colors; {
+    settings = with config.colors.scheme.palette; {
       general = {
         gaps_in = 6;
         gaps_out = 10;

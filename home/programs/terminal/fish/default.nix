@@ -33,7 +33,7 @@ in {
           inherit (autopair) src;
         }
       ];
-      interactiveShellInit = with config.colorScheme.colors; ''
+      interactiveShellInit = with config.colors.scheme.palette; ''
         set -x _ZO_MAXAGE 20000
         set -x _ZO_RESOLVE_SYMLINKS 1
 
