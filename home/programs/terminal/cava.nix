@@ -16,7 +16,7 @@ in {
       enable = true;
 
       settings = {
-        color = with config.colorScheme.colors; {
+        color = with config.colors.scheme.palette; {
           gradient = 1;
           gradient_count = 4;
           gradient_color_1 = "'#${base0F}'";

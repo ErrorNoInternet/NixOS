@@ -4,7 +4,7 @@
   ...
 }: {
   config = lib.mkIf config.profiles.windowManager.enable {
-    services.dunst = with config.colorScheme.colors; {
+    services.dunst = with config.colors.scheme.palette; {
       enable = true;
       inherit (config.toolkits.gtk) iconTheme;
 

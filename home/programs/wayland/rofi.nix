@@ -6,7 +6,7 @@
   ...
 }: {
   config = lib.mkIf config.profiles.windowManager.enable {
-    programs.rofi = with config.colorScheme.colors; {
+    programs.rofi = with config.colors.scheme.palette; {
       enable = true;
       package = pkgs.rofi-wayland;
       plugins = [pkgs.rofi-emoji];
