@@ -10,18 +10,26 @@ in {
 
   config = mkIf config.home.programs.graphical.nheko.enable {
     age.secrets.nheko_access-token.file = ../../../secrets/nheko_access-token.age;
-    home.activation."nheko-access-token" = lib.hm.dag.entryAfter ["writeBoundary"] ''
-      secret=$(cat "${config.age.secrets.nheko_access-token.path}")
-      configurationFile=~/.config/nheko/nheko.conf
-      ${lib.getExe pkgs.gnused} -i "s|@nheko-access-token@|$secret|" "$configurationFile"
-    '';
+    systemd.user.services.nheko_access-token = {
+      Unit.After = "agenix.service";
+      Service = {
+        Type = "oneshot";
+        ExecStart = pkgs.writeShellScript "nheko_access-token.sh" ''
+          configurationFile=${config.xdg.configHome}/nheko/nheko.conf
+          secret=$(cat "${config.age.secrets.nheko_access-token.path}")
+          ${lib.getExe pkgs.gnused} -i \
+            "s|@nheko_access-token@|$secret|" \
+            "$configurationFile"
+        '';
+      };
+    };
 
     programs.nheko.enable = true;
     home.file.".config/nheko/nheko.conf" = {
       force = true;
       text = ''
         [auth]
-        access_token=@nheko-access-token@
+        access_token=@nheko_access-token@
         device_id=PYCFYGFZSG
         home_server=https://matrix.envs.net:443
         user_id=@@errornointernet:envs.net
