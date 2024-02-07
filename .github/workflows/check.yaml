@@ -38,4 +38,4 @@ jobs:
           check-outdated: false
 
       - name: Check Nix flake outputs
-        run: nix flake check -v --all-systems
+        run: nix flake check --all-systems
