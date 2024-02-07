@@ -4,14 +4,20 @@
   pkgs,
   ...
 }: let
-  theme = pkgs.fetchFromGitHub {
-    owner = "tonyfettes";
-    repo = "fcitx5-nord";
-    rev = "bdaa8fb723b8d0b22f237c9a60195c5f9c9d74d1";
-    sha256 = "sha256-qVo/0ivZ5gfUP17G29CAW0MrRFUO0KN1ADl1I/rvchE=";
-  };
+  cfg = config.home.programs.graphical.fcitx;
+  inherit (lib) mkOption mkIf types;
 in {
-  config = lib.mkIf config.profiles.desktop.enable {
+  options.home.programs.graphical.fcitx.theme = mkOption {
+    default = pkgs.fetchFromGitHub {
+      owner = "tonyfettes";
+      repo = "fcitx5-nord";
+      rev = "bdaa8fb723b8d0b22f237c9a60195c5f9c9d74d1";
+      sha256 = "sha256-qVo/0ivZ5gfUP17G29CAW0MrRFUO0KN1ADl1I/rvchE=";
+    };
+    type = types.package;
+  };
+
+  config = mkIf config.profiles.desktop.enable {
     i18n.inputMethod = {
       enabled = "fcitx5";
       fcitx5.addons = with pkgs; [
@@ -20,12 +26,9 @@ in {
       ];
     };
 
-    home.file.".local/share/fcitx5/themes/Nord-Dark" = {
-      source = "${theme}/Nord-Dark";
-      recursive = true;
-    };
-
     home.file = {
+      ".local/share/fcitx5/themes/Nord-Dark".source = "${cfg.theme}/Nord-Dark";
+
       ".config/fcitx5/conf/classicui.conf".text = ''
         # Vertical Candidate List
         Vertical Candidate List=False
