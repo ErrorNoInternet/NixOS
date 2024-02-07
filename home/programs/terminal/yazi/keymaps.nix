@@ -421,18 +421,23 @@
       }
       {
         on = ["g" "d"];
-        exec = "cd /mnt/data";
-        desc = "/mnt/data";
+        exec = "cd ~/data";
+        desc = "data";
       }
       {
         on = ["g" "s"];
         exec = "cd ~/downloads";
-        desc = "~/downloads";
+        desc = "downloads";
       }
       {
         on = ["g" "t"];
         exec = "cd /tmp";
-        desc = "/tmp";
+        desc = "tmp";
+      }
+      {
+        on = ["g" "T"];
+        exec = "cd ~/data/temporary/test-workspace";
+        desc = "test-workspace";
       }
       {
         on = ["g" "<Space>"];
