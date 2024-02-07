@@ -9,9 +9,9 @@ in {
   options.home.programs.graphical.nheko.enable = mkEnableOption "";
 
   config = mkIf config.home.programs.graphical.nheko.enable {
-    age.secrets.nheko-access-token.file = ../../../secrets/nheko-access-token.age;
+    age.secrets.nheko_access-token.file = ../../../secrets/nheko_access-token.age;
     home.activation."nheko-access-token" = lib.hm.dag.entryAfter ["writeBoundary"] ''
-      secret=$(cat "${config.age.secrets.nheko-access-token.path}")
+      secret=$(cat "${config.age.secrets.nheko_access-token.path}")
       configurationFile=~/.config/nheko/nheko.conf
       ${lib.getExe pkgs.gnused} -i "s|@nheko-access-token@|$secret|" "$configurationFile"
     '';

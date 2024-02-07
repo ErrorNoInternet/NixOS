@@ -12,8 +12,8 @@ let
     systems.Pix
   ];
 in {
-  "attic-server-token.age".publicKeys = [systems.Pix];
+  "attic_server-token.age".publicKeys = [systems.Pix];
   "ddns.age".publicKeys = [users.NixBtw systems.Pix];
-  "nheko-access-token.age".publicKeys = [users.NixBtw];
+  "nheko_access-token.age".publicKeys = [users.NixBtw];
   "wireless-networks.age".publicKeys = all;
 }

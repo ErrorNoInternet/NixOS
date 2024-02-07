@@ -36,7 +36,7 @@ in {
 
   config = with config.server.modules.servers.attic;
     mkIf config.server.modules.servers.attic.enable {
-      age.secrets.attic-server-token.file = ../../../secrets/attic-server-token.age;
+      age.secrets.attic-server-token.file = ../../../secrets/attic_server-token.age;
       networking.firewall.allowedTCPPorts = [ports.insecure ports.secure];
       systemd.services.atticd.serviceConfig.ReadWritePaths = ["${storagePath}"];
       services = {
