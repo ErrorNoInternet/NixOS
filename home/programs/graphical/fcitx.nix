@@ -29,7 +29,7 @@ in {
     home.file = {
       ".local/share/fcitx5/themes/Nord-Dark".source = "${cfg.theme}/Nord-Dark";
 
-      ".config/fcitx5/conf/classicui.conf".text = ''
+      "${config.xdg.configHome}/fcitx5/conf/classicui.conf".text = ''
         # Vertical Candidate List
         Vertical Candidate List=False
         # Use Per Screen DPI
@@ -58,7 +58,7 @@ in {
         ForceWaylandDPI=0
       '';
 
-      ".config/fcitx5/config".text = ''
+      "${config.xdg.configHome}/fcitx5/config".text = ''
         [Hotkey]
         # Enumerate when press trigger key repeatedly
         EnumerateWithTriggerKeys=True
@@ -135,7 +135,7 @@ in {
         PreloadInputMethod=True
       '';
 
-      ".config/fcitx5/profile" = {
+      "${config.xdg.configHome}/fcitx5/profile" = {
         force = true;
         text = ''
           [Groups/0]
@@ -163,7 +163,7 @@ in {
         '';
       };
 
-      ".config/fcitx5/conf/pinyin.conf" = {
+      "${config.xdg.configHome}/fcitx5/conf/pinyin.conf" = {
         force = true;
         text = ''
           # Shuangpin Profile

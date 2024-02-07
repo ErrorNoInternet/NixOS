@@ -1,4 +1,5 @@
 {
+  config,
   lib,
   pkgs,
   ...
@@ -14,8 +15,8 @@
     ll = "ls -l";
     ls = "${lib.getExe pkgs.eza} --git --icons";
     lsimg = "${lib.getExe pkgs.timg} -ps --grid=6 --upscale --title --center --frames=1";
-    mf = "${lib.getExe pkgs.fastfetch} -c ~/.config/fastfetch/minimal.jsonc";
-    mfd = "${lib.getExe pkgs.fastfetch} -c ~/.config/fastfetch/nix-on-droid_minimal.jsonc";
+    mf = "${lib.getExe pkgs.fastfetch} -c ~/${config.xdg.configHome}/fastfetch/minimal.jsonc";
+    mfd = "${lib.getExe pkgs.fastfetch} -c ~/${config.xdg.configHome}/fastfetch/nix-on-droid_minimal.jsonc";
     nix = "nix --default-flake flake:nixpkgs";
     nom = "nom --default-flake flake:nixpkgs";
     py = "python3";

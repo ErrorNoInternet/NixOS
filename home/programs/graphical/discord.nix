@@ -17,7 +17,7 @@ in {
         })
       ];
 
-      file.".config/Vencord/settings/settings.json" = {
+      file."${config.xdg.configHome}/Vencord/settings/settings.json" = {
         force = true;
         text = builtins.toJSON {
           notifyAboutUpdates = true;

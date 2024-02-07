@@ -25,7 +25,7 @@ in {
     };
 
     programs.nheko.enable = true;
-    home.file.".config/nheko/nheko.conf" = {
+    home.file."${config.xdg.configHome}/nheko/nheko.conf" = {
       force = true;
       text = ''
         [auth]

@@ -1,5 +1,9 @@
-{pkgs, ...}: let
-  pluginsPath = ".config/yazi/plugins";
+{
+  config,
+  pkgs,
+  ...
+}: let
+  pluginsPath = "${config.xdg.configHome}/yazi/plugins";
 in {
   home.file."${pluginsPath}/keyjump.yazi".source = pkgs.fetchFromGitHub {
     owner = "DreamMaoMao";

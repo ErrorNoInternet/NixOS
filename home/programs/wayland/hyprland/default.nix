@@ -1,10 +1,14 @@
 {
+  config,
   inputs,
   lib,
   osConfig,
   pkgs,
   ...
-}: {
+}: let
+  cfg = config.home.desktops.hyprland;
+  inherit (lib) mkEnableOption mkIf;
+in {
   imports = [
     ./autoname-workspaces.nix
     ./execs.nix
@@ -15,14 +19,21 @@
     ./windowrules.nix
   ];
 
-  config = lib.mkIf (builtins.hasAttr "workstation" osConfig) (
-    lib.mkIf osConfig.workstation.desktops.hyprland.enable {
-      caches.hyprland.enable = true;
+  options.home.desktops.hyprland.enable =
+    mkEnableOption ""
+    // {
+      default =
+        if (builtins.hasAttr "workstation" osConfig)
+        then osConfig.workstation.desktops.hyprland.enable
+        else false;
+    };
 
-      wayland.windowManager.hyprland = {
-        enable = true;
-        package = inputs.hyprland.packages.${pkgs.system}.hyprland;
-      };
-    }
-  );
+  config = mkIf cfg.enable {
+    caches.hyprland.enable = true;
+
+    wayland.windowManager.hyprland = {
+      enable = true;
+      package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+    };
+  };
 }

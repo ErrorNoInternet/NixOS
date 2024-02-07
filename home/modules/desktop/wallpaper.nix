@@ -24,7 +24,7 @@ in {
       file = {
         "pictures/wallpapers".source = ../../../other/wallpapers;
 
-        ".config/hypr/hyprpaper.conf".text = ''
+        "${config.xdg.configHome}/hypr/hyprpaper.conf".text = ''
           preload = ${pathPrefix}/${config.wallpaper.path}
           wallpaper = ,${pathPrefix}/${config.wallpaper.path}
         '';

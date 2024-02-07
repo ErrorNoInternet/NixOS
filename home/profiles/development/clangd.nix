@@ -12,7 +12,7 @@ in {
     };
 
   config = mkIf config.profiles.development.clangd.enable {
-    home.file.".config/clangd/config.yaml".text = ''
+    home.file."${config.xdg.configHome}/clangd/config.yaml".text = ''
       CompileFlags:
         Add: [
           -Wall,

@@ -8,7 +8,7 @@
     home = {
       packages = [pkgs.fastfetch];
       file = {
-        ".config/fastfetch/minimal.jsonc".text = ''
+        "${config.xdg.configHome}/fastfetch/minimal.jsonc".text = ''
           {
             "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
             "logo": {
@@ -59,7 +59,7 @@
             ]
           }
         '';
-        ".config/fastfetch/nix-on-droid_minimal.jsonc".text = ''
+        "${config.xdg.configHome}/fastfetch/nix-on-droid_minimal.jsonc".text = ''
           {
             "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
             "logo": {
@@ -110,7 +110,7 @@
             ]
           }
         '';
-        ".config/fastfetch/config.jsonc".text = ''
+        "${config.xdg.configHome}/fastfetch/config.jsonc".text = ''
           {
             "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
             "modules": [
