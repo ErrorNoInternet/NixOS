@@ -27,45 +27,45 @@
       {
         on = ["k"];
         exec = "arrow -1";
-        desc = "Move cursor up";
+        desc = "move selection up";
       }
       {
         on = ["j"];
         exec = "arrow 1";
-        desc = "Move cursor down";
+        desc = "move selection down";
       }
 
       {
         on = ["K"];
         exec = "arrow -5";
-        desc = "Move cursor up 5 lines";
+        desc = "move selection up 5 lines";
       }
       {
         on = ["J"];
         exec = "arrow 5";
-        desc = "Move cursor down 5 lines";
+        desc = "move selection down 5 lines";
       }
 
       {
         on = ["<C-u>"];
         exec = "arrow -50%";
-        desc = "Move cursor up half page";
+        desc = "move selection up half page";
       }
       {
         on = ["<C-d>"];
         exec = "arrow 50%";
-        desc = "Move cursor down half page";
+        desc = "move selection down half page";
       }
 
       {
         on = ["h"];
         exec = "leave";
-        desc = "Go back to the parent directory";
+        desc = "go back to the parent directory";
       }
       {
         on = ["l"];
         exec = "enter";
-        desc = "Enter the child directory";
+        desc = "enter the child directory";
       }
       {
         on = ["H"];
@@ -91,12 +91,12 @@
       {
         on = ["<Up>"];
         exec = "arrow -1";
-        desc = "Move cursor up";
+        desc = "move selection up";
       }
       {
         on = ["<Down>"];
         exec = "arrow 1";
-        desc = "Move cursor down";
+        desc = "move selection down";
       }
       {
         on = ["<Left>"];
@@ -111,12 +111,12 @@
       {
         on = ["g" "g"];
         exec = "arrow -99999999";
-        desc = "Move cursor to the top";
+        desc = "move selection to the top";
       }
       {
         on = ["G"];
         exec = "arrow 99999999";
-        desc = "Move cursor to the bottom";
+        desc = "move selection to the bottom";
       }
 
       # Selection
