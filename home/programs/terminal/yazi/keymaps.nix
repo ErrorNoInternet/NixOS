@@ -444,6 +444,16 @@
         exec = "cd --interactive";
         desc = "interactive";
       }
+      {
+        on = ["I"];
+        exec = "plugin keyjump --sync";
+        desc = "keyjump (normal mode)";
+      }
+      {
+        on = ["i"];
+        exec = "plugin keyjump --sync --args=keep";
+        desc = "keyjump (keep mode)";
+      }
 
       # Help
       {

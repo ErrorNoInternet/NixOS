@@ -8,6 +8,7 @@
   imports = [
     ./keymaps.nix
     ./open.nix
+    ./plugins.nix
     ./visual.nix
   ];
 
