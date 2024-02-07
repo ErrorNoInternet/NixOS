@@ -1,5 +1,23 @@
 {pkgs, ...}: {
   programs.fish.interactiveShellInit = ''
+    function toggle-comment
+      set cursor (commandline --cursor)
+      set cmd (commandline -b)
+      if string match -qr '^#' $cmd
+        set cursor (math $cursor - 2)
+        if test $cursor -lt 0
+          set cursor 0
+        end
+        set cmd (string replace -r '^# *' ''' $cmd)
+      else
+        set cursor (math $cursor + 2)
+        set cmd (string join ' ' '#' $cmd)
+      end
+      commandline -- $cmd
+      commandline --cursor $cursor
+    end
+
+
     function mkcd -d "create a directory and set cwd"
       command mkdir $argv
       if test $status = 0

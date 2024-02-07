@@ -11,7 +11,7 @@ in {
     ./abbreviations
     ./aliases.nix
     ./functions.nix
-    ./keymaps.nix
+    ./keybinds.nix
     ./visual.nix
   ];
 
