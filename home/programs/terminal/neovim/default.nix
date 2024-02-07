@@ -32,6 +32,7 @@ in {
       enable = true;
       package = self.packages.${pkgs.system}.neovim;
       defaultEditor = true;
+      enableMan = false;
     };
   };
 }
