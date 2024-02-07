@@ -445,12 +445,12 @@
         desc = "interactive";
       }
       {
-        on = ["I"];
+        on = ["i"];
         exec = "plugin keyjump --sync";
         desc = "keyjump (normal mode)";
       }
       {
-        on = ["i"];
+        on = ["I"];
         exec = "plugin keyjump --sync --args=keep";
         desc = "keyjump (keep mode)";
       }
