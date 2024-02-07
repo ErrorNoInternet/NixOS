@@ -8,7 +8,7 @@
   config = lib.mkIf config.profiles.windowManager.enable {
     programs.waybar = with config.colors.scheme.palette; {
       enable = true;
-      package = inputs.waybar.packages.${pkgs.system}.default.overrideAttrs (oldAttrs: {
+      package = inputs.waybar.packages.${pkgs.system}.default.overrideAttrs (_: {
         dontStrip = true;
         enableDebugging = true;
       });
