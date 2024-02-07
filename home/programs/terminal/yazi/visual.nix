@@ -5,9 +5,12 @@
         separator_open = "";
         separator_close = "";
       };
-      manager.preview_hovered = {
-        bg = "darkgray";
-        underline = false;
+      manager = {
+        border_symbol = " ";
+        preview_hovered = {
+          bg = "darkgray";
+          underline = false;
+        };
       };
     };
     settings = {
