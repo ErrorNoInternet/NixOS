@@ -28,7 +28,6 @@
     nrs = "${lib.getExe pkgs.nh} os switch -v .";
     nrt = "${lib.getExe pkgs.nh} os test -v .";
 
-    clo = "curl -LO";
     pwdc = "pwd | tr -d '\\n' | ${pkgs.wl-clipboard}/bin/wl-copy";
   };
 }
