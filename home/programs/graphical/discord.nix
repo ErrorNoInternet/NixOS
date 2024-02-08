@@ -4,11 +4,12 @@
   pkgs,
   ...
 }: let
+  cfg = config.home.programs.graphical.discord;
   inherit (lib) mkEnableOption mkIf;
 in {
   options.home.programs.graphical.discord.enable = mkEnableOption "";
 
-  config = mkIf config.home.programs.graphical.discord.enable {
+  config = mkIf cfg.enable {
     home = {
       packages = [
         (pkgs.discord-canary.override {
