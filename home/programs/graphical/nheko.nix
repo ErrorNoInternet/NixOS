@@ -10,10 +10,15 @@ in {
 
   config = mkIf config.home.programs.graphical.nheko.enable {
     age.secrets.nheko_access-token.file = ../../../secrets/nheko_access-token.age;
-    home.activation."nheko-access-token" = lib.hm.dag.entryAfter ["writeBoundary"] ''
+    home.activation."nheko_access-token" = lib.hm.dag.entryAfter ["writeBoundary"] ''
+      while !test -f "${config.age.secrets.nheko_access-token.path}"; do
+        sleep 1
+      done
+
       secret=$(cat "${config.age.secrets.nheko_access-token.path}")
-      configurationFile=~/.config/nheko/nheko.conf
-      ${lib.getExe pkgs.gnused} -i "s|@nheko-access-token@|$secret|" "$configurationFile"
+      ${lib.getExe pkgs.gnused} -i \
+        "s|@nheko_access-token@|$secret|" \
+        ${config.xdg.configHome}/nheko/nheko.conf
     '';
 
     programs.nheko.enable = true;
@@ -21,7 +26,7 @@ in {
       force = true;
       text = ''
         [auth]
-        access_token=@nheko-access-token@
+        access_token=@nheko_access-token@
         device_id=PYCFYGFZSG
         home_server=https://matrix.envs.net:443
         user_id=@@errornointernet:envs.net
