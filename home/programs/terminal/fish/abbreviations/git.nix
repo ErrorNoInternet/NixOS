@@ -26,7 +26,7 @@
     gpod = "git push origin --delete";
     gps = "git push -u origin";
     gr = "git restore";
-    grb = "git rebase";
+    grb = "git rebase -i";
     grbc = "git rebase --continue";
     grh = "git reset HEAD";
     grp = "git restore -p";
