@@ -29,6 +29,7 @@ in {
         };
       };
       extraConfig = {
+        advice.addEmptyPathspec = false;
         core.filemode = true;
         index.version = 4;
         init.defaultBranch = "main";
