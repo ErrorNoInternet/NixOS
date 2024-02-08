@@ -2,8 +2,8 @@
   description = "ErrorNoInternet's NixOS configuration";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     flake-parts.url = "github:hercules-ci/flake-parts";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     home-manager = {
       url = "github:nix-community/home-manager";
