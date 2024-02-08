@@ -7,14 +7,21 @@
   cfg = config.home.programs.graphical.fcitx;
   inherit (lib) mkOption mkIf types;
 in {
-  options.home.programs.graphical.fcitx.theme = mkOption {
-    default = pkgs.fetchFromGitHub {
-      owner = "tonyfettes";
-      repo = "fcitx5-nord";
-      rev = "bdaa8fb723b8d0b22f237c9a60195c5f9c9d74d1";
-      sha256 = "sha256-qVo/0ivZ5gfUP17G29CAW0MrRFUO0KN1ADl1I/rvchE=";
+  options.home.programs.graphical.fcitx.theme = {
+    name = mkOption {
+      default = "Nord-Dark";
+      type = types.str;
     };
-    type = types.package;
+
+    package = mkOption {
+      default = pkgs.fetchFromGitHub {
+        owner = "tonyfettes";
+        repo = "fcitx5-nord";
+        rev = "bdaa8fb723b8d0b22f237c9a60195c5f9c9d74d1";
+        sha256 = "sha256-qVo/0ivZ5gfUP17G29CAW0MrRFUO0KN1ADl1I/rvchE=";
+      };
+      type = types.package;
+    };
   };
 
   config = mkIf config.profiles.desktop.enable {
@@ -27,7 +34,7 @@ in {
     };
 
     home.file = {
-      ".local/share/fcitx5/themes/Nord-Dark".source = "${cfg.theme}/Nord-Dark";
+      ".local/share/fcitx5/themes/${cfg.theme.name}".source = "${cfg.theme.package}/${cfg.theme.name}";
 
       "${config.xdg.configHome}/fcitx5/conf/classicui.conf".text = ''
         # Vertical Candidate List
@@ -53,7 +60,7 @@ in {
         # Use input method language to display text
         UseInputMethodLangaugeToDisplayText=True
         # Theme
-        Theme=Nord-Dark
+        Theme=${cfg.theme.name}
         # Force font DPI on Wayland
         ForceWaylandDPI=0
       '';
