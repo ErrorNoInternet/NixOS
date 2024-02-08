@@ -2,14 +2,13 @@
   config,
   inputs,
   lib,
-  pkgs,
-  self,
+  self',
   ...
 }: {
   config = lib.mkIf config.profiles.desktop.enable {
     programs.kitty = {
       enable = true;
-      package = self.packages.${pkgs.system}.kitty;
+      package = self'.packages.kitty;
       shellIntegration.enableFishIntegration = true;
 
       font = {

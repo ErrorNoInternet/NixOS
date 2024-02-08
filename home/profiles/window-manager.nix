@@ -1,9 +1,9 @@
 {
   config,
-  inputs,
+  inputs',
   lib,
   pkgs,
-  self,
+  self',
   ...
 }: let
   inherit (lib) mkEnableOption mkIf;
@@ -15,13 +15,13 @@ in {
 
     home.packages = with pkgs; [
       cliphist
-      inputs.hyprwm-contrib.packages.${system}.grimblast
-      inputs.shadower.packages.${system}.shadower
+      inputs'.hyprwm-contrib.packages.grimblast
+      inputs'.shadower.packages.shadower
       pavucontrol
       ripdrag
-      self.packages.${system}.brightness
-      self.packages.${system}.hyprgamemode
-      self.packages.${system}.pavolume
+      self'.packages.brightness
+      self'.packages.hyprgamemode
+      self'.packages.pavolume
       slurp
       swayidle
       vimiv-qt

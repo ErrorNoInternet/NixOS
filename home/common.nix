@@ -1,4 +1,5 @@
 {
+  inputs',
   inputs,
   pkgs,
   ...
@@ -24,7 +25,7 @@
     dua
     eza
     fd
-    inputs.hsize.packages.${system}.hsize
+    inputs'.hsize.packages.hsize
     jq
     nh
     progress

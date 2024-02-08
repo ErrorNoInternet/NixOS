@@ -1,7 +1,7 @@
 {
-  inputs,
+  inputs',
   pkgs,
-  self,
+  self',
   ...
 }: {
   caches.nix-gaming.enable = true;
@@ -64,10 +64,10 @@
       hyperfine
       hyprpicker
       imagemagick
-      inputs.hyprwm-contrib.packages.${system}.scratchpad
-      inputs.nix-gaming.packages.${system}.osu-lazer-bin
-      inputs.nix-gaming.packages.${system}.wine-ge
-      inputs.overmask.packages.${system}.overmask
+      inputs'.hyprwm-contrib.packages.scratchpad
+      inputs'.nix-gaming.packages.osu-lazer-bin
+      inputs'.nix-gaming.packages.wine-ge
+      inputs'.overmask.packages.overmask
       intel-gpu-tools
       iperf
       kdiskmark
@@ -92,9 +92,9 @@
       qrencode
       radeontop
       sdparm
-      self.packages.${system}.passgen
-      self.packages.${system}.savehw
-      self.packages.${system}.tbw
+      self'.packages.passgen
+      self'.packages.savehw
+      self'.packages.tbw
       smartmontools
       sqlite
       sshfs

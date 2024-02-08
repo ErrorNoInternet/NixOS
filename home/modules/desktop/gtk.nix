@@ -2,7 +2,7 @@
   config,
   lib,
   pkgs,
-  self,
+  self',
   ...
 }: let
   inherit (lib) mkEnableOption mkOption mkIf;
@@ -13,7 +13,7 @@ in {
     theme = mkOption {
       default = {
         name = "Nordic-darker";
-        package = self.packages.${pkgs.system}.nordic;
+        package = self'.packages.nordic;
       };
     };
 

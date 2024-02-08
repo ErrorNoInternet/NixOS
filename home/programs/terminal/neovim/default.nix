@@ -2,8 +2,7 @@
   config,
   inputs,
   lib,
-  pkgs,
-  self,
+  self',
   ...
 }: let
   inherit (lib) mkEnableOption mkIf;
@@ -30,7 +29,7 @@ in {
   config = mkIf config.home.programs.terminal.neovim.enable {
     programs.nixvim = {
       enable = true;
-      package = self.packages.${pkgs.system}.neovim;
+      package = self'.packages.neovim;
       defaultEditor = true;
       enableMan = false;
     };

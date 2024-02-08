@@ -1,11 +1,11 @@
 {
   config,
-  inputs,
+  inputs',
   lib,
-  pkgs,
   ...
 }: let
-  inherit (lib) mkEnableOption mkOption mkIf types;
+  cfg = config.wallpaper;
+  inherit (lib) mkEnableOption mkOption mkIf types strings;
 
   pathPrefix = "~/pictures/wallpapers/";
 in {
@@ -13,20 +13,20 @@ in {
     enable = mkEnableOption "";
 
     path = mkOption {
-      default = "${lib.strings.toLower config.colors.schemeName}/1.png";
+      default = "${strings.toLower config.colors.schemeName}/1.png";
       type = types.str;
     };
   };
 
-  config = mkIf config.wallpaper.enable {
+  config = mkIf cfg.enable {
     home = {
-      packages = [inputs.hyprpaper.packages.${pkgs.system}.hyprpaper];
+      packages = [inputs'.hyprpaper.packages.hyprpaper];
       file = {
         "pictures/wallpapers".source = ../../../other/wallpapers;
 
         "${config.xdg.configHome}/hypr/hyprpaper.conf".text = ''
-          preload = ${pathPrefix}/${config.wallpaper.path}
-          wallpaper = ,${pathPrefix}/${config.wallpaper.path}
+          preload = ${pathPrefix}/${cfg.path}
+          wallpaper = ,${pathPrefix}/${cfg.path}
         '';
       };
     };

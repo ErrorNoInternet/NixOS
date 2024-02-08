@@ -1,8 +1,7 @@
 {
   config,
-  inputs,
+  inputs',
   lib,
-  pkgs,
   ...
 }: let
   inherit (lib) mkEnableOption mkIf;
@@ -17,9 +16,10 @@ in {
         categories = ["Game"];
         exec = "nvidia-offload supertuxkart";
       };
+
       nvidia-osu-lazer = {
         name = "osu! (nvidia-offload)";
-        icon = "${inputs.nix-gaming.packages.${pkgs.system}.osu-lazer-bin}/osu.png";
+        icon = "${inputs'.nix-gaming.packages.osu-lazer-bin}/osu.png";
         categories = ["Game"];
         exec = "nvidia-offload osu-lazer";
       };

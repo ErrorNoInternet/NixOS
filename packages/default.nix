@@ -1,10 +1,14 @@
-{inputs, ...}: {
+{
   imports = [
     ./custom
   ];
 
   systems = ["x86_64-linux" "aarch64-linux"];
-  perSystem = {pkgs, ...}: {
+  perSystem = {
+    inputs',
+    pkgs,
+    ...
+  }: {
     packages = with pkgs; {
       nix = nixVersions.nix_2_19.overrideAttrs (oldAttrs: {
         doInstallCheck = false;
@@ -19,15 +23,15 @@
           ++ [./patches/btrfs-progs_receive-selinux.patch];
       });
 
-      inherit (inputs.yazi.packages.${system}) yazi;
+      inherit (inputs'.yazi.packages) yazi;
 
-      neovim = inputs.neovim-nightly.packages.${system}.neovim.overrideAttrs (oldAttrs: {
+      neovim = inputs'.neovim-nightly.packages.neovim.overrideAttrs (oldAttrs: {
         patches =
           (oldAttrs.patches or [])
           ++ [./patches/neovim_no-fold-numbers.patch];
       });
 
-      attic = inputs.attic.packages.${system}.attic.overrideAttrs (oldAttrs: {
+      attic = inputs'.attic.packages.attic.overrideAttrs (oldAttrs: {
         patches =
           (oldAttrs.patches or [])
           ++ [
@@ -51,7 +55,7 @@
           ];
       });
 
-      wezterm = inputs.wezterm.packages.${system}.default.overrideAttrs (oldAttrs: {
+      wezterm = inputs'.wezterm.packages.default.overrideAttrs (oldAttrs: {
         patches =
           (oldAttrs.patches or [])
           ++ [./patches/wezterm_optimized-build.patch];

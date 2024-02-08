@@ -3,7 +3,7 @@
   inputs,
   lib,
   pkgs,
-  self,
+  self',
   ...
 }: {
   imports = [
@@ -59,8 +59,8 @@
     fd
     procs
     pueue
-    self.packages.${system}.btrfs-progs
-    self.packages.${system}.nix
+    self'.packages.btrfs-progs
+    self'.packages.nix
   ];
 
   systemd.services.pueued = {

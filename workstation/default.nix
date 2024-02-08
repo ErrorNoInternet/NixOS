@@ -1,41 +1,36 @@
 {
   inputs,
-  self,
+  withSystem,
   ...
 }: let
-  mkSystem = name:
-    inputs.nixpkgs.lib.nixosSystem {
-      pkgs = import inputs.nixpkgs {
-        system = "x86_64-linux";
-        config.allowUnfree = true;
-      };
-      specialArgs = {inherit inputs self;};
-      modules = [
-        ./common.nix
-        ./hosts/${name}
-        ./hosts/${name}/hardware.nix
-        {host.name = "${name}";}
+  mkSystem = name: system:
+    withSystem system ({
+      inputs',
+      self',
+      ...
+    }:
+      inputs.nixpkgs.lib.nixosSystem {
+        pkgs = import inputs.nixpkgs {
+          inherit system;
+          config.allowUnfree = true;
+        };
+        specialArgs = {inherit inputs' inputs self';};
 
-        inputs.home-manager.nixosModules.home-manager
-        {
-          home-manager = {
-            useGlobalPkgs = true;
-            useUserPackages = true;
-            extraSpecialArgs = {inherit inputs self;};
-
-            users.error = {...}: {
-              imports = [
-                ../home/common.nix
-                ../home/hosts/${name}.nix
-              ];
+        modules = [
+          ./common.nix
+          ./hosts/${name}
+          ./hosts/${name}/hardware.nix
+          {
+            host = {
+              name = "${name}";
+              system = "${system}";
             };
-          };
-        }
-      ];
-    };
+          }
+        ];
+      });
 in {
   flake.nixosConfigurations = {
-    NixBtw = mkSystem "NixBtw";
-    Rescanix = mkSystem "Rescanix";
+    NixBtw = mkSystem "NixBtw" "x86_64-linux";
+    Rescanix = mkSystem "Rescanix" "x86_64-linux";
   };
 }

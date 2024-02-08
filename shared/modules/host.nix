@@ -3,6 +3,7 @@
   lib,
   ...
 }: let
+  cfg = config.host;
   inherit (lib) mkOption mkIf types;
 in {
   options.host = {
@@ -14,13 +15,18 @@ in {
       default = "";
       type = types.str;
     };
+
+    system = mkOption {
+      type = types.str;
+    };
   };
 
   config = {
-    environment.variables.HOSTNAME = "${config.host.name}";
+    nixpkgs.hostPlatform = cfg.system;
+    environment.variables.HOSTNAME = "${cfg.name}";
     networking = {
-      hostName = "${config.host.name}";
-      hostId = mkIf (config.host.id != "") config.host.id;
+      hostName = "${cfg.name}";
+      hostId = mkIf (cfg.id != "") cfg.id;
     };
   };
 }

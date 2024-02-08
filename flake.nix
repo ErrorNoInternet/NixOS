@@ -39,23 +39,17 @@
     yazi.url = "github:sxyazi/yazi";
   };
 
-  outputs = {
-    self,
-    flake-parts,
-    ...
-  } @ inputs:
+  outputs = {flake-parts, ...} @ inputs:
     flake-parts.lib.mkFlake {inherit inputs;} {
       imports = [
-        ./packages
-        ./workstation
-        ./server
         ./droid
+        ./packages
+        ./server
+        ./workstation
       ];
 
       systems = ["x86_64-linux" "aarch64-linux"];
       perSystem = {pkgs, ...}: {
-        _module.args = {inherit self;};
-
         formatter = pkgs.alejandra;
 
         devShells.default = pkgs.mkShell {

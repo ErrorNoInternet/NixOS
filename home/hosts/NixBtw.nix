@@ -1,7 +1,7 @@
 {
-  inputs,
+  inputs',
   pkgs,
-  self,
+  self',
   ...
 }: {
   caches.nix-gaming.enable = true;
@@ -58,10 +58,9 @@
     packages = with pkgs; [
       # desktop
       hyprpicker
-      inputs.hyprwm-contrib.packages.${system}.scratchpad
+      inputs'.hyprwm-contrib.packages.scratchpad
 
       # system utilities
-      self.packages.${system}.tbw
       _7zz
       bandwhich
       compsize
@@ -71,6 +70,7 @@
       nvtop
       procs
       pv
+      self'.packages.tbw
       timg
 
       # graphical utilities
@@ -83,8 +83,8 @@
       jetbrains.idea-community
 
       # games
-      inputs.nix-gaming.packages.${system}.osu-lazer-bin
-      inputs.nix-gaming.packages.${system}.wine-ge
+      inputs'.nix-gaming.packages.osu-lazer-bin
+      inputs'.nix-gaming.packages.wine-ge
       prismlauncher
       superTuxKart
     ];

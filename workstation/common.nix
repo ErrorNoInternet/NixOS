@@ -1,8 +1,9 @@
 {
   inputs,
+  inputs',
   lib,
   pkgs,
-  self,
+  self',
   ...
 }: {
   imports = [
@@ -11,6 +12,22 @@
     ./profiles
     ./programs
     inputs.agenix.nixosModules.default
+
+    inputs.home-manager.nixosModules.home-manager
+    {
+      home-manager = {
+        useGlobalPkgs = true;
+        useUserPackages = true;
+        extraSpecialArgs = {inherit inputs' inputs self';};
+
+        users.error = {...}: {
+          imports = [
+            ../home/common.nix
+            ../home/hosts/NixBtw.nix
+          ];
+        };
+      };
+    }
   ];
 
   specialisation.outside.configuration = {
@@ -70,7 +87,7 @@
         lightdm.enable = false;
         sddm = {
           enable = true;
-          theme = "${self.packages.${pkgs.system}.sddm-theme}";
+          theme = "${self'.packages.sddm-theme}";
         };
       };
     };
@@ -116,8 +133,8 @@
       cryptsetup
       home-manager
       pulseaudio
-      self.packages.${system}.btrfs-progs
-      self.packages.${system}.nix
+      self'.packages.btrfs-progs
+      self'.packages.nix
       xdg-user-dirs
     ];
   };

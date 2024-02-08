@@ -2,7 +2,7 @@
   config,
   lib,
   pkgs,
-  self,
+  self',
   ...
 }: let
   inherit (lib) mkEnableOption mkIf;
@@ -40,7 +40,7 @@ in {
         python3Packages.bpython
         rustup
         scc
-        self.packages.${system}.attic
+        self'.packages.attic
         zig
       ];
       sessionVariables = {
