@@ -6,7 +6,7 @@ in {
     ./cursor.nix
     ./font.nix
     ./gtk.nix
-    ./mimeapps.nix
+    ./mimetypes.nix
     ./nvidia.nix
     ./opacity.nix
     ./qt.nix
