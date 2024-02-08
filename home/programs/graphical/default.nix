@@ -1,7 +1,7 @@
 {
   imports = [
     ./discord.nix
-    ./fcitx.nix
+    ./fcitx5.nix
     ./kdeconnect.nix
     ./libreoffice.nix
     ./mpv.nix
