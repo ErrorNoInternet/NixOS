@@ -7,7 +7,7 @@
   cfg = config.wallpaper;
   inherit (lib) mkEnableOption mkOption mkIf types strings;
 
-  pathPrefix = "~/pictures/wallpapers/";
+  wallpapersPath = "~/pictures/wallpapers";
 in {
   options.wallpaper = {
     enable = mkEnableOption "";
@@ -25,8 +25,8 @@ in {
         "pictures/wallpapers".source = ../../../other/wallpapers;
 
         "${config.xdg.configHome}/hypr/hyprpaper.conf".text = ''
-          preload = ${pathPrefix}/${cfg.path}
-          wallpaper = ,${pathPrefix}/${cfg.path}
+          preload = ${wallpapersPath}/${cfg.path}
+          wallpaper = ,${wallpapersPath}/${cfg.path}
         '';
       };
     };
