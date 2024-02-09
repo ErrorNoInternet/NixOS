@@ -29,9 +29,9 @@
       decoration = {
         drop_shadow = true;
 
-        rounding = 10;
+        rounding = 14;
         shadow_range = 25;
-        shadow_render_power = 2;
+        shadow_render_power = 3;
         "col.shadow" = "rgb(${base00})";
 
         blur = {
