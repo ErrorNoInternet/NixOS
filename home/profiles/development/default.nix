@@ -36,6 +36,7 @@ in {
         lldb
         man-pages
         nix-output-monitor
+        nix-tree
         onefetch
         python3Packages.bpython
         rustup
