@@ -12,7 +12,10 @@
       inputs.nixpkgs.lib.nixosSystem {
         pkgs = import inputs.nixpkgs {
           inherit system;
-          config.allowUnfree = true;
+          config = {
+            allowUnfree = true;
+            cudaSupport = true;
+          };
         };
         specialArgs = {inherit inputs' inputs self';};
 
