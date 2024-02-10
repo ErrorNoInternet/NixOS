@@ -408,7 +408,7 @@
         desc = "Show the tasks manager";
       }
 
-      # Goto
+      # Jumps
       {
         on = ["g" "h"];
         exec = "cd ~";
@@ -453,6 +453,26 @@
         on = ["I"];
         exec = "plugin keyjump --sync --args=keep";
         desc = "keyjump (keep mode)";
+      }
+      {
+        on = ["m"];
+        exec = "plugin bookmarks --args=save";
+        desc = "mark current location";
+      }
+      {
+        on = ["`"];
+        exec = "plugin bookmarks --args=jump";
+        desc = "jump to marked location";
+      }
+      {
+        on = ["b" "d"];
+        exec = "plugin bookmarks --args=delete";
+        desc = "delete a marked location";
+      }
+      {
+        on = ["b" "D"];
+        exec = "plugin bookmarks --args=delete_all";
+        desc = "delete all marked locations";
       }
 
       # Help
