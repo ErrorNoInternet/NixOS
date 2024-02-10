@@ -11,9 +11,11 @@ in {
   config = mkIf config.home.programs.graphical.nheko.enable {
     age.secrets.nheko_access-token.file = ../../../secrets/nheko_access-token.age;
     home.activation."nheko_access-token" = lib.hm.dag.entryAfter ["writeBoundary"] ''
+      set +u
       while !test -f "${config.age.secrets.nheko_access-token.path}"; do
         sleep 1
       done
+      set -u
 
       secret=$(cat "${config.age.secrets.nheko_access-token.path}")
       ${lib.getExe pkgs.gnused} -i \
