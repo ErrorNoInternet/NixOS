@@ -3,6 +3,7 @@
   lib,
   ...
 }: let
+  cfg = config.shared.modules.btrfs.compression;
   inherit (lib) mkEnableOption mkIf;
 in {
   options.shared.modules.btrfs.compression = {
@@ -19,12 +20,12 @@ in {
       };
   };
 
-  config = mkIf config.shared.modules.btrfs.compression.enable {
+  config = mkIf cfg.enable {
     fileSystems =
       {
         "/".options = ["compress=zstd"];
       }
-      // mkIf config.shared.modules.btrfs.compression.subvolumeLayout {
+      // mkIf cfg.subvolumeLayout {
         "/home".options = ["compress=zstd"];
         "/nix".options = ["compress=zstd" "noatime"];
       };
