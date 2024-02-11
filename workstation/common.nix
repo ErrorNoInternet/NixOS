@@ -30,6 +30,8 @@
     }
   ];
 
+  nixpkgs.config.allowUnfree = true;
+
   specialisation.outside.configuration = {
     caches.ErrorNoBinaries = {
       internal = false;

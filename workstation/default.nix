@@ -10,15 +10,7 @@
       ...
     }:
       inputs.nixpkgs.lib.nixosSystem {
-        pkgs = import inputs.nixpkgs {
-          inherit system;
-          config = {
-            allowUnfree = true;
-            cudaSupport = true;
-          };
-        };
         specialArgs = {inherit inputs' inputs self';};
-
         modules = [
           ./common.nix
           ./hosts/${name}

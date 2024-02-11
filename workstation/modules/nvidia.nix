@@ -12,6 +12,8 @@ in {
     };
 
   config = mkIf (config.specialisation != {} && config.workstation.modules.nvidia.enable) {
+    nixpkgs.config.cudaSupport = true;
+
     services.xserver.videoDrivers = ["nvidia"];
     hardware = {
       opengl = {
