@@ -1,5 +1,6 @@
 {lib, ...}: {
   imports = [
+    ./cuda.nix
     ./ErrorNoBinaries.nix
     ./garnix.nix
     ./hyprland.nix

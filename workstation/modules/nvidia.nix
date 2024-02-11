@@ -12,6 +12,8 @@ in {
     };
 
   config = mkIf (config.specialisation != {} && config.workstation.modules.nvidia.enable) {
+    caches.cuda.enable = true;
+
     nixpkgs.config.cudaSupport = true;
 
     services.xserver.videoDrivers = ["nvidia"];
