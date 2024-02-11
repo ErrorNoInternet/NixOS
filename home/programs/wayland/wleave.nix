@@ -5,20 +5,24 @@
   pkgs,
   ...
 }: let
-  inherit (lib) mkOption mkIf types;
+  cfg = config.home.programs.wayland.wleave;
+  inherit (lib) mkEnableOption mkOption mkIf types;
 in {
   options.home.programs.wayland.wleave = {
+    enable = mkEnableOption "";
+
     height = mkOption {
       default = 0.5;
       type = types.numbers.between 0 1;
     };
   };
 
-  config = mkIf config.profiles.windowManager.enable {
-    programs.wlogout = with config.colors.scheme.palette; {
+  config = mkIf (cfg.enable || config.profiles.windowManager.enable) {
+    programs.wlogout = {
       enable = true;
       package = pkgs.wleave;
-      layout = [
+
+      layout = with cfg; [
         {
           label = "suspend";
           text = "";
@@ -55,7 +59,7 @@ in {
           inherit height;
         }
       ];
-      style = ''
+      style = with config.colors.scheme.palette; ''
         window {
           background-color: rgba(${
           inputs.nix-colors.lib.conversions.hexToRGBString
