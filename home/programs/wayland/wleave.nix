@@ -8,11 +8,6 @@
   inherit (lib) mkOption mkIf types;
 in {
   options.home.programs.wayland.wleave = {
-    sleep = mkOption {
-      default = 1.0;
-      type = types.float;
-    };
-
     height = mkOption {
       default = 0.5;
       type = types.numbers.between 0 1;
@@ -20,43 +15,42 @@ in {
   };
 
   config = mkIf config.profiles.windowManager.enable {
-    programs.wlogout = with config.home.programs.wayland.wleave;
-    with config.colors.scheme.palette; {
+    programs.wlogout = with config.colors.scheme.palette; {
       enable = true;
       package = pkgs.wleave;
       layout = [
         {
           label = "suspend";
           text = "";
-          action = "sleep ${builtins.toString sleep} && systemctl suspend";
+          action = "systemctl suspend";
           keybind = "s";
           inherit height;
         }
         {
           label = "reboot";
           text = "";
-          action = "sleep ${builtins.toString sleep} && systemctl reboot";
+          action = "systemctl reboot";
           keybind = "r";
           inherit height;
         }
         {
           label = "shutdown";
           text = "";
-          action = "sleep ${builtins.toString sleep} && systemctl poweroff";
+          action = "systemctl poweroff";
           keybind = "p";
           inherit height;
         }
         {
           label = "logout";
           text = "󰗽";
-          action = "sleep ${builtins.toString sleep} && hyprctl dispatch exit";
+          action = "hyprctl dispatch exit";
           keybind = "e";
           inherit height;
         }
         {
           label = "lock";
           text = "";
-          action = "sleep ${builtins.toString sleep} && swaylock --grace 0 --fade-in 1";
+          action = "swaylock --grace 0 --fade-in 1";
           keybind = "l";
           inherit height;
         }
