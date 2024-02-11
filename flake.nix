@@ -49,7 +49,11 @@
       ];
 
       systems = ["x86_64-linux" "aarch64-linux"];
-      perSystem = {pkgs, ...}: {
+      perSystem = {
+        inputs',
+        pkgs,
+        ...
+      }: {
         formatter = pkgs.alejandra;
 
         devShells.default = pkgs.mkShell {
@@ -60,6 +64,7 @@
             deadnix
             delta
             git
+            inputs'.agenix.packages.default
             neovim
             statix
           ];
