@@ -12,7 +12,7 @@ in {
     ./aliases.nix
     ./functions.nix
     ./keybinds.nix
-    ./visual.nix
+    ./theme.nix
   ];
 
   options.home.programs.terminal.fish.enable =

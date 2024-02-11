@@ -14,7 +14,7 @@ in {
     ./input.nix
     ./keybinds.nix
     ./options.nix
-    ./visual.nix
+    ./theme.nix
     ./windowrules.nix
   ];
 

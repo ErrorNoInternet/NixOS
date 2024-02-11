@@ -8,7 +8,7 @@
     ./keymaps.nix
     ./open.nix
     ./plugins.nix
-    ./visual.nix
+    ./theme.nix
   ];
 
   config = lib.mkIf config.home.programs.terminal.fish.enable {

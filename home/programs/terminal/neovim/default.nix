@@ -16,7 +16,7 @@ in {
     ./lsp.nix
     ./options.nix
     ./shortcuts.nix
-    ./visual.nix
+    ./theme.nix
     inputs.nixvim.homeManagerModules.nixvim
   ];
 
