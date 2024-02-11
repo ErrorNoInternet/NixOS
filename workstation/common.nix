@@ -98,8 +98,6 @@
     gnome.gnome-keyring.enable = true;
 
     logind.lidSwitch = "ignore";
-
-    nixseparatedebuginfod.enable = true;
   };
 
   xdg.portal = {
