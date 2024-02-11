@@ -19,9 +19,12 @@ in {
       };
 
       no-nvidia-prime.configuration = {
-        caches.cuda.enable = true;
+        nixpkgs.config = {
+          allowUnfree = true;
+          cudaSupport = true;
+        };
 
-        nixpkgs.config.cudaSupport = true;
+        caches.cuda.enable = true;
 
         services.xserver.videoDrivers = ["nvidia"];
         hardware = {
