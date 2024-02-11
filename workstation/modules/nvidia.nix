@@ -12,10 +12,10 @@ in {
     };
 
   config = mkIf (config.specialisation != {} && config.workstation.modules.nvidia.enable) {
-        nixpkgs.config = {
-          allowUnfree = true;
-          cudaSupport = true;
-        };
+    nixpkgs.config = {
+      allowUnfree = true;
+      cudaSupport = true;
+    };
 
     caches.cuda.enable = true;
 
