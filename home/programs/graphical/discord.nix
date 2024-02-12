@@ -178,6 +178,7 @@ in {
               shouldPingListed = false;
               inverseShiftReply = false;
             };
+            NoTypingAnimation.enabled = true;
             PermissionsViewer = {
               enabled = true;
               permissionsSortOrder = 0;
@@ -214,6 +215,7 @@ in {
               showMode = 1;
               defaultAllowedUsersAndRolesDropdownState = true;
             };
+            ShowTimeouts.enabled = true;
             SilentTyping = {
               enabled = true;
               showIcon = false;
@@ -262,8 +264,7 @@ in {
               enabled = true;
               clickMethod = "Left";
             };
-            ShowTimeouts.enabled = true;
-            NoTypingAnimation.enabled = true;
+            WhoReacted.enabled = true;
           };
           notifications = {
             timeout = 5000;
