@@ -3,7 +3,9 @@
   lib,
   ...
 }: let
+  cfg = config.profiles.locations.china;
   inherit (lib) mkEnableOption mkIf;
+  values = (import ../../../shared/caches/values.nix).locations.china;
 in {
   options.profiles.locations.china.enable =
     mkEnableOption ""
@@ -11,10 +13,8 @@ in {
       default = true;
     };
 
-  config = mkIf config.profiles.locations.china.enable {
-    nix.substituters = [
-      "https://mirror.sjtu.edu.cn/nix-channels/store"
-    ];
+  config = mkIf cfg.enable {
+    nix.substituters = values.substituters;
     time.timeZone = "Asia/Shanghai";
     networking.extraHosts = ''
       185.199.111.133 raw.githubusercontent.com

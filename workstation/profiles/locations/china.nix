@@ -4,7 +4,9 @@
   pkgs,
   ...
 }: let
+  cfg = config.profiles.locations.china;
   inherit (lib) mkEnableOption mkIf;
+  values = (import ../../../shared/caches/values.nix).locations.china;
 in {
   options.profiles.locations.china.enable =
     mkEnableOption ""
@@ -12,11 +14,9 @@ in {
       default = true;
     };
 
-  config = mkIf config.profiles.locations.china.enable {
+  config = mkIf cfg.enable {
     time.timeZone = "Asia/Shanghai";
-    nix.settings.substituters = [
-      "https://mirror.sjtu.edu.cn/nix-channels/store"
-    ];
+    nix.settings.substituters = values.substituters;
     services.mullvad-vpn = {
       enable = true;
       package = pkgs.mullvad-vpn;
