@@ -18,16 +18,19 @@
   };
 
   nix = {
-    registry =
-      lib.mapAttrs'
-      (name: flake: let
-        name' =
-          if (name == "self")
-          then "config"
-          else name;
-      in
-        lib.nameValuePair name' {inherit flake;})
-      inputs;
+    registry = let
+      mappedRegistry =
+        lib.mapAttrs'
+        (name: flake: let
+          name' =
+            if (name == "self")
+            then "config"
+            else name;
+        in
+          lib.nameValuePair name' {inherit flake;})
+        inputs;
+    in
+      mappedRegistry // {default = mappedRegistry.nixpkgs;};
     nixPath = ["nixpkgs=${inputs.nixpkgs}"];
 
     settings = {
