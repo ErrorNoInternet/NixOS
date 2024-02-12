@@ -1,5 +1,5 @@
 {
-  ErrorNoBinaries = {
+  errornobinaries = {
     substituters = {
       internal = ["http://192.168.0.100:7454/ErrorNoBinaries"];
       external = ["https://errornointernet.dynv6.net:7455/ErrorNoBinaries"];

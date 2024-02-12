@@ -13,7 +13,7 @@
   ];
 
   specialisation.outside.configuration = {
-    caches.ErrorNoBinaries = {
+    caches.errornobinaries = {
       internal = false;
       external = true;
     };

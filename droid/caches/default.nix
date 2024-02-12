@@ -1,5 +1,5 @@
 {
   imports = [
-    ./ErrorNoBinaries.nix
+    ./errornobinaries.nix
   ];
 }

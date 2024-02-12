@@ -3,11 +3,11 @@
   lib,
   ...
 }: let
-  cfg = config.caches.ErrorNoBinaries;
+  cfg = config.caches.errornobinaries;
   inherit (lib) mkEnableOption mkIf;
-  values = (import ./values.nix).ErrorNoBinaries;
+  values = (import ../../shared/caches/values.nix).errornobinaries;
 in {
-  options.caches.ErrorNoBinaries = {
+  options.caches.errornobinaries = {
     enable =
       mkEnableOption ""
       // {
@@ -22,7 +22,7 @@ in {
     external =
       mkEnableOption ""
       // {
-        default = false;
+        default = true;
       };
     cachix =
       mkEnableOption ""
@@ -32,7 +32,7 @@ in {
   };
 
   config = mkIf cfg.enable {
-    nix.settings = {
+    nix = {
       substituters = with cfg;
         (
           if internal
@@ -49,7 +49,7 @@ in {
           then values.substituters.cachix
           else []
         );
-      trusted-public-keys = values.publicKeys;
+      trustedPublicKeys = values.publicKeys;
     };
   };
 }

@@ -1,7 +1,7 @@
 {lib, ...}: {
   imports = [
     ./cuda.nix
-    ./ErrorNoBinaries.nix
+    ./errornobinaries.nix
     ./garnix.nix
     ./hyprland.nix
     ./nix-community.nix
