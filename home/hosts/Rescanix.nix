@@ -88,7 +88,6 @@
       prismlauncher
       procs
       pv
-      python3Packages.bpython
       qrencode
       radeontop
       sdparm
