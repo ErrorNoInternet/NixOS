@@ -80,6 +80,7 @@
       nmap
       nvme-cli
       nvtop
+      ookla-speedtest
       parted
       patchelf
       pavucontrol
@@ -95,7 +96,6 @@
       self'.packages.savehw
       self'.packages.tbw
       smartmontools
-      speedtest-cli
       sqlite
       sshfs
       steam-run
