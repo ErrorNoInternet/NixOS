@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   imports = [
-    ./nas-mount.nix
+    ./nas-mounts.nix
     ./snapper.nix
   ];
   host.id = "102f58f5";
