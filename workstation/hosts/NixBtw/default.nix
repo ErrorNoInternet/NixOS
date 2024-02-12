@@ -23,14 +23,6 @@
 
   nix.gc.automatic = false;
 
-  boot.kernelPatches = [
-    {
-      name = "Rust Support";
-      patch = null;
-      features.rust = true;
-    }
-  ];
-
   # boot.kernelPackages = with pkgs;
   #   if
   #     (builtins.compareVersions
@@ -43,4 +35,5 @@
   #       == [linuxPackages_latest.kernel.version])
   #   then linuxPackages_latest
   #   else linuxPackages_testing;
+  boot.kernelPackages = pkgs.linuxPackages_6_6;
 }
