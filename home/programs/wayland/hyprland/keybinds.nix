@@ -15,8 +15,10 @@
         "$mod, Z, exec, ${commands.rofi} || pkill rofi"
         "$mod, G, exec, cliphist list | rofi -dmenu | cliphist decode | wl-copy"
         "$mod, code:60, exec, rofi -show emoji"
+
         ", PRINT, exec, grimblast --freeze save area - | wl-copy"
         "SHIFT, PRINT, exec, grimblast --freeze save area - | shadower -r12 | wl-copy"
+        "CTRL, PRINT, exec, grimblast --freeze save area - | satty -f- --early-exit"
 
         "$mod, F1, exec, hyprgamemode"
         "$mod, L, exec, swaylock --grace 0 --fade-in 1"

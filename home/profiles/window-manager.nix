@@ -19,6 +19,7 @@ in {
       inputs'.shadower.packages.shadower
       pavucontrol
       ripdrag
+      satty
       self'.packages.brightness
       self'.packages.hyprgamemode
       self'.packages.pavolume
