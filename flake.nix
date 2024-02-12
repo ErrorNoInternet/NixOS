@@ -31,6 +31,7 @@
     hyprwm-contrib.url = "github:hyprwm/contrib";
     neovim-nightly.url = "github:nix-community/neovim-nightly-overlay";
     nix-gaming.url = "github:fufexan/nix-gaming";
+    nix-super.url = "github:privatevoid-net/nix-super";
     overmask.url = "github:ErrorNoInternet/overmask";
     shadower.url = "github:n3oney/shadower";
     spicetify-nix.url = "github:the-argus/spicetify-nix";

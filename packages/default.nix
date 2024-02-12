@@ -10,11 +10,8 @@
     ...
   }: {
     packages = with pkgs; {
-      nix = nixVersions.nix_2_19.overrideAttrs (oldAttrs: {
+      nix = inputs'.nix-super.packages.default.overrideAttrs (_: {
         doInstallCheck = false;
-        patches =
-          (oldAttrs.patches or [])
-          ++ [./patches/nix_default-flake.patch];
       });
 
       btrfs-progs = btrfs-progs.overrideAttrs (oldAttrs: {
