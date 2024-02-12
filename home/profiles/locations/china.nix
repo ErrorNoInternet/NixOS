@@ -3,7 +3,9 @@
   lib,
   ...
 }: let
+  cfg = config.profiles.locations.china;
   inherit (lib) mkEnableOption mkIf;
+  values = (import ../../../shared/caches/values.nix).locations.china;
 in {
   options.profiles.locations.china.enable =
     mkEnableOption ""
@@ -11,10 +13,10 @@ in {
       default = true;
     };
 
-  config = mkIf config.profiles.locations.china.enable {
+  config = mkIf cfg.enable {
     nix.settings = {
-      substituters = ["https://mirror.sjtu.edu.cn/nix-channels/store"];
-      trusted-public-keys = ["cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="];
+      inherit (values) substituters;
+      trusted-public-keys = values.publicKeys;
     };
   };
 }
