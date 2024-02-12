@@ -1,6 +1,6 @@
 {config, ...}: {
   programs.nixvim = with config.colors.scheme.palette; {
-    highlight = {
+    highlightOverride = {
       CursorLine.bg = "none";
       WinSeparator.link = "VertSplit";
       Title = {
