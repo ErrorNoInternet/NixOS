@@ -85,6 +85,6 @@
     };
   };
 
-  environment.etc."nixos/current".source = ./.;
+  environment.etc."nixos/current".source = ./..;
   system.stateVersion = "23.05";
 }

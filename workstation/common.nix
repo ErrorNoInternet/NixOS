@@ -114,7 +114,7 @@
 
   environment = {
     etc = {
-      "nixos/current".source = ./.;
+      "nixos/current".source = ./..;
 
       "xdg/user-dirs.defaults".text = ''
         DESKTOP=
