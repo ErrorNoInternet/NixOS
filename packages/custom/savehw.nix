@@ -80,6 +80,12 @@ pkgs.writeShellApplication {
     eza --icons=always --no-permissions --no-user --no-time -lT /sys/class > dump/sys-class 2>&1
     eza --icons=always --no-permissions --no-user --no-time -lT /sys/firmware > dump/sys-firmware 2>&1
 
+    mkdir efivars
+    for efivar in /sys/firmware/efi/efivars/*; do
+      varname=$(basename "$efivar")
+      head -c1048576 "$efivar" > "efivars/$varname" 2>&1
+    done
+
     mkdir smartctl
     for device in $(lsblk -l -oNAME | tail -n+2); do
         smartctl -x "/dev/$device" > "smartctl/$device" 2>&1
