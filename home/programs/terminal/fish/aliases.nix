@@ -22,9 +22,9 @@
     scc = "${pkgs.scc}/bin/scc --no-cocomo";
     timg = "${lib.getExe pkgs.timg} -ps";
 
-    nrb = "${lib.getExe pkgs.nh} os boot -v .";
-    nrs = "${lib.getExe pkgs.nh} os switch -v .";
-    nrt = "${lib.getExe pkgs.nh} os test -v .";
+    b = "${lib.getExe pkgs.nh} os boot -v .";
+    S = "${lib.getExe pkgs.nh} os switch -v .";
+    t = "${lib.getExe pkgs.nh} os test -v .";
 
     pwdc = "pwd | tr -d '\\n' | ${pkgs.wl-clipboard}/bin/wl-copy";
   };
