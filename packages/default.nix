@@ -57,6 +57,13 @@
           (oldAttrs.patches or [])
           ++ [./patches/wezterm_optimized-build.patch];
       });
+
+      openrgb = openrgb.withPlugins [openrgb-plugin-effects];
+      openrgb-libusb = (openrgb.withPlugins [openrgb-plugin-effects]).overrideAttrs (oldAttrs: {
+        patches =
+          (oldAttrs.patches or [])
+          ++ [./patches/openrgb_force-libusb.patch];
+      });
     };
   };
 }
