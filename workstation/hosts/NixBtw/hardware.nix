@@ -15,7 +15,10 @@
       availableKernelModules = ["xhci_pci" "ehci_pci" "ahci" "usb_storage" "sd_mod" "sr_mod" "rtsx_pci_sdmmc"];
       kernelModules = [];
 
-      luks.devices."luks-NixBtw".device = "/dev/disk/by-uuid/d3f64a12-e62f-43e2-8351-417602765f32";
+      luks.devices."luks-NixBtw" = {
+        device = "/dev/disk/by-uuid/d3f64a12-e62f-43e2-8351-417602765f32";
+        allowDiscards = true;
+      };
     };
   };
 
