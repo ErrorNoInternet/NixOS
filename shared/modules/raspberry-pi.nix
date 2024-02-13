@@ -9,7 +9,7 @@
       grub.enable = false;
       generic-extlinux-compatible = {
         enable = true;
-        configurationLimit = 100;
+        configurationLimit = 10;
       };
     };
     environment.systemPackages = [pkgs.libraspberrypi];
