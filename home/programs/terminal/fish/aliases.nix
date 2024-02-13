@@ -22,9 +22,12 @@
     scc = "${pkgs.scc}/bin/scc --no-cocomo";
     timg = "${lib.getExe pkgs.timg} -ps";
 
-    B = "${lib.getExe pkgs.nh} os boot -v .";
-    S = "${lib.getExe pkgs.nh} os switch -v .";
-    T = "${lib.getExe pkgs.nh} os test -v .";
+    B = "${lib.getExe pkgs.nh} os boot . -v";
+    Ba = "B -a";
+    S = "${lib.getExe pkgs.nh} os switch . -v";
+    Sa = "S -a";
+    T = "${lib.getExe pkgs.nh} os test . -v";
+    Ta = "T -a";
 
     pwdc = "pwd | tr -d '\\n' | ${pkgs.wl-clipboard}/bin/wl-copy";
   };
