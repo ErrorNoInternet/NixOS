@@ -88,12 +88,11 @@ pkgs.writeShellApplication {
 
     mkdir smartctl
     for device in $(lsblk -l -oNAME | tail -n+2); do
-        smartctl -x "/dev/$device" > "smartctl/$device" 2>&1
+      smartctl -x "/dev/$device" > "smartctl/$device" 2>&1
     done
 
     lsmod > dump/lsmod 2>&1
 
-    cd ..
     echo "done!"
   '';
 }
