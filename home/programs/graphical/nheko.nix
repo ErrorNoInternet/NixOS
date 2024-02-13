@@ -12,7 +12,7 @@ in {
     age.secrets.nheko_access-token.file = ../../../secrets/nheko_access-token.age;
     home.activation."nheko_access-token" = lib.hm.dag.entryAfter ["writeBoundary"] ''
       set +u
-      while !test -f "${config.age.secrets.nheko_access-token.path}"; do
+      while ! test -f "${config.age.secrets.nheko_access-token.path}"; do
         sleep 1
       done
       set -u
