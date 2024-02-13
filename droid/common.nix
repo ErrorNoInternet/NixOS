@@ -26,7 +26,6 @@
     iproute2
     ncurses
     nmap
-    openssh
     perl
     procps
     procs

@@ -13,6 +13,7 @@
     ./irssi.nix
     ./kitty.nix
     ./neovim
+    ./ssh.nix
     ./tmux.nix
     ./wezterm.nix
     ./yazi

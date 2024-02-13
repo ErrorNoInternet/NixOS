@@ -142,10 +142,6 @@
   programs = {
     dconf.enable = true;
     light.enable = true;
-    gnupg = {
-      agent.enable = true;
-      dirmngr.enable = true;
-    };
     neovim.defaultEditor = true;
   };
 
