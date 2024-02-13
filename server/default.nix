@@ -16,12 +16,7 @@
           ./common.nix
           ./hosts/${name}
           ./hosts/${name}/hardware.nix
-          {
-            host = {
-              name = "${name}";
-              system = "${system}";
-            };
-          }
+          {host = {inherit name system;};}
         ];
       });
 
@@ -37,12 +32,7 @@
           ./common.nix
           ./hosts/${name}
           ./hosts/${name}/hardware.nix
-          {
-            host = {
-              name = "${name}";
-              system = "${system}";
-            };
-          }
+          {host = {inherit name system;};}
 
           inputs.home-manager.nixosModules.home-manager
           {

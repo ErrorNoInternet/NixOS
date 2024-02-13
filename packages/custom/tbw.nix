@@ -1,5 +1,8 @@
-{pkgs}:
-pkgs.writeShellApplication {
+{
+  pkgs,
+  writeShellApplication,
+}:
+writeShellApplication {
   name = "tbw";
   text = ''
     set +o errexit
