@@ -7,6 +7,6 @@
   server = {
     bootloader.enable = true;
 
-    servers.minecraft.enable = true;
+    services.minecraft.enable = true;
   };
 }
