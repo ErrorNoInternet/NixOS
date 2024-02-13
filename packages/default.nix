@@ -3,7 +3,10 @@
     ./custom
   ];
 
-  systems = ["x86_64-linux" "aarch64-linux"];
+  systems = [
+    "x86_64-linux"
+    "aarch64-linux"
+  ];
   perSystem = {
     inputs',
     pkgs,
@@ -19,8 +22,6 @@
           (oldAttrs.patches or [])
           ++ [./patches/btrfs-progs_receive-selinux.patch];
       });
-
-      inherit (inputs'.yazi.packages) yazi;
 
       neovim = inputs'.neovim-nightly.packages.neovim.overrideAttrs (oldAttrs: {
         patches =
