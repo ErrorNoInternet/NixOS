@@ -1,41 +1,24 @@
 diff --git a/kitty/child-monitor.c b/kitty/child-monitor.c
-index 710ab1972..53f41a1b9 100644
+index 49d95ad2c..683a27567 100644
 --- a/kitty/child-monitor.c
 +++ b/kitty/child-monitor.c
-@@ -779,19 +779,19 @@ prepare_to_render_os_window(OSWindow *os_window, monotonic_t now, unsigned int *
+@@ -777,6 +777,7 @@ prepare_to_render_os_window(OSWindow *os_window, monotonic_t now, unsigned int *
      return needs_render;
  }
  
--static void
--draw_resizing_text(OSWindow *w) {
--    if (monotonic() - w->created_at > ms_to_monotonic_t(1000) && w->live_resize.num_of_resize_events > 1) {
--        char text[32] = {0};
--        unsigned int width = w->live_resize.width, height = w->live_resize.height;
--        snprintf(text, sizeof(text), "%u x %u cells", width / w->fonts_data->cell_width, height / w->fonts_data->cell_height);
--        StringCanvas rendered = render_simple_text(w->fonts_data, text);
--        if (rendered.canvas) {
--            draw_centered_alpha_mask(w, width, height, rendered.width, rendered.height, rendered.canvas, OPT(background_opacity));
--            free(rendered.canvas);
--        }
--    }
--}
-+/* static void */
-+/* draw_resizing_text(OSWindow *w) { */
-+/*     if (monotonic() - w->created_at > ms_to_monotonic_t(1000) && w->live_resize.num_of_resize_events > 1) { */
-+/*         char text[32] = {0}; */
-+/*         unsigned int width = w->live_resize.width, height = w->live_resize.height; */
-+/*         snprintf(text, sizeof(text), "%u x %u cells", width / w->fonts_data->cell_width, height / w->fonts_data->cell_height); */
-+/*         StringCanvas rendered = render_simple_text(w->fonts_data, text); */
-+/*         if (rendered.canvas) { */
-+/*             draw_centered_alpha_mask(w, width, height, rendered.width, rendered.height, rendered.canvas, OPT(background_opacity)); */
-+/*             free(rendered.canvas); */
-+/*         } */
-+/*     } */
-+/* } */
++/*
+ static void
+ draw_resizing_text(OSWindow *w) {
+     if (monotonic() - w->created_at > ms_to_monotonic_t(1000) && w->live_resize.num_of_resize_events > 1) {
+@@ -790,6 +791,7 @@ draw_resizing_text(OSWindow *w) {
+         }
+     }
+ }
++*/
  
  static void
  render_prepared_os_window(OSWindow *os_window, unsigned int active_window_id, color_type active_window_bg, unsigned int num_visible_windows, bool all_windows_have_same_bg) {
-@@ -813,7 +813,7 @@ render_prepared_os_window(OSWindow *os_window, unsigned int active_window_id, co
+@@ -811,7 +813,7 @@ render_prepared_os_window(OSWindow *os_window, unsigned int active_window_id, co
              w->cursor_visible_at_last_render = WD.screen->cursor_render_info.is_visible; w->last_cursor_x = WD.screen->cursor_render_info.x; w->last_cursor_y = WD.screen->cursor_render_info.y; w->last_cursor_shape = WD.screen->cursor_render_info.shape;
          }
      }
