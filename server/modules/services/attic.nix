@@ -5,7 +5,7 @@
   self,
   ...
 }: let
-cfg = config.server.services.attic;
+  cfg = config.server.services.attic;
   inherit (lib) mkEnableOption mkOption mkIf types;
 in {
   imports = [inputs.attic.nixosModules.atticd];
