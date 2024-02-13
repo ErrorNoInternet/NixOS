@@ -1,9 +1,10 @@
 {
   config,
   pkgs,
+  self,
   ...
 }: {
-  age.secrets.ddns.file = ../../../secrets/ddns.age;
+  age.secrets.ddns.file = "${self}/secrets/ddns.age";
   systemd = {
     timers.update-ddns = {
       wantedBy = ["timers.target"];

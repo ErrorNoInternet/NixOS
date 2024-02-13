@@ -1,11 +1,12 @@
 {
   config,
   lib,
+  self,
   ...
 }: let
   cfg = config.caches.errornobinaries;
   inherit (lib) mkEnableOption mkIf;
-  values = (import ../../shared/caches/values.nix).errornobinaries;
+  values = (import "${self}/shared/caches/values.nix").errornobinaries;
 in {
   options.caches.errornobinaries = {
     enable =

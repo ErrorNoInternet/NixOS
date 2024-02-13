@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  self,
   ...
 }: let
   inherit (lib) mkEnableOption mkIf optional;
@@ -28,7 +29,7 @@ in {
           patches =
             (oldAttrs.patches or [])
             ++ optional (config.workstation.programs.openrgb.forceLibusb != null) [
-              ../../../packages/patches/openrgb_force-libusb.patch
+              "${self}/packages/patches/openrgb_force-libusb.patch"
             ];
         }))
     ];

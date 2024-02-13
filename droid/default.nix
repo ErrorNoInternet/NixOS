@@ -1,5 +1,6 @@
 {
   inputs,
+  self,
   withSystem,
   ...
 }: let
@@ -18,7 +19,7 @@
           {
             home-manager = {
               extraSpecialArgs = {
-                inherit inputs' inputs self';
+                inherit inputs' inputs self' self;
                 osConfig = {};
               };
               sharedModules = [

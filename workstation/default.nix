@@ -1,5 +1,6 @@
 {
   inputs,
+  self,
   withSystem,
   ...
 }: let
@@ -10,7 +11,7 @@
       ...
     }:
       inputs.nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs' inputs self';};
+        specialArgs = {inherit inputs' inputs self' self;};
         modules = [
           ./common.nix
           ./hosts/${name}

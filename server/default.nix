@@ -1,5 +1,6 @@
 {
   inputs,
+  self,
   withSystem,
   ...
 }: let
@@ -10,7 +11,7 @@
       ...
     }:
       inputs.nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs' inputs self';};
+        specialArgs = {inherit inputs' inputs self' self;};
         modules = [
           ./common.nix
           ./hosts/${name}
@@ -31,7 +32,7 @@
       ...
     }:
       inputs.nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs' inputs self';};
+        specialArgs = {inherit inputs' inputs self' self;};
         modules = [
           ./common.nix
           ./hosts/${name}
@@ -48,7 +49,7 @@
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
-              extraSpecialArgs = {inherit inputs' inputs self';};
+              extraSpecialArgs = {inherit inputs' inputs self' self;};
 
               users.snowflake = {...}: {
                 imports = [

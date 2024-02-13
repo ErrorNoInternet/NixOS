@@ -1,9 +1,10 @@
 {
-  inputs,
   inputs',
+  inputs,
   lib,
   pkgs,
   self',
+  self,
   ...
 }: {
   imports = [
@@ -18,7 +19,7 @@
       home-manager = {
         useGlobalPkgs = true;
         useUserPackages = true;
-        extraSpecialArgs = {inherit inputs' inputs self';};
+        extraSpecialArgs = {inherit inputs' inputs self' self;};
 
         users.error = {...}: {
           imports = [

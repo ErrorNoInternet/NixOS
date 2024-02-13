@@ -2,6 +2,7 @@
   config,
   inputs',
   lib,
+  self,
   ...
 }: let
   cfg = config.wallpaper;
@@ -22,7 +23,7 @@ in {
     home = {
       packages = [inputs'.hyprpaper.packages.hyprpaper];
       file = {
-        "pictures/wallpapers".source = ../../../other/wallpapers;
+        "pictures/wallpapers".source = "${self}/other/wallpapers";
 
         "${config.xdg.configHome}/hypr/hyprpaper.conf".text = ''
           preload = ${wallpapersPath}/${cfg.path}

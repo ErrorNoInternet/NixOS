@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  self,
   ...
 }: let
   inherit (lib) mkEnableOption mkIf;
@@ -8,7 +9,7 @@ in {
   options.shared.modules.wireless.enable = mkEnableOption "";
 
   config = mkIf config.shared.modules.wireless.enable {
-    age.secrets.wireless-networks.file = ../../secrets/wireless-networks.age;
+    age.secrets.wireless-networks.file = "${self}/secrets/wireless-networks.age";
     networking = {
       wireless = {
         enable = true;

@@ -2,11 +2,12 @@
   config,
   lib,
   pkgs,
+  self,
   ...
 }: let
   cfg = config.profiles.locations.china;
   inherit (lib) mkEnableOption mkIf;
-  values = (import ../../../shared/caches/values.nix).locations.china;
+  values = (import "${self}/shared/caches/values.nix").locations.china;
 in {
   options.profiles.locations.china.enable =
     mkEnableOption ""
