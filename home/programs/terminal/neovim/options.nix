@@ -2,6 +2,7 @@
   programs.nixvim.options = {
     encoding = "utf8";
     expandtab = true;
+    modeline = false;
     shiftwidth = 4;
     smartindent = true;
     softtabstop = 4;
