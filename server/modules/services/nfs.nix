@@ -5,9 +5,9 @@
 }: let
   inherit (lib) mkEnableOption mkIf;
 in {
-  options.server.modules.servers.nfs.enable = mkEnableOption "";
+  options.server.services.nfs.enable = mkEnableOption "";
 
-  config = mkIf config.server.modules.servers.nfs.enable {
+  config = mkIf config.server.services.nfs.enable {
     networking.firewall = {
       allowedTCPPorts = [111 2049 4000 4001 4002 20048];
       allowedUDPPorts = [111 2049 4000 4001 4002 20048];

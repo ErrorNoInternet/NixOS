@@ -4,7 +4,7 @@
     btrfs.compression.subvolumeLayout = false;
     wireless.enable = true;
   };
-  server.modules = {
+  server = {
     bootloader.enable = true;
 
     servers.minecraft.enable = true;

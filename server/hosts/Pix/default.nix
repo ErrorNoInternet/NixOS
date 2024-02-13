@@ -9,8 +9,8 @@
     modules.emulation.linux.aarch64 = false;
   };
 
-  server.modules = {
-    servers = {
+  server = {
+    services = {
       attic.enable = true;
       nfs.enable = true;
       samba.enable = true;

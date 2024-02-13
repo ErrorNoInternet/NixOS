@@ -5,9 +5,9 @@
 }: let
   inherit (lib) mkEnableOption mkIf;
 in {
-  options.server.modules.bootloader.enable = mkEnableOption "";
+  options.server.bootloader.enable = mkEnableOption "";
 
-  config = mkIf config.server.modules.bootloader.enable {
+  config = mkIf config.server.bootloader.enable {
     boot.loader = {
       systemd-boot = {
         enable = true;

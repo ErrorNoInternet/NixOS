@@ -6,9 +6,9 @@
 }: let
   inherit (lib) mkEnableOption mkIf;
 in {
-  options.server.modules.printing.enable = mkEnableOption "";
+  options.server.printing.enable = mkEnableOption "";
 
-  config = mkIf config.server.modules.printing.enable {
+  config = mkIf config.server.printing.enable {
     services.printing = {
       enable = true;
       drivers = [pkgs.hplip];

@@ -6,9 +6,9 @@
 }: let
   inherit (lib) mkEnableOption mkIf;
 in {
-  options.server.modules.servers.samba.enable = mkEnableOption "";
+  options.server.services.samba.enable = mkEnableOption "";
 
-  config = mkIf config.server.modules.servers.samba.enable {
+  config = mkIf config.server.services.samba.enable {
     networking.firewall.allowedTCPPorts = [
       # wsdd
       5357
