@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  self,
   ...
 }: let
   inherit (lib) mkEnableOption mkIf;
@@ -9,14 +10,8 @@ in {
   options.home.programs.graphical.nheko.enable = mkEnableOption "";
 
   config = mkIf config.home.programs.graphical.nheko.enable {
-    age.secrets.nheko_access-token.file = ../../../secrets/nheko_access-token.age;
+    age.secrets.nheko_access-token.file = "${self}/secrets/nheko_access-token.age";
     home.activation."nheko_access-token" = lib.hm.dag.entryAfter ["writeBoundary"] ''
-      set +u
-      while ! test -f "${config.age.secrets.nheko_access-token.path}"; do
-        sleep 1
-      done
-      set -u
-
       secret=$(cat "${config.age.secrets.nheko_access-token.path}")
       ${lib.getExe pkgs.gnused} -i \
         "s|@nheko_access-token@|$secret|" \
