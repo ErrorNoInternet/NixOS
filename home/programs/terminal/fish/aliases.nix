@@ -19,6 +19,7 @@
     mfd = "${lib.getExe pkgs.fastfetch} -c ${config.xdg.configHome}/fastfetch/nix-on-droid_minimal.jsonc";
     py = "python3";
     q = "exit";
+    qq = "exit";
     scc = "${pkgs.scc}/bin/scc --no-cocomo";
     timg = "${lib.getExe pkgs.timg} -ps";
 
