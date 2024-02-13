@@ -19,6 +19,10 @@
     gdc = "git diff --compact-summary";
     gds = "git diff --staged";
     gl = "git log";
+    gm = "git merge";
+    gma = "git merge --abort";
+    gmc = "git merge --continue";
+    gmn = "git merge --no-commit";
     gp = "git push";
     gpa = "git push --all";
     gpf = "git push --force-with-lease";
