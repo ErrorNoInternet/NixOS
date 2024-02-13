@@ -18,7 +18,7 @@
 
         ", PRINT, exec, grimblast --freeze save area - | wl-copy"
         "SHIFT, PRINT, exec, grimblast --freeze save area - | shadower -r12 | wl-copy"
-        "CTRL, PRINT, exec, grimblast --freeze save area - | satty -f- --early-exit --init-tool rectangle"
+        "CTRL, PRINT, exec, grimblast --freeze save area - | satty -f- --early-exit --copy-command wl-copy --init-tool rectangle"
 
         "$mod, F1, exec, hyprgamemode"
         "$mod, L, exec, swaylock --grace 0 --fade-in 1"
