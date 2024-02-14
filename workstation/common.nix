@@ -176,9 +176,13 @@
   };
 
   users.users.error = {
-    initialPassword = "snowflake";
     isNormalUser = true;
     extraGroups = ["wheel" "video" "networkmanager"];
+    initialPassword = "snowflake";
+    openssh.authorizedKeys.keys = let
+      keys = import ../shared/values/ssh-keys.nix;
+    in
+      with keys; [NixBtw ErrorNoPhone];
   };
 
   system.stateVersion = "23.05";

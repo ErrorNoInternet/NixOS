@@ -79,9 +79,10 @@
       isNormalUser = true;
       extraGroups = ["wheel"];
       initialPassword = "snowflake";
-      openssh.authorizedKeys.keys = [
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDzdpxex2GlFVf5G2qsh3Ixa/XCMjnbq4JSTmAev7WYJ"
-      ];
+      openssh.authorizedKeys.keys = let
+        keys = import ../shared/values/ssh-keys.nix;
+      in
+        with keys; [NixBtw];
     };
   };
 
