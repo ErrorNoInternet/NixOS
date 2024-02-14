@@ -5,7 +5,7 @@ index 0000000..0b2d8b4
 +++ b/.cargo/config.toml
 @@ -0,0 +1,2 @@
 +[build]
-+rustflags = ["-C", "target-cpu=x86-64-v3"]
++rustflags = ["-C", "target-cpu=native"]
 diff --git a/Cargo.toml b/Cargo.toml
 index a465fc1..28cef50 100644
 --- a/Cargo.toml
