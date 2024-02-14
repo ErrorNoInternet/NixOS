@@ -22,8 +22,8 @@
 
         "$mod, F1, exec, hyprgamemode"
         "$mod, L, exec, swaylock --grace 0 --fade-in 1"
-        "$mod, S, exec, scratchpad"
-        "$mod SHIFT, S, exec, scratchpad -g"
+        "$mod, A, exec, scratchpad"
+        "$mod SHIFT, A, exec, scratchpad -g"
         "$mod, RETURN, exec, ${config.terminal.command}"
         "$mod SHIFT, RETURN, exec, [float; center] ${config.terminal.command}"
 
