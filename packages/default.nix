@@ -36,7 +36,7 @@
       neovim = inputs'.neovim-nightly.packages.neovim.overrideAttrs (oldAttrs: {
         patches =
           (oldAttrs.patches or [])
-          ++ [./patches/neovim_no-fold-numbers.patch];
+          ++ [./patches/neovim_remove-fold-numbers.patch];
       });
 
       attic = inputs'.attic.packages.attic.overrideAttrs (oldAttrs: {
