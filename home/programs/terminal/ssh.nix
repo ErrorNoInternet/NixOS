@@ -15,7 +15,10 @@ in {
   config = mkIf cfg.enable {
     programs.ssh = {
       enable = true;
-      addKeysToAgent = "1d";
+      addKeysToAgent =
+        if config.home.flags.nixOnDroid
+        then "1h"
+        else "1d";
     };
     services.ssh-agent.enable = true;
   };
