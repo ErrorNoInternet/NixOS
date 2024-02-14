@@ -56,6 +56,7 @@ in {
           \e]PE${base07}
           \e]PF${base06}
           "
+
           set -x TTY_COLORS_SET 1
           clear
         end
