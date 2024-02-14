@@ -43,10 +43,11 @@
       grub = {
         enable = true;
         efiSupport = true;
-        device = "/dev/disk/by-id/wwn-0x50026b738269db25";
+        device = "nodev";
+        efiInstallAsRemovable = true;
+
         configurationLimit = 25;
       };
-      efi.canTouchEfiVariables = true;
       timeout = 3;
     };
 
