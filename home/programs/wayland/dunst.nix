@@ -4,11 +4,11 @@
   ...
 }: {
   config = lib.mkIf config.profiles.windowManager.enable {
-    services.dunst = with config.colors.scheme.palette; {
+    services.dunst = {
       enable = true;
       inherit (config.toolkits.gtk) iconTheme;
 
-      settings = {
+      settings = with config.colors.scheme.palette; {
         global = {
           origin = "top-right";
           offset = "10x10";
