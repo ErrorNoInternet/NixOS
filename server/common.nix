@@ -82,7 +82,7 @@
       openssh.authorizedKeys.keys = let
         keys = import ../shared/values/ssh-keys.nix;
       in
-        with keys; [NixBtw];
+        with keys; [NixBtw ErrorNoPhone];
     };
   };
 
