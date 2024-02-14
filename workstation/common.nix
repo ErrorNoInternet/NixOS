@@ -40,12 +40,14 @@
 
   boot = {
     loader = {
-      systemd-boot = {
+      grub = {
         enable = true;
+        efiSupport = true;
+        device = "nodev";
+        efiInstallAsRemovable = true;
+
         configurationLimit = 25;
-        consoleMode = "max";
       };
-      efi.canTouchEfiVariables = true;
       timeout = 3;
     };
 
