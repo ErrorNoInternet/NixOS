@@ -40,10 +40,11 @@
 
   boot = {
     loader = {
-      systemd-boot = {
+      grub = {
         enable = true;
+        efiSupport = true;
+        device = "/dev/disk/by-id/wwn-0x50026b738269db25";
         configurationLimit = 25;
-        consoleMode = "max";
       };
       efi.canTouchEfiVariables = true;
       timeout = 3;
