@@ -971,16 +971,15 @@
         "nmd": "nmd_2"
       },
       "locked": {
-        "lastModified": 1688144254,
-        "narHash": "sha256-8KL1l/7eP2Zm1aJjdVaSOk0W5kTnJo9kcgW03gqWuiI=",
+        "lastModified": 1694604941,
+        "narHash": "sha256-KsoRStRs8dNRRMWQhuB3eUOpzQhOc4dcBQB85tEq3wY=",
         "owner": "nix-community",
         "repo": "nix-on-droid",
-        "rev": "2301e01d48c90b60751005317de7a84a51a87eb6",
+        "rev": "039379abeee67144d4094d80bbdaf183fb2eabe5",
         "type": "github"
       },
       "original": {
         "owner": "nix-community",
-        "ref": "release-23.05",
         "repo": "nix-on-droid",
         "type": "github"
       }

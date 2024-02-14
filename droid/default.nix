@@ -8,9 +8,10 @@
     withSystem system ({
       inputs',
       self',
+      ...
     }:
       inputs.nix-on-droid.lib.nixOnDroidConfiguration {
-        extraSpecialArgs = {inherit inputs;};
+        extraSpecialArgs = {inherit inputs' inputs self' self;};
         modules = [
           ./common.nix
           ./hosts/${name}.nix
