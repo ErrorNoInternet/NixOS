@@ -114,7 +114,7 @@
 
   environment = {
     etc = {
-      "nixos/current".source = ./..;
+      "nixos/current".source = lib.cleanSource ./..;
 
       "xdg/user-dirs.defaults".text = ''
         DESKTOP=
