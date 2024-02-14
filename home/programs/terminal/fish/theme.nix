@@ -11,6 +11,7 @@
     '';
     interactiveShellInit = ''
       if not set -q TIDE_CONFIGURED
+        set -U TIDE_CONFIGURED 0
         tide configure --auto \
           --style=Lean \
           --prompt_colors='16 colors' \
@@ -19,8 +20,6 @@
           --prompt_spacing=Sparse \
           --icons='Few icons' \
           --transient=No
-
-        set -U TIDE_CONFIGURED 1
       end
 
       set fish_cursor_default line
@@ -32,6 +31,11 @@
       set tide_pwd_color_anchors blue
       set tide_character_color cyan
       set tide_time_color cyan
+
+      if test $TIDE_CONFIGURED = 0
+        set -U TIDE_CONFIGURED 1
+        tide reload
+      end
     '';
   };
 }
