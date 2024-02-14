@@ -17,6 +17,7 @@
       };
       settings = {
         background_opacity = "${builtins.toString config.opacity.normal}";
+        box_drawing_scale = "0.001, 0.75, 1, 1.5";
         confirm_os_window_close = 0;
         enable_audio_bell = false;
         modify_font = "baseline 1";
