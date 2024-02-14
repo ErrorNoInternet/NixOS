@@ -7,7 +7,7 @@
   wayland.windowManager.hyprland.settings.exec-once = [
     "hyprctl setcursor ${config.cursor.name} ${builtins.toString config.cursor.size}"
 
-    "sleep 0.5 && ${lib.getExe pkgs.waybar}"
+    "sleep 0.5 && waybar"
     (lib.mkIf config.wallpaper.enable "hyprpaper")
 
     "${lib.getExe pkgs.hyprland-autoname-workspaces}"
