@@ -43,10 +43,11 @@
       grub = {
         enable = true;
         efiSupport = true;
-        device = "nodev";
         efiInstallAsRemovable = true;
+        device = "nodev";
+        splashImage = null;
 
-        configurationLimit = 25;
+        configurationLimit = 100;
       };
       timeout = 3;
     };

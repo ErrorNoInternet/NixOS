@@ -8,10 +8,7 @@
   boot = {
     loader = {
       timeout = lib.mkForce 5;
-      systemd-boot = {
-        memtest86.enable = true;
-        netbootxyz.enable = true;
-      };
+      grub.memtest86.enable = true;
     };
     kernelParams = ["boot.shell_on_fail"];
     supportedFilesystems = [
