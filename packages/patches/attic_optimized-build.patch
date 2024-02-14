@@ -1,12 +1,3 @@
-diff --git a/.cargo/config b/.cargo/config
-index 6e54197..d13e130 100644
---- a/.cargo/config
-+++ b/.cargo/config
-@@ -1,3 +1,3 @@
- [build]
--rustflags = ["--cfg", "tokio_unstable"]
-+rustflags = ["--cfg", "tokio_unstable", "-C", "target-cpu=x86-64-v3"]
- rustdocflags = ["--cfg", "tokio_unstable"]
 diff --git a/Cargo.toml b/Cargo.toml
 index 905c424..3b49c20 100644
 --- a/Cargo.toml
