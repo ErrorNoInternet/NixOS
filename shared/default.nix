@@ -2,6 +2,7 @@
   inputs,
   lib,
   pkgs,
+  self',
   ...
 }: {
   imports = [
@@ -67,6 +68,7 @@
     lsof
     neovim
     ripgrep
+    self'.packages.hwatch
     sysstat
     tmux
     unzip

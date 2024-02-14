@@ -1,0 +1,105 @@
+diff --git a/src/app.rs b/src/app.rs
+index 386915a..b8829ed 100644
+--- a/src/app.rs
++++ b/src/app.rs
+@@ -1115,19 +1115,6 @@ impl<'a> App<'a> {
+         let _ = self.tx.send(AppEvent::Redraw);
+     }
+ 
+-    ///
+-    pub fn show_help_banner(&mut self, visible: bool) {
+-        self.header_area.set_banner(
+-            if visible {
+-                "Display help with h key!"
+-            } else {
+-                ""
+-            }
+-            .to_string(),
+-        );
+-        let _ = self.tx.send(AppEvent::Redraw);
+-    }
+-
+     ///
+     fn input_key_up(&mut self) {
+         match self.window {
+diff --git a/src/header.rs b/src/header.rs
+index 9b14b22..5a1def4 100644
+--- a/src/header.rs
++++ b/src/header.rs
+@@ -119,10 +119,6 @@ impl<'a> HeaderArea<'a> {
+         self.line_number = line_number;
+     }
+ 
+-    pub fn set_banner(&mut self, banner: String) {
+-        self.banner = banner;
+-    }
+-
+     pub fn set_ansi_color(&mut self, ansi_color: bool) {
+         self.ansi_color = ansi_color;
+     }
+diff --git a/src/main.rs b/src/main.rs
+index 75bf6af..90bf6ef 100644
+--- a/src/main.rs
++++ b/src/main.rs
+@@ -191,11 +191,6 @@ fn build_app() -> clap::Command<'static> {
+                 .short('N')
+                 .long("line-number"),
+         )
+-        .arg(
+-            Arg::new("no_help_banner")
+-            .help("hide the \"Display help with h key\" message")
+-            .long("no-help-banner")
+-        )
+ 
+         // exec flag.
+         //
+@@ -347,8 +342,7 @@ fn main() {
+         .set_line_number(matcher.is_present("line_number"))
+         // Set diff(watch diff) in view
+         .set_watch_diff(matcher.is_present("differences"))
+-        .set_show_ui(!matcher.is_present("no_title"))
+-        .set_show_help_banner(!matcher.is_present("no_help_banner"));
++        .set_show_ui(!matcher.is_present("no_title"));
+ 
+     // Set logfile
+     if let Some(logfile) = logfile {
+diff --git a/src/view.rs b/src/view.rs
+index 0775e2e..8d2f0fe 100644
+--- a/src/view.rs
++++ b/src/view.rs
+@@ -30,7 +30,6 @@ pub struct View {
+     mouse_events: bool,
+     color: bool,
+     show_ui: bool,
+-    show_help_banner: bool,
+     line_number: bool,
+     watch_diff: bool,
+     log_path: String,
+@@ -47,7 +46,6 @@ impl View {
+             mouse_events: false,
+             color: false,
+             show_ui: true,
+-            show_help_banner: true,
+             line_number: false,
+             watch_diff: false,
+             log_path: "".to_string(),
+@@ -89,11 +87,6 @@ impl View {
+         self
+     }
+ 
+-    pub fn set_show_help_banner(mut self, show_help_banner: bool) -> Self {
+-        self.show_help_banner = show_help_banner;
+-        self
+-    }
+-
+     pub fn set_line_number(mut self, line_number: bool) -> Self {
+         self.line_number = line_number;
+         self
+@@ -155,7 +148,6 @@ impl View {
+ 
+         app.show_history(self.show_ui);
+         app.show_ui(self.show_ui);
+-        app.show_help_banner(self.show_help_banner);
+ 
+         app.set_tab_size(self.tab_size);
+ 

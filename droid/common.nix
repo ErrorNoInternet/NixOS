@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  self',
+  ...
+}: {
   imports = [
     ./caches
     ./profiles
@@ -12,8 +16,6 @@
 
   user.shell = "${pkgs.fish}/bin/fish";
   environment.packages = with pkgs; [
-    neofetch
-
     curl
     dig
     file
@@ -25,11 +27,13 @@
     gzip
     iproute2
     ncurses
+    neofetch
     nmap
     perl
     procps
     procs
     ripgrep
+    self'.packages.hwatch
     wget
     which
     xxd

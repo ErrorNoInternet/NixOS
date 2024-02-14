@@ -23,6 +23,16 @@
           ++ [./patches/btrfs-progs_receive-selinux.patch];
       });
 
+      hwatch = hwatch.overrideAttrs (oldAttrs: {
+        patches =
+          (oldAttrs.patches or [])
+          ++ [
+            ./patches/hwatch_optimized-build.patch
+            ./patches/hwatch_precise-intervals.patch
+            ./patches/hwatch_remove-help-banner.patch
+          ];
+      });
+
       neovim = inputs'.neovim-nightly.packages.neovim.overrideAttrs (oldAttrs: {
         patches =
           (oldAttrs.patches or [])
