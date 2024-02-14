@@ -1914,11 +1914,11 @@
       },
       "locked": {
         "dir": "nix",
-        "lastModified": 1707665855,
-        "narHash": "sha256-EAMYqhOcePoYerrn3uPGpwBul9CHyWCXq8HYbhhoCj8=",
+        "lastModified": 1707748867,
+        "narHash": "sha256-QCqenDJc812rkG31icSMSWR3uWb6xQx+K57rdM0uJ9A=",
         "owner": "wez",
         "repo": "wezterm",
-        "rev": "b61c49fa67c609683a86a8297ae62c5752b9afe5",
+        "rev": "22f9f8d288521508bd4cdc924d9f209d78b36483",
         "type": "github"
       },
       "original": {
