@@ -19,6 +19,8 @@
 
   services.snapper = {
     snapshotInterval = "*:0/30";
+    cleanupInterval = "3d";
+
     configs = {
       home = {
         SUBVOLUME = "/home";
