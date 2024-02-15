@@ -10,9 +10,12 @@
 
     "/es" = anywhere "--extra-substituters";
     "/etpk" = anywhere "--extra-trusted-public-keys";
-    "/s" = anywhere "--substituters";
-    "/tpk" = anywhere "--trusted-public-keys";
     "/ncnt" = anywhere "--narinfo-cache-negative-ttl 0";
+    "/nec" = anywhere "--no-eval-cache";
+    "/o" = anywhere "--option";
+    "/s" = anywhere "--substituters";
+    "/st" = anywhere "--show-trace";
+    "/tpk" = anywhere "--trusted-public-keys";
 
     nb = "nix build";
     nd = "nix develop -c fish";
