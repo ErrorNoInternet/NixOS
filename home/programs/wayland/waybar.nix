@@ -42,7 +42,7 @@
           format = "  {:%a, %b %d, %H:%M}";
           tooltip = "true";
           tooltip-format = "<tt><small>{calendar}</small></tt>";
-          format-alt = "  {:%m/%d}";
+          on-click = "swaync-client -t";
         };
         "wlr/workspaces" = {
           active-only = false;
