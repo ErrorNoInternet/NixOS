@@ -23,7 +23,7 @@ in {
   config = mkIf cfg.enable {
     fileSystems =
       {
-        "/".options = ["compress=zstd"];
+        "/".options = ["compress=zstd" "noatime"];
       }
       // mkIf cfg.subvolumeLayout {
         "/home".options = ["compress=zstd"];

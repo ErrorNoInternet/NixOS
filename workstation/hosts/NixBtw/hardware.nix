@@ -22,21 +22,22 @@
     };
   };
 
-  fileSystems = {
+  fileSystems = let 
+    defaultOptions = ["ssd_spread"];
+    device = "/dev/disk/by-uuid/47502804-f00d-4f0c-b63f-bd7971039dbb";
+    fsType = "btrfs";
+  in {
     "/" = {
-      device = "/dev/disk/by-uuid/47502804-f00d-4f0c-b63f-bd7971039dbb";
-      fsType = "btrfs";
-      options = ["subvol=@"];
+      inherit device fsType;
+      options = ["subvol=@"] ++ defaultOptions;
     };
     "/home" = {
-      device = "/dev/disk/by-uuid/47502804-f00d-4f0c-b63f-bd7971039dbb";
-      fsType = "btrfs";
-      options = ["subvol=@home"];
+      inherit device fsType;
+      options = ["subvol=@home"] ++ defaultOptions;
     };
     "/nix" = {
-      device = "/dev/disk/by-uuid/47502804-f00d-4f0c-b63f-bd7971039dbb";
-      fsType = "btrfs";
-      options = ["subvol=@nix"];
+      inherit device fsType;
+      options = ["subvol=@nix"] ++ defaultOptions;
     };
     "/boot" = {
       device = "/dev/disk/by-uuid/A463-84E1";

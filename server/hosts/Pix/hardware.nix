@@ -37,33 +37,33 @@
   };
 
   fileSystems = let
-    opts = ["ssd_spread" "noatime"];
-    fsType = "btrfs";
+    defaultOptions = ["ssd_spread"];
     device = "/dev/disk/by-label/NIXOS_SD";
+    fsType = "btrfs";
   in {
     "/" = {
-      inherit fsType device;
-      options = opts ++ ["subvol=@"];
+      inherit device fsType;
+      options = ["subvol=@"] ++ defaultOptions;
     };
     "/boot" = {
-      inherit fsType device;
-      options = opts ++ ["subvol=@boot"];
+      inherit device fsType;
+      options = ["subvol=@boot"] ++ defaultOptions;
     };
     "/nix" = {
-      inherit fsType device;
-      options = opts ++ ["subvol=@nix"];
+      inherit device fsType;
+      options = ["subvol=@nix"] ++ defaultOptions;
     };
     "/var" = {
-      inherit fsType device;
-      options = opts ++ ["subvol=@var"];
+      inherit device fsType;
+      options = ["subvol=@var"] ++ defaultOptions;
     };
     "/home" = {
-      inherit fsType device;
-      options = opts ++ ["subvol=@home"];
+      inherit device fsType;
+      options = ["subvol=@home"] ++ defaultOptions;
     };
     "/.snapshots" = {
-      inherit fsType device;
-      options = opts ++ ["subvol=@snapshots"];
+      inherit device fsType;
+      options = ["subvol=@snapshots"] ++ defaultOptions;
     };
     "/boot/firmware" = {
       device = "/dev/disk/by-label/FIRMWARE";
