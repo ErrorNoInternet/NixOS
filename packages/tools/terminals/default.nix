@@ -3,11 +3,12 @@
   perSystem = {
     inputs',
     pkgs,
+    system,
     ...
   }: {
     packages = with pkgs; {
       kitty = callPackage ./kitty {};
-      wezterm = callPackage ./wezterm {inherit inputs';};
+      wezterm = callPackage ./wezterm {inherit inputs' system;};
     };
   };
 }
