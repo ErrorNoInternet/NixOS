@@ -1,13 +1,22 @@
-{config, ...}: {
-  wayland.windowManager.hyprland = {
+{
+  config,
+  inputs',
+  lib,
+  self',
+  ...
+}: {
+  wayland.windowManager.hyprland = let
+    commands = {
+      brightness = "${self'.packages.brightness}/bin/brightness";
+      grimblast = "grimblast --freeze save area -";
+      hyprgamemode = "${self'.packages.hyprgamemode}/bin/hyprgamemode";
+      rofi = "rofi -modes drun,window,run -show drun";
+      satty = "satty -f- --early-exit --copy-command wl-copy --init-tool rectangle";
+      shadower = "${lib.getExe inputs'.shadower.packages.shadower} -r12";
+    };
+  in {
     settings = {
-      binds = {
-        allow_workspace_cycles = true;
-      };
-
-      bind = let
-        commands.rofi = "rofi -modes drun,window,run -show drun";
-      in [
+      bind = [
         "$mod CTRL SHIFT, code:22, exec, hyprctl dispatch exit"
         "$mod, escape, exec, wleave -p layer-shell -f -b5 -T425 -B425 -L250 -R250"
 
@@ -16,11 +25,11 @@
         "$mod, G, exec, cliphist list | rofi -dmenu | cliphist decode | wl-copy"
         "$mod, code:60, exec, rofi -show emoji"
 
-        ", PRINT, exec, grimblast --freeze save area - | wl-copy"
-        "SHIFT, PRINT, exec, grimblast --freeze save area - | shadower -r12 | wl-copy"
-        "CTRL, PRINT, exec, grimblast --freeze save area - | satty -f- --early-exit --copy-command wl-copy --init-tool rectangle"
+        ", PRINT, exec, ${commands.grimblast} | wl-copy"
+        "SHIFT, PRINT, exec, ${commands.grimblast} | ${commands.shadower} | wl-copy"
+        "CTRL, PRINT, exec, ${commands.grimblast} | ${commands.satty}"
 
-        "$mod, F1, exec, hyprgamemode"
+        "$mod, F1, exec, ${commands.hyprgamemode}"
         "$mod, L, exec, swaylock --grace 0 --fade-in 1"
         "$mod, A, exec, scratchpad"
         "$mod SHIFT, A, exec, scratchpad -g"
@@ -90,15 +99,16 @@
         ",XF86AudioMute, exec, pavolume toggle"
         ",XF86AudioRaiseVolume, exec, pavolume up"
         ",XF86AudioLowerVolume, exec, pavolume down"
-        ",XF86MonBrightnessUp, exec, brightness up"
-        ",XF86MonBrightnessDown, exec, brightness down"
+        ",XF86MonBrightnessUp, exec, ${commands.brightness} up"
+        ",XF86MonBrightnessDown, exec, ${commands.brightness} down"
       ];
       bindl = [
-        ",switch:on:Lid Switch, exec, swaylock 0 1"
-        ",switch:off:Lid Switch, exec, swaylock 0 1"
+        ",switch:on:Lid Switch, exec, swaylock --grace 0 --fade-in 1"
+        ",switch:off:Lid Switch, exec, swaylock --grace 0 --fade-in 1"
       ];
-    };
 
+      binds.allow_workspace_cycles = true;
+    };
     extraConfig = ''
       bind=$mod CTRL SHIFT, escape, submap, clean
       submap=clean
