@@ -22,7 +22,7 @@
     };
   };
 
-  fileSystems = let 
+  fileSystems = let
     defaultOptions = ["ssd_spread"];
     device = "/dev/disk/by-uuid/47502804-f00d-4f0c-b63f-bd7971039dbb";
     fsType = "btrfs";
