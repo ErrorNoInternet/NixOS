@@ -127,9 +127,7 @@
 
         window#waybar {
           background-color: rgba(${
-          inputs.nix-colors.lib.conversions.hexToRGBString
-          ","
-          base02
+          inputs.nix-colors.lib.conversions.hexToRGBString "," base02
         },${builtins.toString config.opacity.bar});
         }
 

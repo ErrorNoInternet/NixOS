@@ -67,8 +67,10 @@
     extraConfig = ''
       layerrule=blur,gtk-layer-shell
       layerrule=blur,rofi
+      layerrule=blur,swaync-notification-window
       layerrule=blur,waybar
       layerrule=ignorezero,rofi
+      layerrule=ignorezero,swaync-notification-window
     '';
   };
 }

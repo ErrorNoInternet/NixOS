@@ -1,5 +1,6 @@
 {
   config,
+  inputs,
   lib,
   pkgs,
   ...
@@ -19,14 +20,14 @@
         script-fail-notify = true;
         transition-time = 200;
 
-        control-center-margin-bottom = 10;
-        control-center-margin-right = 10;
-        control-center-margin-top = 10;
+        control-center-margin-bottom = 20;
+        control-center-margin-right = 20;
+        control-center-margin-top = 20;
 
         notification-body-image-height = 100;
         notification-body-image-width = 200;
         notification-icon-size = 64;
-        notification-window-width = 500;
+        notification-window-width = 400;
 
         widgets = [
           "title"
@@ -54,251 +55,198 @@
 
       "${config.xdg.configHome}/swaync/style.css".text = with config.colors.scheme.palette; ''
         * {
-            font-family: ${config.font.name};
-            font-size: 14px;
-            font-weight: bold;
+          background: transparent;
+          border-radius: 12px;
+          box-shadow: none;
+          font-family: ${config.font.name};
+          font-size: 12px;
+          font-weight: bold;
         }
 
         .control-center .notification-row:focus,
         .control-center .notification-row:hover {
-            opacity: 1;
-            background: #${base00};
+          background: #${base00};
         }
 
         .notification-row {
-            outline: none;
-            margin: 10px;
-            padding: 0;
+          margin: 10px;
+          outline: none;
+          padding: 0px;
         }
 
         .notification {
-            background: transparent;
-            padding: 0;
-            margin: 0px;
+          background: rgba(${
+          inputs.nix-colors.lib.conversions.hexToRGBString "," base01
+        },${builtins.toString config.opacity.notification});
+          margin: 0px;
+          padding: 0px;
         }
 
         .notification-content {
-            background: #${base00};
-            padding: 10px;
-            border-radius: 10px;
-            border: 2px solid #{};
-            margin: 0;
+          background: rgba(${
+          inputs.nix-colors.lib.conversions.hexToRGBString "," base01
+        },${builtins.toString config.opacity.notification});
+          border: 1px solid #${base0D};
+          margin: 0px;
+          padding: 10px;
         }
 
         .notification-default-action {
-            margin: 0;
-            padding: 0;
-            border-radius: 10px;
+          margin: 0px;
+          padding: 0px;
         }
 
         .close-button {
-            background: #${base08};
-            color: #${base00};
-            text-shadow: none;
-            padding: 0;
-            border-radius: 10px;
-            margin-top: 5px;
-            margin-right: 5px;
+          background: #${base08};
+          color: #${base00};
+          margin-right: 5px;
+          margin-top: 5px;
+          padding: 0px;
+          text-shadow: none;
         }
 
         .close-button:hover {
-            box-shadow: none;
-            background: #${base08};
-            transition: all 0.15s ease-in-out;
-            border: none;
+          background: #${base08};
+          border: none;
+          box-shadow: none;
+          transition: all 0.15s ease-in-out;
         }
 
         .notification-action {
-            border: 2px solid #${base0D};
-            border-top: none;
-            border-radius: 10px;
+          border-top: none;
+          border: 2px solid #${base0D};
         }
 
         .notification-default-action:hover,
         .notification-action:hover {
-            color: #${base0D};
-            background: #${base0D};
-        }
-
-        .notification-default-action {
-            border-radius: 10px;
-            margin: 0px;
+          background: #${base01};
         }
 
         .notification-default-action:not(:only-child) {
-            border-bottom-left-radius: 7px;
-            border-bottom-right-radius: 7px;
-        }
-
-        .notification-action:first-child {
-            border-bottom-left-radius: 10px;
-            background: #1b1b2b;
-        }
-
-        .notification-action:last-child {
-            border-bottom-right-radius: 10px;
-            background: #1b1b2b;
+          border-bottom-left-radius: 7px;
+          border-bottom-right-radius: 7px;
         }
 
         .inline-reply {
-            margin-top: 8px;
+          margin-top: 8px;
         }
 
         .inline-reply-entry {
-            background: #${base00};
-            color: #${base06};
-            caret-color: #${base06};
-            border: 1px solid #${base00};
-            border-radius: 10px;
+          background: #${base00};
+          border: 1px solid #${base00};
+          caret-color: #${base06};
+          color: #${base06};
         }
 
         .inline-reply-button {
-            margin-left: 4px;
-            background: #${base00};
-            border: 1px solid #${base00};
-            border-radius: 10px;
-            color: #${base06};
+          background: #${base00};
+          border: 1px solid #${base00};
+          color: #${base06};
+          margin-left: 4px;
         }
 
         .inline-reply-button:disabled {
-            background: initial;
-            color: #${base06}-disabled;
-            border: 1px solid transparent;
+          background: initial;
+          border: 1px solid transparent;
+          color: #${base04};
         }
 
         .inline-reply-button:hover {
-            background: #${base00};
+          background: #${base00};
         }
 
         .body-image {
-            margin-top: 6px;
-            border-radius: 10px;
+          margin-top: 6px;
         }
 
         .summary {
-            font-weight: 700;
-            background: transparent;
-            color: #${base06};
-            text-shadow: none;
+          color: #${base06};
+          font-weight: 700;
+          text-shadow: none;
         }
 
         .time {
-            font-weight: 700;
-            background: transparent;
-            color: #${base06};
-            text-shadow: none;
-            margin-right: 18px;
+          color: #${base06};
+          font-weight: 700;
+          margin-right: 18px;
+          text-shadow: none;
         }
 
         .body {
-            font-weight: 400;
-            background: transparent;
-            color: #${base06};
-            text-shadow: none;
+          color: #${base06};
+          font-weight: 400;
+          text-shadow: none;
         }
 
         .control-center {
-            background: #${base00};
-            border: 2px solid #${base0D};
-            border-radius: 10px;
-        }
-
-        .control-center-list {
-            background: transparent;
-        }
-
-        .control-center-list-placeholder {
-            opacity: 0.5;
-        }
-
-        .floating-notifications {
-            background: transparent;
-        }
-
-        .blank-window {
-            background: alpha(black, 0.1);
+          background: #${base00};
+          border: 2px solid #${base0D};
         }
 
         .widget-title {
-            color: #${base0D};
-            background: #${base00};
-            padding: 5px 10px;
-            margin: 10px 10px 5px 10px;
-            border-radius: 10px;
+          background: #${base01};
+          color: #${base06};
+          margin: 10px 10px 5px 10px;
+          padding: 5px 10px;
         }
 
         .widget-title>button {
-            color: #${base06};
-            text-shadow: none;
-            background: #${base00};
-            box-shadow: none;
-            border-radius: 10px;
+          background: #${base00};
+          box-shadow: none;
+          color: #${base06};
+          text-shadow: none;
         }
 
         .widget-title>button:hover {
-            background: #${base08};
-            color: #${base00};
+          background: #${base08};
+          color: #${base00};
         }
 
         .widget-dnd {
-            background: #${base00};
-            padding: 5px 10px;
-            margin: 5px 10px 10px 10px;
-            border-radius: 10px;
-            color: #${base0D};
+          background: #${base01};
+          color: #${base06};
+          margin: 5px 10px 10px 10px;
+          padding: 5px 10px;
         }
 
         .widget-dnd>switch {
-            border-radius: 10px;
-            background: #${base0D};
+          background: #${base0D};
         }
 
         .widget-dnd>switch:checked {
-            background: #${base08};
-            border: 1px solid #${base08};
+          background: #${base08};
+          border: 1px solid #${base08};
         }
 
         .widget-dnd>switch slider {
-            background: #${base00};
-            border-radius: 10px;
+          background: #${base00};
         }
 
         .widget-dnd>switch:checked slider {
-            background: #${base00};
-            border-radius: 10px;
+          background: #${base00};
         }
 
         .widget-label {
-            margin: 10px 10px 5px 10px;
+          margin: 10px 10px 5px 10px;
         }
 
         .widget-label>label {
-            color: #${base06};
+          color: #${base06};
         }
 
         .widget-mpris {
-            color: #${base06};
-            background: #${base00};
-            padding: 10px;
-            margin: 10px;
-            border-radius: 10px;
-        }
-
-        .widget-mpris>box>button {
-            border-radius: 10px;
+          background: #${base00};
+          color: #${base06};
+          margin: 10px;
+          padding: 10px;
         }
 
         .widget-mpris-player {
-            padding: 5px;
+          padding: 5px;
         }
 
         .widget-mpris-title {
-            font-weight: 700;
-        }
-
-        .widget-menubar>box>.menu-button-bar>button {
-            border: none;
-            background: transparent;
+          font-weight: 700;
         }
       '';
     };

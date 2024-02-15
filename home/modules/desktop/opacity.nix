@@ -21,5 +21,10 @@ in {
       default = 0.3;
       type = types.numbers.between 0 1;
     };
+
+    notification = mkOption {
+      default = 0.5;
+      type = types.numbers.between 0 1;
+    };
   };
 }
