@@ -182,7 +182,7 @@
         }
 
         .widget-title {
-          background: #${base01};
+          background: #${base02};
           color: #${base06};
           margin: 10px 10px 5px 10px;
           padding: 5px 10px;
@@ -200,27 +200,26 @@
         }
 
         .widget-dnd {
-          background: #${base01};
+          background: #${base02};
           color: #${base06};
           margin: 5px 10px 10px 10px;
           padding: 5px 10px;
         }
 
         .widget-dnd>switch {
-          background: #${base0C};
+          background: #${base00};
         }
 
         .widget-dnd>switch:checked {
-          background: #${base08};
-          border: 1px solid #${base08};
+          background: #${base0C};
         }
 
         .widget-dnd>switch slider {
-          background: #${base00};
+          background: #${base02};
         }
 
         .widget-dnd>switch:checked slider {
-          background: #${base00};
+          background: #${base02};
         }
 
         .widget-label {
@@ -232,7 +231,7 @@
         }
 
         .widget-mpris {
-          background: #${base01};
+          background: #${base02};
           color: #${base06};
           margin: 10px;
           padding: 10px 10px 0px 10px;
