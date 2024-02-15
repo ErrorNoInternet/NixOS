@@ -54,7 +54,7 @@
           bashls.enable = true;
           clangd = {
             enable = true;
-            installLanguageServer = false;
+            package = false;
           };
           cssls.enable = true;
           gopls.enable = true;
@@ -67,7 +67,7 @@
             enable = true;
             installCargo = false;
             installRustc = false;
-            installLanguageServer = false;
+            package = false;
 
             settings.checkOnSave = false;
           };
