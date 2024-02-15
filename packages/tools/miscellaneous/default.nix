@@ -8,7 +8,7 @@
     packages = with pkgs; {
       attic = callPackage ./attic {inherit inputs';};
       hwatch = callPackage ./hwatch {};
-      passgen = callPackage ./passgen.nix {};
+      passgen = callPackage ./passgen {};
       savehw = callPackage ./savehw.nix {};
       tbw = callPackage ./tbw.nix {};
 
