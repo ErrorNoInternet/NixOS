@@ -9,6 +9,7 @@
     ./obs-studio.nix
     ./spotify.nix
     ./spotify.nix
+    ./terminals
     ./thunderbird.nix
     ./virt-manager.nix
   ];
