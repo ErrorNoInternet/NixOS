@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  lib,
+  pkgs,
+  ...
+}: {
   programs.fish = {
     plugins = with pkgs.fishPlugins; [
       {
@@ -6,12 +10,17 @@
         inherit (tide) src;
       }
     ];
-    shellInit = ''
-      set -U fish_greeting
-    '';
     interactiveShellInit = ''
-      if not set -q TIDE_CONFIGURED
-        set -U TIDE_CONFIGURED 0
+      if not set -q THEME_CONFIGURED
+        set -U THEME_CONFIGURED 1
+
+        set -Ux MANPAGER "sh -c 'col -bx | ${lib.getExe pkgs.bat} -l man -p'"
+        set -Ux MANROFFOPT "-c"
+
+        set -U fish_greeting
+        set -U fish_cursor_default line
+        set -U fish_color_autosuggestion brblack
+
         tide configure --auto \
           --style=Lean \
           --prompt_colors='16 colors' \
@@ -20,20 +29,14 @@
           --prompt_spacing=Sparse \
           --icons='Few icons' \
           --transient=No
-      end
 
-      set fish_cursor_default line
-      set fish_color_autosuggestion brblack
+        set -U tide_color_truncated_dirs blue
+        set -U tide_pwd_color_truncated_dirs blue
+        set -U tide_pwd_color_dirs blue
+        set -U tide_pwd_color_anchors blue
+        set -U tide_character_color cyan
+        set -U tide_time_color cyan
 
-      set tide_color_truncated_dirs blue
-      set tide_pwd_color_truncated_dirs blue
-      set tide_pwd_color_dirs blue
-      set tide_pwd_color_anchors blue
-      set tide_character_color cyan
-      set tide_time_color cyan
-
-      if test $TIDE_CONFIGURED = 0
-        set -U TIDE_CONFIGURED 1
         tide reload
       end
     '';
