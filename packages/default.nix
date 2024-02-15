@@ -1,5 +1,6 @@
 {
   imports = [
+    ./plugins
     ./themes
     ./tools
   ];
