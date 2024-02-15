@@ -86,9 +86,13 @@
           background: rgba(${
           inputs.nix-colors.lib.conversions.hexToRGBString "," base01
         },${builtins.toString config.opacity.notification});
-          border: 1px solid #${base0D};
+          border: 1px solid #${base0C};
           margin: 0px;
           padding: 10px;
+        }
+
+        .critical {
+          background: #${base01};
         }
 
         .notification-default-action {
@@ -114,17 +118,12 @@
 
         .notification-action {
           border-top: none;
-          border: 2px solid #${base0D};
+          border: 0px;
         }
 
         .notification-default-action:hover,
         .notification-action:hover {
           background: #${base01};
-        }
-
-        .notification-default-action:not(:only-child) {
-          border-bottom-left-radius: 7px;
-          border-bottom-right-radius: 7px;
         }
 
         .inline-reply {
@@ -180,7 +179,7 @@
 
         .control-center {
           background: #${base00};
-          border: 2px solid #${base0D};
+          border: 2px solid #${base0C};
         }
 
         .widget-title {
@@ -192,7 +191,6 @@
 
         .widget-title>button {
           background: #${base00};
-          box-shadow: none;
           color: #${base06};
           text-shadow: none;
         }
@@ -210,7 +208,7 @@
         }
 
         .widget-dnd>switch {
-          background: #${base0D};
+          background: #${base0C};
         }
 
         .widget-dnd>switch:checked {
@@ -235,7 +233,7 @@
         }
 
         .widget-mpris {
-          background: #${base00};
+          background: #${base01};
           color: #${base06};
           margin: 10px;
           padding: 10px;
