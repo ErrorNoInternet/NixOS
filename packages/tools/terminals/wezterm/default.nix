@@ -2,5 +2,5 @@
 inputs'.wezterm.packages.default.overrideAttrs (oldAttrs: {
   patches =
     (oldAttrs.patches or [])
-    ++ [./optimized-build.patch];
+    ++ [./optimize-build.patch];
 })

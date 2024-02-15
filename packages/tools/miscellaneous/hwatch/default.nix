@@ -3,7 +3,7 @@ hwatch.overrideAttrs (oldAttrs: {
   patches =
     (oldAttrs.patches or [])
     ++ [
-      ./optimized-build.patch
+      ./optimize-build.patch
       ./precise-intervals.patch
       ./remove-help-banner.patch
     ];
