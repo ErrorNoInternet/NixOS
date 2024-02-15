@@ -7,7 +7,6 @@
   programs.fish.shellAliases = {
     cm = "${pkgs.cmatrix}/bin/cmatrix -C blue";
     drg = "${lib.getExe pkgs.ripdrag} -xa";
-    f = "${lib.getExe pkgs.fastfetch}";
     grep = "grep --color";
     ip = "ip --color";
     l = "ls -l";
@@ -15,13 +14,15 @@
     ll = "ls -l";
     ls = "${lib.getExe pkgs.eza} --git --icons";
     lsimg = "${lib.getExe pkgs.timg} -ps --grid=6 --upscale --title --center --frames=1";
-    mf = "${lib.getExe pkgs.fastfetch} -c ${config.xdg.configHome}/fastfetch/minimal.jsonc";
-    mfd = "${lib.getExe pkgs.fastfetch} -c ${config.xdg.configHome}/fastfetch/nix-on-droid_minimal.jsonc";
     py = "python3";
     q = "exit";
     qq = "exit";
     scc = "${pkgs.scc}/bin/scc --no-cocomo";
     timg = "${lib.getExe pkgs.timg} -ps";
+
+    f = "fastfetch";
+    mf = "fastfetch -c ${config.xdg.configHome}/fastfetch/minimal.jsonc";
+    mfd = "fastfetch -c ${config.xdg.configHome}/fastfetch/nix-on-droid_minimal.jsonc";
 
     B = "${lib.getExe pkgs.nh} os boot . -v";
     Ba = "B -a";
