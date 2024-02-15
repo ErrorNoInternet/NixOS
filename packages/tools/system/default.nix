@@ -7,7 +7,7 @@
   }: {
     packages = with pkgs; {
       btrfs-progs = callPackage ./btrfs-progs {};
-      nix = callPackage ./nix {inherit inputs';};
+      nix = callPackage ./nix.nix {inherit inputs';};
     };
   };
 }
