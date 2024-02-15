@@ -33,6 +33,7 @@
         "$mod, L, exec, swaylock --grace 0 --fade-in 1"
         "$mod, A, exec, scratchpad"
         "$mod SHIFT, A, exec, scratchpad -g"
+        "$mod, O, exec, swaync-client -t"
         "$mod, RETURN, exec, ${config.terminal.command}"
         "$mod SHIFT, RETURN, exec, [float; center] ${config.terminal.command}"
 
