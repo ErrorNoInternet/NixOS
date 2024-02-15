@@ -50,6 +50,7 @@
       perSystem = {
         inputs',
         pkgs,
+        self',
         ...
       }: {
         formatter = pkgs.alejandra;
@@ -63,7 +64,8 @@
             delta
             git
             inputs'.agenix.packages.default
-            neovim
+            self'.packages.neovim
+            self'.packages.nix
             statix
           ];
         };
