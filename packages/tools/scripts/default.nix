@@ -7,7 +7,6 @@
       passgen = callPackage ./passgen.nix {};
       pavolume = callPackage ./pavolume.nix {};
       savehw = callPackage ./savehw.nix {};
-      sddm-theme-corners = callPackage ./sddm-theme-corners.nix {};
       tbw = callPackage ./tbw.nix {};
     };
   };

@@ -1,5 +1,8 @@
-{pkgs}:
-pkgs.writeShellApplication {
+{
+  pkgs,
+  writeShellApplication,
+}:
+writeShellApplication {
   name = "savehw";
   runtimeInputs = with pkgs; [
     dig
