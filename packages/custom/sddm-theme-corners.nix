@@ -3,7 +3,7 @@
   fetchFromGitHub,
 }:
 stdenv.mkDerivation {
-  name = "sddm-theme";
+  name = "sddm-theme-corners";
 
   src = fetchFromGitHub {
     owner = "aczw";

@@ -91,7 +91,7 @@
         lightdm.enable = false;
         sddm = {
           enable = true;
-          theme = "${self'.packages.sddm-theme}";
+          theme = "${self'.packages.sddm-theme-corners}";
         };
       };
     };
