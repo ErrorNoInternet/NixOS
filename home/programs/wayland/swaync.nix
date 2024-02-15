@@ -160,13 +160,11 @@
 
         .summary {
           color: #${base06};
-          font-weight: 700;
           text-shadow: none;
         }
 
         .time {
           color: #${base06};
-          font-weight: 700;
           margin-right: 18px;
           text-shadow: none;
         }
@@ -180,6 +178,7 @@
         .control-center {
           background: #${base00};
           border: 2px solid #${base0C};
+          box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
         }
 
         .widget-title {
@@ -236,15 +235,7 @@
           background: #${base01};
           color: #${base06};
           margin: 10px;
-          padding: 10px;
-        }
-
-        .widget-mpris-player {
-          padding: 5px;
-        }
-
-        .widget-mpris-title {
-          font-weight: 700;
+          padding: 10px 10px 0px 10px;
         }
       '';
     };
