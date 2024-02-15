@@ -8,6 +8,7 @@
     "hyprctl setcursor ${config.cursor.name} ${builtins.toString config.cursor.size}"
 
     "sleep 0.5 && waybar"
+    "swaync"
     (lib.mkIf config.wallpaper.enable "hyprpaper")
 
     "${lib.getExe pkgs.hyprland-autoname-workspaces}"
