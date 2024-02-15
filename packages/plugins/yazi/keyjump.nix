@@ -2,6 +2,6 @@
 fetchFromGitHub {
   owner = "DreamMaoMao";
   repo = "keyjump.yazi";
-  rev = "478b2b5014dd89c99eb19b6d8d9273ee4620d3d2";
-  hash = "sha256-ilEnjd066Zk2RDoOCBZcz4zbnyC90q67+W2zHy8hcPo=";
+  rev = "7b9d06f9268ddb3f2f06957e472eb8fc6ebf7d0e";
+  hash = "sha256-dg6VmJdR9Subp1oIwXjReUciyK1VZDuYpcVU4hEuZfo=";
 }
