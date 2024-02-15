@@ -1,8 +1,4 @@
-{
-  lib,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   programs.fish = {
     plugins = with pkgs.fishPlugins; [
       {
@@ -14,7 +10,7 @@
       if not set -q THEME_CONFIGURED
         set -U THEME_CONFIGURED 1
 
-        set -Ux MANPAGER "sh -c 'col -bx | ${lib.getExe pkgs.bat} -l man -p'"
+        set -Ux MANPAGER "less -R --use-color -Dd+c -Du+b"
         set -Ux MANROFFOPT "-c"
 
         set -U fish_greeting
