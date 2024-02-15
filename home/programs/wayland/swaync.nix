@@ -16,7 +16,7 @@
 
         fit-to-screen = true;
         hide-on-action = true;
-        hide-on-clear = false;
+        hide-on-clear = true;
         script-fail-notify = true;
         transition-time = 200;
 
