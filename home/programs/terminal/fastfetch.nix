@@ -7,7 +7,9 @@
   config = lib.mkIf config.home.programs.terminal.fish.enable {
     home = {
       packages = [pkgs.fastfetch];
-      file = {
+      file = let
+        commands.nix-store = "${pkgs.nix}/bin/nix-store";
+      in {
         "${config.xdg.configHome}/fastfetch/minimal.jsonc".text = ''
           {
             "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
@@ -40,7 +42,7 @@
               {
                 "type": "command",
                 "key": "󰆧 packages",
-                "text": "(nix-store --query --requisites /run/current-system | wc -l | tr -d '\n') && echo ' (nix; /run/current-system)'"
+                "text": "(${commands.nix-store} --query --requisites /run/current-system | wc -l | tr -d '\n') && echo ' (nix; /run/current-system)'"
               },
               {
                 "type": "memory",
@@ -91,7 +93,7 @@
               {
                 "type": "command",
                 "key": "󰆧 packages",
-                "text": "(nix-store --query --requisites ~/.nix-profile | wc -l | tr -d '\n') && echo ' (nix; ~/.nix-profile)'"
+                "text": "(${commands.nix-store} --query --requisites ~/.nix-profile | wc -l | tr -d '\n') && echo ' (nix; ~/.nix-profile)'"
               },
               {
                 "type": "memory",
