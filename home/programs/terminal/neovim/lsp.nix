@@ -54,7 +54,7 @@
           bashls.enable = true;
           clangd = {
             enable = true;
-            installLanguageServer = false;
+            package = null;
           };
           cssls.enable = true;
           gopls.enable = true;
@@ -65,9 +65,9 @@
           pyright.enable = true;
           rust-analyzer = {
             enable = true;
+            package = null;
             installCargo = false;
             installRustc = false;
-            installLanguageServer = false;
 
             settings.checkOnSave = false;
           };
