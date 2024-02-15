@@ -9,6 +9,7 @@
     gbd = "git branch -d";
     gbD = "git branch -D";
     gbl = "git blame";
+    gbr = "git branch -r";
     gc = "git commit -m";
     gca = "git commit --amend";
     gcf = "git clean -f .";
