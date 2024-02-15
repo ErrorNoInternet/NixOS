@@ -1,34 +1,18 @@
 {
-  programs.fish.shellAbbrs = {
-    "/insecure" = {
+  programs.fish.shellAbbrs = let
+    anywhere = expansion: {
+      inherit expansion;
       position = "anywhere";
-      expansion = "NIXPKGS_ALLOW_INSECURE=1";
     };
-    "/unfree" = {
-      position = "anywhere";
-      expansion = "NIXPKGS_ALLOW_UNFREE=1";
-    };
+  in {
+    "/insecure" = anywhere "NIXPKGS_ALLOW_INSECURE=1";
+    "/unfree" = anywhere "NIXPKGS_ALLOW_UNFREE=1";
 
-    "/es" = {
-      position = "anywhere";
-      expansion = "--extra-substituters";
-    };
-    "/etpk" = {
-      position = "anywhere";
-      expansion = "--extra-trusted-public-keys";
-    };
-    "/s" = {
-      position = "anywhere";
-      expansion = "--substituters";
-    };
-    "/tpk" = {
-      position = "anywhere";
-      expansion = "--trusted-public-keys";
-    };
-    "/ncnt" = {
-      position = "anywhere";
-      expansion = "--narinfo-cache-negative-ttl 0";
-    };
+    "/es" = anywhere "--extra-substituters";
+    "/etpk" = anywhere "--extra-trusted-public-keys";
+    "/s" = anywhere "--substituters";
+    "/tpk" = anywhere "--trusted-public-keys";
+    "/ncnt" = anywhere "--narinfo-cache-negative-ttl 0";
 
     nb = "nix build";
     nd = "nix develop -c fish";
