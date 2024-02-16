@@ -35,7 +35,7 @@
               "," (map (v: v - 1) (inputs.nix-colors.lib.conversions.hexToRGB base00))))
         }";
       in ''
-        background            real_rgb:${base00Variation}
+        background            base10_rgb:${base00Variation}
         cursor                #${base04}
         foreground            #${base04}
         selection_background  #${base0A}

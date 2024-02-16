@@ -6,7 +6,7 @@ index 5526ce563..d4a965063 100644
      return None
  
  
-+def parse_real_rgb(spec: str) -> Optional[Color]:
++def parse_base10_rgb(spec: str) -> Optional[Color]:
 +    colors = spec.split(',')
 +    if len(colors) == 3:
 +        return Color(*map(int, colors))
@@ -20,8 +20,8 @@ index 5526ce563..d4a965063 100644
              val = parse_sharp(raw[1:])
          elif raw.startswith('rgb:'):
              val = parse_rgb(raw[4:])
-+        elif raw.startswith('real_rgb:'):
-+            val = parse_real_rgb(raw[9:])
++        elif raw.startswith('base10_rgb:'):
++            val = parse_base10_rgb(raw[11:])
      if val is None and validate:
          raise ValueError(f'Invalid color name: {raw}')
      return val
