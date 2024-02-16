@@ -76,7 +76,7 @@
 
     function glfzf -d "use fzf to preview git commits"
       git log --graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" $argv | \
-        ${lib.getExe pkgs.fzf} --ansi --no-sort --reverse --tiebreak=index --preview-window=right:60% \
+        ${lib.getExe pkgs.fzf} --ansi --no-sort --reverse --tiebreak=index --scroll-off=5 --preview-window=right:60% \
           --preview 'function preview; set commit (echo $argv | grep -o "[a-f0-9]\{7\}"); git show --color=always $commit | ${lib.getExe pkgs.delta} --width=(tput cols); end; preview {}' \
           --bind "j:down,k:up,alt-j:preview-down,alt-k:preview-up,shift-down:preview-page-down,shift-up:preview-page-up,q:abort,ctrl-m:execute:
                   function show; set commit (echo \$argv | grep -o '[a-f0-9]\{7\}'); git show --color=always \$commit | ${lib.getExe pkgs.delta} --width=(tput cols) | less -R; end; show {}"
