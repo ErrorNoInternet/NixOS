@@ -61,13 +61,14 @@ in {
           clear
         end
 
-        if test (ps | grep fish | wc -l) -le 1
+        if test $SHLVL -le 2
           if test -e /android/system/bin/linker64
             mfd
           else
-            if test (tmux list-windows 2> /dev/null | wc -l) -le 1 &&
-               test (tmux list-panes 2> /dev/null | wc -l) -le 1
-              mf
+            if test (tmux list-windows 2> /dev/null | count) -le 1
+              if test (tmux list-panes 2> /dev/null | count) -le 1
+                mf
+              end
             end
           end
         end
