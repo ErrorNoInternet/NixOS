@@ -3,7 +3,9 @@
   lib,
   modulesPath,
   ...
-}: {
+}: let
+  mountPath = "/dev/mapper/luks-NixBtw";
+in {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
@@ -15,7 +17,7 @@
       availableKernelModules = ["xhci_pci" "ehci_pci" "ahci" "usb_storage" "sd_mod" "sr_mod" "rtsx_pci_sdmmc"];
       kernelModules = [];
 
-      luks.devices."luks-NixBtw" = {
+      luks.devices."${mountPath}" = {
         device = "/dev/disk/by-uuid/d3f64a12-e62f-43e2-8351-417602765f32";
         allowDiscards = true;
       };
@@ -24,7 +26,7 @@
 
   fileSystems = let
     defaultOptions = ["ssd_spread"];
-    device = "/dev/disk/by-uuid/47502804-f00d-4f0c-b63f-bd7971039dbb";
+    device = mountPath;
     fsType = "btrfs";
   in {
     "/" = {
