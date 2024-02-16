@@ -84,7 +84,7 @@
 
 
     function md
-      read -P "[md] password for luks: " -s LUKS_PASSWORD
+      read -P "[luks] password for btank: " -s LUKS_PASSWORD
 
       echo "$LUKS_PASSWORD" | sudo cryptsetup luksOpen /dev/disk/by-uuid/9cbb87fd-6e5a-45b3-88ee-22d369738be5 luks-btank1
       and echo "$LUKS_PASSWORD" | sudo cryptsetup luksOpen /dev/disk/by-uuid/5e2dcefa-ad4c-43ec-b58c-5660051a4010 luks-btank2
