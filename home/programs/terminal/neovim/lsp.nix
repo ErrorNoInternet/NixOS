@@ -71,6 +71,7 @@
 
             settings.checkOnSave = false;
           };
+          statix.enable = true;
           yamlls.enable = true;
           zls.enable = true;
         };
