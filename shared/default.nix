@@ -62,6 +62,7 @@
 
   environment.systemPackages = with pkgs; [
     curl
+    dig
     file
     git
     killall
