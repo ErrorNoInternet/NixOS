@@ -23,7 +23,7 @@ in {
       verbose = true;
       pinentryFlavor = "curses";
       defaultCacheTtl = 86400;
-      maxCacheTtl = 86400 * 3;
+      maxCacheTtl = 86400;
     };
     home.file.".gnupg/dirmngr.conf".text = ''
       standard-resolver
