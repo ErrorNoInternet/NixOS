@@ -41,6 +41,7 @@
     flake-parts.lib.mkFlake {inherit inputs;} {
       imports = [
         ./droid
+        ./helpers
         ./packages
         ./server
         ./workstation

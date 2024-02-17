@@ -4,23 +4,7 @@
   withSystem,
   ...
 }: let
-  mkSystem = name: system:
-    withSystem system ({
-      inputs',
-      self',
-      ...
-    }:
-      inputs.nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs' inputs self' self;};
-        modules = [
-          ./common.nix
-          ./hosts/${name}
-          ./hosts/${name}/hardware.nix
-          {host = {inherit name system;};}
-        ];
-      });
-
-  mkHmSystem = name: system:
+  mkHmServer = name: system:
     withSystem system ({
       inputs',
       self',
@@ -52,8 +36,8 @@
         ];
       });
 in {
-  flake.nixosConfigurations = {
-    Crix = mkSystem "Crix" "x86_64-linux";
-    Pix = mkHmSystem "Pix" "aarch64-linux";
+  flake.nixosConfigurations = with self.helpers.systems; {
+    Crix = mkServer "Crix" "x86_64-linux";
+    Pix = mkHmServer "Pix" "aarch64-linux";
   };
 }
