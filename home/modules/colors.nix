@@ -4,19 +4,12 @@
   lib,
   ...
 }: let
-  inherit (lib) mkOption types;
+  inherit (lib) mkOption;
 in {
   imports = [inputs.nix-colors.homeManagerModules.default];
 
-  options.colors = {
-    scheme = mkOption {
-      default = inputs.nix-colors.colorSchemes.nord;
-    };
-
-    schemeName = mkOption {
-      default = "Nord";
-      type = types.str;
-    };
+  options.colors.scheme = mkOption {
+    default = inputs.nix-colors.colorSchemes.catppuccin-mocha;
   };
 
   config.colorScheme = config.colors.scheme;

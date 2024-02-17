@@ -8,7 +8,7 @@
       enable = true;
 
       settings = {
-        color_theme = "${lib.strings.toLower config.colors.schemeName}";
+        color_theme = "TTY";
         net_iface = "wlp5s0";
         proc_sorting = "cpu direct";
         show_gpu_info = "Off";

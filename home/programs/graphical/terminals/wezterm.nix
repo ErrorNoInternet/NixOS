@@ -42,7 +42,7 @@ in {
 
           font = wezterm.font "${cfg.font}",
           font_size = 9,
-          color_scheme = "${cfg.colorScheme} (base16)",
+          color_scheme = "Mocha (base16)",
 
           window_padding = {
             top = "0.5cell",

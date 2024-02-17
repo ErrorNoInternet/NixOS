@@ -22,11 +22,11 @@
       echo " "
     '';
 
-    colorschemes.nord = {
+    colorschemes.catppuccin = {
       enable = true;
-      disableBackground = true;
-      borders = true;
-      italic = false;
+      disableItalic = true;
+      transparentBackground = true;
+      flavour = "mocha";
     };
 
     plugins = {

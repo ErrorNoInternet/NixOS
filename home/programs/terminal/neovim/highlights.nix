@@ -8,17 +8,7 @@
         bold = true;
       };
 
-      BufferCurrentSign = {
-        fg = "#${base0D}";
-        bg = "#${base01}";
-      };
-      BufferInactiveSign = {
-        fg = "#${base03}";
-        bg = "#${base00}";
-      };
-
       NvimTreeCursorLine.bg = "#${base03}";
-      NvimTreeNormal.bg = "#${base01}";
       NvimTreeRootFolder.fg = "#${base0C}";
 
       HighlightUndo = {

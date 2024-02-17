@@ -19,8 +19,8 @@ in {
 
     iconTheme = mkOption {
       default = {
-        name = "Colloid-${lib.strings.toLower config.colors.schemeName}-dark";
-        package = pkgs.colloid-icon-theme.override {schemeVariants = ["${lib.strings.toLower config.colors.schemeName}"];};
+        name = "Colloid-nord-dark";
+        package = pkgs.colloid-icon-theme.override {schemeVariants = ["nord"];};
       };
     };
   };

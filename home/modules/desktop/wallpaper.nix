@@ -6,7 +6,7 @@
   ...
 }: let
   cfg = config.wallpaper;
-  inherit (lib) mkEnableOption mkOption mkIf types strings;
+  inherit (lib) mkEnableOption mkOption mkIf types;
 
   wallpapersPath = "~/pictures/wallpapers";
 in {
@@ -14,7 +14,7 @@ in {
     enable = mkEnableOption "";
 
     path = mkOption {
-      default = "${strings.toLower config.colors.schemeName}/1.png";
+      default = "nord/3.png";
       type = types.str;
     };
   };

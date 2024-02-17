@@ -20,7 +20,7 @@ in {
       delta = {
         enable = true;
         options = {
-          syntax-theme = "Nord";
+          syntax-theme = "ansi";
           side-by-side = true;
           hunk-header-decoration-style = "ul";
           line-numbers-minus-style = "red";

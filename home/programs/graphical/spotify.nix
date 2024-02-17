@@ -17,7 +17,7 @@ in {
   config = mkIf cfg.enable {
     programs.spicetify = {
       enable = true;
-      theme = spicePkgs.themes.Nord;
+      theme = spicePkgs.themes.catppuccin;
 
       enabledExtensions = with spicePkgs.extensions; [
         adblock
