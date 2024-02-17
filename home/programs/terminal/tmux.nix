@@ -27,7 +27,22 @@
         set-hook -g after-kill-pane       'if "[ #{session_windows} -lt 2 ]" "set status off"'
         set-hook -g pane-exited           'if "[ #{session_windows} -lt 2 ]" "set status off"'
         set-hook -g window-layout-changed 'if "[ #{session_windows} -lt 2 ]" "set status off"'
+
         set -g @catppuccin_flavour 'mocha'
+        set -g @catppuccin_status_connect_separator "no"
+        set -g @catppuccin_status_fill "icon"
+        set -g @catppuccin_status_left_separator  " "
+        set -g @catppuccin_status_modules "host session"
+        set -g @catppuccin_status_right_separator ""
+        set -g @catppuccin_status_right_separator_inverse "no"
+        set -g @catppuccin_window_current_fill "number"
+        set -g @catppuccin_window_current_text "#W"
+        set -g @catppuccin_window_default_fill "number"
+        set -g @catppuccin_window_default_text "#W"
+        set -g @catppuccin_window_left_separator ""
+        set -g @catppuccin_window_middle_separator " █"
+        set -g @catppuccin_window_number_position "right"
+        set -g @catppuccin_window_right_separator " "
 
         set -g allow-passthrough on
         set -g focus-events off
