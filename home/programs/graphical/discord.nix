@@ -26,7 +26,7 @@ in {
           autoUpdateNotification = true;
           useQuickCss = false;
           themeLinks = [
-            "https://raw.githubusercontent.com/orblazer/discord-nordic/master/nordic.vencord.css"
+            "https://catppuccin.github.io/discord/dist/catppuccin-mocha.theme.css"
           ];
           enableReactDevtools = false;
           frameless = false;
