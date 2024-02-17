@@ -60,7 +60,7 @@
 
     function storesolve -d "recursively find the nix store path of a file"
       argparse "d/directory" -- $argv
-      
+
       for argi in (seq 1 (count $argv))
         set path (readlink -f "$argv[$argi]")
         if ! test -e "$path"
