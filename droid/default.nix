@@ -4,7 +4,7 @@
   withSystem,
   ...
 }: let
-  mkSystem = name: system:
+  mkDroid = name: system:
     withSystem system ({
       inputs',
       self',
@@ -34,6 +34,6 @@
       });
 in {
   flake.nixOnDroidConfigurations = {
-    ErrorNoPhone = mkSystem "ErrorNoPhone" "aarch64-linux";
+    ErrorNoPhone = mkDroid "ErrorNoPhone" "aarch64-linux";
   };
 }
