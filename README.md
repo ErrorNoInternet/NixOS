@@ -15,9 +15,9 @@ Nix flake for my workstations, servers, home-manager configuration, and a lot mo
 
 ## 🖥️ Screenshots
 
-![Screenshot 0](./screenshots/screenshot0.png)
-![Screenshot 1](./screenshots/screenshot1.png)
-![Screenshot 2](./screenshots/screenshot2.png)
+![Screenshot 0](./screenshots/0.png)
+![Screenshot 1](./screenshots/1.png)
+![Screenshot 2](./screenshots/2.png)
 
 ## 💾 Inspiration
 
