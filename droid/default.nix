@@ -15,7 +15,7 @@
         modules = [
           ./common.nix
           ./hosts/${name}.nix
-          {environment.sessionVariables.HOSTNAME = "${name}";}
+          {environment.sessionVariables.HOSTNAME = name;}
 
           {
             home-manager = {

@@ -40,7 +40,7 @@
           lldb = ["rust" "c" "cpp" "zig"];
         in
           builtins.listToAttrs (map (language: {
-              name = "${language}";
+              name = language;
               value = [
                 {
                   name = "Launch";

@@ -23,5 +23,5 @@
 
   mkSpecialisation = name: configuration:
     {inherit configuration;}
-    // {configuration.environment.etc."specialisation".text = "${name}";};
+    // {configuration.environment.etc.specialisation.text = name;};
 }
