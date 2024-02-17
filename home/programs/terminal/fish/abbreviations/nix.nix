@@ -17,6 +17,7 @@
     "/st" = anywhere "--show-trace";
     "/tpk" = anywhere "--trusted-public-keys";
 
+    n = "nix";
     nb = "nix build";
     nd = "nix develop -c fish";
     nr = "nix run";
