@@ -59,15 +59,24 @@
     end
 
     function storesolve -d "recursively find the nix store path of a file"
-      for argi in (seq 1 $(count $argv))
-        set path $(readlink -f "$argv[$argi]")
-        if [ ! -e "$path" ]
-          set path $(which "$argv[$argi]")
+      argparse "d/directory" -- $argv
+      
+      for argi in (seq 1 (count $argv))
+        set path (readlink -f "$argv[$argi]")
+        if ! test -e "$path"
+          set path (which "$argv[$argi]")
         end
 
-        while [ -L "$path" ]
-          set path $(readlink -f "$path")
+        while test -L "$path"
+          set path (readlink -f "$path")
         end
+
+        if set -q _flag_directory
+          while test (dirname "$path") != "/nix/store"
+            set path (dirname "$path")
+          end
+        end
+
         echo "$path"
       end
     end
