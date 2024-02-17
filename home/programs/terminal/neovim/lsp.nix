@@ -1,5 +1,7 @@
 {pkgs, ...}: {
   programs.nixvim = {
+    filetype.pattern.".*/hyprland%.conf" = "hyprlang";
+
     plugins = {
       treesitter = {
         enable = true;
