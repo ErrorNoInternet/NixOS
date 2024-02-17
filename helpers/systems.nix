@@ -20,4 +20,8 @@
       });
   mkWorkstation = mkSystem "workstation";
   mkServer = mkSystem "server";
+
+  mkSpecialisation = name: configuration:
+    {inherit configuration;}
+    // {configuration.environment.etc."specialisation".text = "${name}";};
 }

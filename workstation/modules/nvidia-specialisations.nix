@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  self,
   ...
 }: let
   inherit (lib) mkEnableOption mkIf;
@@ -12,13 +13,13 @@ in {
     };
 
   config = mkIf config.workstation.modules.nvidia.enableSpecialisations {
-    specialisation = {
-      no-nvidia.configuration = {
+    specialisation = with self.lib.systems; {
+      no-nvidia = mkSpecialisation "no-nvidia" {
         hardware.nvidia.modesetting.enable = false;
         hardware.nvidia.prime.offload.enable = false;
       };
 
-      no-nvidia-prime.configuration = {
+      no-nvidia-prime = mkSpecialisation "no-nvidia-prime" {
         nixpkgs.config = {
           allowUnfree = true;
           cudaSupport = true;
