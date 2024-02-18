@@ -41,7 +41,7 @@
         bg = "#${base03}";
       };
       "@variable".bold = false;
-      "@property".fg = "${base0D}";
+      "@property".fg = "#${base0D}";
       Function.bold = true;
       Macro = {
         fg = "#${base0D}";
