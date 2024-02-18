@@ -17,6 +17,14 @@ in {
         key = "2486BFB7B1E6A4A3";
         signByDefault = true;
       };
+      extraConfig = {
+        advice.addEmptyPathspec = false;
+        core.filemode = true;
+        index.version = 4;
+        init.defaultBranch = "main";
+        pull.rebase = false;
+      };
+
       delta = {
         enable = true;
         options = {
@@ -27,13 +35,6 @@ in {
           line-numbers-plus-style = "green";
           line-numbers-zero-style = "gray";
         };
-      };
-      extraConfig = {
-        advice.addEmptyPathspec = false;
-        core.filemode = true;
-        index.version = 4;
-        init.defaultBranch = "main";
-        pull.rebase = false;
       };
     };
   };
