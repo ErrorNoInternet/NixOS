@@ -2020,11 +2020,11 @@
         "rust-overlay": "rust-overlay_4"
       },
       "locked": {
-        "lastModified": 1708167806,
-        "narHash": "sha256-ZZNyt8fk7pJeGMhaJ0+9VOuL9PY7DrkPIV7L/asFoNA=",
+        "lastModified": 1708241837,
+        "narHash": "sha256-fL8opr2uxoD74i+00up+rQ4OZPqyAgGy740of1KRBRM=",
         "owner": "sxyazi",
         "repo": "yazi",
-        "rev": "1ec9943af2c75fefdc2568883b32fa64780f8e59",
+        "rev": "6aae7683ba59671af9dc81e23413bda1abbb753e",
         "type": "github"
       },
       "original": {
