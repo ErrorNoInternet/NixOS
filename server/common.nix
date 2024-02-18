@@ -26,29 +26,26 @@
     };
   };
 
-  services = {
-    openssh.enable = true;
-    fail2ban = {
+  services.fail2ban = {
+    enable = true;
+    ignoreIP = ["192.168.0.101"];
+    maxretry = 6;
+    bantime-increment = {
       enable = true;
-      ignoreIP = ["192.168.0.101"];
-      maxretry = 6;
-      bantime-increment = {
-        enable = true;
-        multipliers = "1 2 6 12 24 72 144 288 864 2016";
-        rndtime = "5m";
+      multipliers = "1 2 6 12 24 72 144 288 864 2016";
+      rndtime = "5m";
+    };
+    jails = {
+      DEFAULT.settings = {
+        findtime = "15m";
+        # TODO: wait for upstream fix
+        bantime = lib.mkForce "5m";
       };
-      jails = {
-        DEFAULT.settings = {
-          findtime = "15m";
-          # TODO: wait for upstream fix
-          bantime = lib.mkForce "5m";
-        };
-        sshd = lib.mkForce ''
-          enabled = true
-          mode = aggressive
-          port = ${lib.strings.concatMapStringsSep "," toString config.services.openssh.ports}
-        '';
-      };
+      sshd = lib.mkForce ''
+        enabled = true
+        mode = aggressive
+        port = ${lib.strings.concatMapStringsSep "," toString config.services.openssh.ports}
+      '';
     };
   };
 
@@ -85,7 +82,4 @@
         with keys; [NixBtw ErrorNoPhone];
     };
   };
-
-  environment.etc."nixos/current".source = lib.cleanSource ./..;
-  system.stateVersion = "23.05";
 }

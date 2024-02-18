@@ -73,8 +73,6 @@
   };
 
   services = {
-    openssh.enable = true;
-
     pipewire = {
       enable = true;
       pulse.enable = true;
@@ -116,19 +114,15 @@
   '';
 
   environment = {
-    etc = {
-      "nixos/current".source = lib.cleanSource ./..;
-
-      "xdg/user-dirs.defaults".text = ''
-        DESKTOP=
-        TEMPLATES=
-        PUBLICSHARE=
-        DOCUMENTS=
-        MUSIC=
-        PICTURES=
-        VIDEOS=
-      '';
-    };
+    etc."xdg/user-dirs.defaults".text = ''
+      DESKTOP=
+      TEMPLATES=
+      PUBLICSHARE=
+      DOCUMENTS=
+      MUSIC=
+      PICTURES=
+      VIDEOS=
+    '';
 
     systemPackages = with pkgs; [
       libsForQt5.qt5.qtgraphicaleffects
@@ -187,6 +181,4 @@
         with keys; [NixBtw ErrorNoPhone];
     };
   };
-
-  system.stateVersion = "23.05";
 }

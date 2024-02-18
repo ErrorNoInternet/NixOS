@@ -11,8 +11,6 @@
   ];
 
   i18n.defaultLocale = "en_US.UTF-8";
-  services.getty.helpLine = lib.mkForce "";
-  programs.command-not-found.enable = false;
   documentation = {
     nixos.enable = false;
     man.generateCaches = false;
@@ -60,22 +58,35 @@
     "192.168.0.101" = ["NixBtw.local"];
   };
 
-  environment.systemPackages = with pkgs; [
-    curl
-    dig
-    file
-    git
-    killall
-    lsof
-    neovim
-    ripgrep
-    self'.packages.hwatch
-    sysstat
-    tmux
-    traceroute
-    unzip
-    vim
-    wget
-    zip
-  ];
+  services = {
+    getty.helpLine = lib.mkForce "";
+
+    openssh.enable = true;
+  };
+
+  programs.command-not-found.enable = false;
+  environment = {
+    systemPackages = with pkgs; [
+      curl
+      dig
+      file
+      git
+      killall
+      lsof
+      neovim
+      ripgrep
+      self'.packages.hwatch
+      sysstat
+      tmux
+      traceroute
+      unzip
+      vim
+      wget
+      zip
+    ];
+
+    etc."nixos/current".source = lib.cleanSource ./..;
+  };
+
+  system.stateVersion = "23.05";
 }
