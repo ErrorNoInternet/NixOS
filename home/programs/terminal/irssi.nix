@@ -3,13 +3,19 @@
   lib,
   ...
 }: let
+  cfg = config.home.programs.terminal.irssi;
   inherit (lib) mkEnableOption mkOption mkIf types;
 in {
   options.home.programs.terminal.irssi = {
     enable = mkEnableOption "";
 
-    nickname = mkOption {
+    nick = mkOption {
       default = "ErrorNoInternet";
+      type = types.str;
+    };
+
+    realName = mkOption {
+      default = "Ryan";
       type = types.str;
     };
 
@@ -26,14 +32,14 @@ in {
       ];
       type = types.listOf (types.submodule {
         options = {
-          nickname = mkOption {
-            default = "${config.home.programs.terminal.irssi.nickname}";
-            type = types.str;
+          nick = mkOption {
+            default = null;
+            type = with types; nullOr str;
           };
 
           name = mkOption {
-            default = "${config.address}";
-            type = types.str;
+            default = null;
+            type = with types; nullOr str;
           };
 
           address = mkOption {
@@ -49,21 +55,35 @@ in {
     };
   };
 
-  config = mkIf config.home.programs.terminal.irssi.enable {
-    programs.irssi = {
+  config = mkIf cfg.enable {
+    programs.irssi = let
+      fallback = a: b:
+        if a != null
+        then a
+        else b;
+    in {
       enable = true;
+
+      extraConfig = ''
+        settings = {
+          core = {
+            real_name = "${cfg.realName}";
+          };
+        };
+      '';
+
       networks = builtins.listToAttrs (map (network: {
-          name = "${network.name}";
+          name = fallback network.name network.address;
           value = {
-            nick = "${network.nickname}";
+            nick = fallback network.nick cfg.nick;
             server = {
-              address = "${network.address}";
-              inherit (network) port;
+              inherit (network) address port;
             };
           };
         })
-        config.home.programs.terminal.irssi.networks);
+        cfg.networks);
     };
+
     home.file.".irssi/default.theme".text = ''
       abstracts = {
         sb_background = "%4%k";
