@@ -6,6 +6,7 @@
   imports = [
     ./caches
     ./profiles
+    ./terminal.nix
   ];
 
   environment.motd = "";
