@@ -27,6 +27,7 @@
     neovim-nightly.url = "github:nix-community/neovim-nightly-overlay";
     nix-gaming.url = "github:fufexan/nix-gaming";
     nix-super.url = "github:privatevoid-net/nix-super";
+    nur.url = "github:nix-community/nur";
     overmask.url = "github:ErrorNoInternet/overmask";
     shadower.url = "github:n3oney/shadower";
     spicetify-nix.url = "github:the-argus/spicetify-nix";

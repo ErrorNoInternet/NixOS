@@ -74,7 +74,6 @@
       timg
 
       # graphical utilities
-      firefox
       gimp
       imhex
       qbittorrent

@@ -2,7 +2,6 @@
   inherit (lib) mkEnableOption mkOption types;
 in {
   imports = [
-    ./browser.nix
     ./cursor.nix
     ./font.nix
     ./gtk.nix

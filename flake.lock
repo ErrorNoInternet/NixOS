@@ -1568,6 +1568,21 @@
         "type": "gitlab"
       }
     },
+    "nur": {
+      "locked": {
+        "lastModified": 1708256679,
+        "narHash": "sha256-UaKMCACeX9hW294chgGx7gwgeNs8QQIYjKJwqxBlkpI=",
+        "owner": "nix-community",
+        "repo": "nur",
+        "rev": "9ecc159caae52d9df3486570dcaf84b1bc4f727e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "nur",
+        "type": "github"
+      }
+    },
     "overmask": {
       "inputs": {
         "flake-parts": "flake-parts_7",
@@ -1634,6 +1649,7 @@
         "nix-super": "nix-super",
         "nixpkgs": "nixpkgs_13",
         "nixvim": "nixvim",
+        "nur": "nur",
         "overmask": "overmask",
         "shadower": "shadower",
         "spicetify-nix": "spicetify-nix",
