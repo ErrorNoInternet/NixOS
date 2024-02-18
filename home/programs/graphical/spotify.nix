@@ -17,12 +17,14 @@ in {
   config = mkIf cfg.enable {
     programs.spicetify = {
       enable = true;
-      theme = spicePkgs.themes.Nord;
 
       enabledExtensions = with spicePkgs.extensions; [
         adblock
         fullAppDisplay
       ];
+
+      theme = spicePkgs.themes.text;
+      colorScheme = "Nord";
     };
   };
 }
