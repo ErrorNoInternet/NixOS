@@ -17,7 +17,7 @@
     py = "python3";
     q = "exit";
     qq = "exit";
-    scc = "${pkgs.scc}/bin/scc --no-cocomo";
+    scc = "${pkgs.scc}/bin/scc --no-cocomo --ci";
     timg = "${lib.getExe pkgs.timg} -ps";
 
     f = "fastfetch";
