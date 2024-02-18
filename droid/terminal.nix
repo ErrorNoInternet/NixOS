@@ -1,6 +1,6 @@
 {config, ...}: {
   terminal = {
-    colors = with config.home.colors.scheme.palette; {
+    colors = with config.home-manager.config.colors.scheme.palette; {
       foreground = "#${base04}";
       background = "#${base00}";
       cursor = "#${base04}";
