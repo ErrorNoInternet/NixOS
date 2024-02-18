@@ -4,7 +4,7 @@
   modulesPath,
   ...
 }: let
-  mountPath = "/dev/mapper/luks-NixBtw";
+  luksName = "luks-NixBtw";
 in {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
@@ -17,7 +17,7 @@ in {
       availableKernelModules = ["xhci_pci" "ehci_pci" "ahci" "usb_storage" "sd_mod" "sr_mod" "rtsx_pci_sdmmc"];
       kernelModules = [];
 
-      luks.devices."${mountPath}" = {
+      luks.devices."${luksName}" = {
         device = "/dev/disk/by-uuid/d3f64a12-e62f-43e2-8351-417602765f32";
         allowDiscards = true;
       };
@@ -26,7 +26,7 @@ in {
 
   fileSystems = let
     defaultOptions = ["ssd_spread"];
-    device = mountPath;
+    device = "/dev/mapper/${luksName}";
     fsType = "btrfs";
   in {
     "/" = {
