@@ -72,6 +72,7 @@
     self'.packages.hwatch
     sysstat
     tmux
+    traceroute
     unzip
     vim
     wget
