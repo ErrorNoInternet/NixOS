@@ -1,10 +1,12 @@
 {
+  inputs',
   lib,
   pkgs,
   ...
 }: {
   programs.fish.interactiveShellInit = let
     delta = "${lib.getExe pkgs.delta}";
+    hsize = "${inputs'.hsize.packages.hsize}/bin/hsize";
     less = "${lib.getExe pkgs.less}";
   in ''
     function toggle-comment
@@ -22,20 +24,6 @@
       end
       commandline -- $cmd
       commandline --cursor $cursor
-    end
-
-
-    function mkcd -d "create a directory and set cwd"
-      command mkdir $argv
-      if test $status = 0
-        switch $argv[(count $argv)]
-          case '-*'
-
-          case '*'
-            cd $argv[(count $argv)]
-            return
-        end
-      end
     end
 
 
@@ -94,6 +82,26 @@
                   function show; set commit (echo \$argv | grep -o '[a-f0-9]\{7\}'); git show --color=always \$commit | ${delta} --width=(tput cols) | ${less} -R; end; show {}"
     end
 
+    function pmem -d "display virtual memory information about a process"
+      for pid in (echo $argv | sed "s| |\n|g")
+        echo $pid
+        grep -E "Vm(RSS|Swap)" /proc/$pid/status | sed "s| ||g; s|kB||g" | ${hsize} -fk r
+      end
+    end
+
+
+    function mkcd -d "create a directory and set cwd"
+      command mkdir $argv
+      if test $status = 0
+        switch $argv[(count $argv)]
+          case '-*'
+
+          case '*'
+            cd $argv[(count $argv)]
+            return
+        end
+      end
+    end
 
     function md
       read -P "[luks] password for btank: " -s LUKS_PASSWORD
