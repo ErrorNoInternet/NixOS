@@ -21,7 +21,6 @@
 
         "$mod, D, exec, ${commands.rofi} || pkill rofi"
         "$mod, Z, exec, ${commands.rofi} || pkill rofi"
-        "$mod, Q, exec, firefox"
         "$mod, G, exec, cliphist list | rofi -dmenu | cliphist decode | wl-copy"
         "$mod, code:60, exec, rofi -show emoji"
 
@@ -35,6 +34,7 @@
         "$mod SHIFT, A, exec, scratchpad -g"
         "$mod, O, exec, swaync-client -t"
         "$mod, RETURN, exec, ${config.terminal.command}"
+        "$mod, code:51, exec, firefox"
         "$mod SHIFT, RETURN, exec, [float; center] ${config.terminal.command}"
 
         "$mod, TAB, workspace, previous"
