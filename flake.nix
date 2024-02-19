@@ -45,7 +45,7 @@
         ./workstation
       ];
 
-      systems = ["x86_64-linux" "aarch64-linux"];
+      systems = ["aarch64-linux" "x86_64-linux"];
       perSystem = {
         inputs',
         pkgs,
