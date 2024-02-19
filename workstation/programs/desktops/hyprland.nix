@@ -1,7 +1,7 @@
 {
   config,
-  inputs',
   lib,
+  self',
   ...
 }: let
   inherit (lib) mkEnableOption mkIf;
@@ -13,7 +13,7 @@ in {
 
     programs.hyprland = {
       enable = true;
-      package = inputs'.hyprland.packages.hyprland;
+      package = self'.packages.hyprland;
     };
   };
 }
