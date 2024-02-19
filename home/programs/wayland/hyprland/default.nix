@@ -1,8 +1,8 @@
 {
   config,
-  inputs',
   lib,
   osConfig,
+  self',
   ...
 }: let
   cfg = config.home.desktops.hyprland;
@@ -32,7 +32,7 @@ in {
 
     wayland.windowManager.hyprland = {
       enable = true;
-      package = inputs'.hyprland.packages.hyprland;
+      package = self'.packages.hyprland;
     };
   };
 }
