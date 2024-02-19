@@ -36,8 +36,5 @@
     progress
   ];
 
-  programs.man.generateCaches = false;
-  manual.manpages.enable = false;
-
   home.stateVersion = "23.05";
 }
