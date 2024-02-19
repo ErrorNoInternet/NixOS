@@ -22,7 +22,7 @@
 
     f = "fastfetch";
     mf = "fastfetch -c ${config.xdg.configHome}/fastfetch/minimal.jsonc";
-    mfd = "fastfetch -c ${config.xdg.configHome}/fastfetch/nix-on-droid_minimal.jsonc";
+    mfd = "fastfetch -c ${config.xdg.configHome}/fastfetch/minimal-droid.jsonc";
 
     B = "${lib.getExe pkgs.nh} os boot . -v";
     Ba = "B -a";

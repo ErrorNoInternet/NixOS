@@ -4,7 +4,7 @@
     ./btop.nix
     ./cava.nix
     ./comma.nix
-    ./fastfetch.nix
+    ./fastfetch
     ./fish
     ./fzf.nix
     ./git.nix
