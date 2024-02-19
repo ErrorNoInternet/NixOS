@@ -27,7 +27,6 @@
   home.packages = with pkgs; [
     cmatrix
     croc
-    dua
     eza
     fd
     inputs'.hsize.packages.hsize

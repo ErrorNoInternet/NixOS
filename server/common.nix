@@ -51,7 +51,6 @@
 
   environment.systemPackages = with pkgs; [
     btop
-    dua
     duf
     fd
     procs

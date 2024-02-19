@@ -66,6 +66,8 @@
     systemPackages = with pkgs; [
       curl
       dig
+      dua
+      dust
       file
       git
       killall
