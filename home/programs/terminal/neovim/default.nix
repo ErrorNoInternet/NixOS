@@ -5,6 +5,7 @@
   self',
   ...
 }: let
+  cfg = config.home.programs.terminal.neovim;
   inherit (lib) mkEnableOption mkIf;
 in {
   imports = [
@@ -26,7 +27,7 @@ in {
       default = config.home.programs.terminal.fish.enable;
     };
 
-  config = mkIf config.home.programs.terminal.neovim.enable {
+  config = mkIf cfg.enable {
     programs.nixvim = {
       enable = true;
       package = self'.packages.neovim;
