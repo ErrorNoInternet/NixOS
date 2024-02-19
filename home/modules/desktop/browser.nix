@@ -2,11 +2,13 @@
   config,
   lib,
   ...
-}: {
-  options.browser.name = lib.mkOption {
+}: let
+  inherit (lib) mkOption types;
+in {
+  options.browser.name = mkOption {
     default = "firefox";
-    type = lib.types.str;
+    type = types.str;
   };
 
-  config.home.sessionVariables.BROWSER = "${config.browser.name}";
+  config.home.sessionVariables.BROWSER = config.browser.name;
 }

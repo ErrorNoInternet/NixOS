@@ -18,5 +18,5 @@ in {
     };
   };
 
-  config.home.sessionVariables.TERMINAL = "${config.terminal.name}";
+  config.home.sessionVariables.TERMINAL = config.terminal.name;
 }

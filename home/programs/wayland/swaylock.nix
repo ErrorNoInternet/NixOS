@@ -14,7 +14,7 @@
         screenshot = true;
         effect-blur = "10x10";
 
-        font = "${config.font.name}";
+        font = config.font.name;
         font-size = 25;
 
         indicator-radius = 90;

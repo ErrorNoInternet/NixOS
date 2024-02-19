@@ -32,7 +32,7 @@
           font = "${config.font.name} 9";
           fullscreen = mkLiteral "false";
           hide-scrollbar = mkLiteral "true";
-          icon-theme = "${config.toolkits.gtk.iconTheme.name}";
+          icon-theme = config.toolkits.gtk.iconTheme.name;
           show-icons = mkLiteral "true";
           sidebar-mode = mkLiteral "false";
         };
