@@ -40,6 +40,6 @@
     grv = "git revert";
     gs = "git show";
     gst = "git status";
-    gsw = "git switch";
+    gsw = "git switch -";
   };
 }
