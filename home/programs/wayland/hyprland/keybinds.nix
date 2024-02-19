@@ -21,6 +21,7 @@
 
         "$mod, D, exec, ${commands.rofi} || pkill rofi"
         "$mod, Z, exec, ${commands.rofi} || pkill rofi"
+        "$mod, Q, exec, firefox"
         "$mod, G, exec, cliphist list | rofi -dmenu | cliphist decode | wl-copy"
         "$mod, code:60, exec, rofi -show emoji"
 
