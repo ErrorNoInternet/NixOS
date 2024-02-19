@@ -109,6 +109,7 @@
       util-linux
       virt-manager
       vulkan-tools
+      wev
       wl-screenrec
       zbar
     ];
