@@ -24,11 +24,11 @@
     mf = "fastfetch -c ${config.xdg.configHome}/fastfetch/minimal.jsonc";
     mfd = "fastfetch -c ${config.xdg.configHome}/fastfetch/minimal-droid.jsonc";
 
-    B = "${lib.getExe pkgs.nh} os boot . -v";
+    B = "${lib.getExe pkgs.nh} os boot .";
     Ba = "B -a";
-    S = "${lib.getExe pkgs.nh} os switch . -v";
+    S = "${lib.getExe pkgs.nh} os switch .";
     Sa = "S -a";
-    T = "${lib.getExe pkgs.nh} os test . -v";
+    T = "${lib.getExe pkgs.nh} os test .";
     Ta = "T -a";
 
     pwdc = "pwd | tr -d '\\n' | ${pkgs.wl-clipboard}/bin/wl-copy";
