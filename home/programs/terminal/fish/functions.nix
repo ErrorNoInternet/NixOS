@@ -103,6 +103,12 @@
       end
     end
 
+    function bak -d "create a copy (.bak) of a file"
+      for argi in (seq 1 $(count $argv))
+        cp -aiv $argv[$argi]{,.bak}
+      end
+    end
+
     function md
       read -P "[luks] password for btank: " -s LUKS_PASSWORD
 
