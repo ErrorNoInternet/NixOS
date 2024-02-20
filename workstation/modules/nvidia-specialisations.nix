@@ -19,7 +19,7 @@ in {
         hardware.nvidia.prime.offload.enable = false;
       };
 
-      no-nvidia-prime = mkSpecialisation "no-nvidia-prime" {
+      no-nvidia-optimus = mkSpecialisation "no-nvidia-optimus" {
         nixpkgs.config = {
           allowUnfree = true;
           cudaSupport = true;
