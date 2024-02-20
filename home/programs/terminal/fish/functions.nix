@@ -32,6 +32,7 @@
         set name $argv[$argi]
         mv $name $name.store
         cat $name.store > $name
+        echo $name -> $name.store
       end
     end
 
@@ -42,6 +43,7 @@
         case "*.store"
         case "*"
           mv $name.store $name
+          echo $name <- $name.store
         end
       end
     end
