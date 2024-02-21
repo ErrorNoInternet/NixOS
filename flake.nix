@@ -28,6 +28,7 @@
     nix-gaming.url = "github:fufexan/nix-gaming";
     nix-super.url = "github:privatevoid-net/nix-super";
     overmask.url = "github:ErrorNoInternet/overmask";
+    paralload.url = "github:ErrorNoInternet/Paralload";
     shadower.url = "github:n3oney/shadower";
     spicetify-nix.url = "github:the-argus/spicetify-nix";
     waybar.url = "github:Alexays/Waybar";

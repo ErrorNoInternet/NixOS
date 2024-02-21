@@ -69,6 +69,7 @@
       inputs'.nix-gaming.packages.osu-lazer-bin
       inputs'.nix-gaming.packages.wine-ge
       inputs'.overmask.packages.overmask
+      inputs'.paralload.packages.paralload
       intel-gpu-tools
       iperf
       kdiskmark
