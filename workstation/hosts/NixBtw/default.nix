@@ -5,8 +5,11 @@
   ];
   host.id = "102f58f5";
 
-  specialisation.outside.configuration = {
+  specialisation = let
     absentFileSystems = ["/mnt/pi-drive1" "/mnt/pi-drive3"];
+  in {
+    lockdown.configuration = {inherit absentFileSystems;};
+    outside.configuration = {inherit absentFileSystems;};
   };
 
   services.udev.extraRules = ''

@@ -12,6 +12,7 @@
     ./modules
     ./profiles
     ./programs
+    ./specialisations
     inputs.agenix.nixosModules.default
 
     inputs.home-manager.nixosModules.home-manager
@@ -30,13 +31,6 @@
       };
     }
   ];
-
-  specialisation.outside = self.lib.systems.mkSpecialisation "outside" {
-    caches.errornobinaries = {
-      internal = false;
-      external = true;
-    };
-  };
 
   boot = {
     loader = {

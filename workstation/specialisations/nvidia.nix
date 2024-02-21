@@ -4,15 +4,16 @@
   self,
   ...
 }: let
+  cfg = config.workstation.modules.nvidia;
   inherit (lib) mkEnableOption mkIf;
 in {
   options.workstation.modules.nvidia.enableSpecialisations =
     mkEnableOption ""
     // {
-      default = config.workstation.modules.nvidia.enable;
+      default = cfg.enable;
     };
 
-  config = mkIf config.workstation.modules.nvidia.enableSpecialisations {
+  config = mkIf cfg.enableSpecialisations {
     specialisation = with self.lib.systems; {
       no-nvidia = mkSpecialisation "no-nvidia" {
         hardware.nvidia.modesetting.enable = false;
