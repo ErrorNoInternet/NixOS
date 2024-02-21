@@ -1947,11 +1947,11 @@
         "nixpkgs": "nixpkgs_19"
       },
       "locked": {
-        "lastModified": 1708386278,
-        "narHash": "sha256-Ya3toyCa16czK0vjpTGJbiU3tOupNbprXXSwBSpsrZo=",
+        "lastModified": 1708086890,
+        "narHash": "sha256-Ig/w7deBZpC3UkkHqUTt0loaKIy+mPdAZ6+hoa7lozY=",
         "owner": "Alexays",
         "repo": "Waybar",
-        "rev": "ce5a1cf2f96db39ae05db16eba12e99b8dc48b2b",
+        "rev": "3cd311819be3af40f3aaec76917018a93d18c70f",
         "type": "github"
       },
       "original": {
