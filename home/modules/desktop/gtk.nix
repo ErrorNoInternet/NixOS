@@ -5,6 +5,7 @@
   self',
   ...
 }: let
+  cfg = config.toolkits.gtk;
   inherit (lib) mkEnableOption mkOption mkIf;
 in {
   options.toolkits.gtk = {
@@ -25,11 +26,10 @@ in {
     };
   };
 
-  config = mkIf config.toolkits.gtk.enable {
+  config = mkIf cfg.enable {
     gtk = {
       enable = true;
-      inherit (config.toolkits.gtk) theme;
-      inherit (config.toolkits.gtk) iconTheme;
+      inherit (cfg) theme iconTheme;
     };
   };
 }
