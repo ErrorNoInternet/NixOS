@@ -1,8 +1,9 @@
-({
+{
   config,
   lib,
   ...
 }: let
+  cfg = config.workstation.modules.nvidia;
   inherit (lib) mkEnableOption mkIf;
 in {
   options.workstation.modules.nvidia.enable =
@@ -11,7 +12,7 @@ in {
       default = true;
     };
 
-  config = mkIf (config.specialisation != {} && config.workstation.modules.nvidia.enable) {
+  config = mkIf cfg.enable {
     nixpkgs.config = {
       allowUnfree = true;
       cudaSupport = true;
@@ -43,4 +44,4 @@ in {
       };
     };
   };
-})
+}
