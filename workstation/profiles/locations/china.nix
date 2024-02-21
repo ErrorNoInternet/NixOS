@@ -17,14 +17,20 @@ in {
 
   config = mkIf cfg.enable {
     time.timeZone = "Asia/Shanghai";
+
     nix.settings.substituters = values.substituters;
-    services.mullvad-vpn = {
-      enable = true;
-      package = pkgs.mullvad-vpn;
-    };
     networking.extraHosts = ''
       185.199.111.133 raw.githubusercontent.com
       192.30.255.112  github.com
     '';
+
+    services = {
+      astrillvpn.enable = true;
+
+      mullvad-vpn = {
+        enable = true;
+        package = pkgs.mullvad-vpn;
+      };
+    };
   };
 }
