@@ -5,6 +5,8 @@
   ...
 }: {
   programs.fish.shellAliases = {
+    H = "exec Hyprland";
+
     cm = "${pkgs.cmatrix}/bin/cmatrix -C blue";
     drg = "${lib.getExe pkgs.ripdrag} -xa";
     grep = "grep --color";
