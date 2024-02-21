@@ -20,9 +20,9 @@
     scc = "${pkgs.scc}/bin/scc --no-cocomo --ci";
     timg = "${lib.getExe pkgs.timg} -ps";
 
-    f = "fastfetch";
-    mf = "fastfetch -c ${config.xdg.configHome}/fastfetch/minimal.jsonc";
-    mfd = "fastfetch -c ${config.xdg.configHome}/fastfetch/minimal-droid.jsonc";
+    ff = "fastfetch";
+    f = "fastfetch -c ${config.xdg.configHome}/fastfetch/minimal.jsonc";
+    droidf = "fastfetch -c ${config.xdg.configHome}/fastfetch/minimal-droid.jsonc";
 
     B = "${lib.getExe pkgs.nh} os boot .";
     Ba = "B -a";
