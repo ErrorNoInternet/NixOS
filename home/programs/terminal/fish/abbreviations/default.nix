@@ -1,6 +1,7 @@
 {
   imports = [
     ./git.nix
+    ./mullvad.nix
     ./nix.nix
   ];
 
