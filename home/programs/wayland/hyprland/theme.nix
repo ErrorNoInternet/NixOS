@@ -59,7 +59,7 @@
           "windowsOut, 1, 5, default, popin 80%"
           "border, 1, 5, default"
           "fade, 1, 5, default"
-          "workspaces, 1, 5, customBezier"
+          "workspaces, 1, 4, customBezier"
         ];
       };
     };
