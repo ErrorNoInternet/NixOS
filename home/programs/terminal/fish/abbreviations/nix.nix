@@ -10,6 +10,7 @@
 
     "/es" = anywhere "--extra-substituters";
     "/etpk" = anywhere "--extra-trusted-public-keys";
+    "/i" = anywhere "--impure";
     "/ncnt" = anywhere "--narinfo-cache-negative-ttl 0";
     "/nec" = anywhere "--no-eval-cache";
     "/o" = anywhere "--option";
