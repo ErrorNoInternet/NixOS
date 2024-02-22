@@ -5,8 +5,8 @@ Nix flake for my workstations, servers, home-manager configuration, and a lot mo
 ## 📁 Contents
 
 - [droid](/droid): terminal configuration for my phone ([nix-on-droid](https://github.com/nix-community/nix-on-droid))
-- [helpers](/helpers): nix helper functions (e.g. mkSystem and mkSpecialisation)
 - [home](/home): dotfiles (and more) for my workstations, servers, and phone
+- [library](/library): nix helper functions (e.g. mkSystem and mkSpecialisation)
 - [other](/other): other (configuration) files that don't fit in Nix expressions
 - [packages](/packages): some scripts and patched programs to make my life easier
 - [server](/server): system configuration for some of my dedicated servers 
