@@ -14,7 +14,7 @@
     "${lib.getExe pkgs.hyprland-autoname-workspaces}"
     "${pkgs.wl-clipboard}/bin/wl-paste --watch ${lib.getExe pkgs.cliphist} -max-items 1000 store"
 
-    "swayidle -w timeout 570 'swaylock --grace 30 --fade-in 30' before-sleep 'swaylock --grace 0 --fade-in 1'"
-    "swayidle -w timeout 1200 'hyprctl dispatch dpms off'"
+    "swayidle before-sleep 'swaylock --grace 0 --fade-in 1'"
+    "swayidle timeout 570 'swaylock --grace 30 --fade-in 30' timeout 1200 'hyprctl dispatch dpms off'"
   ];
 }
