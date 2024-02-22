@@ -16,6 +16,7 @@ in {
     home.packages = with pkgs; [
       cliphist
       inputs'.hyprwm-contrib.packages.grimblast
+      libnotify
       pavucontrol
       ripdrag
       satty
