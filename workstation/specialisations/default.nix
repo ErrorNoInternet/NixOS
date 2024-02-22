@@ -1,7 +1,7 @@
 {
   imports = [
     ./lockdown.nix
-    ./nvidia.nix
+    ./no-nvidia.nix
     ./outside.nix
   ];
 }
