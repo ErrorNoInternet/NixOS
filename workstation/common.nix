@@ -1,10 +1,8 @@
 {
-  inputs',
   inputs,
   lib,
   pkgs,
   self',
-  self,
   ...
 }: {
   imports = [
@@ -14,22 +12,6 @@
     ./programs
     ./specialisations
     inputs.agenix.nixosModules.default
-
-    inputs.home-manager.nixosModules.home-manager
-    {
-      home-manager = {
-        useGlobalPkgs = true;
-        useUserPackages = true;
-        extraSpecialArgs = {inherit inputs' inputs self' self;};
-
-        users.error = {...}: {
-          imports = [
-            ../home/common.nix
-            ../home/hosts/NixBtw.nix
-          ];
-        };
-      };
-    }
   ];
 
   boot = {
