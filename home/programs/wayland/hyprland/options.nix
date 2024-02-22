@@ -35,7 +35,5 @@
     };
 
     master.new_is_master = true;
-
-    debug.disable_logs = false;
   };
 }
