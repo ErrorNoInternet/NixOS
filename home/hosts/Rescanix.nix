@@ -65,7 +65,6 @@
       hyperfine
       hyprpicker
       imagemagick
-      inputs'.hyprwm-contrib.packages.scratchpad
       inputs'.nix-gaming.packages.osu-lazer-bin
       inputs'.nix-gaming.packages.wine-ge
       inputs'.overmask.packages.overmask
@@ -96,6 +95,7 @@
       sdparm
       self'.packages.passgen
       self'.packages.savehw
+      self'.packages.scratchpad
       self'.packages.tbw
       smartmontools
       sqlite

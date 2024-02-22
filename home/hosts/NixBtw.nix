@@ -58,7 +58,7 @@
     packages = with pkgs; [
       # desktop
       hyprpicker
-      inputs'.hyprwm-contrib.packages.scratchpad
+      self'.packages.scratchpad
 
       # system utilities
       _7zz
