@@ -24,16 +24,18 @@
     };
   };
 
-  home.packages = with pkgs; [
-    cmatrix
-    croc
-    eza
-    fd
-    inputs'.hsize.packages.hsize
-    jq
-    nh
-    progress
-  ];
+  home = {
+    packages = with pkgs; [
+      cmatrix
+      croc
+      eza
+      fd
+      inputs'.hsize.packages.hsize
+      jq
+      nh
+      progress
+    ];
 
-  home.stateVersion = "23.05";
+    stateVersion = "23.05";
+  };
 }

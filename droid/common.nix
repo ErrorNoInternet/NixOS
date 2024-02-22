@@ -9,6 +9,12 @@
     ./terminal.nix
   ];
 
+  home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    config.home.flags.nixOnDroid = true;
+  };
+
   environment.motd = "";
   nix.extraOptions = ''
     experimental-features = nix-command flakes
@@ -40,13 +46,5 @@
     xxd
   ];
 
-  home-manager = {
-    useGlobalPkgs = true;
-    useUserPackages = true;
-    config.home = {
-      flags.nixOnDroid = true;
-      stateVersion = "23.05";
-    };
-  };
   system.stateVersion = "23.05";
 }
