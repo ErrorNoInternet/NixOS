@@ -4,7 +4,9 @@
   pkgs,
   self',
   ...
-}: {
+}: let
+  inherit (lib) mkDefault;
+in {
   imports = [
     ../shared
     ./modules
@@ -28,13 +30,13 @@
       timeout = 3;
     };
 
-    kernelPackages = lib.mkDefault pkgs.linuxPackages_latest;
+    kernelPackages = mkDefault pkgs.linuxPackages_latest;
     supportedFilesystems = [
       "ntfs"
     ];
 
     kernel.sysctl = {
-      "kernel.sysrq" = 1;
+      "kernel.sysrq" = mkDefault 1;
     };
 
     tmp = {
@@ -44,7 +46,7 @@
   };
 
   networking = {
-    firewall.enable = false;
+    firewall.enable = mkDefault false;
     networkmanager.enable = true;
   };
 

@@ -1,6 +1,6 @@
 {self, ...}: {
   specialisation.lockdown = self.lib.systems.mkSpecialisation "lockdown" {
-    boot.loader.kernel.sysctl = {
+    boot.kernel.sysctl = {
       "kernel.sysrq" = 0;
     };
     networking.firewall = {

@@ -75,7 +75,9 @@
       inherit name system;
     };
 
-  mkSpecialisation = name: configuration:
-    {inherit configuration;}
-    // {configuration.environment.etc.specialisation.text = name;};
+  mkSpecialisation = name: configuration: {
+    configuration.config =
+      {environment.etc.specialisation.text = name;}
+      // configuration;
+  };
 }

@@ -4,7 +4,9 @@
   pkgs,
   self',
   ...
-}: {
+}: let
+  inherit (lib) mkDefault mkForce;
+in {
   imports = [
     ./caches
     ./modules
@@ -39,7 +41,7 @@
       max-free = 20 * 1024 * 1024 * 1024;
     };
     gc = {
-      automatic = lib.mkDefault true;
+      automatic = mkDefault true;
       dates = "weekly";
       options = "--delete-older-than 30d";
     };
@@ -56,9 +58,9 @@
   };
 
   services = {
-    getty.helpLine = lib.mkForce "";
+    getty.helpLine = mkForce "";
 
-    openssh.enable = true;
+    openssh.enable = mkDefault true;
   };
 
   programs.command-not-found.enable = false;
