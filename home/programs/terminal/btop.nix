@@ -6,7 +6,6 @@
   config = lib.mkIf config.home.programs.terminal.fish.enable {
     programs.btop = {
       enable = true;
-
       settings = {
         color_theme = "${lib.strings.toLower config.colors.schemeName}";
         net_iface = "wlp5s0";
