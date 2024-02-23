@@ -7,6 +7,12 @@
         bg = "#${base00}";
         bold = true;
       };
+      HighlightUndo = {
+        bg = "#${base03}";
+        fg = "none";
+      };
+      RadarBackground.fg = "#${base03}";
+      RadarMark.fg = "#${base04}";
 
       BufferCurrentSign = {
         fg = "#${base0D}";
@@ -20,14 +26,8 @@
       NvimTreeCursorLine.bg = "#${base03}";
       NvimTreeNormal.bg = "#${base01}";
       NvimTreeRootFolder.fg = "#${base0C}";
-
-      HighlightUndo = {
-        bg = "#${base03}";
-        fg = "none";
-      };
-
-      RadarBackground.fg = "#${base03}";
-      RadarMark.fg = "#${base04}";
+      OutlineNormal.bg = "#${base01}";
+      TroubleNormal.bg = "#${base00}";
 
       FoldColumn.fg = "#${base03}";
       "@ibl.indent.char.1".fg = "#${base00}";
