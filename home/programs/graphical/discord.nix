@@ -4,10 +4,10 @@
   pkgs,
   ...
 }: let
-  cfg = config.home.programs.graphical.discord;
+  cfg = config.customPrograms.graphical.discord;
   inherit (lib) mkEnableOption mkIf;
 in {
-  options.home.programs.graphical.discord.enable = mkEnableOption "";
+  options.customPrograms.graphical.discord.enable = mkEnableOption "";
 
   config = mkIf cfg.enable {
     home = {

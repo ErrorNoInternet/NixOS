@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: {
-  config = lib.mkIf config.home.desktops.hyprland.enable {
+  config = lib.mkIf config.desktops.hyprland.enable {
     home = {
       packages = [pkgs.hyprland-autoname-workspaces];
       file = {

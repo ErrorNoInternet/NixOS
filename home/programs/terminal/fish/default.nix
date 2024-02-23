@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: let
-  cfg = config.home.programs.terminal.fish;
+  cfg = config.customPrograms.terminal.fish;
   inherit (lib) mkEnableOption mkIf;
 in {
   imports = [
@@ -15,7 +15,7 @@ in {
     ./theme.nix
   ];
 
-  options.home.programs.terminal.fish.enable =
+  options.customPrograms.terminal.fish.enable =
     mkEnableOption ""
     // {
       default = true;

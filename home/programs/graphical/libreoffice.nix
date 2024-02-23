@@ -6,9 +6,9 @@
 }: let
   inherit (lib) mkEnableOption mkIf;
 in {
-  options.home.programs.graphical.libreoffice.enable = mkEnableOption "";
+  options.customPrograms.graphical.libreoffice.enable = mkEnableOption "";
 
-  config = mkIf config.home.programs.graphical.libreoffice.enable {
+  config = mkIf config.customPrograms.graphical.libreoffice.enable {
     home.packages = with pkgs; [
       libreoffice-qt
       hunspell

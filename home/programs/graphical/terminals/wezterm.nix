@@ -4,10 +4,10 @@
   self',
   ...
 }: let
-  cfg = config.home.programs.terminal.wezterm;
+  cfg = config.customPrograms.terminal.wezterm;
   inherit (lib) mkOption mkIf types;
 in {
-  options.home.programs.terminal.wezterm = {
+  options.customPrograms.terminal.wezterm = {
     font = mkOption {
       default = config.font.name;
       type = types.str;

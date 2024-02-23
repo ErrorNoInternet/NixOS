@@ -16,7 +16,7 @@
 
   desktop.monitors = [{}];
 
-  home.programs = {
+  customPrograms = {
     graphical = {
       kdeconnect.enable = true;
       libreoffice.enable = true;

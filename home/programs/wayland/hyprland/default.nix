@@ -5,7 +5,7 @@
   self',
   ...
 }: let
-  cfg = config.home.desktops.hyprland;
+  cfg = config.desktops.hyprland;
   inherit (lib) mkEnableOption mkIf;
 in {
   imports = [
@@ -18,7 +18,7 @@ in {
     ./windowrules.nix
   ];
 
-  options.home.desktops.hyprland.enable =
+  options.desktops.hyprland.enable =
     mkEnableOption ""
     // {
       default =

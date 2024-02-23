@@ -6,9 +6,9 @@
 }: let
   inherit (lib) mkEnableOption mkIf;
 in {
-  options.home.programs.graphical.virtManager.enable = mkEnableOption "";
+  options.customPrograms.graphical.virtManager.enable = mkEnableOption "";
 
-  config = mkIf config.home.programs.graphical.virtManager.enable {
+  config = mkIf config.customPrograms.graphical.virtManager.enable {
     home.packages = [pkgs.virt-manager];
     dconf.settings = {
       "org/virt-manager/virt-manager" = {

@@ -6,11 +6,12 @@
   self',
   ...
 }: let
+  cfg = config.profiles.windowManager;
   inherit (lib) mkEnableOption mkIf;
 in {
   options.profiles.windowManager.enable = mkEnableOption "";
 
-  config = mkIf config.profiles.windowManager.enable {
+  config = mkIf cfg.enable {
     wallpaper.enable = true;
 
     home.packages = with pkgs; [

@@ -32,7 +32,7 @@
     ];
   };
 
-  home.programs = {
+  customPrograms = {
     graphical = {
       discord.enable = true;
       kdeconnect.enable = true;

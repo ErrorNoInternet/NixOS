@@ -3,7 +3,7 @@
   lib,
   ...
 }: {
-  config = lib.mkIf config.home.programs.terminal.fish.enable {
+  config = lib.mkIf config.customPrograms.terminal.fish.enable {
     programs.fzf = {
       enable = true;
       enableFishIntegration = true;

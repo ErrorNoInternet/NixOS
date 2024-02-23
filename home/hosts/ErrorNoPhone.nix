@@ -1,3 +1,3 @@
 {
-  home.programs.terminal.git.enable = true;
+  customPrograms.terminal.git.enable = true;
 }

@@ -5,9 +5,9 @@
 }: let
   inherit (lib) mkEnableOption mkIf;
 in {
-  options.home.programs.graphical.obsStudio.enable = mkEnableOption "";
+  options.customPrograms.graphical.obsStudio.enable = mkEnableOption "";
 
-  config = mkIf config.home.programs.graphical.obsStudio.enable {
+  config = mkIf config.customPrograms.graphical.obsStudio.enable {
     programs.obs-studio.enable = true;
   };
 }

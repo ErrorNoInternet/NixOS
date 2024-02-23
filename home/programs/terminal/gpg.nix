@@ -3,10 +3,10 @@
   lib,
   ...
 }: let
-  cfg = config.home.programs.terminal.gpg;
+  cfg = config.customPrograms.terminal.gpg;
   inherit (lib) mkEnableOption mkIf;
 in {
-  options.home.programs.terminal.gpg.enable = mkEnableOption "";
+  options.customPrograms.terminal.gpg.enable = mkEnableOption "";
 
   config = mkIf cfg.enable {
     programs.gpg = {

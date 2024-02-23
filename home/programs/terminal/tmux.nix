@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: {
-  config = lib.mkIf config.home.programs.terminal.fish.enable {
+  config = lib.mkIf config.customPrograms.terminal.fish.enable {
     programs.tmux = {
       enable = true;
       plugins = with pkgs.tmuxPlugins; [

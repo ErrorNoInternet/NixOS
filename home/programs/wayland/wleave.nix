@@ -5,10 +5,10 @@
   pkgs,
   ...
 }: let
-  cfg = config.home.programs.wayland.wleave;
+  cfg = config.customPrograms.wayland.wleave;
   inherit (lib) mkEnableOption mkOption mkIf types;
 in {
-  options.home.programs.wayland.wleave = {
+  options.customPrograms.wayland.wleave = {
     enable = mkEnableOption "";
 
     height = mkOption {

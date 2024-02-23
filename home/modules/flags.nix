@@ -1,7 +1,7 @@
 {lib, ...}: let
   inherit (lib) mkEnableOption;
 in {
-  options.home.flags = {
+  options.flags = {
     nixOnDroid = mkEnableOption "";
   };
 }
