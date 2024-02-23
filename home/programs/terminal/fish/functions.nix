@@ -2,6 +2,7 @@
   inputs',
   lib,
   pkgs,
+  self',
   ...
 }: {
   programs.fish.interactiveShellInit = let
@@ -72,6 +73,10 @@
     end
 
 
+    function btrfs-map-physical
+      ${self'.packages.btrfs-map-physical}/bin/btrfs-map-physical $argv | column -ts\t
+    end
+
     function ggr -d "fancy git history graph"
       ${pkgs.git-graph}/bin/git-graph --color always -s ascii --no-pager $argv | ${less}
     end
@@ -91,6 +96,11 @@
       end
     end
 
+    function bak -d "create a copy (.bak) of a file"
+      for argi in (seq 1 $(count $argv))
+        cp -aiv $argv[$argi]{,.bak}
+      end
+    end
 
     function mkcd -d "create a directory and set cwd"
       command mkdir $argv
@@ -102,12 +112,6 @@
             cd $argv[(count $argv)]
             return
         end
-      end
-    end
-
-    function bak -d "create a copy (.bak) of a file"
-      for argi in (seq 1 $(count $argv))
-        cp -aiv $argv[$argi]{,.bak}
       end
     end
 
