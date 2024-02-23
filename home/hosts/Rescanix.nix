@@ -100,6 +100,7 @@
       self'.packages.tbw
       smartmontools
       sqlite
+      squashfsTools
       sshfs
       steam-run
       superTuxKart
