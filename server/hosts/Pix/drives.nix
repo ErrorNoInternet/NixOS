@@ -21,6 +21,15 @@
   };
 
   services = {
+    btrfs.autoScrub = {
+      enable = true;
+      fileSystems = [
+        "/"
+        "/mnt/drive1"
+        "/mnt/drive3"
+      ];
+    };
+
     snapper.configs = {
       drive1 = {
         SUBVOLUME = "/mnt/drive1";
