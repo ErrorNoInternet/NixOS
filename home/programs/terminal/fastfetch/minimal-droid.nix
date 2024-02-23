@@ -26,7 +26,7 @@ builtins.toJSON {
     {
       type = "kernel";
       key = " kernel  ";
-      format = "{3}";
+      format = "{1} {2} ({4})";
     }
     {
       type = "uptime";
