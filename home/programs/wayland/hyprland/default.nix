@@ -22,7 +22,7 @@ in {
     mkEnableOption ""
     // {
       default =
-        if (builtins.hasAttr "workstation" osConfig)
+        if (osConfig ? workstation)
         then osConfig.workstation.desktops.hyprland.enable
         else false;
     };
