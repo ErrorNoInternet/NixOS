@@ -37,6 +37,7 @@ in {
         man-pages
         nix-output-monitor
         nix-tree
+        nvd
         onefetch
         python3Packages.bpython
         rustup
