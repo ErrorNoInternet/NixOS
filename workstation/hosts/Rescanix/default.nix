@@ -1,6 +1,7 @@
 {
   lib,
   pkgs,
+  self,
   ...
 }: {
   host.id = "3a1f6cc6";
@@ -34,5 +35,9 @@
       hyprland.enable = true;
       plasma5.enable = true;
     };
+  };
+
+  specialisation.lts-kernel = self.lib.systems.mkSpecialisation "lts-kernel" {
+    boot.kernelPackages = pkgs.linuxPackages;
   };
 }
