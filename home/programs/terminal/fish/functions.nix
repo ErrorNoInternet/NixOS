@@ -74,7 +74,7 @@
 
 
     function btrfs-map-physical
-      ${self'.packages.btrfs-map-physical}/bin/btrfs-map-physical $argv | column -ts\t
+      sudo ${self'.packages.btrfs-map-physical}/bin/btrfs-map-physical $argv | column -ts\t
     end
 
     function ggr -d "fancy git history graph"
