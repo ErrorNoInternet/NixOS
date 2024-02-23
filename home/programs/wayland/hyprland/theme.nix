@@ -55,7 +55,7 @@
 
         bezier = "extremeEaseOut, 0, 1, 0, 1";
         animation = [
-          "windows, 1, 5, extremeEaseOut"
+          "windows, 1, 5, extremeEaseOut, popin 50%"
           "windowsOut, 1, 5, default, popin 80%"
           "fade, 1, 5, default"
           "workspaces, 1, 5, extremeEaseOut"
