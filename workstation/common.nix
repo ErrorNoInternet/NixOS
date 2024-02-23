@@ -19,7 +19,7 @@ in {
   boot = {
     loader = {
       grub = {
-        enable = true;
+        enable = mkDefault true;
         efiSupport = true;
         efiInstallAsRemovable = true;
         device = "nodev";
