@@ -109,8 +109,6 @@ in {
       cryptsetup
       home-manager
       pulseaudio
-      self'.packages.btrfs-progs
-      self'.packages.nix
       xdg-user-dirs
     ];
   };

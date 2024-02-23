@@ -76,7 +76,10 @@ in {
       lsof
       neovim
       ripgrep
+      self'.packages.btrfs-map-physical
+      self'.packages.btrfs-progs
       self'.packages.hwatch
+      self'.packages.nix
       sysstat
       tmux
       traceroute
