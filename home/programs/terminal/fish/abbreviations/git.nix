@@ -14,9 +14,14 @@
     gc = "git commit -m";
     gca = "git commit --amend";
     gcf = "git clean -f .";
+    gch = "git cherry";
     gcl = "git clone";
     gco = "git checkout";
     gcob = "git checkout -b";
+    gcp = "git cherry-pick";
+    gcpa = "git cherry-pick --abort";
+    gcpc = "git cherry-pick --continue";
+    gcps = "git cherry-pick --skip";
     gd = "git diff";
     gdc = "git diff --compact-summary";
     gds = "git diff --staged";
