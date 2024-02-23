@@ -71,6 +71,7 @@
       inputs'.paralload.packages.paralload
       intel-gpu-tools
       iperf
+      kdenlive
       kdiskmark
       linuxPackages_latest.perf
       lm_sensors
