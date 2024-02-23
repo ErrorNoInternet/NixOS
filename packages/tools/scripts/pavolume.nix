@@ -6,9 +6,13 @@ writeShellApplication {
   name = "pavolume";
   runtimeInputs = [pulseaudio];
   text = ''
-    sink="@DEFAULT_SINK@"
+    set +u
 
-    current_volume=$(pactl get-sink-volume @DEFAULT_SINK@ | sed -n "s|Volume: front-left:.*/\(.*\)%.*/.*dB|\1|p" | tr -d ' ')
+    sink="@DEFAULT_SINK@"
+    current_volume=$(pactl get-sink-volume "$sink" | \
+      sed -n "s|Volume: front-left:.*/\(.*\)%.*/.*dB|\1|p" | \
+      tr -d ' ')
+
     if [[ $1 == "up" ]]; then
       if [[ $((current_volume + 5)) -gt 100 ]]; then
         pactl set-sink-volume $sink 100%
@@ -19,6 +23,8 @@ writeShellApplication {
       pactl set-sink-volume $sink -5%
     elif [[ $1 == "toggle" ]]; then
       pactl set-sink-mute $sink toggle
+    else
+      echo "$current_volume"
     fi
   '';
 }
