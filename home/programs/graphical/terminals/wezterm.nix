@@ -44,8 +44,6 @@ in {
           font_size = 9,
           color_scheme = "${cfg.colorScheme} (base16)",
 
-          initial_cols = 268,
-          initial_rows = 64,
           window_padding = {
             top = "0.5cell",
             bottom = 0,
