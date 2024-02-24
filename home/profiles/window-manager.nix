@@ -18,6 +18,7 @@ in {
       cliphist
       inputs'.hyprwm-contrib.packages.grimblast
       libnotify
+      libsForQt5.qtimageformats
       pavucontrol
       ripdrag
       satty
