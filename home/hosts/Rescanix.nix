@@ -59,6 +59,7 @@
       fio
       firefox
       geekbench
+      ghidra
       gimp
       gparted
       gptfdisk
