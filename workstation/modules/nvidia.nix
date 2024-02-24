@@ -6,11 +6,19 @@
   cfg = config.workstation.modules.nvidia;
   inherit (lib) mkEnableOption mkIf;
 in {
-  options.workstation.modules.nvidia.enable =
-    mkEnableOption ""
-    // {
-      default = true;
-    };
+  options.workstation.modules.nvidia = {
+    enable =
+      mkEnableOption ""
+      // {
+        default = true;
+      };
+
+    enableOptimus =
+      mkEnableOption ""
+      // {
+        default = true;
+      };
+  };
 
   config = mkIf cfg.enable {
     nixpkgs.config = {
@@ -32,7 +40,7 @@ in {
         package = config.boot.kernelPackages.nvidiaPackages.production;
         modesetting.enable = true;
 
-        prime = {
+        prime = mkIf cfg.enableOptimus {
           offload = {
             enable = true;
             enableOffloadCmd = true;
