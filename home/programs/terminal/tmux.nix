@@ -16,7 +16,7 @@
       baseIndex = 1;
       clock24 = true;
       escapeTime = 0;
-      historyLimit = 1000000;
+      historyLimit = 500000;
       keyMode = "vi";
       mouse = true;
       terminal = "tmux-256color";
