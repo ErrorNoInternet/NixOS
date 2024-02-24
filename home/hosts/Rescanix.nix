@@ -105,7 +105,6 @@
       sshfs
       steam-run
       superTuxKart
-      sysstat
       timg
       tree
       unigine-heaven

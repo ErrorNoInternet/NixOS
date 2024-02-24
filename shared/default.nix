@@ -81,6 +81,7 @@ in {
       self'.packages.hwatch
       self'.packages.nix
       sysstat
+      tcpdump
       tmux
       traceroute
       unzip
