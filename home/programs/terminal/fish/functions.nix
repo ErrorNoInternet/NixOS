@@ -91,7 +91,7 @@
                   function show; set commit (echo \$argv | grep -o '[a-f0-9]\{7\}'); git show --color=always \$commit | ${delta} --width=(tput cols) | ${less} -R; end; show {}"
     end
 
-    function notify-done
+    function notify-done -d "send a desktop notification when a command finishes running"
       $argv
       ${notify-send} "Command finished" "<b>`$argv`</b> has exited with code $status."
     end
