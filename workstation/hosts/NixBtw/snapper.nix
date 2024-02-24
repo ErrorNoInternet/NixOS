@@ -38,7 +38,6 @@
         SUBVOLUME = "/mnt/data/backups";
         TIMELINE_CREATE = true;
         TIMELINE_CLEANUP = true;
-        QGROUP = "1/0";
 
         TIMELINE_LIMIT_HOURLY = 24;
         TIMELINE_LIMIT_DAILY = 0;
@@ -50,7 +49,6 @@
         SUBVOLUME = "/mnt/data/downloads";
         TIMELINE_CREATE = true;
         TIMELINE_CLEANUP = true;
-        QGROUP = "1/0";
 
         TIMELINE_LIMIT_HOURLY = "1-24";
         TIMELINE_LIMIT_DAILY = "1-3";
@@ -61,7 +59,6 @@
         SUBVOLUME = "/mnt/data/games";
         TIMELINE_CREATE = true;
         TIMELINE_CLEANUP = true;
-        QGROUP = "1/0";
 
         TIMELINE_LIMIT_HOURLY = 24;
         TIMELINE_LIMIT_DAILY = "7-14";
@@ -72,7 +69,6 @@
         SUBVOLUME = "/mnt/data/hacking";
         TIMELINE_CREATE = true;
         TIMELINE_CLEANUP = true;
-        QGROUP = "1/0";
 
         TIMELINE_LIMIT_HOURLY = 24;
         TIMELINE_LIMIT_DAILY = "1-3";
@@ -83,7 +79,6 @@
         SUBVOLUME = "/mnt/data/media";
         TIMELINE_CREATE = true;
         TIMELINE_CLEANUP = true;
-        QGROUP = "1/0";
 
         TIMELINE_LIMIT_HOURLY = 24;
         TIMELINE_LIMIT_DAILY = "3-7";
@@ -95,7 +90,6 @@
         SUBVOLUME = "/mnt/data/other";
         TIMELINE_CREATE = true;
         TIMELINE_CLEANUP = true;
-        QGROUP = "1/0";
 
         TIMELINE_LIMIT_HOURLY = "12-24";
         TIMELINE_LIMIT_DAILY = "3-7";
@@ -106,7 +100,6 @@
         SUBVOLUME = "/mnt/data/code";
         TIMELINE_CREATE = true;
         TIMELINE_CLEANUP = true;
-        QGROUP = "1/0";
 
         TIMELINE_LIMIT_HOURLY = 24;
         TIMELINE_LIMIT_DAILY = "7-14";
@@ -117,7 +110,6 @@
         SUBVOLUME = "/mnt/data/temporary";
         TIMELINE_CREATE = true;
         TIMELINE_CLEANUP = true;
-        QGROUP = "1/0";
 
         TIMELINE_LIMIT_HOURLY = "1-24";
         TIMELINE_LIMIT_DAILY = 0;
