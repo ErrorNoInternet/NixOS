@@ -12,8 +12,8 @@ in {
       workstation.modules.nvidia.enable = false;
     };
 
-    no-nvidia-optimus = mkIf cfg.enableOptimus self.lib.systems.mkSpecialisation "no-nvidia-optimus" {
+    no-nvidia-optimus = mkIf cfg.enableOptimus (self.lib.systems.mkSpecialisation "no-nvidia-optimus" {
       workstation.modules.nvidia.enableOptimus = false;
-    };
+    });
   };
 }
