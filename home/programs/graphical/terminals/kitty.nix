@@ -33,7 +33,7 @@
         base00Variation = "${
           builtins.replaceStrings [" "] [""]
           (builtins.toString (lib.intersperse
-              "," (map (v: v - 1) (inputs.nix-colors.lib.conversions.hexToRGB base00))))
+              "," (map (c: c - 1) (inputs.nix-colors.lib.conversions.hexToRGB base00))))
         }";
       in ''
         background            base10_rgb:${base00Variation}
