@@ -79,6 +79,10 @@
       sudo ${self'.packages.btrfs-map-physical}/bin/btrfs-map-physical $argv | column -ts\t
     end
 
+    function scc
+      ${pkgs.scc}/bin/scc --no-cocomo --ci $argv | head -c-1
+    end
+
     function ggr -d "fancy git history graph"
       ${pkgs.git-graph}/bin/git-graph --color always -s ascii --no-pager $argv | ${less}
     end
