@@ -1,6 +1,9 @@
 {pkgs, ...}: {
-  home.packages = [pkgs.code-minimap];
   programs.nixvim = {
+    extraPackages = with pkgs; [
+      code-minimap
+    ];
+
     options = {
       cursorline = true;
       foldcolumn = "1";
