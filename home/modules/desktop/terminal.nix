@@ -8,12 +8,12 @@
 in {
   options.terminal = {
     name = mkOption {
-      default = "wezterm";
+      default = "kitty";
       type = types.str;
     };
 
     command = mkOption {
-      default = "${cfg.name} start --class ${cfg.name} --always-new-process";
+      default = "${cfg.name}";
       type = types.str;
     };
   };
