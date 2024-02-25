@@ -26,5 +26,5 @@
 
   nix.gc.automatic = false;
 
-  boot.kernelPackages = pkgs.linuxPackages_6_6;
+  boot.kernelPackages = pkgs.linuxPackages_zen;
 }
