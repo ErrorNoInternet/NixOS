@@ -5,7 +5,7 @@
   self',
   ...
 }: let
-  inherit (lib) mkDefault mkOptionDefault;
+  inherit (lib) mkDefault mkOverride;
 in {
   imports = [
     ../shared
@@ -30,7 +30,7 @@ in {
       timeout = 3;
     };
 
-    kernelPackages = mkOptionDefault pkgs.linuxPackages_latest;
+    kernelPackages = mkOverride 1250 pkgs.linuxPackages_latest;
     supportedFilesystems = [
       "ntfs"
     ];
