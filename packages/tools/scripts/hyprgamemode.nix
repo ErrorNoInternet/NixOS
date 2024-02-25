@@ -2,8 +2,8 @@
 writeShellApplication {
   name = "hyprgamemode";
   text = ''
-    HYPRGAMEMODE=$(hyprctl getoption animations:enabled | awk 'NR==2{print $2}')
-    if [ "$HYPRGAMEMODE" = 1 ] ; then
+    HYPRGAMEMODE=$(hyprctl getoption animations:enabled | grep -o "[0-9]")
+    if [ "$HYPRGAMEMODE" = 1 ]; then
         hyprctl --batch "\
             keyword animations:enabled 0;\
             keyword decoration:drop_shadow 0;\
