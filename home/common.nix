@@ -32,8 +32,10 @@
       fd
       inputs'.hsize.packages.hsize
       jq
+      mergerfs
       nh
       progress
+      try
     ];
 
     stateVersion = "23.05";
