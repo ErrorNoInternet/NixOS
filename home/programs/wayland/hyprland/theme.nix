@@ -58,7 +58,7 @@
           "windows, 1, 5, extremeEaseOut, popin 50%"
           "windowsOut, 1, 5, default, popin 80%"
           "fade, 1, 5, default"
-          "workspaces, 1, 5, extremeEaseOut"
+          "workspaces, 1, 4, extremeEaseOut"
         ];
       };
     };
