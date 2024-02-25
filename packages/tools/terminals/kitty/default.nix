@@ -5,5 +5,6 @@ kitty.overrideAttrs (oldAttrs: {
     ++ [
       ./hide-resize-text.patch
       ./parse-base10-rgb.patch
+      ./thicker-braille-dots.patch
     ];
 })
