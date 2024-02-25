@@ -78,8 +78,6 @@
         };
       };
 
-      lsp-format.enable = true;
-
       lspsaga = {
         enable = true;
         lightbulb.enable = false;
