@@ -10,14 +10,16 @@
 
   spicePkgs = inputs'.spicetify-nix.packages.default;
 in {
-  imports = [inputs.spicetify-nix.homeManagerModule];
+  imports = [
+    inputs.spicetify-nix.homeManagerModule
+  ];
 
-  options.customPrograms.graphical.spotify.enable = mkEnableOption "";
+  options.customPrograms.graphical.spotify.enable =
+    mkEnableOption "";
 
   config = mkIf cfg.enable {
     programs.spicetify = {
       enable = true;
-
       enabledExtensions = with spicePkgs.extensions; [
         adblock
         fullAppDisplay
