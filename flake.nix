@@ -27,10 +27,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nix-colors = {
-      url = "github:misterio77/nix-colors";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    nix-colors.url = "github:misterio77/nix-colors";
 
     attic = {
       url = "github:zhaofengli/attic";
@@ -72,10 +69,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nix-super = {
-      url = "github:privatevoid-net/nix-super";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    nix-super.url = "github:privatevoid-net/nix-super";
 
     nixvim = {
       url = "github:nix-community/nixvim";
