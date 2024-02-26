@@ -86,10 +86,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    shadower = {
-      url = "github:n3oney/shadower";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    shadower.url = "github:n3oney/shadower";
 
     spicetify-nix = {
       url = "github:the-argus/spicetify-nix";
