@@ -16,16 +16,19 @@
         size = 9;
       };
       settings = {
-        background_opacity = "${builtins.toString config.opacity.normal}";
         confirm_os_window_close = 0;
         enable_audio_bell = false;
-        remember_window_size = "no";
         shell = "tmux";
+
+        background_opacity = "${builtins.toString config.opacity.normal}";
+        initial_window_height = 960;
+        initial_window_width = 594;
+        remember_window_size = "no";
+        window_padding_width = 5;
 
         box_drawing_scale = "0.001, 0.75, 1, 1.5";
         modify_font = "baseline 1";
         symbol_map = "U+23CE,U+25CB ${config.font.name}";
-        window_padding_width = 5;
       };
       keybindings = {
         "ctrl+shift+left" = "send_text all \\x1b\\x5b\\x31\\x3b\\x33\\x44";
