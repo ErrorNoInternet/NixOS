@@ -12,8 +12,8 @@ in {
 
     theme = mkOption {
       default = {
-        name = "Nordic-bluish";
-        packageName = "Nordic-bluish";
+        name = "Nordic-darker";
+        packageName = "Nordic-darker";
         package = pkgs.nordic;
       };
     };
