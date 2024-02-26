@@ -21,8 +21,8 @@
         shell = "tmux";
 
         background_opacity = "${builtins.toString config.opacity.normal}";
-        initial_window_height = 960;
-        initial_window_width = 594;
+        initial_window_height = 594;
+        initial_window_width = 960;
         remember_window_size = "no";
         window_padding_width = 5;
 
