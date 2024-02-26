@@ -4,7 +4,11 @@
   pkgs,
   ...
 }: {
-  programs.fish.shellAliases = {
+  programs.fish.shellAliases = with lib; let
+    nh = "${getExe pkgs.nh}";
+    playerctl = "${getExe pkgs.playerctl}";
+    timg = "${getExe pkgs.timg}";
+  in {
     H = "exec Hyprland";
 
     cm = "${pkgs.cmatrix}/bin/cmatrix -C blue";
@@ -15,23 +19,26 @@
     la = "ls -la";
     ll = "ls -l";
     ls = "${lib.getExe pkgs.eza} --git --icons";
-    lsimg = "${lib.getExe pkgs.timg} -ps --grid=6 --upscale --title --center --frames=1";
+    lsimg = "${timg} -ps --grid=6 --upscale --title --center --frames=1";
     py = "python3";
     q = "exit";
     qq = "exit";
-    timg = "${lib.getExe pkgs.timg} -ps";
+    timg = "${timg} -ps";
 
     ff = "fastfetch";
     f = "fastfetch -c ${config.xdg.configHome}/fastfetch/minimal.jsonc";
     droidf = "fastfetch -c ${config.xdg.configHome}/fastfetch/minimal-droid.jsonc";
 
-    B = "${lib.getExe pkgs.nh} os boot .";
+    B = "${nh} os boot .";
     Ba = "B -a";
-    S = "${lib.getExe pkgs.nh} os switch .";
+    S = "${nh} os switch .";
     Sa = "S -a";
-    T = "${lib.getExe pkgs.nh} os test .";
+    T = "${nh} os test .";
     Ta = "T -a";
 
+    pp = "${playerctl} play-pause";
+    ppc = "${playerctl} play";
+    pps = "${playerctl} pause";
     pwdc = "pwd | tr -d '\\n' | ${pkgs.wl-clipboard}/bin/wl-copy";
   };
 }

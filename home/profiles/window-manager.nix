@@ -20,6 +20,7 @@ in {
       libnotify
       libsForQt5.qtimageformats
       pavucontrol
+      playerctl
       ripdrag
       satty
       self'.packages.pavolume
