@@ -19,11 +19,11 @@
     la = "ls -la";
     ll = "ls -l";
     ls = "${lib.getExe pkgs.eza} --git --icons";
-    lsimg = "${timg} -ps --grid=6 --upscale --title --center --frames=1";
+    lsimg = "${timg} -pk --grid=6 --upscale --title --center --frames=1";
     py = "python3";
     q = "exit";
     qq = "exit";
-    timg = "${timg} -ps";
+    timg = "${timg} -pk";
 
     ff = "fastfetch";
     f = "fastfetch -c ${config.xdg.configHome}/fastfetch/minimal.jsonc";
