@@ -22,7 +22,11 @@
     wantedBy = ["multi-user.target"];
   };
 
-  workstation.desktops.hyprland.enable = true;
+  workstation = {
+    modules.zfs.enable = true;
+
+    desktops.hyprland.enable = true;
+  };
 
   nix.gc.automatic = false;
 
