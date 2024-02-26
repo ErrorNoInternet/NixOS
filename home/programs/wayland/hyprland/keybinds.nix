@@ -37,7 +37,6 @@
         "$mod, code:51, exec, firefox"
         "$mod SHIFT, RETURN, exec, [float; center] ${config.terminal.command}"
 
-        "$mod, TAB, workspace, previous"
         "$mod SHIFT, F, fullscreen"
         "$mod, F, fullscreen, 1"
         "$mod, V, togglefloating"
@@ -66,6 +65,9 @@
         "$mod CTRL SHIFT, right, movewindoworgroup, r"
         "$mod CTRL SHIFT, up, movewindoworgroup, u"
         "$mod CTRL SHIFT, down, movewindoworgroup, d"
+
+        "$mod, TAB, workspace, previous"
+        "$mod SHIFT, TAB, movetoworkspace, previous"
 
         "$mod, 1, workspace, 1"
         "$mod, 2, workspace, 2"
