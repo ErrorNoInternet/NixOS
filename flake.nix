@@ -4,7 +4,6 @@
   inputs = {
     flake-parts.url = "github:hercules-ci/flake-parts";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -14,10 +13,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
-    nix-index-database.url = "github:nix-community/nix-index-database";
     agenix.url = "github:ryantm/agenix";
     nix-colors.url = "github:misterio77/nix-colors";
-    nixvim.url = "github:nix-community/nixvim";
 
     attic.url = "github:zhaofengli/attic";
     hsize.url = "github:ErrorNoInternet/hsize";
@@ -26,7 +23,9 @@
     hyprwm-contrib.url = "github:hyprwm/contrib";
     neovim-nightly.url = "github:nix-community/neovim-nightly-overlay";
     nix-gaming.url = "github:fufexan/nix-gaming";
+    nix-index-database.url = "github:nix-community/nix-index-database";
     nix-super.url = "github:privatevoid-net/nix-super";
+    nixvim.url = "github:nix-community/nixvim";
     overmask.url = "github:ErrorNoInternet/overmask";
     paralload.url = "github:ErrorNoInternet/Paralload";
     shadower.url = "github:n3oney/shadower";
