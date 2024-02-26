@@ -1,17 +1,20 @@
 {
   config,
   lib,
+  self',
   ...
 }: {
   config = lib.mkIf config.profiles.desktop.enable {
     programs.foot = with config.colors.scheme.palette; {
       enable = true;
+      package = self'.packages.foot;
+
       settings = {
         main = {
           font = "${config.font.name}:size=9";
           pad = "2x2 center";
           shell = "tmux";
-          initial-window-size-pixels = "1920x1080";
+          initial-window-size-pixels = "1896x1022";
         };
         mouse.hide-when-typing = "yes";
         cursor = {

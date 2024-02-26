@@ -1,0 +1,14 @@
+diff --git a/terminal.c b/terminal.c
+index d9d66bac..724c5f06 100644
+--- a/terminal.c
++++ b/terminal.c
+@@ -786,8 +786,7 @@ term_set_fonts(struct terminal *term, struct fcft_font *fonts[static 4],
+ 
+     term->cell_height = term->font_line_height.px >= 0
+         ? term_pt_or_px_as_pixels(term, &term->font_line_height)
+-        : max(term->fonts[0]->height,
+-              term->fonts[0]->ascent + term->fonts[0]->descent);
++        : term->fonts[0]->height;
+ 
+     if (term->cell_width <= 0)
+         term->cell_width = 1;
