@@ -2099,11 +2099,11 @@
         "rust-overlay": "rust-overlay_4"
       },
       "locked": {
-        "lastModified": 1708922998,
-        "narHash": "sha256-Bu9VDbDReUVUTd1kzxvDJBUVVs6KMnoSPiOOFNGVyP8=",
+        "lastModified": 1708803660,
+        "narHash": "sha256-B2y46ecQurFvK7c1Cjh1suZC0vVOOw9TB3DJfXlU0dA=",
         "owner": "sxyazi",
         "repo": "yazi",
-        "rev": "d8abb3ed799020bd24023b6ca57ad9925cf971fb",
+        "rev": "42cbedbe42936f61170d049f1b77541a5ab66e3d",
         "type": "github"
       },
       "original": {
