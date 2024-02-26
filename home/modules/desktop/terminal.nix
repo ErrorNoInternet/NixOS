@@ -8,7 +8,7 @@
 in {
   options.terminal = {
     name = mkOption {
-      default = "foot";
+      default = "kitty";
       type = types.str;
     };
 
