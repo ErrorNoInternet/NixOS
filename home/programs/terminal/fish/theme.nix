@@ -18,7 +18,6 @@
         set -Ux MANROFFOPT "-c"
 
         set -U fish_greeting
-        set -U fish_cursor_default line
         set -U fish_color_autosuggestion brblack
 
         tide configure --auto \
