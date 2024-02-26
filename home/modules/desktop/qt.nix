@@ -12,9 +12,9 @@ in {
 
     theme = mkOption {
       default = {
-        name = "GraphiteNordDark";
-        packageName = "GraphiteNord";
-        package = pkgs.graphite-kde-theme;
+        name = "Nordic-bluish";
+        packageName = "Nordic-bluish";
+        package = pkgs.nordic;
       };
     };
   };
@@ -25,12 +25,12 @@ in {
       platformTheme = "qtct";
       style.name = "kvantum";
     };
-    xdg.configFile = {
+    xdg.configFile = with cfg.theme; {
       "Kvantum/kvantum.kvconfig".text = ''
         [General]
-        theme=${cfg.theme.name}
+        theme=${name}
       '';
-      "Kvantum/${cfg.theme.packageName}".source = "${cfg.theme.package}/share/Kvantum/${cfg.theme.packageName}";
+      "Kvantum/${packageName}".source = "${package}/share/Kvantum/${packageName}";
     };
   };
 }
