@@ -62,6 +62,18 @@
         set -x TTY_COLORS_SET 1
         clear
       end
+
+      if test $SHLVL -le 2
+        if test -e /android/system/bin/linker64
+          droidf
+        else
+          if test (tmux list-windows 2> /dev/null | count) -le 1
+            if test (tmux list-panes 2> /dev/null | count) -le 1
+              f
+            end
+          end
+        end
+      end
     '';
   };
 }
