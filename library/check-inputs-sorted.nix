@@ -28,11 +28,7 @@ let
           key = toLower (simplify n);
         })
       (attrNames inputs));
-  before = {
-    name,
-    line,
-    key,
-  }:
+  before = {key}:
     foldl'
     (acc: n:
       if n.key < key && (acc == null || n.key > acc.key)
