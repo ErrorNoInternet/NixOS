@@ -20,7 +20,6 @@
     graphical = {
       kdeconnect.enable = true;
       libreoffice.enable = true;
-      nheko.enable = true;
       obsStudio.enable = true;
       spotify.enable = true;
       thunderbird.enable = true;
