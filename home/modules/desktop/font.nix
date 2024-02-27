@@ -2,7 +2,7 @@
   inherit (lib) mkOption types;
 in {
   options.font.name = mkOption {
-    default = "JetBrainsMono Nerd Font";
+    default = "JetBrainsMonoNL Nerd Font";
     type = types.str;
   };
 }
