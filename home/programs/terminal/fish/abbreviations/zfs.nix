@@ -10,6 +10,6 @@
 
     zflk = "zfs load-key -a";
     zfm = "zfs mount -a";
-    zpi = "zpool import -a";
+    zpi = "zpool import -al";
   };
 }
