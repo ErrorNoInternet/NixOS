@@ -1,5 +1,6 @@
 {
   config,
+  inputs',
   lib,
   pkgs,
   self',
@@ -20,29 +21,46 @@ in {
 
   config = mkIf config.profiles.development.enable {
     home = {
-      packages = with pkgs; [
-        (python3.withPackages (ps: with ps; [jedi]))
-        alejandra
-        black
-        cachix
+      packages = with pkgs; let
+        rust = inputs'.rust-overlay.packages.rust.override {
+          targets = [
+            "x86_64-unknown-linux-gnu"
+            "x86_64-unknown-linux-musl"
+          ];
+          extensions = [
+            "clippy"
+            "rust-analyzer"
+            "rust-src"
+            "rustfmt"
+          ];
+        };
+      in [
         clang
         clang-tools
         gdb
         glibc.static
-        gnumake
-        go
         libllvm
-        linuxPackages_latest.perf
         lldb
-        man-pages
+        pkg-config
+
+        (python3.withPackages (ps: with ps; [jedi]))
+        black
+        python3Packages.bpython
+
+        alejandra
+        cachix
         nix-output-monitor
         nix-tree
         nvd
-        onefetch
-        python3Packages.bpython
-        rustup
-        scc
         self'.packages.attic
+
+        gnumake
+        go
+        linuxPackages_latest.perf
+        man-pages
+        onefetch
+        rust
+        scc
         zig
       ];
       sessionVariables = {
