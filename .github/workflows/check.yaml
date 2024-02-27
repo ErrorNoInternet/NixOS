@@ -2,14 +2,8 @@ name: Check
 on:
   push:
     paths:
-      - flake.nix
-      - droid/**
-      - home/**
-      - packages/**
-      - secrets/**
-      - server/**
-      - shared/**
-      - workstation/**
+      - '**.nix'
+      - flake.lock
   pull_request:
   workflow_dispatch:
 
