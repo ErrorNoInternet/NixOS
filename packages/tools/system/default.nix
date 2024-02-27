@@ -1,5 +1,4 @@
 {
-  systems = ["aarch64-linux" "x86_64-linux"];
   perSystem = {
     inputs',
     pkgs,
