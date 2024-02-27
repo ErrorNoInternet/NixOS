@@ -84,7 +84,6 @@ in {
       xdg-desktop-portal-gtk
     ];
   };
-  security.pam.services.swaylock = {};
 
   systemd.coredump.extraConfig = ''
     ProcessSizeMax=4G
@@ -117,6 +116,7 @@ in {
     light.enable = true;
     neovim.defaultEditor = true;
   };
+  security.pam.services.swaylock = {};
 
   fonts = {
     packages = with pkgs; [
