@@ -21,6 +21,7 @@
     n = "nix";
     nb = "nix build";
     nd = "nix develop -c fish";
+    ndd = "nix develop";
     nr = "nix run";
     nre = "nix repl";
     ns = "nix shell";
