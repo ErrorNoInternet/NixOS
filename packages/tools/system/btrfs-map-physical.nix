@@ -13,7 +13,7 @@ stdenv.mkDerivation {
   };
 
   buildPhase = ''
-    gcc scripts/btrfs_map_physical.c -o btrfs-map-physical
+    $CC scripts/btrfs_map_physical.c -o btrfs-map-physical
   '';
 
   installPhase = ''
