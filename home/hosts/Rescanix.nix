@@ -113,6 +113,7 @@
       vulkan-tools
       wev
       wl-screenrec
+      yt-dlp
       zbar
     ];
   };
