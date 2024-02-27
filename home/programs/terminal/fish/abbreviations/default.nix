@@ -3,6 +3,7 @@
     ./git.nix
     ./mullvad.nix
     ./nix.nix
+    ./zfs.nix
   ];
 
   programs.fish.shellAbbrs = {
