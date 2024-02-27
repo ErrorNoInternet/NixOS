@@ -16,20 +16,13 @@ in {
   documentation.doc.enable = false;
 
   nix = {
+    nixPath = ["nixpkgs=${inputs.nixpkgs}"];
     registry = let
-      mappedRegistry =
-        lib.mapAttrs'
-        (name: flake: let
-          name' =
-            if (name == "self")
-            then "config"
-            else name;
-        in
-          lib.nameValuePair name' {inherit flake;})
-        inputs;
+      mappedRegistry = lib.mapAttrs' (name: flake:
+        lib.nameValuePair name {inherit flake;})
+      inputs;
     in
       mappedRegistry // {default = mappedRegistry.nixpkgs;};
-    nixPath = ["nixpkgs=${inputs.nixpkgs}"];
 
     settings = {
       experimental-features = ["nix-command" "flakes"];
@@ -40,6 +33,7 @@ in {
       min-free = 5 * 1024 * 1024 * 1024;
       max-free = 20 * 1024 * 1024 * 1024;
     };
+
     gc = {
       automatic = mkDefault true;
       dates = "weekly";
