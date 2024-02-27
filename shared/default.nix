@@ -52,7 +52,10 @@ in {
   };
 
   services = {
-    getty.helpLine = mkForce "";
+    getty = {
+      greetingLine = "";
+      helpLine = mkForce "";
+    };
 
     openssh.enable = mkDefault true;
   };
