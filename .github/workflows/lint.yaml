@@ -31,7 +31,7 @@ jobs:
       - name: Set up Magic Nix Cache
         uses: DeterminateSystems/magic-nix-cache-action@v3
 
-      - name: Check formatting
+      - name: Check if properly formatted
         run: nix run nixpkgs#alejandra -- -c .
 
       - name: Run static code analysis
@@ -41,3 +41,7 @@ jobs:
       - name: Scan for dead code
         if: always()
         run: nix run nixpkgs#deadnix -- -f
+
+      - name: Check if inputs are sorted
+        if: always()
+        run: nix-instantiate --eval library/check-inputs-sorted.nix
