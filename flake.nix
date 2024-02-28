@@ -144,15 +144,6 @@
       };
     };
 
-    wezterm = {
-      url = "github:wez/wezterm?dir=nix";
-      inputs = {
-        flake-utils.follows = "flake-utils";
-        nixpkgs.follows = "nixpkgs";
-        rust-overlay.follows = "rust-overlay";
-      };
-    };
-
     yazi = {
       url = "github:sxyazi/yazi";
       inputs = {
