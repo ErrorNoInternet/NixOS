@@ -39,9 +39,11 @@
         tide reload
       end
 
-      if not set -q TTY_COLORS_SET; and test "$TERM" = "linux"
+      if not set -q TTY_THEME_SET; and test "$TERM" = "linux"
+        set -x TTY_THEME_SET 1
+
         echo -e "
-          \e]P0${base01}
+          \e]P0${base00}
           \e]P1${base08}
           \e]P2${base0B}
           \e]P3${base0A}
@@ -57,9 +59,8 @@
           \e]PD${base0E}
           \e]PE${base07}
           \e]PF${base06}
+          \e[16;1000]
         "
-
-        set -x TTY_COLORS_SET 1
         clear
       end
 
