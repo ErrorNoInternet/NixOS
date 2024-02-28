@@ -5,7 +5,7 @@
     ...
   }: {
     devShells.rust-nightly = pkgs.mkShell {
-      name = "rust-nightly-shell";
+      name = "rust-nightly";
       packages = let
         rust = inputs'.rust-overlay.packages.rust-nightly.override {
           targets = [
