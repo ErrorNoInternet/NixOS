@@ -14,7 +14,7 @@ in {
     enable = mkEnableOption "" // {default = true;};
 
     path = mkOption {
-      default = "${wallpapersPath}/${strings.toLower config.colors.schemeName}/1.png";
+      default = "${wallpapersPath}/${strings.toLower config.colors.schemeName}/0.png";
       type = types.str;
     };
   };
