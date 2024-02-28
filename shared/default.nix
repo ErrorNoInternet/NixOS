@@ -1,4 +1,5 @@
 {
+  config,
   inputs,
   lib,
   pkgs,
@@ -53,7 +54,7 @@ in {
 
   services = {
     getty = {
-      greetingLine = "";
+      greetingLine = ''>>> NixOS ${config.system.nixos.label} (\m) - \l'';
       helpLine = mkForce "";
     };
 
