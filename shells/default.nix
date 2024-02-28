@@ -10,7 +10,7 @@
     ...
   }: {
     devShells.default = pkgs.mkShell {
-      name = "configuration.nix-shell";
+      name = "configuration.nix";
       packages = with pkgs; [
         alejandra
         bat

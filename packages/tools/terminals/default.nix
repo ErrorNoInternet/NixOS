@@ -1,6 +1,5 @@
 {
   perSystem = {
-    inputs',
     pkgs,
     system,
     ...
@@ -8,7 +7,7 @@
     packages = with pkgs; {
       foot = callPackage ./foot {};
       kitty = callPackage ./kitty {};
-      wezterm = callPackage ./wezterm {inherit inputs' system;};
+      wezterm = callPackage ./wezterm {inherit system;};
     };
   };
 }
