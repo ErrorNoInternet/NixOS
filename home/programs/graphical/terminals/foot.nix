@@ -14,7 +14,6 @@
           font = "${config.font.name}:style=Medium:size=9";
           pad = "2x2 center";
           shell = "tmux";
-          initial-window-size-pixels = "1896x1022";
         };
         mouse.hide-when-typing = "yes";
         cursor = {

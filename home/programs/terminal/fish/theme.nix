@@ -63,10 +63,6 @@
         "
         clear
       end
-
-      if test $SHLVL -le 2
-        sleep 0.05
-      end
     '';
   };
 }
