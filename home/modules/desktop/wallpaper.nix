@@ -1,7 +1,7 @@
 {
   config,
-  inputs',
   lib,
+  pkgs,
   self,
   ...
 }: let
@@ -11,25 +11,18 @@
   wallpapersPath = "~/pictures/wallpapers";
 in {
   options.wallpaper = {
-    enable = mkEnableOption "";
+    enable = mkEnableOption "" // {default = true;};
 
     path = mkOption {
-      default = "${strings.toLower config.colors.schemeName}/1.png";
+      default = "${wallpapersPath}/${strings.toLower config.colors.schemeName}/1.png";
       type = types.str;
     };
   };
 
   config = mkIf cfg.enable {
     home = {
-      packages = [inputs'.hyprpaper.packages.hyprpaper];
-      file = {
-        "pictures/wallpapers".source = "${self}/other/wallpapers";
-
-        "${config.xdg.configHome}/hypr/hyprpaper.conf".text = ''
-          preload = ${wallpapersPath}/${cfg.path}
-          wallpaper = ,${wallpapersPath}/${cfg.path}
-        '';
-      };
+      file."pictures/wallpapers".source = "${self}/other/wallpapers";
+      packages = [pkgs.swaybg];
     };
   };
 }
