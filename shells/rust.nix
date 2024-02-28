@@ -9,6 +9,8 @@
       packages = let
         rust = inputs'.rust-overlay.packages.rust-nightly.override {
           targets = [
+            "aarch64-unknown-linux-gnu"
+            "aarch64-unknown-linux-musl"
             "x86_64-unknown-linux-gnu"
             "x86_64-unknown-linux-musl"
           ];
