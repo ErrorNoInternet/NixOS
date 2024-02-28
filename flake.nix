@@ -4,18 +4,29 @@
   inputs = {
     agenix = {
       url = "github:ryantm/agenix";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        home-manager.follows = "home-manager";
+      };
     };
 
     attic = {
       url = "github:zhaofengli/attic";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        flake-compat.follows = "flake-compat";
+        flake-utils.follows = "flake-utils";
+        nixpkgs.follows = "nixpkgs";
+      };
     };
+
+    flake-compat.url = "github:edolstra/flake-compat";
 
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
+
+    flake-utils.url = "github:numtide/flake-utils";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -25,6 +36,7 @@
     hsize = {
       url = "github:ErrorNoInternet/hsize";
       inputs = {
+        flake-parts.follows = "flake-parts";
         nixpkgs.follows = "nixpkgs";
         rust-overlay.follows = "rust-overlay";
       };
@@ -42,14 +54,21 @@
 
     neovim-nightly = {
       url = "github:nix-community/neovim-nightly-overlay";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        flake-compat.follows = "flake-compat";
+        flake-parts.follows = "flake-parts";
+        nixpkgs.follows = "nixpkgs";
+      };
     };
 
     nix-colors.url = "github:misterio77/nix-colors";
 
     nix-gaming = {
       url = "github:fufexan/nix-gaming";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        flake-parts.follows = "flake-parts";
+        nixpkgs.follows = "nixpkgs";
+      };
     };
 
     nix-index-database = {
@@ -67,16 +86,25 @@
 
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-    nix-super.url = "github:privatevoid-net/nix-super";
+    nix-super = {
+      url = "github:privatevoid-net/nix-super";
+      inputs.flake-compat.follows = "flake-compat";
+    };
 
     nixvim = {
       url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        flake-compat.follows = "flake-compat";
+        flake-parts.follows = "flake-parts";
+        home-manager.follows = "home-manager";
+        nixpkgs.follows = "nixpkgs";
+      };
     };
 
     overmask = {
       url = "github:ErrorNoInternet/overmask";
       inputs = {
+        flake-parts.follows = "flake-parts";
         nixpkgs.follows = "nixpkgs";
         rust-overlay.follows = "rust-overlay";
       };
@@ -84,29 +112,42 @@
 
     paralload = {
       url = "github:ErrorNoInternet/Paralload";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        flake-parts.follows = "flake-parts";
+        nixpkgs.follows = "nixpkgs";
+      };
     };
 
     rust-overlay = {
       url = "github:oxalica/rust-overlay";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        flake-utils.follows = "flake-utils";
+        nixpkgs.follows = "nixpkgs";
+      };
     };
 
     shadower.url = "github:n3oney/shadower";
 
     spicetify-nix = {
       url = "github:the-argus/spicetify-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        flake-utils.follows = "flake-utils";
+        nixpkgs.follows = "nixpkgs";
+      };
     };
 
     waybar = {
       url = "github:Alexays/Waybar";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        flake-compat.follows = "flake-compat";
+        nixpkgs.follows = "nixpkgs";
+      };
     };
 
     wezterm = {
       url = "github:wez/wezterm?dir=nix";
       inputs = {
+        flake-utils.follows = "flake-utils";
         nixpkgs.follows = "nixpkgs";
         rust-overlay.follows = "rust-overlay";
       };
@@ -115,6 +156,7 @@
     yazi = {
       url = "github:sxyazi/yazi";
       inputs = {
+        flake-utils.follows = "flake-utils";
         nixpkgs.follows = "nixpkgs";
         rust-overlay.follows = "rust-overlay";
       };
