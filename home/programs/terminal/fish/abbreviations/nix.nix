@@ -8,6 +8,7 @@
     "/insecure" = anywhere "NIXPKGS_ALLOW_INSECURE=1";
     "/unfree" = anywhere "NIXPKGS_ALLOW_UNFREE=1";
 
+    "/c" = anywhere "-c fish";
     "/es" = anywhere "--extra-substituters";
     "/etpk" = anywhere "--extra-trusted-public-keys";
     "/i" = anywhere "--impure";
@@ -20,8 +21,8 @@
 
     n = "nix";
     nb = "nix build";
-    nd = "nix develop -c fish";
-    ndd = "nix develop";
+    nd = "nix develop";
+    ndd = "nix develop -c fish";
     nr = "nix run";
     nre = "nix repl";
     ns = "nix shell";
