@@ -6,7 +6,7 @@
   host.id = "102f58f5";
 
   specialisation = let
-    absentFileSystems = ["/mnt/pi-drive1" "/mnt/pi-drive3"];
+    absentFileSystems = ["/mnt/nas-drive1" "/mnt/nas-drive3"];
   in {
     lockdown.configuration = {inherit absentFileSystems;};
     outside.configuration = {inherit absentFileSystems;};
