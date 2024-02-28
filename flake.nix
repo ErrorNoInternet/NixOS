@@ -24,7 +24,10 @@
 
     hsize = {
       url = "github:ErrorNoInternet/hsize";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        rust-overlay.follows = "rust-overlay";
+      };
     };
 
     hyprland = {
@@ -73,7 +76,10 @@
 
     overmask = {
       url = "github:ErrorNoInternet/overmask";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        rust-overlay.follows = "rust-overlay";
+      };
     };
 
     paralload = {
@@ -100,12 +106,18 @@
 
     wezterm = {
       url = "github:wez/wezterm?dir=nix";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        rust-overlay.follows = "rust-overlay";
+      };
     };
 
     yazi = {
       url = "github:sxyazi/yazi";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        rust-overlay.follows = "rust-overlay";
+      };
     };
   };
 
