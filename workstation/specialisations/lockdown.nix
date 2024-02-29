@@ -8,12 +8,14 @@
       "net.ipv4.conf.default.rp_filter" = 1;
     };
 
+    security.lockKernelModules = true;
+
+    services.logind.lidSwitch = "suspend";
+
     networking.firewall = {
       enable = true;
       allowPing = false;
     };
-
-    security.lockKernelModules = true;
 
     workstation.modules.bluetooth.enable = false;
   };

@@ -75,7 +75,7 @@ in {
     dbus.implementation = "broker";
     gnome.gnome-keyring.enable = true;
 
-    logind.lidSwitch = "ignore";
+    logind.lidSwitch = mkDefault "ignore";
   };
 
   xdg.portal = {
