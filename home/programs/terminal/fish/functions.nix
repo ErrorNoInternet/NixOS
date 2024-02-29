@@ -30,12 +30,22 @@
     end
 
 
-    function uns -d "turn a nix store symlink into a regular file"
+    function unss -d "turn a nix store symlink into a regular file"
       for argi in (seq 1 $(count $argv))
         set name $argv[$argi]
         mv $name $name.store
         cat $name.store > $name
         echo "$name -> $name.store"
+      end
+    end
+
+    function uns -d "turn a nix store symlink into a regular file, then edit"
+      for argi in (seq 1 $(count $argv))
+        set name $argv[$argi]
+        mv $name $name.store
+        cat $name.store > $name
+        echo "$name -> $name.store"
+        $EDITOR $name
       end
     end
 
