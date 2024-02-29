@@ -69,7 +69,7 @@
         }
 
         .notification-row {
-          margin: 10px;
+          margin-top: 5px;
           outline: none;
           padding: 0px;
         }
@@ -165,7 +165,7 @@
 
         .time {
           color: #${base06};
-          margin-right: 18px;
+          margin-right: 28px;
           text-shadow: none;
         }
 
