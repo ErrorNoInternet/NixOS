@@ -29,6 +29,7 @@ in {
       vimiv-qt
       wf-recorder
       wl-clipboard
+      wlr-randr
     ];
   };
 }
