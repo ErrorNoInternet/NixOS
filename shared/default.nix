@@ -49,6 +49,9 @@ in {
     "net.ipv4.conf.default.secure_redirects" = 0;
     "net.ipv6.conf.all.accept_redirects" = 0;
     "net.ipv6.conf.default.accept_redirects" = 0;
+
+    "vm.page-cluster" = 0;
+    "vm.swappiness" = 180;
   };
 
   zramSwap = {
