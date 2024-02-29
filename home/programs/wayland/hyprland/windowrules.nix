@@ -9,15 +9,15 @@
 in {
   wayland.windowManager.hyprland.settings.windowrulev2 =
     [
-      "float,        class:(branchdialog)"
-      "float,        class:(confirm)"
-      "float,        class:(dialog)"
-      "float,        class:(error)"
-      "float,        class:(mpv)"
-      "float,        class:(notification)"
-      "float,        class:(pavucontrol)"
-      "float,        class:(vimiv)"
-      "size 50% 55%, class:(${config.terminal.name})"
+      "float,         class:branchdialog"
+      "float,         class:confirm"
+      "float,         class:dialog"
+      "float,         class:error"
+      "float,         class:mpv"
+      "float,         class:notification"
+      "float,         class:pavucontrol"
+      "float,         class:vimiv"
+      "size 50% 55%,  class:${config.terminal.name}"
     ]
     ++ (map (dialog: "animation slide, ${dialog}") dialogs)
     ++ (map (dialog: "center,          ${dialog}") dialogs)

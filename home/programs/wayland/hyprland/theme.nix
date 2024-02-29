@@ -55,21 +55,22 @@
 
         bezier = "extremeEaseOut, 0, 1, 0, 1";
         animation = [
-          "windows, 1, 5, extremeEaseOut, popin 50%"
-          "windowsOut, 1, 5, default, popin 80%"
-          "fade, 1, 5, default"
+          "fade,       1, 5, default"
+          "layers,     1, 1, default,        popin 90%"
+          "windows,    1, 5, extremeEaseOut, popin 50%"
+          "windowsOut, 1, 5, default,        popin 80%"
           "workspaces, 1, 4, extremeEaseOut"
         ];
       };
     };
 
     extraConfig = ''
-      layerrule=blur,gtk-layer-shell
-      layerrule=blur,rofi
-      layerrule=blur,swaync-notification-window
-      layerrule=blur,waybar
-      layerrule=ignorezero,rofi
-      layerrule=ignorezero,swaync-notification-window
+      layerrule=blur,        gtk-layer-shell
+      layerrule=blur,        rofi
+      layerrule=blur,        swaync-notification-window
+      layerrule=blur,        waybar
+      layerrule=ignorezero,  rofi
+      layerrule=ignorezero,  swaync-notification-window
     '';
   };
 }
