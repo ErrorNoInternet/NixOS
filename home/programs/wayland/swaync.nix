@@ -69,7 +69,8 @@
         }
 
         .notification-row {
-          margin-top: 5px;
+          margin-right: 2px;
+          margin-top: 8px;
           outline: none;
           padding: 0px;
         }
@@ -86,7 +87,7 @@
           background: rgba(${
           inputs.nix-colors.lib.conversions.hexToRGBString "," base01
         },${builtins.toString config.opacity.notification});
-          border: 1px solid #${base0C};
+          border: 1px solid #${base0F};
           margin: 0px;
           padding: 10px;
         }
@@ -177,7 +178,7 @@
 
         .control-center {
           background: #${base00};
-          border: 2px solid #${base0C};
+          border: 2px solid #${base0F};
           box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
         }
 
@@ -211,7 +212,7 @@
         }
 
         .widget-dnd>switch:checked {
-          background: #${base0C};
+          background: #${base0F};
         }
 
         .widget-dnd>switch slider {
