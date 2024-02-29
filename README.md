@@ -11,6 +11,7 @@ Nix flake for my workstations, servers, home-manager configuration, and a lot mo
 - [packages](/packages): some scripts and patched programs to make my life easier
 - [server](/server): system configuration for some of my dedicated servers 
 - [shared](/shared): shared modules (and binary caches) applied everywhere
+- [shells](/shells): nix development shells/environments (e.g. rust nightly)
 - [workstation](/workstation): system configuration for my laptops and desktops
 
 ## 🖥️ Screenshots
