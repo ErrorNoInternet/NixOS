@@ -84,6 +84,7 @@ in {
       dust
       file
       git
+      iotop
       killall
       lsof
       neovim
