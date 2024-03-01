@@ -44,6 +44,7 @@
     grp = "git restore -p";
     grr = "git restore --recurse-submodules";
     grv = "git revert";
+    grvn = "git revert --no-commit";
     gs = "git show";
     gst = "git status";
     gsw = "git switch -";
