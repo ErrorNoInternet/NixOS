@@ -19,7 +19,10 @@ in {
         signByDefault = true;
       };
       extraConfig = {
-        advice.addEmptyPathspec = false;
+        advice = {
+          addEmptyPathspec = false;
+          detachedHead = false;
+        };
         core.filemode = true;
         index.version = 4;
         init.defaultBranch = "main";
