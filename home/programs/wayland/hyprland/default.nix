@@ -9,7 +9,6 @@
   inherit (lib) mkEnableOption mkIf;
 in {
   imports = [
-    ./autoname-workspaces.nix
     ./execs.nix
     ./input.nix
     ./keybinds.nix
