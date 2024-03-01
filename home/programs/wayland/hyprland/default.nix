@@ -9,10 +9,10 @@
   inherit (lib) mkEnableOption mkIf;
 in {
   imports = [
-    ./execs.nix
     ./input.nix
     ./keybinds.nix
     ./options.nix
+    ./programs.nix
     ./theme.nix
     ./windowrules.nix
   ];
