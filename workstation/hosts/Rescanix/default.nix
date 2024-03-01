@@ -33,7 +33,6 @@
 
     desktops = {
       hyprland.enable = true;
-      plasma5.enable = true;
       plasma6.enable = true;
     };
   };
