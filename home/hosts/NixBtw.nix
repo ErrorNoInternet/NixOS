@@ -42,7 +42,6 @@
       thunderbird.enable = true;
       virtManager.enable = true;
     };
-
     terminal = {
       cava.enable = true;
       git.enable = true;
