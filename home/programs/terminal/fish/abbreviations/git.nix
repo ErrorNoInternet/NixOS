@@ -42,6 +42,7 @@
     grbc = "git rebase --continue";
     grh = "git reset HEAD";
     grp = "git restore -p";
+    grr = "git restore --recurse-submodules";
     grv = "git revert";
     gs = "git show";
     gst = "git status";
