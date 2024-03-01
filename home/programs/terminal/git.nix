@@ -3,11 +3,12 @@
   lib,
   ...
 }: let
+  cfg = config.customPrograms.terminal.git;
   inherit (lib) mkEnableOption mkIf;
 in {
   options.customPrograms.terminal.git.enable = mkEnableOption "";
 
-  config = mkIf config.customPrograms.terminal.git.enable {
+  config = mkIf cfg.enable {
     programs.git = {
       enable = true;
 
