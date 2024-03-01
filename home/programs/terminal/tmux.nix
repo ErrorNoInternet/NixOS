@@ -33,9 +33,9 @@
         set -g status-right "#[fg=brightblack,bg=default,nobold,noitalics,nounderscore]#[fg=white,bg=brightblack] %Y-%m-%d \
         #[fg=white,bg=brightblack,nobold,noitalics,nounderscore]|#[fg=white,bg=brightblack] %H:%M \
         #[fg=cyan,bg=brightblack,nobold,noitalics,nounderscore]#[fg=black,bg=cyan,bold] #H #[fg=cyan,bg=default,nobold]"
-        set -g window-status-format " #[fg=brightblack,bg=default,nobold,noitalics,nounderscore]#[fg=white,bg=brightblack] #I \
+        set -g window-status-format "#[fg=brightblack,bg=default,nobold,noitalics,nounderscore]#[fg=white,bg=brightblack] #I \
         #[fg=white,bg=brightblack,nobold,noitalics,nounderscore]| #[fg=white,bg=brightblack]#W #F #[fg=brightblack,bg=default,nobold,noitalics,nounderscore]"
-        set -g window-status-current-format " #[fg=cyan]#[bg=default]#[nobold]#[noitalics]#[nounderscore]#[fg=black,bg=cyan] #I \
+        set -g window-status-current-format "#[fg=cyan]#[bg=default]#[nobold]#[noitalics]#[nounderscore]#[fg=black,bg=cyan] #I \
         #[fg=black,bg=cyan,nobold,noitalics,nounderscore]| #[fg=black,bg=cyan]#W #F #[fg=cyan,bg=default,nobold,noitalics,nounderscore]"
         set -g pane-active-border-style 'fg=colour4'
 
