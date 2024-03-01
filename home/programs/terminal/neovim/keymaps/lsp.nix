@@ -35,6 +35,16 @@
         action = "<cmd>lua require('luasnip').jump(1)<CR>";
       }
       {
+        mode = "";
+        key = "<CS-f>";
+        action = "<cmd>lua require('luasnip').jump(1)<CR>";
+      }
+      {
+        mode = "i";
+        key = "<CS-f>";
+        action = "<cmd>lua require('luasnip').jump(1)<CR>";
+      }
+      {
         mode = "i";
         key = "<C-t>";
         action = "<Plug>luasnip-next-choice";
