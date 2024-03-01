@@ -66,8 +66,6 @@
         printers = {
           path = "/var/spool/samba";
           "create mode" = 0700;
-          "valid users" = "snowflake";
-          browseable = "yes";
           comment = "All Printers";
           printable = "yes";
           writeable = "no";
@@ -75,15 +73,11 @@
         drive1 = {
           path = "/mnt/drive1";
           "follow symlinks" = "yes";
-          "valid users" = "snowflake";
-          browseable = "yes";
           writeable = "yes";
         };
         drive3 = {
           path = "/mnt/drive3";
           "follow symlinks" = "yes";
-          "valid users" = "snowflake";
-          browseable = "yes";
           writeable = "yes";
         };
       };
