@@ -15,6 +15,7 @@ in {
     wallpaper.enable = true;
 
     home.packages = with pkgs; [
+      brightnessctl
       cliphist
       inputs'.hyprwm-contrib.packages.grimblast
       libnotify
