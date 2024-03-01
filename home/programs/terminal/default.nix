@@ -10,6 +10,7 @@
     ./git.nix
     ./gpg.nix
     ./irssi.nix
+    ./nb.nix
     ./neovim
     ./ssh.nix
     ./tmux.nix

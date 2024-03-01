@@ -20,7 +20,7 @@
     "/tpk" = anywhere "--trusted-public-keys";
 
     n = "nix";
-    nb = "nix build";
+    nbb = "nix build";
     nd = "nix develop";
     ndd = "nix develop -c fish";
     nr = "nix run";

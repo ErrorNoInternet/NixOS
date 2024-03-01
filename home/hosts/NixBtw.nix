@@ -48,6 +48,10 @@
       git.enable = true;
       gpg.enable = true;
       irssi.enable = true;
+      nb = {
+        enable = true;
+        dataDirectory = "/mnt/data/other/nb";
+      };
     };
   };
 
