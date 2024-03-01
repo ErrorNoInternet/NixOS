@@ -36,13 +36,13 @@
       }
       {
         mode = "";
-        key = "<CS-f>";
-        action = "<cmd>lua require('luasnip').jump(1)<CR>";
+        key = "<C-M-f>";
+        action = "<cmd>lua require('luasnip').jump(-1)<CR>";
       }
       {
         mode = "i";
-        key = "<CS-f>";
-        action = "<cmd>lua require('luasnip').jump(1)<CR>";
+        key = "<C-M-f>";
+        action = "<cmd>lua require('luasnip').jump(-1)<CR>";
       }
       {
         mode = "i";
