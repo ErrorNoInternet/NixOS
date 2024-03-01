@@ -235,7 +235,7 @@
           background: #${base02};
           color: #${base06};
           margin: 10px;
-          padding: 10px 10px 0px 10px;
+          padding: 15px 10px 0px 10px;
         }
       '';
     };
