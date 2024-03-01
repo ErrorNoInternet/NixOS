@@ -20,12 +20,12 @@
     "/tpk" = anywhere "--trusted-public-keys";
 
     n = "nix";
-    nbb = "nix build";
+    nB = "nix build";
+    nD = "nix develop -c fish";
     nd = "nix develop";
-    ndd = "nix develop -c fish";
     nr = "nix run";
     nre = "nix repl";
     ns = "nix shell";
-    nss = "nix-shell --run fish -p";
+    nS = "nix-shell --run fish -p";
   };
 }
