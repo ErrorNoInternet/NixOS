@@ -32,7 +32,7 @@
         set -g status-left "#[fg=blue,bg=default]#[fg=black,bg=blue,bold] #S #[fg=blue,bg=default,nobold,noitalics,nounderscore] "
         set -g status-right "#[fg=brightblack,bg=default,nobold,noitalics,nounderscore]#[fg=white,bg=brightblack] %Y-%m-%d \
         #[fg=white,bg=brightblack,nobold,noitalics,nounderscore]|#[fg=white,bg=brightblack] %H:%M \
-        #[fg=cyan,bg=brightblack,nobold,noitalics,nounderscore]#[fg=black,bg=cyan,bold] #H #[fg=cyan,bg=default,nobold]"
+        #[fg=blue,bg=brightblack,nobold,noitalics,nounderscore]#[fg=black,bg=blue,bold] #H #[fg=blue,bg=default,nobold]"
         set -g window-status-format "#[fg=brightblack,bg=default,nobold,noitalics,nounderscore]#[fg=white,bg=brightblack] #I \
         #[fg=white,bg=brightblack,nobold,noitalics,nounderscore]| #[fg=white,bg=brightblack]#W #F #[fg=brightblack,bg=default,nobold,noitalics,nounderscore]"
         set -g window-status-current-format "#[fg=cyan]#[bg=default]#[nobold]#[noitalics]#[nounderscore]#[fg=black,bg=cyan] #I \
