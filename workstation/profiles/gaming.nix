@@ -23,7 +23,6 @@ in {
   config = mkIf cfg.enable {
     caches.nix-gaming.enable = true;
 
-    nixpkgs.config.allowUnfree = mkIf cfg.enableSteam true;
     programs.steam = {
       enable = cfg.enableSteam;
       remotePlay.openFirewall = true;
