@@ -12,7 +12,6 @@ in {
     ./modules
     ./profiles
     ./programs
-    ./specialisations
     inputs.agenix.nixosModules.default
   ];
 

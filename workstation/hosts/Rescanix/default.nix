@@ -36,8 +36,4 @@
       plasma6.enable = true;
     };
   };
-
-  specialisation.lts-kernel = self.lib.systems.mkSpecialisation "lts-kernel" {
-    boot.kernelPackages = pkgs.linuxPackages;
-  };
 }

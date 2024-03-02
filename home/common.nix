@@ -17,13 +17,6 @@
     "/home/${config.home.username}/.ssh/id_ed25519_agenix"
   ];
 
-  specialisation.outside.configuration = {
-    caches.errornobinaries = {
-      internal = false;
-      external = true;
-    };
-  };
-
   home = {
     packages = with pkgs; [
       cmatrix
