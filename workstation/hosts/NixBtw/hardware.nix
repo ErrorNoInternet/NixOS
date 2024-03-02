@@ -14,7 +14,15 @@ in {
     kernelModules = ["kvm-intel"];
     extraModulePackages = [];
     initrd = {
-      availableKernelModules = ["xhci_pci" "ehci_pci" "ahci" "usb_storage" "sd_mod" "sr_mod" "rtsx_pci_sdmmc"];
+      availableKernelModules = [
+        "xhci_pci"
+        "ehci_pci"
+        "ahci"
+        "usb_storage"
+        "sd_mod"
+        "sr_mod"
+        "rtsx_pci_sdmmc"
+      ];
       kernelModules = [];
 
       luks.devices."${luksName}" = {
@@ -25,7 +33,7 @@ in {
   };
 
   fileSystems = let
-    defaultOptions = ["ssd_spread"];
+    defaultOptions = [];
     device = "/dev/mapper/${luksName}";
     fsType = "btrfs";
   in {
@@ -51,5 +59,6 @@ in {
 
   networking.useDHCP = lib.mkDefault true;
 
-  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  hardware.cpu.intel.updateMicrocode =
+    lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
