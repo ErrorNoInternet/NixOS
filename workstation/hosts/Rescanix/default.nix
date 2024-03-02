@@ -1,7 +1,6 @@
 {
   lib,
   pkgs,
-  self,
   ...
 }: {
   host.id = "3a1f6cc6";

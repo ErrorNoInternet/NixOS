@@ -1,5 +1,5 @@
 {pkgs, ...}: {
-  programs.nixvim = {helpers, ...}: {
+  programs.nixvim = {
     extraPackages = with pkgs; [
       alejandra
       black
