@@ -5,6 +5,13 @@
   ];
   host.id = "102f58f5";
 
+  specialisation = let
+    absentFileSystems = ["/mnt/nas-drive1" "/mnt/nas-drive3"];
+  in {
+    lockdown.configuration = {inherit absentFileSystems;};
+    outside.configuration = {inherit absentFileSystems;};
+  };
+
   services.udev.extraRules = ''
     SUBSYSTEMS=="usb|hidraw", ATTRS{idVendor}=="1770", ATTRS{idProduct}=="ff00", TAG+="uaccess", TAG+="MSI_3Zone_Laptop"
   '';

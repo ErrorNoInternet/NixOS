@@ -87,4 +87,10 @@
         inherit name system;
       }
       // extraConfig);
+
+  mkSpecialisation = name: configuration: {
+    configuration.config =
+      {environment.etc.specialisation.text = name;}
+      // configuration;
+  };
 }
