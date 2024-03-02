@@ -12,6 +12,7 @@
     gbl = "git blame";
     gbr = "git branch -r";
     gc = "git commit -m";
+    gC = "git commit -m";
     gca = "git commit --amend";
     gcf = "git clean -f .";
     gch = "git cherry";
