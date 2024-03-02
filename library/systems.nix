@@ -9,6 +9,8 @@
     homeManager,
     name,
     system,
+    allowUnfree ? false,
+    cudaSupport ? false,
   }:
     withSystem system ({
       inputs',
@@ -16,14 +18,13 @@
       ...
     }:
       inputs.nixpkgs.lib.nixosSystem {
+        specialArgs = {inherit inputs' inputs self' self;};
+
         pkgs = import inputs.nixpkgs {
           inherit system;
-          config = {
-            allowUnfree = true;
-            cudaSupport = true;
-          };
+          config = {inherit allowUnfree cudaSupport;};
         };
-        specialArgs = {inherit inputs' inputs self' self;};
+
         modules =
           [
             ../${type}/common.nix
@@ -35,9 +36,10 @@
             inputs.home-manager.nixosModules.home-manager
             {
               home-manager = {
+                extraSpecialArgs = {inherit inputs' inputs self' self;};
+
                 useGlobalPkgs = true;
                 useUserPackages = true;
-                extraSpecialArgs = {inherit inputs' inputs self' self;};
 
                 users."${
                   if type == "workstation"
@@ -54,33 +56,37 @@
           ];
       });
 
-  mkHmServer = name: system:
-    mkSystem {
-      type = "server";
-      homeManager = true;
-      inherit name system;
-    };
+  mkHmServer = name: system: extraConfig:
+    mkSystem ({
+        type = "server";
+        homeManager = true;
+        inherit name system;
+      }
+      // extraConfig);
 
-  mkServer = name: system:
-    mkSystem {
-      type = "server";
-      homeManager = false;
-      inherit name system;
-    };
+  mkServer = name: system: extraConfig:
+    mkSystem ({
+        type = "server";
+        homeManager = false;
+        inherit name system;
+      }
+      // extraConfig);
 
-  mkHmWorkstation = name: system:
-    mkSystem {
-      type = "workstation";
-      homeManager = true;
-      inherit name system;
-    };
+  mkHmWorkstation = name: system: extraConfig:
+    mkSystem ({
+        type = "workstation";
+        homeManager = true;
+        inherit name system;
+      }
+      // extraConfig);
 
-  mkWorkstation = name: system:
-    mkSystem {
-      type = "workstation";
-      homeManager = false;
-      inherit name system;
-    };
+  mkWorkstation = name: system: extraConfig:
+    mkSystem ({
+        type = "workstation";
+        homeManager = false;
+        inherit name system;
+      }
+      // extraConfig);
 
   mkSpecialisation = name: configuration: {
     configuration.config =
