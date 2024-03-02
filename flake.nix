@@ -143,15 +143,6 @@
         nixpkgs.follows = "nixpkgs";
       };
     };
-
-    yazi = {
-      url = "github:sxyazi/yazi";
-      inputs = {
-        flake-utils.follows = "flake-utils";
-        nixpkgs.follows = "nixpkgs";
-        rust-overlay.follows = "rust-overlay";
-      };
-    };
   };
 
   outputs = {flake-parts, ...} @ inputs:

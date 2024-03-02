@@ -981,8 +981,7 @@
         "rust-overlay": "rust-overlay",
         "shadower": "shadower",
         "spicetify-nix": "spicetify-nix",
-        "waybar": "waybar",
-        "yazi": "yazi"
+        "waybar": "waybar"
       }
     },
     "rust-overlay": {
@@ -1213,32 +1212,6 @@
       "original": {
         "owner": "hyprwm",
         "repo": "xdg-desktop-portal-hyprland",
-        "type": "github"
-      }
-    },
-    "yazi": {
-      "inputs": {
-        "flake-utils": [
-          "flake-utils"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "rust-overlay": [
-          "rust-overlay"
-        ]
-      },
-      "locked": {
-        "lastModified": 1709179347,
-        "narHash": "sha256-59ZW6tkOFrsNxpZaycw8nyrx15LhuWIO77L5O1SHeDg=",
-        "owner": "sxyazi",
-        "repo": "yazi",
-        "rev": "73b7e5acf761929f8f41cc4d938cdbe9819010d8",
-        "type": "github"
-      },
-      "original": {
-        "owner": "sxyazi",
-        "repo": "yazi",
         "type": "github"
       }
     }

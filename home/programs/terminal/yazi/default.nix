@@ -1,6 +1,5 @@
 {
   config,
-  inputs',
   lib,
   ...
 }: {
@@ -14,8 +13,6 @@
   config = lib.mkIf config.customPrograms.terminal.fish.enable {
     programs.yazi = {
       enable = true;
-      package = inputs'.yazi.packages.yazi;
-
       enableFishIntegration = config.customPrograms.terminal.fish.enable;
     };
   };
