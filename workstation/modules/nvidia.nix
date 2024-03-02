@@ -8,7 +8,6 @@
 in {
   options.workstation.modules.nvidia = {
     enable = mkEnableOption "" // {default = true;};
-
     enableOptimus = mkEnableOption "" // {default = true;};
   };
 

@@ -2,13 +2,18 @@
   config,
   lib,
   ...
-}: {
-  options.caches.nix-gaming.enable = lib.mkEnableOption "";
+}: let
+  cfg = config.caches.nix-gaming;
+  inherit (lib) mkEnableOption mkIf;
+in {
+  options.caches.nix-gaming.enable = mkEnableOption "";
 
-  config = lib.mkIf config.caches.nix-gaming.enable {
+  config = mkIf cfg.enable {
     nix.settings = {
       substituters = ["https://nix-gaming.cachix.org"];
-      trusted-public-keys = ["nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="];
+      trusted-public-keys = [
+        "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="
+      ];
     };
   };
 }

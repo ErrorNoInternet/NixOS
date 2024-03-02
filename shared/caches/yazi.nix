@@ -2,13 +2,18 @@
   config,
   lib,
   ...
-}: {
-  options.caches.yazi.enable = lib.mkEnableOption "" // {default = true;};
+}: let
+  cfg = config.caches.yazi;
+  inherit (lib) mkEnableOption mkIf;
+in {
+  options.caches.yazi.enable = mkEnableOption "" // {default = true;};
 
-  config = lib.mkIf config.caches.yazi.enable {
+  config = mkIf cfg.enable {
     nix.settings = {
       substituters = ["https://yazi.cachix.org"];
-      trusted-public-keys = ["yazi.cachix.org-1:Dcdz63NZKfvUCbDGngQDAZq6kOroIrFoyO064uvLh8k="];
+      trusted-public-keys = [
+        "yazi.cachix.org-1:Dcdz63NZKfvUCbDGngQDAZq6kOroIrFoyO064uvLh8k="
+      ];
     };
   };
 }

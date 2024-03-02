@@ -2,13 +2,18 @@
   config,
   lib,
   ...
-}: {
-  options.caches.hyprland.enable = lib.mkEnableOption "";
+}: let
+  cfg = config.caches.hyprland;
+  inherit (lib) mkEnableOption mkIf;
+in {
+  options.caches.hyprland.enable = mkEnableOption "";
 
-  config = lib.mkIf config.caches.hyprland.enable {
+  config = mkIf cfg.enable {
     nix.settings = {
       substituters = ["https://hyprland.cachix.org"];
-      trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
+      trusted-public-keys = [
+        "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+      ];
     };
   };
 }
