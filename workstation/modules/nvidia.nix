@@ -7,17 +7,9 @@
   inherit (lib) mkEnableOption mkIf;
 in {
   options.workstation.modules.nvidia = {
-    enable =
-      mkEnableOption ""
-      // {
-        default = true;
-      };
+    enable = mkEnableOption "" // {default = true;};
 
-    enableOptimus =
-      mkEnableOption ""
-      // {
-        default = true;
-      };
+    enableOptimus = mkEnableOption "" // {default = true;};
   };
 
   config = mkIf cfg.enable {
@@ -30,12 +22,6 @@ in {
 
     services.xserver.videoDrivers = ["nvidia"];
     hardware = {
-      opengl = {
-        enable = true;
-        driSupport = true;
-        driSupport32Bit = true;
-      };
-
       nvidia = {
         package = config.boot.kernelPackages.nvidiaPackages.production;
         modesetting.enable = true;
@@ -49,6 +35,12 @@ in {
           intelBusId = "PCI:0:2:0";
           nvidiaBusId = "PCI:1:0:0";
         };
+      };
+
+      opengl = {
+        enable = true;
+        driSupport = true;
+        driSupport32Bit = true;
       };
     };
   };
