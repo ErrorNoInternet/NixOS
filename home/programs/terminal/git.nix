@@ -23,10 +23,17 @@ in {
           addEmptyPathspec = false;
           detachedHead = false;
         };
+        branch.sort = "-committerdate";
         core.filemode = true;
+        diff = {
+          submodule = "log";
+          algorithm = "histogram";
+        };
         index.version = 4;
         init.defaultBranch = "main";
-        pull.rebase = false;
+        merge.conflictstyle = "zdiff3";
+        pull.rebase = true;
+        status.submoduleSummary = true;
       };
 
       delta = {
