@@ -10,6 +10,8 @@ in {
 
   config = mkIf cfg.enable {
     boot = {
+      loader.grub.zfsSupport = true;
+
       kernelPackages = mkDefault config.boot.zfs.package.latestCompatibleLinuxPackages;
       supportedFilesystems = ["zfs"];
 

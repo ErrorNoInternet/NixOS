@@ -28,6 +28,7 @@ in {
       };
       timeout = 3;
     };
+    kernelParams = ["boot.shell_on_fail"];
 
     kernelPackages = mkOverride 1250 pkgs.linuxPackages_latest;
     supportedFilesystems = [

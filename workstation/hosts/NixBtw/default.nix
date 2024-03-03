@@ -5,6 +5,8 @@
   ];
   host.id = "102f58f5";
 
+  boot.kernelPackages = pkgs.linuxPackages_zen;
+
   services.udev.extraRules = ''
     SUBSYSTEMS=="usb|hidraw", ATTRS{idVendor}=="1770", ATTRS{idProduct}=="ff00", TAG+="uaccess", TAG+="MSI_3Zone_Laptop"
   '';
@@ -22,6 +24,4 @@
   };
 
   nix.gc.automatic = false;
-
-  # boot.kernelPackages = pkgs.linuxPackages_zen;
 }

@@ -10,7 +10,6 @@
       timeout = lib.mkForce 5;
       grub.memtest86.enable = true;
     };
-    kernelParams = ["boot.shell_on_fail"];
     supportedFilesystems = [
       "apfs"
       "exfat"
