@@ -27,6 +27,7 @@
     gdc = "git diff --compact-summary";
     gds = "git diff --staged";
     gl = "git log";
+    glf = "git log --follow";
     gm = "git merge";
     gma = "git merge --abort";
     gmc = "git merge --continue";
