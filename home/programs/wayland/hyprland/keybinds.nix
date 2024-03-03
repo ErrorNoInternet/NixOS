@@ -21,7 +21,7 @@
 
         "$mod, D, exec, ${commands.rofi} || pkill rofi"
         "$mod, Z, exec, ${commands.rofi} || pkill rofi"
-        "$mod, G, exec, cliphist list | rofi -dmenu || pkill rofi | cliphist decode | wl-copy"
+        "$mod, G, exec, cliphist list | (rofi -dmenu || pkill rofi) | cliphist decode | wl-copy"
         "$mod, code:60, exec, rofi -show emoji || pkill rofi"
 
         ", PRINT, exec, ${commands.grimblast} | wl-copy"
