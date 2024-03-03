@@ -12,10 +12,14 @@ in {
     boot = {
       loader.grub.zfsSupport = true;
 
-      kernelPackages = mkDefault config.boot.zfs.package.latestCompatibleLinuxPackages;
+      kernelPackages =
+        mkDefault config.boot.zfs.package.latestCompatibleLinuxPackages;
       supportedFilesystems = ["zfs"];
 
       zfs.forceImportRoot = false;
+      extraModprobeConfig = ''
+        options zfs zfs_bclone_enabled=1
+      '';
     };
   };
 }
