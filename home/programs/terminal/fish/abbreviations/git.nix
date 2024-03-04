@@ -15,6 +15,7 @@
     gC = "git commit -m";
     gca = "git commit --amend";
     gcf = "git clean -f .";
+    gcfx = "git clean -fX .";
     gch = "git cherry";
     gcl = "git clone";
     gco = "git checkout";
