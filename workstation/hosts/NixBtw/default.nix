@@ -1,6 +1,5 @@
 {pkgs, ...}: {
   imports = [
-    ./drives.nix
     ./nas-mounts.nix
   ];
   host.id = "102f58f5";
@@ -21,6 +20,13 @@
     modules.zfs.enable = true;
 
     desktops.hyprland.enable = true;
+  };
+
+  services = {
+    zfs.autoSnapshot = {
+      enable = true;
+      monthly = 1;
+    };
   };
 
   nix.gc.automatic = false;
