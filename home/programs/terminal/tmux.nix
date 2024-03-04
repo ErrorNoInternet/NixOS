@@ -38,6 +38,8 @@
         set -g window-status-current-format "#[fg=cyan]#[bg=default]#[nobold]#[noitalics]#[nounderscore]#[fg=black,bg=cyan] #I \
         #[fg=black,bg=cyan,nobold,noitalics,nounderscore]| #[fg=black,bg=cyan]#W #F #[fg=cyan,bg=default,nobold,noitalics,nounderscore]"
         set -g pane-active-border-style 'fg=colour4'
+        set -g @jump-bg-color '\e[0m\e[90m'
+        set -g @jump-fg-color '\e[1m\e[33m'
 
         set -g allow-passthrough on
         set -g focus-events off
