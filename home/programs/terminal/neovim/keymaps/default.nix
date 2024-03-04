@@ -138,6 +138,18 @@
       {
         mode = "n";
         options.silent = true;
+        key = "gt";
+        action = ":BufferNext<CR>";
+      }
+      {
+        mode = "n";
+        options.silent = true;
+        key = "gT";
+        action = ":BufferPrevious<CR>";
+      }
+      {
+        mode = "n";
+        options.silent = true;
         key = ";d";
         action = ":bd<CR>";
       }
