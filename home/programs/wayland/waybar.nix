@@ -185,7 +185,7 @@
           background-color: #${base0D};
           color: #${base02};
           border-radius: 16px;
-          min-width: 40px;
+          min-width: 35px;
           background-size: 400% 400%;
           transition: all 0.2s ease-in-out;
         }
@@ -194,7 +194,7 @@
           background-color: #${base04};
           color: #${base02};
           border-radius: 16px;
-          min-width: 40px;
+          min-width: 35px;
           background-size: 400% 400%;
         }
 
