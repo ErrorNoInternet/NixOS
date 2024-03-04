@@ -66,6 +66,7 @@
 
     extraConfig = ''
       layerrule=animation fade, hyprpicker
+      layerrule=animation fade, swaync-control-center
       layerrule=blur,           gtk-layer-shell
       layerrule=blur,           rofi
       layerrule=blur,           swaync-notification-window
