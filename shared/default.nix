@@ -13,7 +13,6 @@ in {
     ./modules
   ];
 
-  i18n.defaultLocale = "en_US.UTF-8";
   documentation.doc.enable = false;
 
   nix = {
