@@ -3,7 +3,6 @@
   inputs',
   inputs,
   lib,
-  pkgs,
   ...
 }: {
   config = lib.mkIf config.profiles.windowManager.enable {
@@ -22,6 +21,7 @@
         margin-bottom = 0;
         margin-left = 0;
         margin-right = 0;
+
         modules-left = [
           "custom/launcher"
           "cpu"
@@ -36,40 +36,13 @@
           "pulseaudio"
           "network#status"
           "battery"
-          "clock"
+          "group/status"
         ];
-        clock = {
-          format = "  {:%a, %b %d, %H:%M}";
-          tooltip = "true";
-          tooltip-format = "<tt><small>{calendar}</small></tt>";
-          on-click = "swaync-client -t";
-        };
-        "wlr/workspaces" = {
-          active-only = false;
-          all-outputs = false;
-          on-click = "activate";
-          disable-scroll = false;
-          on-scroll-up = "hyprctl dispatch workspace e-1";
-          on-scroll-down = "hyprctl dispatch workspace e+1";
-          format = "{name}";
-          format-icons = {
-            urgent = "";
-            active = "";
-            default = "";
-            sort-by-number = true;
-          };
-        };
-        battery = {
-          states = {
-            good = 95;
-            warning = 35;
-            critical = 15;
-          };
-          format = "{icon}  {capacity}%";
-          format-charging = "  {capacity}%";
-          format-plugged = "  {capacity}%";
-          tooltip-format = "{time}";
-          format-icons = ["" "" "" "" ""];
+
+        "custom/launcher" = {
+          format = "";
+          on-click = "rofi -show drun";
+          tooltip = false;
         };
         cpu = {
           format = "󰻠 {usage}%";
@@ -89,13 +62,19 @@
           format-disconnected = "󱚻  ?";
           interval = 3;
         };
-        "network#status" = {
-          format-wifi = "  {signalStrength}%";
-          format-ethernet = "󰈀  {ifname} (eth)";
-          tooltip-format-wifi = "({frequency} GHz) Connected to {essid} ({gwaddr}) via {ifname} ({ipaddr})";
-          tooltip-format-ethernet = "Connected via {ifname} ({gwaddr} -> {ipaddr})";
-          format-linked = "󰈀  {ifname} (eth) (No IP)";
-          format-disconnected = "󰖪  ?";
+        "wlr/workspaces" = {
+          active-only = false;
+          all-outputs = false;
+          on-click = "activate";
+          disable-scroll = false;
+          on-scroll-up = "hyprctl dispatch workspace e-1";
+          on-scroll-down = "hyprctl dispatch workspace e+1";
+          format = "{name}";
+          format-icons.sort-by-number = true;
+        };
+        tray = {
+          icon-size = 20;
+          spacing = 8;
         };
         pulseaudio = {
           format = "{icon} {volume}%";
@@ -104,16 +83,60 @@
           };
           format-muted = "󰝟";
           scroll-step = 5;
-          on-click = "${pkgs.pavucontrol}/bin/pavucontrol";
+          on-click = "pavucontrol";
         };
-        tray = {
-          icon-size = 20;
-          spacing = 8;
+        "network#status" = {
+          format-wifi = "  {signalStrength}%";
+          format-ethernet = "󰈀  {ifname} (eth)";
+          tooltip-format-wifi = "({frequency} GHz) Connected to {essid} ({gwaddr}) via {ifname} ({ipaddr})";
+          tooltip-format-ethernet = "Connected via {ifname} ({gwaddr} -> {ipaddr})";
+          format-linked = "󰈀  {ifname} (eth) (No IP)";
+          format-disconnected = "󰖪  ?";
         };
-        "custom/launcher" = {
-          format = "";
-          on-click = "${pkgs.rofi}/bin/rofi -show drun";
+        battery = {
+          states = {
+            good = 95;
+            warning = 35;
+            critical = 15;
+          };
+          format = "{icon}  {capacity}%";
+          format-charging = "  {capacity}%";
+          format-plugged = "  {capacity}%";
+          tooltip-format = "{time}";
+          format-icons = ["" "" "" "" ""];
+        };
+        "group/status" = {
+          orientation = "inherit";
+          drawer = {
+            transition-duration = 200;
+            transition-left-to-right = true;
+          };
+          modules = ["clock" "custom/notifications"];
+        };
+        clock = {
+          format = "  {:%a, %b %d, %H:%M}";
+          tooltip = true;
+          tooltip-format = "<tt><small>{calendar}</small></tt>";
+        };
+        "custom/notifications" = {
           tooltip = false;
+          format = "{icon}";
+          format-icons = {
+            notification = "<span foreground='red'><sup></sup></span>";
+            none = " ";
+            dnd-notification = "<span foreground='red'><sup></sup></span>";
+            dnd-none = " ";
+            inhibited-notification = "<span foreground='red'><sup></sup></span>";
+            inhibited-none = " ";
+            dnd-inhibited-notification = "<span foreground='red'><sup></sup></span>";
+            dnd-inhibited-none = " ";
+          };
+          return-type = "json";
+          exec-if = "which swaync-client";
+          exec = "swaync-client -swb";
+          on-click = "swaync-client -t -sw";
+          on-click-right = "swaync-client -d -sw";
+          escape = true;
         };
       };
       style = ''
@@ -129,6 +152,15 @@
           background-color: rgba(${
           inputs.nix-colors.lib.conversions.hexToRGBString "," base02
         },${builtins.toString config.opacity.bar});
+        }
+
+        #custom-launcher {
+          background-color: #${base00};
+          color: #${base0D};
+          border-radius: 0px 20px 20px 0px;
+          padding: 0px 30px 0px 15px;
+          margin: 0px;
+          font-size: 22px;
         }
 
         #workspaces {
@@ -166,16 +198,6 @@
           background-size: 400% 400%;
         }
 
-        #cpu, #memory, #tray, #pulseaudio, #network, #battery {
-          background-color: #${base00};
-          color: #${base04};
-          margin: 4px 0px;
-          margin-left: 7px;
-          border-radius: 16px;
-          padding: 0px 20px;
-          font-weight: bold;
-        }
-
         #clock {
           background-color: #${base00};
           color: #${base04};
@@ -185,13 +207,22 @@
           font-weight: bold;
         }
 
-        #custom-launcher {
+        #custom-notifications {
           background-color: #${base00};
-          color: #${base0D};
-          border-radius: 0px 20px 20px 0px;
-          padding: 0px 30px 0px 15px;
-          margin: 0px;
-          font-size: 22px;
+          color: #${base04};
+          padding-left: 4px;
+          padding-right: 14px;
+          font-weight: bold;
+        }
+
+        #cpu, #memory, #tray, #pulseaudio, #network, #battery {
+          background-color: #${base00};
+          color: #${base04};
+          margin: 4px 0px;
+          margin-left: 7px;
+          border-radius: 16px;
+          padding: 0px 20px;
+          font-weight: bold;
         }
 
         tooltip {
