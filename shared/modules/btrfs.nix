@@ -8,16 +8,9 @@
 in {
   options.shared.modules.btrfs.compression = {
     enable =
-      mkEnableOption ""
-      // {
-        default = true;
-      };
+      mkEnableOption "";
 
-    subvolumeLayout =
-      mkEnableOption ""
-      // {
-        default = true;
-      };
+    subvolumeLayout = mkEnableOption "" // {default = true;};
   };
 
   config = mkIf cfg.enable {

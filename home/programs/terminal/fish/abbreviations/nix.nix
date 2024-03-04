@@ -23,6 +23,8 @@
     nB = "nix build";
     nD = "nix develop -c fish";
     nd = "nix develop";
+    nf = "nix flake";
+    nfc = "nix flake check";
     nr = "nix run";
     nre = "nix repl";
     ns = "nix shell";

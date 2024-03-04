@@ -27,6 +27,7 @@
     gdc = "git diff --compact-summary";
     gds = "git diff --staged";
     gl = "git log";
+    glf = "git log --follow";
     gm = "git merge";
     gma = "git merge --abort";
     gmc = "git merge --continue";
@@ -42,9 +43,12 @@
     grb = "git rebase -i";
     grbc = "git rebase --continue";
     grh = "git reset HEAD";
+    grh1 = "git reset HEAD~1";
     grp = "git restore -p";
     grr = "git restore --recurse-submodules";
     grv = "git revert";
+    grva = "git revert --abort";
+    grvc = "git revert --continue";
     grvn = "git revert --no-commit";
     gs = "git show";
     gst = "git status";

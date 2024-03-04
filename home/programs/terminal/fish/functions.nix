@@ -1,5 +1,4 @@
 {
-  inputs',
   lib,
   pkgs,
   self',
@@ -7,8 +6,6 @@
 }: {
   programs.fish.interactiveShellInit = with lib; let
     delta = "${getExe pkgs.delta}";
-    fzf = "${getExe pkgs.fzf}";
-    hsize = "${inputs'.hsize.packages.hsize}/bin/hsize";
     less = "${getExe pkgs.less}";
     notify-send = "${getExe pkgs.libnotify}";
   in ''
@@ -99,7 +96,7 @@
 
     function glfzf -d "use fzf to preview git commits"
       git log --graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" $argv | \
-        ${fzf} --ansi --no-sort --reverse --tiebreak=index --scroll-off=5 --preview-window=right:60% \
+        fzf --ansi --no-sort --reverse --tiebreak=index --scroll-off=5 --preview-window=right:60% \
           --preview 'function preview; set commit (echo $argv | grep -o "[a-f0-9]\{7\}"); git show --color=always $commit | ${delta} --width=(tput cols); end; preview {}' \
           --bind "j:down,k:up,alt-j:preview-down,alt-k:preview-up,shift-down:preview-page-down,shift-up:preview-page-up,q:abort,ctrl-m:execute:
                   function show; set commit (echo \$argv | grep -o '[a-f0-9]\{7\}'); git show --color=always \$commit | ${delta} --width=(tput cols) | ${less} -R; end; show {}"
@@ -113,7 +110,7 @@
     function pmem -d "display virtual memory information about a process"
       for pid in (echo $argv | sed "s| |\n|g")
         echo $pid
-        grep -E "Vm(RSS|Swap)" /proc/$pid/status | sed "s| ||g; s|kB||g" | ${hsize} -fk r
+        grep -E "Vm(RSS|Swap)" /proc/$pid/status | sed "s| ||g; s|kB||g" | hsize -fk r
       end
     end
 
