@@ -21,8 +21,8 @@ in {
       extraModprobeConfig = ''
         options zfs zfs_bclone_enabled=1
       '';
-
-      environment.systemPackages = [pkgs.ioztat];
     };
+
+    environment.systemPackages = [pkgs.ioztat];
   };
 }
