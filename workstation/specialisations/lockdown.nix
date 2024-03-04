@@ -1,11 +1,12 @@
 {
+  lib,
   pkgs,
   self,
   ...
 }: {
   specialisation.lockdown = self.lib.systems.mkSpecialisation "lockdown" {
     boot = {
-      kernelPackages = pkgs.linuxPackages_hardened;
+      kernelPackages = lib.mkForce pkgs.linuxPackages_hardened;
 
       kernel.sysctl = {
         "kernel.kexec_load_disabled" = 1;
