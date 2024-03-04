@@ -27,9 +27,11 @@
 
     colorschemes.nord = {
       enable = true;
-      disableBackground = true;
-      borders = true;
-      italic = false;
+      settings = {
+        borders = true;
+        disable_background = true;
+        italic = false;
+      };
     };
 
     plugins = {
