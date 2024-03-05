@@ -8,9 +8,11 @@
     ip = "ip --color";
     l = "ls -l";
     la = "ls -la";
+    laT = "ls -laT";
     ll = "ls -l";
     ls = "eza --git --icons";
     lsimg = "timg -pk --grid=6 --upscale --title --center --frames=1";
+    lT = "ls -lT";
     py = "python3";
     q = "exit";
     qq = "exit";
