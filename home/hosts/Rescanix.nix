@@ -41,7 +41,6 @@
       _7zz
       amdgpu_top
       bandwhich
-      blender
       brave
       compsize
       cpu-x
