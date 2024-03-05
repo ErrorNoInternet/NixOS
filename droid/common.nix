@@ -1,4 +1,5 @@
 {
+  lib,
   pkgs,
   self',
   ...
@@ -22,29 +23,33 @@
   '';
 
   user.shell = "${pkgs.fish}/bin/fish";
-  environment.packages = with pkgs; [
-    curl
-    dig
-    file
-    gawk
-    glibc
-    gnugrep
-    gnupg
-    gnutar
-    gzip
-    iproute2
-    ncurses
-    neofetch
-    nmap
-    perl
-    procps
-    procs
-    ripgrep
-    self'.packages.hwatch
-    wget
-    which
-    xxd
-  ];
+  environment = {
+    packages = with pkgs; [
+      curl
+      dig
+      file
+      gawk
+      glibc
+      gnugrep
+      gnupg
+      gnutar
+      gzip
+      iproute2
+      ncurses
+      neofetch
+      nmap
+      perl
+      procps
+      procs
+      ripgrep
+      self'.packages.hwatch
+      wget
+      which
+      xxd
+    ];
+
+    etc.current.source = lib.cleanSource ./..;
+  };
 
   system.stateVersion = "23.05";
 }
