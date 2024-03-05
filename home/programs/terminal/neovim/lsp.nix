@@ -39,7 +39,7 @@
 
       zig = {
         enable = true;
-        formatOnSave = false;
+        settings.fmt_autosave = false;
       };
 
       lsp = {
