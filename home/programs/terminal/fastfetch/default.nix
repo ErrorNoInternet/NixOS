@@ -44,7 +44,7 @@ in {
             "memory"
             {
               type = "disk";
-              folders = "/";
+              folders = "/nix";
             }
             "break"
             "colors"

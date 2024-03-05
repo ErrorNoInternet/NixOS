@@ -42,7 +42,7 @@ builtins.toJSON {
       type = "disk";
       key = "󱥎 storage ";
       format = "{1} / {2} ({3})";
-      folders = "/";
+      folders = "/nix";
     }
     {
       type = "custom";
