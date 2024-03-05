@@ -5,6 +5,7 @@
 
     zfg = "zfs get";
     zfgf = "zfs get -t filesystem";
+    zfgs = "zfs get -t snapshot";
     zfl = "zfs list";
     zflk = "zfs load-key -a";
     zfls = "zfs list -t snapshot";
