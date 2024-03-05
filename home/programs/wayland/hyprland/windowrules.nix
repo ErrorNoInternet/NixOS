@@ -1,4 +1,5 @@
-{config, ...}: let
+{ config, ... }:
+let
   dialogs = [
     "class:(.blueman-manager-wrapped)"
     "class:(xdg-desktop-portal-gtk)"
@@ -6,7 +7,8 @@
     "title:(Open)"
     "title:(Save As)"
   ];
-in {
+in
+{
   wayland.windowManager.hyprland.settings.windowrulev2 =
     [
       "float,         class:branchdialog"

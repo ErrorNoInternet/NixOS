@@ -3,10 +3,12 @@
   lib,
   pkgs,
   ...
-}: let
+}:
+let
   cfg = config.toolkits.qt;
   inherit (lib) mkEnableOption mkOption mkIf;
-in {
+in
+{
   options.toolkits.qt = {
     enable = mkEnableOption "";
 

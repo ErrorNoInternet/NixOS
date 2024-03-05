@@ -145,8 +145,9 @@
     };
   };
 
-  outputs = {flake-parts, ...} @ inputs:
-    flake-parts.lib.mkFlake {inherit inputs;} {
+  outputs =
+    { flake-parts, ... }@inputs:
+    flake-parts.lib.mkFlake { inherit inputs; } {
       imports = [
         ./droid
         ./library
@@ -161,8 +162,10 @@
         "x86_64-linux"
       ];
 
-      perSystem = {pkgs, ...}: {
-        formatter = pkgs.nixfmt-rfc-style;
-      };
+      perSystem =
+        { pkgs, ... }:
+        {
+          formatter = pkgs.nixfmt-rfc-style;
+        };
     };
 }

@@ -1,5 +1,1 @@
-{
-  imports = [
-    ./locations
-  ];
-}
+{ imports = [ ./locations ]; }

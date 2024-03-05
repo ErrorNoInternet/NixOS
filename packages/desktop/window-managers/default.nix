@@ -1,11 +1,9 @@
 {
-  perSystem = {
-    inputs',
-    pkgs,
-    ...
-  }: {
-    packages = with pkgs; {
-      hyprland = callPackage ./hyprland {inherit inputs';};
+  perSystem =
+    { inputs', pkgs, ... }:
+    {
+      packages = with pkgs; {
+        hyprland = callPackage ./hyprland { inherit inputs'; };
+      };
     };
-  };
 }

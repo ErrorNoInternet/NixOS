@@ -4,10 +4,12 @@
   pkgs,
   self',
   ...
-}: let
+}:
+let
   cfg = config.customPrograms.graphical.fcitx5;
   inherit (lib) mkOption mkIf types;
-in {
+in
+{
   options.customPrograms.graphical.fcitx5.theme = {
     name = mkOption {
       default = "Nord-Dark";

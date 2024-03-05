@@ -3,7 +3,8 @@
   pkgs,
   self',
   ...
-}: {
+}:
+{
   caches.nix-gaming.enable = true;
 
   profiles = {
@@ -28,7 +29,7 @@
         width = 1680;
         height = 1050;
       }
-      {}
+      { }
     ];
   };
 

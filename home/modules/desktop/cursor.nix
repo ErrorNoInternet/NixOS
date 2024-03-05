@@ -3,10 +3,17 @@
   lib,
   pkgs,
   ...
-}: let
+}:
+let
   cfg = config.cursor;
-  inherit (lib) mkEnableOption mkOption mkIf types;
-in {
+  inherit (lib)
+    mkEnableOption
+    mkOption
+    mkIf
+    types
+    ;
+in
+{
   options.cursor = {
     enable = mkEnableOption "";
 

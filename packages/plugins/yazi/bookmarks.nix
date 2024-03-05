@@ -1,4 +1,4 @@
-{fetchFromGitHub}:
+{ fetchFromGitHub }:
 fetchFromGitHub {
   owner = "dedukun";
   repo = "bookmarks.yazi";

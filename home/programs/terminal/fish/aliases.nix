@@ -1,4 +1,5 @@
-{config, ...}: {
+{ config, ... }:
+{
   programs.fish.shellAliases = {
     H = "exec Hyprland";
 

@@ -1,11 +1,9 @@
-{
-  config,
-  lib,
-  ...
-}: let
+{ config, lib, ... }:
+let
   cfg = config.terminal;
   inherit (lib) mkOption types;
-in {
+in
+{
   options.terminal = {
     name = mkOption {
       default = "kitty";

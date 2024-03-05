@@ -1,6 +1,8 @@
-{lib, ...}: let
+{ lib, ... }:
+let
   inherit (lib) mkEnableOption;
-in {
+in
+{
   options.shared.flags = {
     raspberryPi = mkEnableOption "";
   };

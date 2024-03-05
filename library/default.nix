@@ -4,8 +4,16 @@
   self,
   withSystem,
   ...
-}: {
+}:
+{
   flake.lib = {
-    systems = import ./systems.nix {inherit inputs lib self withSystem;};
+    systems = import ./systems.nix {
+      inherit
+        inputs
+        lib
+        self
+        withSystem
+        ;
+    };
   };
 }

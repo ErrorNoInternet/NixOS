@@ -1,11 +1,9 @@
-{
-  config,
-  lib,
-  ...
-}: let
+{ config, lib, ... }:
+let
   cfg = config.customPrograms.terminal.cava;
   inherit (lib) mkEnableOption mkIf;
-in {
+in
+{
   options.customPrograms.terminal.cava.enable = mkEnableOption "";
 
   config = mkIf cfg.enable {

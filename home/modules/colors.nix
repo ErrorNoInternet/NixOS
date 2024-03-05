@@ -3,15 +3,15 @@
   inputs,
   lib,
   ...
-}: let
+}:
+let
   inherit (lib) mkOption types;
-in {
-  imports = [inputs.nix-colors.homeManagerModules.default];
+in
+{
+  imports = [ inputs.nix-colors.homeManagerModules.default ];
 
   options.colors = {
-    scheme = mkOption {
-      default = inputs.nix-colors.colorSchemes.nord;
-    };
+    scheme = mkOption { default = inputs.nix-colors.colorSchemes.nord; };
 
     schemeName = mkOption {
       default = "Nord";

@@ -1,11 +1,9 @@
-{
-  config,
-  lib,
-  ...
-}: let
+{ config, lib, ... }:
+let
   cfg = config.profiles.desktop;
   inherit (lib) mkEnableOption mkIf;
-in {
+in
+{
   options.profiles.desktop = {
     enable = mkEnableOption "";
 

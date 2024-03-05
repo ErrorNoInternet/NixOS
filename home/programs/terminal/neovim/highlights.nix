@@ -1,4 +1,5 @@
-{config, ...}: {
+{ config, ... }:
+{
   programs.nixvim = with config.colors.scheme.palette; {
     highlightOverride = {
       CursorLine.bg = "none";

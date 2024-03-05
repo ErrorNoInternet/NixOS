@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   programs.nixvim = {
     filetype.pattern.".*/hyprland%.conf" = "hyprlang";
 
@@ -21,11 +22,11 @@
       nvim-cmp = {
         enable = true;
         sources = [
-          {name = "buffer";}
-          {name = "crates";}
-          {name = "luasnip";}
-          {name = "nvim_lsp";}
-          {name = "path";}
+          { name = "buffer"; }
+          { name = "crates"; }
+          { name = "luasnip"; }
+          { name = "nvim_lsp"; }
+          { name = "path"; }
         ];
         snippet.expand = "luasnip";
       };

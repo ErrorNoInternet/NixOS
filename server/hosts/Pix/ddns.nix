@@ -3,11 +3,12 @@
   pkgs,
   self,
   ...
-}: {
+}:
+{
   age.secrets.ddns.file = "${self}/secrets/ddns.age";
   systemd = {
     timers.update-ddns = {
-      wantedBy = ["timers.target"];
+      wantedBy = [ "timers.target" ];
       timerConfig = {
         OnBootSec = "1m";
         OnUnitActiveSec = "6h";

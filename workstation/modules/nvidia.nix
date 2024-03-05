@@ -1,20 +1,22 @@
-{
-  config,
-  lib,
-  ...
-}: let
+{ config, lib, ... }:
+let
   cfg = config.workstation.modules.nvidia;
   inherit (lib) mkEnableOption mkIf;
-in {
+in
+{
   options.workstation.modules.nvidia = {
-    enable = mkEnableOption "" // {default = true;};
-    enableOptimus = mkEnableOption "" // {default = true;};
+    enable = mkEnableOption "" // {
+      default = true;
+    };
+    enableOptimus = mkEnableOption "" // {
+      default = true;
+    };
   };
 
   config = mkIf cfg.enable {
     caches.cuda.enable = true;
 
-    services.xserver.videoDrivers = ["nvidia"];
+    services.xserver.videoDrivers = [ "nvidia" ];
     hardware = {
       nvidia = {
         package = config.boot.kernelPackages.nvidiaPackages.production;

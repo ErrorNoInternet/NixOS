@@ -3,9 +3,11 @@
   lib,
   pkgs,
   ...
-}: let
+}:
+let
   inherit (lib) mkEnableOption mkIf;
-in {
+in
+{
   options.customPrograms.graphical.libreoffice.enable = mkEnableOption "";
 
   config = mkIf config.customPrograms.graphical.libreoffice.enable {

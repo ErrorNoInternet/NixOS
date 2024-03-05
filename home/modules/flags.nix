@@ -1,6 +1,8 @@
-{lib, ...}: let
+{ lib, ... }:
+let
   inherit (lib) mkEnableOption;
-in {
+in
+{
   options.flags = {
     nixOnDroid = mkEnableOption "";
   };

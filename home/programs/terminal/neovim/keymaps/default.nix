@@ -204,10 +204,23 @@
         action = ":Telescope spell_suggest<CR>";
       }
     ]
-    ++ (map (n: {
-      mode = "n";
-      options.silent = true;
-      key = "<leader>${n}";
-      action = ":BufferGoto ${n}<CR>";
-    }) ["1" "2" "3" "4" "5" "6" "7" "8" "9"]);
+    ++ (map
+      (n: {
+        mode = "n";
+        options.silent = true;
+        key = "<leader>${n}";
+        action = ":BufferGoto ${n}<CR>";
+      })
+      [
+        "1"
+        "2"
+        "3"
+        "4"
+        "5"
+        "6"
+        "7"
+        "8"
+        "9"
+      ]
+    );
 }

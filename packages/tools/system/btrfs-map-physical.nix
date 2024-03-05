@@ -1,7 +1,4 @@
-{
-  fetchFromGitHub,
-  stdenv,
-}:
+{ fetchFromGitHub, stdenv }:
 stdenv.mkDerivation {
   name = "btrfs-map-physical";
 

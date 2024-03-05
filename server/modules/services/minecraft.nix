@@ -3,15 +3,15 @@
   lib,
   pkgs,
   ...
-}: let
+}:
+let
   inherit (lib) mkEnableOption mkIf;
-in {
+in
+{
   options.server.services.minecraft.enable = mkEnableOption "";
 
   config = mkIf config.server.services.minecraft.enable {
-    networking.firewall.allowedTCPPorts = [25565];
-    environment.systemPackages = with pkgs; [
-      jdk17
-    ];
+    networking.firewall.allowedTCPPorts = [ 25565 ];
+    environment.systemPackages = with pkgs; [ jdk17 ];
   };
 }

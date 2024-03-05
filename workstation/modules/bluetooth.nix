@@ -1,16 +1,12 @@
-{
-  config,
-  lib,
-  ...
-}: let
+{ config, lib, ... }:
+let
   cfg = config.workstation.modules.bluetooth;
   inherit (lib) mkEnableOption mkIf;
-in {
-  options.workstation.modules.bluetooth.enable =
-    mkEnableOption ""
-    // {
-      default = true;
-    };
+in
+{
+  options.workstation.modules.bluetooth.enable = mkEnableOption "" // {
+    default = true;
+  };
 
   config = mkIf cfg.enable {
     hardware.bluetooth.enable = true;

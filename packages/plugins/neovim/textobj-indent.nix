@@ -1,7 +1,4 @@
-{
-  fetchFromGitHub,
-  vimUtils,
-}:
+{ fetchFromGitHub, vimUtils }:
 vimUtils.buildVimPlugin {
   pname = "vim-textobj-indent";
   version = "2023-01-18";

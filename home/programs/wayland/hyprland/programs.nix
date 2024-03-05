@@ -3,7 +3,8 @@
   lib,
   pkgs,
   ...
-}: {
+}:
+{
   wayland.windowManager.hyprland.settings.exec-once = with lib; [
     "hyprctl setcursor ${config.cursor.name} ${builtins.toString config.cursor.size}"
     (mkIf config.wallpaper.enable "swaybg -i ${config.wallpaper.path}")

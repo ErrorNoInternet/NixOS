@@ -1,7 +1,6 @@
-{pkgs, ...}: {
-  imports = [
-    ./nas-mounts.nix
-  ];
+{ pkgs, ... }:
+{
+  imports = [ ./nas-mounts.nix ];
   host.id = "102f58f5";
 
   boot.kernelPackages = pkgs.linuxPackages_zen;
@@ -11,9 +10,9 @@
   '';
 
   systemd.services.lock_intel_gpu_frequency = {
-    path = [pkgs.intel-gpu-tools];
+    path = [ pkgs.intel-gpu-tools ];
     script = "intel_gpu_frequency -m";
-    wantedBy = ["multi-user.target"];
+    wantedBy = [ "multi-user.target" ];
   };
 
   workstation = {

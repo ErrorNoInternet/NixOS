@@ -4,11 +4,18 @@
   lib,
   self,
   ...
-}: let
+}:
+let
   cfg = config.server.services.attic;
-  inherit (lib) mkEnableOption mkOption mkIf types;
-in {
-  imports = [inputs.attic.nixosModules.atticd];
+  inherit (lib)
+    mkEnableOption
+    mkOption
+    mkIf
+    types
+    ;
+in
+{
+  imports = [ inputs.attic.nixosModules.atticd ];
 
   options.server.services.attic = {
     enable = mkEnableOption "";
@@ -36,11 +43,15 @@ in {
     };
   };
 
-  config = with cfg;
+  config =
+    with cfg;
     mkIf enable {
       age.secrets.attic-server-token.file = "${self}/secrets/attic_server-token.age";
-      networking.firewall.allowedTCPPorts = [ports.insecure ports.secure];
-      systemd.services.atticd.serviceConfig.ReadWritePaths = [storagePath];
+      networking.firewall.allowedTCPPorts = [
+        ports.insecure
+        ports.secure
+      ];
+      systemd.services.atticd.serviceConfig.ReadWritePaths = [ storagePath ];
       services = {
         atticd = {
           enable = true;

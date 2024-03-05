@@ -1,8 +1,5 @@
+{ pkgs, self', ... }:
 {
-  pkgs,
-  self',
-  ...
-}: {
   programs.nixvim = {
     plugins = {
       leap.enable = true;

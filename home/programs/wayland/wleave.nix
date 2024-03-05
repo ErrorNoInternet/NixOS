@@ -4,10 +4,17 @@
   lib,
   pkgs,
   ...
-}: let
+}:
+let
   cfg = config.customPrograms.wayland.wleave;
-  inherit (lib) mkEnableOption mkOption mkIf types;
-in {
+  inherit (lib)
+    mkEnableOption
+    mkOption
+    mkIf
+    types
+    ;
+in
+{
   options.customPrograms.wayland.wleave = {
     enable = mkEnableOption "";
 
@@ -61,11 +68,7 @@ in {
       ];
       style = with config.colors.scheme.palette; ''
         window {
-          background-color: rgba(${
-          inputs.nix-colors.lib.conversions.hexToRGBString
-          ","
-          base00
-        },${builtins.toString config.opacity.bar});
+          background-color: rgba(${inputs.nix-colors.lib.conversions.hexToRGBString "," base00},${builtins.toString config.opacity.bar});
         }
 
         button {

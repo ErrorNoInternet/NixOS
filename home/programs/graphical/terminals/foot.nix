@@ -3,7 +3,8 @@
   lib,
   self',
   ...
-}: {
+}:
+{
   config = lib.mkIf config.profiles.desktop.enable {
     programs.foot = with config.colors.scheme.palette; {
       enable = true;

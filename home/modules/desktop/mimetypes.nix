@@ -1,10 +1,13 @@
+{ config, lib, ... }:
+let
+  inherit (lib)
+    mkEnableOption
+    mkOption
+    mkIf
+    types
+    ;
+in
 {
-  config,
-  lib,
-  ...
-}: let
-  inherit (lib) mkEnableOption mkOption mkIf types;
-in {
   options.mimeapps = {
     image = {
       enable = mkEnableOption "";
@@ -20,12 +23,12 @@ in {
     xdg.mimeApps = {
       enable = true;
       defaultApplications = with config.mimeapps; {
-        "image/gif" = [image.opener];
-        "image/jpeg" = [image.opener];
-        "image/png" = [image.opener];
-        "image/svg+xml" = [image.opener];
-        "image/tiff" = [image.opener];
-        "image/webp" = [image.opener];
+        "image/gif" = [ image.opener ];
+        "image/jpeg" = [ image.opener ];
+        "image/png" = [ image.opener ];
+        "image/svg+xml" = [ image.opener ];
+        "image/tiff" = [ image.opener ];
+        "image/webp" = [ image.opener ];
       };
     };
   };

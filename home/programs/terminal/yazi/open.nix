@@ -1,71 +1,117 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   programs.yazi.settings = {
     open.rules = [
       {
         mime = "text/*";
-        use = ["edit" "reveal"];
+        use = [
+          "edit"
+          "reveal"
+        ];
       }
       {
         mime = "image/*";
-        use = ["open" "reveal"];
+        use = [
+          "open"
+          "reveal"
+        ];
       }
       {
         mime = "video/*";
-        use = ["play" "reveal"];
+        use = [
+          "play"
+          "reveal"
+        ];
       }
       {
         mime = "audio/*";
-        use = ["play" "reveal"];
+        use = [
+          "play"
+          "reveal"
+        ];
       }
       {
         mime = "inode/x-empty";
-        use = ["edit" "reveal"];
+        use = [
+          "edit"
+          "reveal"
+        ];
       }
       {
         mime = "application/json";
-        use = ["edit" "reveal"];
+        use = [
+          "edit"
+          "reveal"
+        ];
       }
       {
         mime = "application/zip";
-        use = ["extract" "reveal"];
+        use = [
+          "extract"
+          "reveal"
+        ];
       }
       {
         mime = "application/gzip";
-        use = ["extract" "reveal"];
+        use = [
+          "extract"
+          "reveal"
+        ];
       }
       {
         mime = "application/x-tar";
-        use = ["extract" "reveal"];
+        use = [
+          "extract"
+          "reveal"
+        ];
       }
       {
         mime = "application/x-bzip";
-        use = ["extract" "reveal"];
+        use = [
+          "extract"
+          "reveal"
+        ];
       }
       {
         mime = "application/x-bzip2";
-        use = ["extract" "reveal"];
+        use = [
+          "extract"
+          "reveal"
+        ];
       }
       {
         mime = "application/x-7z-compressed";
-        use = ["extract" "reveal"];
+        use = [
+          "extract"
+          "reveal"
+        ];
       }
       {
         mime = "application/x-rar";
-        use = ["extract" "reveal"];
+        use = [
+          "extract"
+          "reveal"
+        ];
       }
       {
         mime = "application/*";
-        use = ["open" "edit" "reveal"];
+        use = [
+          "open"
+          "edit"
+          "reveal"
+        ];
       }
       {
         mime = "*";
-        use = ["edit" "open" "reveal"];
+        use = [
+          "edit"
+          "open"
+          "reveal"
+        ];
       }
     ];
     opener = {
-      open = [
-        {exec = ''xdg-open "$@"'';}
-      ];
+      open = [ { exec = ''xdg-open "$@"''; } ];
       edit = [
         {
           exec = ''$EDITOR "$@"'';
@@ -78,11 +124,7 @@
           block = true;
         }
       ];
-      extract = [
-        {
-          exec = ''${pkgs.unar}/bin/unar "$1"'';
-        }
-      ];
+      extract = [ { exec = ''${pkgs.unar}/bin/unar "$1"''; } ];
       play = [
         {
           exec = ''${pkgs.mpv}/bin/mpv --force-window=yes "$@"'';

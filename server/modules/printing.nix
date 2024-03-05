@@ -3,15 +3,17 @@
   lib,
   pkgs,
   ...
-}: let
+}:
+let
   inherit (lib) mkEnableOption mkIf;
-in {
+in
+{
   options.server.printing.enable = mkEnableOption "";
 
   config = mkIf config.server.printing.enable {
     services.printing = {
       enable = true;
-      drivers = [pkgs.hplip];
+      drivers = [ pkgs.hplip ];
     };
   };
 }

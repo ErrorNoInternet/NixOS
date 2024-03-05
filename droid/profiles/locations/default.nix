@@ -1,5 +1,1 @@
-{
-  imports = [
-    ./china.nix
-  ];
-}
+{ imports = [ ./china.nix ]; }

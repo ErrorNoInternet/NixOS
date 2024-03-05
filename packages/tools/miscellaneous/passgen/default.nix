@@ -1,12 +1,9 @@
-{
-  fetchFromGitHub,
-  rustPlatform,
-}:
+{ fetchFromGitHub, rustPlatform }:
 rustPlatform.buildRustPackage {
   pname = "passgen";
   version = "0.1.0";
 
-  patches = [./reproducible.patch];
+  patches = [ ./reproducible.patch ];
   src = fetchFromGitHub {
     owner = "ErrorNoInternet";
     repo = "passgen";

@@ -1,11 +1,9 @@
-{
-  config,
-  lib,
-  ...
-}: let
+{ config, lib, ... }:
+let
   cfg = config.server.bootloader;
   inherit (lib) mkEnableOption mkIf;
-in {
+in
+{
   options.server.bootloader.enable = mkEnableOption "";
 
   config = mkIf cfg.enable {

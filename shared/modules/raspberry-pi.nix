@@ -3,7 +3,8 @@
   lib,
   pkgs,
   ...
-}: {
+}:
+{
   config = lib.mkIf config.shared.flags.raspberryPi {
     boot.loader = {
       grub.enable = false;
@@ -12,6 +13,6 @@
         configurationLimit = 10;
       };
     };
-    environment.systemPackages = [pkgs.libraspberrypi];
+    environment.systemPackages = [ pkgs.libraspberrypi ];
   };
 }

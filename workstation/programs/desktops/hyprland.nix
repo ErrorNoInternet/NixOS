@@ -3,9 +3,11 @@
   lib,
   self',
   ...
-}: let
+}:
+let
   inherit (lib) mkEnableOption mkIf;
-in {
+in
+{
   options.workstation.desktops.hyprland.enable = mkEnableOption "";
 
   config = mkIf config.workstation.desktops.hyprland.enable {

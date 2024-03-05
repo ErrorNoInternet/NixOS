@@ -1,10 +1,7 @@
-{
-  writeShellApplication,
-  pulseaudio,
-}:
+{ writeShellApplication, pulseaudio }:
 writeShellApplication {
   name = "pavolume";
-  runtimeInputs = [pulseaudio];
+  runtimeInputs = [ pulseaudio ];
   text = ''
     set +u
 

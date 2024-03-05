@@ -1,8 +1,7 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   programs.nixvim = {
-    extraPackages = with pkgs; [
-      code-minimap
-    ];
+    extraPackages = with pkgs; [ code-minimap ];
 
     options = {
       cursorline = true;
@@ -76,7 +75,7 @@
 
       nvim-colorizer = {
         enable = true;
-        fileTypes = ["*"];
+        fileTypes = [ "*" ];
         userDefaultOptions = {
           names = false;
           RRGGBBAA = true;
@@ -113,7 +112,10 @@
           right = "";
         };
 
-        sections.lualine_c = ["filename" "navic"];
+        sections.lualine_c = [
+          "filename"
+          "navic"
+        ];
       };
 
       barbar = {

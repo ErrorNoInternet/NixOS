@@ -3,16 +3,21 @@
   lib,
   pkgs,
   ...
-}: let
+}:
+let
   cfg = config.customPrograms.terminal.nb;
-  inherit (lib) mkEnableOption mkOption mkIf types;
-in {
+  inherit (lib)
+    mkEnableOption
+    mkOption
+    mkIf
+    types
+    ;
+in
+{
   options.customPrograms.terminal.nb = {
     enable = mkEnableOption "";
 
-    dataDirectory = mkOption {
-      type = types.str;
-    };
+    dataDirectory = mkOption { type = types.str; };
   };
 
   config = mkIf cfg.enable {
@@ -25,7 +30,7 @@ in {
         export NB_COLOR_SECONDARY=4
         export NB_DIR="''${NB_DIR:-${cfg.dataDirectory}}"
       '';
-      packages = [pkgs.nb];
+      packages = [ pkgs.nb ];
     };
   };
 }

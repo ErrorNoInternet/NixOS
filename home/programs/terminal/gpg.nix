@@ -1,11 +1,9 @@
-{
-  config,
-  lib,
-  ...
-}: let
+{ config, lib, ... }:
+let
   cfg = config.customPrograms.terminal.gpg;
   inherit (lib) mkEnableOption mkIf;
-in {
+in
+{
   options.customPrograms.terminal.gpg.enable = mkEnableOption "";
 
   config = mkIf cfg.enable {

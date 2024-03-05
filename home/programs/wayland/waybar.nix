@@ -4,7 +4,8 @@
   inputs,
   lib,
   ...
-}: {
+}:
+{
   config = lib.mkIf config.profiles.windowManager.enable {
     programs.waybar = with config.colors.scheme.palette; {
       enable = true;
@@ -28,9 +29,7 @@
           "memory"
           "network#usage"
         ];
-        modules-center = [
-          "hyprland/workspaces"
-        ];
+        modules-center = [ "hyprland/workspaces" ];
         modules-right = [
           "tray"
           "pulseaudio"
@@ -79,7 +78,11 @@
         pulseaudio = {
           format = "{icon} {volume}%";
           format-icons = {
-            default = ["󰕿" "󰖀" "󰕾"];
+            default = [
+              "󰕿"
+              "󰖀"
+              "󰕾"
+            ];
           };
           format-muted = "󰝟";
           scroll-step = 5;
@@ -103,7 +106,13 @@
           format-charging = "  {capacity}%";
           format-plugged = "  {capacity}%";
           tooltip-format = "{time}";
-          format-icons = ["" "" "" "" ""];
+          format-icons = [
+            ""
+            ""
+            ""
+            ""
+            ""
+          ];
         };
         "group/status" = {
           orientation = "inherit";
@@ -111,7 +120,10 @@
             transition-duration = 200;
             transition-left-to-right = true;
           };
-          modules = ["clock" "custom/notifications"];
+          modules = [
+            "clock"
+            "custom/notifications"
+          ];
         };
         clock = {
           format = "  {:%a, %b %d, %H:%M}";
@@ -149,9 +161,7 @@
         }
 
         window#waybar {
-          background-color: rgba(${
-          inputs.nix-colors.lib.conversions.hexToRGBString "," base02
-        },${builtins.toString config.opacity.bar});
+          background-color: rgba(${inputs.nix-colors.lib.conversions.hexToRGBString "," base02},${builtins.toString config.opacity.bar});
         }
 
         #custom-launcher {

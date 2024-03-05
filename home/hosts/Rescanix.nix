@@ -3,7 +3,8 @@
   pkgs,
   self',
   ...
-}: {
+}:
+{
   caches.nix-gaming.enable = true;
 
   profiles = {
@@ -14,7 +15,7 @@
     };
   };
 
-  desktop.monitors = [{}];
+  desktop.monitors = [ { } ];
 
   customPrograms = {
     graphical = {
@@ -37,7 +38,7 @@
     username = "error";
     homeDirectory = "/home/error";
     packages = with pkgs; [
-      (hashcat.override {cudaSupport = true;})
+      (hashcat.override { cudaSupport = true; })
       _7zz
       amdgpu_top
       bandwhich

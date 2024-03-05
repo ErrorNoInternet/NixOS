@@ -3,10 +3,9 @@
   lib,
   modulesPath,
   ...
-}: {
-  imports = [
-    (modulesPath + "/installer/scan/not-detected.nix")
-  ];
+}:
+{
+  imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
   boot = {
     initrd = {
@@ -21,34 +20,34 @@
         "virtio_pci"
         "xhci_pci"
       ];
-      kernelModules = [];
+      kernelModules = [ ];
     };
-    kernelModules = ["kvm-intel"];
-    extraModulePackages = [];
+    kernelModules = [ "kvm-intel" ];
+    extraModulePackages = [ ];
   };
 
   fileSystems = {
     "/" = {
       device = "/dev/disk/by-uuid/10101010-1010-1010-1010-101010101010";
       fsType = "btrfs";
-      options = ["subvol=@"];
+      options = [ "subvol=@" ];
     };
     "/home" = {
       device = "/dev/disk/by-uuid/10101010-1010-1010-1010-101010101010";
       fsType = "btrfs";
-      options = ["subvol=@home"];
+      options = [ "subvol=@home" ];
     };
     "/nix" = {
       device = "/dev/disk/by-uuid/10101010-1010-1010-1010-101010101010";
       fsType = "btrfs";
-      options = ["subvol=@nix"];
+      options = [ "subvol=@nix" ];
     };
     "/boot" = {
       device = "/dev/disk/by-uuid/1010-1010";
       fsType = "vfat";
     };
   };
-  swapDevices = [];
+  swapDevices = [ ];
 
   networking.useDHCP = lib.mkDefault true;
 

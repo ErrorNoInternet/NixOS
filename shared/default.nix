@@ -5,9 +5,11 @@
   pkgs,
   self',
   ...
-}: let
+}:
+let
   inherit (lib) mkDefault mkForce;
-in {
+in
+{
   imports = [
     ./caches
     ./modules
@@ -16,17 +18,22 @@ in {
   documentation.doc.enable = false;
 
   nix = {
-    nixPath = ["nixpkgs=${inputs.nixpkgs}"];
-    registry = let
-      mappedRegistry = lib.mapAttrs' (name: flake:
-        lib.nameValuePair name {inherit flake;})
-      inputs;
-    in
-      mappedRegistry // {default = mappedRegistry.nixpkgs;};
+    nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
+    registry =
+      let
+        mappedRegistry = lib.mapAttrs' (name: flake: lib.nameValuePair name { inherit flake; }) inputs;
+      in
+      mappedRegistry // { default = mappedRegistry.nixpkgs; };
 
     settings = {
-      experimental-features = ["nix-command" "flakes"];
-      trusted-users = ["root" "@wheel"];
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
+      trusted-users = [
+        "root"
+        "@wheel"
+      ];
       auto-optimise-store = true;
       log-lines = 500;
 
@@ -61,8 +68,8 @@ in {
   };
 
   networking.hosts = {
-    "192.168.0.100" = ["Pix.local"];
-    "192.168.0.101" = ["NixBtw.local"];
+    "192.168.0.100" = [ "Pix.local" ];
+    "192.168.0.101" = [ "NixBtw.local" ];
   };
 
   services = {

@@ -3,13 +3,15 @@
   lib,
   pkgs,
   ...
-}: let
+}:
+let
   inherit (lib) mkEnableOption mkIf;
-in {
+in
+{
   options.customPrograms.graphical.virtManager.enable = mkEnableOption "";
 
   config = mkIf config.customPrograms.graphical.virtManager.enable {
-    home.packages = [pkgs.virt-manager];
+    home.packages = [ pkgs.virt-manager ];
     dconf.settings = {
       "org/virt-manager/virt-manager" = {
         xmleditor-enabled = true;
@@ -19,8 +21,8 @@ in {
         poweroff = true;
       };
       "org/virt-manager/virt-manager/connections" = {
-        autoconnect = ["qemu:///system"];
-        uris = ["qemu:///system"];
+        autoconnect = [ "qemu:///system" ];
+        uris = [ "qemu:///system" ];
       };
       "org/virt-manager/virt-manager/console" = {
         auto-redirect = false;

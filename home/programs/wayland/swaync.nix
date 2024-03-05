@@ -4,10 +4,11 @@
   lib,
   pkgs,
   ...
-}: {
+}:
+{
   config = lib.mkIf config.profiles.windowManager.enable {
     home = {
-      packages = [pkgs.swaynotificationcenter];
+      packages = [ pkgs.swaynotificationcenter ];
 
       file = {
         "${config.xdg.configHome}/swaync/config.json".text = builtins.toJSON {
@@ -77,17 +78,13 @@
           }
 
           .notification {
-            background: rgba(${
-            inputs.nix-colors.lib.conversions.hexToRGBString "," base01
-          },${builtins.toString config.opacity.notification});
+            background: rgba(${inputs.nix-colors.lib.conversions.hexToRGBString "," base01},${builtins.toString config.opacity.notification});
             margin: 0px;
             padding: 0px;
           }
 
           .notification-content {
-            background: rgba(${
-            inputs.nix-colors.lib.conversions.hexToRGBString "," base01
-          },${builtins.toString config.opacity.notification});
+            background: rgba(${inputs.nix-colors.lib.conversions.hexToRGBString "," base01},${builtins.toString config.opacity.notification});
             border: 1px solid #${base0F};
             margin: 0px;
             padding: 10px;

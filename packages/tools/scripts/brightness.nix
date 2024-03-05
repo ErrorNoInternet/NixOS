@@ -1,10 +1,7 @@
-{
-  light,
-  writeShellApplication,
-}:
+{ light, writeShellApplication }:
 writeShellApplication {
   name = "brightness";
-  runtimeInputs = [light];
+  runtimeInputs = [ light ];
   text = ''
     if [[ $1 == "up" ]]; then
       for _ in {0..5}; do

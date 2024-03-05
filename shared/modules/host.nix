@@ -1,19 +1,13 @@
-{
-  config,
-  lib,
-  ...
-}: let
+{ config, lib, ... }:
+let
   cfg = config.host;
   inherit (lib) mkOption mkIf types;
-in {
+in
+{
   options.host = {
-    system = mkOption {
-      type = types.str;
-    };
+    system = mkOption { type = types.str; };
 
-    name = mkOption {
-      type = types.str;
-    };
+    name = mkOption { type = types.str; };
 
     id = mkOption {
       default = null;

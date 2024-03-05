@@ -4,9 +4,11 @@
   pkgs,
   self',
   ...
-}: let
+}:
+let
   inherit (lib) mkDefault mkOverride;
-in {
+in
+{
   imports = [
     ../shared
     ./modules
@@ -28,12 +30,10 @@ in {
       };
       timeout = 3;
     };
-    kernelParams = ["boot.shell_on_fail"];
+    kernelParams = [ "boot.shell_on_fail" ];
 
     kernelPackages = mkOverride 1250 pkgs.linuxPackages_latest;
-    supportedFilesystems = [
-      "ntfs"
-    ];
+    supportedFilesystems = [ "ntfs" ];
 
     kernel.sysctl = {
       "kernel.sysrq" = mkDefault 1;
@@ -62,7 +62,7 @@ in {
 
     xserver = {
       enable = true;
-      excludePackages = [pkgs.xterm];
+      excludePackages = [ pkgs.xterm ];
       displayManager = {
         lightdm.enable = false;
         sddm = {
@@ -80,9 +80,7 @@ in {
 
   xdg.portal = {
     enable = true;
-    extraPortals = with pkgs; [
-      xdg-desktop-portal-gtk
-    ];
+    extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
   };
 
   systemd.coredump.extraConfig = ''
@@ -116,11 +114,11 @@ in {
     light.enable = true;
     neovim.defaultEditor = true;
   };
-  security.pam.services.swaylock = {};
+  security.pam.services.swaylock = { };
 
   fonts = {
     packages = with pkgs; [
-      (nerdfonts.override {fonts = ["JetBrainsMono"];})
+      (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
       noto-fonts
       noto-fonts-cjk-sans
       noto-fonts-cjk-serif
@@ -139,8 +137,8 @@ in {
           "JetBrainsMono Nerd Font"
           "Noto Sans CJK SC"
         ];
-        monospace = ["JetBrainsMono Nerd Font"];
-        emoji = ["Twitter Color Emoji"];
+        monospace = [ "JetBrainsMono Nerd Font" ];
+        emoji = [ "Twitter Color Emoji" ];
       };
     };
   };
@@ -149,12 +147,21 @@ in {
     root.initialPassword = "snowflake";
     error = {
       isNormalUser = true;
-      extraGroups = ["wheel" "video" "networkmanager"];
+      extraGroups = [
+        "wheel"
+        "video"
+        "networkmanager"
+      ];
       initialPassword = "snowflake";
-      openssh.authorizedKeys.keys = let
-        keys = import ../shared/values/ssh-keys.nix;
-      in
-        with keys; [NixBtw ErrorNoPhone];
+      openssh.authorizedKeys.keys =
+        let
+          keys = import ../shared/values/ssh-keys.nix;
+        in
+        with keys;
+        [
+          NixBtw
+          ErrorNoPhone
+        ];
     };
   };
 }

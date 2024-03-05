@@ -1,8 +1,5 @@
+{ lib, pkgs, ... }:
 {
-  lib,
-  pkgs,
-  ...
-}: {
   host.id = "3a1f6cc6";
 
   boot = {
@@ -21,7 +18,7 @@
 
   services.printing = {
     enable = true;
-    drivers = [pkgs.hplip];
+    drivers = [ pkgs.hplip ];
   };
 
   workstation = {

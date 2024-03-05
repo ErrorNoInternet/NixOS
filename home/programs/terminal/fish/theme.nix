@@ -1,8 +1,5 @@
+{ config, pkgs, ... }:
 {
-  config,
-  pkgs,
-  ...
-}: {
   programs.fish = {
     plugins = with pkgs.fishPlugins; [
       {

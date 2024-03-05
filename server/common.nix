@@ -4,7 +4,8 @@
   lib,
   pkgs,
   ...
-}: {
+}:
+{
   imports = [
     ../shared
     ./modules
@@ -14,20 +15,20 @@
   ];
 
   boot = {
-    kernelParams = ["console=tty0"];
-    supportedFilesystems = ["ntfs"];
+    kernelParams = [ "console=tty0" ];
+    supportedFilesystems = [ "ntfs" ];
   };
 
   networking = {
     firewall = {
       enable = true;
-      allowedTCPPorts = [22];
+      allowedTCPPorts = [ 22 ];
     };
   };
 
   services.fail2ban = {
     enable = true;
-    ignoreIP = ["192.168.0.101"];
+    ignoreIP = [ "192.168.0.101" ];
 
     maxretry = 6;
     bantime = "5m";
@@ -57,7 +58,7 @@
   ];
 
   systemd.services.pueued = {
-    wantedBy = ["multi-user.target"];
+    wantedBy = [ "multi-user.target" ];
     description = "pueue daemon";
     serviceConfig = {
       Type = "simple";
@@ -70,12 +71,17 @@
     root.initialPassword = "snowflake";
     snowflake = {
       isNormalUser = true;
-      extraGroups = ["wheel"];
+      extraGroups = [ "wheel" ];
       initialPassword = "snowflake";
-      openssh.authorizedKeys.keys = let
-        keys = import ../shared/values/ssh-keys.nix;
-      in
-        with keys; [NixBtw ErrorNoPhone];
+      openssh.authorizedKeys.keys =
+        let
+          keys = import ../shared/values/ssh-keys.nix;
+        in
+        with keys;
+        [
+          NixBtw
+          ErrorNoPhone
+        ];
     };
   };
 }

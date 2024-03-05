@@ -1,16 +1,18 @@
-{
-  config,
-  lib,
-  ...
-}: let
+{ config, lib, ... }:
+let
   cfg = config.shared.modules.emulation;
   inherit (lib) mkEnableOption mkIf optional;
-in {
+in
+{
   options.shared.modules.emulation = {
-    enable = mkEnableOption "" // {default = true;};
+    enable = mkEnableOption "" // {
+      default = true;
+    };
 
     linux = {
-      aarch64 = mkEnableOption "" // {default = config.host.system != "aarch64-linux";};
+      aarch64 = mkEnableOption "" // {
+        default = config.host.system != "aarch64-linux";
+      };
     };
   };
 

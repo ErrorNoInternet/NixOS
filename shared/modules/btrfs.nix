@@ -1,26 +1,31 @@
-{
-  config,
-  lib,
-  ...
-}: let
+{ config, lib, ... }:
+let
   cfg = config.shared.modules.btrfs.compression;
   inherit (lib) mkEnableOption mkIf;
-in {
+in
+{
   options.shared.modules.btrfs.compression = {
-    enable =
-      mkEnableOption "";
+    enable = mkEnableOption "";
 
-    subvolumeLayout = mkEnableOption "" // {default = true;};
+    subvolumeLayout = mkEnableOption "" // {
+      default = true;
+    };
   };
 
   config = mkIf cfg.enable {
     fileSystems =
       {
-        "/".options = ["compress=zstd" "noatime"];
+        "/".options = [
+          "compress=zstd"
+          "noatime"
+        ];
       }
       // mkIf cfg.subvolumeLayout {
-        "/home".options = ["compress=zstd"];
-        "/nix".options = ["compress=zstd" "noatime"];
+        "/home".options = [ "compress=zstd" ];
+        "/nix".options = [
+          "compress=zstd"
+          "noatime"
+        ];
       };
   };
 }

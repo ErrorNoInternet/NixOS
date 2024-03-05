@@ -1,5 +1,1 @@
-{
-  imports = [
-    ./openrgb.nix
-  ];
-}
+{ imports = [ ./openrgb.nix ]; }

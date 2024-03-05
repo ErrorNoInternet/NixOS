@@ -1,7 +1,4 @@
-{
-  pkgs,
-  writeShellApplication,
-}:
+{ pkgs, writeShellApplication }:
 writeShellApplication {
   name = "tbw";
   text = ''

@@ -1,5 +1,1 @@
-{
-  imports = [
-    ./window-managers
-  ];
-}
+{ imports = [ ./window-managers ]; }

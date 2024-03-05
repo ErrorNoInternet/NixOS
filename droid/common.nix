@@ -1,8 +1,5 @@
+{ pkgs, self', ... }:
 {
-  pkgs,
-  self',
-  ...
-}: {
   imports = [
     ./caches
     ./profiles

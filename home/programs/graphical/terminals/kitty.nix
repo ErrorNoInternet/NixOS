@@ -4,7 +4,8 @@
   lib,
   self',
   ...
-}: {
+}:
+{
   config = lib.mkIf config.profiles.desktop.enable {
     programs.kitty = {
       enable = true;
@@ -34,37 +35,40 @@
         "ctrl+shift+right" = "send_text all \\x1b\\x5b\\x31\\x3b\\x33\\x43";
       };
 
-      extraConfig = with config.colors.scheme.palette; let
-        base00Variation = "${
-          builtins.replaceStrings [" "] [""]
-          (builtins.toString (lib.intersperse ","
-              (map (c: c - 1) (inputs.nix-colors.lib.conversions.hexToRGB base00))))
-        }";
-      in ''
-        background            base10_rgb:${base00Variation}
-        cursor                #${base04}
-        foreground            #${base04}
-        selection_background  #${base0A}
-        selection_foreground  #${base00}
-        url_color             #${base07}
+      extraConfig =
+        with config.colors.scheme.palette;
+        let
+          base00Variation = "${builtins.replaceStrings [ " " ] [ "" ] (
+            builtins.toString (
+              lib.intersperse "," (map (c: c - 1) (inputs.nix-colors.lib.conversions.hexToRGB base00))
+            )
+          )}";
+        in
+        ''
+          background            base10_rgb:${base00Variation}
+          cursor                #${base04}
+          foreground            #${base04}
+          selection_background  #${base0A}
+          selection_foreground  #${base00}
+          url_color             #${base07}
 
-        color0                #${base01}
-        color8                #${base03}
-        color1                #${base08}
-        color9                #${base08}
-        color2                #${base0B}
-        color10               #${base0B}
-        color3                #${base0A}
-        color11               #${base0A}
-        color4                #${base0D}
-        color12               #${base0D}
-        color5                #${base0E}
-        color13               #${base0E}
-        color6                #${base0C}
-        color14               #${base07}
-        color7                #${base05}
-        color15               #${base06}
-      '';
+          color0                #${base01}
+          color8                #${base03}
+          color1                #${base08}
+          color9                #${base08}
+          color2                #${base0B}
+          color10               #${base0B}
+          color3                #${base0A}
+          color11               #${base0A}
+          color4                #${base0D}
+          color12               #${base0D}
+          color5                #${base0E}
+          color13               #${base0E}
+          color6                #${base0C}
+          color14               #${base07}
+          color7                #${base05}
+          color15               #${base06}
+        '';
     };
   };
 }

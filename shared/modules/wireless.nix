@@ -3,9 +3,11 @@
   lib,
   self,
   ...
-}: let
+}:
+let
   inherit (lib) mkEnableOption mkIf;
-in {
+in
+{
   options.shared.modules.wireless.enable = mkEnableOption "";
 
   config = mkIf config.shared.modules.wireless.enable {

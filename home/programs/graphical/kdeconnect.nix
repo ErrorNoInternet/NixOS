@@ -3,18 +3,24 @@
   lib,
   pkgs,
   ...
-}: let
+}:
+let
   cfg = config.customPrograms.graphical.kdeconnect;
-  inherit (lib) mkDefault mkEnableOption mkOption mkIf types;
-in {
+  inherit (lib)
+    mkDefault
+    mkEnableOption
+    mkOption
+    mkIf
+    types
+    ;
+in
+{
   options.customPrograms.graphical.kdeconnect = {
     enable = mkEnableOption "";
 
-    enableYaziIntegration =
-      mkEnableOption ""
-      // {
-        default = true;
-      };
+    enableYaziIntegration = mkEnableOption "" // {
+      default = true;
+    };
 
     deviceId = mkOption {
       default = "6ded058eb2e79440";
@@ -32,7 +38,7 @@ in {
 
     programs.yazi.keymap.manager.keymap = mkIf cfg.enableYaziIntegration [
       {
-        on = ["E"];
+        on = [ "E" ];
         exec = "shell --block '${pkgs.kdeconnect}/bin/kdeconnect-cli -d ${cfg.deviceId} --share \"$@\"; read'";
         desc = "send file to ${cfg.deviceId} using KDE Connect";
       }

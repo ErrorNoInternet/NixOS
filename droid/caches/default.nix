@@ -1,5 +1,1 @@
-{
-  imports = [
-    ./errornobinaries.nix
-  ];
-}
+{ imports = [ ./errornobinaries.nix ]; }

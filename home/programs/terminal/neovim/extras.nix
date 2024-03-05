@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   programs.nixvim = {
     plugins = {
       presence-nvim = {
@@ -8,9 +9,7 @@
         fileExplorerText = "Browsing a folder";
       };
     };
-    extraPlugins = with pkgs.vimPlugins; [
-      suda-vim
-    ];
+    extraPlugins = with pkgs.vimPlugins; [ suda-vim ];
     globals = {
       suda_smart_edit = 1;
     };

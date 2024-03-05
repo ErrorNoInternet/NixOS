@@ -3,10 +3,12 @@
   lib,
   pkgs,
   ...
-}: let
+}:
+let
   cfg = config.customPrograms.graphical.discord;
   inherit (lib) mkEnableOption mkIf;
-in {
+in
+{
   options.customPrograms.graphical.discord.enable = mkEnableOption "";
 
   config = mkIf cfg.enable {
@@ -278,7 +280,7 @@ in {
             settingsSync = false;
             settingsSyncVersion = 1704773064108;
           };
-          enabledThemes = [];
+          enabledThemes = [ ];
         };
       };
     };

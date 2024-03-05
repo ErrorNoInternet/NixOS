@@ -1,10 +1,8 @@
-{
-  config,
-  lib,
-  ...
-}: let
+{ config, lib, ... }:
+let
   inherit (lib) mkOption types;
-in {
+in
+{
   options.browser.name = mkOption {
     default = "firefox";
     type = types.str;

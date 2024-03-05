@@ -5,10 +5,12 @@
   pkgs,
   self',
   ...
-}: let
+}:
+let
   cfg = config.profiles.windowManager;
   inherit (lib) mkEnableOption mkIf;
-in {
+in
+{
   options.profiles.windowManager.enable = mkEnableOption "";
 
   config = mkIf cfg.enable {

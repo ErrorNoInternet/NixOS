@@ -1,4 +1,5 @@
-{config, ...}: {
+{ config, ... }:
+{
   wayland.windowManager.hyprland = {
     settings = with config.colors.scheme.palette; {
       general = {

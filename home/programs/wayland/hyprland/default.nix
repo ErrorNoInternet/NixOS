@@ -4,10 +4,12 @@
   osConfig,
   self',
   ...
-}: let
+}:
+let
   cfg = config.desktops.hyprland;
   inherit (lib) mkEnableOption mkIf;
-in {
+in
+{
   imports = [
     ./input.nix
     ./keybinds.nix
@@ -17,14 +19,9 @@ in {
     ./windowrules.nix
   ];
 
-  options.desktops.hyprland.enable =
-    mkEnableOption ""
-    // {
-      default =
-        if (osConfig ? workstation)
-        then osConfig.workstation.desktops.hyprland.enable
-        else false;
-    };
+  options.desktops.hyprland.enable = mkEnableOption "" // {
+    default = if (osConfig ? workstation) then osConfig.workstation.desktops.hyprland.enable else false;
+  };
 
   config = mkIf cfg.enable {
     caches.hyprland.enable = true;

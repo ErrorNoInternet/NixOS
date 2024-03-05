@@ -1,4 +1,5 @@
-{config, ...}: {
+{ config, ... }:
+{
   terminal = {
     colors = with config.home-manager.config.colors.scheme.palette; {
       foreground = "#${base04}";

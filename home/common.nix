@@ -4,7 +4,8 @@
   inputs,
   pkgs,
   ...
-}: {
+}:
+{
   imports = [
     ../shared/caches
     ./modules
@@ -13,9 +14,7 @@
     inputs.agenix.homeManagerModules.default
   ];
 
-  age.identityPaths = [
-    "/home/${config.home.username}/.ssh/id_ed25519_agenix"
-  ];
+  age.identityPaths = [ "/home/${config.home.username}/.ssh/id_ed25519_agenix" ];
 
   home = {
     packages = with pkgs; [

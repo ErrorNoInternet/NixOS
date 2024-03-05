@@ -4,10 +4,12 @@
   lib,
   self',
   ...
-}: let
+}:
+let
   cfg = config.customPrograms.terminal.neovim;
   inherit (lib) mkEnableOption mkIf;
-in {
+in
+{
   imports = [
     ./autocmd.nix
     ./development.nix
@@ -21,11 +23,9 @@ in {
     inputs.nixvim.homeManagerModules.nixvim
   ];
 
-  options.customPrograms.terminal.neovim.enable =
-    mkEnableOption ""
-    // {
-      default = config.customPrograms.terminal.fish.enable;
-    };
+  options.customPrograms.terminal.neovim.enable = mkEnableOption "" // {
+    default = config.customPrograms.terminal.fish.enable;
+  };
 
   config = mkIf cfg.enable {
     programs.nixvim = {

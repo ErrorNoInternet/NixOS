@@ -15,7 +15,11 @@
     };
     settings = {
       manager = {
-        ratio = [2 4 4];
+        ratio = [
+          2
+          4
+          4
+        ];
         sort_by = "modified";
         sort_sensitive = false;
         sort_reverse = true;

@@ -1,10 +1,8 @@
-{
-  config,
-  lib,
-  ...
-}: let
+{ config, lib, ... }:
+let
   inherit (lib) mkEnableOption mkIf;
-in {
+in
+{
   options.customPrograms.graphical.thunderbird.enable = mkEnableOption "";
 
   config = mkIf config.customPrograms.graphical.thunderbird.enable {

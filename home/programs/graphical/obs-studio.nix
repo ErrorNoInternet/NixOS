@@ -1,10 +1,8 @@
-{
-  config,
-  lib,
-  ...
-}: let
+{ config, lib, ... }:
+let
   inherit (lib) mkEnableOption mkIf;
-in {
+in
+{
   options.customPrograms.graphical.obsStudio.enable = mkEnableOption "";
 
   config = mkIf config.customPrograms.graphical.obsStudio.enable {

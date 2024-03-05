@@ -1,23 +1,17 @@
-{
-  config,
-  lib,
-  ...
-}: let
+{ config, lib, ... }:
+let
   cfg = config.profiles.gaming;
   inherit (lib) mkEnableOption mkIf;
-in {
+in
+{
   options.profiles.gaming = {
-    enable =
-      mkEnableOption ""
-      // {
-        default = true;
-      };
+    enable = mkEnableOption "" // {
+      default = true;
+    };
 
-    enableSteam =
-      mkEnableOption ""
-      // {
-        default = true;
-      };
+    enableSteam = mkEnableOption "" // {
+      default = true;
+    };
   };
 
   config = mkIf cfg.enable {

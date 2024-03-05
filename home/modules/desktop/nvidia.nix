@@ -3,9 +3,11 @@
   inputs',
   lib,
   ...
-}: let
+}:
+let
   inherit (lib) mkEnableOption mkIf;
-in {
+in
+{
   options.nvidia.desktopEntries.enable = mkEnableOption "";
 
   config = mkIf config.nvidia.desktopEntries.enable {
@@ -13,14 +15,14 @@ in {
       nvidia-supertuxkart = {
         name = "SuperTuxKart (nvidia-offload)";
         icon = "supertuxkart";
-        categories = ["Game"];
+        categories = [ "Game" ];
         exec = "nvidia-offload supertuxkart";
       };
 
       nvidia-osu-lazer = {
         name = "osu! (nvidia-offload)";
         icon = "${inputs'.nix-gaming.packages.osu-lazer-bin}/osu.png";
-        categories = ["Game"];
+        categories = [ "Game" ];
         exec = "nvidia-offload osu-lazer";
       };
     };
