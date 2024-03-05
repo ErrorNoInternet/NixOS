@@ -1,8 +1,6 @@
 {
   programs.fish.shellAbbrs = {
     zf = "zfs";
-    zp = "zpool";
-
     zfg = "zfs get";
     zfgf = "zfs get -t filesystem";
     zfgs = "zfs get -t snapshot";
@@ -10,6 +8,7 @@
     zflk = "zfs load-key -a";
     zfls = "zfs list -t snapshot";
     zfm = "zfs mount -a";
+    zp = "zpool";
     zpg = "zpool get";
     zpi = "zpool import -al";
     zpio = "zpool iostat";
