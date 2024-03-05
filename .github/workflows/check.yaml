@@ -33,3 +33,9 @@ jobs:
 
       - name: Check Nix flake outputs
         run: nix flake check --all-systems --show-trace
+      
+      - name: Check ErrorNoPhone (nix-on-droid)
+        run: nix build --dry-run --impure \
+               --option extra-substituters "https://nix-on-droid.cachix.org" \
+               --option extra-trusted-public-keys "nix-on-droid.cachix.org-1:56snoMJTXmDRC1Ei24CmKoUqvHJ9XCp+nidK7qkMQrU=" \
+               .#nixOnDroidConfigurations.ErrorNoPhone.activationPackage
