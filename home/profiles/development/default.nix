@@ -49,11 +49,11 @@ in {
         black
         python3Packages.bpython
 
-        alejandra
         cachix
         nix-output-monitor
         nix-tree
         nvd
+        self'.formatter
         self'.packages.attic
 
         gnumake

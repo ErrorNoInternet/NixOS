@@ -1,13 +1,14 @@
 {
   lib,
   pkgs,
+  self',
   ...
 }: {
   programs.nixvim = {helpers, ...}: {
     extraPackages = with pkgs; [
-      alejandra
       black
       clang-tools
+      self'.formatter
       taplo
 
       lldb

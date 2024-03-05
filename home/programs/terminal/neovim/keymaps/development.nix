@@ -408,12 +408,12 @@
       {
         event = ["FileType"];
         pattern = ["nix"];
-        command = "map <buffer> <F2> :w<CR>:Neoformat alejandra<CR>:w<CR>";
+        command = "map <buffer> <F2> :w<CR>:Neoformat<CR>:w<CR>";
       }
       {
         event = ["FileType"];
         pattern = ["nix"];
-        command = "imap <buffer> <F2> <esc>:w<CR>:Neoformat alejandra<CR>:w<CR>";
+        command = "imap <buffer> <F2> <esc>:w<CR>:Neoformat<CR>:w<CR>";
       }
     ];
   };
