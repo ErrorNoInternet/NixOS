@@ -26,7 +26,7 @@ jobs:
         uses: DeterminateSystems/magic-nix-cache-action@v3
 
       - name: Check if properly formatted
-        run: nix run nixpkgs#alejandra -- -c .
+        run: nix run nixpkgs#nixfmt-rfc-style -- -c .
 
       - name: Run static code analysis
         if: always()
