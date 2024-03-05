@@ -21,6 +21,7 @@ jobs:
         with:
           extra-conf: |
             log-lines = 500
+            extra-platforms = aarch64-linux
 
       - name: Set up Magic Nix Cache
         uses: DeterminateSystems/magic-nix-cache-action@v3
