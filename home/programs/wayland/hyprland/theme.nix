@@ -65,6 +65,7 @@
     };
 
     extraConfig = ''
+      layerrule=animation fade, gtk-layer-shell
       layerrule=animation fade, hyprpicker
       layerrule=animation fade, swaync-control-center
       layerrule=blur,           gtk-layer-shell
