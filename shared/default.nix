@@ -79,9 +79,11 @@ in {
     systemPackages = with pkgs; [
       _7zz
       bandwhich
+      btop
       curl
       dig
       dua
+      duf
       dust
       fd
       file
@@ -90,6 +92,7 @@ in {
       killall
       lsof
       neovim
+      procs
       ripgrep
       self'.packages.btrfs-map-physical
       self'.packages.btrfs-progs

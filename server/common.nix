@@ -49,9 +49,6 @@
   };
 
   environment.systemPackages = with pkgs; [
-    btop
-    duf
-    fd
     procs
     pueue
   ];
