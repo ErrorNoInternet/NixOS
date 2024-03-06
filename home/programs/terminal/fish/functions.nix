@@ -151,7 +151,7 @@
             end
           end
 
-          if test $status = 0
+          if test -d $tmpDir/result
             $tmpDir/result/activate
             rm $tmpDir/result
           end
