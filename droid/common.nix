@@ -31,6 +31,8 @@
 
     extraOptions = ''
       experimental-features = nix-command flakes
+      log-lines = 500
+      show-trace = true
     '';
   };
 

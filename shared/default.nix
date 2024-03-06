@@ -25,13 +25,14 @@ in {
       mappedRegistry // {default = mappedRegistry.nixpkgs;};
 
     settings = {
-      experimental-features = ["nix-command" "flakes"];
-      trusted-users = ["root" "@wheel"];
       auto-optimise-store = true;
+      experimental-features = ["nix-command" "flakes"];
       log-lines = 500;
+      show-trace = true;
+      trusted-users = ["root" "@wheel"];
 
-      min-free = 5 * 1024 * 1024 * 1024;
       max-free = 20 * 1024 * 1024 * 1024;
+      min-free = 5 * 1024 * 1024 * 1024;
     };
 
     gc = {
