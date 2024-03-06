@@ -17,9 +17,12 @@
   };
 
   environment.motd = "";
-  nix.extraOptions = ''
-    experimental-features = nix-command flakes
-  '';
+  nix = {
+    package = self'.packages.nix;
+    extraOptions = ''
+      experimental-features = nix-command flakes
+    '';
+  };
 
   user.shell = "${pkgs.fish}/bin/fish";
   environment = {
@@ -50,7 +53,6 @@
       procs
       ripgrep
       self'.packages.hwatch
-      self'.packages.nix
       traceroute
       unzip
       util-linux
