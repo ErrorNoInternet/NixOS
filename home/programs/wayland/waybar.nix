@@ -141,8 +141,8 @@
       };
       style = ''
         * {
-          border: none;
           border-radius: 0px;
+          border: none;
           font-family: ${config.font.name};
           font-size: 12px;
           min-height: 0;
@@ -156,73 +156,73 @@
 
         #custom-launcher {
           background-color: #${base00};
-          color: #${base0D};
           border-radius: 0px 20px 20px 0px;
-          padding: 0px 30px 0px 15px;
-          margin: 0px;
+          color: #${base0D};
           font-size: 22px;
+          margin: 0px;
+          padding: 0px 30px 0px 15px;
         }
 
         #workspaces {
           background-color: #${base00};
+          border-radius: 16px;
           color: #${base02};
           margin: 4px 4px;
           padding: 4px 2px;
-          border-radius: 16px;
         }
 
         #workspaces button {
           background-color: #${base01};
-          color: #${base04};
-          padding: 0px 10px;
-          margin: 0px 4px;
           border-radius: 16px;
+          color: #${base04};
+          margin: 0px 4px;
           min-width: 20px;
+          padding: 0px 10px;
           transition: all 0.2s ease-in-out;
         }
 
         #workspaces button.active {
           background-color: #${base0D};
-          color: #${base02};
-          border-radius: 16px;
-          min-width: 35px;
           background-size: 400% 400%;
+          border-radius: 16px;
+          color: #${base02};
+          min-width: 35px;
           transition: all 0.2s ease-in-out;
         }
 
         #workspaces button:hover {
           background-color: #${base04};
-          color: #${base02};
-          border-radius: 16px;
-          min-width: 35px;
           background-size: 400% 400%;
+          border-radius: 16px;
+          color: #${base02};
+          min-width: 35px;
         }
 
         #clock {
           background-color: #${base00};
-          color: #${base04};
           border-radius: 20px 0px 0px 20px;
-          padding: 2px 15px 2px 20px;
-          margin-left: 7px;
+          color: #${base04};
           font-weight: bold;
+          margin-left: 7px;
+          padding: 2px 15px 2px 20px;
         }
 
         #custom-notifications {
           background-color: #${base00};
           color: #${base04};
+          font-weight: bold;
           padding-left: 4px;
           padding-right: 14px;
-          font-weight: bold;
         }
 
         #cpu, #memory, #tray, #pulseaudio, #network, #battery {
           background-color: #${base00};
-          color: #${base04};
-          margin: 4px 0px;
-          margin-left: 7px;
           border-radius: 16px;
-          padding: 0px 20px;
+          color: #${base04};
           font-weight: bold;
+          margin-left: 7px;
+          margin: 4px 0px;
+          padding: 0px 20px;
         }
 
         tooltip {
