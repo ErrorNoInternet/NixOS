@@ -227,6 +227,7 @@
 
         tooltip {
           background-color: #${base00};
+          border-radius: 16px;
           font-size: 22px;
         }
       '';
