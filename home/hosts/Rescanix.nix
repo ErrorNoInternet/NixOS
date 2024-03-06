@@ -27,6 +27,7 @@
     };
     terminal = {
       cava.enable = true;
+      git.user.name = "Rescanix";
       gpg.enable = true;
       irssi.enable = true;
     };

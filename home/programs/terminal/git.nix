@@ -17,7 +17,7 @@ in {
 
       email = mkOption {
         type = with types; nullOr str;
-        default = null;
+        default = "errornointernet@envs.net";
       };
     };
 
