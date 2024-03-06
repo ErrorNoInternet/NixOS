@@ -11,8 +11,8 @@
     zp = "zpool";
     zpg = "zpool get";
     zpi = "zpool import -al";
-    zpio = "zpool iostat";
-    zpiov = "zpool iostat -v";
+    zpio = "zpool iostat 1";
+    zpiov = "zpool iostat -v 1";
     zpl = "zpool list";
     zplv = "zpool list -v";
     zps = "zpool status";
