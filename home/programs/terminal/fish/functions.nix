@@ -137,12 +137,12 @@
       if config.flags.nixOnDroid
       then ''
         function DS
-          argparse "a/ask" -- $argv
           set tmpDir (mktemp -d)
 
           nix build .#nixOnDroidConfigurations.\"$HOSTNAME\".activationPackage \
             --impure -v --log-format internal-json -o $tmpDir/result &| nom --json
 
+          argparse "a/ask" -- $argv
           if set -q _flag_ask
             read -n1 -P "Activate the configuration? [y/N]: " confirmation
             if test $confirmation != "y" && test $confirmation != "Y"
@@ -150,8 +150,11 @@
             end
           end
 
-          $tmpDir/result/activate
-          rm $tmpDir/result
+          if test $status = 0
+            $tmpDir/result/activate
+            rm $tmpDir/result
+          end
+
           rmdir $tmpDir
         end
       ''
