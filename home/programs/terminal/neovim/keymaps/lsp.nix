@@ -14,6 +14,7 @@
         };
       };
     };
+
     extraConfigLuaPost = ''
       vim.keymap.set('n', 'K', function()
         local winid = require('ufo').peekFoldedLinesUnderCursor()
