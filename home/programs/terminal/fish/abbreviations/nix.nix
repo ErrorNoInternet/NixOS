@@ -21,13 +21,18 @@
 
     n = "nix";
     nB = "nix build";
+    nBl = "nix build -L";
     nD = "nix develop -c fish";
     nd = "nix develop";
+    nDl = "nix develop -L -c fish";
+    ndl = "nix develop -L";
     nf = "nix flake";
     nfc = "nix flake check";
     nr = "nix run";
     nre = "nix repl";
+    nrl = "nix run -L";
     ns = "nix shell";
     nS = "nix-shell --run fish -p";
+    nsl = "nix shell -L";
   };
 }
