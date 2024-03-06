@@ -19,7 +19,6 @@
   environment.motd = "";
   nix.extraOptions = ''
     experimental-features = nix-command flakes
-    auto-optimise-store = true
   '';
 
   user.shell = "${pkgs.fish}/bin/fish";
