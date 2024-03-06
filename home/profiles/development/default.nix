@@ -37,6 +37,9 @@ in {
           ];
         };
       in [
+        evcxr
+        rust
+
         clang
         clang-tools
         gdb
@@ -61,7 +64,6 @@ in {
         linuxPackages_latest.perf
         man-pages
         onefetch
-        rust
         scc
         zig
       ];
