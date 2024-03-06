@@ -143,18 +143,20 @@
           nix build .#nixOnDroidConfigurations.\"$HOSTNAME\".activationPackage \
             --impure --show-trace -v --log-format internal-json -o $tmpDir/result &| nom --json
 
+          if ! test -d $tmpDir/result
+            return
+          end
+
           argparse "a/ask" -- $argv
           if set -q _flag_ask
             read -n1 -P "$(tput bold)>$(tput sgr0) Activate the configuration? $(tput bold)[y/N]:$(tput sgr0) " confirmation
-            if test $confirmation != "y" && test $confirmation != "Y"
+            if test "$confirmation" != "y" && test "$confirmation" != "Y"
               return
             end
           end
 
-          if test -d $tmpDir/result
-            $tmpDir/result/activate
-            rm $tmpDir/result
-          end
+          $tmpDir/result/activate
+          rm $tmpDir/result
 
           rmdir $tmpDir
         end
