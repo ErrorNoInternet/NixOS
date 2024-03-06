@@ -37,6 +37,7 @@
     gpa = "git push --all";
     gpf = "git push --force-with-lease";
     gpl = "git pull";
+    gplu = "git pull --allow-unrelated-histories";
     gpo = "git push origin";
     gpod = "git push origin --delete";
     gps = "git push -u origin";
