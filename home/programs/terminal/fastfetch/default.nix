@@ -8,10 +8,7 @@
   inherit (lib) mkEnableOption mkIf;
 in {
   options.customPrograms.terminal.fastfetch.enable =
-    mkEnableOption ""
-    // {
-      default = config.customPrograms.terminal.fish.enable;
-    };
+    mkEnableOption "" // {default = config.customPrograms.terminal.fish.enable;};
 
   config = mkIf cfg.enable {
     home = {

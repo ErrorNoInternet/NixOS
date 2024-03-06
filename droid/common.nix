@@ -25,27 +25,40 @@
   user.shell = "${pkgs.fish}/bin/fish";
   environment = {
     packages = with pkgs; [
+      _7zz
       curl
       dig
+      dua
+      dust
       file
       gawk
       glibc
       gnugrep
       gnupg
+      gnused
       gnutar
       gzip
       iproute2
+      kbd
+      killall
+      nano
       ncurses
       neofetch
       nmap
+      openssh
       perl
       procps
       procs
       ripgrep
       self'.packages.hwatch
+      self'.packages.nix
+      traceroute
+      unzip
+      util-linux
+      vim
       wget
       which
-      xxd
+      zip
     ];
 
     etc.current.source = lib.cleanSource ./..;

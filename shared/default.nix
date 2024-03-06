@@ -77,6 +77,8 @@ in {
   programs.command-not-found.enable = false;
   environment = {
     systemPackages = with pkgs; [
+      _7zz
+      bandwhich
       curl
       dig
       dua

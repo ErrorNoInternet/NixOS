@@ -24,9 +24,9 @@
                 osConfig = {};
               };
               sharedModules = [
-                {nix.package = self'.packages.nix;}
                 ../home/common.nix
                 ../home/hosts/${name}.nix
+                {nix.package = self'.packages.nix;}
               ];
             };
           }

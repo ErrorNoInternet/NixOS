@@ -11,7 +11,7 @@
   wallpapersPath = "~/pictures/wallpapers";
 in {
   options.wallpaper = {
-    enable = mkEnableOption "" // {default = true;};
+    enable = mkEnableOption "" // {default = config.profiles.desktop.enable;};
 
     path = mkOption {
       default = "${wallpapersPath}/${strings.toLower config.colors.schemeName}/0.png";

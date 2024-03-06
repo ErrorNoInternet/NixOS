@@ -63,8 +63,6 @@
       self'.packages.scratchpad
 
       # system utilities
-      _7zz
-      bandwhich
       compsize
       duf
       ffmpeg_6-full

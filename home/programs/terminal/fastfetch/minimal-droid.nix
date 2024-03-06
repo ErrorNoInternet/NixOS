@@ -13,15 +13,13 @@ builtins.toJSON {
     keyWidth = 14;
   };
   modules = let
-    commands = {
-      nix-store = "${pkgs.nix}/bin/nix-store";
-      getprop = "/android/system/bin/linker64 /android/system/bin/getprop";
-    };
+    nix-store = "${pkgs.nix}/bin/nix-store";
+    getprop = "/android/system/bin/linker64 /android/system/bin/getprop";
   in [
     {
       type = "command";
       key = " system  ";
-      text = "echo Android $(${commands.getprop} ro.build.version.release) (API $(${commands.getprop} ro.build.version.sdk))";
+      text = "echo \"Android $(${getprop} ro.build.version.release) (API $(${getprop} ro.build.version.sdk))\"";
     }
     {
       type = "kernel";
@@ -35,7 +33,7 @@ builtins.toJSON {
     {
       type = "command";
       key = "󰆧 packages";
-      text = "(${commands.nix-store} --query --requisites ~/.nix-profile | wc -l | tr -d '\n') && echo ' (nix; ~/.nix-profile)'";
+      text = "(${nix-store} --query --requisites ~/.nix-profile | wc -l | tr -d '\n') && echo ' (nix; ~/.nix-profile)'";
     }
     {
       type = "memory";
@@ -45,7 +43,7 @@ builtins.toJSON {
       type = "disk";
       key = "󱥎 storage ";
       format = "{1} / {2} ({3})";
-      folders = "/data";
+      folders = "/";
     }
     {
       type = "custom";
