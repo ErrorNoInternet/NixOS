@@ -3,7 +3,7 @@
   lib,
   ...
 }: let
-  inherit (lib) mkIf strings;
+  inherit (lib) attrsets strings;
 in {
   programs.fish.shellAliases =
     {
@@ -44,7 +44,7 @@ in {
       pps = "playerctl pause";
       pwdc = "pwd | tr -d '\\n' | wl-copy";
     }
-    // (mkIf config.flags.nixOnDroid {
+    // (attrsets.optionalAttrs config.flags.nixOnDroid {
       ping = "/android/system/bin/linker64 /android/system/bin/ping";
       ping6 = "/android/system/bin/linker64 /android/system/bin/ping6";
     });
