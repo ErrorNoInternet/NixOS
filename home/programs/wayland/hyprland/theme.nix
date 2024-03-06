@@ -57,8 +57,8 @@
         animation = [
           "fade,       1, 5, default"
           "layers,     1, 1, default,        popin 90%"
-          "windows,    1, 5, extremeEaseOut, popin 50%"
-          "windowsOut, 1, 5, default,        popin 80%"
+          "windows,    1, 5, extremeEaseOut, popin 75%"
+          "windowsOut, 1, 5, default,        popin 75%"
           "workspaces, 1, 4, extremeEaseOut"
         ];
       };
