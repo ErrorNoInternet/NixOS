@@ -53,6 +53,7 @@
       iproute2
       kbd
       killall
+      less
       nano
       ncurses
       neofetch
