@@ -149,7 +149,7 @@
 
           argparse "a/ask" -- $argv
           if set -q _flag_ask
-            read -n1 -P "$(tput bold)>$(tput sgr0) Activate the configuration? $(tput bold)[y/N]:$(tput sgr0) " confirmation
+            read confirmation -n1 -P "$(tput bold)>$(tput sgr0) Activate the configuration?$(tput bold) [y/N]:$(tput sgr0) "
             if test "$confirmation" != "y" && test "$confirmation" != "Y"
               return
             end
