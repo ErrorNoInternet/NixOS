@@ -139,12 +139,13 @@
         function DS
           set tmpDir (mktemp -d)
 
+          echo "$(tput bold)>$(tput sgr0) Building nix-on-droid configuration"
           nix build .#nixOnDroidConfigurations.\"$HOSTNAME\".activationPackage \
             --impure --show-trace -v --log-format internal-json -o $tmpDir/result &| nom --json
 
           argparse "a/ask" -- $argv
           if set -q _flag_ask
-            read -n1 -P "Activate the configuration? [y/N]: " confirmation
+            read -n1 -P "$(tput bold)>$(tput sgr0) Activate the configuration? $(tput bold)[y/N]:$(tput sgr0) " confirmation
             if test $confirmation != "y" && test $confirmation != "Y"
               return
             end
