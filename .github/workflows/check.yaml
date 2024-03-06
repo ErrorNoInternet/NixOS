@@ -13,8 +13,10 @@ jobs:
     runs-on: ubuntu-22.04
 
     steps:
-      - name: Clone repository
-        uses: actions/checkout@v4
+      - name: Install QEMU
+        run: |
+          sudo apt update -y
+          sudo apt install -y qemu-user-static
 
       - name: Install Nix
         uses: DeterminateSystems/nix-installer-action@v9
@@ -25,6 +27,9 @@ jobs:
 
       - name: Set up Magic Nix Cache
         uses: DeterminateSystems/magic-nix-cache-action@v3
+
+      - name: Clone repository
+        uses: actions/checkout@v4
 
       - name: Check Nix flake inputs
         uses: DeterminateSystems/flake-checker-action@v5
