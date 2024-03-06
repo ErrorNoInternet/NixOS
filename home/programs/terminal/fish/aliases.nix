@@ -24,6 +24,7 @@
 
     B = "nh os boot .";
     Ba = "B -a";
+    DSa = "DS -a";
     S = "nh os switch .";
     Sa = "S -a";
     T = "nh os test .";
