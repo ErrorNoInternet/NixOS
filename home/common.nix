@@ -22,7 +22,6 @@
       cmatrix
       croc
       eza
-      fd
       inputs'.hsize.packages.hsize
       jq
       mergerfs

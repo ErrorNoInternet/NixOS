@@ -83,6 +83,7 @@ in {
       dig
       dua
       dust
+      fd
       file
       git
       iotop-c

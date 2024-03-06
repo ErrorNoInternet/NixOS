@@ -42,7 +42,9 @@
       dig
       dua
       dust
+      fd
       file
+      findutils
       gawk
       glibc
       gnugrep
