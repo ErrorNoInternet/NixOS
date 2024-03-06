@@ -42,7 +42,7 @@ jobs:
       
       - name: Check ErrorNoPhone (nix-on-droid)
         if: always()
-        run: nix build --dry-run --impure
+        run: nix build --dry-run --impure --show-trace
                --option extra-substituters "https://nix-on-droid.cachix.org"
                --option extra-trusted-public-keys "nix-on-droid.cachix.org-1:56snoMJTXmDRC1Ei24CmKoUqvHJ9XCp+nidK7qkMQrU="
                .#nixOnDroidConfigurations.ErrorNoPhone.activationPackage

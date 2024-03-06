@@ -140,7 +140,7 @@
           set tmpDir (mktemp -d)
 
           nix build .#nixOnDroidConfigurations.\"$HOSTNAME\".activationPackage \
-            --impure -v --log-format internal-json -o $tmpDir/result &| nom --json
+            --impure --show-trace -v --log-format internal-json -o $tmpDir/result &| nom --json
 
           argparse "a/ask" -- $argv
           if set -q _flag_ask
