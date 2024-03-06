@@ -4,20 +4,44 @@
   ...
 }: let
   cfg = config.customPrograms.terminal.git;
-  inherit (lib) mkEnableOption mkIf;
+  inherit (lib) mkEnableOption mkOption mkIf types;
 in {
-  options.customPrograms.terminal.git.enable = mkEnableOption "";
+  options.customPrograms.terminal.git = {
+    enable = mkEnableOption "" // {default = true;};
+
+    user = {
+      name = mkOption {
+        type = with types; nullOr str;
+        default = null;
+      };
+
+      email = mkOption {
+        type = with types; nullOr str;
+        default = null;
+      };
+    };
+
+    signing = {
+      key = mkOption {
+        type = with types; nullOr str;
+        default = null;
+      };
+
+      signByDefault = mkOption {
+        type = types.bool;
+        default = false;
+      };
+    };
+  };
 
   config = mkIf cfg.enable {
     programs.git = {
       enable = true;
 
-      userName = "ErrorNoInternet";
-      userEmail = "errornointernet@envs.net";
-      signing = {
-        key = "2486BFB7B1E6A4A3";
-        signByDefault = true;
-      };
+      userName = with cfg.user; mkIf (name != null) name;
+      userEmail = with cfg.user; mkIf (email != null) email;
+      inherit (cfg) signing;
+
       extraConfig = {
         advice = {
           addEmptyPathspec = false;

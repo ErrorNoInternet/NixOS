@@ -44,7 +44,16 @@
     };
     terminal = {
       cava.enable = true;
-      git.enable = true;
+      git = {
+        user = {
+          name = "ErrorNoInternet";
+          email = "errornointernet@envs.net";
+        };
+        signing = {
+          key = "2486BFB7B1E6A4A3";
+          signByDefault = true;
+        };
+      };
       gpg.enable = true;
       irssi.enable = true;
       nb = {

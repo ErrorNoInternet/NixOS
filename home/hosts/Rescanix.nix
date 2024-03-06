@@ -27,7 +27,6 @@
     };
     terminal = {
       cava.enable = true;
-      git.enable = true;
       gpg.enable = true;
       irssi.enable = true;
     };
