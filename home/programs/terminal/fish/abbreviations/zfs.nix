@@ -1,5 +1,6 @@
 {
   programs.fish.shellAbbrs = {
+    ioz = "ioztat 1";
     zf = "zfs";
     zfg = "zfs get";
     zfgf = "zfs get -t filesystem";
