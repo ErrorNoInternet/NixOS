@@ -63,6 +63,7 @@
       neofetch
       nmap
       openssh
+      openssl
       perl
       procps
       procs
