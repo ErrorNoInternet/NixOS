@@ -89,7 +89,7 @@
     end
 
     function ggr -d "fancy git history graph"
-      ${pkgs.git-graph}/bin/git-graph --color always -s ascii --no-pager $argv 2> /dev/null | less
+      ${pkgs.git-graph}/bin/git-graph --color always -s ascii --no-pager $argv 2> /dev/null | less -R
     end
 
     function glfzf -d "use fzf to preview git commits"
