@@ -27,7 +27,7 @@ in {
       ];
 
       theme = spicePkgs.themes.text;
-      colorScheme = "Nord";
+      colorScheme = config.colors.schemeName;
     };
   };
 }
