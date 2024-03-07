@@ -93,6 +93,7 @@ in {
       killall
       lsof
       neovim
+      openssl
       procs
       ripgrep
       self'.packages.btrfs-map-physical
