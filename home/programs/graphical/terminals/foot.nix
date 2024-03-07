@@ -12,7 +12,7 @@
       settings = {
         main = {
           font = "${config.font.name}:size=9";
-          pad = "2x2 center";
+          pad = "5x5 center";
           shell = "tmux";
         };
         mouse.hide-when-typing = "yes";
