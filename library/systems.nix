@@ -79,12 +79,4 @@
         inherit name system;
       }
       // extraConfig);
-
-  mkWorkstation = name: system: extraConfig:
-    mkSystem ({
-        type = "workstation";
-        homeManager = false;
-        inherit name system;
-      }
-      // extraConfig);
 }
