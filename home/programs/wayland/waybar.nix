@@ -84,6 +84,7 @@
           format-muted = "󰝟";
           scroll-step = 5;
           on-click = "pavucontrol";
+          on-click-right = "pavolume toggle";
         };
         "network#status" = {
           format-wifi = "  {signalStrength}%";
