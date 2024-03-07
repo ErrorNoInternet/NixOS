@@ -19,6 +19,7 @@
       else "/etc/nixos"
     }/configuration.nix/";
 
+    "-" = "cd -";
     cl = "curl -L";
     clo = "curl -LO";
     e = "echo";
