@@ -20,15 +20,22 @@
 
       nvim-cmp = {
         enable = true;
-        sources = [
-          {name = "buffer";}
-          {name = "crates";}
-          {name = "luasnip";}
-          {name = "nvim_lsp";}
-          {name = "path";}
-        ];
+        sources = let
+          names = [
+            "buffer"
+            "calc"
+            "crates"
+            "luasnip"
+            "nvim_lsp"
+            "path"
+            "treesitter"
+          ];
+        in
+          map (name: {inherit name;}) names;
         snippet.expand = "luasnip";
       };
+      cmp-calc.enable = true;
+      cmp-treesitter.enable = true;
       cmp_luasnip.enable = true;
       luasnip.enable = true;
 
