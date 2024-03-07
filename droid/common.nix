@@ -54,6 +54,7 @@
       gnused
       gnutar
       gzip
+      htop
       iproute2
       kbd
       killall
