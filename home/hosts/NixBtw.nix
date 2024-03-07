@@ -54,7 +54,10 @@
           signByDefault = true;
         };
       };
-      gpg.enable = true;
+      gpg = {
+        enable = true;
+        defaultKey = "2486BFB7B1E6A4A3";
+      };
       irssi.enable = true;
       nb = {
         enable = true;
