@@ -73,7 +73,6 @@
 
       # system utilities
       compsize
-      duf
       ffmpeg_6-full
       nmap
       nvtop

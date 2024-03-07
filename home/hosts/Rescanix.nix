@@ -45,7 +45,6 @@
       ddrescue
       dmidecode
       drm_info
-      duf
       duperemove
       efibootmgr
       efivar
