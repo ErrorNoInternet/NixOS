@@ -9,7 +9,7 @@
     programs.kitty = {
       enable = true;
       package = self'.packages.kitty;
-      shellIntegration.enableFishIntegration = true;
+      shellIntegration.mode = "no-cursor";
 
       font = {
         inherit (config.font) name;
