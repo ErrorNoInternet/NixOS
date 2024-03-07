@@ -18,6 +18,7 @@
       then "~/.config/nixpkgs"
       else "/etc/nixos"
     }/configuration.nix/";
+
     cl = "curl -L";
     clo = "curl -LO";
     e = "echo";
@@ -27,5 +28,6 @@
     sc = "systemctl";
     scu = "systemctl --user";
     wr = "wf-recorder -b 0 -c h264_nvenc -p b=5M -f recording_(date \"+%Y-%m-%-d_%H:%M:%S\").mp4";
+    wrs = "wf-recorder -b 0 -c h264_nvenc -p b=5M -f recording_(date \"+%Y-%m-%-d_%H:%M:%S\").mp4 -g (slurp)";
   };
 }
