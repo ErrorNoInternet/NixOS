@@ -52,10 +52,6 @@ in {
           },
           window_background_opacity = ${builtins.toString cfg.backgroundOpacity},
           enable_tab_bar = false,
-
-          keys = {
-            { key = "T", mods = "CTRL|SHIFT", action = wezterm.action.DisableDefaultAssignment },
-          },
         }
 
         for _, gpu in ipairs(wezterm.gui.enumerate_gpus()) do
