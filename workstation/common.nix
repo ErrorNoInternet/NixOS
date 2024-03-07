@@ -107,6 +107,7 @@ in {
       bcachefs-tools
       cryptsetup
       home-manager
+      intel-gpu-tools
       pulseaudio
       xdg-user-dirs
     ];
