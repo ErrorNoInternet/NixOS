@@ -88,6 +88,8 @@
       telescope = {
         enable = true;
         extensions.ui-select.enable = true;
+
+        defaults.layout_strategy = "vertical";
       };
       yanky = {
         enable = true;
