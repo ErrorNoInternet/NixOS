@@ -29,11 +29,14 @@
           --icons='Few icons' \
           --transient=No
 
-        set -U tide_color_truncated_dirs blue
-        set -U tide_pwd_color_truncated_dirs blue
-        set -U tide_pwd_color_dirs blue
-        set -U tide_pwd_color_anchors blue
         set -U tide_character_color cyan
+        set -U tide_color_truncated_dirs blue
+        set -U tide_pwd_color_anchors blue
+        set -U tide_pwd_color_dirs blue
+        set -U tide_pwd_color_truncated_dirs blue
+        set -U tide_right_prompt_items status cmd_duration context jobs direnv \
+                                       node python rustc java php ruby go \
+                                       distrobox toolbox nix_shell zig
         set -U tide_time_color cyan
 
         tide reload
