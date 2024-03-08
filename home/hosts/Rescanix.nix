@@ -68,6 +68,7 @@
       iperf
       kdenlive
       kdiskmark
+      libva-utils
       linuxPackages_latest.perf
       lm_sensors
       lshw
