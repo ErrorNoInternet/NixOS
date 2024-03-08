@@ -4,6 +4,7 @@
   lib,
   pkgs,
   self',
+  self,
   ...
 }: let
   inherit (lib) mkDefault mkForce;
@@ -96,5 +97,9 @@ in {
     etc."nixos/current".source = lib.cleanSource ./..;
   };
 
-  system.stateVersion = "23.05";
+  system = {
+    configurationRevision = self.rev or "dirty";
+
+    stateVersion = "23.05";
+  };
 }
