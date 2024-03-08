@@ -430,14 +430,19 @@
         desc = "downloads";
       }
       {
-        on = ["g" "t"];
-        exec = "cd /tmp";
-        desc = "tmp";
+        on = ["g" "M"];
+        exec = "cd ~/data/media";
+        desc = "media";
       }
       {
-        on = ["g" "T"];
-        exec = "cd ~/data/temporary/test-workspace";
-        desc = "test-workspace";
+        on = ["g" "m"];
+        exec = "cd /mnt";
+        desc = "mnt";
+      }
+      {
+        on = ["g" "t"];
+        exec = "cd ~/data/temporary/testing";
+        desc = "testing";
       }
       {
         on = ["g" "<Space>"];
