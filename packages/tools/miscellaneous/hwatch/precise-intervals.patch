@@ -17,10 +17,10 @@ index 74f83d1..decea7f 100644
  Tab
  
 diff --git a/src/app.rs b/src/app.rs
-index 386915a..6782f0e 100644
+index 7cb66b9..d11b0e3 100644
 --- a/src/app.rs
 +++ b/src/app.rs
-@@ -470,14 +470,14 @@ impl<'a> App<'a> {
+@@ -499,14 +499,14 @@ impl<'a> App<'a> {
      ///
      fn increase_interval(&mut self) {
          let cur_interval = *self.interval.read().unwrap();
@@ -39,17 +39,17 @@ index 386915a..6782f0e 100644
      }
  
 diff --git a/src/help.rs b/src/help.rs
-index 63d1e28..8a94116 100644
+index f762c7e..ae3828c 100644
 --- a/src/help.rs
 +++ b/src/help.rs
-@@ -90,8 +90,8 @@ fn gen_help_text<'a>() -> Vec<Spans<'a>> {
-         Spans::from(" - [F2] key  ... change output mode as stderr."),
-         Spans::from(" - [F3] key  ... change output mode as output(stdout/stderr set.)"),
+@@ -90,8 +90,8 @@ fn gen_help_text<'a>() -> Vec<Line<'a>> {
+         Line::from(" - [F2] key  ... change output mode as stderr."),
+         Line::from(" - [F3] key  ... change output mode as output(stdout/stderr set.)"),
          // change interval
--        Spans::from(" - [+] key ... Increase interval by .5 seconds."),
--        Spans::from(" - [-] key ... Decrease interval by .5 seconds."),
-+        Spans::from(" - [+] key ... Increase interval by .1 seconds."),
-+        Spans::from(" - [-] key ... Decrease interval by .1 seconds."),
+-        Line::from(" - [+] key ... Increase interval by .5 seconds."),
+-        Line::from(" - [-] key ... Decrease interval by .5 seconds."),
++        Line::from(" - [+] key ... Increase interval by .1 seconds."),
++        Line::from(" - [-] key ... Decrease interval by .1 seconds."),
          // change use area
-         Spans::from(" - [Tab] key ... toggle current area at history or watch."),
-         // filter text inpu
+         Line::from(" - [Tab] key ... toggle current area at history or watch."),
+         // filter text input
