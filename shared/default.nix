@@ -98,7 +98,7 @@ in {
   };
 
   system = {
-    configurationRevision = self.rev or "dirty";
+    configurationRevision = self.rev or self.dirtyRev;
 
     stateVersion = "23.05";
   };
