@@ -59,6 +59,8 @@
         procps
         util-linux
         which
+        xz
+        zstd
       ]
       ++ (import ../shared/packages.nix {inherit pkgs self';});
 
