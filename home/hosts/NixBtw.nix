@@ -77,7 +77,6 @@
       # system utilities
       compsize
       ffmpeg_6-full
-      nmap
       nvtop
       procs
       pv

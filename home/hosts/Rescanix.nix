@@ -74,7 +74,6 @@
       mangohud
       mesa-demos
       multipath-tools
-      nmap
       nvme-cli
       nvtop
       ookla-speedtest

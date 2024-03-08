@@ -77,38 +77,21 @@ in {
 
   programs.command-not-found.enable = false;
   environment = {
-    systemPackages = with pkgs; [
-      _7zz
-      bandwhich
-      btop
-      curl
-      dig
-      dua
-      duf
-      dust
-      fd
-      file
-      git
-      iotop-c
-      killall
-      lsof
-      neovim
-      openssl
-      procs
-      ripgrep
-      self'.packages.btrfs-map-physical
-      self'.packages.btrfs-progs
-      self'.packages.hwatch
-      self'.packages.nix
-      sysstat
-      tcpdump
-      tmux
-      traceroute
-      unzip
-      vim
-      wget
-      zip
-    ];
+    systemPackages = with pkgs;
+      [
+        bandwhich
+        btop
+        duf
+        iotop-c
+        lsof
+        neovim
+        self'.packages.btrfs-map-physical
+        self'.packages.btrfs-progs
+        self'.packages.nix
+        sysstat
+        tcpdump
+      ]
+      ++ (import ./packages.nix {inherit pkgs self';});
 
     etc."nixos/current".source = lib.cleanSource ./..;
   };

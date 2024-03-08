@@ -38,46 +38,29 @@
 
   user.shell = "${pkgs.fish}/bin/fish";
   environment = {
-    packages = with pkgs; [
-      _7zz
-      curl
-      dig
-      dua
-      dust
-      fd
-      file
-      findutils
-      gawk
-      glibc
-      gnugrep
-      gnupg
-      gnused
-      gnutar
-      gzip
-      htop
-      iproute2
-      kbd
-      killall
-      less
-      nano
-      ncurses
-      neofetch
-      nmap
-      openssh
-      openssl
-      perl
-      procps
-      procs
-      ripgrep
-      self'.packages.hwatch
-      traceroute
-      unzip
-      util-linux
-      vim
-      wget
-      which
-      zip
-    ];
+    packages = with pkgs;
+      [
+        gawk
+        glibc
+        gnugrep
+        gnupg
+        gnused
+        gnutar
+        gzip
+        htop
+        iproute2
+        kbd
+        less
+        nano
+        ncurses
+        neofetch
+        openssh
+        perl
+        procps
+        util-linux
+        which
+      ]
+      ++ (import ../shared/packages.nix {inherit pkgs self';});
 
     etc.current.source = lib.cleanSource ./..;
   };

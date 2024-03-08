@@ -1,0 +1,28 @@
+{
+  pkgs,
+  self',
+  ...
+}:
+with pkgs; [
+  _7zz
+  curl
+  dig
+  dua
+  dust
+  fd
+  file
+  findutils
+  git
+  killall
+  nmap
+  openssl
+  procs
+  ripgrep
+  self'.packages.hwatch
+  tmux
+  traceroute
+  unzip
+  vim
+  wget
+  zip
+]
