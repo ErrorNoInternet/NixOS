@@ -36,65 +36,65 @@ in {
     };
   };
 
-  config = with cfg;
-    mkIf enable {
-      age.secrets.attic-server-token.file = "${self}/secrets/attic_server-token.age";
-      networking.firewall.allowedTCPPorts = [ports.insecure ports.secure];
-      systemd.services.atticd.serviceConfig.ReadWritePaths = [storagePath];
-      services = {
-        atticd = {
-          enable = true;
-          credentialsFile = config.age.secrets.attic-server-token.path;
-          settings = {
-            listen = "[::]:${builtins.toString ports.insecure}";
-            api-endpoint = "https://${host}:${builtins.toString ports.secure}/";
+  config = mkIf cfg.enable {
+    age.secrets.attic-server-token.file = "${self}/secrets/attic_server-token.age";
+    networking.firewall.allowedTCPPorts = with cfg.ports; [insecure secure];
+    systemd.services.atticd.serviceConfig.ReadWritePaths = [cfg.storagePath];
+    services = {
+      atticd = {
+        enable = true;
+        credentialsFile = config.age.secrets.attic-server-token.path;
+        settings = {
+          listen = "[::]:${builtins.toString cfg.ports.insecure}";
+          api-endpoint = "https://${cfg.host}:${builtins.toString cfg.ports.secure}/";
 
-            database.url = "sqlite://${storagePath}/server.db";
-            storage = {
-              type = "local";
-              path = "${storagePath}/storage";
-            };
-            compression = {
-              type = "zstd";
-              level = 3;
-            };
-            chunking = {
-              nar-size-threshold = 0;
-              min-size = 64 * 1024;
-              avg-size = 128 * 1024;
-              max-size = 256 * 1024;
-            };
-            garbage-collection = {
-              interval = "7 days";
-              default-retention-period = "3 months";
-            };
+          database.url = "sqlite://${cfg.storagePath}/server.db";
+          require-proof-of-possession = false;
+          storage = {
+            type = "local";
+            path = "${cfg.storagePath}/storage";
+          };
+          compression = {
+            type = "zstd";
+            level = 3;
+          };
+          chunking = {
+            nar-size-threshold = 0;
+            min-size = 64 * 1024;
+            avg-size = 128 * 1024;
+            max-size = 256 * 1024;
+          };
+          garbage-collection = {
+            interval = "7 days";
+            default-retention-period = "3 months";
           };
         };
+      };
 
-        nginx = {
-          enable = true;
-          recommendedProxySettings = true;
-          recommendedTlsSettings = true;
-          clientMaxBodySize = "10G";
-          virtualHosts."${host}" = {
-            forceSSL = true;
-            sslCertificate = "/etc/letsencrypt/live/${host}/fullchain.pem";
-            sslCertificateKey = "/etc/letsencrypt/live/${host}/privkey.pem";
-            listen = [
-              {
-                addr = "0.0.0.0";
-                port = ports.secure;
-                ssl = true;
-              }
-            ];
-            locations."/" = {
-              proxyPass = "http://localhost:${builtins.toString ports.insecure}";
-              extraConfig = ''
-                proxy_pass_header Authorization;
-              '';
-            };
+      nginx = {
+        enable = true;
+        recommendedProxySettings = true;
+        recommendedTlsSettings = true;
+        clientMaxBodySize = "10G";
+        virtualHosts."${cfg.host}" = {
+          forceSSL = true;
+          sslCertificate = "/etc/letsencrypt/live/${cfg.host}/fullchain.pem";
+          sslCertificateKey = "/etc/letsencrypt/live/${cfg.host}/privkey.pem";
+          listen = [
+            {
+              addr = "0.0.0.0";
+              port = cfg.ports.secure;
+              ssl = true;
+            }
+          ];
+          locations."/" = {
+            proxyPass = "http://localhost:${builtins.toString cfg.ports.insecure}";
+            extraConfig = ''
+              proxy_pass_header Authorization;
+            '';
           };
         };
       };
     };
+  };
 }
