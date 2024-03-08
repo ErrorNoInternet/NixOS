@@ -41,6 +41,7 @@ in {
       H = "exec Hyprland";
       pp = "playerctl play-pause";
       ppc = "playerctl play";
+      ppm = "playerctl metadata";
       pps = "playerctl pause";
       pwdc = "pwd | tr -d '\\n' | wl-copy";
     }
