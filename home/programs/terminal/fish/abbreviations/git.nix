@@ -53,6 +53,7 @@
     grvc = "git revert --continue";
     grvn = "git revert --no-commit";
     gs = "git show";
+    gsm = "git show -m";
     gst = "git status";
     gsw = "git switch -";
   };
