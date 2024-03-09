@@ -58,6 +58,7 @@
         enable = true;
         defaultKey = "2486BFB7B1E6A4A3";
       };
+      iamb.enable = true;
       irssi.enable = true;
       nb = {
         enable = true;

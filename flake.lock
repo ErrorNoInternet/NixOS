@@ -463,6 +463,32 @@
         "type": "github"
       }
     },
+    "iamb": {
+      "inputs": {
+        "flake-utils": [
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "rust-overlay": [
+          "rust-overlay"
+        ]
+      },
+      "locked": {
+        "lastModified": 1709957092,
+        "narHash": "sha256-p4KUMVvpfY5SpuxVYAmf5qI1YBmNQ0lB+AhT1z260tw=",
+        "owner": "ulyssa",
+        "repo": "iamb",
+        "rev": "8ee203c9a96235e48bfb36f4d13f32cf2d5ba2d9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ulyssa",
+        "repo": "iamb",
+        "type": "github"
+      }
+    },
     "libgit2": {
       "flake": false,
       "locked": {
@@ -1009,6 +1035,7 @@
         "hsize": "hsize",
         "hyprland": "hyprland",
         "hyprwm-contrib": "hyprwm-contrib",
+        "iamb": "iamb",
         "neovim-nightly": "neovim-nightly",
         "nix-colors": "nix-colors",
         "nix-gaming": "nix-gaming",
