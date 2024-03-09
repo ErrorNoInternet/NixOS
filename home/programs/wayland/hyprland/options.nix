@@ -29,11 +29,6 @@
       mouse_move_enables_dpms = true;
     };
 
-    dwindle = {
-      pseudotile = true;
-      preserve_split = true;
-    };
-
-    master.new_is_master = true;
+    dwindle.preserve_split = true;
   };
 }
