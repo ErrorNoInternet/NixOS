@@ -54,8 +54,8 @@ in {
           typing_notice_display = true;
 
           image_preview.size = {
-            width = 80;
-            height = 24;
+            width = 160;
+            height = 48;
           };
         };
 
