@@ -11,6 +11,7 @@
 
       settings = {
         main = {
+          box-drawings-uses-font-glyphs = "yes";
           font = "${config.font.name}:size=9";
           initial-window-size-pixels = "1896x1022";
           pad = "5x5 center";
