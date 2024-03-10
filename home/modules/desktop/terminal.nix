@@ -9,12 +9,12 @@ in {
   options.terminal = {
     name = mkOption {
       type = types.str;
-      default = "kitty";
+      default = "wezterm";
     };
 
     command = mkOption {
       type = types.str;
-      default = "${cfg.name}";
+      default = "${cfg.name} start --class ${cfg.name} --always-new-process";
     };
   };
 
