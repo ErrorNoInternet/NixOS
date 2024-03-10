@@ -18,21 +18,24 @@
 
       trouble.enable = true;
 
-      nvim-cmp = {
+      cmp = {
         enable = true;
-        sources = let
-          names = [
-            "buffer"
-            "calc"
-            "crates"
-            "luasnip"
-            "nvim_lsp"
-            "path"
-            "treesitter"
-          ];
-        in
-          map (name: {inherit name;}) names;
-        snippet.expand = "luasnip";
+
+        settings = {
+          sources = let
+            names = [
+              "buffer"
+              "calc"
+              "crates"
+              "luasnip"
+              "nvim_lsp"
+              "path"
+              "treesitter"
+            ];
+          in
+            map (name: {inherit name;}) names;
+          snippet.expand = "function(args) require('luasnip').lsp_expand(args.body) end";
+        };
       };
       cmp-calc.enable = true;
       cmp-treesitter.enable = true;

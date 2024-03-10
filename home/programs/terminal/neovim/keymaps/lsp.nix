@@ -1,19 +1,16 @@
 {
   programs.nixvim = {
-    plugins = {
-      nvim-cmp = {
-        mappingPresets = [
-          "insert"
-          "cmdline"
-        ];
-        mapping = {
-          "<CR>" = "cmp.mapping.confirm()";
-          "<Tab>" = "cmp.mapping.select_next_item()";
-          "<C-down>" = "cmp.mapping.scroll_docs(4)";
-          "<C-up>" = "cmp.mapping.scroll_docs(-4)";
-        };
-      };
-    };
+    plugins.cmp.settings.mapping.__raw =
+      builtins.concatStringsSep ""
+      (map (preset: ''
+        cmp.mapping.preset.${preset}({
+          ['<C-down>'] = cmp.mapping.scroll_docs(4),
+          ['<C-e>'] = cmp.mapping.abort(),
+          ['<C-up>'] = "cmp.mapping.scroll_docs(-4),
+          ['<CR>'] = cmp.mapping.confirm(),
+          ['<Tab>'] = cmp.mapping.select_next_item(),
+        })
+      '') ["insert" "cmdline"]);
 
     extraConfigLuaPost = ''
       vim.keymap.set('n', 'K', function()
