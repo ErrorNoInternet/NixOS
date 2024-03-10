@@ -5,30 +5,29 @@
   ...
 }: {
   wayland.windowManager.hyprland = let
-    commands = {
-      brightness = "${self'.packages.brightness}/bin/brightness";
-      grimblast = "grimblast --freeze save area -";
-      hyprgamemode = "${self'.packages.hyprgamemode}/bin/hyprgamemode";
-      rofi = "rofi -modes drun,window,run -show drun";
-      satty = "satty -f- --early-exit --copy-command wl-copy --init-tool rectangle";
-      shadower = "${inputs'.shadower.packages.shadower}/bin/shadower -r14";
-    };
+    brightness = "${self'.packages.brightness}/bin/brightness";
+    grimblast = "grimblast --freeze save area -";
+    hyprgamemode = "${self'.packages.hyprgamemode}/bin/hyprgamemode";
+    rofi = "rofi -modes drun,window,run -show drun";
+    satty = "satty -f- --early-exit --copy-command wl-copy --init-tool rectangle";
+    shadower = "${inputs'.shadower.packages.shadower}/bin/shadower -r14";
   in {
     settings = {
       bind = [
         "$mod CTRL SHIFT, code:22, exec, hyprctl dispatch exit"
         "$mod, escape, exec, wleave -p layer-shell -f -b5 -T425 -B425 -L250 -R250"
 
-        "$mod, D, exec, ${commands.rofi} || pkill rofi"
-        "$mod, Z, exec, ${commands.rofi} || pkill rofi"
+        "$mod, D, exec, ${rofi} || pkill rofi"
+        "$mod, Z, exec, ${rofi} || pkill rofi"
         "$mod, G, exec, cliphist list | (rofi -dmenu || pkill rofi) | cliphist decode | wl-copy"
         "$mod, code:60, exec, rofi -show emoji || pkill rofi"
 
-        ", PRINT, exec, ${commands.grimblast} | wl-copy"
-        "SHIFT, PRINT, exec, ${commands.grimblast} | ${commands.shadower} | wl-copy"
-        "CTRL, PRINT, exec, ${commands.grimblast} | ${commands.satty}"
+        ", PRINT, exec, ${grimblast} | wl-copy"
+        "SHIFT, PRINT, exec, ${grimblast} | ${shadower} | wl-copy"
+        "CTRL, PRINT, exec, ${grimblast} | ${satty}"
+        "CTRL SHIFT, PRINT, exec, ${grimblast} | ${shadower} | ${satty} | wl-copy"
 
-        "$mod, F1, exec, ${commands.hyprgamemode}"
+        "$mod, F1, exec, ${hyprgamemode}"
         "$mod, L, exec, swaylock --grace 0 --fade-in 1"
         "$mod, A, exec, scratchpad"
         "$mod SHIFT, A, exec, scratchpad -g"
@@ -102,8 +101,8 @@
         ",XF86AudioMute, exec, pavolume toggle"
         ",XF86AudioRaiseVolume, exec, pavolume up"
         ",XF86AudioLowerVolume, exec, pavolume down"
-        ",XF86MonBrightnessUp, exec, ${commands.brightness} up"
-        ",XF86MonBrightnessDown, exec, ${commands.brightness} down"
+        ",XF86MonBrightnessUp, exec, ${brightness} up"
+        ",XF86MonBrightnessDown, exec, ${brightness} down"
       ];
       bindl = [
         ",switch:on:Lid Switch, exec, swaylock --grace 0 --fade-in 1"
