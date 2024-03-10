@@ -86,6 +86,7 @@
       prismlauncher
       procs
       pv
+      qbittorrent
       qrencode
       radeontop
       sdparm
