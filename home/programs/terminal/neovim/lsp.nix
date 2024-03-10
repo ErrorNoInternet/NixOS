@@ -22,25 +22,37 @@
         enable = true;
 
         settings = {
-          sources = let
-            names = [
-              "buffer"
-              "calc"
-              "crates"
-              "luasnip"
-              "nvim_lsp"
-              "path"
-              "treesitter"
-            ];
-          in
-            map (name: {inherit name;}) names;
           snippet.expand = "function(args) require('luasnip').lsp_expand(args.body) end";
+          sources = map (name: {inherit name;}) [
+            "buffer"
+            "calc"
+            "crates"
+            "luasnip"
+            "nvim_lsp"
+            "path"
+            "treesitter"
+          ];
         };
+        cmdline =
+          (builtins.listToAttrs (map (name: {
+              inherit name;
+              value = {
+                mapping.__raw = "cmp.mapping.preset.cmdline()";
+                sources = [{name = "buffer";}];
+              };
+            })
+            ["/" "?"]))
+          // {
+            ":".sources = [{name = "path";}];
+          };
       };
       cmp-calc.enable = true;
       cmp-treesitter.enable = true;
       cmp_luasnip.enable = true;
-      luasnip.enable = true;
+      luasnip = {
+        enable = true;
+        fromVscode = [{}];
+      };
 
       crates-nvim = {
         enable = true;
@@ -105,22 +117,6 @@
     ];
     extraConfigLuaPre = ''
       vim.highlight.priorities.semantic_tokens = 99
-    '';
-    extraConfigLuaPost = ''
-      require("luasnip.loaders.from_vscode").lazy_load()
-
-      cmp.setup.cmdline({ '/', '?' }, {
-        mapping = cmp.mapping.preset.cmdline(),
-        sources = {
-          { name = 'buffer' }
-        }
-      })
-      cmp.setup.cmdline(':', {
-        sources = {
-          { name = 'path' }
-        }
-      })
-      vim.keymap.set('c', '<tab>', '<C-z>', { silent = false })
     '';
     globals = {
       go_fmt_autosave = 0;

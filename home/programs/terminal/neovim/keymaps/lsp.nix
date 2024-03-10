@@ -12,16 +12,13 @@
         })
       '') ["insert" "cmdline"]);
 
-    extraConfigLuaPost = ''
-      vim.keymap.set('n', 'K', function()
-        local winid = require('ufo').peekFoldedLinesUnderCursor()
-        if not winid then
-          vim.lsp.buf.hover()
-        end
-      end)
-    '';
-
     keymaps = [
+      {
+        mode = "c";
+        key = "<tab>";
+        action = "<C-z>";
+      }
+
       {
         mode = "";
         key = "<C-f>";
@@ -48,6 +45,18 @@
         action = "<Plug>luasnip-next-choice";
       }
 
+      {
+        mode = "n";
+        key = "K";
+        action.__raw = ''
+          vim.keymap.set('n', 'K', function()
+            local winid = require('ufo').peekFoldedLinesUnderCursor()
+            if not winid then
+              vim.lsp.buf.hover()
+            end
+          end)
+        '';
+      }
       {
         mode = "n";
         options.silent = true;
