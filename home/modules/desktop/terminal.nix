@@ -9,7 +9,7 @@ in {
   options.terminal = {
     name = mkOption {
       type = types.str;
-      default = "foot";
+      default = "kitty";
     };
 
     command = mkOption {
