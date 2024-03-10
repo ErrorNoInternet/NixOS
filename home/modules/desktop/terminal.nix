@@ -8,15 +8,15 @@
 in {
   options.terminal = {
     name = mkOption {
-      default = "kitty";
       type = types.str;
+      default = "kitty";
     };
 
     command = mkOption {
-      default = "${cfg.name}";
       type = types.str;
+      default = "${cfg.name}";
     };
   };
 
-  config.home.sessionVariables.TERMINAL = config.terminal.name;
+  config.home.sessionVariables.TERMINAL = cfg.name;
 }
