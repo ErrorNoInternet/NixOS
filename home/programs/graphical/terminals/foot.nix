@@ -12,6 +12,7 @@
       settings = {
         main = {
           font = "${config.font.name}:size=9";
+          initial-window-size-pixels = "1896x1022";
           pad = "5x5 center";
           shell = "tmux";
         };
