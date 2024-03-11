@@ -24,6 +24,7 @@
       cl = "curl -L";
       clo = "curl -LO";
       e = "echo";
+      ex = "exec";
       nv = "nvim";
       p = "printf";
       s = "sudo";
