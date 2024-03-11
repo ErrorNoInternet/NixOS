@@ -25,11 +25,15 @@
           vim.lsp.buf.hover()
         end
       end)
-
-      vim.keymap.set('c', '<tab>', '<C-z>', { silent = false })
     '';
 
     keymaps = [
+      {
+        mode = "c";
+        key = "<Tab>";
+        action = "<C-z>";
+      }
+
       {
         mode = "";
         key = "<C-f>";
