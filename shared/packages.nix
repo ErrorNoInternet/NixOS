@@ -1,4 +1,5 @@
 {
+  inputs',
   pkgs,
   self',
   ...
@@ -13,6 +14,7 @@ with pkgs; [
   file
   findutils
   git
+  inputs'.agenix.packages.default
   killall
   nmap
   openssl
