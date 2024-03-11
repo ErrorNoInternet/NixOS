@@ -70,8 +70,8 @@
           }
 
           .notification-row {
-            margin-right: 2px;
-            margin-top: 8px;
+            margin-right: -4px;
+            margin-top: 2px;
             outline: none;
             padding: 0px;
           }
