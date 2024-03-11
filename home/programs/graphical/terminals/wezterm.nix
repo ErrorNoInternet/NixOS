@@ -37,7 +37,6 @@ in {
 
         config = {
           check_for_updates = false,
-          automatically_reload_config = false,
           default_prog = { "/etc/profiles/per-user/error/bin/tmux" },
 
           font = wezterm.font "${cfg.font}",
@@ -53,7 +52,12 @@ in {
             right = "1cell",
           },
           window_background_opacity = ${builtins.toString cfg.backgroundOpacity},
-          enable_tab_bar = false,
+
+          hide_tab_bar_if_only_one_tab = true,
+          show_new_tab_button_in_tab_bar = false,
+          show_tab_index_in_tab_bar = false,
+          tab_bar_at_bottom = true,
+          use_fancy_tab_bar = false,
         }
 
         for _, gpu in ipairs(wezterm.gui.enumerate_gpus()) do
