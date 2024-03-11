@@ -91,7 +91,6 @@
             settings.checkOnSave = false;
           };
           taplo.enable = true;
-          yamlls.enable = true;
           zls.enable = true;
         };
       };
