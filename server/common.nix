@@ -13,10 +13,7 @@
     inputs.agenix.nixosModules.default
   ];
 
-  boot = {
-    kernelParams = ["console=tty0"];
-    supportedFilesystems = ["ntfs"];
-  };
+  boot.kernelParams = ["console=tty0"];
 
   networking = {
     firewall = {

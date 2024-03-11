@@ -27,12 +27,9 @@ in {
       };
       timeout = 3;
     };
-    kernelParams = ["boot.shell_on_fail"];
 
     kernelPackages = mkOverride 1250 pkgs.linuxPackages_latest;
-    supportedFilesystems = [
-      "ntfs"
-    ];
+    supportedFilesystems = ["ntfs"];
 
     kernel.sysctl = {
       "kernel.sysrq" = mkDefault 1;
@@ -44,8 +41,8 @@ in {
     };
   };
 
-  networking.firewall.enable = mkDefault false;
   shared.modules.wireless.enable = true;
+  networking.firewall.enable = mkDefault false;
 
   services = {
     pipewire = {
