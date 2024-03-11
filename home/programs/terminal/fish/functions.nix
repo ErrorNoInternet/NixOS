@@ -1,12 +1,9 @@
 {
-  lib,
   pkgs,
   self',
   ...
 }: {
-  programs.fish.interactiveShellInit = with lib; let
-    notify-send = "${getExe pkgs.libnotify}";
-  in ''
+  programs.fish.interactiveShellInit = ''
     function toggle-comment
       set cursor (commandline --cursor)
       set cmd (commandline -b)
@@ -25,7 +22,7 @@
     end
 
 
-    function unss -d "turn a nix store symlink into a regular file"
+    function unS -d "turn a nix store symlink into a regular file"
       for argi in (seq 1 $(count $argv))
         set name $argv[$argi]
         mv $name $name.store
@@ -85,7 +82,7 @@
     end
 
     function scc
-      scc --no-cocomo --ci $argv | head -c-1
+      command scc --no-cocomo --ci $argv | head -c-1
     end
 
     function ggr -d "fancy git history graph"
@@ -102,7 +99,7 @@
 
     function notify-done -d "send a desktop notification when a command finishes running"
       $argv
-      ${notify-send} "Command finished" "<b>`$argv`</b> has exited with code $status."
+      ${pkgs.libnotify}/bin/notify-send "Command finished" "<b>`$argv`</b> has exited with code $status."
     end
 
     function pmem -d "display virtual memory information about a process"
