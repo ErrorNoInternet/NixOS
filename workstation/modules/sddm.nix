@@ -12,7 +12,7 @@ in {
   config = mkIf cfg.enable {
     services.xserver.displayManager.sddm = {
       enable = true;
-      theme = "${self'.packages.sddm-theme-corners}";
+      theme = "${self'.packages.sddmTheme-corners}";
     };
   };
 }
