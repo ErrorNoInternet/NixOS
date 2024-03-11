@@ -2,7 +2,6 @@
   inputs,
   lib,
   pkgs,
-  self',
   ...
 }: let
   inherit (lib) mkDefault mkOverride;

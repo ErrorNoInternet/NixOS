@@ -25,7 +25,11 @@
   };
 
   workstation = {
-    modules.zfs.enable = true;
+    modules = {
+      zfs.enable = true;
+
+      sddm.enable = true;
+    };
 
     profiles.vmGuest.enable = true;
 
