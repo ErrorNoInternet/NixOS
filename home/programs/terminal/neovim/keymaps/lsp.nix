@@ -1,24 +1,35 @@
 {
   programs.nixvim = {
-    plugins.cmp.settings.mapping.__raw =
-      builtins.concatStringsSep ""
-      (map (preset: ''
-        cmp.mapping.preset.${preset}({
+    plugins.cmp = let
+      mkPreset = type: ''
+        cmp.mapping.preset.${type}({
           ['<C-down>'] = cmp.mapping.scroll_docs(4),
           ['<C-e>'] = cmp.mapping.abort(),
           ['<C-up>'] = cmp.mapping.scroll_docs(-4),
           ['<CR>'] = cmp.mapping.confirm(),
           ['<Tab>'] = cmp.mapping.select_next_item(),
         })
-      '') ["insert" "cmdline"]);
+      '';
+    in {
+      cmdline = builtins.listToAttrs (map (name: {
+        inherit name;
+        value.mapping.__raw = mkPreset "cmdline";
+      }) ["/" "?" ":"]);
+      settings.mapping.__raw = mkPreset "insert";
+    };
+
+    extraConfigLuaPost = ''
+      vim.keymap.set('n', 'K', function()
+        local winid = require('ufo').peekFoldedLinesUnderCursor()
+        if not winid then
+          vim.lsp.buf.hover()
+        end
+      end)
+
+      vim.keymap.set('c', '<tab>', '<C-z>', { silent = false })
+    '';
 
     keymaps = [
-      {
-        mode = "c";
-        key = "<tab>";
-        action = "<C-z>";
-      }
-
       {
         mode = "";
         key = "<C-f>";
@@ -45,18 +56,6 @@
         action = "<Plug>luasnip-next-choice";
       }
 
-      {
-        mode = "n";
-        key = "K";
-        action.__raw = ''
-          vim.keymap.set('n', 'K', function()
-            local winid = require('ufo').peekFoldedLinesUnderCursor()
-            if not winid then
-              vim.lsp.buf.hover()
-            end
-          end)
-        '';
-      }
       {
         mode = "n";
         options.silent = true;

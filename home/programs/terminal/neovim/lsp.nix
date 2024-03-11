@@ -36,15 +36,10 @@
         cmdline =
           (builtins.listToAttrs (map (name: {
               inherit name;
-              value = {
-                mapping.__raw = "cmp.mapping.preset.cmdline()";
-                sources = [{name = "buffer";}];
-              };
+              value.sources = [{name = "buffer";}];
             })
             ["/" "?"]))
-          // {
-            ":".sources = [{name = "path";}];
-          };
+          // {":".sources = [{name = "path";}];};
       };
       cmp-calc.enable = true;
       cmp-treesitter.enable = true;
