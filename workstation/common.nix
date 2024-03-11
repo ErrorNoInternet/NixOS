@@ -44,11 +44,8 @@ in {
     };
   };
 
-  networking = {
-    firewall.enable = mkDefault false;
-    networkmanager.enable = true;
-  };
-  systemd.services.NetworkManager-wait-online.enable = false;
+  networking.firewall.enable = mkDefault false;
+  shared.modules.wireless.enable = true;
 
   services = {
     pipewire = {
