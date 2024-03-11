@@ -141,12 +141,9 @@ in {
     root.initialPassword = "snowflake";
     error = {
       isNormalUser = true;
-      extraGroups = ["wheel" "video" "networkmanager"];
+      extraGroups = ["wheel" "video"];
       initialPassword = "snowflake";
-      openssh.authorizedKeys.keys = let
-        keys = import ../shared/values/ssh-keys.nix;
-      in
-        with keys; [NixBtw ErrorNoPhone];
+      openssh.authorizedKeys.keys = with (import ../shared/values/ssh-keys.nix); [NixBtw ErrorNoPhone];
     };
   };
 }
