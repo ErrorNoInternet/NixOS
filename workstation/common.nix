@@ -63,13 +63,7 @@ in {
     xserver = {
       enable = true;
       excludePackages = [pkgs.xterm];
-      displayManager = {
-        lightdm.enable = false;
-        sddm = {
-          enable = true;
-          theme = "${self'.packages.sddm-theme-corners}";
-        };
-      };
+      displayManager.lightdm.enable = false;
     };
 
     dbus.implementation = "broker";
