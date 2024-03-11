@@ -22,8 +22,8 @@
     n = "nix";
     nB = "nix build";
     nBl = "nix build -L";
-    nD = "nix develop -c fish";
-    nd = "nix develop";
+    nd = "nix develop -c fish";
+    nD = "nix develop";
     nDl = "nix develop -L -c fish";
     ndl = "nix develop -L";
     nf = "nix flake";
