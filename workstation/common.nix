@@ -49,7 +49,6 @@ in {
     firewall.enable = mkDefault false;
     networkmanager.enable = true;
   };
-  systemd.services.NetworkManager-wait-online.enable = false;
 
   services = {
     pipewire = {
