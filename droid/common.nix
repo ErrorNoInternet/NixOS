@@ -1,4 +1,5 @@
 {
+  inputs',
   inputs,
   lib,
   pkgs,
@@ -62,7 +63,7 @@
         xz
         zstd
       ]
-      ++ (import ../shared/packages.nix {inherit pkgs self';});
+      ++ (import ../shared/packages.nix {inherit inputs' pkgs self';});
 
     etc.current.source = lib.cleanSource ./..;
   };
