@@ -7,6 +7,7 @@
           ['<C-e>'] = cmp.mapping.abort(),
           ['<C-up>'] = cmp.mapping.scroll_docs(-4),
           ['<CR>'] = cmp.mapping.confirm(),
+          ['<S-Tab>'] = cmp.mapping.select_prev_item(),
           ['<Tab>'] = cmp.mapping.select_next_item(),
         })
       '';
