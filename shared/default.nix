@@ -1,5 +1,6 @@
 {
   config,
+  inputs',
   inputs,
   lib,
   pkgs,
@@ -96,7 +97,7 @@ in {
         sysstat
         tcpdump
       ]
-      ++ (import ./packages.nix {inherit pkgs self';});
+      ++ (import ./packages.nix {inherit inputs' pkgs self';});
 
     etc."nixos/current".source = lib.cleanSource ./..;
   };
