@@ -72,7 +72,7 @@
       }
       // extraConfig);
 
-  mkHmWorkstation = name: system: extraConfig:
+  mkWorkstation = name: system: extraConfig:
     mkSystem ({
         type = "workstation";
         homeManager = true;
