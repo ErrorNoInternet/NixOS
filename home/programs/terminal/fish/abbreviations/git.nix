@@ -46,6 +46,10 @@
     grbc = "git rebase --continue";
     grh = "git reset HEAD";
     grh1 = "git reset HEAD~1";
+    grm = "git remote";
+    grmp = "git remote prune origin";
+    grms = "git remote show origin";
+    grmsu = "git remote set-url origin";
     grp = "git restore -p";
     grr = "git restore --recurse-submodules";
     grv = "git revert";
