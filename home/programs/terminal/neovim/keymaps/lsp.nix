@@ -6,7 +6,7 @@
         cmp.mapping.preset.${preset}({
           ['<C-down>'] = cmp.mapping.scroll_docs(4),
           ['<C-e>'] = cmp.mapping.abort(),
-          ['<C-up>'] = "cmp.mapping.scroll_docs(-4),
+          ['<C-up>'] = cmp.mapping.scroll_docs(-4),
           ['<CR>'] = cmp.mapping.confirm(),
           ['<Tab>'] = cmp.mapping.select_next_item(),
         })
