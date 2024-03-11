@@ -38,4 +38,4 @@ jobs:
 
       - name: Check if inputs are sorted
         if: always()
-        run: nix-instantiate --eval library/check-inputs-sorted.nix
+        run: nix eval --file library/check-inputs-sorted.nix
