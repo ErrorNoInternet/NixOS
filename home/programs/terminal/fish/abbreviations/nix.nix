@@ -28,6 +28,10 @@
     ndl = "nix develop -L";
     nf = "nix flake";
     nfc = "nix flake check";
+    nfl = "nix flake lock";
+    nfm = "nix flake metadata";
+    nfs = "nix flake show";
+    nfu = "nix flake update";
     nr = "nix run";
     nre = "nix repl";
     nrl = "nix run -L";
