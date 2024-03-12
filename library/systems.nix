@@ -3,12 +3,15 @@
   lib,
   self,
   withSystem,
-}: rec {
+}: let
+  inherit (lib) optionals;
+in rec {
   mkSystem = {
     type,
     homeManager,
     name,
     system,
+    disko ? false,
     allowUnfree ? false,
     cudaSupport ? false,
   }:
@@ -32,7 +35,11 @@
             ../${type}/hosts/${name}/hardware.nix
             {host = {inherit name system;};}
           ]
-          ++ lib.optionals homeManager [
+          ++ optionals disko [
+            inputs.disko.nixosModules.disko
+            ../${type}/hosts/${name}/disko.nix
+          ]
+          ++ optionals homeManager [
             inputs.home-manager.nixosModules.home-manager
             {
               home-manager = {
