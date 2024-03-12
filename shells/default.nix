@@ -18,6 +18,7 @@
         delta
         git
         inputs'.agenix.packages.default
+        inputs.disko.packages.default
         self'.packages.neovim
         self'.packages.nix
         statix
