@@ -1,6 +1,7 @@
 {
   programs.fish.shellAbbrs = {
     ioz = "ioztat 1";
+    md = "sudo zpool import -al";
     zf = "zfs";
     zfg = "zfs get";
     zfgf = "zfs get -t filesystem";
