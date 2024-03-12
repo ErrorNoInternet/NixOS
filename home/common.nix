@@ -22,7 +22,7 @@
       cmatrix
       croc
       eza
-      inputs'.hsize.packages.hsize
+      inputs'.hsize.packages.default
       jq
       mergerfs
       nh

@@ -62,8 +62,8 @@
       imagemagick
       inputs'.nix-gaming.packages.osu-lazer-bin
       inputs'.nix-gaming.packages.wine-ge
-      inputs'.overmask.packages.overmask
-      inputs'.paralload.packages.paralload
+      inputs'.overmask.packages.default
+      inputs'.paralload.packages.default
       intel-gpu-tools
       iperf
       kdenlive
