@@ -14,6 +14,7 @@ with pkgs; [
   file
   findutils
   git
+  htop
   inputs'.agenix.packages.default
   killall
   nmap
