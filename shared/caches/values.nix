@@ -11,10 +11,8 @@
     ];
   };
 
-  locations = {
-    china = {
-      substituters = ["https://mirrors.ustc.edu.cn/nix-channels/store"];
-      publicKeys = ["cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="];
-    };
+  locations .china = {
+    substituters = ["https://mirror.sjtu.edu.cn/nix-channels/store"];
+    publicKeys = ["cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="];
   };
 }
