@@ -37,6 +37,7 @@ in {
 
         config = {
           check_for_updates = false,
+          automatically_reload_config = false,
           default_prog = { "/etc/profiles/per-user/error/bin/tmux" },
 
           font = wezterm.font "${cfg.font}",
