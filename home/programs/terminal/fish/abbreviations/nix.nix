@@ -32,7 +32,8 @@
     nre = "nix repl";
     nrl = "nix run -L";
     ns = "nix shell";
-    nS = "nix-shell --run fish -p";
+    nS = "nix-shell --run fish";
     nsl = "nix shell -L";
+    nSS = "nix-shell --run fish -p";
   };
 }
