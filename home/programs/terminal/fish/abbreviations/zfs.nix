@@ -9,8 +9,8 @@
     zflk = "zfs load-key";
     zflka = "zfs load-key -a";
     zfls = "zfs list -t snapshot";
-    zfm = "zfs mount";
-    zfma = "zfs mount -al";
+    zfm = "zfs mount -v";
+    zfma = "zfs mount -val";
     zp = "zpool";
     zpg = "zpool get";
     zpi = "zpool import";
@@ -19,6 +19,8 @@
     zpl = "zpool list";
     zplv = "zpool list -v";
     zps = "zpool status";
+    zpst = "zpool status -t";
+    zpstv = "zpool status -tv";
     zpsv = "zpool status -v";
   };
 }
