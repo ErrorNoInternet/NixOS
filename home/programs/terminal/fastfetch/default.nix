@@ -21,7 +21,6 @@ in {
         "${config.xdg.configHome}/fastfetch/minimal-droid.jsonc".text = escape (import ./minimal-droid.nix {inherit pkgs;});
 
         "${config.xdg.configHome}/fastfetch/config.jsonc".text = builtins.toJSON {
-          "$schema" = "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json";
           modules = [
             "title"
             "separator"
