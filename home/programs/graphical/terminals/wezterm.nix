@@ -43,6 +43,7 @@ in {
           font = wezterm.font "${cfg.font}",
           font_size = 9,
           color_scheme = "${cfg.colorScheme} (base16)",
+          warn_about_missing_glyphs = false,
 
           initial_cols = 268,
           initial_rows = 64,
