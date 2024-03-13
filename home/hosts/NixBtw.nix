@@ -95,7 +95,6 @@
 
       # games
       inputs'.nix-gaming.packages.osu-lazer-bin
-      inputs'.nix-gaming.packages.wine-ge
       prismlauncher
       superTuxKart
     ];
