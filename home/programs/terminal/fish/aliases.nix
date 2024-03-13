@@ -42,6 +42,8 @@ in {
       pp = "playerctl play-pause";
       ppc = "playerctl play";
       ppm = "playerctl metadata";
+      ppn = "playerctl next";
+      ppp = "playerctl previous";
       pps = "playerctl pause";
       pwdc = "pwd | tr -d '\\n' | wl-copy";
     }
