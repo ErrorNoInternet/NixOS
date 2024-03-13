@@ -79,7 +79,10 @@
 
     nix-gaming = {
       url = "github:fufexan/nix-gaming";
-      inputs.flake-parts.follows = "flake-parts";
+      inputs = {
+        flake-parts.follows = "flake-parts";
+        nixpkgs.follows = "nixpkgs";
+      };
     };
 
     nix-index-database = {
