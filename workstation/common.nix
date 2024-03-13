@@ -94,8 +94,10 @@ in {
 
       bcachefs-tools
       cryptsetup
+      glxinfo
       home-manager
       intel-gpu-tools
+      mangohud
       pulseaudio
       xdg-user-dirs
     ];
