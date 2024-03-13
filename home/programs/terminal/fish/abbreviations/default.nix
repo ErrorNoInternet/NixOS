@@ -23,6 +23,7 @@
       "-" = "cd -";
       cl = "curl -L";
       clo = "curl -LO";
+      d = "cd ~/data";
       e = "echo";
       ex = "exec";
       nv = "nvim";
