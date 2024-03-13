@@ -451,12 +451,12 @@
       }
       {
         on = ["i"];
-        exec = "plugin keyjump --sync";
+        exec = "plugin keyjump";
         desc = "keyjump (normal mode)";
       }
       {
         on = ["I"];
-        exec = "plugin keyjump --sync --args=keep";
+        exec = "plugin keyjump --args=keep";
         desc = "keyjump (keep mode)";
       }
       {

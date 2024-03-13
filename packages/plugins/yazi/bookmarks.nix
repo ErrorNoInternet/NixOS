@@ -2,6 +2,6 @@
 fetchFromGitHub {
   owner = "dedukun";
   repo = "bookmarks.yazi";
-  rev = "26a5512316594c5d44035280cf53fd8103c77959";
-  hash = "sha256-fL4g8pP30HMMguYXEt6CpATLiybkzwIk9iKnQ2BBGFE=";
+  rev = "eebc8644b02e2a5ca95912b36e49c6eada67efca";
+  hash = "sha256-z84cr16uWOHlWEP8KNsY+0VT3LoWOR/KYmUliaRqBJY=";
 }
