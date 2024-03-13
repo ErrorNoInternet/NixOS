@@ -86,7 +86,6 @@
       prismlauncher
       procs
       pv
-      qalculate
       qbittorrent
       qrencode
       radeontop
