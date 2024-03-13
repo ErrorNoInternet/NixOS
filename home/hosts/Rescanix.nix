@@ -37,7 +37,6 @@
     username = "error";
     homeDirectory = "/home/error";
     packages = with pkgs; [
-      (hashcat.override {cudaSupport = true;})
       amdgpu_top
       brave
       compsize
@@ -57,6 +56,7 @@
       gimp
       gparted
       gptfdisk
+      hashcat
       hyperfine
       hyprpicker
       imagemagick
@@ -86,6 +86,7 @@
       prismlauncher
       procs
       pv
+      qalculate
       qbittorrent
       qrencode
       radeontop
