@@ -99,6 +99,7 @@ in {
       intel-gpu-tools
       mangohud
       pulseaudio
+      qalculate-gtk
       xdg-user-dirs
     ];
   };
