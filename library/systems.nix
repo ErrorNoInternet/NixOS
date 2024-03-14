@@ -12,8 +12,6 @@ in rec {
     name,
     system,
     disko ? false,
-    allowUnfree ? false,
-    cudaSupport ? false,
   }:
     withSystem system ({
       inputs',
@@ -22,11 +20,6 @@ in rec {
     }:
       inputs.nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs' inputs self' self;};
-
-        pkgs = import inputs.nixpkgs {
-          inherit system;
-          config = {inherit allowUnfree cudaSupport;};
-        };
 
         modules =
           [

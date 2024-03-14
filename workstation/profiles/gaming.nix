@@ -21,6 +21,8 @@ in {
   };
 
   config = mkIf cfg.enable {
+    nixpkgs.config.allowUnfree = true;
+
     caches.nix-gaming.enable = true;
 
     programs.steam = {
