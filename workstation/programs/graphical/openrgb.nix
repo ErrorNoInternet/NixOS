@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   self',
   ...
 }: let
@@ -8,24 +9,17 @@
   inherit (lib) mkEnableOption mkIf;
 in {
   options.workstation.programs.openrgb = {
-    enable =
-      mkEnableOption ""
-      // {
-        default = true;
-      };
+    enable = mkEnableOption "" // {default = true;};
 
-    forceLibusb =
-      mkEnableOption ""
-      // {
-        default = true;
-      };
+    forceLibusb = mkEnableOption "" // {default = true;};
   };
 
   config = mkIf cfg.enable {
     boot.kernelModules = ["i2c-dev" "i2c-piix4"];
-    environment.systemPackages = with self'.packages;
+
+    environment.systemPackages =
       if cfg.forceLibusb
-      then [openrgb-libusb]
-      else [openrgb];
+      then [self'.packages.openrgb-libusb]
+      else with pkgs; [(openrgb.withPlugins [openrgb-plugin-effects])];
   };
 }
