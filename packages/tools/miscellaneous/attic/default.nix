@@ -5,5 +5,6 @@ inputs'.attic.packages.attic.overrideAttrs (oldAttrs: {
     ++ [
       ./https-api-endpoint.patch
       ./optimize-build.patch
+      ./watch-source-paths.patch
     ];
 })
