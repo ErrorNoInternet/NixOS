@@ -1,4 +1,4 @@
-{nordic}:
+{nordic, ...}:
 nordic.overrideAttrs (oldAttrs: {
   patches =
     (oldAttrs.patches or [])

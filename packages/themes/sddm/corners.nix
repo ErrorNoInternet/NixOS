@@ -1,6 +1,7 @@
 {
   fetchFromGitHub,
   stdenv,
+  ...
 }:
 stdenv.mkDerivation {
   name = "sddmTheme-corners";
