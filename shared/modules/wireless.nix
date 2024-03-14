@@ -11,6 +11,7 @@ in {
 
   config = mkIf cfg.enable {
     age.secrets.wireless-networks.file = "${self}/secrets/wireless-networks.age";
+
     networking.wireless = {
       enable = true;
       environmentFile = config.age.secrets.wireless-networks.path;

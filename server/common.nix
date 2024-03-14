@@ -1,6 +1,5 @@
 {
   config,
-  inputs,
   lib,
   pkgs,
   ...
@@ -10,7 +9,6 @@
     ./modules
     ./profiles
     ./programs
-    inputs.agenix.nixosModules.default
   ];
 
   boot.kernelParams = ["console=tty0"];

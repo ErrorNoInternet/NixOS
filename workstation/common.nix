@@ -1,5 +1,4 @@
 {
-  inputs,
   lib,
   pkgs,
   ...
@@ -11,7 +10,6 @@ in {
     ./modules
     ./profiles
     ./programs
-    inputs.agenix.nixosModules.default
   ];
 
   boot = {

@@ -13,4 +13,5 @@ in {
   "ddns.age".publicKeys = [users.NixBtw systems.Pix];
   "nheko_access-token.age".publicKeys = [users.NixBtw];
   "wireless-networks.age".publicKeys = all;
+  "workstation-zed.age".publicKeys = [systems.NixBtw];
 }

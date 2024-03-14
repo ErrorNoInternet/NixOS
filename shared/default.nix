@@ -13,6 +13,7 @@ in {
   imports = [
     ./caches
     ./modules
+    inputs.agenix.nixosModules.default
   ];
 
   documentation.doc.enable = false;
