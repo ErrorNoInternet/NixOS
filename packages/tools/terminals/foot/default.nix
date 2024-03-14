@@ -2,5 +2,8 @@
 foot.overrideAttrs (oldAttrs: {
   patches =
     (oldAttrs.patches or [])
-    ++ [./fix-font-misalignment.patch];
+    ++ [
+      ./fix-font-misalignment.patch
+      ./fullscreen-transparency.patch
+    ];
 })
