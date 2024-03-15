@@ -16,8 +16,6 @@ in {
     inputs.agenix.nixosModules.default
   ];
 
-  documentation.doc.enable = false;
-
   nix = {
     nixPath = ["nixpkgs=${inputs.nixpkgs}"];
     registry = let
