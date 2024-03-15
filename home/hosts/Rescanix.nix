@@ -27,7 +27,7 @@
     };
     terminal = {
       cava.enable = true;
-      git.enable = true;
+      git.user.name = "Rescanix";
       gpg.enable = true;
       irssi.enable = true;
     };
@@ -37,18 +37,13 @@
     username = "error";
     homeDirectory = "/home/error";
     packages = with pkgs; [
-      (hashcat.override {cudaSupport = true;})
-      _7zz
       amdgpu_top
-      bandwhich
-      blender
       brave
       compsize
       cpu-x
       ddrescue
       dmidecode
       drm_info
-      duf
       duperemove
       efibootmgr
       efivar
@@ -61,24 +56,25 @@
       gimp
       gparted
       gptfdisk
+      hashcat
       hyperfine
       hyprpicker
       imagemagick
       inputs'.nix-gaming.packages.osu-lazer-bin
       inputs'.nix-gaming.packages.wine-ge
-      inputs'.overmask.packages.overmask
-      inputs'.paralload.packages.paralload
+      inputs'.overmask.packages.default
+      inputs'.paralload.packages.default
       intel-gpu-tools
       iperf
       kdenlive
       kdiskmark
+      libva-utils
       linuxPackages_latest.perf
       lm_sensors
       lshw
       mangohud
       mesa-demos
       multipath-tools
-      nmap
       nvme-cli
       nvtop
       ookla-speedtest
@@ -90,6 +86,7 @@
       prismlauncher
       procs
       pv
+      qbittorrent
       qrencode
       radeontop
       sdparm

@@ -18,19 +18,36 @@
 
       trouble.enable = true;
 
-      nvim-cmp = {
+      cmp = {
         enable = true;
-        sources = [
-          {name = "buffer";}
-          {name = "crates";}
-          {name = "luasnip";}
-          {name = "nvim_lsp";}
-          {name = "path";}
-        ];
-        snippet.expand = "luasnip";
+
+        settings = {
+          snippet.expand = "function(args) require('luasnip').lsp_expand(args.body) end";
+          sources = map (name: {inherit name;}) [
+            "buffer"
+            "calc"
+            "crates"
+            "luasnip"
+            "nvim_lsp"
+            "path"
+            "treesitter"
+          ];
+        };
+        cmdline =
+          (builtins.listToAttrs (map (name: {
+              inherit name;
+              value.sources = [{name = "buffer";}];
+            })
+            ["/" "?"]))
+          // {":".sources = [{name = "path";}];};
       };
+      cmp-calc.enable = true;
+      cmp-treesitter.enable = true;
       cmp_luasnip.enable = true;
-      luasnip.enable = true;
+      luasnip = {
+        enable = true;
+        fromVscode = [{}];
+      };
 
       crates-nvim = {
         enable = true;
@@ -39,7 +56,7 @@
 
       zig = {
         enable = true;
-        formatOnSave = false;
+        settings.fmt_autosave = false;
       };
 
       lsp = {
@@ -74,7 +91,6 @@
             settings.checkOnSave = false;
           };
           taplo.enable = true;
-          yamlls.enable = true;
           zls.enable = true;
         };
       };
@@ -95,22 +111,6 @@
     ];
     extraConfigLuaPre = ''
       vim.highlight.priorities.semantic_tokens = 99
-    '';
-    extraConfigLuaPost = ''
-      require("luasnip.loaders.from_vscode").lazy_load()
-
-      cmp.setup.cmdline({ '/', '?' }, {
-        mapping = cmp.mapping.preset.cmdline(),
-        sources = {
-          { name = 'buffer' }
-        }
-      })
-      cmp.setup.cmdline(':', {
-        sources = {
-          { name = 'path' }
-        }
-      })
-      vim.keymap.set('c', '<tab>', '<C-z>', { silent = false })
     '';
     globals = {
       go_fmt_autosave = 0;

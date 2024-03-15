@@ -1,6 +1,5 @@
 {pkgs, ...}:
 builtins.toJSON {
-  "$schema" = "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json";
   logo = {
     source = "nixos_old_small";
     padding = {
@@ -13,15 +12,13 @@ builtins.toJSON {
     keyWidth = 14;
   };
   modules = let
-    commands = {
-      nix-store = "${pkgs.nix}/bin/nix-store";
-      getprop = "/android/system/bin/linker64 /android/system/bin/getprop";
-    };
+    nix-store = "${pkgs.nix}/bin/nix-store";
+    getprop = "/android/system/bin/linker64 /android/system/bin/getprop";
   in [
     {
       type = "command";
       key = " system  ";
-      text = "echo Android $(${commands.getprop} ro.build.version.release) (API $(${commands.getprop} ro.build.version.sdk))";
+      text = "echo \"Android $(${getprop} ro.build.version.release) (API $(${getprop} ro.build.version.sdk))\"";
     }
     {
       type = "kernel";
@@ -35,7 +32,7 @@ builtins.toJSON {
     {
       type = "command";
       key = "󰆧 packages";
-      text = "(${commands.nix-store} --query --requisites ~/.nix-profile | wc -l | tr -d '\n') && echo ' (nix; ~/.nix-profile)'";
+      text = "(${nix-store} --query --requisites ~/.nix-profile | wc -l | tr -d '\n') && echo ' (nix; ~/.nix-profile)'";
     }
     {
       type = "memory";

@@ -1,9 +1,10 @@
 {
   customPrograms.terminal = {
-    git.enable = true;
+    git.user.name = "ErrorNoPhone";
+    gpg.enable = true;
     nb = {
       enable = true;
-      dataDirectory = "~/.nb";
+      dataDirectory = "/data/data/com.termux.nix/files/home/.nb";
     };
   };
 }

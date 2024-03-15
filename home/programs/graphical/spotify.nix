@@ -18,6 +18,8 @@ in {
     mkEnableOption "";
 
   config = mkIf cfg.enable {
+    nixpkgs.config.allowUnfree = true;
+
     programs.spicetify = {
       enable = true;
       enabledExtensions = with spicePkgs.extensions; [
@@ -27,7 +29,7 @@ in {
       ];
 
       theme = spicePkgs.themes.text;
-      colorScheme = "Nord";
+      colorScheme = config.colors.schemeName;
     };
   };
 }

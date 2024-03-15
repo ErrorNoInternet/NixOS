@@ -1,8 +1,6 @@
 {
-  inputs,
   lib,
   pkgs,
-  self',
   ...
 }: let
   inherit (lib) mkDefault mkOverride;
@@ -13,7 +11,6 @@ in {
     ./profiles
     ./programs
     ./specialisations
-    inputs.agenix.nixosModules.default
   ];
 
   boot = {
@@ -29,12 +26,9 @@ in {
       };
       timeout = 3;
     };
-    kernelParams = ["boot.shell_on_fail"];
 
     kernelPackages = mkOverride 1250 pkgs.linuxPackages_latest;
-    supportedFilesystems = [
-      "ntfs"
-    ];
+    supportedFilesystems = ["ntfs"];
 
     kernel.sysctl = {
       "kernel.sysrq" = mkDefault 1;
@@ -46,10 +40,8 @@ in {
     };
   };
 
-  networking = {
-    firewall.enable = mkDefault false;
-    networkmanager.enable = true;
-  };
+  shared.modules.wireless.enable = true;
+  networking.firewall.enable = mkDefault false;
 
   services = {
     pipewire = {
@@ -64,13 +56,7 @@ in {
     xserver = {
       enable = true;
       excludePackages = [pkgs.xterm];
-      displayManager = {
-        lightdm.enable = false;
-        sddm = {
-          enable = true;
-          theme = "${self'.packages.sddm-theme-corners}";
-        };
-      };
+      displayManager.lightdm.enable = false;
     };
 
     dbus.implementation = "broker";
@@ -107,8 +93,12 @@ in {
 
       bcachefs-tools
       cryptsetup
+      glxinfo
       home-manager
+      intel-gpu-tools
+      mangohud
       pulseaudio
+      qalculate-gtk
       xdg-user-dirs
     ];
   };
@@ -150,12 +140,9 @@ in {
     root.initialPassword = "snowflake";
     error = {
       isNormalUser = true;
-      extraGroups = ["wheel" "video" "networkmanager"];
+      extraGroups = ["wheel" "video"];
       initialPassword = "snowflake";
-      openssh.authorizedKeys.keys = let
-        keys = import ../shared/values/ssh-keys.nix;
-      in
-        with keys; [NixBtw ErrorNoPhone];
+      openssh.authorizedKeys.keys = with (import ../shared/values/ssh-keys.nix); [NixBtw ErrorNoPhone];
     };
   };
 }

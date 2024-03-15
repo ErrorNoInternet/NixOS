@@ -1,14 +1,9 @@
 {
-  lib,
   pkgs,
   self',
   ...
 }: {
-  programs.fish.interactiveShellInit = with lib; let
-    delta = "${getExe pkgs.delta}";
-    less = "${getExe pkgs.less}";
-    notify-send = "${getExe pkgs.libnotify}";
-  in ''
+  programs.fish.interactiveShellInit = ''
     function toggle-comment
       set cursor (commandline --cursor)
       set cmd (commandline -b)
@@ -27,7 +22,7 @@
     end
 
 
-    function unss -d "turn a nix store symlink into a regular file"
+    function unS -d "turn a nix store symlink into a regular file"
       for argi in (seq 1 $(count $argv))
         set name $argv[$argi]
         mv $name $name.store
@@ -87,24 +82,24 @@
     end
 
     function scc
-      ${pkgs.scc}/bin/scc --no-cocomo --ci $argv | head -c-1
+      command scc --no-cocomo --ci $argv | head -c-1
     end
 
     function ggr -d "fancy git history graph"
-      ${pkgs.git-graph}/bin/git-graph --color always -s ascii --no-pager $argv 2> /dev/null | ${less}
+      ${pkgs.git-graph}/bin/git-graph --color always -s ascii --no-pager $argv 2> /dev/null | less -R
     end
 
     function glfzf -d "use fzf to preview git commits"
       git log --graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" $argv | \
         fzf --ansi --no-sort --reverse --tiebreak=index --scroll-off=5 --preview-window=right:60% \
-          --preview 'function preview; set commit (echo $argv | grep -o "[a-f0-9]\{7\}"); git show --color=always $commit | ${delta} --width=(tput cols); end; preview {}' \
+          --preview 'function preview; set commit (echo $argv | grep -o "[a-f0-9]\{7\}"); git show --color=always $commit | delta --width=(tput cols); end; preview {}' \
           --bind "j:down,k:up,alt-j:preview-down,alt-k:preview-up,shift-down:preview-page-down,shift-up:preview-page-up,q:abort,ctrl-m:execute:
-                  function show; set commit (echo \$argv | grep -o '[a-f0-9]\{7\}'); git show --color=always \$commit | ${delta} --width=(tput cols) | ${less} -R; end; show {}"
+                  function show; set commit (echo \$argv | grep -o '[a-f0-9]\{7\}'); git show --color=always \$commit | delta --width=(tput cols) | less -R; end; show {}"
     end
 
     function notify-done -d "send a desktop notification when a command finishes running"
       $argv
-      ${notify-send} "Command finished" "<b>`$argv`</b> has exited with code $status."
+      ${pkgs.libnotify}/bin/notify-send "Command finished" "<b>`$argv`</b> has exited with code $status."
     end
 
     function pmem -d "display virtual memory information about a process"
@@ -131,6 +126,32 @@
             return
         end
       end
+    end
+
+
+    function DS
+      set tmpDir (mktemp -d)
+
+      echo "$(tput bold)>$(tput sgr0) Building nix-on-droid configuration"
+      nix build .#nixOnDroidConfigurations.\"$HOSTNAME\".activationPackage \
+        --impure --show-trace -v --log-format internal-json -o $tmpDir/result &| nom --json
+
+      if ! test -d $tmpDir/result
+        return
+      end
+
+      argparse "a/ask" -- $argv
+      if set -q _flag_ask
+        read confirmation -n1 -P "$(tput bold)>$(tput sgr0) Activate the configuration?$(tput bold) [y/N]:$(tput sgr0) "
+        if test "$confirmation" != "y" && test "$confirmation" != "Y"
+          return
+        end
+      end
+
+      $tmpDir/result/activate
+      rm $tmpDir/result
+
+      rmdir $tmpDir
     end
   '';
 }

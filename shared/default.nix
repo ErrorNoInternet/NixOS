@@ -1,9 +1,11 @@
 {
   config,
+  inputs',
   inputs,
   lib,
   pkgs,
   self',
+  self,
   ...
 }: let
   inherit (lib) mkDefault mkForce;
@@ -11,6 +13,7 @@ in {
   imports = [
     ./caches
     ./modules
+    inputs.agenix.nixosModules.default
   ];
 
   documentation.doc.enable = false;
@@ -25,13 +28,14 @@ in {
       mappedRegistry // {default = mappedRegistry.nixpkgs;};
 
     settings = {
-      experimental-features = ["nix-command" "flakes"];
-      trusted-users = ["root" "@wheel"];
       auto-optimise-store = true;
+      experimental-features = ["nix-command" "flakes"];
       log-lines = 500;
+      show-trace = true;
+      trusted-users = ["root" "@wheel"];
 
-      min-free = 5 * 1024 * 1024 * 1024;
       max-free = 20 * 1024 * 1024 * 1024;
+      min-free = 5 * 1024 * 1024 * 1024;
     };
 
     gc = {
@@ -41,18 +45,22 @@ in {
     };
   };
 
-  boot.kernel.sysctl = {
-    "net.ipv4.conf.all.accept_redirects" = 0;
-    "net.ipv4.conf.all.secure_redirects" = 0;
-    "net.ipv4.conf.default.accept_redirects" = 0;
-    "net.ipv4.conf.default.secure_redirects" = 0;
-    "net.ipv6.conf.all.accept_redirects" = 0;
-    "net.ipv6.conf.default.accept_redirects" = 0;
+  boot = {
+    kernelParams = ["boot.shell_on_fail"];
 
-    "net.ipv4.tcp_fin_timeout" = 30;
+    kernel.sysctl = {
+      "net.ipv4.conf.all.accept_redirects" = 0;
+      "net.ipv4.conf.all.secure_redirects" = 0;
+      "net.ipv4.conf.default.accept_redirects" = 0;
+      "net.ipv4.conf.default.secure_redirects" = 0;
+      "net.ipv6.conf.all.accept_redirects" = 0;
+      "net.ipv6.conf.default.accept_redirects" = 0;
 
-    "vm.page-cluster" = 0;
-    "vm.swappiness" = 180;
+      "net.ipv4.tcp_fin_timeout" = 30;
+
+      "vm.page-cluster" = 0;
+      "vm.swappiness" = 180;
+    };
   };
 
   zramSwap = {
@@ -76,34 +84,28 @@ in {
 
   programs.command-not-found.enable = false;
   environment = {
-    systemPackages = with pkgs; [
-      curl
-      dig
-      dua
-      dust
-      file
-      git
-      iotop
-      killall
-      lsof
-      neovim
-      ripgrep
-      self'.packages.btrfs-map-physical
-      self'.packages.btrfs-progs
-      self'.packages.hwatch
-      self'.packages.nix
-      sysstat
-      tcpdump
-      tmux
-      traceroute
-      unzip
-      vim
-      wget
-      zip
-    ];
+    systemPackages = with pkgs;
+      [
+        bandwhich
+        btop
+        duf
+        iotop-c
+        lsof
+        neovim
+        self'.packages.btrfs-map-physical
+        self'.packages.btrfs-progs
+        self'.packages.nix
+        sysstat
+        tcpdump
+      ]
+      ++ (import ./packages.nix {inherit inputs' pkgs self';});
 
     etc."nixos/current".source = lib.cleanSource ./..;
   };
 
-  system.stateVersion = "23.05";
+  system = {
+    configurationRevision = self.rev or self.dirtyRev;
+
+    stateVersion = "23.05";
+  };
 }

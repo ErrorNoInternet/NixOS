@@ -1,19 +1,24 @@
 {
   programs.nixvim = {
-    plugins = {
-      nvim-cmp = {
-        mappingPresets = [
-          "insert"
-          "cmdline"
-        ];
-        mapping = {
-          "<CR>" = "cmp.mapping.confirm()";
-          "<Tab>" = "cmp.mapping.select_next_item()";
-          "<C-down>" = "cmp.mapping.scroll_docs(4)";
-          "<C-up>" = "cmp.mapping.scroll_docs(-4)";
-        };
-      };
+    plugins.cmp = let
+      mkPreset = type: ''
+        cmp.mapping.preset.${type}({
+          ['<C-down>'] = cmp.mapping.scroll_docs(4),
+          ['<C-e>'] = cmp.mapping.abort(),
+          ['<C-up>'] = cmp.mapping.scroll_docs(-4),
+          ['<CR>'] = cmp.mapping.confirm(),
+          ['<S-Tab>'] = cmp.mapping.select_prev_item(),
+          ['<Tab>'] = cmp.mapping.select_next_item(),
+        })
+      '';
+    in {
+      cmdline = builtins.listToAttrs (map (name: {
+        inherit name;
+        value.mapping.__raw = mkPreset "cmdline";
+      }) ["/" "?" ":"]);
+      settings.mapping.__raw = mkPreset "insert";
     };
+
     extraConfigLuaPost = ''
       vim.keymap.set('n', 'K', function()
         local winid = require('ufo').peekFoldedLinesUnderCursor()
@@ -24,6 +29,12 @@
     '';
 
     keymaps = [
+      {
+        mode = "c";
+        key = "<Tab>";
+        action = "<C-z>";
+      }
+
       {
         mode = "";
         key = "<C-f>";

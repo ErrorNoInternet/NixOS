@@ -1,0 +1,12 @@
+diff --git a/client/src/command/watch_store.rs b/client/src/command/watch_store.rs
+index 24eaf7a..949cba2 100644
+--- a/client/src/command/watch_store.rs
++++ b/client/src/command/watch_store.rs
+@@ -127,6 +127,6 @@ pub async fn run(opts: Opts) -> Result<()> {
+ fn strip_lock_file(p: &Path) -> Option<PathBuf> {
+     p.to_str()
+         .and_then(|p| p.strip_suffix(".lock"))
+-        .filter(|t| !t.ends_with(".drv") && !t.ends_with("-source"))
++        .filter(|t| !t.ends_with(".drv"))
+         .map(PathBuf::from)
+ }

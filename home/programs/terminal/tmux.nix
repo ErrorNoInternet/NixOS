@@ -25,6 +25,7 @@
         set-hook -g after-new-window      'if "[ #{session_windows} -gt 1 ]" "set status on"'
         set-hook -g after-kill-pane       'if "[ #{session_windows} -lt 2 ]" "set status off"'
         set-hook -g pane-exited           'if "[ #{session_windows} -lt 2 ]" "set status off"'
+        set-hook -g window-layout-changed 'if "[ #{session_windows} -gt 1 ]" "set status on"'
         set-hook -g window-layout-changed 'if "[ #{session_windows} -lt 2 ]" "set status off"'
 
         set -ug status-bg
@@ -33,6 +34,7 @@
         set -g status-right " #[fg=brightblack,bg=default,nobold,noitalics,nounderscore]#[fg=white,bg=brightblack] %Y-%m-%d \
         #[fg=white,bg=brightblack,nobold,noitalics,nounderscore]|#[fg=white,bg=brightblack] %H:%M \
         #[fg=blue,bg=brightblack,nobold,noitalics,nounderscore]#[fg=black,bg=blue,bold] #H #[fg=blue,bg=default,nobold]"
+        set -g window-status-bell-style bg=default
         set -g window-status-format "#[fg=brightblack,bg=default,nobold,noitalics,nounderscore]#[fg=white,bg=brightblack] #I \
         #[fg=white,bg=brightblack,nobold,noitalics,nounderscore]| #[fg=white,bg=brightblack]#W #F #[fg=brightblack,bg=default,nobold,noitalics,nounderscore]"
         set -g window-status-current-format "#[fg=cyan]#[bg=default]#[nobold]#[noitalics]#[nounderscore]#[fg=black,bg=cyan] #I \

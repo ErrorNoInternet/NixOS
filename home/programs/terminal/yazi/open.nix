@@ -64,32 +64,30 @@
     ];
     opener = {
       open = [
-        {exec = ''xdg-open "$@"'';}
+        {run = ''xdg-open "$@"'';}
       ];
       edit = [
         {
-          exec = ''$EDITOR "$@"'';
+          run = ''$EDITOR "$@"'';
           block = true;
         }
       ];
       reveal = [
         {
-          exec = ''${pkgs.exiftool}/bin/exiftool "$1"; echo "press enter to exit"; read'';
+          run = ''${pkgs.exiftool}/bin/exiftool "$1"; echo "press enter to exit"; read'';
           block = true;
         }
       ];
       extract = [
-        {
-          exec = ''${pkgs.unar}/bin/unar "$1"'';
-        }
+        {run = ''${pkgs.unar}/bin/unar "$1"'';}
       ];
       play = [
         {
-          exec = ''${pkgs.mpv}/bin/mpv --force-window=yes "$@"'';
+          run = ''${pkgs.mpv}/bin/mpv --force-window=yes "$@"'';
           orphan = true;
         }
         {
-          exec = ''${pkgs.mediainfo}/bin/mediainfo "$1"; echo "press enter to exit"; read'';
+          run = ''${pkgs.mediainfo}/bin/mediainfo "$1"; echo "press enter to exit"; read'';
           block = true;
         }
       ];

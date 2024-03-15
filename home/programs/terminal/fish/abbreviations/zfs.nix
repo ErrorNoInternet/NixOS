@@ -1,21 +1,27 @@
 {
   programs.fish.shellAbbrs = {
+    ioz = "ioztat 1";
+    md = "sudo zpool import -al";
     zf = "zfs";
-    zp = "zpool";
-
     zfg = "zfs get";
     zfgf = "zfs get -t filesystem";
+    zfgs = "zfs get -t snapshot";
     zfl = "zfs list";
-    zflk = "zfs load-key -a";
+    zflk = "zfs load-key";
+    zflka = "zfs load-key -a";
     zfls = "zfs list -t snapshot";
-    zfm = "zfs mount -a";
+    zfm = "zfs mount -v";
+    zfma = "zfs mount -val";
+    zp = "zpool";
     zpg = "zpool get";
-    zpi = "zpool import -al";
-    zpio = "zpool iostat";
-    zpiov = "zpool iostat -v";
+    zpi = "zpool import";
+    zpia = "zpool import -al";
+    zpio = "zpool iostat -v 1";
     zpl = "zpool list";
     zplv = "zpool list -v";
     zps = "zpool status";
+    zpst = "zpool status -t";
+    zpstv = "zpool status -tv";
     zpsv = "zpool status -v";
   };
 }

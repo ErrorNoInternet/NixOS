@@ -12,12 +12,16 @@ in {
   };
 
   config = mkIf cfg.enable {
+    nixpkgs.config = {
+      allowUnfree = true;
+      cudaSupport = true;
+    };
+
     caches.cuda.enable = true;
 
     services.xserver.videoDrivers = ["nvidia"];
     hardware = {
       nvidia = {
-        package = config.boot.kernelPackages.nvidiaPackages.production;
         modesetting.enable = true;
 
         prime = mkIf cfg.enableOptimus {

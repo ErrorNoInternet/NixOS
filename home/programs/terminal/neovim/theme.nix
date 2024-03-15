@@ -35,8 +35,6 @@
     };
 
     plugins = {
-      mark-radar.enable = true;
-
       nvim-tree = {
         enable = true;
         disableNetrw = true;
@@ -52,6 +50,8 @@
 
       undotree.enable = true;
 
+      mark-radar.enable = true;
+
       fidget = {
         enable = true;
         extraOptions = {
@@ -60,6 +60,14 @@
             display.group_style = "@string";
             lsp.progress_ringbuf_size = 1024;
           };
+        };
+      };
+
+      nvim-ufo = {
+        enable = true;
+        preview.winConfig = {
+          winblend = 0;
+          winhighlight = "NvimTreeNormal:NvimTreeNormal";
         };
       };
 
@@ -88,6 +96,8 @@
       telescope = {
         enable = true;
         extensions.ui-select.enable = true;
+
+        defaults.layout_strategy = "vertical";
       };
       yanky = {
         enable = true;
@@ -126,30 +136,9 @@
     extraPlugins = with pkgs.vimPlugins; [
       highlight-undo-nvim
       minimap-vim
-      nvim-ufo
     ];
     extraConfigLuaPost = ''
       require('highlight-undo').setup()
-
-      local capabilities = vim.lsp.protocol.make_client_capabilities()
-      capabilities.textDocument.foldingRange = {
-          dynamicRegistration = false,
-          lineFoldingOnly = true,
-      }
-      local language_servers = require("lspconfig").util.available_servers()
-      for _, ls in ipairs(language_servers) do
-          require('lspconfig')[ls].setup({
-              capabilities = capabilities
-          })
-      end
-      require('ufo').setup {
-        preview = {
-          win_config = {
-            winblend = 0,
-            winhighlight = "NvimTreeNormal:NvimTreeNormal",
-          },
-        },
-      }
     '';
     globals = {
       undotree_HelpLine = 0;

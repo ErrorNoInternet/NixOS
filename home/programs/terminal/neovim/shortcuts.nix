@@ -10,7 +10,7 @@
     extraPlugins = with pkgs.vimPlugins; [
       vim-wordmotion
 
-      self'.packages.vim-plugin-textobj-indent
+      self'.packages.vimPlugin-textobj-indent
       vim-sort-motion
       vim-textobj-user
     ];

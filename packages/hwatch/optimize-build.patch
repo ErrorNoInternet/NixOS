@@ -1,0 +1,15 @@
+diff --git a/Cargo.toml b/Cargo.toml
+index 6426dca..8750368 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -8,6 +8,10 @@ name = "hwatch"
+ repository = "https://github.com/blacknon/hwatch"
+ version = "0.3.11"
+ 
++[profile.release]
++codegen-units = 1
++lto = true
++
+ [dependencies]
+ # TODO: ansi-parserが正式にバージョンアップしたらそちらに切り替える
+ heapless = "0.6.1"

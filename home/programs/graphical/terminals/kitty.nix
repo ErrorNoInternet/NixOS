@@ -9,7 +9,7 @@
     programs.kitty = {
       enable = true;
       package = self'.packages.kitty;
-      shellIntegration.enableFishIntegration = true;
+      shellIntegration.mode = "no-cursor";
 
       font = {
         inherit (config.font) name;
@@ -21,6 +21,8 @@
         shell = "tmux";
 
         background_opacity = "${builtins.toString config.opacity.normal}";
+        initial_window_height = 1022;
+        initial_window_width = 1896;
         remember_window_size = "no";
         window_padding_width = 5;
 

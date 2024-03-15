@@ -18,9 +18,13 @@
         delta
         git
         inputs'.agenix.packages.default
+        inputs'.disko.packages.default
+        nix-output-monitor
+        parted
         self'.packages.neovim
         self'.packages.nix
         statix
+        tmux
       ];
     };
   };

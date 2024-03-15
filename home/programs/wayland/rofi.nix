@@ -63,8 +63,8 @@
           blink = mkLiteral "true";
           expand = mkLiteral "true";
           horizontal-align = mkLiteral "0";
-          margin = mkLiteral "0px 0px 0px 0px";
-          padding = mkLiteral "10px 15px 10px 10px";
+          margin = mkLiteral "0px";
+          padding = mkLiteral "10px 15px 10px 7.5px";
           placeholder = "Search...";
           placeholder-color = mkLiteral "#${base04}";
           text-color = mkLiteral "#${base06}";
@@ -85,7 +85,7 @@
           dynamic = mkLiteral "true";
           layout = mkLiteral "vertical";
           lines = mkLiteral "10";
-          padding = mkLiteral "10px 10px 10px 10px";
+          padding = mkLiteral "10px";
           spacing = mkLiteral "5px";
         };
 

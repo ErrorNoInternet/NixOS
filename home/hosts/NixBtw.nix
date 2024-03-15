@@ -44,8 +44,21 @@
     };
     terminal = {
       cava.enable = true;
-      git.enable = true;
-      gpg.enable = true;
+      git = {
+        user = {
+          name = "ErrorNoInternet";
+          email = "errornointernet@envs.net";
+        };
+        signing = {
+          key = "2486BFB7B1E6A4A3";
+          signByDefault = true;
+        };
+      };
+      gpg = {
+        enable = true;
+        defaultKey = "2486BFB7B1E6A4A3";
+      };
+      iamb.enable = true;
       irssi.enable = true;
       nb = {
         enable = true;
@@ -63,12 +76,8 @@
       self'.packages.scratchpad
 
       # system utilities
-      _7zz
-      bandwhich
       compsize
-      duf
       ffmpeg_6-full
-      nmap
       nvtop
       procs
       pv
@@ -86,7 +95,6 @@
 
       # games
       inputs'.nix-gaming.packages.osu-lazer-bin
-      inputs'.nix-gaming.packages.wine-ge
       prismlauncher
       superTuxKart
     ];

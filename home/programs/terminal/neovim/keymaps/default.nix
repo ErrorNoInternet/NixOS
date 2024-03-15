@@ -138,6 +138,18 @@
       {
         mode = "n";
         options.silent = true;
+        key = "gt";
+        action = ":BufferNext<CR>";
+      }
+      {
+        mode = "n";
+        options.silent = true;
+        key = "gT";
+        action = ":BufferPrevious<CR>";
+      }
+      {
+        mode = "n";
+        options.silent = true;
         key = ";d";
         action = ":bd<CR>";
       }
@@ -192,10 +204,11 @@
         action = ":Telescope spell_suggest<CR>";
       }
     ]
-    ++ (map (n: {
-      mode = "n";
-      options.silent = true;
-      key = "<leader>${n}";
-      action = ":BufferGoto ${n}<CR>";
-    }) ["1" "2" "3" "4" "5" "6" "7" "8" "9"]);
+    ++ (builtins.genList (n: {
+        mode = "n";
+        options.silent = true;
+        key = "<leader>${builtins.toString (n + 1)}";
+        action = ":BufferGoto ${builtins.toString (n + 1)}<CR>";
+      })
+      9);
 }

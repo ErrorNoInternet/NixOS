@@ -1,44 +1,54 @@
 {
   config,
   lib,
-  pkgs,
   ...
-}: {
-  programs.fish.shellAliases = with lib; let
-    nh = "${getExe pkgs.nh}";
-    playerctl = "${getExe pkgs.playerctl}";
-    timg = "${getExe pkgs.timg}";
-  in {
-    H = "exec Hyprland";
+}: let
+  inherit (lib) attrsets strings;
+in {
+  programs.fish.shellAliases =
+    {
+      q =
+        (strings.optionalString config.flags.nixOnDroid
+          "if [ \"$SSH_AGENT_LAUNCHED\" = 1 ]; killall ssh-agent; end;")
+        + "exit";
 
-    cm = "${pkgs.cmatrix}/bin/cmatrix -C blue";
-    drg = "${lib.getExe pkgs.ripdrag} -xa";
-    grep = "grep --color";
-    ip = "ip --color";
-    l = "ls -l";
-    la = "ls -la";
-    ll = "ls -l";
-    ls = "${lib.getExe pkgs.eza} --git --icons";
-    lsimg = "${timg} -pk --grid=6 --upscale --title --center --frames=1";
-    py = "python3";
-    q = "exit";
-    qq = "exit";
-    timg = "${timg} -pk";
+      cm = "cmatrix -C blue";
+      drg = "ripdrag -xa";
+      grep = "grep --color";
+      ip = "ip --color";
+      l = "ls -l";
+      la = "ls -la";
+      laT = "ls -laT";
+      ll = "ls -l";
+      ls = "eza --git --icons";
+      lsimg = "timg -pk --grid=6 --upscale --title --center --frames=1";
+      lT = "ls -lT";
+      py = "python3";
+      timg = "timg -pk";
 
-    ff = "fastfetch";
-    f = "fastfetch -c ${config.xdg.configHome}/fastfetch/minimal.jsonc";
-    droidf = "fastfetch -c ${config.xdg.configHome}/fastfetch/minimal-droid.jsonc";
+      ff = "fastfetch";
+      f = "fastfetch -c ${config.xdg.configHome}/fastfetch/minimal.jsonc";
+      droidf = "fastfetch -c ${config.xdg.configHome}/fastfetch/minimal-droid.jsonc";
 
-    B = "${nh} os boot .";
-    Ba = "B -a";
-    S = "${nh} os switch .";
-    Sa = "S -a";
-    T = "${nh} os test .";
-    Ta = "T -a";
+      B = "nh os boot .";
+      Ba = "B -a";
+      DSa = "DS -a";
+      S = "nh os switch .";
+      Sa = "S -a";
+      T = "nh os test .";
+      Ta = "T -a";
 
-    pp = "${playerctl} play-pause";
-    ppc = "${playerctl} play";
-    pps = "${playerctl} pause";
-    pwdc = "pwd | tr -d '\\n' | ${pkgs.wl-clipboard}/bin/wl-copy";
-  };
+      H = "exec Hyprland";
+      pp = "playerctl play-pause";
+      ppc = "playerctl play";
+      ppm = "playerctl metadata";
+      ppn = "playerctl next";
+      ppp = "playerctl previous";
+      pps = "playerctl pause";
+      pwdc = "pwd | tr -d '\\n' | wl-copy";
+    }
+    // (attrsets.optionalAttrs config.flags.nixOnDroid {
+      ping = "/android/system/bin/linker64 /android/system/bin/ping";
+      ping6 = "/android/system/bin/linker64 /android/system/bin/ping6";
+    });
 }

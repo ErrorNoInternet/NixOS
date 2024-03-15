@@ -9,6 +9,7 @@
     ./fzf.nix
     ./git.nix
     ./gpg.nix
+    ./iamb.nix
     ./irssi.nix
     ./nb.nix
     ./neovim

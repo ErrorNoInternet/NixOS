@@ -15,6 +15,7 @@
     gC = "git commit -m";
     gca = "git commit --amend";
     gcf = "git clean -f .";
+    gcfx = "git clean -fX .";
     gch = "git cherry";
     gcl = "git clone";
     gco = "git checkout";
@@ -36,6 +37,7 @@
     gpa = "git push --all";
     gpf = "git push --force-with-lease";
     gpl = "git pull";
+    gplu = "git pull --allow-unrelated-histories";
     gpo = "git push origin";
     gpod = "git push origin --delete";
     gps = "git push -u origin";
@@ -44,6 +46,10 @@
     grbc = "git rebase --continue";
     grh = "git reset HEAD";
     grh1 = "git reset HEAD~1";
+    grm = "git remote";
+    grmp = "git remote prune origin";
+    grms = "git remote show origin";
+    grmsu = "git remote set-url origin";
     grp = "git restore -p";
     grr = "git restore --recurse-submodules";
     grv = "git revert";
@@ -51,6 +57,7 @@
     grvc = "git revert --continue";
     grvn = "git revert --no-commit";
     gs = "git show";
+    gsm = "git show -m";
     gst = "git status";
     gsw = "git switch -";
   };

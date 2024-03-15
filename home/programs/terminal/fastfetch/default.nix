@@ -8,10 +8,7 @@
   inherit (lib) mkEnableOption mkIf;
 in {
   options.customPrograms.terminal.fastfetch.enable =
-    mkEnableOption ""
-    // {
-      default = config.customPrograms.terminal.fish.enable;
-    };
+    mkEnableOption "" // {default = config.customPrograms.terminal.fish.enable;};
 
   config = mkIf cfg.enable {
     home = {
@@ -24,7 +21,6 @@ in {
         "${config.xdg.configHome}/fastfetch/minimal-droid.jsonc".text = escape (import ./minimal-droid.nix {inherit pkgs;});
 
         "${config.xdg.configHome}/fastfetch/config.jsonc".text = builtins.toJSON {
-          "$schema" = "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json";
           modules = [
             "title"
             "separator"
@@ -44,7 +40,7 @@ in {
             "memory"
             {
               type = "disk";
-              folders = "/";
+              folders = "/nix";
             }
             "break"
             "colors"

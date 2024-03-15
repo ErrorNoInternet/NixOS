@@ -84,6 +84,7 @@
           format-muted = "󰝟";
           scroll-step = 5;
           on-click = "pavucontrol";
+          on-click-right = "pavolume toggle";
         };
         "network#status" = {
           format-wifi = "  {signalStrength}%";
@@ -228,6 +229,7 @@
         tooltip {
           background-color: #${base00};
           font-size: 22px;
+          border-radius: 16px;
         }
       '';
     };

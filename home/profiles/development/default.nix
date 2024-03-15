@@ -24,8 +24,6 @@ in {
       packages = with pkgs; let
         rust = inputs'.rust-overlay.packages.rust.override {
           targets = [
-            "aarch64-unknown-linux-gnu"
-            "aarch64-unknown-linux-musl"
             "x86_64-unknown-linux-gnu"
             "x86_64-unknown-linux-musl"
           ];
@@ -37,6 +35,9 @@ in {
           ];
         };
       in [
+        evcxr
+        rust
+
         clang
         clang-tools
         gdb
@@ -61,7 +62,6 @@ in {
         linuxPackages_latest.perf
         man-pages
         onefetch
-        rust
         scc
         zig
       ];

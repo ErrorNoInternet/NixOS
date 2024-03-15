@@ -43,7 +43,10 @@ in {
           font = wezterm.font "${cfg.font}",
           font_size = 9,
           color_scheme = "${cfg.colorScheme} (base16)",
+          warn_about_missing_glyphs = false,
 
+          initial_cols = 268,
+          initial_rows = 64,
           window_padding = {
             top = "0.5cell",
             bottom = 0,
@@ -51,11 +54,12 @@ in {
             right = "1cell",
           },
           window_background_opacity = ${builtins.toString cfg.backgroundOpacity},
-          enable_tab_bar = false,
 
-          keys = {
-            { key = "T", mods = "CTRL|SHIFT", action = wezterm.action.DisableDefaultAssignment },
-          },
+          hide_tab_bar_if_only_one_tab = true,
+          show_new_tab_button_in_tab_bar = false,
+          show_tab_index_in_tab_bar = false,
+          tab_bar_at_bottom = true,
+          use_fancy_tab_bar = false,
         }
 
         for _, gpu in ipairs(wezterm.gui.enumerate_gpus()) do

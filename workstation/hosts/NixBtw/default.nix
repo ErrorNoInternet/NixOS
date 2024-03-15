@@ -1,18 +1,15 @@
 {pkgs, ...}: {
   imports = [
-    ./drives.nix
     ./nas-mounts.nix
   ];
   host.id = "102f58f5";
 
   specialisation = let
-    absentFileSystems = ["/mnt/nas-drive1" "/mnt/nas-drive3"];
+    common = {absentFileSystems = ["/mnt/nas-drive1" "/mnt/nas-drive3"];};
   in {
-    lockdown.configuration = {inherit absentFileSystems;};
-    outside.configuration = {inherit absentFileSystems;};
+    lockdown.configuration = common;
+    outside.configuration = common;
   };
-
-  boot.kernelPackages = pkgs.linuxPackages_zen;
 
   services.udev.extraRules = ''
     SUBSYSTEMS=="usb|hidraw", ATTRS{idVendor}=="1770", ATTRS{idProduct}=="ff00", TAG+="uaccess", TAG+="MSI_3Zone_Laptop"
@@ -28,6 +25,13 @@
     modules.zfs.enable = true;
 
     desktops.hyprland.enable = true;
+  };
+
+  services = {
+    zfs.autoSnapshot = {
+      enable = true;
+      monthly = 1;
+    };
   };
 
   nix.gc.automatic = false;

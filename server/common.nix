@@ -1,6 +1,5 @@
 {
   config,
-  inputs,
   lib,
   pkgs,
   ...
@@ -10,13 +9,9 @@
     ./modules
     ./profiles
     ./programs
-    inputs.agenix.nixosModules.default
   ];
 
-  boot = {
-    kernelParams = ["console=tty0"];
-    supportedFilesystems = ["ntfs"];
-  };
+  boot.kernelParams = ["console=tty0"];
 
   networking = {
     firewall = {
@@ -49,9 +44,6 @@
   };
 
   environment.systemPackages = with pkgs; [
-    btop
-    duf
-    fd
     procs
     pueue
   ];
@@ -72,10 +64,7 @@
       isNormalUser = true;
       extraGroups = ["wheel"];
       initialPassword = "snowflake";
-      openssh.authorizedKeys.keys = let
-        keys = import ../shared/values/ssh-keys.nix;
-      in
-        with keys; [NixBtw ErrorNoPhone];
+      openssh.authorizedKeys.keys = with (import ../shared/values/ssh-keys.nix); [NixBtw ErrorNoPhone];
     };
   };
 }

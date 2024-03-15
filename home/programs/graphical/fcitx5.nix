@@ -15,7 +15,7 @@ in {
     };
 
     package = mkOption {
-      default = self'.packages.fcitx5-theme-nord;
+      default = self'.packages.fcitx5Theme-nord;
       type = types.package;
     };
   };

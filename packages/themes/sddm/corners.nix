@@ -1,9 +1,10 @@
 {
   fetchFromGitHub,
   stdenv,
+  ...
 }:
 stdenv.mkDerivation {
-  name = "sddm-theme-corners";
+  name = "sddmTheme-corners";
 
   src = fetchFromGitHub {
     owner = "aczw";

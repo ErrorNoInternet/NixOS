@@ -14,7 +14,7 @@ in {
     theme = mkOption {
       default = {
         name = "Nordic-darker";
-        package = self'.packages.gtk-theme-nordic;
+        package = self'.packages.gtkTheme-nordic;
       };
     };
 

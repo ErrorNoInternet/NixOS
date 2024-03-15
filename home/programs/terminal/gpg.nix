@@ -4,16 +4,23 @@
   ...
 }: let
   cfg = config.customPrograms.terminal.gpg;
-  inherit (lib) mkEnableOption mkIf;
+  inherit (lib) mkEnableOption mkOption mkIf types;
 in {
-  options.customPrograms.terminal.gpg.enable = mkEnableOption "";
+  options.customPrograms.terminal.gpg = {
+    enable = mkEnableOption "";
+
+    defaultKey = mkOption {
+      type = with types; nullOr str;
+      default = null;
+    };
+  };
 
   config = mkIf cfg.enable {
     programs.gpg = {
       enable = true;
       settings = {
         keyserver = "hkps://keyserver.ubuntu.com";
-        default-key = "2486BFB7B1E6A4A3";
+        default-key = mkIf (cfg.defaultKey != null) cfg.defaultKey;
       };
     };
     services.gpg-agent = {

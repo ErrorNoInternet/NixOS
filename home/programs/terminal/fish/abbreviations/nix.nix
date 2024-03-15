@@ -21,13 +21,23 @@
 
     n = "nix";
     nB = "nix build";
-    nD = "nix develop -c fish";
-    nd = "nix develop";
+    nBl = "nix build -L";
+    nd = "nix develop -c fish";
+    nD = "nix develop";
+    nDl = "nix develop -L -c fish";
+    ndl = "nix develop -L";
     nf = "nix flake";
     nfc = "nix flake check";
+    nfl = "nix flake lock";
+    nfm = "nix flake metadata";
+    nfs = "nix flake show";
+    nfu = "nix flake update";
     nr = "nix run";
     nre = "nix repl";
+    nrl = "nix run -L";
     ns = "nix shell";
-    nS = "nix-shell --run fish -p";
+    nS = "nix-shell --run fish";
+    nsl = "nix shell -L";
+    nSS = "nix-shell --run fish -p";
   };
 }

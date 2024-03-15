@@ -1,6 +1,5 @@
 {pkgs, ...}:
 builtins.toJSON {
-  "$schema" = "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json";
   logo = {
     source = "nixos_small";
     padding = {
@@ -13,7 +12,7 @@ builtins.toJSON {
     keyWidth = 14;
   };
   modules = let
-    commands.nix-store = "${pkgs.nix}/bin/nix-store";
+    nix-store = "${pkgs.nix}/bin/nix-store";
   in [
     {
       type = "os";
@@ -32,7 +31,7 @@ builtins.toJSON {
     {
       type = "command";
       key = "󰆧 packages";
-      text = "(${commands.nix-store} --query --requisites /run/current-system | wc -l | tr -d '\n') && echo ' (nix; /run/current-system)'";
+      text = "(${nix-store} --query --requisites /run/current-system | wc -l | tr -d '\n') && echo ' (nix; /run/current-system)'";
     }
     {
       type = "memory";
@@ -42,7 +41,7 @@ builtins.toJSON {
       type = "disk";
       key = "󱥎 storage ";
       format = "{1} / {2} ({3})";
-      folders = "/";
+      folders = "/nix";
     }
     {
       type = "custom";
