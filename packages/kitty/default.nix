@@ -1,7 +1,7 @@
 {kitty, ...}:
-kitty.overrideAttrs (oldAttrs: {
+kitty.overrideAttrs (old: {
   patches =
-    (oldAttrs.patches or [])
+    (old.patches or [])
     ++ [
       ./hide-resize-text.patch
       ./parse-base10-rgb.patch

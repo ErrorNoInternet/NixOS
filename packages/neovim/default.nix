@@ -1,6 +1,6 @@
 {inputs', ...}:
-inputs'.neovim-nightly.packages.default.overrideAttrs (oldAttrs: {
+inputs'.neovim-nightly.packages.default.overrideAttrs (old: {
   patches =
-    (oldAttrs.patches or [])
+    (old.patches or [])
     ++ [./remove-fold-numbers.patch];
 })

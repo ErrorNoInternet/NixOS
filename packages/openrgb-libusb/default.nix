@@ -3,8 +3,8 @@
   openrgb-plugin-effects,
   ...
 }:
-(openrgb.withPlugins [openrgb-plugin-effects]).overrideAttrs (oldAttrs: {
+(openrgb.withPlugins [openrgb-plugin-effects]).overrideAttrs (old: {
   patches =
-    (oldAttrs.patches or [])
+    (old.patches or [])
     ++ [./force-libusb.patch];
 })

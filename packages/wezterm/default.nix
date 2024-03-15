@@ -4,10 +4,9 @@
   wezterm,
   ...
 }:
-wezterm.overrideAttrs (oldAttrs: {
+wezterm.overrideAttrs (old: {
   patches =
-    (oldAttrs.patches or [])
+    (old.patches or [])
     ++ [./optimize-build.patch]
-    ++ lib.optionals (system == "x86_64-linux")
-    [./optimize-x86-64-build.patch];
+    ++ lib.optional (system == "x86_64-linux") ./optimize-x86-64-build.patch;
 })
