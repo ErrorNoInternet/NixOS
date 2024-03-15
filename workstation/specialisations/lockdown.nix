@@ -22,7 +22,10 @@
     services = {
       logind.lidSwitch = "suspend";
 
-      openssh.enable = false;
+      openssh = {
+        ports = [65535];
+        openFirewall = false;
+      };
       rpcbind.enable = false;
     };
 
