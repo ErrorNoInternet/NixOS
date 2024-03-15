@@ -1,5 +1,5 @@
 {inputs', ...}:
-inputs'.hyprland.packages.hyprland.overrideAttrs (old: {
+inputs'.hyprland.packages.default.overrideAttrs (old: {
   prePatch = ''
     git apply ${./remove-wallpapers.patch}
   '';
