@@ -108,6 +108,7 @@
       virt-manager
       vulkan-tools
       wev
+      wireshark
       wl-screenrec
       yt-dlp
       zbar
