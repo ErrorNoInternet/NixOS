@@ -6,7 +6,7 @@
           resolution =
             if defined.width == 0 || defined.height == 0
             then "preferred"
-            else "${builtins.toString defined.width}${builtins.toString defined.height}@${
+            else "${builtins.toString defined.width}x${builtins.toString defined.height}@${
               builtins.toString (
                 if defined.refreshRate == 0
                 then 60
