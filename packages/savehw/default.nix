@@ -34,7 +34,7 @@ writeShellApplication {
     set +o nounset
     set +o pipefail
 
-    folder="savehw_$(date +'%Y-%b-%d_%H-%M-%S' | tr '[:upper:]' '[:lower:]')"
+    folder="savehw_$(date +'%Y-%m-%d_%H-%M-%S' | tr '[:upper:]' '[:lower:]')"
     mkdir "$folder"
     cd "$folder"
     mkdir dump
