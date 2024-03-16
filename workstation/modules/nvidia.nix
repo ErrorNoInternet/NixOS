@@ -3,10 +3,10 @@
   lib,
   ...
 }: let
-  cfg = config.workstation.modules.nvidia;
+  cfg = config.workstation.nvidia;
   inherit (lib) mkEnableOption mkIf;
 in {
-  options.workstation.modules.nvidia = {
+  options.workstation.nvidia = {
     enable = mkEnableOption "" // {default = true;};
     enableOptimus = mkEnableOption "" // {default = true;};
   };

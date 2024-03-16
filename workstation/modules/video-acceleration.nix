@@ -6,13 +6,13 @@
 }: let
   inherit (lib) mkEnableOption mkIf;
 in {
-  options.workstation.modules.videoAcceleration.enable =
+  options.workstation.videoAcceleration.enable =
     mkEnableOption ""
     // {
       default = true;
     };
 
-  config = mkIf config.workstation.modules.videoAcceleration.enable {
+  config = mkIf config.workstation.videoAcceleration.enable {
     hardware.opengl = {
       enable = true;
       extraPackages = with pkgs; [
