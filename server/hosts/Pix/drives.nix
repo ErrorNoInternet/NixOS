@@ -7,17 +7,10 @@
     xxd
   ];
 
-  fileSystems = {
-    "/mnt/drive1" = {
-      device = "/dev/disk/by-uuid/fc102db2-60b8-43e1-8b21-40a589edfdda";
-      fsType = "btrfs";
-      options = ["subvol=root" "x-systemd.automount" "noauto"];
-    };
-    "/mnt/drive3" = {
-      device = "/dev/disk/by-uuid/6a03c0f9-5c76-4a08-9091-aba7239a6429";
-      fsType = "btrfs";
-      options = ["subvol=root" "x-systemd.automount" "noauto"];
-    };
+  fileSystems."/mnt/drive3" = {
+    device = "/dev/disk/by-uuid/6a03c0f9-5c76-4a08-9091-aba7239a6429";
+    fsType = "btrfs";
+    options = ["subvol=root" "x-systemd.automount" "noauto"];
   };
 
   services = {
@@ -25,32 +18,31 @@
       enable = true;
       fileSystems = [
         "/"
-        "/mnt/drive1"
         "/mnt/drive3"
       ];
     };
 
-    snapper.configs = {
-      drive1 = {
-        SUBVOLUME = "/mnt/drive1";
-        TIMELINE_CREATE = true;
-        TIMELINE_CLEANUP = true;
+    snapper.configs.drive3 = {
+      SUBVOLUME = "/mnt/drive3";
+      TIMELINE_CREATE = true;
+      TIMELINE_CLEANUP = true;
 
-        TIMELINE_LIMIT_HOURLY = 24;
-        TIMELINE_LIMIT_DAILY = 14;
-        TIMELINE_LIMIT_MONTHLY = 1;
-        TIMELINE_LIMIT_YEARLY = 0;
-      };
-      drive3 = {
-        SUBVOLUME = "/mnt/drive3";
-        TIMELINE_CREATE = true;
-        TIMELINE_CLEANUP = true;
+      TIMELINE_LIMIT_HOURLY = 24;
+      TIMELINE_LIMIT_DAILY = 14;
+      TIMELINE_LIMIT_MONTHLY = 1;
+      TIMELINE_LIMIT_YEARLY = 0;
+    };
 
-        TIMELINE_LIMIT_HOURLY = 24;
-        TIMELINE_LIMIT_DAILY = 14;
-        TIMELINE_LIMIT_MONTHLY = 1;
-        TIMELINE_LIMIT_YEARLY = 0;
+    zfs = {
+      autoScrub = {
+        enable = true;
+        interval = "monthly";
+        pools = [
+          "drive1"
+        ];
       };
+
+      autoSnapshot.enable = true;
     };
 
     nfs.server.exports = ''
