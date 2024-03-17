@@ -17,13 +17,13 @@ in {
 
     boot = {
       kernelPackages = let
-        current = pkgs.linuxPackages;
-        zfsSupported = config.boot.zfs.package.latestCompatibleLinuxPackages;
+        ltsLatest = pkgs.linuxPackages;
+        zfsLatest = config.boot.zfs.package.latestCompatibleLinuxPackages;
       in
         mkDefault (
-          if ((builtins.compareVersions current.kernel.version zfsSupported.kernel.version) >= 0)
-          then current
-          else builtins.trace "using older ZFS-supported kernel" zfsSupported
+          if ((builtins.compareVersions zfsLatest.kernel.version ltsLatest.kernel.version) >= 0)
+          then ltsLatest
+          else builtins.trace "using older ZFS-supported kernel" zfsLatest
         );
 
       supportedFilesystems = ["zfs"];
