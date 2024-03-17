@@ -45,7 +45,7 @@
     grb = "git rebase -i";
     grbc = "git rebase --continue";
     grh = "git reset HEAD";
-    grh1 = "git reset HEAD~1";
+    grhh = "git reset HEAD~";
     grm = "git remote";
     grmp = "git remote prune origin";
     grms = "git remote show origin";
