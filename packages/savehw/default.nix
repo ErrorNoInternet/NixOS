@@ -43,6 +43,7 @@ writeShellApplication {
     lscpu > dump/lscpu 2>&1
     lscpu -e > dump/lscpu-extended 2>&1
     cat /proc/cpuinfo > dump/cpuinfo 2>&1
+    cat /proc/crypto > dump/crypto 2>&1
     sensors > dump/sensors 2>&1
 
     lsmem > dump/lsmem 2>&1
