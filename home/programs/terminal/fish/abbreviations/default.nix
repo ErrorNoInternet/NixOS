@@ -18,7 +18,7 @@
         if config.flags.nixOnDroid
         then "~/.config/nixpkgs"
         else "/etc/nixos"
-      }/configuration.nix/";
+      }/configuration.nix";
 
       "-" = "cd -";
       cl = "curl -L";
