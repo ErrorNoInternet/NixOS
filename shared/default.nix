@@ -60,6 +60,11 @@ in {
       "vm.page-cluster" = 0;
       "vm.swappiness" = 180;
     };
+
+    tmp = {
+      useTmpfs = true;
+      tmpfsSize = "100%";
+    };
   };
 
   zramSwap = {

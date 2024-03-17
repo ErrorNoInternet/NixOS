@@ -32,11 +32,6 @@ in {
     kernel.sysctl = {
       "kernel.sysrq" = mkDefault 1;
     };
-
-    tmp = {
-      useTmpfs = true;
-      tmpfsSize = "100%";
-    };
   };
 
   shared.modules.wireless.enable = true;
