@@ -5,10 +5,10 @@
   self,
   ...
 }: let
-  cfg = config.workstation.modules.zfs;
+  cfg = config.workstation.zfs;
   inherit (lib) mkEnableOption mkIf mkDefault;
 in {
-  options.workstation.modules.zfs = {
+  options.workstation.zfs = {
     enable = mkEnableOption "";
   };
 

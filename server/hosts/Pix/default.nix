@@ -3,6 +3,7 @@
     ./ddns.nix
     ./drives.nix
   ];
+  host.id = "fc7ad223";
 
   shared = {
     flags.raspberryPi = true;
@@ -16,6 +17,7 @@
       samba.enable = true;
     };
     printing.enable = true;
+    zfs.enable = true;
   };
 
   boot.tmp = {

@@ -22,7 +22,7 @@
   };
 
   workstation = {
-    modules.zfs.enable = true;
+    zfs.enable = true;
 
     desktops.hyprland.enable = true;
   };

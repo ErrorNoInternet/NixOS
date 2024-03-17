@@ -3,10 +3,10 @@
   lib,
   ...
 }: let
-  cfg = config.workstation.modules.bluetooth;
+  cfg = config.workstation.bluetooth;
   inherit (lib) mkEnableOption mkIf;
 in {
-  options.workstation.modules.bluetooth.enable =
+  options.workstation.bluetooth.enable =
     mkEnableOption ""
     // {
       default = true;

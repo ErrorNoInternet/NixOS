@@ -12,6 +12,7 @@ in {
   "attic_server-token.age".publicKeys = [users.NixBtw systems.Pix];
   "ddns.age".publicKeys = [users.NixBtw systems.Pix];
   "nheko_access-token.age".publicKeys = [users.NixBtw];
+  "server-zed.age".publicKeys = [systems.Pix];
   "wireless-networks.age".publicKeys = allSystems;
   "workstation-zed.age".publicKeys = [systems.NixBtw];
 }

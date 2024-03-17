@@ -4,10 +4,10 @@
   pkgs,
   ...
 }: let
-  cfg = config.workstation.modules.virtualization;
+  cfg = config.workstation.virtualization;
   inherit (lib) mkEnableOption mkIf;
 in {
-  options.workstation.modules.virtualization.enable =
+  options.workstation.virtualization.enable =
     mkEnableOption "" // {default = true;};
 
   config = mkIf cfg.enable {

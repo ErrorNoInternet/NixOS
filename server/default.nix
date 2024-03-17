@@ -1,6 +1,6 @@
 {self, ...}: {
   flake.nixosConfigurations = with self.lib.systems; {
-    Crix = mkServer "Crix" "x86_64-linux" {};
-    Pix = mkHmServer "Pix" "aarch64-linux" {};
+    Crix = mkServer "Crix" {};
+    Pix = mkHmServer "Pix" {system = "aarch64-linux";};
   };
 }

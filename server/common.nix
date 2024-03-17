@@ -11,6 +11,8 @@
     ./programs
   ];
 
+  documentation.doc.enable = false;
+
   boot.kernelParams = ["console=tty0"];
 
   networking = {

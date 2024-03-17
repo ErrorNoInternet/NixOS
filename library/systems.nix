@@ -10,7 +10,7 @@ in rec {
     type,
     homeManager,
     name,
-    system,
+    system ? "x86_64-linux",
     disko ? false,
   }:
     withSystem system ({
@@ -56,27 +56,27 @@ in rec {
           ];
       });
 
-  mkHmServer = name: system: extraConfig:
+  mkHmServer = name: extraConfig:
     mkSystem ({
         type = "server";
         homeManager = true;
-        inherit name system;
+        inherit name;
       }
       // extraConfig);
 
-  mkServer = name: system: extraConfig:
+  mkServer = name: extraConfig:
     mkSystem ({
         type = "server";
         homeManager = false;
-        inherit name system;
+        inherit name;
       }
       // extraConfig);
 
-  mkWorkstation = name: system: extraConfig:
+  mkWorkstation = name: extraConfig:
     mkSystem ({
         type = "workstation";
         homeManager = true;
-        inherit name system;
+        inherit name;
       }
       // extraConfig);
 

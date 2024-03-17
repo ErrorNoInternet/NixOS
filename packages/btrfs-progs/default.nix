@@ -1,6 +1,6 @@
 {btrfs-progs, ...}:
-btrfs-progs.overrideAttrs (oldAttrs: {
+btrfs-progs.overrideAttrs (old: {
   patches =
-    (oldAttrs.patches or [])
+    (old.patches or [])
     ++ [./receive-selinux.patch];
 })

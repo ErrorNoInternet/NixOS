@@ -1,7 +1,7 @@
 {hwatch, ...}:
-hwatch.overrideAttrs (oldAttrs: {
+hwatch.overrideAttrs (old: {
   patches =
-    (oldAttrs.patches or [])
+    (old.patches or [])
     ++ [
       ./optimize-build.patch
       ./precise-intervals.patch

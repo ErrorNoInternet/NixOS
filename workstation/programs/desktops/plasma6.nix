@@ -9,6 +9,6 @@ in {
   options.workstation.desktops.plasma6.enable = mkEnableOption "";
 
   config = mkIf cfg.enable {
-    services.xserver.desktopManager.plasma6.enable = true;
+    services.desktopManager.plasma6.enable = true;
   };
 }

@@ -4,7 +4,7 @@
   ...
 }: let
   cfg = config.caches.errornobinaries;
-  inherit (lib) mkEnableOption mkIf optionals;
+  inherit (lib) mkEnableOption mkIf mkOrder optionals;
 
   values = (import ./values.nix).errornobinaries;
 in {
@@ -18,9 +18,11 @@ in {
   config = mkIf cfg.enable {
     nix.settings = {
       substituters = with cfg;
-        (optionals internal values.substituters.internal)
-        ++ (optionals external values.substituters.external)
-        ++ (optionals cachix values.substituters.cachix);
+        mkOrder 500 (
+          (optionals internal values.substituters.internal)
+          ++ (optionals external values.substituters.external)
+          ++ (optionals cachix values.substituters.cachix)
+        );
       trusted-public-keys = values.publicKeys;
     };
   };

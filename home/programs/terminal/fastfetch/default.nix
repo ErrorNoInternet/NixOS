@@ -12,7 +12,13 @@ in {
 
   config = mkIf cfg.enable {
     home = {
-      packages = [pkgs.fastfetch];
+      packages = with pkgs;
+        map (variation: (writeScriptBin variation ''
+          #!/usr/bin/env bash
+          export PATH=${nix}/bin:$PATH
+          ${fastfetch}/bin/${variation} "$@"
+        ''))
+        ["fastfetch" "flashfetch"];
 
       file = let
         escape = string: builtins.replaceStrings ["\\\\"] ["\\"] string;

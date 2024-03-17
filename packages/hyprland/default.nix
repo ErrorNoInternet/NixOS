@@ -1,12 +1,10 @@
-{
-  inputs',
-  enableXWayland ? true,
-  enableNvidiaPatches ? false,
-  ...
-}:
-inputs'.hyprland.packages.hyprland.overrideAttrs (_: {
+{inputs', ...}:
+inputs'.hyprland.packages.default.overrideAttrs (old: {
   prePatch = ''
-    git apply ${./remove-wallpapers.patch} ${./remove-size-predictions.patch}
+    git apply ${./remove-wallpapers.patch}
   '';
-  inherit enableXWayland enableNvidiaPatches;
+
+  patches =
+    (old.patches or [])
+    ++ [./remove-size-predictions.patch];
 })

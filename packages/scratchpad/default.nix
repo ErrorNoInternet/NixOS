@@ -1,6 +1,6 @@
 {inputs', ...}:
-inputs'.hyprwm-contrib.packages.scratchpad.overrideAttrs (oldAttrs: {
+inputs'.hyprwm-contrib.packages.scratchpad.overrideAttrs (old: {
   patches =
-    (oldAttrs.patches or [])
+    (old.patches or [])
     ++ [./fix-grammar.patch];
 })

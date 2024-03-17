@@ -4,10 +4,10 @@
   self',
   ...
 }: let
-  cfg = config.workstation.modules.sddm;
+  cfg = config.workstation.sddm;
   inherit (lib) mkEnableOption mkIf;
 in {
-  options.workstation.modules.sddm.enable = mkEnableOption "";
+  options.workstation.sddm.enable = mkEnableOption "";
 
   config = mkIf cfg.enable {
     services.xserver.displayManager.sddm = {
