@@ -46,8 +46,8 @@
       datasets = {
         root = {
           mountpoint = "/";
-          options.mountpoint = "legacy";
           type = "zfs_fs";
+          options.mountpoint = "legacy";
         };
         var = {
           mountpoint = "/var";
@@ -67,11 +67,11 @@
         };
         nix = {
           mountpoint = "/nix";
+          type = "zfs_fs";
           options = {
             mountpoint = "legacy";
             "com.sun:auto-snapshot" = "false";
           };
-          type = "zfs_fs";
         };
       };
     };
