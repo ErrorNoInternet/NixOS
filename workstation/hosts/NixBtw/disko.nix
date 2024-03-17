@@ -46,28 +46,32 @@
       datasets = {
         root = {
           mountpoint = "/";
-          options.mountpoint = "legacy";
           type = "zfs_fs";
+          options.mountpoint = "legacy";
         };
         var = {
           mountpoint = "/var";
-          options.mountpoint = "legacy";
-          refreservation = "1G";
           type = "zfs_fs";
+          options = {
+            mountpoint = "legacy";
+            refreservation = "1G";
+          };
         };
         home = {
           mountpoint = "/home";
-          options.mountpoint = "legacy";
-          refreservation = "1G";
           type = "zfs_fs";
+          options = {
+            mountpoint = "legacy";
+            refreservation = "1G";
+          };
         };
         nix = {
           mountpoint = "/nix";
+          type = "zfs_fs";
           options = {
             mountpoint = "legacy";
             "com.sun:auto-snapshot" = "false";
           };
-          type = "zfs_fs";
         };
       };
     };
