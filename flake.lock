@@ -1136,8 +1136,7 @@
         "paralload": "paralload",
         "rust-overlay": "rust-overlay",
         "shadower": "shadower",
-        "spicetify-nix": "spicetify-nix",
-        "waybar": "waybar"
+        "spicetify-nix": "spicetify-nix"
       }
     },
     "rust-overlay": {
@@ -1323,29 +1322,6 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
-        "type": "github"
-      }
-    },
-    "waybar": {
-      "inputs": {
-        "flake-compat": [
-          "flake-compat"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1710249738,
-        "narHash": "sha256-BCtoMojRULSgiE9NcojAerKaVeav2yMovrzkBQFaUSA=",
-        "owner": "Alexays",
-        "repo": "Waybar",
-        "rev": "214858f413fa70166ed945f973b12b3eaddf6548",
-        "type": "github"
-      },
-      "original": {
-        "owner": "Alexays",
-        "repo": "Waybar",
         "type": "github"
       }
     },

@@ -149,14 +149,6 @@
         nixpkgs.follows = "nixpkgs";
       };
     };
-
-    waybar = {
-      url = "github:Alexays/Waybar";
-      inputs = {
-        flake-compat.follows = "flake-compat";
-        nixpkgs.follows = "nixpkgs";
-      };
-    };
   };
 
   outputs = {flake-parts, ...} @ inputs:

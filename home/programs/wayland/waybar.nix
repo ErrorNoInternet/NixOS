@@ -1,6 +1,5 @@
 {
   config,
-  inputs',
   inputs,
   lib,
   ...
@@ -8,10 +7,6 @@
   config = lib.mkIf config.profiles.windowManager.enable {
     programs.waybar = with config.colors.scheme.palette; {
       enable = true;
-      package = inputs'.waybar.packages.default.overrideAttrs (_: {
-        dontStrip = true;
-        enableDebugging = true;
-      });
 
       settings.mainBar = {
         position = "top";
