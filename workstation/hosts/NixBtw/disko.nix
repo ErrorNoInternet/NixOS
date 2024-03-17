@@ -51,15 +51,19 @@
         };
         var = {
           mountpoint = "/var";
-          options.mountpoint = "legacy";
-          refreservation = "1G";
           type = "zfs_fs";
+          options = {
+            mountpoint = "legacy";
+            refreservation = "1G";
+          };
         };
         home = {
           mountpoint = "/home";
-          options.mountpoint = "legacy";
-          refreservation = "1G";
           type = "zfs_fs";
+          options = {
+            mountpoint = "legacy";
+            refreservation = "1G";
+          };
         };
         nix = {
           mountpoint = "/nix";
