@@ -32,36 +32,42 @@
       type = "zpool";
       rootFsOptions = {
         "com.sun:auto-snapshot" = "true";
+        acltype = "posix";
         compression = "zstd";
+        dnodesize = "auto";
         encryption = "aes-256-gcm";
         keyformat = "passphrase";
         keylocation = "prompt";
         mountpoint = "none";
+        normalization = "formD";
+        xattr = "sa";
       };
 
       datasets = {
         root = {
-          type = "zfs_fs";
-          options.mountpoint = "legacy";
           mountpoint = "/";
+          options.mountpoint = "legacy";
+          type = "zfs_fs";
         };
         var = {
-          type = "zfs_fs";
-          options.mountpoint = "legacy";
           mountpoint = "/var";
+          options.mountpoint = "legacy";
+          refreservation = "1G";
+          type = "zfs_fs";
         };
         home = {
-          type = "zfs_fs";
-          options.mountpoint = "legacy";
           mountpoint = "/home";
+          options.mountpoint = "legacy";
+          refreservation = "1G";
+          type = "zfs_fs";
         };
         nix = {
-          type = "zfs_fs";
+          mountpoint = "/nix";
           options = {
             mountpoint = "legacy";
             "com.sun:auto-snapshot" = "false";
           };
-          mountpoint = "/nix";
+          type = "zfs_fs";
         };
       };
     };
