@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }: let
   cfg = config.customPrograms.terminal.gpg;
@@ -27,10 +28,10 @@ in {
       enable = true;
       enableFishIntegration = true;
 
-      verbose = true;
-      pinentryFlavor = "curses";
       defaultCacheTtl = 86400;
       maxCacheTtl = 86400;
+      pinentryPackage = pkgs.pinentry-curses;
+      verbose = true;
     };
     home.file.".gnupg/dirmngr.conf".text = ''
       standard-resolver
