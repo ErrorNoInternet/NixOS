@@ -69,8 +69,9 @@
           mountpoint = "/nix";
           type = "zfs_fs";
           options = {
-            mountpoint = "legacy";
             "com.sun:auto-snapshot" = "false";
+            atime = "off";
+            mountpoint = "legacy";
           };
         };
       };
