@@ -34,6 +34,6 @@
       allowPing = false;
     };
 
-    workstation.modules.bluetooth.enable = false;
+    workstation.bluetooth.enable = false;
   };
 }
