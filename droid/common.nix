@@ -32,6 +32,7 @@
 
     extraOptions = ''
       experimental-features = nix-command flakes
+      flake-registry = ""
       log-lines = 500
       show-trace = true
     '';

@@ -28,6 +28,7 @@ in {
     settings = {
       auto-optimise-store = true;
       experimental-features = ["nix-command" "flakes"];
+      flake-registry = "";
       log-lines = 500;
       show-trace = true;
       trusted-users = ["root" "@wheel"];
