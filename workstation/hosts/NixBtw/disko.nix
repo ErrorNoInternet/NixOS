@@ -54,7 +54,7 @@
           type = "zfs_fs";
           options = {
             mountpoint = "legacy";
-            recordsize = "64k";
+            recordsize = "64K";
             refreservation = "1G";
           };
         };
@@ -73,14 +73,13 @@
             "com.sun:auto-snapshot" = "false";
             atime = "off";
             mountpoint = "legacy";
-            recordsize = "64k";
+            recordsize = "64K";
           };
         };
         "nix/store" = {
           mountpoint = "/nix/store";
           type = "zfs_fs";
           options = {
-            "com.sun:auto-snapshot" = "false";
             mountpoint = "legacy";
             recordsize = "1M";
           };
