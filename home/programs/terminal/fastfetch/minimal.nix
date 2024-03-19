@@ -31,7 +31,7 @@ builtins.toJSON {
     {
       type = "command";
       key = "󰆧 packages";
-      text = "(${nix-store} --query --requisites /run/current-system | wc -l | tr -d '\n') && echo ' (nix; /run/current-system)'";
+      text = "(${nix-store} --query --requisites /run/current-system | wc -l | tr -d '\n') && echo ' (nix: /run/current-system)'";
     }
     {
       type = "memory";

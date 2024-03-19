@@ -32,7 +32,7 @@ builtins.toJSON {
     {
       type = "command";
       key = "󰆧 packages";
-      text = "(${nix-store} --query --requisites ~/.nix-profile | wc -l | tr -d '\n') && echo ' (nix; ~/.nix-profile)'";
+      text = "(${nix-store} --query --requisites ~/.nix-profile | wc -l | tr -d '\n') && echo ' (nix: ~/.nix-profile)'";
     }
     {
       type = "memory";
