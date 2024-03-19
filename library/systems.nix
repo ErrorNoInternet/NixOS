@@ -11,7 +11,7 @@ in rec {
     homeManager,
     name,
     system ? "x86_64-linux",
-    disko ? false,
+    disko ? type == "workstation",
   }:
     withSystem system ({
       inputs',

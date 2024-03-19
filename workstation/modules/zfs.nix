@@ -9,7 +9,7 @@
   inherit (lib) mkEnableOption mkIf mkDefault;
 in {
   options.workstation.zfs = {
-    enable = mkEnableOption "";
+    enable = mkEnableOption "" // {default = true;};
   };
 
   config = mkIf cfg.enable {

@@ -10,18 +10,16 @@
 
   boot = {
     initrd.availableKernelModules = [
-      "xhci_pci"
-      "ehci_pci"
       "ahci"
-      "usb_storage"
+      "ehci_pci"
+      "rtsx_pci_sdmmc"
       "sd_mod"
       "sr_mod"
-      "rtsx_pci_sdmmc"
+      "usb_storage"
+      "xhci_pci"
     ];
     kernelModules = ["kvm-intel"];
   };
-
-  networking.useDHCP = lib.mkDefault true;
 
   hardware.cpu.intel.updateMicrocode =
     lib.mkDefault config.hardware.enableRedistributableFirmware;
