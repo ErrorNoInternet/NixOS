@@ -84,8 +84,6 @@
       pciutils
       powertop
       prismlauncher
-      procs
-      pv
       qbittorrent
       qrencode
       radeontop

@@ -79,8 +79,6 @@
       compsize
       ffmpeg_6-full
       nvtop
-      procs
-      pv
       self'.packages.tbw
       timg
 

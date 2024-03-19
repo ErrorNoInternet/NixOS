@@ -20,6 +20,7 @@ with pkgs; [
   nmap
   openssl
   procs
+  pv
   ripgrep
   self'.packages.hwatch
   tmux

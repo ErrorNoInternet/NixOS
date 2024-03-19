@@ -46,7 +46,6 @@
   };
 
   environment.systemPackages = with pkgs; [
-    procs
     pueue
   ];
 
