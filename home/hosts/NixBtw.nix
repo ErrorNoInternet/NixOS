@@ -92,7 +92,7 @@
       jetbrains.idea-community
 
       # games
-      inputs'.nix-gaming.packages.osu-lazer-bin
+      osu-lazer-bin
       prismlauncher
       superTuxKart
     ];

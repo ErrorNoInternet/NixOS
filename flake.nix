@@ -77,14 +77,6 @@
 
     nix-colors.url = "github:misterio77/nix-colors";
 
-    nix-gaming = {
-      url = "github:fufexan/nix-gaming";
-      inputs = {
-        flake-parts.follows = "flake-parts";
-        nixpkgs.follows = "nixpkgs";
-      };
-    };
-
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
