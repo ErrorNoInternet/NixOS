@@ -5,9 +5,9 @@
 }: let
   inherit (lib) mkEnableOption mkIf;
 in {
-  options.workstation.profiles.vmGuest.enable = mkEnableOption "";
+  options.workstation.profiles.qemuGuest.enable = mkEnableOption "";
 
-  config = mkIf config.workstation.profiles.vmGuest.enable {
+  config = mkIf config.workstation.profiles.qemuGuest.enable {
     boot.initrd.availableKernelModules = [
       "virtio_blk"
       "virtio_pci"
