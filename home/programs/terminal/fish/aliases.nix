@@ -16,15 +16,20 @@ in {
       drg = "ripdrag -xa";
       grep = "grep --color";
       ip = "ip --color";
+      lsimg = "timg -pk --grid=6 --upscale --title --center --frames=1";
+      py = "python3";
+      timg = "timg -pk";
+
+      "l@" = "ls -l@";
+      "lT@" = "ls -lT@";
       l = "ls -l";
       la = "ls -la";
       laT = "ls -laT";
       ll = "ls -l";
       ls = "eza --git --icons";
-      lsimg = "timg -pk --grid=6 --upscale --title --center --frames=1";
       lT = "ls -lT";
-      py = "python3";
-      timg = "timg -pk";
+      lTZ = "ls -lTZ";
+      lZ = "ls -lZ";
 
       ff = "fastfetch";
       f = "fastfetch -c ${config.xdg.configHome}/fastfetch/minimal.jsonc";
