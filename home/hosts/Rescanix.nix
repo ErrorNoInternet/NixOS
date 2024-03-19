@@ -77,7 +77,6 @@
       nvtop
       ookla-speedtest
       osu-lazer-bin
-      parted
       patchelf
       pavucontrol
       pciutils

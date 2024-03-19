@@ -91,6 +91,7 @@ in {
       home-manager
       intel-gpu-tools
       mangohud
+      parted
       pulseaudio
       qalculate-gtk
       xdg-user-dirs
