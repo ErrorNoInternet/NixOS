@@ -11,10 +11,7 @@ in {
     enable = mkEnableOption "";
 
     enableYaziIntegration =
-      mkEnableOption ""
-      // {
-        default = true;
-      };
+      mkEnableOption "" // {default = true;};
 
     deviceId = mkOption {
       default = "6ded058eb2e79440";

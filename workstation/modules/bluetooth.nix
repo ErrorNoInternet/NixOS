@@ -7,10 +7,7 @@
   inherit (lib) mkEnableOption mkIf;
 in {
   options.workstation.bluetooth.enable =
-    mkEnableOption ""
-    // {
-      default = true;
-    };
+    mkEnableOption "" // {default = true;};
 
   config = mkIf cfg.enable {
     hardware.bluetooth.enable = true;

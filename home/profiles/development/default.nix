@@ -6,6 +6,7 @@
   self',
   ...
 }: let
+  cfg = config.profiles.development;
   inherit (lib) mkEnableOption mkIf;
 in {
   imports = [
@@ -14,12 +15,9 @@ in {
   ];
 
   options.profiles.development.enable =
-    mkEnableOption ""
-    // {
-      default = true;
-    };
+    mkEnableOption "" // {default = true;};
 
-  config = mkIf config.profiles.development.enable {
+  config = mkIf cfg.enable {
     home = {
       packages = with pkgs; let
         rust = inputs'.rust-overlay.packages.rust.override {
@@ -67,6 +65,7 @@ in {
         scc
         zig
       ];
+
       sessionVariables = {
         GOPATH = "${config.home.homeDirectory}/.go";
       };

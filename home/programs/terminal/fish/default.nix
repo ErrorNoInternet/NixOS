@@ -16,10 +16,7 @@ in {
   ];
 
   options.customPrograms.terminal.fish.enable =
-    mkEnableOption ""
-    // {
-      default = true;
-    };
+    mkEnableOption "" // {default = true;};
 
   config = mkIf cfg.enable {
     programs.fish = {
@@ -30,6 +27,7 @@ in {
           inherit (autopair) src;
         }
       ];
+
       interactiveShellInit =
         ''
           set -x _ZO_MAXAGE 20000

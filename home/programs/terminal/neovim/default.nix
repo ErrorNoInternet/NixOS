@@ -22,10 +22,7 @@ in {
   ];
 
   options.customPrograms.terminal.neovim.enable =
-    mkEnableOption ""
-    // {
-      default = config.customPrograms.terminal.fish.enable;
-    };
+    mkEnableOption "" // {default = config.customPrograms.terminal.fish.enable;};
 
   config = mkIf cfg.enable {
     programs.nixvim = {
