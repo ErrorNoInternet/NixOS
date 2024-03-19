@@ -1,6 +1,6 @@
 {config, ...}: {
   disko.devices = {
-    disk.main = {
+    disk.primary = {
       type = "disk";
       device = "/dev/disk/by-id/ata-KINGSTON_OMSP0S3512Q-00_50026B738269DB25";
       content = {

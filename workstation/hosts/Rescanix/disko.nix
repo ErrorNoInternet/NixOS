@@ -1,6 +1,6 @@
 {config, ...}: {
   disko.devices = {
-    disk.main = {
+    disk.primary = {
       type = "disk";
       device = "/dev/sda";
       content = {
