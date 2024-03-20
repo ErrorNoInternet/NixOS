@@ -1,9 +1,10 @@
 {
   fetchFromGitHub,
+  lib,
   tmux,
   ...
 }:
-tmux.overrideAttrs (_: {
+lib.overrideDerivation (tmux.overrideAttrs (_: {
   src = fetchFromGitHub {
     owner = "tmux";
     repo = "tmux";
@@ -12,4 +13,6 @@ tmux.overrideAttrs (_: {
   };
 
   patches = [];
+})) (_: {
+  NIX_CFLAGS_COMPILE = "-march=haswell -mtune=haswell";
 })
