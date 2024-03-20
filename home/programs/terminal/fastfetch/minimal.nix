@@ -41,7 +41,7 @@ builtins.toJSON {
       type = "disk";
       key = "󱥎 storage ";
       format = "{1} / {2} ({3})";
-      folders = "/nix/store";
+      folders = "/";
     }
     {
       type = "custom";

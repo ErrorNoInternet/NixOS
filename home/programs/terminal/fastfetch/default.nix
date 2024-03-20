@@ -46,7 +46,7 @@ in {
             "memory"
             {
               type = "disk";
-              folders = "/nix/store";
+              folders = "/";
             }
             "break"
             "colors"
