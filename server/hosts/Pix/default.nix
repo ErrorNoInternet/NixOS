@@ -20,11 +20,6 @@
     zfs.enable = true;
   };
 
-  boot.tmp = {
-    useTmpfs = true;
-    tmpfsSize = "100%";
-  };
-
   networking.firewall = {
     allowedTCPPorts = [
       # services

@@ -64,6 +64,12 @@
       {
         mode = "n";
         options.silent = true;
+        key = "<leader>h";
+        action = ":lua vim.lsp.inlay_hint.enable(0, not vim.lsp.inlay_hint.is_enabled())<CR>";
+      }
+      {
+        mode = "n";
+        options.silent = true;
         key = "<leader>o";
         action = ":Lspsaga outline<CR>";
       }

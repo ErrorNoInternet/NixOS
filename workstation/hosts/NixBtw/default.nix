@@ -21,11 +21,7 @@
     wantedBy = ["multi-user.target"];
   };
 
-  workstation = {
-    zfs.enable = true;
-
-    desktops.hyprland.enable = true;
-  };
+  workstation.desktops.hyprland.enable = true;
 
   services = {
     zfs.autoSnapshot = {

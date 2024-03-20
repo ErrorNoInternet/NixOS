@@ -1,5 +1,4 @@
 {
-  inputs',
   pkgs,
   self',
   ...
@@ -79,8 +78,6 @@
       compsize
       ffmpeg_6-full
       nvtop
-      procs
-      pv
       self'.packages.tbw
       timg
 
@@ -94,7 +91,7 @@
       jetbrains.idea-community
 
       # games
-      inputs'.nix-gaming.packages.osu-lazer-bin
+      osu-lazer-bin
       prismlauncher
       superTuxKart
     ];

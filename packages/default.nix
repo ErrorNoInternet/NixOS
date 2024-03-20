@@ -1,4 +1,4 @@
-{
+{inputs, ...}: {
   perSystem = {
     inputs',
     pkgs,
@@ -75,6 +75,10 @@
           path = ./tbw;
         }
         {
+          name = "tmux";
+          path = ./tmux;
+        }
+        {
           name = "wezterm";
           path = ./wezterm;
         }
@@ -106,7 +110,7 @@
     in
       builtins.listToAttrs (map (package: {
           inherit (package) name;
-          value = callPackage package.path {inherit inputs' system;};
+          value = callPackage package.path {inherit inputs' inputs system;};
         })
         packages);
   };

@@ -4,15 +4,13 @@
   pkgs,
   ...
 }: let
+  cfg = config.workstation.videoAcceleration;
   inherit (lib) mkEnableOption mkIf;
 in {
   options.workstation.videoAcceleration.enable =
-    mkEnableOption ""
-    // {
-      default = true;
-    };
+    mkEnableOption "" // {default = true;};
 
-  config = mkIf config.workstation.videoAcceleration.enable {
+  config = mkIf cfg.enable {
     hardware.opengl = {
       enable = true;
       extraPackages = with pkgs; [

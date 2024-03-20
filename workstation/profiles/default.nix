@@ -1,8 +1,8 @@
 {
   imports = [
-    ./locations
-    ./gaming.nix
-    ./vm-guest.nix
     ./android-development.nix
+    ./gaming.nix
+    ./locations
+    ./qemu-guest.nix
   ];
 }

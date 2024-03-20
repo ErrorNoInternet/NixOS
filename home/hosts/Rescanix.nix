@@ -60,8 +60,6 @@
       hyperfine
       hyprpicker
       imagemagick
-      inputs'.nix-gaming.packages.osu-lazer-bin
-      inputs'.nix-gaming.packages.wine-ge
       inputs'.overmask.packages.default
       inputs'.paralload.packages.default
       intel-gpu-tools
@@ -78,14 +76,12 @@
       nvme-cli
       nvtop
       ookla-speedtest
-      parted
+      osu-lazer-bin
       patchelf
       pavucontrol
       pciutils
       powertop
       prismlauncher
-      procs
-      pv
       qbittorrent
       qrencode
       radeontop
@@ -108,6 +104,8 @@
       virt-manager
       vulkan-tools
       wev
+      wine
+      winetricks
       wireshark
       wl-screenrec
       yt-dlp

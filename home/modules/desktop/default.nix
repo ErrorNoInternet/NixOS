@@ -58,11 +58,7 @@ in {
             type = with types; nullOr int;
           };
 
-          enabled =
-            mkEnableOption ""
-            // {
-              default = true;
-            };
+          enabled = mkEnableOption "" // {default = true;};
         };
       });
     };

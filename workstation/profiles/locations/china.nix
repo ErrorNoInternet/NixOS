@@ -7,13 +7,11 @@
 }: let
   cfg = config.profiles.locations.china;
   inherit (lib) mkEnableOption mkIf;
+
   values = (import "${self}/shared/caches/values.nix").locations.china;
 in {
   options.profiles.locations.china.enable =
-    mkEnableOption ""
-    // {
-      default = true;
-    };
+    mkEnableOption "" // {default = true;};
 
   config = mkIf cfg.enable {
     time.timeZone = "Asia/Shanghai";

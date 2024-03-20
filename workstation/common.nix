@@ -33,11 +33,6 @@ in {
     kernel.sysctl = {
       "kernel.sysrq" = mkDefault 1;
     };
-
-    tmp = {
-      useTmpfs = true;
-      tmpfsSize = "100%";
-    };
   };
 
   shared.modules.wireless.enable = true;
@@ -97,6 +92,7 @@ in {
       home-manager
       intel-gpu-tools
       mangohud
+      parted
       pulseaudio
       qalculate-gtk
       xdg-user-dirs

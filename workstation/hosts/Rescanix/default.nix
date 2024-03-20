@@ -26,11 +26,9 @@
   };
 
   workstation = {
-    zfs.enable = true;
-
     sddm.enable = true;
 
-    profiles.vmGuest.enable = true;
+    profiles.qemuGuest.enable = true;
 
     desktops = {
       hyprland.enable = true;

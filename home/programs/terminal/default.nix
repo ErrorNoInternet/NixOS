@@ -4,6 +4,7 @@
     ./btop.nix
     ./cava.nix
     ./comma.nix
+    ./dircolors.nix
     ./fastfetch
     ./fish
     ./fzf.nix

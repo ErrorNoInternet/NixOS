@@ -2,12 +2,12 @@
   disko.devices = {
     disk.primary = {
       type = "disk";
-      device = "/dev/disk/by-id/ata-KINGSTON_OMSP0S3512Q-00_50026B738269DB25";
+      device = "/dev/sda";
       content = {
         type = "gpt";
         partitions = {
           ESP = {
-            size = "1G";
+            size = "512M";
             type = "EF00";
             label = "BOOT";
             content = {
@@ -31,13 +31,9 @@
     zpool."${config.host.name}" = {
       type = "zpool";
       rootFsOptions = {
-        "com.sun:auto-snapshot" = "true";
         acltype = "posix";
         compression = "zstd";
         dnodesize = "auto";
-        encryption = "aes-256-gcm";
-        keyformat = "passphrase";
-        keylocation = "prompt";
         mountpoint = "none";
         normalization = "formD";
         xattr = "sa";
@@ -70,7 +66,6 @@
           mountpoint = "/nix";
           type = "zfs_fs";
           options = {
-            "com.sun:auto-snapshot" = "false";
             atime = "off";
             mountpoint = "legacy";
             recordsize = "64K";

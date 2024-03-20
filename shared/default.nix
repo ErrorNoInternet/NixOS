@@ -17,6 +17,8 @@ in {
   ];
 
   nix = {
+    package = self'.packages.nix;
+
     nixPath = ["nixpkgs=${inputs.nixpkgs}"];
     registry = let
       mappedRegistry = lib.mapAttrs' (name: flake:
@@ -59,6 +61,11 @@ in {
 
       "vm.page-cluster" = 0;
       "vm.swappiness" = 180;
+    };
+
+    tmp = {
+      useTmpfs = true;
+      tmpfsSize = "100%";
     };
   };
 

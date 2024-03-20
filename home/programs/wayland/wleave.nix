@@ -25,7 +25,7 @@ in {
       layout = with cfg; [
         {
           label = "suspend";
-          text = "";
+          text = "";
           action = "systemctl suspend";
           keybind = "s";
           inherit height;
@@ -53,7 +53,7 @@ in {
         }
         {
           label = "lock";
-          text = "";
+          text = "";
           action = "swaylock --grace 0 --fade-in 1";
           keybind = "l";
           inherit height;

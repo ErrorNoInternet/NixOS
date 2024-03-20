@@ -19,7 +19,7 @@ in {
     '';
 
     programs.nheko.enable = true;
-    home.file."${config.xdg.configHome}/nheko/nheko.conf" = {
+    xdg.configFile."nheko/nheko.conf" = {
       force = true;
       text = ''
         [General]

@@ -40,6 +40,7 @@
         fg = "#${base0D}";
         bg = "#${base03}";
       };
+      LspInlayHint.fg = "#${base0F}";
       "@variable".bold = false;
       "@property".fg = "#${base0D}";
       Function.bold = true;

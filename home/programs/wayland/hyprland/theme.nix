@@ -65,13 +65,13 @@
     };
 
     extraConfig = ''
-      layerrule=animation fade, gtk-layer-shell
       layerrule=animation fade, hyprpicker
       layerrule=animation fade, swaync-control-center
-      layerrule=blur,           gtk-layer-shell
+      layerrule=animation fade, wleave
       layerrule=blur,           rofi
       layerrule=blur,           swaync-notification-window
       layerrule=blur,           waybar
+      layerrule=blur,           wleave
       layerrule=ignorezero,     rofi
       layerrule=ignorezero,     swaync-notification-window
     '';
