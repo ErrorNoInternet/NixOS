@@ -23,7 +23,7 @@ with pkgs; [
   pv
   ripgrep
   self'.packages.hwatch
-  tmux
+  self'.packages.tmux
   traceroute
   unzip
   vim

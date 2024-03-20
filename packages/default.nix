@@ -75,6 +75,10 @@
           path = ./tbw;
         }
         {
+          name = "tmux";
+          path = ./tmux;
+        }
+        {
           name = "wezterm";
           path = ./wezterm;
         }
