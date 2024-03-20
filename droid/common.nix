@@ -59,6 +59,7 @@
         openssh
         perl
         procps
+        rsync
         util-linux
         which
         xz
