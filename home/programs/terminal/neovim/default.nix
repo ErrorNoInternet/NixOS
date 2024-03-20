@@ -12,6 +12,7 @@ in {
     ./autocmd.nix
     ./development.nix
     ./extras.nix
+    ./formatting.nix
     ./highlights.nix
     ./keymaps
     ./lsp.nix

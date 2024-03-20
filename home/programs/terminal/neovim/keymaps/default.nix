@@ -113,13 +113,13 @@
       {
         mode = "i";
         options.silent = true;
-        key = "<F3>";
+        key = "<F2>";
         action = "<esc>:w<CR>";
       }
       {
         mode = "n";
         options.silent = true;
-        key = "<F3>";
+        key = "<F2>";
         action = ":w<CR>";
       }
       {

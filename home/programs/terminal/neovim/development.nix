@@ -5,11 +5,6 @@
 }: {
   programs.nixvim = {helpers, ...}: {
     extraPackages = with pkgs; [
-      alejandra
-      black
-      clang-tools
-      taplo
-
       lldb
     ];
 
@@ -85,9 +80,7 @@
             lldb);
       };
     };
-    extraPlugins = with pkgs.vimPlugins; [
-      neoformat
-    ];
+
     extraConfigLuaPost = ''
       local cmp_autopairs = require('nvim-autopairs.completion.cmp')
       local cmp = require('cmp')
@@ -96,6 +89,7 @@
         cmp_autopairs.on_confirm_done()
       )
     '';
+
     globals.gitblame_enabled = 0;
   };
 }
