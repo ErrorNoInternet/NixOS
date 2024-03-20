@@ -31,7 +31,5 @@ in {
       enable = true;
       inherit (cfg) theme iconTheme;
     };
-
-    home.file.".config/gtkrc-2.0".force = true;
   };
 }
