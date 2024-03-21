@@ -43,7 +43,7 @@
           {
             event = ["FileType"];
             pattern = [language];
-            command = "imap <buffer><silent> <F2> ${command}<CR>:w<CR>";
+            command = "imap <buffer><silent> <F2> <esc>${command}<CR>:w<CR>";
           }
           {
             event = ["FileType"];
@@ -53,7 +53,7 @@
           {
             event = ["FileType"];
             pattern = [language];
-            command = "imap <buffer><silent> <F3> ${command}<CR>";
+            command = "imap <buffer><silent> <F3> <esc>${command}<CR>";
           }
         ])
         languages);
