@@ -28,7 +28,7 @@
       };
     };
 
-    zpool."${config.host.name}" = {
+    zpool.${config.host.name} = {
       type = "zpool";
       rootFsOptions = {
         acltype = "posix";

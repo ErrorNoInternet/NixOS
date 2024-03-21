@@ -36,7 +36,7 @@
         },${builtins.toString config.opacity.menu})";
       in {
         "*" = {
-          background-color = mkLiteral "${base00RGBA}";
+          background-color = mkLiteral base00RGBA;
           text-color = mkLiteral "#${base06}";
         };
 
@@ -53,7 +53,7 @@
         };
 
         "window" = {
-          background-color = mkLiteral "${base00RGBA}";
+          background-color = mkLiteral base00RGBA;
           border = mkLiteral "2px";
           border-color = mkLiteral "#${base0D}";
           border-radius = mkLiteral "16px";
@@ -95,7 +95,7 @@
         };
 
         "listview" = {
-          background-color = mkLiteral "${base00RGBA}";
+          background-color = mkLiteral base00RGBA;
           cycle = mkLiteral "true";
           dynamic = mkLiteral "true";
           layout = mkLiteral "vertical";
@@ -105,7 +105,7 @@
         };
 
         "mainbox" = {
-          background-color = mkLiteral "${base00RGBA}";
+          background-color = mkLiteral base00RGBA;
           border-radius = mkLiteral "0px";
           children = map mkLiteral ["inputbar" "listview"];
           padding = mkLiteral "0px";

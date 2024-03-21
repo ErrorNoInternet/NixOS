@@ -76,7 +76,7 @@ in {
         recommendedProxySettings = true;
         recommendedTlsSettings = true;
         clientMaxBodySize = "10G";
-        virtualHosts."${cfg.host}" = {
+        virtualHosts.${cfg.host} = {
           forceSSL = true;
           sslCertificate = "/etc/letsencrypt/live/${cfg.host}/fullchain.pem";
           sslCertificateKey = "/etc/letsencrypt/live/${cfg.host}/privkey.pem";
