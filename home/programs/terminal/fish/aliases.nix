@@ -7,6 +7,7 @@
 in {
   programs.fish.shellAliases =
     {
+      H = "exec Hyprland";
       q =
         (strings.optionalString config.flags.nixOnDroid
           "if [ \"$SSH_AGENT_LAUNCHED\" = 1 ]; killall ssh-agent; end;")
@@ -43,7 +44,6 @@ in {
       T = "nh os test .";
       Ta = "T -a";
 
-      H = "exec Hyprland";
       pp = "playerctl play-pause";
       ppc = "playerctl play";
       ppm = "playerctl metadata";
