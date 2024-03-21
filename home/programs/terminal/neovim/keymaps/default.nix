@@ -112,13 +112,19 @@
 
       {
         mode = "i";
-        options.silent = true;
+        options = {
+          remap = true;
+          silent = true;
+        };
         key = "<F1>";
         action = "<esc>:w<CR>";
       }
       {
         mode = "n";
-        options.silent = true;
+        options = {
+          remap = true;
+          silent = true;
+        };
         key = "<F1>";
         action = ":w<CR>";
       }

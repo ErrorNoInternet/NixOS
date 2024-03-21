@@ -38,22 +38,22 @@
           {
             event = ["FileType"];
             pattern = [language];
-            command = "map <buffer> <F2> ${command}<CR>:w<CR>";
+            command = "map <buffer><silent> <F2> ${command}<CR>:w<CR>";
           }
           {
             event = ["FileType"];
             pattern = [language];
-            command = "imap <buffer> <F2> ${command}<CR>:w<CR>";
+            command = "imap <buffer><silent> <F2> ${command}<CR>:w<CR>";
           }
           {
             event = ["FileType"];
             pattern = [language];
-            command = "map <buffer> <F3> ${command}<CR>";
+            command = "map <buffer><silent> <F3> ${command}<CR>";
           }
           {
             event = ["FileType"];
             pattern = [language];
-            command = "imap <buffer> <F3> ${command}<CR>";
+            command = "imap <buffer><silent> <F3> ${command}<CR>";
           }
         ])
         languages);
