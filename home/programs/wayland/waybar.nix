@@ -11,7 +11,7 @@
       settings.mainBar = {
         position = "top";
         layer = "top";
-        height = 34;
+        height = 32;
         margin-top = 0;
         margin-bottom = 0;
         margin-left = 0;
@@ -68,7 +68,7 @@
           format-icons.sort-by-number = true;
         };
         tray = {
-          icon-size = 20;
+          icon-size = 18;
           spacing = 8;
         };
         pulseaudio = {
@@ -162,7 +162,7 @@
         #workspaces {
           background-color: #${base00};
           color: #${base02};
-          margin: 4px 4px;
+          margin: 3px;
           padding: 4px 2px;
           border-radius: 16px;
         }
