@@ -181,13 +181,13 @@
       {
         mode = "i";
         options.silent = true;
-        key = "<F4>";
+        key = "<F5>";
         action = "<esc>:nohl<CR>:MinimapRefresh<CR>i";
       }
       {
         mode = "n";
         options.silent = true;
-        key = "<F4>";
+        key = "<F5>";
         action = ":nohl<CR>:MinimapRefresh<CR>";
       }
 
