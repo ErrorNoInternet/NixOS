@@ -9,11 +9,14 @@
   inherit (lib) mkEnableOption mkIf;
 in {
   imports = [
+    ./cmp.nix
+    ./dap.nix
     ./development.nix
     ./extras.nix
     ./filetypes.nix
     ./formatting.nix
-    ./highlights.nix
+    ./highlights
+    ./highlights
     ./keymaps
     ./lsp.nix
     ./options.nix

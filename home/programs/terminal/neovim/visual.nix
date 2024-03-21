@@ -99,6 +99,7 @@
 
           defaults.layout_strategy = "vertical";
         };
+
         yanky = {
           enable = true;
           picker.telescope.enable = true;
@@ -112,6 +113,7 @@
           enable = true;
           lsp.autoAttach = true;
         };
+
         lualine = {
           enable = true;
           componentSeparators = {
@@ -133,35 +135,17 @@
           icons.button = false;
         };
       };
+
       extraPlugins = with pkgs.vimPlugins; [
         highlight-undo-nvim
         minimap-vim
       ];
+
       extraConfigLuaPost = ''
         require('highlight-undo').setup()
       '';
-      globals = {
-        undotree_HelpLine = 0;
 
-        minimap_width = 14;
-        minimap_highlight_search = 1;
-        minimap_git_colors = 1;
-        minimap_base_highlight = "CustomMinimapHighlight";
-
-        minimap_diff_color = "CustomMinimapDiffLine";
-        minimap_diffadd_color = "CustomMinimapDiffAdded";
-        minimap_diffremove_color = "CustomMinimapDiffRemoved";
-
-        minimap_range_color = "CustomMinimapRange";
-        minimap_range_diff_color = "CustomMinimapRangeDiffLine";
-        minimap_range_diffadd_color = "CustomMinimapRangeDiffAdded";
-        minimap_range_diffremove_color = "CustomMinimapRangeDiffRemoved";
-
-        minimap_cursor_color = "CustomMinimapCursor";
-        minimap_cursor_diff_color = "CustomMinimapCursorDiffLine";
-        minimap_cursor_diffadd_color = "CustomMinimapCursorDiffAdded";
-        minimap_cursor_diffremove_color = "CustomMinimapCursorDiffRemoved";
-      };
+      globals.undotree_HelpLine = 0;
     };
   };
 }
