@@ -1,7 +1,5 @@
 {pkgs, ...}: {
   programs.nixvim = {
-    filetype.pattern.".*/hyprland%.conf" = "hyprlang";
-
     plugins = {
       treesitter = {
         enable = true;
@@ -103,15 +101,18 @@
         ui.codeAction = "";
       };
     };
+
     extraPlugins = with pkgs.vimPlugins; [
       vim-go
 
       friendly-snippets
       nvim-lspconfig
     ];
+
     extraConfigLuaPre = ''
       vim.highlight.priorities.semantic_tokens = 99
     '';
+
     globals = {
       go_fmt_autosave = 0;
       go_highlight_array_whitespace_error = 1;

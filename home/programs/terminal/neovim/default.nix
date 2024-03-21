@@ -9,16 +9,16 @@
   inherit (lib) mkEnableOption mkIf;
 in {
   imports = [
-    ./autocmd.nix
     ./development.nix
     ./extras.nix
+    ./filetypes.nix
     ./formatting.nix
     ./highlights.nix
     ./keymaps
     ./lsp.nix
     ./options.nix
     ./shortcuts.nix
-    ./theme.nix
+    ./visual.nix
     inputs.nixvim.homeManagerModules.nixvim
   ];
 
