@@ -11,6 +11,11 @@
     plugins.conform-nvim = {
       enable = true;
 
+      extraOptions = {
+        timeout_ms = 10000;
+        lsp_fallback = true;
+      };
+
       formattersByFt = {
         c = ["clang_format"];
         cpp = ["clang_format"];
@@ -21,42 +26,6 @@
         toml = ["taplo"];
       };
     };
-
-    autoCmd = let
-      languages = [
-        "c"
-        "cpp"
-        "go"
-        "nix"
-        "python"
-        "rust"
-        "toml"
-      ];
-      command = ":lua require('conform').format()";
-    in
-      builtins.concatLists (map (language: [
-          {
-            event = ["FileType"];
-            pattern = [language];
-            command = "map <buffer><silent> <F2> ${command}<CR>:w<CR>";
-          }
-          {
-            event = ["FileType"];
-            pattern = [language];
-            command = "imap <buffer><silent> <F2> <esc>${command}<CR>:w<CR>";
-          }
-          {
-            event = ["FileType"];
-            pattern = [language];
-            command = "map <buffer><silent> <F3> ${command}<CR>";
-          }
-          {
-            event = ["FileType"];
-            pattern = [language];
-            command = "imap <buffer><silent> <F3> <esc>${command}<CR>";
-          }
-        ])
-        languages);
 
     keymaps = [
       {
