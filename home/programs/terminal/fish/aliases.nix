@@ -16,9 +16,9 @@ in {
       drg = "ripdrag -xa";
       grep = "grep --color";
       ip = "ip --color";
-      lsimg = "timg -pk --grid=6 --upscale --title --center --frames=1";
+      lsimg = "timg --grid=6 --upscale --title --center --frames=1";
       py = "python3";
-      timg = "timg -pk";
+      timg = "timg";
 
       "l@" = "ls -l@";
       "lT@" = "ls -lT@";
