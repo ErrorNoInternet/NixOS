@@ -113,13 +113,13 @@
       {
         mode = "i";
         options.silent = true;
-        key = "<F2>";
+        key = "<F1>";
         action = "<esc>:w<CR>";
       }
       {
         mode = "n";
         options.silent = true;
-        key = "<F2>";
+        key = "<F1>";
         action = ":w<CR>";
       }
       {
@@ -181,13 +181,13 @@
       {
         mode = "i";
         options.silent = true;
-        key = "<F5>";
+        key = "<F4>";
         action = "<esc>:nohl<CR>:MinimapRefresh<CR>i";
       }
       {
         mode = "n";
         options.silent = true;
-        key = "<F5>";
+        key = "<F4>";
         action = ":nohl<CR>:MinimapRefresh<CR>";
       }
 

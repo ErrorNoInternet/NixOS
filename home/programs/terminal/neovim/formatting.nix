@@ -38,22 +38,22 @@
           {
             event = ["FileType"];
             pattern = [language];
-            command = "map <buffer> <F3> ${command}<CR>:w<CR>";
+            command = "map <buffer> <F2> ${command}<CR>:w<CR>";
           }
           {
             event = ["FileType"];
             pattern = [language];
-            command = "imap <buffer> <F3> ${command}<CR>:w<CR>";
+            command = "imap <buffer> <F2> ${command}<CR>:w<CR>";
           }
           {
             event = ["FileType"];
             pattern = [language];
-            command = "map <buffer> <F4> ${command}<CR>";
+            command = "map <buffer> <F3> ${command}<CR>";
           }
           {
             event = ["FileType"];
             pattern = [language];
-            command = "imap <buffer> <F4> ${command}<CR>";
+            command = "imap <buffer> <F3> ${command}<CR>";
           }
         ])
         languages);
@@ -62,25 +62,25 @@
       {
         mode = "n";
         options.silent = true;
-        key = "<F3>";
+        key = "<F2>";
         action = ":lua vim.lsp.buf.format()<CR>:w<CR>";
       }
       {
         mode = "i";
         options.silent = true;
-        key = "<F3>";
+        key = "<F2>";
         action = "<esc>:lua vim.lsp.buf.format()<CR>:w<CR>";
       }
       {
         mode = "n";
         options.silent = true;
-        key = "<F4>";
+        key = "<F3>";
         action = ":lua vim.lsp.buf.format()<CR>";
       }
       {
         mode = "i";
         options.silent = true;
-        key = "<F4>";
+        key = "<F3>";
         action = "<esc>:lua vim.lsp.buf.format()<CR>";
       }
     ];
