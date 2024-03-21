@@ -16,11 +16,8 @@
 
   workstation.desktops.hyprland.enable = true;
 
-  services = {
-    zfs.autoSnapshot = {
-      enable = true;
-      monthly = 1;
-    };
+  services.zfs.autoSnapshot = {
+    enable = true;
   };
 
   nix.gc.automatic = false;
