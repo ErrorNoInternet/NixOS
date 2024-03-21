@@ -49,6 +49,7 @@ in {
         (python3.withPackages (ps: with ps; [jedi]))
         black
         python3Packages.bpython
+        python3Packages.requests
 
         alejandra
         cachix
