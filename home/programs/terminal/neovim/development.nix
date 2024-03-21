@@ -13,7 +13,7 @@
 
       todo-comments.enable = true;
 
-      commentary.enable = true;
+      comment-nvim.enable = true;
 
       nvim-autopairs.enable = true;
 
