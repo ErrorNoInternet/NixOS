@@ -1,4 +1,4 @@
 {inputs', ...}:
-inputs'.nix-super.packages.default.overrideAttrs (_: {
+inputs'.nix-super.packages.default.overrideAttrs {
   doInstallCheck = false;
-})
+}
