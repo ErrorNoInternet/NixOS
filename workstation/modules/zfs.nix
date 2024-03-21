@@ -15,6 +15,8 @@ in {
   config = mkIf cfg.enable {
     age.secrets.workstation-zed.file = "${self}/secrets/workstation-zed.age";
 
+    services.zfs.autoSnapshot.monthly = 3;
+
     boot = {
       loader.grub.zfsSupport = true;
 
