@@ -1,0 +1,85 @@
+diff --git a/window/src/os/wayland/window.rs b/window/src/os/wayland/window.rs
+index e6cd1d4f6..a3902a828 100644
+--- a/window/src/os/wayland/window.rs
++++ b/window/src/os/wayland/window.rs
+@@ -1,5 +1,5 @@
+ use std::any::Any;
+-use std::cell::{RefCell, RefMut};
++use std::cell::RefCell;
+ use std::cmp::max;
+ use std::convert::TryInto;
+ use std::io::Read;
+@@ -193,11 +193,6 @@ impl WaylandWindow {
+             compositor.create_surface_with_data(&qh, surface_data)
+         };
+ 
+-        let pointer_surface = {
+-            let compositor = &conn.wayland_state.borrow().compositor;
+-            compositor.create_surface(&qh)
+-        };
+-
+         let ResolvedGeometry {
+             x: _,
+             y: _,
+@@ -290,7 +285,6 @@ impl WaylandWindow {
+             key_repeat: None,
+             pending_event,
+             pending_mouse,
+-            pointer_surface,
+ 
+             pending_first_configure: Some(pending_first_configure),
+             frame_callback: None,
+@@ -368,12 +362,7 @@ impl WindowOps for WaylandWindow {
+         });
+     }
+ 
+-    fn set_cursor(&self, cursor: Option<MouseCursor>) {
+-        WaylandConnection::with_window_inner(self.0, move |inner| {
+-            inner.set_cursor(cursor);
+-            Ok(())
+-        });
+-    }
++    fn set_cursor(&self, _: Option<MouseCursor>) {}
+ 
+     fn invalidate(&self) {
+         WaylandConnection::with_window_inner(self.0, |inner| {
+@@ -505,7 +494,6 @@ pub struct WaylandWindowInner {
+     dimensions: Dimensions,
+     resize_increments: Option<ResizeIncrement>,
+     window_state: WindowState,
+-    pointer_surface: WlSurface,
+     last_mouse_coords: Point,
+     mouse_buttons: MouseButtons,
+     hscroll_remainder: f64,
+@@ -894,31 +882,6 @@ impl WaylandWindowInner {
+         }
+     }
+ 
+-    fn set_cursor(&mut self, cursor: Option<MouseCursor>) {
+-        let name = cursor.map_or("none", |cursor| match cursor {
+-            MouseCursor::Arrow => "arrow",
+-            MouseCursor::Hand => "hand",
+-            MouseCursor::SizeUpDown => "ns-resize",
+-            MouseCursor::SizeLeftRight => "ew-resize",
+-            MouseCursor::Text => "xterm",
+-        });
+-        let conn = Connection::get().unwrap().wayland();
+-        let state = conn.wayland_state.borrow_mut();
+-        let (shm, pointer) =
+-            RefMut::map_split(state, |s| (&mut s.shm, s.pointer.as_mut().unwrap()));
+-
+-        // Much different API in 0.18
+-        if let Err(err) = pointer.set_cursor(
+-            &conn.connection,
+-            name,
+-            shm.wl_shm(),
+-            &self.pointer_surface,
+-            1,
+-        ) {
+-            log::error!("set_cursor: {}", err);
+-        }
+-    }
+-
+     fn invalidate(&mut self) {
+         if self.frame_callback.is_some() {
+             self.invalidated = true;

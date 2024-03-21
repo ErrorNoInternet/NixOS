@@ -7,6 +7,9 @@
 wezterm.overrideAttrs (old: {
   patches =
     (old.patches or [])
-    ++ [./optimize-build.patch]
+    ++ [
+      ./optimize-build.patch
+      ./remove-set-cursor.patch
+    ]
     ++ lib.optional (system == "x86_64-linux") ./optimize-x86-64-build.patch;
 })
