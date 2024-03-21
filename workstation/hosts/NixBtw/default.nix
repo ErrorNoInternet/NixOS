@@ -4,9 +4,10 @@
   ];
   host.id = "102f58f5";
 
-  boot.extraModprobeConfig = ''
-    options i915 perf_stream_paranoid=0 mitigations=off
-  '';
+  boot.kernelParams = [
+    "i915.perf_stream_paranoid=0"
+    "i915.mitigations=off"
+  ];
 
   services.udev.extraRules = ''
     SUBSYSTEMS=="usb|hidraw", ATTRS{idVendor}=="1770", ATTRS{idProduct}=="ff00", TAG+="uaccess", TAG+="MSI_3Zone_Laptop"
