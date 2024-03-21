@@ -6,12 +6,27 @@
   ...
 }: {
   config = lib.mkIf config.profiles.windowManager.enable {
-    programs.rofi = with config.colors.scheme.palette; {
+    programs.rofi = {
       enable = true;
-      package = pkgs.rofi-wayland;
-      plugins = [pkgs.rofi-emoji];
+      package = with pkgs;
+        rofi.override {
+          rofi-unwrapped = rofi-wayland-unwrapped.overrideAttrs rec {
+            version = "1.7.5+wayland2";
+            src = fetchFromGitHub {
+              owner = "lbonn";
+              repo = "rofi";
+              rev = version;
+              fetchSubmodules = true;
+              sha256 = "sha256-5pxDA/71PV4B5T3fzLKVC4U8Gt13vwy3xSDPDsSDAKU=";
+            };
+          };
 
-      theme = let
+          plugins = [
+            rofi-emoji
+          ];
+        };
+
+      theme = with config.colors.scheme.palette; let
         inherit (config.lib.formats.rasi) mkLiteral;
 
         base00RGBA = "rgba(${
