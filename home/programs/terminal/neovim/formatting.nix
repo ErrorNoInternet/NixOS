@@ -32,25 +32,25 @@
         mode = "n";
         options.silent = true;
         key = "<F2>";
-        action = ":lua vim.lsp.buf.format()<CR>:w<CR>";
+        action = ":lua require('conform').format()<CR>:w<CR>";
       }
       {
         mode = "i";
         options.silent = true;
         key = "<F2>";
-        action = "<esc>:lua vim.lsp.buf.format()<CR>:w<CR>";
+        action = "<esc>:lua require('conform').format()<CR>:w<CR>";
       }
       {
         mode = "n";
         options.silent = true;
         key = "<F3>";
-        action = ":lua vim.lsp.buf.format()<CR>";
+        action = ":lua require('conform').format()<CR>";
       }
       {
         mode = "i";
         options.silent = true;
         key = "<F3>";
-        action = "<esc>:lua vim.lsp.buf.format()<CR>";
+        action = "<esc>:lua require('conform').format()<CR>";
       }
     ];
   };
