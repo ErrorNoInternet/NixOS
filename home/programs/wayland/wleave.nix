@@ -33,14 +33,14 @@ in {
         {
           label = "reboot";
           text = "";
-          action = "systemctl reboot";
+          action = "reboot";
           keybind = "r";
           inherit height;
         }
         {
           label = "shutdown";
           text = "";
-          action = "systemctl poweroff";
+          action = "poweroff";
           keybind = "p";
           inherit height;
         }
@@ -54,7 +54,7 @@ in {
         {
           label = "lock";
           text = "";
-          action = "swaylock --grace 0 --fade-in 1";
+          action = "sleep 0.5 && swaylock --grace 0 --fade-in 1";
           keybind = "l";
           inherit height;
         }
