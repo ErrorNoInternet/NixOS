@@ -5,12 +5,20 @@
   ...
 }: let
   cfg = config.toolkits.qt;
-  inherit (lib) mkEnableOption mkOption mkIf;
+  inherit (lib) mkEnableOption mkOption mkIf types;
 in {
   options.toolkits.qt = {
     enable = mkEnableOption "";
 
     theme = mkOption {
+      type = with types;
+        submodule {
+          options = {
+            name = mkOption {type = str;};
+            packageName = mkOption {type = str;};
+            package = mkOption {type = package;};
+          };
+        };
       default = {
         name = "Nordic-Darker";
         packageName = "Nordic-Darker";
