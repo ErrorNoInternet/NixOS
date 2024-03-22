@@ -14,7 +14,6 @@ in {
     home = {
       packages = with pkgs;
         map (variation: (writeScriptBin variation ''
-          #!/usr/bin/env bash
           export PATH=${nix}/bin:$PATH
           ${fastfetch}/bin/${variation} "$@"
         ''))
