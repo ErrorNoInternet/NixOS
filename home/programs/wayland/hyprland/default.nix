@@ -13,7 +13,7 @@ in {
     ./keybinds.nix
     ./options.nix
     ./programs.nix
-    ./theme.nix
+    ./visual.nix
     ./windowrules.nix
   ];
 
