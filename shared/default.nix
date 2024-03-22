@@ -95,13 +95,11 @@ in {
         bandwhich
         btop
         duf
+        ethtool
         iotop-c
-        lsof
         neovim
         self'.packages.btrfs-map-physical
         self'.packages.btrfs-progs
-        self'.packages.nix
-        sysstat
         tcpdump
       ]
       ++ (import ./packages.nix {inherit inputs' pkgs self';});

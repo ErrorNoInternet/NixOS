@@ -47,7 +47,6 @@
       duperemove
       efibootmgr
       efivar
-      ethtool
       ffmpeg_6-full
       fio
       firefox
