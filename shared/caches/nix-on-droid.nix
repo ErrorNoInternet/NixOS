@@ -12,7 +12,7 @@ in {
   config = mkIf cfg.enable {
     nix.settings = {
       substituters = [
-        "https://cache.nix-on-droid.io"
+        "https://nix-on-droid.cachix.org"
       ];
       trusted-public-keys = [
         "nix-on-droid.cachix.org-1:56snoMJTXmDRC1Ei24CmKoUqvHJ9XCp+nidK7qkMQrU="
