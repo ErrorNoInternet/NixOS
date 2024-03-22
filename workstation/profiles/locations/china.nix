@@ -14,8 +14,10 @@ in {
     mkEnableOption "" // {default = true;};
 
   config = mkIf cfg.enable {
-    time.timeZone = "Asia/Shanghai";
     nix.settings.substituters = values.substituters;
+
+    time.timeZone = "Asia/Shanghai";
+
     services.mullvad-vpn = {
       enable = true;
       package = pkgs.mullvad-vpn;
