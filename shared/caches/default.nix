@@ -3,7 +3,6 @@
     ./cuda.nix
     ./errornobinaries.nix
     ./garnix.nix
-    ./hyprland.nix
     ./nix-community.nix
     ./nix-gaming.nix
   ];
