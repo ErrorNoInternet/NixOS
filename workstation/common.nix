@@ -7,6 +7,7 @@
 in {
   imports = [
     ../shared
+    ./fonts.nix
     ./modules
     ./profiles
     ./programs
@@ -59,6 +60,8 @@ in {
     logind.lidSwitch = mkDefault "ignore";
   };
 
+  security.pam.services.swaylock = {};
+
   xdg.portal = {
     enable = true;
     extraPortals = with pkgs; [
@@ -83,9 +86,6 @@ in {
     '';
 
     systemPackages = with pkgs; [
-      libsForQt5.qt5.qtgraphicaleffects
-
-      bcachefs-tools
       cryptsetup
       glxinfo
       home-manager
@@ -94,41 +94,13 @@ in {
       parted
       pulseaudio
       qalculate-gtk
-      xdg-user-dirs
     ];
   };
+
   programs = {
     dconf.enable = true;
     light.enable = true;
     neovim.defaultEditor = true;
-  };
-  security.pam.services.swaylock = {};
-
-  fonts = {
-    packages = with pkgs; [
-      (nerdfonts.override {fonts = ["JetBrainsMono"];})
-      noto-fonts
-      noto-fonts-cjk-sans
-      noto-fonts-cjk-serif
-      noto-fonts-emoji
-      source-han-sans
-      source-han-serif
-      twitter-color-emoji
-    ];
-    fontconfig = {
-      defaultFonts = {
-        serif = [
-          "JetBrainsMono Nerd Font"
-          "Noto Serif CJK SC"
-        ];
-        sansSerif = [
-          "JetBrainsMono Nerd Font"
-          "Noto Sans CJK SC"
-        ];
-        monospace = ["JetBrainsMono Nerd Font"];
-        emoji = ["Twitter Color Emoji"];
-      };
-    };
   };
 
   users.users = {
