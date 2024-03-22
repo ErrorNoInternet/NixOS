@@ -13,7 +13,7 @@
         scrolloff = 5;
         shortmess = "ltToOCFcI";
         showmode = false;
-        signcolumn = "yes";
+        signcolumn = "no";
         smoothscroll = true;
         fillchars = helpers.mkRaw "[[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]";
       };
