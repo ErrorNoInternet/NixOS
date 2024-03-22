@@ -4,7 +4,6 @@
     ./errornobinaries.nix
     ./garnix.nix
     ./nix-community.nix
-    ./nix-gaming.nix
     ./nix-on-droid.nix
   ];
 
