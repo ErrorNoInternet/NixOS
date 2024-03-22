@@ -10,8 +10,8 @@ tmux.overrideAttrs (old:
       src = fetchFromGitHub {
         owner = "tmux";
         repo = "tmux";
-        rev = "b79e28b2c30e7ef9b1f7ec6233eeb70a1a177231";
-        hash = "sha256-O9a5qL10VCPNSbXxGaRYGq9VZbEsAL/P9ozsvnqhrKM=";
+        rev = "3c3643f580ca718a5f6bbeea81abeb0a8bbdb131";
+        hash = "sha256-IfNBlxRcGICztKmACA7Vx9gaEVBI2UWf5qXWZ9H2+70=";
       };
       patches = [];
     }
