@@ -18,17 +18,9 @@ in {
   ];
 
   options.desktops.hyprland.enable =
-    mkEnableOption ""
-    // {
-      default =
-        if (osConfig ? workstation)
-        then osConfig.workstation.desktops.hyprland.enable
-        else false;
-    };
+    mkEnableOption "" // {default = osConfig.workstation.desktops.hyprland.enable or false;};
 
   config = mkIf cfg.enable {
-    caches.hyprland.enable = true;
-
     wayland.windowManager.hyprland = {
       enable = true;
       package = self'.packages.hyprland;
