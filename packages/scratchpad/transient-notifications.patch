@@ -1,5 +1,5 @@
 diff --git a/scratchpad b/scratchpad
-index b3b74e1..d3413d9 100755
+index b3b74e1..15009a2 100755
 --- a/scratchpad
 +++ b/scratchpad
 @@ -30,7 +30,7 @@ optional() {
@@ -7,7 +7,7 @@ index b3b74e1..d3413d9 100755
  	# shellcheck disable=SC2015
  	check notify-send && {
 -		notify-send "$@"
-+		notify-send -e "$@"
++		notify-send -e -t 1000 "$@"
  	} || {
  		echo "$@"
  	}
