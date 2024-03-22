@@ -49,7 +49,7 @@ in {
           initial_rows = 64,
           window_padding = {
             top = "0.5cell",
-            bottom = 0,
+            bottom = "0.25cell",
             left = "1cell",
             right = "1cell",
           },
