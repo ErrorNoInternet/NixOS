@@ -46,10 +46,13 @@ in {
         lldb
         pkg-config
 
-        (python3.withPackages (ps: with ps; [jedi]))
+        (python3.withPackages (ps:
+          with ps; [
+            jedi
+            requests
+          ]))
         black
         python3Packages.bpython
-        python3Packages.requests
 
         alejandra
         cachix
