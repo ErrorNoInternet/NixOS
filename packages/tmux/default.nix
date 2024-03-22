@@ -3,6 +3,7 @@
   lib,
   system,
   tmux,
+  cpu ? "haswell",
   ...
 }:
 tmux.overrideAttrs (old:
@@ -16,5 +17,6 @@ tmux.overrideAttrs (old:
       patches = [];
     }
     // lib.attrsets.optionalAttrs (system == "x86_64-linux") {
-      NIX_CFLAGS_COMPILE = (old.NIX_CFLAGS_COMPILE or "") + " -march=haswell -mtune=haswell";
+      NIX_CFLAGS_COMPILE =
+        (old.NIX_CFLAGS_COMPILE or "") + " -march=${cpu} -mtune=${cpu}";
     })
