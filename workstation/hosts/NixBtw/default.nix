@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  lib,
+  pkgs,
+  ...
+}: {
   imports = [
     ./nas-mounts.nix
   ];
@@ -21,6 +25,8 @@
 
     zfs.autoSnapshot.enable = true;
   };
+
+  networking.interfaces.phy0.wakeOnLan.enable = lib.mkDefault true;
 
   workstation.desktops.hyprland.enable = true;
 
