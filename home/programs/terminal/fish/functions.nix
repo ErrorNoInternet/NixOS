@@ -5,7 +5,7 @@
   self',
   ...
 }: {
-  programs.fish.interactiveShellInit = with config.colors.scheme.palette;
+  programs.fish.interactiveShellInit =
     ''
       function toggle-comment
         set cursor (commandline --cursor)
@@ -129,36 +129,6 @@
               return
           end
         end
-      end
-
-      function set_tty_colors -d "apply colorscheme to TTY"
-        argparse "r/reset" -- $argv
-
-        if set -q _flag_reset
-          reset
-        else
-          echo -e "
-            \e]P0${base00}
-            \e]P1${base08}
-            \e]P2${base0B}
-            \e]P3${base0A}
-            \e]P4${base0D}
-            \e]P5${base0E}
-            \e]P6${base0C}
-            \e]P7${base05}
-            \e]P8${base03}
-            \e]P9${base08}
-            \e]PA${base0B}
-            \e]PB${base0A}
-            \e]PC${base0D}
-            \e]PD${base0E}
-            \e]PE${base07}
-            \e]PF${base06}
-            \e[16;1000]
-          "
-        end
-
-        clear
       end
     ''
     + lib.strings.optionalString config.flags.nixOnDroid ''
