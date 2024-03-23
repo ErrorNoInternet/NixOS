@@ -1,9 +1,10 @@
 {
+  host.id = "fc7ad223";
+
   imports = [
     ./ddns.nix
     ./drives.nix
   ];
-  host.id = "fc7ad223";
 
   shared = {
     flags.raspberryPi = true;

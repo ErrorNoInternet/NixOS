@@ -1,8 +1,9 @@
 {pkgs, ...}: {
+  host.id = "102f58f5";
+
   imports = [
     ./nas-mounts.nix
   ];
-  host.id = "102f58f5";
 
   boot.extraModprobeConfig = ''
     options snd_hda_intel power_save=0
