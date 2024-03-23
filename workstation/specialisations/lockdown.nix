@@ -29,13 +29,9 @@
       rpcbind.enable = false;
     };
 
-    networking = {
-      firewall = {
-        enable = true;
-        allowPing = false;
-      };
-
-      interfaces.wlp5s0.wakeOnLan.enable = false;
+    networking.firewall = {
+      enable = true;
+      allowPing = false;
     };
 
     workstation.bluetooth.enable = false;
