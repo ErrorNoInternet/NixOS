@@ -35,7 +35,7 @@
         allowPing = false;
       };
 
-      interfaces.phy0.wakeOnLan.enable = false;
+      interfaces.wlp5s0.wakeOnLan.enable = false;
     };
 
     workstation.bluetooth.enable = false;
