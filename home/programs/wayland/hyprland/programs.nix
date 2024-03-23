@@ -12,7 +12,7 @@
     "sleep 0.5 && waybar"
     "swaync"
 
-    "swayidle before-sleep 'swaylock --grace 0 --fade-in 1'"
+    "swayidle before-sleep 'swaylock --grace 0 --fade-in 0'"
     "swayidle timeout 570 'swaylock --grace 30 --fade-in 30' timeout 1200 'hyprctl dispatch dpms off'"
   ];
 }
