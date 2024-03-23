@@ -27,7 +27,8 @@
       e = "echo";
       ex = "exec";
       nv = "nvim";
-      p = "printf";
+      p = "ping";
+      pf = "printf";
       s = "sudo";
       sc = "systemctl";
       scu = "systemctl --user";
