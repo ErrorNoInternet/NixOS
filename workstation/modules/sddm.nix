@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   self',
   ...
 }: let
@@ -14,5 +15,9 @@ in {
       enable = true;
       theme = "${self'.packages.sddmTheme-corners}";
     };
+
+    environment.systemPackages = with pkgs; [
+      libsForQt5.qt5.qtgraphicaleffects
+    ];
   };
 }

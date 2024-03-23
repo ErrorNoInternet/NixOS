@@ -3,8 +3,6 @@
   self',
   ...
 }: {
-  caches.nix-gaming.enable = true;
-
   profiles = {
     windowManager.enable = true;
     desktop = {

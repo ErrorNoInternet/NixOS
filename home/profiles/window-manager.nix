@@ -28,14 +28,14 @@ in {
       slurp
       swayidle
       vimiv-qt
-      (wf-recorder.overrideAttrs (_: {
+      (wf-recorder.overrideAttrs {
         src = fetchFromGitHub {
           owner = "ammen99";
           repo = "wf-recorder";
           rev = "060ddc50268a775419f19d2403fdcfd8b985564b";
           hash = "sha256-TAFUwHLaA/zsTBiR2qqwcv8NCIaHWnBm7LsnI1fo/o4=";
         };
-      }))
+      })
       wl-clipboard
       wlr-randr
     ];

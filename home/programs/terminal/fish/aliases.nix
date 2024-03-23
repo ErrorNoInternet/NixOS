@@ -7,6 +7,7 @@
 in {
   programs.fish.shellAliases =
     {
+      H = "exec Hyprland";
       q =
         (strings.optionalString config.flags.nixOnDroid
           "if [ \"$SSH_AGENT_LAUNCHED\" = 1 ]; killall ssh-agent; end;")
@@ -16,9 +17,9 @@ in {
       drg = "ripdrag -xa";
       grep = "grep --color";
       ip = "ip --color";
-      lsimg = "timg -pk --grid=6 --upscale --title --center --frames=1";
+      lsimg = "timg --grid=6 --upscale --title --center --frames=1";
       py = "python3";
-      timg = "timg -pk";
+      timg = "timg";
 
       "l@" = "ls -l@";
       "lT@" = "ls -lT@";
@@ -43,7 +44,6 @@ in {
       T = "nh os test .";
       Ta = "T -a";
 
-      H = "exec Hyprland";
       pp = "playerctl play-pause";
       ppc = "playerctl play";
       ppm = "playerctl metadata";

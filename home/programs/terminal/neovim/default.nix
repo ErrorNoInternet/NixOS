@@ -9,15 +9,19 @@
   inherit (lib) mkEnableOption mkIf;
 in {
   imports = [
-    ./autocmd.nix
+    ./cmp.nix
+    ./dap.nix
     ./development.nix
     ./extras.nix
-    ./highlights.nix
+    ./filetypes.nix
+    ./formatting.nix
+    ./highlights
+    ./highlights
     ./keymaps
     ./lsp.nix
     ./options.nix
     ./shortcuts.nix
-    ./theme.nix
+    ./visual.nix
     inputs.nixvim.homeManagerModules.nixvim
   ];
 

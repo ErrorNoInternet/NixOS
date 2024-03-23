@@ -6,12 +6,27 @@
   ...
 }: {
   config = lib.mkIf config.profiles.windowManager.enable {
-    programs.rofi = with config.colors.scheme.palette; {
+    programs.rofi = {
       enable = true;
-      package = pkgs.rofi-wayland;
-      plugins = [pkgs.rofi-emoji];
+      package = with pkgs;
+        rofi.override {
+          rofi-unwrapped = rofi-wayland-unwrapped.overrideAttrs rec {
+            version = "1.7.5+wayland2";
+            src = fetchFromGitHub {
+              owner = "lbonn";
+              repo = "rofi";
+              rev = version;
+              fetchSubmodules = true;
+              sha256 = "sha256-5pxDA/71PV4B5T3fzLKVC4U8Gt13vwy3xSDPDsSDAKU=";
+            };
+          };
 
-      theme = let
+          plugins = [
+            rofi-emoji
+          ];
+        };
+
+      theme = with config.colors.scheme.palette; let
         inherit (config.lib.formats.rasi) mkLiteral;
 
         base00RGBA = "rgba(${
@@ -21,7 +36,7 @@
         },${builtins.toString config.opacity.menu})";
       in {
         "*" = {
-          background-color = mkLiteral "${base00RGBA}";
+          background-color = mkLiteral base00RGBA;
           text-color = mkLiteral "#${base06}";
         };
 
@@ -38,7 +53,7 @@
         };
 
         "window" = {
-          background-color = mkLiteral "${base00RGBA}";
+          background-color = mkLiteral base00RGBA;
           border = mkLiteral "2px";
           border-color = mkLiteral "#${base0D}";
           border-radius = mkLiteral "16px";
@@ -80,7 +95,7 @@
         };
 
         "listview" = {
-          background-color = mkLiteral "${base00RGBA}";
+          background-color = mkLiteral base00RGBA;
           cycle = mkLiteral "true";
           dynamic = mkLiteral "true";
           layout = mkLiteral "vertical";
@@ -90,7 +105,7 @@
         };
 
         "mainbox" = {
-          background-color = mkLiteral "${base00RGBA}";
+          background-color = mkLiteral base00RGBA;
           border-radius = mkLiteral "0px";
           children = map mkLiteral ["inputbar" "listview"];
           padding = mkLiteral "0px";

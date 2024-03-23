@@ -13,22 +13,14 @@ in {
     ./keybinds.nix
     ./options.nix
     ./programs.nix
-    ./theme.nix
+    ./visual.nix
     ./windowrules.nix
   ];
 
   options.desktops.hyprland.enable =
-    mkEnableOption ""
-    // {
-      default =
-        if (osConfig ? workstation)
-        then osConfig.workstation.desktops.hyprland.enable
-        else false;
-    };
+    mkEnableOption "" // {default = osConfig.workstation.desktops.hyprland.enable or false;};
 
   config = mkIf cfg.enable {
-    caches.hyprland.enable = true;
-
     wayland.windowManager.hyprland = {
       enable = true;
       package = self'.packages.hyprland;

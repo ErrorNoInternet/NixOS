@@ -20,10 +20,11 @@
         enable_audio_bell = false;
         shell = "tmux";
 
-        background_opacity = "${builtins.toString config.opacity.normal}";
+        background_opacity = builtins.toString config.opacity.normal;
         initial_window_height = 1022;
         initial_window_width = 1896;
         remember_window_size = "no";
+        resize_debounce_time = "0 0";
         window_padding_width = 5;
 
         box_drawing_scale = "0.001, 0.75, 1, 1.5";

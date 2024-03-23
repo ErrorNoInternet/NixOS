@@ -11,8 +11,8 @@
     outside.configuration = common;
   };
 
-  services.udev.extraRules = ''
-    SUBSYSTEMS=="usb|hidraw", ATTRS{idVendor}=="1770", ATTRS{idProduct}=="ff00", TAG+="uaccess", TAG+="MSI_3Zone_Laptop"
+  boot.extraModprobeConfig = ''
+    options snd_hda_intel power_save=0
   '';
 
   systemd.services.lock_intel_gpu_frequency = {
@@ -21,14 +21,15 @@
     wantedBy = ["multi-user.target"];
   };
 
-  workstation.desktops.hyprland.enable = true;
-
   services = {
-    zfs.autoSnapshot = {
-      enable = true;
-      monthly = 1;
-    };
+    udev.extraRules = ''
+      SUBSYSTEMS=="usb|hidraw", ATTRS{idVendor}=="1770", ATTRS{idProduct}=="ff00", TAG+="uaccess", TAG+="MSI_3Zone_Laptop"
+    '';
+
+    zfs.autoSnapshot.enable = true;
   };
+
+  workstation.desktops.hyprland.enable = true;
 
   nix.gc.automatic = false;
 }

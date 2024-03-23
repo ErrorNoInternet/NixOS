@@ -4,8 +4,6 @@
   self',
   ...
 }: {
-  caches.nix-gaming.enable = true;
-
   profiles = {
     windowManager.enable = true;
     desktop = {
@@ -47,7 +45,6 @@
       duperemove
       efibootmgr
       efivar
-      ethtool
       ffmpeg_6-full
       fio
       firefox

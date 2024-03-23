@@ -2,11 +2,10 @@
   config,
   lib,
   pkgs,
-  self',
   ...
 }: let
   cfg = config.toolkits.gtk;
-  inherit (lib) mkEnableOption mkOption mkIf;
+  inherit (lib) mkEnableOption mkOption mkIf strings;
 in {
   options.toolkits.gtk = {
     enable = mkEnableOption "";
@@ -14,14 +13,16 @@ in {
     theme = mkOption {
       default = {
         name = "Nordic-darker";
-        package = self'.packages.gtkTheme-nordic;
+        package = pkgs.nordic;
       };
     };
 
     iconTheme = mkOption {
       default = {
-        name = "Colloid-${lib.strings.toLower config.colors.schemeName}-dark";
-        package = pkgs.colloid-icon-theme.override {schemeVariants = ["${lib.strings.toLower config.colors.schemeName}"];};
+        name = "Colloid-${strings.toLower config.colors.schemeName}-dark";
+        package = pkgs.colloid-icon-theme.override {
+          schemeVariants = [(strings.toLower config.colors.schemeName)];
+        };
       };
     };
   };

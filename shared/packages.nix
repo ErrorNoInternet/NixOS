@@ -17,6 +17,7 @@ with pkgs; [
   htop
   inputs'.agenix.packages.default
   killall
+  lsof
   nmap
   openssl
   procs
@@ -24,6 +25,7 @@ with pkgs; [
   ripgrep
   self'.packages.hwatch
   self'.packages.tmux
+  sysstat
   traceroute
   unzip
   vim

@@ -42,7 +42,12 @@
         ];
       };
 
-      autoSnapshot.enable = true;
+      autoSnapshot = {
+        enable = true;
+
+        frequent = 0;
+        hourly = 0;
+      };
     };
 
     nfs.server.exports = ''

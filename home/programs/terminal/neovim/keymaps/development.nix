@@ -133,16 +133,6 @@
         pattern = ["python"];
         command = "imap <buffer> <F8> <esc>:wa<CR>:term pypy3 %<CR>";
       }
-      {
-        event = ["FileType"];
-        pattern = ["python"];
-        command = "map <buffer> <F2> :w<CR>:Neoformat python black<CR>:w<CR>";
-      }
-      {
-        event = ["FileType"];
-        pattern = ["python"];
-        command = "imap <buffer> <F2> <esc>:w<CR>:Neoformat python black<CR>:w<CR>";
-      }
 
       {
         event = ["FileType"];
@@ -207,16 +197,6 @@
         pattern = ["c"];
         command = "imap <buffer> <F11> <esc> :wa<CR>:term clang -g -lm % -o %:t:r<CR>";
       }
-      {
-        event = ["FileType"];
-        pattern = ["c"];
-        command = "map <buffer> <F2> :w<CR>:Neoformat clangformat<CR>:w<CR>";
-      }
-      {
-        event = ["FileType"];
-        pattern = ["c"];
-        command = "imap <buffer> <F2> <esc>:w<CR>:Neoformat clangformat<CR>:w<CR>";
-      }
 
       {
         event = ["FileType"];
@@ -247,16 +227,6 @@
         event = ["FileType"];
         pattern = ["cpp"];
         command = "imap <buffer> <F11> <esc> :wa<CR>:term clang++ -g % -o %:t:r<CR>";
-      }
-      {
-        event = ["FileType"];
-        pattern = ["cpp"];
-        command = "map <buffer> <F2> :w<CR>:Neoformat clangformat<CR>:w<CR>";
-      }
-      {
-        event = ["FileType"];
-        pattern = ["cpp"];
-        command = "imap <buffer> <F2> <esc>:w<CR>:Neoformat clangformat<CR>:w<CR>";
       }
 
       {
@@ -290,16 +260,6 @@
         event = ["FileType"];
         pattern = ["go"];
         command = "imap <buffer> <F10> <esc> :wa<CR>:term go run .<CR>";
-      }
-      {
-        event = ["FileType"];
-        pattern = ["go"];
-        command = "map <buffer> <F2> :w<CR>:GoFmt<CR>:w<CR>";
-      }
-      {
-        event = ["FileType"];
-        pattern = ["go"];
-        command = "imap <buffer> <F2> <esc>:w<CR>:GoFmt<CR>:w<CR>";
       }
 
       {
@@ -342,16 +302,6 @@
         pattern = ["rust"];
         command = "imap <buffer> <F11> <esc> :wa<CR>:term cd %:p:h:h && cargo build<CR>";
       }
-      {
-        event = ["FileType"];
-        pattern = ["rust"];
-        command = "map <buffer> <F2> :w<CR>:RustFmt<CR>:w<CR>";
-      }
-      {
-        event = ["FileType"];
-        pattern = ["rust"];
-        command = "imap <buffer> <F2> <esc>:w<CR>:RustFmt<CR>:w<CR>";
-      }
 
       {
         event = ["FileType"];
@@ -392,28 +342,6 @@
         event = ["FileType"];
         pattern = ["zig"];
         command = "imap <buffer> <F11> <esc> :wa<CR>:term cd %:p:h:h && zig build<CR>";
-      }
-
-      {
-        event = ["FileType"];
-        pattern = ["toml"];
-        command = "map <buffer> <F2> :w<CR>:Neoformat taplo<CR>:w<CR>";
-      }
-      {
-        event = ["FileType"];
-        pattern = ["toml"];
-        command = "imap <buffer> <F2> <esc>:w<CR>:Neoformat taplo<CR>:w<CR>";
-      }
-
-      {
-        event = ["FileType"];
-        pattern = ["nix"];
-        command = "map <buffer> <F2> :w<CR>:Neoformat alejandra<CR>:w<CR>";
-      }
-      {
-        event = ["FileType"];
-        pattern = ["nix"];
-        command = "imap <buffer> <F2> <esc>:w<CR>:Neoformat alejandra<CR>:w<CR>";
       }
     ];
   };

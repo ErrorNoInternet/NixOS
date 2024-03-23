@@ -32,7 +32,7 @@
 
     extraOptions = ''
       experimental-features = nix-command flakes
-      flake-registry = ""
+      flake-registry =
       log-lines = 500
       show-trace = true
     '';
@@ -50,6 +50,7 @@
         gnutar
         gzip
         htop
+        inetutils
         iproute2
         kbd
         less
@@ -59,6 +60,7 @@
         openssh
         perl
         procps
+        rsync
         util-linux
         which
         xz

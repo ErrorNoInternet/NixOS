@@ -8,13 +8,11 @@ foot.overrideAttrs (old: {
     domain = "codeberg.org";
     owner = "dnkl";
     repo = "foot";
-    rev = "3e6f0e63f3027f19a83c6a2ddcf52018d30f2751";
-    hash = "sha256-hJIA8F5sQdviIEQs72MQaYomlV0pazkPdNsUReADYTo=";
+    rev = "9fcf5977c05686d55892d32fa3f980b03ef1b30a";
+    hash = "sha256-8y0w+h1g7of/A+7KN9PFj+DSNfnIzJv5k9jFA9piE2M=";
   };
+
   patches =
     (old.patches or [])
-    ++ [
-      # ./fix-glyph-misalignment.patch
-      ./fullscreen-transparency.patch
-    ];
+    ++ [./fullscreen-transparency.patch];
 })
