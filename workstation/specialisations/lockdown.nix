@@ -29,9 +29,13 @@
       rpcbind.enable = false;
     };
 
-    networking.firewall = {
-      enable = true;
-      allowPing = false;
+    networking = {
+      firewall = {
+        enable = true;
+        allowPing = false;
+      };
+
+      interfaces.phy0.wakeOnLan.enable = false;
     };
 
     workstation.bluetooth.enable = false;
