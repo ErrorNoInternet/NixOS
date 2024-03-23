@@ -37,7 +37,8 @@ in {
     xdg.desktopEntries = builtins.listToAttrs (map (entry: {
         name = "nvidia-${entry.name}";
         value = {
-          inherit (entry) name icon;
+          name = "${entry.name} (nvidia-offload)";
+          inherit (entry) icon;
           exec = "nvidia-offload ${entry.command}";
           categories = ["Game"];
         };
