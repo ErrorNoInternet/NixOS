@@ -75,7 +75,7 @@
       # system utilities
       compsize
       ffmpeg_6-full
-      nvtop
+      nvtopPackages.full
       self'.packages.tbw
       timg
 

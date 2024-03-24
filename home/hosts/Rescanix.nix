@@ -71,7 +71,7 @@
       mesa-demos
       multipath-tools
       nvme-cli
-      nvtop
+      nvtopPackages.full
       ookla-speedtest
       osu-lazer-bin
       patchelf
