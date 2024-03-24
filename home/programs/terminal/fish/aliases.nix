@@ -27,7 +27,7 @@ in {
       la = "ls -la";
       laT = "ls -laT";
       ll = "ls -l";
-      ls = "eza --git --icons";
+      ls = "LS_COLORS= eza --git --icons";
       lT = "ls -lT";
       lTZ = "ls -lTZ";
       lZ = "ls -lZ";
