@@ -1,6 +1,8 @@
 {pkgs, ...}: {
   programs.nixvim = {helpers, ...}: {
-    config = {
+    config = let
+      indentCharacter = "";
+    in {
       extraPackages = with pkgs; [
         code-minimap
       ];
@@ -35,16 +37,13 @@
       };
 
       plugins = {
-        nvim-tree = {
+        neo-tree = {
           enable = true;
-          disableNetrw = true;
-          diagnostics = {
-            enable = true;
-            showOnDirs = true;
-          };
-          extraOptions = {
-            view.signcolumn = "no";
-            renderer.icons.diagnostics_placement = "before";
+          closeIfLastWindow = true;
+          popupBorderStyle = "rounded";
+          extraOptions.default_component_configs = {
+            indent.indent_marker = indentCharacter;
+            window.width = 25;
           };
         };
 
@@ -74,7 +73,7 @@
         indent-blankline = {
           enable = true;
           extraOptions = {
-            indent.char = "";
+            indent.char = indentCharacter;
             scope = {
               show_start = false;
               show_end = false;

@@ -170,13 +170,13 @@
         mode = "n";
         options.silent = true;
         key = "<C-l>";
-        action = ":NvimTreeToggle<CR>";
+        action = ":Neotree toggle<CR>";
       }
       {
         mode = "n";
         options.silent = true;
         key = "<leader>l";
-        action = ":NvimTreeFocus<CR>";
+        action = ":Neotree focus<CR>";
       }
       {
         mode = "n";
