@@ -5,7 +5,7 @@
   ...
 }: let
   cfg = config.customPrograms.terminal.fish;
-  inherit (lib) mkEnableOption mkIf;
+  inherit (lib) mkEnableOption mkIf strings;
 in {
   imports = [
     ./abbreviations
@@ -33,9 +33,9 @@ in {
           set -x _ZO_MAXAGE 20000
           set -x _ZO_RESOLVE_SYMLINKS 1
         ''
-        + (lib.strings.optionalString config.flags.nixOnDroid ''
-          if test "$SSH_AUTH_SOCK" = "/ssh-agent"
-            if test (ps ax | grep ssh-agent | count) = 1
+        + (strings.optionalString config.flags.nixOnDroid ''
+          if [ "$SSH_AUTH_SOCK" = "/ssh-agent" ]
+            if [ (ps ax | grep ssh-agent | count) = 1 ]
               set SSH_AGENT_LAUNCHED 1
               ssh-agent > /dev/null
             end
