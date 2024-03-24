@@ -41,10 +41,8 @@
           enable = true;
           closeIfLastWindow = true;
           popupBorderStyle = "rounded";
-          extraOptions.default_component_configs = {
-            indent.indent_marker = indentCharacter;
-            window.width = 25;
-          };
+          window.width = 25;
+          defaultComponentConfigs.indent.indentMarker = indentCharacter;
         };
 
         undotree.enable = true;
@@ -144,7 +142,11 @@
         require('highlight-undo').setup()
       '';
 
-      globals.undotree_HelpLine = 0;
+      globals = {
+        loaded_netrw = 1;
+        loaded_netrwPlugin = 1;
+        undotree_HelpLine = 0;
+      };
     };
   };
 }

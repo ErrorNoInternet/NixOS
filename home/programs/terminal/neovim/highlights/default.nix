@@ -30,6 +30,7 @@
 
       NeoTreeCursorLine.bg = "#${base03}";
       NeoTreeDimText.fg = "#${base03}";
+      NeoTreeDotfile.fg = "#${base03}";
       NeoTreeFileStats.fg = "#${base03}";
       NeoTreeFileStatsHeader.fg = "#${base03}";
       NeoTreeGitConflict.fg = "#${base08}";
