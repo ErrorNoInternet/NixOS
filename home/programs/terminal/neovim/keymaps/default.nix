@@ -181,6 +181,12 @@
       {
         mode = "n";
         options.silent = true;
+        key = "<leader>v";
+        action = ":Neotree reveal<CR>";
+      }
+      {
+        mode = "n";
+        options.silent = true;
         key = "<leader>u";
         action = ":UndotreeToggle<CR>:UndotreeFocus<CR>";
       }

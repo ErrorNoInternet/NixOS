@@ -66,7 +66,7 @@
           enable = true;
           preview.winConfig = {
             winblend = 0;
-            winhighlight = "NvimTreeNormal:NvimTreeNormal";
+            winhighlight = "NeoTreeNormal:NeoTreeNormal";
           };
         };
 

@@ -38,6 +38,10 @@
       NeoTreeGitUntracked.fg = "#${base0D}";
       NeoTreeNormal.bg = "#${base01}";
       NeoTreeNormalNC.bg = "#${base01}";
+      NeoTreeRootName = {
+        bold = true;
+        italic = false;
+      };
       NeoTreeTitleBar.bg = "#${base03}";
 
       OutlineNormal.bg = "#${base01}";
