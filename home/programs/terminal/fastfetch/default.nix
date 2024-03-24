@@ -26,6 +26,7 @@ in {
         "${config.xdg.configHome}/fastfetch/minimal-droid.jsonc".text = escape (import ./minimal-droid.nix {inherit pkgs;});
 
         "${config.xdg.configHome}/fastfetch/config.jsonc".text = builtins.toJSON {
+          general.processingTimeout = 10000;
           modules = [
             "title"
             "separator"
