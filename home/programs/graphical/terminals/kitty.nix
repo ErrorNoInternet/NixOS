@@ -4,8 +4,27 @@
   lib,
   self',
   ...
-}: {
-  config = lib.mkIf config.profiles.desktop.enable {
+}: let
+  cfg = config.customPrograms.graphical.kitty;
+  inherit (lib) mkEnableOption mkOption mkIf types intersperse;
+in {
+  options.customPrograms.graphical.kitty = {
+    enable = mkEnableOption "" // {default = config.profiles.desktop.enable;};
+
+    monitor = {
+      height = mkOption {
+        type = types.int;
+        default = 1022;
+      };
+
+      width = mkOption {
+        type = types.int;
+        default = 1896;
+      };
+    };
+  };
+
+  config = mkIf cfg.enable {
     programs.kitty = {
       enable = true;
       package = self'.packages.kitty;
@@ -15,14 +34,15 @@
         inherit (config.font) name;
         size = 9;
       };
+
       settings = {
         confirm_os_window_close = 0;
         enable_audio_bell = false;
         shell = "tmux";
 
         background_opacity = builtins.toString config.opacity.normal;
-        initial_window_height = 1022;
-        initial_window_width = 1896;
+        initial_window_height = cfg.monitor.height;
+        initial_window_width = cfg.monitor.width;
         remember_window_size = "no";
         resize_debounce_time = "0 0";
         window_padding_width = 5;
@@ -38,11 +58,10 @@
       };
 
       extraConfig = with config.colors.scheme.palette; let
-        base00Variation = "${
+        base00Variation =
           builtins.replaceStrings [" "] [""]
-          (builtins.toString (lib.intersperse ","
-              (map (c: c - 1) (inputs.nix-colors.lib.conversions.hexToRGB base00))))
-        }";
+          (builtins.toString (intersperse ","
+              (map (c: c - 1) (inputs.nix-colors.lib.conversions.hexToRGB base00))));
       in ''
         background            base10_rgb:${base00Variation}
         cursor                #${base04}
