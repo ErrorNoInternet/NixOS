@@ -11,104 +11,104 @@
         mode = "n";
         options.silent = true;
         key = "<leader>ds";
-        action = ":lua require('dapui').setup()<CR>";
+        action = "<cmd>lua require('dapui').setup()<CR>";
       }
       {
         mode = "n";
         options.silent = true;
         key = "<leader>dc";
-        action = ":lua require('dapui').toggle()<CR>";
+        action = "<cmd>lua require('dapui').toggle()<CR>";
       }
       {
         mode = "n";
         options.silent = true;
         key = "<leader>dk";
-        action = ":lua require('dapui').eval()<CR>";
+        action = "<cmd>lua require('dapui').eval()<CR>";
       }
       {
         mode = "n";
         options.silent = true;
         key = "<leader>df";
-        action = ":lua require('dapui').float_element()<CR>";
+        action = "<cmd>lua require('dapui').float_element()<CR>";
       }
       {
         mode = "n";
         options.silent = true;
         key = "<leader>db";
-        action = ":DapToggleBreakpoint<CR>";
+        action = "<cmd>DapToggleBreakpoint<CR>";
       }
       {
         mode = "n";
         options.silent = true;
         key = "<leader>dt";
-        action = ":DapTerminate<CR>";
+        action = "<cmd>DapTerminate<CR>";
       }
       {
         mode = "n";
         options.silent = true;
         key = "<leader>dd";
-        action = ":DapContinue<CR>";
+        action = "<cmd>DapContinue<CR>";
       }
       {
         mode = "n";
         options.silent = true;
         key = "<leader>di";
-        action = ":DapStepInto<CR>";
+        action = "<cmd>DapStepInto<CR>";
       }
       {
         mode = "n";
         options.silent = true;
         key = "<leader>dO";
-        action = ":DapStepOut<CR>";
+        action = "<cmd>DapStepOut<CR>";
       }
       {
         mode = "n";
         options.silent = true;
         key = "<leader>do";
-        action = ":DapStepOver<CR>";
+        action = "<cmd>DapStepOver<CR>";
       }
 
       {
         mode = "n";
         options.silent = true;
         key = "<leader>ft";
-        action = ":TodoTelescope<CR>";
+        action = "<cmd>TodoTelescope<CR>";
       }
       {
         mode = "n";
         options.silent = true;
         key = "<leader>ff";
-        action = ":Telescope find_files<CR>";
+        action = "<cmd>Telescope find_files<CR>";
       }
       {
         mode = "n";
         options.silent = true;
         key = "<leader>fg";
-        action = ":Telescope live_grep<CR>";
+        action = "<cmd>Telescope live_grep<CR>";
       }
       {
         mode = "n";
         options.silent = true;
         key = "<leader>fz";
-        action = ":Telescope current_buffer_fuzzy_find<CR>";
+        action = "<cmd>Telescope current_buffer_fuzzy_find<CR>";
       }
       {
         mode = "n";
         options.silent = true;
         key = "<leader>fb";
-        action = ":Telescope buffers<CR>";
+        action = "<cmd>Telescope buffers<CR>";
       }
       {
         mode = "n";
         options.silent = true;
         key = "<leader>fc";
-        action = ":Telescope git_bcommits<CR>";
+        action = "<cmd>Telescope git_bcommits<CR>";
       }
       {
         mode = "n";
         options.silent = true;
         key = "<leader>fC";
-        action = ":Telescope git_commits<CR>";
+        action = "<cmd>Telescope git_commits<CR>";
       }
     ];
 
