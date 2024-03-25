@@ -1,8 +1,6 @@
 {pkgs, ...}: {
   programs.nixvim = {helpers, ...}: {
-    config = let
-      indentCharacter = "";
-    in {
+    config = {
       extraPackages = with pkgs; [
         code-minimap
       ];
@@ -40,8 +38,8 @@
         neo-tree = {
           enable = true;
           closeIfLastWindow = true;
+          window.width = 32;
           popupBorderStyle = "rounded";
-          defaultComponentConfigs.indent.indentMarker = indentCharacter;
         };
 
         undotree.enable = true;
@@ -69,12 +67,9 @@
 
         indent-blankline = {
           enable = true;
-          extraOptions = {
-            indent.char = indentCharacter;
-            scope = {
-              show_start = false;
-              show_end = false;
-            };
+          extraOptions.scope = {
+            show_start = false;
+            show_end = false;
           };
         };
 
