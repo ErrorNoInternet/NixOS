@@ -53,9 +53,12 @@ in {
           typing_notice_send = true;
           typing_notice_display = true;
 
-          image_preview.size = {
-            width = 80;
-            height = 24;
+          image_preview = {
+            protocol.type = "kitty";
+            size = {
+              width = 80;
+              height = 24;
+            };
           };
         };
 
