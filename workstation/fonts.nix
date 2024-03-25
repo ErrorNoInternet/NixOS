@@ -21,15 +21,15 @@
 
     fontconfig.defaultFonts = {
       serif = [
-        "JetBrainsMono Nerd Font"
+        "JetBrainsMonoNL Nerd Font"
         "Noto Serif CJK SC"
       ];
       sansSerif = [
-        "JetBrainsMono Nerd Font"
+        "JetBrainsMonoNL Nerd Font"
         "Noto Sans CJK SC"
       ];
       monospace = [
-        "JetBrainsMono Nerd Font"
+        "JetBrainsMonoNL Nerd Font"
       ];
       emoji = [
         "Twitter Color Emoji"
