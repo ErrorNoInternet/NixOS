@@ -19,7 +19,6 @@
           "$mod, escape, exec, wleave -p layer-shell -f -b5 -T425 -B425 -L250 -R250"
 
           "$mod, D, exec, ${rofi} || pkill rofi"
-          "$mod, Z, exec, ${rofi} || pkill rofi"
           "$mod, G, exec, cliphist list | (rofi -dmenu || pkill rofi) | cliphist decode | wl-copy"
           "$mod, code:60, exec, rofi -show emoji || pkill rofi"
 
@@ -39,10 +38,10 @@
 
           "$mod SHIFT, F, fullscreen"
           "$mod, F, fullscreen, 1"
+          "$mod, Q, killactive"
+          "$mod, T, togglegroup"
           "$mod, V, togglefloating"
           "$mod, W, togglesplit"
-          "$mod, T, togglegroup"
-          "$mod SHIFT, Q, killactive"
 
           "$mod, left, movefocus, l"
           "$mod, right, movefocus, r"
