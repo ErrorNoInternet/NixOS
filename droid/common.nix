@@ -49,7 +49,6 @@
         gnused
         gnutar
         gzip
-        htop
         inetutils
         iproute2
         kbd
