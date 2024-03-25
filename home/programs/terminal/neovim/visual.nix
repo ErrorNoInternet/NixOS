@@ -41,7 +41,6 @@
           enable = true;
           closeIfLastWindow = true;
           popupBorderStyle = "rounded";
-          window.width = 25;
           defaultComponentConfigs.indent.indentMarker = indentCharacter;
         };
 
