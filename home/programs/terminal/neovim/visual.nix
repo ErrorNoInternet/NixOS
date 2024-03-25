@@ -67,9 +67,12 @@
 
         indent-blankline = {
           enable = true;
-          extraOptions.scope = {
-            show_start = false;
-            show_end = false;
+          extraOptions = {
+            indent.char = "";
+            scope = {
+              show_start = false;
+              show_end = false;
+            };
           };
         };
 
