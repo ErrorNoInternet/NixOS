@@ -37,6 +37,7 @@
       NeoTreeGitIgnored.fg = "#${base03}";
       NeoTreeGitUnstaged.fg = "#${base0A}";
       NeoTreeGitUntracked.fg = "#${base0D}";
+      NeoTreeMessage.fg = "#${base03}";
       NeoTreeNormal.bg = "#${base01}";
       NeoTreeNormalNC.bg = "#${base01}";
       NeoTreeRootName = {
