@@ -1,18 +1,18 @@
 {
   config,
   lib,
-  pkgs,
   ...
 }: {
-  wayland.windowManager.hyprland.settings.exec-once = with lib; [
-    "hyprctl setcursor ${config.cursor.name} ${builtins.toString config.cursor.size}"
-    (mkIf config.wallpaper.enable "swaybg -i ${config.wallpaper.path}")
+  wayland.windowManager.hyprland.settings.exec-once = with lib;
+    [
+      "hyprctl setcursor ${config.cursor.name} ${builtins.toString config.cursor.size}"
 
-    "${pkgs.wl-clipboard}/bin/wl-paste --watch ${getExe pkgs.cliphist} -max-items 1000 store"
-    "sleep 0.5 && waybar"
-    "swaync"
+      "wl-paste --watch cliphist -max-items 1000 store"
+      "sleep 0.25 && waybar"
+      "swaync"
 
-    "swayidle before-sleep 'swaylock --grace 0 --fade-in 0'"
-    "swayidle timeout 570 'swaylock --grace 30 --fade-in 30' timeout 1200 'hyprctl dispatch dpms off'"
-  ];
+      "swayidle before-sleep 'swaylock --grace 0 --fade-in 0'"
+      "swayidle timeout 570 'swaylock --grace 30 --fade-in 30' timeout 1200 'hyprctl dispatch dpms off'"
+    ]
+    ++ optional config.wallpaper.enable "swaybg -i ${config.wallpaper.path}";
 }
