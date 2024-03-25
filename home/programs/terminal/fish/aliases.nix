@@ -19,7 +19,7 @@ in {
       ip = "ip --color";
       lsimg = "timg --grid=6 --upscale --title --center --frames=1";
       py = "python3";
-      timg = "timg";
+      timg = "timg -pk";
 
       "l@" = "ls -l@";
       "lT@" = "ls -lT@";
