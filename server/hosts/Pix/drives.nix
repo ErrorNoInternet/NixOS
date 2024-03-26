@@ -10,7 +10,7 @@
   fileSystems."/mnt/drive3" = {
     device = "/dev/disk/by-uuid/6a03c0f9-5c76-4a08-9091-aba7239a6429";
     fsType = "btrfs";
-    options = ["subvol=root" "x-systemd.automount" "noauto"];
+    options = ["subvol=root" "relatime" "x-systemd.automount" "noauto"];
   };
 
   services = {
@@ -51,8 +51,7 @@
     };
 
     nfs.server.exports = ''
-      /mnt/drive3 localhost(rw,sync,no_subtree_check,no_root_squash)
-      /mnt/drive3 192.168.0.101(rw,sync,no_subtree_check,no_root_squash)
+      /mnt/drive3 192.168.0.101(rw,sync,no_root_squash)
     '';
 
     samba = {
