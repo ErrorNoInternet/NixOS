@@ -2,7 +2,7 @@
   imports = [
     ./development.nix
     ./lsp.nix
-    ./theme.nix
+    ./visual.nix
   ];
 
   programs.nixvim.keymaps =
