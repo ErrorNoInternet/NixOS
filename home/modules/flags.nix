@@ -2,6 +2,7 @@
   inherit (lib) mkEnableOption;
 in {
   options.flags = {
-    nixOnDroid = mkEnableOption "";
+    isNixOnDroid = mkEnableOption "";
+    isWorkstation = mkEnableOption "";
   };
 }

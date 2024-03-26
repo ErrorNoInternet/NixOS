@@ -11,7 +11,5 @@ in {
     default = "firefox";
   };
 
-  config = {
-    home.sessionVariables.BROWSER = cfg.name;
-  };
+  config.home.sessionVariables.BROWSER = cfg.name;
 }

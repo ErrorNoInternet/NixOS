@@ -64,34 +64,21 @@
     };
   };
 
-  home = {
-    username = "error";
-    homeDirectory = "/home/error";
-    packages = with pkgs; [
-      # desktop
-      hyprpicker
-      self'.packages.scratchpad
-
-      # system utilities
-      compsize
-      ffmpeg_6-full
-      nvtopPackages.full
-      self'.packages.tbw
-      timg
-
-      # graphical utilities
-      firefox
-      gimp
-      imhex
-      qbittorrent
-
-      # development utilities
-      jetbrains.idea-community
-
-      # games
-      osu-lazer-bin
-      prismlauncher
-      superTuxKart
-    ];
-  };
+  home.packages = with pkgs; [
+    compsize
+    ffmpeg_6-full
+    firefox
+    gimp
+    hyprpicker
+    imhex
+    jetbrains.idea-community
+    nvtopPackages.full
+    osu-lazer-bin
+    prismlauncher
+    qbittorrent
+    self'.packages.scratchpad
+    self'.packages.tbw
+    superTuxKart
+    timg
+  ];
 }

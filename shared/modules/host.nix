@@ -16,17 +16,19 @@ in {
     };
 
     id = mkOption {
-      default = null;
       type = with types; nullOr str;
+      default = null;
     };
   };
 
   config = {
-    nixpkgs.hostPlatform = cfg.system;
-    environment.variables.HOSTNAME = cfg.name;
     networking = {
       hostName = cfg.name;
       hostId = mkIf (cfg.id != null) cfg.id;
     };
+
+    environment.variables.HOSTNAME = cfg.name;
+
+    nixpkgs.hostPlatform = cfg.system;
   };
 }

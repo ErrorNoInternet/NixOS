@@ -4,12 +4,10 @@
   ...
 }: let
   cfg = config.shared.modules.btrfs.compression;
-  inherit (lib) mkEnableOption mkIf;
+  inherit (lib) mkEnableOption mkIf attrsets;
 in {
   options.shared.modules.btrfs.compression = {
-    enable =
-      mkEnableOption "";
-
+    enable = mkEnableOption "";
     subvolumeLayout = mkEnableOption "" // {default = true;};
   };
 
@@ -18,7 +16,7 @@ in {
       {
         "/".options = ["compress=zstd" "noatime"];
       }
-      // mkIf cfg.subvolumeLayout {
+      // attrsets.optionalAttrs cfg.subvolumeLayout {
         "/home".options = ["compress=zstd"];
         "/nix".options = ["compress=zstd" "noatime"];
       };

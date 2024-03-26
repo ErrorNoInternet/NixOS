@@ -17,7 +17,7 @@
     "/home/${config.home.username}/.ssh/id_ed25519_agenix"
   ];
 
-  home = {
+  home = rec {
     packages = with pkgs; [
       cmatrix
       croc
@@ -29,6 +29,12 @@
       progress
       try
     ];
+
+    username =
+      if config.flags.isWorkstation
+      then "error"
+      else "snowflake";
+    homeDirectory = "/home/${username}";
 
     stateVersion = "23.05";
   };

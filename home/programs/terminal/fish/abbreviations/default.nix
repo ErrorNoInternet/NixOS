@@ -15,7 +15,7 @@
       "............" = "../../../../../..";
 
       c = "cd ${
-        if config.flags.nixOnDroid
+        if config.flags.isNixOnDroid
         then "~/.config/nixpkgs"
         else "/etc/nixos"
       }/configuration.nix";

@@ -4,11 +4,12 @@
   pkgs,
   ...
 }: let
+  cfg = config.server.services.samba;
   inherit (lib) mkEnableOption mkIf;
 in {
   options.server.services.samba.enable = mkEnableOption "";
 
-  config = mkIf config.server.services.samba.enable {
+  config = mkIf cfg.enable {
     networking.firewall.allowedTCPPorts = [
       # wsdd
       5357

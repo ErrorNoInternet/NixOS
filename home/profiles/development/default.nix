@@ -74,6 +74,7 @@ in {
         GOPATH = "${config.home.homeDirectory}/.go";
       };
     };
+
     programs.fish.shellAliases = {
       objdump = "objdump -M intel";
     };

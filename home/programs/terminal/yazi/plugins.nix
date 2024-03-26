@@ -1,11 +1,7 @@
-{
-  config,
-  self',
-  ...
-}: let
-  pluginsPath = "${config.xdg.configHome}/yazi/plugins";
+{self', ...}: let
+  pluginsPath = "yazi/plugins";
 in {
-  home.file = with self'.packages; {
+  xdg.configFile = with self'.packages; {
     "${pluginsPath}/keyjump.yazi".source = yaziPlugin-keyjump;
     "${pluginsPath}/bookmarks.yazi".source = yaziPlugin-bookmarks;
   };

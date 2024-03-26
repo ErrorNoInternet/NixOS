@@ -33,7 +33,7 @@ in {
           set -x _ZO_MAXAGE 20000
           set -x _ZO_RESOLVE_SYMLINKS 1
         ''
-        + (strings.optionalString config.flags.nixOnDroid ''
+        + (strings.optionalString config.flags.isNixOnDroid ''
           if [ "$SSH_AUTH_SOCK" = "/ssh-agent" ]
             if [ (ps ax | grep ssh-agent | count) = 1 ]
               set SSH_AGENT_LAUNCHED 1

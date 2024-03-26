@@ -21,7 +21,9 @@ in rec {
       inputs.nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs' inputs self' self;};
 
-        modules =
+        modules = let
+          isWorkstation = type == "workstation";
+        in
           [
             ../${type}/common.nix
             ../${type}/hosts/${name}
@@ -29,11 +31,10 @@ in rec {
             {host = {inherit name system;};}
           ]
           ++ optionals disko [
-            inputs.disko.nixosModules.disko
             ../${type}/hosts/${name}/disko.nix
+            inputs.disko.nixosModules.disko
           ]
           ++ optionals homeManager [
-            inputs.home-manager.nixosModules.home-manager
             {
               home-manager = {
                 extraSpecialArgs = {inherit inputs' inputs self' self;};
@@ -41,18 +42,21 @@ in rec {
                 useGlobalPkgs = true;
                 useUserPackages = true;
 
-                users."${
-                  if type == "workstation"
+                users.${
+                  if isWorkstation
                   then "error"
                   else "snowflake"
-                }" = {...}: {
+                } = {...}: {
                   imports = [
                     ../home/common.nix
                     ../home/hosts/${name}.nix
                   ];
+
+                  flags = {inherit isWorkstation;};
                 };
               };
             }
+            inputs.home-manager.nixosModules.home-manager
           ];
       });
 

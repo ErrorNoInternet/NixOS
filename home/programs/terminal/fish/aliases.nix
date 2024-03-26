@@ -9,7 +9,7 @@ in {
     {
       H = "exec Hyprland";
       q =
-        (strings.optionalString config.flags.nixOnDroid
+        (strings.optionalString config.flags.isNixOnDroid
           "if [ \"$SSH_AGENT_LAUNCHED\" = 1 ]; killall ssh-agent; end;")
         + "exit";
 
@@ -52,7 +52,7 @@ in {
       pps = "playerctl pause";
       pwdc = "pwd | tr -d '\\n' | wl-copy";
     }
-    // (attrsets.optionalAttrs config.flags.nixOnDroid {
+    // (attrsets.optionalAttrs config.flags.isNixOnDroid {
       ping = "/android/system/bin/linker64 /android/system/bin/ping";
       ping6 = "/android/system/bin/linker64 /android/system/bin/ping6";
     });

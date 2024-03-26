@@ -6,6 +6,7 @@
   config = lib.mkIf config.profiles.desktop.enable {
     programs.mpv = {
       enable = true;
+
       config = {
         no-keepaspect-window = "";
 

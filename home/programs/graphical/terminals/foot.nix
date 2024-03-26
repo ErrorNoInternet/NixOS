@@ -5,11 +5,11 @@
   ...
 }: {
   config = lib.mkIf config.profiles.desktop.enable {
-    programs.foot = with config.colors.scheme.palette; {
+    programs.foot = {
       enable = true;
       package = self'.packages.foot;
 
-      settings = {
+      settings = with config.colors.scheme.palette; {
         main = {
           font = "${config.font.name}:size=9";
           initial-window-size-pixels = "1896x1022";

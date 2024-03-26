@@ -131,7 +131,7 @@
         end
       end
     ''
-    + lib.strings.optionalString config.flags.nixOnDroid ''
+    + lib.strings.optionalString config.flags.isNixOnDroid ''
       function DS
         set tmpDir (mktemp -d)
 

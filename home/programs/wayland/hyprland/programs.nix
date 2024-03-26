@@ -2,8 +2,10 @@
   config,
   lib,
   ...
-}: {
-  wayland.windowManager.hyprland.settings.exec-once = with lib;
+}: let
+  inherit (lib) optional;
+in {
+  wayland.windowManager.hyprland.settings.exec-once =
     [
       "hyprctl setcursor ${config.cursor.name} ${builtins.toString config.cursor.size}"
 

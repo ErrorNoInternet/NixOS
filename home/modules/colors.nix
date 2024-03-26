@@ -4,6 +4,7 @@
   lib,
   ...
 }: let
+  cfg = config.colors;
   inherit (lib) mkOption types;
 in {
   imports = [inputs.nix-colors.homeManagerModules.default];
@@ -14,10 +15,10 @@ in {
     };
 
     schemeName = mkOption {
-      default = "Nord";
       type = types.str;
+      default = "Nord";
     };
   };
 
-  config.colorScheme = config.colors.scheme;
+  config.colorScheme = cfg.scheme;
 }

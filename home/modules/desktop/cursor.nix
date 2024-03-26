@@ -11,26 +11,24 @@ in {
     enable = mkEnableOption "";
 
     name = mkOption {
-      default = "Bibata-Modern-Classic";
       type = types.str;
+      default = "Bibata-Modern-Classic";
     };
 
     package = mkOption {
-      default = pkgs.bibata-cursors;
       type = types.package;
+      default = pkgs.bibata-cursors;
     };
 
     size = mkOption {
-      default = 16;
       type = types.int;
+      default = 16;
     };
   };
 
   config = mkIf cfg.enable {
     home.pointerCursor = {
-      inherit (cfg) name;
-      inherit (cfg) package;
-      inherit (cfg) size;
+      inherit (cfg) name package size;
       x11.enable = true;
       gtk.enable = true;
     };

@@ -8,7 +8,6 @@
 in {
   options.profiles.desktop = {
     enable = mkEnableOption "";
-
     enableNvidia = mkEnableOption "";
   };
 

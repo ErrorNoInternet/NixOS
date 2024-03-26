@@ -28,6 +28,9 @@ in {
       slurp
       swayidle
       vimiv-qt
+      wl-clipboard
+      wlr-randr
+
       (wf-recorder.overrideAttrs {
         src = fetchFromGitHub {
           owner = "ammen99";
@@ -36,8 +39,6 @@ in {
           hash = "sha256-TAFUwHLaA/zsTBiR2qqwcv8NCIaHWnBm7LsnI1fo/o4=";
         };
       })
-      wl-clipboard
-      wlr-randr
     ];
   };
 }

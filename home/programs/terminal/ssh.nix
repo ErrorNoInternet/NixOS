@@ -13,7 +13,7 @@ in {
     programs.ssh = {
       enable = true;
       addKeysToAgent =
-        if config.flags.nixOnDroid
+        if config.flags.isNixOnDroid
         then "6h"
         else "1d";
     };

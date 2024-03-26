@@ -15,7 +15,7 @@
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
-    config.flags.nixOnDroid = true;
+    config.flags.isNixOnDroid = true;
   };
 
   environment.motd = "";
