@@ -2,9 +2,12 @@
   config,
   inputs',
   inputs,
+  lib,
   pkgs,
   ...
-}: {
+}: let
+  inherit (lib) mkDefault;
+in {
   imports = [
     ../shared/caches
     ./modules
@@ -31,10 +34,13 @@
     ];
 
     username =
-      if config.flags.isWorkstation
-      then "error"
-      else "snowflake";
-    homeDirectory = "/home/${username}";
+      mkDefault
+      (
+        if config.flags.isWorkstation
+        then "error"
+        else "snowflake"
+      );
+    homeDirectory = mkDefault "/home/${username}";
 
     stateVersion = "23.05";
   };
