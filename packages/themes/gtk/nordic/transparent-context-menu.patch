@@ -1,0 +1,52 @@
+diff --git a/Nordic-darker/gtk-3.0/gtk-dark.css b/Nordic-darker/gtk-3.0/gtk-dark.css
+index 425f9bf..df12a2f 100755
+--- a/Nordic-darker/gtk-3.0/gtk-dark.css
++++ b/Nordic-darker/gtk-3.0/gtk-dark.css
+@@ -2874,7 +2874,7 @@ menubar,
+ menu, .menu, .context-menu {
+   margin: 4px;
+   padding: 2px 0px;
+-  background: #2a2f3a;
++  background: rgba(42, 47, 58, 0.7);
+   border: 1px solid #1f232b;
+   border-radius: 5px;
+   font: initial; }
+diff --git a/Nordic-darker/gtk-3.0/gtk.css b/Nordic-darker/gtk-3.0/gtk.css
+index 0eaaf88..a62b41b 100755
+--- a/Nordic-darker/gtk-3.0/gtk.css
++++ b/Nordic-darker/gtk-3.0/gtk.css
+@@ -2874,7 +2874,7 @@ menubar,
+ menu, .menu, .context-menu {
+   margin: 4px;
+   padding: 2px 0px;
+-  background: #2a2f3a;
++  background: rgba(42, 47, 58, 0.7);
+   border: 1px solid #1f232b;
+   border-radius: 5px;
+   font: initial; }
+diff --git a/Nordic-darker/gtk-4.0/gtk-dark.css b/Nordic-darker/gtk-4.0/gtk-dark.css
+index 9a45727..89be91b 100755
+--- a/Nordic-darker/gtk-4.0/gtk-dark.css
++++ b/Nordic-darker/gtk-4.0/gtk-dark.css
+@@ -2847,7 +2847,7 @@ menubar,
+ menu, .menu, .context-menu {
+   margin: 4px;
+   padding: 2px 0px;
+-  background: #2a2f3a;
++  background: rgba(42, 47, 58, 0.7);
+   border: none;
+   border-radius: 5px;
+   font: initial; }
+diff --git a/Nordic-darker/gtk-4.0/gtk.css b/Nordic-darker/gtk-4.0/gtk.css
+index 3255387..f8ded04 100755
+--- a/Nordic-darker/gtk-4.0/gtk.css
++++ b/Nordic-darker/gtk-4.0/gtk.css
+@@ -2847,7 +2847,7 @@ menubar,
+ menu, .menu, .context-menu {
+   margin: 4px;
+   padding: 2px 0px;
+-  background: #2a2f3a;
++  background: rgba(42, 47, 58, 0.7);
+   border: none;
+   border-radius: 5px;
+   font: initial; }

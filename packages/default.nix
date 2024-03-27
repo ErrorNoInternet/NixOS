@@ -79,6 +79,10 @@
           path = ./wezterm;
         }
         {
+          name = "gtkTheme-nordic";
+          path = ./themes/gtk/nordic;
+        }
+        {
           name = "fcitx5Theme-nord";
           path = ./themes/fcitx5/nord.nix;
         }
