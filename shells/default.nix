@@ -23,6 +23,7 @@
         parted
         self'.packages.neovim
         self'.packages.nix
+        smartmontools
         statix
         tmux
       ];
