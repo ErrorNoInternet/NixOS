@@ -42,7 +42,7 @@
           "$mod, Q, killactive"
           "$mod, T, togglegroup"
           "$mod, V, togglefloating"
-          "$mod, W, togglesplit"
+          "$mod, Z, togglesplit"
 
           "$mod, left, movefocus, l"
           "$mod, right, movefocus, r"
