@@ -8,7 +8,7 @@
   self,
   ...
 }: let
-  inherit (lib) mkDefault mkForce;
+  inherit (lib) mkDefault mkForce attrsets;
 in {
   imports = [
     ./caches
@@ -73,8 +73,10 @@ in {
     memoryPercent = 200;
   };
 
-  networking.hosts =
-    lib.attrsets.mapAttrs (_: host: [host]) (import ./hostnames.nix);
+  networking.hosts = attrsets.listToAttrs (map (entry: {
+    name = entry.value;
+    value = [entry.name];
+  }) (attrsets.attrsToList (import ./hostnames.nix)));
 
   services = {
     getty = {
