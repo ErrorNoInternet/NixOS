@@ -74,9 +74,7 @@ in {
   };
 
   networking.hosts =
-    lib.attrsets.mapAttrs
-    (name: _: [name])
-    (import ./hostnames.nix);
+    lib.attrsets.mapAttrs (_: host: [host]) (import ./hostnames.nix);
 
   services = {
     getty = {
