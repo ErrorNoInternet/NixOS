@@ -49,7 +49,6 @@ in {
           api-endpoint = "https://${cfg.host}:${builtins.toString cfg.ports.secure}/";
 
           database.url = "sqlite://${cfg.storagePath}/server.db";
-          require-proof-of-possession = false;
           storage = {
             type = "local";
             path = "${cfg.storagePath}/storage";
