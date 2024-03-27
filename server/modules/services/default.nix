@@ -1,6 +1,6 @@
 {
   imports = [
-    ./attic.nix
+    ./atticd.nix
     ./minecraft.nix
     ./nfs.nix
     ./samba.nix

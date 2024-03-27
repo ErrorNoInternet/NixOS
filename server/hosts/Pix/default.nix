@@ -13,7 +13,7 @@
 
   server = {
     services = {
-      attic.enable = true;
+      atticd.enable = true;
       nfs.enable = true;
       samba.enable = true;
     };
