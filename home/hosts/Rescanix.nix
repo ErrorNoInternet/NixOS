@@ -82,7 +82,6 @@
     sdparm
     self'.packages.passgen
     self'.packages.savehw
-    self'.packages.scratchpad
     self'.packages.tbw
     smartmontools
     sqlite

@@ -76,7 +76,6 @@
     osu-lazer-bin
     prismlauncher
     qbittorrent
-    self'.packages.scratchpad
     self'.packages.tbw
     superTuxKart
     timg

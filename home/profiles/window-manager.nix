@@ -32,6 +32,11 @@ in {
       wl-clipboard
       wlr-randr
 
+      (writeScriptBin "scratchpad" ''
+        export PATH=${gawk}/bin:$PATH
+        ${self'.packages.scratchpad}/bin/scratchpad "$@"
+      '')
+
       (wf-recorder.overrideAttrs {
         src = fetchFromGitHub {
           owner = "ammen99";
