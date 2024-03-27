@@ -33,7 +33,7 @@
           "$mod SHIFT, RETURN, exec, [float; center] ${config.terminal.command}"
 
           "$mod SHIFT, A, exec, scratchpad -g"
-          "$mod SHIFT, W, movetoworkspace, special:overlay"
+          "$mod SHIFT, W, movetoworkspacesilent, special:overlay"
           "$mod, A, exec, scratchpad"
           "$mod, W, togglespecialworkspace, overlay"
 
