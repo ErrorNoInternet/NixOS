@@ -27,12 +27,15 @@
 
           "$mod, F1, exec, ${hyprgamemode}"
           "$mod, L, exec, swaylock --grace 0 --fade-in 1"
-          "$mod, A, exec, scratchpad"
-          "$mod SHIFT, A, exec, scratchpad -g"
           "$mod, O, exec, swaync-client -t"
           "$mod, RETURN, exec, ${config.terminal.command}"
           "$mod, code:51, exec, firefox"
           "$mod SHIFT, RETURN, exec, [float; center] ${config.terminal.command}"
+
+          "$mod SHIFT, A, exec, scratchpad -g"
+          "$mod SHIFT, W, movetoworkspace, special:overlay"
+          "$mod, A, exec, scratchpad"
+          "$mod, W, togglespecialworkspace, overlay"
 
           "$mod SHIFT, F, fullscreen"
           "$mod, F, fullscreen, 1"
