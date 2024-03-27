@@ -5,7 +5,6 @@
   ...
 }: {
   wayland.windowManager.hyprland = let
-    brightness = "${self'.packages.brightness}/bin/brightness";
     grimblast = "grimblast --freeze save area -";
     hyprgamemode = "${self'.packages.hyprgamemode}/bin/hyprgamemode";
     rofi = "rofi -modes drun,window,run -show drun";
@@ -90,8 +89,8 @@
         ",XF86AudioMute, exec, pavolume toggle"
         ",XF86AudioRaiseVolume, exec, pavolume up"
         ",XF86AudioLowerVolume, exec, pavolume down"
-        ",XF86MonBrightnessUp, exec, ${brightness} up"
-        ",XF86MonBrightnessDown, exec, ${brightness} down"
+        ",XF86MonBrightnessUp, exec, brightnessctl s 5%+"
+        ",XF86MonBrightnessDown, exec, brightnessctl s 5%-"
       ];
       bindl = [
         ",switch:on:Lid Switch, exec, swaylock --grace 0 --fade-in 1"

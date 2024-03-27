@@ -11,10 +11,6 @@
           path = ./attic;
         }
         {
-          name = "brightness";
-          path = ./brightness;
-        }
-        {
           name = "btrfs-map-physical";
           path = ./btrfs-map-physical;
         }
