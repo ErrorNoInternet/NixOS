@@ -30,6 +30,7 @@
     nfc = "nix flake check";
     nfl = "nix flake lock";
     nfm = "nix flake metadata";
+    nfmt = "nix fmt";
     nfs = "nix flake show";
     nfu = "nix flake update";
     nr = "nix run";
