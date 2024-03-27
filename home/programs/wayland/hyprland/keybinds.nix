@@ -91,7 +91,7 @@
         ",XF86AudioMute, exec, pavolume toggle"
         ",XF86AudioRaiseVolume, exec, pavolume up"
         ",XF86AudioLowerVolume, exec, pavolume down"
-        ",XF86MonBrightnessUp, exec, brightnessctl s 5%+"
+        ",XF86MonBrightnessUp, exec, brightnessctl s +5%"
         ",XF86MonBrightnessDown, exec, brightnessctl s 5%-"
       ];
       bindl = [
