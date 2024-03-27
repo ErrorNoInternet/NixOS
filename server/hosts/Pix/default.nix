@@ -7,8 +7,8 @@
   ];
 
   shared = {
-    flags.raspberryPi = true;
-    modules.btrfs.compression.enable = true;
+    flags.isRaspberryPi = true;
+    btrfs.compression.enable = true;
   };
 
   server = {
