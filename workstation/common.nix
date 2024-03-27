@@ -6,7 +6,7 @@
   inherit (lib) mkDefault mkOverride;
 in {
   imports = [
-    ../shared
+    ../shared/nixos.nix
     ./fonts.nix
     ./modules
     ./profiles

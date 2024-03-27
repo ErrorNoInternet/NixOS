@@ -5,7 +5,7 @@
   ...
 }: {
   imports = [
-    ../shared
+    ../shared/nixos.nix
     ./modules
     ./profiles
     ./programs
