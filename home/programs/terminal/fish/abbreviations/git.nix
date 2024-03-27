@@ -11,6 +11,7 @@
     gbD = "git branch -D";
     gbl = "git blame";
     gbr = "git branch -r";
+    gbt = "git branch -t";
     gc = "git commit -m";
     gC = "git commit -m";
     gca = "git commit --amend";
@@ -27,6 +28,7 @@
     gd = "git diff";
     gdc = "git diff --compact-summary";
     gds = "git diff --staged";
+    gf = "git fetch origin";
     gl = "git log";
     glf = "git log --follow";
     gm = "git merge";
