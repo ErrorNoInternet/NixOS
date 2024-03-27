@@ -35,7 +35,7 @@ in {
     };
   };
 
-  shared.modules.wireless.enable = true;
+  shared.wireless.enable = true;
   networking.firewall.enable = mkDefault false;
 
   services = {

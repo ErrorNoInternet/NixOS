@@ -4,10 +4,10 @@
   self,
   ...
 }: let
-  cfg = config.shared.modules.wireless;
+  cfg = config.shared.wireless;
   inherit (lib) mkEnableOption mkIf;
 in {
-  options.shared.modules.wireless.enable = mkEnableOption "";
+  options.shared.wireless.enable = mkEnableOption "";
 
   config = mkIf cfg.enable {
     age.secrets.wireless-networks.file = "${self}/secrets/wireless-networks.age";

@@ -3,10 +3,10 @@
   lib,
   ...
 }: let
-  cfg = config.shared.modules.emulation;
+  cfg = config.shared.emulation;
   inherit (lib) mkEnableOption mkIf optional;
 in {
-  options.shared.modules.emulation = {
+  options.shared.emulation = {
     enable = mkEnableOption "" // {default = true;};
 
     linux = {

@@ -1,7 +1,7 @@
 {
   services.logind.lidSwitch = "ignore";
 
-  shared.modules.wireless.enable = true;
+  shared.wireless.enable = true;
 
   server = {
     bootloader.enable = true;
