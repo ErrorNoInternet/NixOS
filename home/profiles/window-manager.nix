@@ -18,6 +18,7 @@ in {
       brightnessctl
       cliphist
       inputs'.hyprwm-contrib.packages.grimblast
+      inputs'.shadower.packages.shadower
       libnotify
       libsForQt5.qtimageformats
       pavucontrol

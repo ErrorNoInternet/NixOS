@@ -1,6 +1,5 @@
 {
   config,
-  inputs',
   self',
   ...
 }: {
@@ -9,7 +8,7 @@
     hyprgamemode = "${self'.packages.hyprgamemode}/bin/hyprgamemode";
     rofi = "rofi -modes drun,window,run -show drun";
     satty = "satty -f- --early-exit --copy-command wl-copy --init-tool rectangle";
-    shadower = "${inputs'.shadower.packages.shadower}/bin/shadower -r16";
+    shadower = "shadower -r16";
   in {
     settings = {
       bind =
