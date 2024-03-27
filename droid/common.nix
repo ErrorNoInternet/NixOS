@@ -38,6 +38,10 @@
     '';
   };
 
+  networking.extraHosts = lib.strings.concatStringsSep "\n" (lib.attrsets.mapAttrsToList (
+    name: host: "${host} ${name}"
+  ) (import ../shared/hostnames.nix));
+
   user.shell = "${pkgs.fish}/bin/fish";
   environment = {
     packages = with pkgs;

@@ -73,10 +73,10 @@ in {
     memoryPercent = 200;
   };
 
-  networking.hosts = {
-    "192.168.0.100" = ["Pix.local"];
-    "192.168.0.101" = ["NixBtw.local"];
-  };
+  networking.hosts =
+    lib.attrsets.mapAttrs
+    (name: _: [name])
+    (import ./hostnames.nix);
 
   services = {
     getty = {
