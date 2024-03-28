@@ -10,26 +10,16 @@ in {
     enable = mkEnableOption "";
 
     nick = mkOption {
-      default = "ErrorNoInternet";
       type = types.str;
+      default = "ErrorNoInternet";
     };
 
     realName = mkOption {
-      default = "Ryan";
       type = types.str;
+      default = "Ryan";
     };
 
     networks = mkOption {
-      default = [
-        {
-          name = "libera";
-          address = "irc.libera.chat";
-        }
-        {
-          name = "oftc";
-          address = "irc.oftc.net";
-        }
-      ];
       type = types.listOf (types.submodule {
         options = {
           nick = mkOption {
@@ -52,16 +42,21 @@ in {
           };
         };
       });
+      default = [
+        {
+          name = "libera";
+          address = "irc.libera.chat";
+        }
+        {
+          name = "oftc";
+          address = "irc.oftc.net";
+        }
+      ];
     };
   };
 
   config = mkIf cfg.enable {
-    programs.irssi = let
-      fallback = a: b:
-        if a != null
-        then a
-        else b;
-    in {
+    programs.irssi = {
       enable = true;
 
       extraConfig = ''
@@ -72,16 +67,20 @@ in {
         };
       '';
 
-      networks = builtins.listToAttrs (map (network: {
-          name = fallback network.name network.address;
-          value = {
-            nick = fallback network.nick cfg.nick;
-            server = {
-              inherit (network) address port;
+      networks = let
+        fallback = a: b:
+          if a != null
+          then a
+          else b;
+      in
+        builtins.listToAttrs (map (network: {
+            name = fallback network.name network.address;
+            value = {
+              nick = fallback network.nick cfg.nick;
+              server = {inherit (network) address port;};
             };
-          };
-        })
-        cfg.networks);
+          })
+          cfg.networks);
     };
 
     home.file.".irssi/default.theme".text = ''
