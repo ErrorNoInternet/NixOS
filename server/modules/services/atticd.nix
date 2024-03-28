@@ -38,12 +38,16 @@ in {
 
   config = mkIf cfg.enable {
     age.secrets.attic-server-token.file = "${self}/secrets/attic_server-token.age";
+
     networking.firewall.allowedTCPPorts = with cfg.ports; [insecure secure];
+
     systemd.services.atticd.serviceConfig.ReadWritePaths = [cfg.storagePath];
+
     services = {
       atticd = {
         enable = true;
         credentialsFile = config.age.secrets.attic-server-token.path;
+
         settings = {
           listen = "[::]:${builtins.toString cfg.ports.insecure}";
           api-endpoint = "https://${cfg.host}:${builtins.toString cfg.ports.secure}/";
@@ -72,13 +76,16 @@ in {
 
       nginx = {
         enable = true;
+
+        clientMaxBodySize = "10G";
         recommendedProxySettings = true;
         recommendedTlsSettings = true;
-        clientMaxBodySize = "10G";
+
         virtualHosts.${cfg.host} = {
           forceSSL = true;
           sslCertificate = "/etc/letsencrypt/live/${cfg.host}/fullchain.pem";
           sslCertificateKey = "/etc/letsencrypt/live/${cfg.host}/privkey.pem";
+
           listen = [
             {
               addr = "0.0.0.0";
@@ -86,6 +93,7 @@ in {
               ssl = true;
             }
           ];
+
           locations."/" = {
             proxyPass = "http://localhost:${builtins.toString cfg.ports.insecure}";
             extraConfig = ''
