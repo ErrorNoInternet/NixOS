@@ -30,6 +30,8 @@
 
     zpool.${config.host.name} = {
       type = "zpool";
+
+      options.ashift = 12;
       rootFsOptions = {
         acltype = "posix";
         compression = "zstd";
