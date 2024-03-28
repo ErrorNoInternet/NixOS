@@ -7,6 +7,7 @@
   in {
     "/insecure" = anywhere "NIXPKGS_ALLOW_INSECURE=1";
     "/unfree" = anywhere "NIXPKGS_ALLOW_UNFREE=1";
+    "/unsupported" = anywhere "NIXPKGS_ALLOW_UNSUPPORTED_SYSTEM=1";
 
     "/c" = anywhere "-c fish";
     "/es" = anywhere "--extra-substituters";
