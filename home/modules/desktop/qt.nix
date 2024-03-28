@@ -40,5 +40,6 @@ in {
       '';
       "Kvantum/${packageName}".source = "${package}/share/Kvantum/${packageName}";
     };
+    home.sessionVariables.QT_FONT_DPI = "84";
   };
 }
