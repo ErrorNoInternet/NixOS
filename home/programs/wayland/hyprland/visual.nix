@@ -66,8 +66,8 @@
 
     extraConfig = ''
       layerrule=animation fade,  hyprpicker
-      layerrule=animation slide, swaync-control-center
       layerrule=animation fade,  wleave
+      layerrule=animation slide, swaync-control-center
       layerrule=blur,            rofi
       layerrule=blur,            swaync-notification-window
       layerrule=blur,            waybar
