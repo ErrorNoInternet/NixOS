@@ -17,12 +17,13 @@
       }
     ];
   in
-    builtins.listToAttrs (map (module:
-      {
-        inherit (module) name;
-        value = import module.path {
-          inherit inputs lib self withSystem;
-        };
-      }
-      modules));
+    builtins.listToAttrs (map (
+        module: {
+          inherit (module) name;
+          value = import module.path {
+            inherit inputs lib self withSystem;
+          };
+        }
+      )
+      modules);
 }
