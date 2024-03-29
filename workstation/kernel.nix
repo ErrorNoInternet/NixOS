@@ -52,7 +52,7 @@ in {
         name = "Native CPU optimizations";
         patch = null;
         extraMakeFlags = let
-          architecture = config.host.architecture;
+          inherit (config.host) architecture;
         in
           ["-march=${architecture}"]
           ++ optional (!strings.hasPrefix "x86-64" architecture)
