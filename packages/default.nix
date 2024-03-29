@@ -114,7 +114,10 @@
     in
       builtins.listToAttrs (map (package: {
           inherit (package) name;
-          value = callPackage package.path {inherit inputs' inputs self system;};
+          value = callPackage package.path {
+            inherit inputs' inputs self system;
+            cpus = {x86_64-linux = "haswell";};
+          };
         })
         packages);
   };

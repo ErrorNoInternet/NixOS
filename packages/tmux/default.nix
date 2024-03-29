@@ -1,5 +1,5 @@
 {
-  cpus ? {x86_64-linux = "haswell";},
+  cpus,
   fetchFromGitHub,
   self,
   system,
