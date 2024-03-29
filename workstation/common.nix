@@ -3,36 +3,28 @@
   pkgs,
   ...
 }: let
-  inherit (lib) mkDefault mkOverride;
+  inherit (lib) mkDefault;
 in {
   imports = [
     ../shared/nixos.nix
     ./fonts.nix
+    ./kernel.nix
     ./modules
     ./profiles
     ./programs
   ];
 
-  boot = {
-    loader = {
-      grub = {
-        enable = mkDefault true;
-        efiSupport = true;
-        efiInstallAsRemovable = true;
-        device = "nodev";
-        splashImage = null;
+  boot.loader = {
+    grub = {
+      enable = mkDefault true;
+      efiSupport = true;
+      efiInstallAsRemovable = true;
+      device = "nodev";
+      splashImage = null;
 
-        configurationLimit = 100;
-      };
-      timeout = 3;
+      configurationLimit = 100;
     };
-
-    kernelPackages = mkOverride 1250 pkgs.linuxPackages_latest;
-    supportedFilesystems = ["ntfs"];
-
-    kernel.sysctl = {
-      "kernel.sysrq" = mkDefault 1;
-    };
+    timeout = 3;
   };
 
   shared.wireless.enable = true;
