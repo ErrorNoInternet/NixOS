@@ -16,6 +16,20 @@ in {
     inputs.agenix.nixosModules.default
   ];
 
+  nixpkgs.overlays = [
+    (_: prev: {
+      xz = prev.xz.overrideAttrs rec {
+        version = "5.4.6";
+        src = prev.pkgs.fetchurl {
+          url =
+            "https://github.com/tukaani-project/xz/releases/download/"
+            + "v${version}/xz-${version}.tar.bz2";
+          hash = "sha256-kThRsnTo4dMXgeyUnxwj6NvPDs9uc6JDbcIXad0+b0k=";
+        };
+      };
+    })
+  ];
+
   nix = {
     package = config.pkgsSelf.nix;
 
