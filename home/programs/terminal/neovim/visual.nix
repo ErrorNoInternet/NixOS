@@ -65,17 +65,6 @@
           };
         };
 
-        indent-blankline = {
-          enable = true;
-          extraOptions = {
-            indent.char = "";
-            scope = {
-              show_start = false;
-              show_end = false;
-            };
-          };
-        };
-
         nvim-colorizer = {
           enable = true;
           fileTypes = ["*"];
