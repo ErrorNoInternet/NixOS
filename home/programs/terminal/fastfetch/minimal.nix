@@ -1,5 +1,6 @@
 {pkgs, ...}:
 builtins.toJSON {
+  general.processingTimeout = 10000;
   logo = {
     source = "nixos_small";
     padding = {
