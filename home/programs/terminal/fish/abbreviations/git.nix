@@ -47,6 +47,7 @@
     grb = "git rebase -i";
     grba = "git rebase --abort";
     grbc = "git rebase --continue";
+    gre = "git reset";
     grh = "git reset HEAD";
     grhh = "git reset HEAD~";
     grm = "git remote";
