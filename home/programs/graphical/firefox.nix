@@ -29,6 +29,7 @@ in {
           behind-the-overlay-revival
           darkreader
           kristofferhagen-nord-theme
+          playback-speed
           privacy-badger
           return-youtube-dislikes
           ublock-origin
