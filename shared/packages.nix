@@ -1,7 +1,7 @@
 {
   inputs',
   pkgs,
-  self',
+  config,
   ...
 }:
 with pkgs; [
@@ -23,8 +23,8 @@ with pkgs; [
   procs
   pv
   ripgrep
-  self'.packages.hwatch
-  self'.packages.tmux
+  config.pkgsSelf.hwatch
+  config.pkgsSelf.tmux
   sysstat
   traceroute
   unzip

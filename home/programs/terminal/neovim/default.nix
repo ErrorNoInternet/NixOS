@@ -2,7 +2,6 @@
   config,
   inputs,
   lib,
-  self',
   ...
 }: let
   cfg = config.customPrograms.terminal.neovim;
@@ -31,7 +30,7 @@ in {
   config = mkIf cfg.enable {
     programs.nixvim = {
       enable = true;
-      package = self'.packages.neovim;
+      package = config.pkgsSelf.neovim;
       defaultEditor = true;
       enableMan = false;
     };

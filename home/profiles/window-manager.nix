@@ -3,7 +3,6 @@
   inputs',
   lib,
   pkgs,
-  self',
   ...
 }: let
   cfg = config.profiles.windowManager;
@@ -25,7 +24,7 @@ in {
       playerctl
       ripdrag
       satty
-      self'.packages.pavolume
+      config.pkgsSelf.pavolume
       slurp
       swayidle
       vimiv-qt
@@ -34,7 +33,7 @@ in {
 
       (writeScriptBin "scratchpad" ''
         export PATH=${gawk}/bin:$PATH
-        ${self'.packages.scratchpad}/bin/scratchpad "$@"
+        ${config.pkgsSelf.scratchpad}/bin/scratchpad "$@"
       '')
 
       (wf-recorder.overrideAttrs {

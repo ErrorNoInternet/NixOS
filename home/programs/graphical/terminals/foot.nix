@@ -1,13 +1,12 @@
 {
   config,
   lib,
-  self',
   ...
 }: {
   config = lib.mkIf config.profiles.desktop.enable {
     programs.foot = {
       enable = true;
-      package = self'.packages.foot;
+      package = config.pkgsSelf.foot;
 
       settings = with config.colors.scheme.palette; {
         main = {

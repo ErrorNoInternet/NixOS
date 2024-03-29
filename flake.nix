@@ -143,12 +143,15 @@
     };
   };
 
-  outputs = {flake-parts, ...} @ inputs:
+  outputs = {
+    flake-parts,
+    self,
+    ...
+  } @ inputs:
     flake-parts.lib.mkFlake {inherit inputs;} {
       imports = [
         ./droid
         ./library
-        ./packages
         ./server
         ./shells
         ./workstation
@@ -159,8 +162,17 @@
         "x86_64-linux"
       ];
 
-      perSystem = {pkgs, ...}: {
+      perSystem = {
+        inputs',
+        pkgs,
+        system,
+        ...
+      }: {
         formatter = pkgs.alejandra;
+
+        packages = import ./packages {
+          inherit inputs inputs' pkgs self system;
+        };
       };
     };
 }

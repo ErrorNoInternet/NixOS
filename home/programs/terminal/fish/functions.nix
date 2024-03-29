@@ -2,7 +2,6 @@
   config,
   pkgs,
   lib,
-  self',
   ...
 }: {
   programs.fish.interactiveShellInit =
@@ -81,7 +80,7 @@
 
 
       function btrfs-map-physical
-        sudo ${self'.packages.btrfs-map-physical}/bin/btrfs-map-physical $argv | column -ts\t
+        sudo ${config.pkgsSelf.btrfs-map-physical}/bin/btrfs-map-physical $argv | column -ts\t
       end
 
       function scc

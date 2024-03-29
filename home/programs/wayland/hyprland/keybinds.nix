@@ -1,11 +1,7 @@
-{
-  config,
-  self',
-  ...
-}: {
+{config, ...}: {
   wayland.windowManager.hyprland = let
     grimblast = "grimblast --freeze save area -";
-    hyprgamemode = "${self'.packages.hyprgamemode}/bin/hyprgamemode";
+    hyprgamemode = "${config.pkgsSelf.hyprgamemode}/bin/hyprgamemode";
     rofi = "rofi -modes drun,window,run -show drun";
     satty = "satty -f- --early-exit --copy-command wl-copy --init-tool rectangle";
     shadower = "shadower -r16";

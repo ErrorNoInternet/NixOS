@@ -17,7 +17,7 @@ in {
   ];
 
   nix = {
-    package = self'.packages.nix;
+    package = config.pkgsSelf.nix;
 
     registry = let
       mappedRegistry = lib.mapAttrs' (name: flake:
@@ -94,15 +94,17 @@ in {
       [
         bandwhich
         btop
+        config.pkgsSelf.btrfs-map-physical
+        config.pkgsSelf.btrfs-progs
         duf
         ethtool
         iotop-c
         neovim
-        self'.packages.btrfs-map-physical
-        self'.packages.btrfs-progs
         tcpdump
       ]
-      ++ (import ./packages.nix {inherit inputs' pkgs self';});
+      ++ (import ./packages.nix {
+        inherit config inputs' pkgs self';
+      });
 
     etc."nixos/current".source = lib.cleanSource ./..;
   };

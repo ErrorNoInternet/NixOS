@@ -1,4 +1,5 @@
 {
+  config,
   pkgs,
   lib,
   ...
@@ -8,14 +9,20 @@ in {
   boot = {
     kernelPatches = [
       {
-        name = "native CPU optimizations";
+        name = "Rust support";
         patch = null;
-        extraMakeFlags = ["-march=haswell -mtune=haswell"];
+        features.rust = true;
       }
       {
-        name = "zen kernel patches";
+        name = "Zen kernel configuration";
         patch = null;
         extraStructuredConfig = with lib.kernel; {
+          ZEN_INTERACTIVE = yes;
+
+          NET_SCH_DEFAULT = yes;
+          DEFAULT_FQ_CODEL = yes;
+          DEFAULT_NET_SCH = freeform "fq_codel";
+
           PREEMPT = mkOverride 60 yes;
           PREEMPT_VOLUNTARY = mkOverride 60 no;
 
@@ -35,7 +42,21 @@ in {
           RCU_BOOST_DELAY = freeform "500";
           RCU_NOCB_CPU = yes;
           RCU_LAZY = yes;
+
+          FUTEX = yes;
+          FUTEX_PI = yes;
+
+          HZ = freeform "1000";
+          HZ_1000 = yes;
         };
+      }
+      {
+        name = "Native CPU optimizations";
+        patch = null;
+        extraMakeFlags = [
+          "-march=${config.host.architecture}"
+          "-mtune=${config.host.architecture}"
+        ];
       }
     ];
 

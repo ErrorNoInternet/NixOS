@@ -2,7 +2,6 @@
   config,
   lib,
   pkgs,
-  self',
   ...
 }: let
   cfg = config.workstation.sddm;
@@ -13,7 +12,7 @@ in {
   config = mkIf cfg.enable {
     services.xserver.displayManager.sddm = {
       enable = true;
-      theme = "${self'.packages.sddmTheme-corners}";
+      theme = "${config.pkgsSelf.sddmTheme-corners}";
     };
 
     environment.systemPackages = with pkgs; [

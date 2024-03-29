@@ -2,7 +2,6 @@
   config,
   lib,
   pkgs,
-  self',
   ...
 }: let
   cfg = config.toolkits.gtk;
@@ -14,7 +13,7 @@ in {
     theme = mkOption {
       default = {
         name = "Nordic-darker";
-        package = self'.packages.gtkTheme-nordic;
+        package = config.pkgsSelf.gtkTheme-nordic;
       };
     };
 

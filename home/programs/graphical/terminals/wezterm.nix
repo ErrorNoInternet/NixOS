@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  self',
   ...
 }: let
   cfg = config.customPrograms.terminal.wezterm;
@@ -27,7 +26,7 @@ in {
   config = mkIf config.profiles.desktop.enable {
     programs.wezterm = {
       enable = true;
-      package = self'.packages.wezterm;
+      package = config.pkgsSelf.wezterm;
 
       extraConfig = ''
         local config = {}

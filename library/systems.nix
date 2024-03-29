@@ -15,11 +15,16 @@ in rec {
   }:
     withSystem system ({
       inputs',
+      pkgs,
       self',
       ...
-    }:
+    }: let
+      specialArgs = {
+        inherit inputs' inputs self' self system;
+      };
+    in
       inputs.nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs' inputs self' self;};
+        inherit specialArgs;
 
         modules = let
           isWorkstation = type == "workstation";
@@ -28,6 +33,7 @@ in rec {
             ../${type}/common.nix
             ../${type}/hosts/${name}
             ../${type}/hosts/${name}/hardware.nix
+            ../packages/pkgsSelf.nix
             {host = {inherit name system;};}
           ]
           ++ optionals disko [
@@ -37,7 +43,7 @@ in rec {
           ++ optionals homeManager [
             {
               home-manager = {
-                extraSpecialArgs = {inherit inputs' inputs self' self;};
+                extraSpecialArgs = specialArgs;
 
                 useGlobalPkgs = true;
                 useUserPackages = true;
@@ -50,6 +56,7 @@ in rec {
                   imports = [
                     ../home/common.nix
                     ../home/hosts/${name}.nix
+                    ../packages/pkgsSelf.nix
                   ];
 
                   flags = {inherit isWorkstation;};

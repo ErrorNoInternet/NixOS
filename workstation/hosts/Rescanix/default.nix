@@ -5,6 +5,8 @@
 }: {
   host.id = "3a1f6cc6";
 
+  time.hardwareClockInLocalTime = true;
+
   boot = {
     loader = {
       timeout = lib.mkForce 5;

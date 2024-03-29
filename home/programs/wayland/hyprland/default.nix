@@ -2,7 +2,6 @@
   config,
   lib,
   osConfig,
-  self',
   ...
 }: let
   cfg = config.desktops.hyprland;
@@ -23,7 +22,7 @@ in {
   config = mkIf cfg.enable {
     wayland.windowManager.hyprland = {
       enable = true;
-      package = self'.packages.hyprland;
+      package = config.pkgsSelf.hyprland;
     };
   };
 }

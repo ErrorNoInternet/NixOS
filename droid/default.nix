@@ -17,6 +17,7 @@
         extraSpecialArgs = {inherit inputs' inputs self' self;};
 
         modules = [
+          ../packages/pkgsSelf.nix
           ./common.nix
           ./hosts/${name}.nix
           {environment.sessionVariables.HOSTNAME = name;}
@@ -31,7 +32,8 @@
               sharedModules = [
                 ../home/common.nix
                 ../home/hosts/${name}.nix
-                {nix.package = self'.packages.nix;}
+                ../packages/pkgsSelf.nix
+                ({config, ...}: {nix.package = config.pkgsSelf.nix;})
               ];
             };
           }

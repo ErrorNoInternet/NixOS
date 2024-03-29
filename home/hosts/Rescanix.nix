@@ -1,7 +1,7 @@
 {
+  config,
   inputs',
   pkgs,
-  self',
   ...
 }: {
   profiles = {
@@ -35,6 +35,9 @@
     amdgpu_top
     brave
     compsize
+    config.pkgsSelf.passgen
+    config.pkgsSelf.savehw
+    config.pkgsSelf.tbw
     cpu-x
     ddrescue
     dmidecode
@@ -80,9 +83,6 @@
     qrencode
     radeontop
     sdparm
-    self'.packages.passgen
-    self'.packages.savehw
-    self'.packages.tbw
     smartmontools
     sqlite
     squashfsTools

@@ -9,9 +9,9 @@ rec {
 
   optimizeNative = {
     system,
-    cpus,
+    architectures,
   }: derivation:
     if (builtins.elem system ["x86_64-linux"])
-    then derivation.overrideAttrs (old: (mkFlags old "-march=${cpus.${system}} -mtune=${cpus.${system}}"))
+    then derivation.overrideAttrs (old: (mkFlags old "-march=${architectures.${system}} -mtune=${architectures.${system}}"))
     else derivation;
 }

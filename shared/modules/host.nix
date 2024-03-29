@@ -1,5 +1,10 @@
 {
   config,
+  inputs',
+  inputs,
+  pkgs,
+  self,
+  system,
   lib,
   ...
 }: let
@@ -7,10 +12,6 @@
   inherit (lib) mkOption mkIf types;
 in {
   options.host = {
-    system = mkOption {
-      type = types.str;
-    };
-
     name = mkOption {
       type = types.str;
     };
@@ -18,6 +19,15 @@ in {
     id = mkOption {
       type = with types; nullOr str;
       default = null;
+    };
+
+    system = mkOption {
+      type = types.str;
+    };
+
+    architecture = mkOption {
+      type = types.str;
+      default = "x86-64-v3";
     };
   };
 

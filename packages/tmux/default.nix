@@ -1,12 +1,12 @@
 {
-  cpus,
+  architectures,
   fetchFromGitHub,
   self,
   system,
   tmux,
   ...
 }:
-self.lib.derivations.optimizeNative {inherit cpus system;}
+self.lib.derivations.optimizeNative {inherit architectures system;}
 (self.lib.derivations.optimizeLto (tmux.overrideAttrs {
   src = fetchFromGitHub {
     owner = "tmux";

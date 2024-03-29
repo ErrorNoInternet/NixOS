@@ -2,7 +2,6 @@
   config,
   inputs,
   lib,
-  self',
   ...
 }: let
   cfg = config.customPrograms.graphical.kitty;
@@ -27,7 +26,7 @@ in {
   config = mkIf cfg.enable {
     programs.kitty = {
       enable = true;
-      package = self'.packages.kitty;
+      package = config.pkgsSelf.kitty;
       shellIntegration.mode = "no-cursor";
 
       font = {

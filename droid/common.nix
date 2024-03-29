@@ -1,4 +1,5 @@
 {
+  config,
   inputs',
   inputs,
   lib,
@@ -20,7 +21,7 @@
 
   environment.motd = "";
   nix = {
-    package = self'.packages.nix;
+    package = config.pkgsSelf.nix;
 
     nixPath = ["nixpkgs=${inputs.nixpkgs}"];
     registry = let
@@ -69,7 +70,9 @@
         xz
         zstd
       ]
-      ++ (import ../shared/packages.nix {inherit inputs' pkgs self';});
+      ++ (import ../shared/packages.nix {
+        inherit config inputs' pkgs self';
+      });
 
     etc.current.source = lib.cleanSource ./..;
   };

@@ -2,7 +2,6 @@
   config,
   lib,
   pkgs,
-  self',
   ...
 }: let
   cfg = config.customPrograms.graphical.fcitx5;
@@ -18,7 +17,7 @@ in {
       };
 
       package = mkOption {
-        default = self'.packages.fcitx5Theme-nord;
+        default = config.pkgsSelf.fcitx5Theme-nord;
         type = types.package;
       };
     };
