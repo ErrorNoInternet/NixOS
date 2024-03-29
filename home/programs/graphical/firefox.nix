@@ -11,10 +11,7 @@ in {
   imports = [inputs.nur.nixosModules.nur];
 
   options.home.programs.graphical.firefox.enable =
-    mkEnableOption ""
-    // {
-      default = config.profiles.desktop.enable;
-    };
+    mkEnableOption "" // {default = config.profiles.desktop.enable;};
 
   config = mkIf cfg.enable {
     home.sessionVariables.BROWSER = "firefox";
@@ -40,8 +37,10 @@ in {
           user-agent-string-switcher
           vimium
         ];
+
         search = {
           default = "Google";
+
           engines = {
             "Nix Packages" = {
               urls = [
