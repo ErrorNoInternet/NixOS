@@ -7,5 +7,6 @@
 }: {
   flake.lib = {
     systems = import ./systems.nix {inherit inputs lib self withSystem;};
+    derivations = import ./derivations.nix;
   };
 }
