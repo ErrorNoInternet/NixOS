@@ -67,6 +67,7 @@
   home.packages = with pkgs; [
     compsize
     ffmpeg_6-full
+    firefox
     gimp
     hyprpicker
     imhex
@@ -75,7 +76,6 @@
     osu-lazer-bin
     prismlauncher
     qbittorrent
-    self'.packages.firefox
     self'.packages.tbw
     superTuxKart
     timg
