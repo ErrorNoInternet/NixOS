@@ -7,7 +7,7 @@ in rec {
   };
 
   mkFlagsMeson = old: flags: {
-    mesonFlags = (old.mesonFlags or []) ++ flags;
+    mesonBuildFlags = (old.mesonBuildFlags or []) ++ flags;
   };
 
   optimizeLto = derivation:
