@@ -168,11 +168,11 @@
         system,
         ...
       }: {
-        formatter = pkgs.alejandra;
-
         packages = import ./packages {
           inherit inputs inputs' pkgs self system;
         };
+
+        formatter = pkgs.alejandra;
       };
     };
 }

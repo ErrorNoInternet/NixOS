@@ -3,6 +3,7 @@
   inputs',
   lib,
   pkgs,
+  self',
   ...
 }: let
   cfg = config.profiles.development;
@@ -55,10 +56,11 @@ in {
 
         alejandra
         cachix
+        config.pkgsSelf.attic
         nix-output-monitor
         nix-tree
         nvd
-        config.pkgsSelf.attic
+        self'.formatter
 
         gnumake
         go
