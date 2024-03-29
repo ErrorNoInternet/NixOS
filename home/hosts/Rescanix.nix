@@ -44,7 +44,6 @@
     efivar
     ffmpeg_6-full
     fio
-    firefox
     geekbench
     ghidra
     gimp
@@ -80,6 +79,7 @@
     qrencode
     radeontop
     sdparm
+    self'.packages.firefox
     self'.packages.passgen
     self'.packages.savehw
     self'.packages.tbw

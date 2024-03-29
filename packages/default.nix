@@ -23,6 +23,10 @@
           path = ./btrfs-progs;
         }
         {
+          name = "firefox";
+          path = ./firefox;
+        }
+        {
           name = "foot";
           path = ./foot;
         }

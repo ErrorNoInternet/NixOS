@@ -1,12 +1,12 @@
 {
+  cpus ? {x86_64-linux = "haswell";},
   fetchFromGitHub,
   self,
   system,
   tmux,
-  cpus ? {x86_64-linux = "haswell";},
   ...
 }:
-self.lib.derivations.optimizeNative {inherit system cpus;}
+self.lib.derivations.optimizeNative {inherit cpus system;}
 (self.lib.derivations.optimizeLto (tmux.overrideAttrs {
   src = fetchFromGitHub {
     owner = "tmux";
