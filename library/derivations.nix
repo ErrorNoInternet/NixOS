@@ -6,8 +6,15 @@ in rec {
     NIX_CXXFLAGS_COMPILE = "${(old.NIX_CXXFLAGS_COMPILE or "")} ${flags}";
   };
 
+  mkFlagsMeson = old: flags: {
+    mesonFlags = (old.mesonFlags or []) ++ flags;
+  };
+
   optimizeLto = derivation:
     derivation.overrideAttrs (old: (mkFlags old "-flto"));
+
+  optimizeLtoMeson = derivation:
+    derivation.overrideAttrs (old: (mkFlagsMeson old ["-Db_lto=true"]));
 
   optimizeArchitecture = {
     system,
