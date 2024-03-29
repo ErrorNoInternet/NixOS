@@ -174,7 +174,7 @@ in {
             NoF1.enabled = true;
             NoReplyMention = {
               enabled = true;
-              userList = "372809091208445953";
+              userList = "372809091208445953 419880181101232129";
               shouldPingListed = false;
               inverseShiftReply = false;
             };
