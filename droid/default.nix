@@ -12,28 +12,27 @@
       inputs',
       self',
       ...
-    }:
+    }: let
+      specialArgs = {inherit inputs' inputs self' self system;};
+    in
       inputs.nix-on-droid.lib.nixOnDroidConfiguration {
-        extraSpecialArgs = {inherit inputs' inputs self' self;};
+        extraSpecialArgs = specialArgs;
 
         modules = [
-          ../packages/pkgsSelf.nix
+          ../packages/module.nix
           ./common.nix
           ./hosts/${name}.nix
           {environment.sessionVariables.HOSTNAME = name;}
 
           {
             home-manager = {
-              extraSpecialArgs = {
-                inherit inputs' inputs self' self;
-                osConfig = {};
-              };
+              extraSpecialArgs = specialArgs // {osConfig = {};};
 
               sharedModules = [
+                ({config, ...}: {nix.package = config.pkgsSelf.nix;})
                 ../home/common.nix
                 ../home/hosts/${name}.nix
-                ../packages/pkgsSelf.nix
-                ({config, ...}: {nix.package = config.pkgsSelf.nix;})
+                ../packages/module.nix
               ];
             };
           }

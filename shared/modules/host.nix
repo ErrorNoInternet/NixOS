@@ -1,10 +1,5 @@
 {
   config,
-  inputs',
-  inputs,
-  pkgs,
-  self,
-  system,
   lib,
   ...
 }: let

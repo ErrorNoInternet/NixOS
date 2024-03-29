@@ -15,7 +15,6 @@ in rec {
   }:
     withSystem system ({
       inputs',
-      pkgs,
       self',
       ...
     }: let
@@ -33,7 +32,7 @@ in rec {
             ../${type}/common.nix
             ../${type}/hosts/${name}
             ../${type}/hosts/${name}/hardware.nix
-            ../packages/pkgsSelf.nix
+            ../packages/module.nix
             {host = {inherit name system;};}
           ]
           ++ optionals disko [
@@ -56,7 +55,7 @@ in rec {
                   imports = [
                     ../home/common.nix
                     ../home/hosts/${name}.nix
-                    ../packages/pkgsSelf.nix
+                    ../packages/module.nix
                   ];
 
                   flags = {inherit isWorkstation;};
