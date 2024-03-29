@@ -17,8 +17,6 @@ in {
         name = "Zen kernel configuration";
         patch = null;
         extraStructuredConfig = with lib.kernel; {
-          ZEN_INTERACTIVE = yes;
-
           NET_SCH_DEFAULT = yes;
           DEFAULT_FQ_CODEL = yes;
           DEFAULT_NET_SCH = freeform "fq_codel";
@@ -57,7 +55,7 @@ in {
           architecture = config.host.architecture;
         in
           ["-march=${architecture}"]
-          ++ lib.optional (!strings.hasPrefix "x86-64" architecture)
+          ++ optional (!strings.hasPrefix "x86-64" architecture)
           "-mtune=${architecture}";
       }
     ];
