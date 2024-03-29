@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  system,
   ...
 }: let
   cfg = config.host;
@@ -21,8 +22,11 @@ in {
     };
 
     architecture = mkOption {
-      type = types.str;
-      default = "x86-64-v3";
+      type = with types; nullOr str;
+      default =
+        if (system == "x86_64-linux")
+        then "x86-64-v3"
+        else null;
     };
   };
 
