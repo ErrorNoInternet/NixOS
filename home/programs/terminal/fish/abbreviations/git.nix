@@ -45,6 +45,7 @@
     gps = "git push -u origin";
     gr = "git restore";
     grb = "git rebase -i";
+    grba = "git rebase --abort";
     grbc = "git rebase --continue";
     grh = "git reset HEAD";
     grhh = "git reset HEAD~";
