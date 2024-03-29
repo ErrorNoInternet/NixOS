@@ -5,8 +5,8 @@
   system,
   ...
 }:
-self.optimizeNative {inherit cpus system;}
-(self.optimizeLto (inputs'.nix-super.packages.default.overrideAttrs {
+self.lib.derivations.optimizeNative {inherit cpus system;}
+(self.lib.derivations.optimizeLto (inputs'.nix-super.packages.default.overrideAttrs {
   doCheck = false;
   doInstallCheck = false;
 }))

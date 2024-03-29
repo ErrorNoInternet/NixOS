@@ -5,5 +5,5 @@
   system,
   ...
 }:
-self.optimizeNative {inherit cpus system;}
-(self.optimizeLto firefox)
+self.lib.derivations.optimizeNative {inherit cpus system;}
+(self.lib.derivations.optimizeLto firefox)
