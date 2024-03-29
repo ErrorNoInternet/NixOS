@@ -4,7 +4,7 @@
   lib,
   ...
 }: let
-  inherit (lib) mkDefault mkOverride;
+  inherit (lib) mkDefault mkOverride optional strings;
 in {
   boot = {
     kernelPatches = [
@@ -53,10 +53,12 @@ in {
       {
         name = "Native CPU optimizations";
         patch = null;
-        extraMakeFlags = [
-          "-march=${config.host.architecture}"
-          "-mtune=${config.host.architecture}"
-        ];
+        extraMakeFlags = let
+          architecture = config.host.architecture;
+        in
+          ["-march=${architecture}"]
+          ++ lib.optional (!strings.hasPrefix "x86-64" architecture)
+          "-mtune=${architecture}";
       }
     ];
 
