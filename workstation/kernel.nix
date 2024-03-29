@@ -6,7 +6,6 @@
   inherit (lib) mkDefault mkOverride;
 in {
   boot = {
-    kernelPackages = mkOverride 1250 pkgs.linuxPackages_latest;
     kernelPatches = [
       {
         name = "native CPU optimizations";
@@ -39,6 +38,8 @@ in {
         };
       }
     ];
+
+    kernelPackages = mkOverride 1250 pkgs.linuxPackages_latest;
 
     supportedFilesystems = ["ntfs"];
 
