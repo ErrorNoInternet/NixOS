@@ -9,7 +9,7 @@ in rec {
   optimizeLto = derivation:
     derivation.overrideAttrs (old: (mkFlags old "-flto"));
 
-  optimizeNative = {
+  optimizeArchitecture = {
     system,
     architectures,
   }: derivation:

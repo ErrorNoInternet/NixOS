@@ -5,7 +5,7 @@
   system,
   ...
 }:
-self.lib.derivations.optimizeNative {inherit architectures system;}
+self.lib.derivations.optimizeArchitecture {inherit architectures system;}
 (inputs'.hyprland.packages.default.overrideAttrs (old: {
   prePatch = ''
     git apply ${./remove-wallpapers.patch}

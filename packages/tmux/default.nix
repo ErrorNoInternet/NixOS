@@ -6,7 +6,7 @@
   tmux,
   ...
 }:
-self.lib.derivations.optimizeNative {inherit architectures system;}
+self.lib.derivations.optimizeArchitecture {inherit architectures system;}
 (self.lib.derivations.optimizeLto (tmux.overrideAttrs {
   src = fetchFromGitHub {
     owner = "tmux";
