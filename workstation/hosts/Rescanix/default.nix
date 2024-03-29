@@ -5,12 +5,13 @@
 }: {
   host.id = "3a1f6cc6";
 
+  time.hardwareClockInLocalTime = true;
+
   boot = {
     loader = {
       timeout = lib.mkForce 5;
       grub.memtest86.enable = true;
     };
-    kernelParams = ["boot.shell_on_fail"];
     supportedFilesystems = [
       "apfs"
       "exfat"
@@ -26,9 +27,9 @@
   };
 
   workstation = {
-    modules.zfs.enable = true;
+    sddm.enable = true;
 
-    profiles.vmGuest.enable = true;
+    profiles.qemuGuest.enable = true;
 
     desktops = {
       hyprland.enable = true;

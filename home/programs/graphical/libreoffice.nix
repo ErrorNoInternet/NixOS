@@ -4,11 +4,13 @@
   pkgs,
   ...
 }: let
+  cfg = config.customPrograms.graphical.libreoffice;
   inherit (lib) mkEnableOption mkIf;
 in {
-  options.home.programs.graphical.libreoffice.enable = mkEnableOption "";
+  options.customPrograms.graphical.libreoffice.enable =
+    mkEnableOption "";
 
-  config = mkIf config.home.programs.graphical.libreoffice.enable {
+  config = mkIf cfg.enable {
     home.packages = with pkgs; [
       libreoffice-qt
       hunspell

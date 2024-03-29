@@ -1,76 +1,34 @@
 {
-  inputs',
-  inputs,
   lib,
   pkgs,
-  self',
-  self,
   ...
-}: {
+}: let
+  inherit (lib) mkDefault;
+in {
   imports = [
-    ../shared
+    ../shared/nixos.nix
+    ./fonts.nix
+    ./kernel.nix
     ./modules
     ./profiles
     ./programs
-    inputs.agenix.nixosModules.default
-
-    inputs.home-manager.nixosModules.home-manager
-    {
-      home-manager = {
-        useGlobalPkgs = true;
-        useUserPackages = true;
-        extraSpecialArgs = {inherit inputs' inputs self' self;};
-
-        users.error = {...}: {
-          imports = [
-            ../home/common.nix
-            ../home/hosts/NixBtw.nix
-          ];
-        };
-      };
-    }
   ];
 
-  specialisation.outside = self.lib.systems.mkSpecialisation "outside" {
-    caches.errornobinaries = {
-      internal = false;
-      external = true;
+  boot.loader = {
+    grub = {
+      enable = mkDefault true;
+      efiSupport = true;
+      efiInstallAsRemovable = true;
+      device = "nodev";
+      splashImage = null;
+
+      configurationLimit = 100;
     };
+    timeout = 3;
   };
 
-  boot = {
-    loader = {
-      grub = {
-        enable = true;
-        efiSupport = true;
-        efiInstallAsRemovable = true;
-        device = "nodev";
-        splashImage = null;
-
-        configurationLimit = 100;
-      };
-      timeout = 3;
-    };
-
-    kernelPackages = lib.mkDefault pkgs.linuxPackages_latest;
-    supportedFilesystems = [
-      "ntfs"
-    ];
-
-    kernel.sysctl = {
-      "kernel.sysrq" = 1;
-    };
-
-    tmp = {
-      useTmpfs = true;
-      tmpfsSize = "100%";
-    };
-  };
-
-  networking = {
-    firewall.enable = false;
-    networkmanager.enable = true;
-  };
+  shared.wireless.enable = true;
+  networking.firewall.enable = mkDefault false;
 
   services = {
     pipewire = {
@@ -85,20 +43,16 @@
     xserver = {
       enable = true;
       excludePackages = [pkgs.xterm];
-      displayManager = {
-        lightdm.enable = false;
-        sddm = {
-          enable = true;
-          theme = "${self'.packages.sddm-theme-corners}";
-        };
-      };
+      displayManager.lightdm.enable = false;
     };
 
     dbus.implementation = "broker";
     gnome.gnome-keyring.enable = true;
 
-    logind.lidSwitch = "ignore";
+    logind.lidSwitch = mkDefault "ignore";
   };
+
+  security.pam.services.swaylock = {};
 
   xdg.portal = {
     enable = true;
@@ -106,7 +60,6 @@
       xdg-desktop-portal-gtk
     ];
   };
-  security.pam.services.swaylock = {};
 
   systemd.coredump.extraConfig = ''
     ProcessSizeMax=4G
@@ -125,60 +78,30 @@
     '';
 
     systemPackages = with pkgs; [
-      libsForQt5.qt5.qtgraphicaleffects
-
-      bcachefs-tools
       cryptsetup
+      glxinfo
       home-manager
+      intel-gpu-tools
+      mangohud
+      parted
       pulseaudio
-      self'.packages.btrfs-progs
-      self'.packages.nix
-      xdg-user-dirs
+      qalculate-gtk
     ];
   };
+
   programs = {
     dconf.enable = true;
     light.enable = true;
     neovim.defaultEditor = true;
   };
 
-  fonts = {
-    packages = with pkgs; [
-      (nerdfonts.override {fonts = ["JetBrainsMono"];})
-      noto-fonts
-      noto-fonts-cjk-sans
-      noto-fonts-cjk-serif
-      noto-fonts-emoji
-      source-han-sans
-      source-han-serif
-      twitter-color-emoji
-    ];
-    fontconfig = {
-      defaultFonts = {
-        serif = [
-          "JetBrainsMono Nerd Font"
-          "Noto Serif CJK SC"
-        ];
-        sansSerif = [
-          "JetBrainsMono Nerd Font"
-          "Noto Sans CJK SC"
-        ];
-        monospace = ["JetBrainsMono Nerd Font"];
-        emoji = ["Twitter Color Emoji"];
-      };
-    };
-  };
-
   users.users = {
     root.initialPassword = "snowflake";
     error = {
       isNormalUser = true;
-      extraGroups = ["wheel" "video" "networkmanager"];
+      extraGroups = ["wheel" "video"];
       initialPassword = "snowflake";
-      openssh.authorizedKeys.keys = let
-        keys = import ../shared/values/ssh-keys.nix;
-      in
-        with keys; [NixBtw ErrorNoPhone];
+      openssh.authorizedKeys.keys = with (import ../shared/values/ssh-keys.nix); [NixBtw ErrorNoPhone];
     };
   };
 }

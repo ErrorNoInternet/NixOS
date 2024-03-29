@@ -5,11 +5,12 @@
   self,
   ...
 }: let
+  cfg = config.customPrograms.graphical.nheko;
   inherit (lib) mkEnableOption mkIf;
 in {
-  options.home.programs.graphical.nheko.enable = mkEnableOption "";
+  options.customPrograms.graphical.nheko.enable = mkEnableOption "";
 
-  config = mkIf config.home.programs.graphical.nheko.enable {
+  config = mkIf cfg.enable {
     age.secrets.nheko_access-token.file = "${self}/secrets/nheko_access-token.age";
     home.activation."nheko_access-token" = lib.hm.dag.entryAfter ["writeBoundary"] ''
       secret=$(cat "${config.age.secrets.nheko_access-token.path}")
@@ -19,17 +20,17 @@ in {
     '';
 
     programs.nheko.enable = true;
-    home.file."${config.xdg.configHome}/nheko/nheko.conf" = {
+    xdg.configFile."nheko/nheko.conf" = {
       force = true;
       text = ''
+        [General]
+        disable_certificate_validation=false
+
         [auth]
         access_token=@nheko_access-token@
-        device_id=PYCFYGFZSG
+        device_id=MEPTIAZACH
         home_server=https://matrix.envs.net:443
         user_id=@@errornointernet:envs.net
-
-        [general]
-        disable_certificate_validation=false
 
         [settings]
         scale_factor=1.000000
@@ -40,16 +41,21 @@ in {
         automatically_share_keys_with_trusted_users=false
         avatar_circles=false
         bubbles_enabled=false
-        camera=BisonCam, NB Pro: BisonCam, NB
-        camera_frame_rate=30
+        camera="BisonCam, NB Pro: BisonCam, NB"
+        camera_frame_rate=30/1
         camera_resolution=640x480
-        decrypt_notificatons=false
+        collapsed_spaces=@Invalid()
+        currentProfile=
+        decrypt_notificatons=true
         decrypt_sidebar=true
         desktop_notifications=true
         expose_dbus_api=false
         fancy_effects=true
         font_size=10
         group_view=true
+        hidden_pins=@Invalid()
+        hidden_tags=@Invalid()
+        hidden_widgets=@Invalid()
         invert_enter_key=false
         markdown_enabled=true
         microphone=Built-in Audio Analog Stereo
@@ -64,6 +70,7 @@ in {
         privacy_screen=false
         privacy_screen_timeout=0
         read_receipts=true
+        recent_reactions=@Invalid()
         reduced_motion=false
         ringtone=Default
         screen_share_frame_rate=5
@@ -71,12 +78,12 @@ in {
         screen_share_pip=true
         screen_share_remote_video=false
         scrollbars_in_roomlist=false
-        sidebar\community_list_width=44
+        sidebar\community_list_width=48
         sidebar\room_list_width=260
         small_avatars_enabled=false
         sort_by_unread=true
         space_notifications=true
-        theme=dark
+        theme=system
         timeline\buttons=true
         timeline\enlarge_emoji_only_msg=false
         timeline\max_width=0

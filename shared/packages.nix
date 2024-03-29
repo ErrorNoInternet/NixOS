@@ -1,0 +1,34 @@
+{
+  inputs',
+  pkgs,
+  config,
+  ...
+}:
+with pkgs; [
+  _7zz
+  curl
+  dig
+  dua
+  dust
+  fd
+  file
+  findutils
+  git
+  htop
+  inputs'.agenix.packages.default
+  killall
+  lsof
+  nmap
+  openssl
+  procs
+  pv
+  ripgrep
+  config.pkgsSelf.hwatch
+  config.pkgsSelf.tmux
+  sysstat
+  traceroute
+  unzip
+  vim
+  wget
+  zip
+]

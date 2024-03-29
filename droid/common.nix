@@ -1,4 +1,8 @@
 {
+  config,
+  inputs',
+  inputs,
+  lib,
   pkgs,
   self',
   ...
@@ -9,44 +13,69 @@
     ./terminal.nix
   ];
 
-  environment.motd = "";
-  nix.extraOptions = ''
-    experimental-features = nix-command flakes
-    auto-optimise-store = true
-  '';
-
-  user.shell = "${pkgs.fish}/bin/fish";
-  environment.packages = with pkgs; [
-    curl
-    dig
-    file
-    gawk
-    glibc
-    gnugrep
-    gnupg
-    gnutar
-    gzip
-    iproute2
-    ncurses
-    neofetch
-    nmap
-    perl
-    procps
-    procs
-    ripgrep
-    self'.packages.hwatch
-    wget
-    which
-    xxd
-  ];
-
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
-    config.home = {
-      flags.nixOnDroid = true;
-      stateVersion = "23.05";
-    };
+    config.flags.isNixOnDroid = true;
   };
+
+  environment.motd = "";
+  nix = {
+    package = config.pkgsSelf.nix;
+
+    nixPath = ["nixpkgs=${inputs.nixpkgs}"];
+    registry = let
+      mappedRegistry = lib.mapAttrs' (name: flake:
+        lib.nameValuePair name {inherit flake;})
+      inputs;
+    in
+      mappedRegistry // {default = mappedRegistry.nixpkgs;};
+
+    extraOptions = ''
+      experimental-features = nix-command flakes
+      flake-registry =
+      log-lines = 500
+      show-trace = true
+    '';
+  };
+
+  networking.extraHosts = lib.strings.concatStringsSep "\n" (lib.attrsets.mapAttrsToList (
+    name: host: "${host} ${name}"
+  ) (import ../shared/hostnames.nix));
+
+  user.shell = "${pkgs.fish}/bin/fish";
+  environment = {
+    packages = with pkgs;
+      [
+        gawk
+        glibc
+        gnugrep
+        gnupg
+        gnused
+        gnutar
+        gzip
+        inetutils
+        iproute2
+        kbd
+        less
+        nano
+        ncurses
+        neofetch
+        openssh
+        perl
+        procps
+        rsync
+        util-linux
+        which
+        xz
+        zstd
+      ]
+      ++ (import ../shared/packages.nix {
+        inherit config inputs' pkgs self';
+      });
+
+    etc.current.source = lib.cleanSource ./..;
+  };
+
   system.stateVersion = "23.05";
 }

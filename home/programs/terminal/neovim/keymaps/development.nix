@@ -11,104 +11,104 @@
         mode = "n";
         options.silent = true;
         key = "<leader>ds";
-        action = ":lua require('dapui').setup()<CR>";
+        action = "<cmd>lua require('dapui').setup()<CR>";
       }
       {
         mode = "n";
         options.silent = true;
         key = "<leader>dc";
-        action = ":lua require('dapui').toggle()<CR>";
+        action = "<cmd>lua require('dapui').toggle()<CR>";
       }
       {
         mode = "n";
         options.silent = true;
         key = "<leader>dk";
-        action = ":lua require('dapui').eval()<CR>";
+        action = "<cmd>lua require('dapui').eval()<CR>";
       }
       {
         mode = "n";
         options.silent = true;
         key = "<leader>df";
-        action = ":lua require('dapui').float_element()<CR>";
+        action = "<cmd>lua require('dapui').float_element()<CR>";
       }
       {
         mode = "n";
         options.silent = true;
         key = "<leader>db";
-        action = ":DapToggleBreakpoint<CR>";
+        action = "<cmd>DapToggleBreakpoint<CR>";
       }
       {
         mode = "n";
         options.silent = true;
         key = "<leader>dt";
-        action = ":DapTerminate<CR>";
+        action = "<cmd>DapTerminate<CR>";
       }
       {
         mode = "n";
         options.silent = true;
         key = "<leader>dd";
-        action = ":DapContinue<CR>";
+        action = "<cmd>DapContinue<CR>";
       }
       {
         mode = "n";
         options.silent = true;
         key = "<leader>di";
-        action = ":DapStepInto<CR>";
+        action = "<cmd>DapStepInto<CR>";
       }
       {
         mode = "n";
         options.silent = true;
         key = "<leader>dO";
-        action = ":DapStepOut<CR>";
+        action = "<cmd>DapStepOut<CR>";
       }
       {
         mode = "n";
         options.silent = true;
         key = "<leader>do";
-        action = ":DapStepOver<CR>";
+        action = "<cmd>DapStepOver<CR>";
       }
 
       {
         mode = "n";
         options.silent = true;
         key = "<leader>ft";
-        action = ":TodoTelescope<CR>";
+        action = "<cmd>TodoTelescope<CR>";
       }
       {
         mode = "n";
         options.silent = true;
         key = "<leader>ff";
-        action = ":Telescope find_files<CR>";
+        action = "<cmd>Telescope find_files<CR>";
       }
       {
         mode = "n";
         options.silent = true;
         key = "<leader>fg";
-        action = ":Telescope live_grep<CR>";
+        action = "<cmd>Telescope live_grep<CR>";
       }
       {
         mode = "n";
         options.silent = true;
         key = "<leader>fz";
-        action = ":Telescope current_buffer_fuzzy_find<CR>";
+        action = "<cmd>Telescope current_buffer_fuzzy_find<CR>";
       }
       {
         mode = "n";
         options.silent = true;
         key = "<leader>fb";
-        action = ":Telescope buffers<CR>";
+        action = "<cmd>Telescope buffers<CR>";
       }
       {
         mode = "n";
         options.silent = true;
         key = "<leader>fc";
-        action = ":Telescope git_bcommits<CR>";
+        action = "<cmd>Telescope git_bcommits<CR>";
       }
       {
         mode = "n";
         options.silent = true;
         key = "<leader>fC";
-        action = ":Telescope git_commits<CR>";
+        action = "<cmd>Telescope git_commits<CR>";
       }
     ];
 
@@ -132,16 +132,6 @@
         event = ["FileType"];
         pattern = ["python"];
         command = "imap <buffer> <F8> <esc>:wa<CR>:term pypy3 %<CR>";
-      }
-      {
-        event = ["FileType"];
-        pattern = ["python"];
-        command = "map <buffer> <F2> :w<CR>:Neoformat python black<CR>:w<CR>";
-      }
-      {
-        event = ["FileType"];
-        pattern = ["python"];
-        command = "imap <buffer> <F2> <esc>:w<CR>:Neoformat python black<CR>:w<CR>";
       }
 
       {
@@ -207,16 +197,6 @@
         pattern = ["c"];
         command = "imap <buffer> <F11> <esc> :wa<CR>:term clang -g -lm % -o %:t:r<CR>";
       }
-      {
-        event = ["FileType"];
-        pattern = ["c"];
-        command = "map <buffer> <F2> :w<CR>:Neoformat clangformat<CR>:w<CR>";
-      }
-      {
-        event = ["FileType"];
-        pattern = ["c"];
-        command = "imap <buffer> <F2> <esc>:w<CR>:Neoformat clangformat<CR>:w<CR>";
-      }
 
       {
         event = ["FileType"];
@@ -247,16 +227,6 @@
         event = ["FileType"];
         pattern = ["cpp"];
         command = "imap <buffer> <F11> <esc> :wa<CR>:term clang++ -g % -o %:t:r<CR>";
-      }
-      {
-        event = ["FileType"];
-        pattern = ["cpp"];
-        command = "map <buffer> <F2> :w<CR>:Neoformat clangformat<CR>:w<CR>";
-      }
-      {
-        event = ["FileType"];
-        pattern = ["cpp"];
-        command = "imap <buffer> <F2> <esc>:w<CR>:Neoformat clangformat<CR>:w<CR>";
       }
 
       {
@@ -290,16 +260,6 @@
         event = ["FileType"];
         pattern = ["go"];
         command = "imap <buffer> <F10> <esc> :wa<CR>:term go run .<CR>";
-      }
-      {
-        event = ["FileType"];
-        pattern = ["go"];
-        command = "map <buffer> <F2> :w<CR>:GoFmt<CR>:w<CR>";
-      }
-      {
-        event = ["FileType"];
-        pattern = ["go"];
-        command = "imap <buffer> <F2> <esc>:w<CR>:GoFmt<CR>:w<CR>";
       }
 
       {
@@ -342,16 +302,6 @@
         pattern = ["rust"];
         command = "imap <buffer> <F11> <esc> :wa<CR>:term cd %:p:h:h && cargo build<CR>";
       }
-      {
-        event = ["FileType"];
-        pattern = ["rust"];
-        command = "map <buffer> <F2> :w<CR>:RustFmt<CR>:w<CR>";
-      }
-      {
-        event = ["FileType"];
-        pattern = ["rust"];
-        command = "imap <buffer> <F2> <esc>:w<CR>:RustFmt<CR>:w<CR>";
-      }
 
       {
         event = ["FileType"];
@@ -392,28 +342,6 @@
         event = ["FileType"];
         pattern = ["zig"];
         command = "imap <buffer> <F11> <esc> :wa<CR>:term cd %:p:h:h && zig build<CR>";
-      }
-
-      {
-        event = ["FileType"];
-        pattern = ["toml"];
-        command = "map <buffer> <F2> :w<CR>:Neoformat taplo<CR>:w<CR>";
-      }
-      {
-        event = ["FileType"];
-        pattern = ["toml"];
-        command = "imap <buffer> <F2> <esc>:w<CR>:Neoformat taplo<CR>:w<CR>";
-      }
-
-      {
-        event = ["FileType"];
-        pattern = ["nix"];
-        command = "map <buffer> <F2> :w<CR>:Neoformat alejandra<CR>:w<CR>";
-      }
-      {
-        event = ["FileType"];
-        pattern = ["nix"];
-        command = "imap <buffer> <F2> <esc>:w<CR>:Neoformat alejandra<CR>:w<CR>";
       }
     ];
   };

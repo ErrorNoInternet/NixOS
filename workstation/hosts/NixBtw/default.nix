@@ -1,16 +1,15 @@
 {pkgs, ...}: {
-  imports = [
-    ./nas-mounts.nix
-    ./snapper.nix
-  ];
-  host.id = "102f58f5";
-
-  specialisation.outside.configuration = {
-    absentFileSystems = ["/mnt/pi-drive1" "/mnt/pi-drive3"];
+  host = {
+    architecture = "haswell";
+    id = "102f58f5";
   };
 
-  services.udev.extraRules = ''
-    SUBSYSTEMS=="usb|hidraw", ATTRS{idVendor}=="1770", ATTRS{idProduct}=="ff00", TAG+="uaccess", TAG+="MSI_3Zone_Laptop"
+  imports = [
+    ./nas-mounts.nix
+  ];
+
+  boot.extraModprobeConfig = ''
+    options snd_hda_intel power_save=0
   '';
 
   systemd.services.lock_intel_gpu_frequency = {
@@ -19,9 +18,15 @@
     wantedBy = ["multi-user.target"];
   };
 
+  services = {
+    udev.extraRules = ''
+      SUBSYSTEMS=="usb|hidraw", ATTRS{idVendor}=="1770", ATTRS{idProduct}=="ff00", TAG+="uaccess", TAG+="MSI_3Zone_Laptop"
+    '';
+
+    zfs.autoSnapshot.enable = true;
+  };
+
   workstation.desktops.hyprland.enable = true;
 
   nix.gc.automatic = false;
-
-  boot.kernelPackages = pkgs.linuxPackages_6_6;
 }

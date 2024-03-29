@@ -2,21 +2,21 @@
   wayland.windowManager.hyprland.settings = {
     monitor =
       map (
-        defined: let
+        monitor: let
           resolution =
-            if defined.width == 0 || defined.height == 0
+            if monitor.width == 0 || monitor.height == 0
             then "preferred"
-            else "${builtins.toString defined.width}${builtins.toString defined.height}@${
+            else "${builtins.toString monitor.width}x${builtins.toString monitor.height}@${
               builtins.toString (
-                if defined.refreshRate == 0
+                if monitor.refreshRate == 0
                 then 60
-                else defined.refreshRate
+                else monitor.refreshRate
               )
             }";
-          position = "${builtins.toString defined.x}x${builtins.toString defined.y}";
-        in "${defined.name},${
-          if defined.enabled
-          then "${resolution},${position},${builtins.toString defined.scale}"
+          position = "${builtins.toString monitor.x}x${builtins.toString monitor.y}";
+        in "${monitor.name},${
+          if monitor.enabled
+          then "${resolution},${position},${builtins.toString monitor.scale}"
           else "disable"
         }"
       )
@@ -26,18 +26,9 @@
       disable_hyprland_logo = true;
       disable_splash_rendering = true;
       key_press_enables_dpms = true;
-
-      # TODO: enable when https://github.com/hyprwm/Hyprland/issues/4670 is fixed
-      mouse_move_enables_dpms = false;
+      mouse_move_enables_dpms = true;
     };
 
-    dwindle = {
-      pseudotile = true;
-      preserve_split = true;
-    };
-
-    master = {
-      new_is_master = true;
-    };
+    dwindle.preserve_split = true;
   };
 }

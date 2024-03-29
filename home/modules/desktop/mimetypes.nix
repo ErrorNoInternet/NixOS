@@ -3,7 +3,8 @@
   lib,
   ...
 }: let
-  inherit (lib) mkEnableOption mkOption mkIf types;
+  cfg = config.mimeapps;
+  inherit (lib) mkEnableOption mkOption types attrsets;
 in {
   options.mimeapps = {
     image = {
@@ -16,17 +17,16 @@ in {
     };
   };
 
-  config = mkIf config.mimeapps.image.enable {
-    xdg.mimeApps = {
-      enable = true;
-      defaultApplications = with config.mimeapps; {
-        "image/gif" = [image.opener];
-        "image/jpeg" = [image.opener];
-        "image/png" = [image.opener];
-        "image/svg+xml" = [image.opener];
-        "image/tiff" = [image.opener];
-        "image/webp" = [image.opener];
-      };
+  config.xdg.mimeApps = with cfg; {
+    enable = true;
+
+    defaultApplications = attrsets.optionalAttrs cfg.image.enable {
+      "image/gif" = [image.opener];
+      "image/jpeg" = [image.opener];
+      "image/png" = [image.opener];
+      "image/svg+xml" = [image.opener];
+      "image/tiff" = [image.opener];
+      "image/webp" = [image.opener];
     };
   };
 }

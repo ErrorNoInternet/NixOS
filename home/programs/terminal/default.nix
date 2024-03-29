@@ -4,12 +4,15 @@
     ./btop.nix
     ./cava.nix
     ./comma.nix
-    ./fastfetch.nix
+    ./dircolors.nix
+    ./fastfetch
     ./fish
     ./fzf.nix
     ./git.nix
     ./gpg.nix
+    ./iamb.nix
     ./irssi.nix
+    ./nb.nix
     ./neovim
     ./ssh.nix
     ./tmux.nix

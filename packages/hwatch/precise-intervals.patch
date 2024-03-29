@@ -1,0 +1,55 @@
+diff --git a/man/man.md b/man/man.md
+index 74f83d1..decea7f 100644
+--- a/man/man.md
++++ b/man/man.md
+@@ -132,11 +132,11 @@ F3
+ 
+ +
+ 
+-:   Increase interval by .5 seconds.
++:   Increase interval by .1 seconds.
+ 
+ -
+ 
+-:   Decrease interval by .5 seconds (As long as it's positive).
++:   Decrease interval by .1 seconds (As long as it's positive).
+ 
+ Tab
+ 
+diff --git a/src/app.rs b/src/app.rs
+index 7cb66b9..d11b0e3 100644
+--- a/src/app.rs
++++ b/src/app.rs
+@@ -499,14 +499,14 @@ impl<'a> App<'a> {
+     ///
+     fn increase_interval(&mut self) {
+         let cur_interval = *self.interval.read().unwrap();
+-        self.set_interval(cur_interval + 0.5);
++        self.set_interval(cur_interval + 0.1);
+     }
+ 
+     ///
+     fn decrease_interval(&mut self) {
+         let cur_interval = *self.interval.read().unwrap();
+-        if cur_interval > 0.5 {
+-            self.set_interval(cur_interval - 0.5);
++        if cur_interval >= 0.1 {
++            self.set_interval(cur_interval - 0.1);
+         }
+     }
+ 
+diff --git a/src/help.rs b/src/help.rs
+index f762c7e..ae3828c 100644
+--- a/src/help.rs
++++ b/src/help.rs
+@@ -90,8 +90,8 @@ fn gen_help_text<'a>() -> Vec<Line<'a>> {
+         Line::from(" - [F2] key  ... change output mode as stderr."),
+         Line::from(" - [F3] key  ... change output mode as output(stdout/stderr set.)"),
+         // change interval
+-        Line::from(" - [+] key ... Increase interval by .5 seconds."),
+-        Line::from(" - [-] key ... Decrease interval by .5 seconds."),
++        Line::from(" - [+] key ... Increase interval by .1 seconds."),
++        Line::from(" - [-] key ... Decrease interval by .1 seconds."),
+         // change use area
+         Line::from(" - [Tab] key ... toggle current area at history or watch."),
+         // filter text input

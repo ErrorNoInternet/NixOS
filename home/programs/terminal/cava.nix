@@ -3,15 +3,12 @@
   lib,
   ...
 }: let
-  inherit
-    (lib)
-    mkEnableOption
-    mkIf
-    ;
+  cfg = config.customPrograms.terminal.cava;
+  inherit (lib) mkEnableOption mkIf;
 in {
-  options.home.programs.terminal.cava.enable = mkEnableOption "";
+  options.customPrograms.terminal.cava.enable = mkEnableOption "";
 
-  config = mkIf config.home.programs.terminal.cava.enable {
+  config = mkIf cfg.enable {
     programs.cava = {
       enable = true;
 

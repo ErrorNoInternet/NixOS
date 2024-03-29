@@ -1,28 +1,48 @@
 {
   config,
-  inputs',
   lib,
   ...
 }: let
-  inherit (lib) mkEnableOption mkIf;
+  cfg = config.nvidia.desktopEntries;
+  inherit (lib) mkEnableOption mkOption mkIf types;
 in {
-  options.nvidia.desktopEntries.enable = mkEnableOption "";
+  options.nvidia.desktopEntries = {
+    enable = mkEnableOption "";
 
-  config = mkIf config.nvidia.desktopEntries.enable {
-    xdg.desktopEntries = {
-      nvidia-supertuxkart = {
-        name = "SuperTuxKart (nvidia-offload)";
-        icon = "supertuxkart";
-        categories = ["Game"];
-        exec = "nvidia-offload supertuxkart";
-      };
-
-      nvidia-osu-lazer = {
-        name = "osu! (nvidia-offload)";
-        icon = "${inputs'.nix-gaming.packages.osu-lazer-bin}/osu.png";
-        categories = ["Game"];
-        exec = "nvidia-offload osu-lazer";
-      };
+    entries = mkOption {
+      type = with types;
+        listOf (submodule {
+          options = {
+            name = mkOption {type = str;};
+            icon = mkOption {type = str;};
+            command = mkOption {type = str;};
+          };
+        });
+      default = [
+        {
+          name = "SuperTuxKart";
+          icon = "supertuxkart";
+          command = "supertuxkart";
+        }
+        {
+          name = "osu!";
+          icon = "osu!";
+          command = "osu!";
+        }
+      ];
     };
+  };
+
+  config = mkIf cfg.enable {
+    xdg.desktopEntries = builtins.listToAttrs (map (entry: {
+        name = "nvidia-${entry.name}";
+        value = {
+          name = "${entry.name} (nvidia-offload)";
+          inherit (entry) icon;
+          exec = "nvidia-offload ${entry.command}";
+          categories = ["Game"];
+        };
+      })
+      cfg.entries);
   };
 }

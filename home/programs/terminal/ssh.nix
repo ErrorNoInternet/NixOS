@@ -3,21 +3,18 @@
   lib,
   ...
 }: let
-  cfg = config.home.programs.terminal.ssh;
+  cfg = config.customPrograms.terminal.ssh;
   inherit (lib) mkEnableOption mkIf;
 in {
-  options.home.programs.terminal.ssh.enable =
-    mkEnableOption ""
-    // {
-      default = true;
-    };
+  options.customPrograms.terminal.ssh.enable =
+    mkEnableOption "" // {default = true;};
 
   config = mkIf cfg.enable {
     programs.ssh = {
       enable = true;
       addKeysToAgent =
-        if config.home.flags.nixOnDroid
-        then "1h"
+        if config.flags.isNixOnDroid
+        then "6h"
         else "1d";
     };
     services.ssh-agent.enable = true;

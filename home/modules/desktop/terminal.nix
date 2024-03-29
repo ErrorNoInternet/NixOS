@@ -8,15 +8,15 @@
 in {
   options.terminal = {
     name = mkOption {
-      default = "wezterm";
       type = types.str;
+      default = "kitty";
     };
 
     command = mkOption {
-      default = "${cfg.name} start --class ${cfg.name} --always-new-process";
       type = types.str;
+      default = cfg.name;
     };
   };
 
-  config.home.sessionVariables.TERMINAL = "${config.terminal.name}";
+  config.home.sessionVariables.TERMINAL = cfg.name;
 }

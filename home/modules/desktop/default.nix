@@ -2,6 +2,7 @@
   inherit (lib) mkEnableOption mkOption types;
 in {
   imports = [
+    ./browser.nix
     ./cursor.nix
     ./font.nix
     ./gtk.nix
@@ -57,11 +58,7 @@ in {
             type = with types; nullOr int;
           };
 
-          enabled =
-            mkEnableOption ""
-            // {
-              default = true;
-            };
+          enabled = mkEnableOption "" // {default = true;};
         };
       });
     };

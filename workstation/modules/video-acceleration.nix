@@ -4,23 +4,24 @@
   pkgs,
   ...
 }: let
+  cfg = config.workstation.videoAcceleration;
   inherit (lib) mkEnableOption mkIf;
 in {
-  options.workstation.modules.videoAcceleration.enable =
-    mkEnableOption ""
-    // {
-      default = true;
-    };
+  options.workstation.videoAcceleration.enable =
+    mkEnableOption "" // {default = true;};
 
-  config = mkIf config.workstation.modules.videoAcceleration.enable {
+  config = mkIf cfg.enable {
     hardware.opengl = {
       enable = true;
       extraPackages = with pkgs; [
-        intel-media-driver
+        intel-vaapi-driver
+        libvdpau-va-gl
         vaapiIntel
         vaapiVdpau
-        libvdpau-va-gl
       ];
+    };
+    environment.sessionVariables = {
+      LIBVA_DRIVER_NAME = "i965";
     };
   };
 }

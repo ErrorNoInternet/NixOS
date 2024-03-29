@@ -3,27 +3,18 @@
   lib,
   ...
 }: let
-  inherit (lib) mkEnableOption mkIf;
+  cfg = config.shared.emulation;
+  inherit (lib) mkEnableOption mkIf optional;
 in {
-  options.shared.modules.emulation = {
-    enable =
-      mkEnableOption ""
-      // {
-        default = true;
-      };
+  options.shared.emulation = {
+    enable = mkEnableOption "" // {default = true;};
 
     linux = {
-      aarch64 =
-        mkEnableOption ""
-        // {
-          default = true;
-        };
+      aarch64 = mkEnableOption "" // {default = config.host.system != "aarch64-linux";};
     };
   };
 
-  config = mkIf config.shared.modules.emulation.enable {
-    boot.binfmt.emulatedSystems = with config.shared.modules.emulation; [
-      (mkIf linux.aarch64 "aarch64-linux")
-    ];
+  config = mkIf cfg.enable {
+    boot.binfmt.emulatedSystems = with cfg; (optional linux.aarch64 "aarch64-linux");
   };
 }

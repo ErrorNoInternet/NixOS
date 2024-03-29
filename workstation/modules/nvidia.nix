@@ -1,17 +1,17 @@
-({
+{
   config,
   lib,
   ...
 }: let
+  cfg = config.workstation.nvidia;
   inherit (lib) mkEnableOption mkIf;
 in {
-  options.workstation.modules.nvidia.enable =
-    mkEnableOption ""
-    // {
-      default = true;
-    };
+  options.workstation.nvidia = {
+    enable = mkEnableOption "" // {default = true;};
+    enableOptimus = mkEnableOption "" // {default = true;};
+  };
 
-  config = mkIf (config.specialisation != {} && config.workstation.modules.nvidia.enable) {
+  config = mkIf cfg.enable {
     nixpkgs.config = {
       allowUnfree = true;
       cudaSupport = true;
@@ -20,18 +20,12 @@ in {
     caches.cuda.enable = true;
 
     services.xserver.videoDrivers = ["nvidia"];
-    hardware = {
-      opengl = {
-        enable = true;
-        driSupport = true;
-        driSupport32Bit = true;
-      };
 
+    hardware = {
       nvidia = {
-        package = config.boot.kernelPackages.nvidiaPackages.production;
         modesetting.enable = true;
 
-        prime = {
+        prime = mkIf cfg.enableOptimus {
           offload = {
             enable = true;
             enableOffloadCmd = true;
@@ -41,6 +35,12 @@ in {
           nvidiaBusId = "PCI:1:0:0";
         };
       };
+
+      opengl = {
+        enable = true;
+        driSupport = true;
+        driSupport32Bit = true;
+      };
     };
   };
-})
+}

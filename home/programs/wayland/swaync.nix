@@ -8,8 +8,8 @@
   config = lib.mkIf config.profiles.windowManager.enable {
     home.packages = [pkgs.swaynotificationcenter];
 
-    home.file = {
-      "${config.xdg.configHome}/swaync/config.json".text = builtins.toJSON {
+    xdg.configFile = {
+      "swaync/config.json".text = builtins.toJSON {
         timeout = 10;
         timeout-critical = 0;
         timeout-low = 5;
@@ -53,7 +53,7 @@
         };
       };
 
-      "${config.xdg.configHome}/swaync/style.css".text = with config.colors.scheme.palette; ''
+      "swaync/style.css".text = with config.colors.scheme.palette; ''
         * {
           background: transparent;
           border-radius: 12px;
@@ -69,7 +69,8 @@
         }
 
         .notification-row {
-          margin: 10px;
+          margin-right: -4px;
+          margin-top: 2px;
           outline: none;
           padding: 0px;
         }
@@ -86,7 +87,7 @@
           background: rgba(${
           inputs.nix-colors.lib.conversions.hexToRGBString "," base01
         },${builtins.toString config.opacity.notification});
-          border: 1px solid #${base0C};
+          border: 1px solid #${base0F};
           margin: 0px;
           padding: 10px;
         }
@@ -165,7 +166,7 @@
 
         .time {
           color: #${base06};
-          margin-right: 18px;
+          margin-right: 28px;
           text-shadow: none;
         }
 
@@ -177,7 +178,7 @@
 
         .control-center {
           background: #${base00};
-          border: 2px solid #${base0C};
+          border: 2px solid #${base0F};
           box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
         }
 
@@ -211,7 +212,7 @@
         }
 
         .widget-dnd>switch:checked {
-          background: #${base0C};
+          background: #${base0F};
         }
 
         .widget-dnd>switch slider {
@@ -234,7 +235,7 @@
           background: #${base02};
           color: #${base06};
           margin: 10px;
-          padding: 10px 10px 0px 10px;
+          padding: 15px 10px 0px 10px;
         }
       '';
     };

@@ -1,36 +1,59 @@
 {
   config,
   lib,
-  pkgs,
   ...
-}: {
-  programs.fish.shellAliases = {
-    cm = "${pkgs.cmatrix}/bin/cmatrix -C blue";
-    drg = "${lib.getExe pkgs.ripdrag} -xa";
-    grep = "grep --color";
-    ip = "ip --color";
-    l = "ls -l";
-    la = "ls -la";
-    ll = "ls -l";
-    ls = "${lib.getExe pkgs.eza} --git --icons";
-    lsimg = "${lib.getExe pkgs.timg} -ps --grid=6 --upscale --title --center --frames=1";
-    py = "python3";
-    q = "exit";
-    qq = "exit";
-    scc = "${pkgs.scc}/bin/scc --no-cocomo";
-    timg = "${lib.getExe pkgs.timg} -ps";
+}: let
+  inherit (lib) attrsets strings;
+in {
+  programs.fish.shellAliases =
+    {
+      H = "exec Hyprland";
+      q =
+        (strings.optionalString config.flags.isNixOnDroid
+          "if [ \"$SSH_AGENT_LAUNCHED\" = 1 ]; killall ssh-agent; end;")
+        + "exit";
 
-    f = "fastfetch";
-    mf = "fastfetch -c ${config.xdg.configHome}/fastfetch/minimal.jsonc";
-    mfd = "fastfetch -c ${config.xdg.configHome}/fastfetch/nix-on-droid_minimal.jsonc";
+      cm = "cmatrix -C blue";
+      drg = "ripdrag -xa";
+      grep = "grep --color";
+      ip = "ip --color";
+      lsimg = "timg --grid=6 --upscale --title --center --frames=1";
+      py = "python3";
+      timg = "timg -pk";
 
-    B = "${lib.getExe pkgs.nh} os boot . -v";
-    Ba = "B -a";
-    S = "${lib.getExe pkgs.nh} os switch . -v";
-    Sa = "S -a";
-    T = "${lib.getExe pkgs.nh} os test . -v";
-    Ta = "T -a";
+      "l@" = "ls -l@";
+      "lT@" = "ls -lT@";
+      l = "ls -l";
+      la = "ls -la";
+      laT = "ls -laT";
+      ll = "ls -l";
+      ls = "LS_COLORS= eza --git --icons";
+      lT = "ls -lT";
+      lTZ = "ls -lTZ";
+      lZ = "ls -lZ";
 
-    pwdc = "pwd | tr -d '\\n' | ${pkgs.wl-clipboard}/bin/wl-copy";
-  };
+      ff = "fastfetch";
+      f = "fastfetch -c ${config.xdg.configHome}/fastfetch/minimal.jsonc";
+      droidf = "fastfetch -c ${config.xdg.configHome}/fastfetch/minimal-droid.jsonc";
+
+      B = "nh os boot .";
+      Ba = "B -a";
+      DSa = "DS -a";
+      S = "nh os switch .";
+      Sa = "S -a";
+      T = "nh os test .";
+      Ta = "T -a";
+
+      pp = "playerctl play-pause";
+      ppc = "playerctl play";
+      ppm = "playerctl metadata";
+      ppn = "playerctl next";
+      ppp = "playerctl previous";
+      pps = "playerctl pause";
+      pwdc = "pwd | tr -d '\\n' | wl-copy";
+    }
+    // (attrsets.optionalAttrs config.flags.isNixOnDroid {
+      ping = "/android/system/bin/linker64 /android/system/bin/ping";
+      ping6 = "/android/system/bin/linker64 /android/system/bin/ping6";
+    });
 }

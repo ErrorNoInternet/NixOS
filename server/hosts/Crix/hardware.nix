@@ -9,7 +9,14 @@
   ];
 
   boot = {
-    initrd.availableKernelModules = ["ehci_pci" "ahci" "usb_storage" "sd_mod" "sr_mod" "rtsx_pci_sdmmc"];
+    initrd.availableKernelModules = [
+      "ehci_pci"
+      "ahci"
+      "usb_storage"
+      "sd_mod"
+      "sr_mod"
+      "rtsx_pci_sdmmc"
+    ];
     initrd.kernelModules = [];
     kernelModules = ["kvm-intel"];
     extraModulePackages = [];
@@ -26,9 +33,6 @@
     };
   };
 
-  swapDevices = [];
-
-  networking.useDHCP = lib.mkDefault true;
-
-  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  hardware.cpu.intel.updateMicrocode =
+    lib.mkDefault config.hardware.enableRedistributableFirmware;
 }

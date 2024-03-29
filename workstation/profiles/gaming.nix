@@ -6,26 +6,14 @@
   cfg = config.profiles.gaming;
   inherit (lib) mkEnableOption mkIf;
 in {
-  options.profiles.gaming = {
-    enable =
-      mkEnableOption ""
-      // {
-        default = true;
-      };
-
-    enableSteam =
-      mkEnableOption ""
-      // {
-        default = true;
-      };
-  };
+  options.profiles.gaming.enable =
+    mkEnableOption "" // {default = true;};
 
   config = mkIf cfg.enable {
-    caches.nix-gaming.enable = true;
+    nixpkgs.config.allowUnfree = true;
 
-    nixpkgs.config.allowUnfree = mkIf cfg.enableSteam true;
     programs.steam = {
-      enable = cfg.enableSteam;
+      enable = true;
       remotePlay.openFirewall = true;
       dedicatedServer.openFirewall = true;
     };

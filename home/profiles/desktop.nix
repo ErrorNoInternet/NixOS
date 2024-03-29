@@ -3,6 +3,7 @@
   lib,
   ...
 }: let
+  cfg = config.profiles.desktop;
   inherit (lib) mkEnableOption mkIf;
 in {
   options.profiles.desktop = {
@@ -10,14 +11,16 @@ in {
     enableNvidia = mkEnableOption "";
   };
 
-  config = mkIf config.profiles.desktop.enable {
+  config = mkIf cfg.enable {
     cursor.enable = true;
+
     mimeapps.image.enable = true;
+
     toolkits = {
       gtk.enable = true;
       qt.enable = true;
     };
 
-    nvidia.desktopEntries.enable = config.profiles.desktop.enableNvidia;
+    nvidia.desktopEntries.enable = cfg.enableNvidia;
   };
 }

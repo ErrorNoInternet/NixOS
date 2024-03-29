@@ -1,29 +1,37 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }: let
-  cfg = config.home.programs.terminal.gpg;
-  inherit (lib) mkEnableOption mkIf;
+  cfg = config.customPrograms.terminal.gpg;
+  inherit (lib) mkEnableOption mkOption mkIf types;
 in {
-  options.home.programs.terminal.gpg.enable = mkEnableOption "";
+  options.customPrograms.terminal.gpg = {
+    enable = mkEnableOption "";
+
+    defaultKey = mkOption {
+      type = with types; nullOr str;
+      default = null;
+    };
+  };
 
   config = mkIf cfg.enable {
     programs.gpg = {
       enable = true;
       settings = {
-        keyserver = "hkps://keys.openpgp.org";
-        default-key = "2486BFB7B1E6A4A3";
+        keyserver = "hkps://keyserver.ubuntu.com";
+        default-key = mkIf (cfg.defaultKey != null) cfg.defaultKey;
       };
     };
     services.gpg-agent = {
       enable = true;
       enableFishIntegration = true;
 
-      verbose = true;
-      pinentryFlavor = "curses";
       defaultCacheTtl = 86400;
       maxCacheTtl = 86400;
+      pinentryPackage = pkgs.pinentry-curses;
+      verbose = true;
     };
     home.file.".gnupg/dirmngr.conf".text = ''
       standard-resolver

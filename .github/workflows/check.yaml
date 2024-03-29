@@ -2,14 +2,8 @@ name: Check
 on:
   push:
     paths:
-      - flake.nix
-      - droid/**
-      - home/**
-      - packages/**
-      - secrets/**
-      - server/**
-      - shared/**
-      - workstation/**
+      - '**.nix'
+      - flake.lock
   pull_request:
   workflow_dispatch:
 
@@ -19,17 +13,23 @@ jobs:
     runs-on: ubuntu-22.04
 
     steps:
-      - name: Clone repository
-        uses: actions/checkout@v4
+      - name: Install QEMU
+        run: |
+          sudo apt update -y
+          sudo apt install -y qemu-user-static
 
       - name: Install Nix
         uses: DeterminateSystems/nix-installer-action@v9
         with:
           extra-conf: |
             log-lines = 500
+            extra-platforms = aarch64-linux
 
       - name: Set up Magic Nix Cache
         uses: DeterminateSystems/magic-nix-cache-action@v3
+
+      - name: Clone repository
+        uses: actions/checkout@v4
 
       - name: Check Nix flake inputs
         uses: DeterminateSystems/flake-checker-action@v5
@@ -39,3 +39,10 @@ jobs:
 
       - name: Check Nix flake outputs
         run: nix flake check --all-systems --show-trace
+      
+      - name: Check ErrorNoPhone (nix-on-droid)
+        if: always()
+        run: nix build --dry-run --impure --show-trace
+               --option extra-substituters "https://nix-on-droid.cachix.org"
+               --option extra-trusted-public-keys "nix-on-droid.cachix.org-1:56snoMJTXmDRC1Ei24CmKoUqvHJ9XCp+nidK7qkMQrU="
+               .#nixOnDroidConfigurations.ErrorNoPhone.activationPackage

@@ -5,16 +5,24 @@
   ...
 }: let
   cfg = config.toolkits.qt;
-  inherit (lib) mkEnableOption mkOption mkIf;
+  inherit (lib) mkEnableOption mkOption mkIf types;
 in {
   options.toolkits.qt = {
     enable = mkEnableOption "";
 
     theme = mkOption {
+      type = with types;
+        submodule {
+          options = {
+            name = mkOption {type = str;};
+            packageName = mkOption {type = str;};
+            package = mkOption {type = package;};
+          };
+        };
       default = {
-        name = "GraphiteNordDark";
-        packageName = "GraphiteNord";
-        package = pkgs.graphite-kde-theme;
+        name = "Nordic-Darker";
+        packageName = "Nordic-Darker";
+        package = pkgs.nordic;
       };
     };
   };
@@ -25,12 +33,13 @@ in {
       platformTheme = "qtct";
       style.name = "kvantum";
     };
-    xdg.configFile = {
+    xdg.configFile = with cfg.theme; {
       "Kvantum/kvantum.kvconfig".text = ''
         [General]
-        theme=${cfg.theme.name}
+        theme=${name}
       '';
-      "Kvantum/${cfg.theme.packageName}".source = "${cfg.theme.package}/share/Kvantum/${cfg.theme.packageName}";
+      "Kvantum/${packageName}".source = "${package}/share/Kvantum/${packageName}";
     };
+    home.sessionVariables.QT_FONT_DPI = "84";
   };
 }

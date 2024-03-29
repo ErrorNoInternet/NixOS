@@ -1,19 +1,17 @@
 {
   config,
-  inputs',
   lib,
   ...
 }: let
+  cfg = config.workstation.desktops.hyprland;
   inherit (lib) mkEnableOption mkIf;
 in {
   options.workstation.desktops.hyprland.enable = mkEnableOption "";
 
-  config = mkIf config.workstation.desktops.hyprland.enable {
-    caches.hyprland.enable = true;
-
+  config = mkIf cfg.enable {
     programs.hyprland = {
       enable = true;
-      package = inputs'.hyprland.packages.hyprland;
+      package = config.pkgsSelf.hyprland;
     };
   };
 }

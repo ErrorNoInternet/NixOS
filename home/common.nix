@@ -2,9 +2,12 @@
   config,
   inputs',
   inputs,
+  lib,
   pkgs,
   ...
-}: {
+}: let
+  inherit (lib) mkDefault;
+in {
   imports = [
     ../shared/caches
     ./modules
@@ -17,27 +20,28 @@
     "/home/${config.home.username}/.ssh/id_ed25519_agenix"
   ];
 
-  specialisation.outside.configuration = {
-    caches.errornobinaries = {
-      internal = false;
-      external = true;
-    };
+  home = rec {
+    packages = with pkgs; [
+      cmatrix
+      croc
+      eza
+      inputs'.hsize.packages.default
+      jq
+      mergerfs
+      nh
+      progress
+      try
+    ];
+
+    username =
+      mkDefault
+      (
+        if config.flags.isWorkstation
+        then "error"
+        else "snowflake"
+      );
+    homeDirectory = mkDefault "/home/${username}";
+
+    stateVersion = "23.05";
   };
-
-  home.packages = with pkgs; [
-    cmatrix
-    croc
-    dua
-    eza
-    fd
-    inputs'.hsize.packages.hsize
-    jq
-    nh
-    progress
-  ];
-
-  programs.man.generateCaches = false;
-  manual.manpages.enable = false;
-
-  home.stateVersion = "23.05";
 }

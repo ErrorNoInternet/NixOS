@@ -14,8 +14,6 @@ in {
     mkEnableOption "" // {default = config.profiles.desktop.enable;};
 
   config = mkIf cfg.enable {
-    home.sessionVariables.BROWSER = "firefox";
-
     programs.firefox = {
       enable = true;
 
@@ -73,5 +71,7 @@ in {
         };
       };
     };
+
+    browser.name = "firefox";
   };
 }

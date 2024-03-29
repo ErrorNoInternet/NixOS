@@ -1,6 +1,6 @@
 {
+  config,
   pkgs,
-  self',
   ...
 }: {
   programs.nixvim = {
@@ -10,7 +10,7 @@
     extraPlugins = with pkgs.vimPlugins; [
       vim-wordmotion
 
-      self'.packages.vim-plugin-textobj-indent
+      config.pkgsSelf.vimPlugin-textobj-indent
       vim-sort-motion
       vim-textobj-user
     ];

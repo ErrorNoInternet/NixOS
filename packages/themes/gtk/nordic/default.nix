@@ -1,6 +1,6 @@
-{nordic}:
-nordic.overrideAttrs (oldAttrs: {
+{nordic, ...}:
+nordic.overrideAttrs (old: {
   patches =
-    (oldAttrs.patches or [])
+    (old.patches or [])
     ++ [./transparent-context-menu.patch];
 })

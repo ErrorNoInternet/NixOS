@@ -1,11 +1,9 @@
 {
+  config,
   inputs',
   pkgs,
-  self',
   ...
 }: {
-  caches.nix-gaming.enable = true;
-
   profiles = {
     windowManager.enable = true;
     desktop = {
@@ -16,99 +14,93 @@
 
   desktop.monitors = [{}];
 
-  home.programs = {
+  customPrograms = {
     graphical = {
       kdeconnect.enable = true;
       libreoffice.enable = true;
-      nheko.enable = true;
       obsStudio.enable = true;
       spotify.enable = true;
       thunderbird.enable = true;
       virtManager.enable = true;
     };
-
     terminal = {
       cava.enable = true;
-      git.enable = true;
+      git.user.name = "Rescanix";
       gpg.enable = true;
       irssi.enable = true;
     };
   };
 
-  home = {
-    username = "error";
-    homeDirectory = "/home/error";
-    packages = with pkgs; [
-      (hashcat.override {cudaSupport = true;})
-      _7zz
-      amdgpu_top
-      bandwhich
-      blender
-      brave
-      compsize
-      cpu-x
-      ddrescue
-      dmidecode
-      drm_info
-      duf
-      duperemove
-      efibootmgr
-      efivar
-      ffmpeg_6-full
-      fio
-      geekbench
-      gimp
-      gparted
-      gptfdisk
-      hyperfine
-      hyprpicker
-      imagemagick
-      inputs'.hyprwm-contrib.packages.scratchpad
-      inputs'.nix-gaming.packages.osu-lazer-bin
-      inputs'.nix-gaming.packages.wine-ge
-      inputs'.overmask.packages.overmask
-      intel-gpu-tools
-      iperf
-      kdiskmark
-      linuxPackages_latest.perf
-      lm_sensors
-      lshw
-      mangohud
-      mesa-demos
-      multipath-tools
-      nmap
-      nvme-cli
-      nvtop
-      ookla-speedtest
-      parted
-      patchelf
-      pavucontrol
-      pciutils
-      powertop
-      prismlauncher
-      procs
-      pv
-      qrencode
-      radeontop
-      sdparm
-      self'.packages.passgen
-      self'.packages.savehw
-      self'.packages.tbw
-      smartmontools
-      sqlite
-      sshfs
-      steam-run
-      superTuxKart
-      sysstat
-      timg
-      tree
-      unigine-heaven
-      usbutils
-      util-linux
-      virt-manager
-      vulkan-tools
-      wl-screenrec
-      zbar
-    ];
-  };
+  home.packages = with pkgs; [
+    amdgpu_top
+    brave
+    compsize
+    config.pkgsSelf.passgen
+    config.pkgsSelf.savehw
+    config.pkgsSelf.tbw
+    cpu-x
+    ddrescue
+    dmidecode
+    drm_info
+    duperemove
+    efibootmgr
+    efivar
+    ffmpeg_6-full
+    fio
+    geekbench
+    ghidra
+    gimp
+    gparted
+    gptfdisk
+    hashcat
+    hyperfine
+    hyprpicker
+    imagemagick
+    inputs'.overmask.packages.default
+    inputs'.paralload.packages.default
+    intel-gpu-tools
+    iperf
+    kdenlive
+    kdiskmark
+    libva-utils
+    linuxPackages_latest.perf
+    lm_sensors
+    lshw
+    mangohud
+    mesa-demos
+    multipath-tools
+    nvme-cli
+    nvtopPackages.full
+    ookla-speedtest
+    osu-lazer-bin
+    patchelf
+    pavucontrol
+    pciutils
+    powertop
+    prismlauncher
+    qbittorrent
+    qrencode
+    radeontop
+    sdparm
+    smartmontools
+    sqlite
+    squashfsTools
+    sshfs
+    steam-run
+    superTuxKart
+    timg
+    tree
+    unigine-heaven
+    usbutils
+    util-linux
+    virt-manager
+    vulkan-tools
+    wev
+    wine
+    winetricks
+    wireshark
+    wl-screenrec
+    yt-dlp
+    zbar
+  ];
 }

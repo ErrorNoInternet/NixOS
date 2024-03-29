@@ -5,19 +5,19 @@
   pkgs,
   ...
 }: let
-  cfg = config.home.programs.wayland.wleave;
+  cfg = config.customPrograms.wayland.wleave;
   inherit (lib) mkEnableOption mkOption mkIf types;
 in {
-  options.home.programs.wayland.wleave = {
-    enable = mkEnableOption "";
+  options.customPrograms.wayland.wleave = {
+    enable = mkEnableOption "" // {default = config.profiles.windowManager.enable;};
 
     height = mkOption {
-      default = 0.5;
       type = types.numbers.between 0 1;
+      default = 0.5;
     };
   };
 
-  config = mkIf (cfg.enable || config.profiles.windowManager.enable) {
+  config = mkIf cfg.enable {
     programs.wlogout = {
       enable = true;
       package = pkgs.wleave;
@@ -25,7 +25,7 @@ in {
       layout = with cfg; [
         {
           label = "suspend";
-          text = "";
+          text = "";
           action = "systemctl suspend";
           keybind = "s";
           inherit height;
@@ -33,14 +33,14 @@ in {
         {
           label = "reboot";
           text = "";
-          action = "systemctl reboot";
+          action = "reboot";
           keybind = "r";
           inherit height;
         }
         {
           label = "shutdown";
           text = "";
-          action = "systemctl poweroff";
+          action = "poweroff";
           keybind = "p";
           inherit height;
         }
@@ -53,8 +53,8 @@ in {
         }
         {
           label = "lock";
-          text = "";
-          action = "swaylock --grace 0 --fade-in 1";
+          text = "";
+          action = "sleep 0.5 && swaylock --grace 0 --fade-in 1";
           keybind = "l";
           inherit height;
         }

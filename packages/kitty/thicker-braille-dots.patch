@@ -1,0 +1,13 @@
+diff --git a/kitty/fonts/box_drawing.py b/kitty/fonts/box_drawing.py
+index 284b6642a..848c28cef 100644
+--- a/kitty/fonts/box_drawing.py
++++ b/kitty/fonts/box_drawing.py
+@@ -813,6 +813,8 @@ def braille_dot(buf: BufType, width: int, height: int, col: int, row: int) -> No
+             offset = y * width
+             for x in range(x_start, min(width, x_start + dot_width)):
+                 buf[offset + x] = 255
++                if (width, height) == (7, 16):
++                    buf[offset + x + 1] = 255
+ 
+ 
+ def braille(buf: BufType, width: int, height: int, which: int = 0) -> None:

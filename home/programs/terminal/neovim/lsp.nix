@@ -1,36 +1,7 @@
 {pkgs, ...}: {
   programs.nixvim = {
-    filetype.pattern.".*/hyprland%.conf" = "hyprlang";
-
     plugins = {
-      treesitter = {
-        enable = true;
-        nixvimInjections = true;
-
-        incrementalSelection.enable = true;
-      };
-
-      treesitter-context = {
-        enable = true;
-        minWindowHeight = 12;
-        maxLines = 3;
-      };
-
       trouble.enable = true;
-
-      nvim-cmp = {
-        enable = true;
-        sources = [
-          {name = "buffer";}
-          {name = "crates";}
-          {name = "luasnip";}
-          {name = "nvim_lsp";}
-          {name = "path";}
-        ];
-        snippet.expand = "luasnip";
-      };
-      cmp_luasnip.enable = true;
-      luasnip.enable = true;
 
       crates-nvim = {
         enable = true;
@@ -39,7 +10,7 @@
 
       zig = {
         enable = true;
-        formatOnSave = false;
+        settings.fmt_autosave = false;
       };
 
       lsp = {
@@ -73,12 +44,10 @@
 
             settings.checkOnSave = false;
           };
-          yamlls.enable = true;
+          taplo.enable = true;
           zls.enable = true;
         };
       };
-
-      lsp-format.enable = true;
 
       lspsaga = {
         enable = true;
@@ -88,31 +57,17 @@
         ui.codeAction = "";
       };
     };
+
     extraPlugins = with pkgs.vimPlugins; [
       vim-go
 
-      friendly-snippets
       nvim-lspconfig
     ];
+
     extraConfigLuaPre = ''
       vim.highlight.priorities.semantic_tokens = 99
     '';
-    extraConfigLuaPost = ''
-      require("luasnip.loaders.from_vscode").lazy_load()
 
-      cmp.setup.cmdline({ '/', '?' }, {
-        mapping = cmp.mapping.preset.cmdline(),
-        sources = {
-          { name = 'buffer' }
-        }
-      })
-      cmp.setup.cmdline(':', {
-        sources = {
-          { name = 'path' }
-        }
-      })
-      vim.keymap.set('c', '<tab>', '<C-z>', { silent = false })
-    '';
     globals = {
       go_fmt_autosave = 0;
       go_highlight_array_whitespace_error = 1;

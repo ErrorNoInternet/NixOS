@@ -3,37 +3,33 @@
   lib,
   ...
 }: let
+  cfg = config.customPrograms.terminal.irssi;
   inherit (lib) mkEnableOption mkOption mkIf types;
 in {
-  options.home.programs.terminal.irssi = {
+  options.customPrograms.terminal.irssi = {
     enable = mkEnableOption "";
 
-    nickname = mkOption {
-      default = "ErrorNoInternet";
+    nick = mkOption {
       type = types.str;
+      default = "ErrorNoInternet";
+    };
+
+    realName = mkOption {
+      type = types.str;
+      default = "Ryan";
     };
 
     networks = mkOption {
-      default = [
-        {
-          name = "libera";
-          address = "irc.libera.chat";
-        }
-        {
-          name = "oftc";
-          address = "irc.oftc.net";
-        }
-      ];
       type = types.listOf (types.submodule {
         options = {
-          nickname = mkOption {
-            default = "${config.home.programs.terminal.irssi.nickname}";
-            type = types.str;
+          nick = mkOption {
+            default = null;
+            type = with types; nullOr str;
           };
 
           name = mkOption {
-            default = "${config.address}";
-            type = types.str;
+            default = null;
+            type = with types; nullOr str;
           };
 
           address = mkOption {
@@ -46,24 +42,47 @@ in {
           };
         };
       });
+      default = [
+        {
+          name = "libera";
+          address = "irc.libera.chat";
+        }
+        {
+          name = "oftc";
+          address = "irc.oftc.net";
+        }
+      ];
     };
   };
 
-  config = mkIf config.home.programs.terminal.irssi.enable {
+  config = mkIf cfg.enable {
     programs.irssi = {
       enable = true;
-      networks = builtins.listToAttrs (map (network: {
-          name = "${network.name}";
-          value = {
-            nick = "${network.nickname}";
-            server = {
-              address = "${network.address}";
-              inherit (network) port;
-            };
+
+      extraConfig = ''
+        settings = {
+          core = {
+            real_name = "${cfg.realName}";
           };
-        })
-        config.home.programs.terminal.irssi.networks);
+        };
+      '';
+
+      networks = let
+        fallback = a: b:
+          if a != null
+          then a
+          else b;
+      in
+        builtins.listToAttrs (map (network: {
+            name = fallback network.name network.address;
+            value = {
+              nick = fallback network.nick cfg.nick;
+              server = {inherit (network) address port;};
+            };
+          })
+          cfg.networks);
     };
+
     home.file.".irssi/default.theme".text = ''
       abstracts = {
         sb_background = "%4%k";

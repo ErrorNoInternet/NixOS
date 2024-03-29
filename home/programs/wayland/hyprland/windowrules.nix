@@ -1,26 +1,32 @@
 {config, ...}: let
   dialogs = [
-    "class:(.blueman-manager-wrapped)"
-    "class:(xdg-desktop-portal-gtk)"
-    "title:(File Upload)"
-    "title:(Open)"
-    "title:(Save As)"
+    "class:blueman-manager"
+    "class:xdg-desktop-portal"
+    "title:File Upload"
+    "title:Open"
+    "title:Save As"
+  ];
+  floating = [
+    "class:branchdialog"
+    "class:confirm"
+    "class:dialog"
+    "class:error"
+    "class:mpv"
+    "class:notification"
+    "class:pavucontrol"
+    "class:vimiv"
   ];
 in {
   wayland.windowManager.hyprland.settings.windowrulev2 =
     [
-      "float,        class:(branchdialog)"
-      "float,        class:(confirm)"
-      "float,        class:(dialog)"
-      "float,        class:(error)"
-      "float,        class:(mpv)"
-      "float,        class:(notification)"
-      "float,        class:(pavucontrol)"
-      "float,        class:(vimiv)"
-      "size 50% 55%, class:(${config.terminal.name})"
+      "size 50% 55%, class:${config.terminal.name}"
     ]
-    ++ (map (dialog: "animation slide, ${dialog}") dialogs)
-    ++ (map (dialog: "center,          ${dialog}") dialogs)
-    ++ (map (dialog: "float,           ${dialog}") dialogs)
-    ++ (map (dialog: "size 60% 65%,    ${dialog}") dialogs);
+    ++ (map (float: "float, ${float}") floating)
+    ++ builtins.concatLists (map (dialog: [
+        "animation slide, ${dialog}"
+        "center,          ${dialog}"
+        "float,           ${dialog}"
+        "size 60% 65%,    ${dialog}"
+      ])
+      dialogs);
 }

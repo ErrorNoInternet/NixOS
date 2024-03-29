@@ -7,48 +7,51 @@
     xxd
   ];
 
-  fileSystems = {
-    "/mnt/drive1" = {
-      device = "/dev/disk/by-uuid/fc102db2-60b8-43e1-8b21-40a589edfdda";
-      fsType = "btrfs";
-      options = ["subvol=root" "x-systemd.automount" "noauto"];
-    };
-    "/mnt/drive3" = {
-      device = "/dev/disk/by-uuid/6a03c0f9-5c76-4a08-9091-aba7239a6429";
-      fsType = "btrfs";
-      options = ["subvol=root" "x-systemd.automount" "noauto"];
-    };
+  fileSystems."/mnt/drive3" = {
+    device = "/dev/disk/by-uuid/6a03c0f9-5c76-4a08-9091-aba7239a6429";
+    fsType = "btrfs";
+    options = ["subvol=root" "relatime" "x-systemd.automount" "noauto"];
   };
 
   services = {
-    snapper.configs = {
-      drive1 = {
-        SUBVOLUME = "/mnt/drive1";
-        TIMELINE_CREATE = true;
-        TIMELINE_CLEANUP = true;
+    btrfs.autoScrub = {
+      enable = true;
+      fileSystems = [
+        "/"
+        "/mnt/drive3"
+      ];
+    };
 
-        TIMELINE_LIMIT_HOURLY = 24;
-        TIMELINE_LIMIT_DAILY = 14;
-        TIMELINE_LIMIT_MONTHLY = 1;
-        TIMELINE_LIMIT_YEARLY = 0;
+    snapper.configs.drive3 = {
+      SUBVOLUME = "/mnt/drive3";
+      TIMELINE_CREATE = true;
+      TIMELINE_CLEANUP = true;
+
+      TIMELINE_LIMIT_HOURLY = 24;
+      TIMELINE_LIMIT_DAILY = 14;
+      TIMELINE_LIMIT_MONTHLY = 1;
+      TIMELINE_LIMIT_YEARLY = 0;
+    };
+
+    zfs = {
+      autoScrub = {
+        enable = true;
+        interval = "monthly";
+        pools = [
+          "drive1"
+        ];
       };
-      drive3 = {
-        SUBVOLUME = "/mnt/drive3";
-        TIMELINE_CREATE = true;
-        TIMELINE_CLEANUP = true;
 
-        TIMELINE_LIMIT_HOURLY = 24;
-        TIMELINE_LIMIT_DAILY = 14;
-        TIMELINE_LIMIT_MONTHLY = 1;
-        TIMELINE_LIMIT_YEARLY = 0;
+      autoSnapshot = {
+        enable = true;
+
+        frequent = 0;
+        hourly = 0;
       };
     };
 
     nfs.server.exports = ''
-      /mnt/drive1 localhost(rw,sync,no_subtree_check,no_root_squash)
-      /mnt/drive3 localhost(rw,sync,no_subtree_check,no_root_squash)
-      /mnt/drive1 192.168.0.101(rw,sync,no_subtree_check,no_root_squash)
-      /mnt/drive3 192.168.0.101(rw,sync,no_subtree_check,no_root_squash)
+      /mnt/drive3 192.168.0.101(rw,sync,no_root_squash)
     '';
 
     samba = {
@@ -57,8 +60,6 @@
         printers = {
           path = "/var/spool/samba";
           "create mode" = 0700;
-          "valid users" = "snowflake";
-          browseable = "yes";
           comment = "All Printers";
           printable = "yes";
           writeable = "no";
@@ -66,15 +67,11 @@
         drive1 = {
           path = "/mnt/drive1";
           "follow symlinks" = "yes";
-          "valid users" = "snowflake";
-          browseable = "yes";
           writeable = "yes";
         };
         drive3 = {
           path = "/mnt/drive3";
           "follow symlinks" = "yes";
-          "valid users" = "snowflake";
-          browseable = "yes";
           writeable = "yes";
         };
       };

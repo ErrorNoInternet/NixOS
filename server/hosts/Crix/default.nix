@@ -1,9 +1,8 @@
 {
   services.logind.lidSwitch = "ignore";
-  shared.modules = {
-    btrfs.compression.subvolumeLayout = false;
-    wireless.enable = true;
-  };
+
+  shared.wireless.enable = true;
+
   server = {
     bootloader.enable = true;
 

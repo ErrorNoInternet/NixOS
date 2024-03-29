@@ -4,11 +4,12 @@
   pkgs,
   ...
 }: let
+  cfg = config.server.services.samba;
   inherit (lib) mkEnableOption mkIf;
 in {
   options.server.services.samba.enable = mkEnableOption "";
 
-  config = mkIf config.server.services.samba.enable {
+  config = mkIf cfg.enable {
     networking.firewall.allowedTCPPorts = [
       # wsdd
       5357
@@ -27,14 +28,15 @@ in {
         extraConfig = ''
           log level = 1 winbind:5
 
-          create mask = 644
-          directory mask = 755
-          map to guest = bad user
-
           force group = users
           force user = snowflake
+          map to guest = bad user
           valid users = snowflake
           workgroup = WORKGROUP
+
+          browsable = yes
+          create mask = 644
+          directory mask = 755
 
           load printers = yes
           printing = cups

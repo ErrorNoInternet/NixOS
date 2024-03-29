@@ -2,34 +2,35 @@
   config,
   inputs,
   lib,
-  self',
   ...
 }: let
+  cfg = config.customPrograms.terminal.neovim;
   inherit (lib) mkEnableOption mkIf;
 in {
   imports = [
-    ./autocmd.nix
+    ./cmp.nix
+    ./dap.nix
     ./development.nix
     ./extras.nix
-    ./highlights.nix
+    ./filetypes.nix
+    ./formatting.nix
+    ./highlights
+    ./highlights
     ./keymaps
     ./lsp.nix
     ./options.nix
     ./shortcuts.nix
-    ./theme.nix
+    ./visual.nix
     inputs.nixvim.homeManagerModules.nixvim
   ];
 
-  options.home.programs.terminal.neovim.enable =
-    mkEnableOption ""
-    // {
-      default = config.home.programs.terminal.fish.enable;
-    };
+  options.customPrograms.terminal.neovim.enable =
+    mkEnableOption "" // {default = config.customPrograms.terminal.fish.enable;};
 
-  config = mkIf config.home.programs.terminal.neovim.enable {
+  config = mkIf cfg.enable {
     programs.nixvim = {
       enable = true;
-      package = self'.packages.neovim;
+      package = config.pkgsSelf.neovim;
       defaultEditor = true;
       enableMan = false;
     };

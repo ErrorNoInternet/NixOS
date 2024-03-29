@@ -1,23 +1,19 @@
 {
   config,
-  inputs,
   lib,
   pkgs,
-  self',
   ...
 }: {
   imports = [
-    ../shared
+    ../shared/nixos.nix
     ./modules
     ./profiles
     ./programs
-    inputs.agenix.nixosModules.default
   ];
 
-  boot = {
-    kernelParams = ["console=tty0"];
-    supportedFilesystems = ["ntfs"];
-  };
+  documentation.doc.enable = false;
+
+  boot.kernelParams = ["console=tty0"];
 
   networking = {
     firewall = {
@@ -29,7 +25,9 @@
   services.fail2ban = {
     enable = true;
     ignoreIP = ["192.168.0.101"];
+
     maxretry = 6;
+    bantime = "5m";
     bantime-increment = {
       enable = true;
       multipliers = "1 2 6 12 24 72 144 288 864 2016";
@@ -38,8 +36,6 @@
     jails = {
       DEFAULT.settings = {
         findtime = "15m";
-        # TODO: wait for upstream fix
-        bantime = lib.mkForce "5m";
       };
       sshd = lib.mkForce ''
         enabled = true
@@ -50,14 +46,7 @@
   };
 
   environment.systemPackages = with pkgs; [
-    btop
-    dua
-    duf
-    fd
-    procs
     pueue
-    self'.packages.btrfs-progs
-    self'.packages.nix
   ];
 
   systemd.services.pueued = {
@@ -76,10 +65,7 @@
       isNormalUser = true;
       extraGroups = ["wheel"];
       initialPassword = "snowflake";
-      openssh.authorizedKeys.keys = let
-        keys = import ../shared/values/ssh-keys.nix;
-      in
-        with keys; [NixBtw ErrorNoPhone];
+      openssh.authorizedKeys.keys = with (import ../shared/values/ssh-keys.nix); [NixBtw ErrorNoPhone];
     };
   };
 }

@@ -1,0 +1,13 @@
+diff --git a/scratchpad b/scratchpad
+index 4cf92b5..cc6d975 100755
+--- a/scratchpad
++++ b/scratchpad
+@@ -117,7 +117,7 @@ getBack() {
+       -e 's/]//g')
+ 
+   [ "${#_clients_on_spad[@]}" -eq 0 ] && {
+-    notify "No Clients" "There was no client on $default_scratchpad_name"
++    notify "No Clients" "There are no clients on <b>\`$default_scratchpad_name\`</b>"
+     exit 0
+   }
+   [ "${#_clients_on_spad[@]}" -eq 1 ] && {

@@ -21,6 +21,7 @@
       color14 = "#${base07}";
       color15 = "#${base06}";
     };
-    font = ../other/fonts/JetBrainsMonoNerdFont-Regular.ttf;
+
+    font = ../other/fonts/JetBrainsMonoNLNerdFont-Regular.ttf;
   };
 }

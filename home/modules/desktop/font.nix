@@ -1,6 +1,8 @@
-{lib, ...}: {
-  options.font.name = lib.mkOption {
-    default = "JetBrainsMono Nerd Font";
-    type = lib.types.str;
+{lib, ...}: let
+  inherit (lib) mkOption types;
+in {
+  options.font.name = mkOption {
+    default = "JetBrainsMonoNL Nerd Font";
+    type = types.str;
   };
 }

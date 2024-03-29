@@ -1,0 +1,81 @@
+diff --git a/render.c b/render.c
+index 4f0d2348..b334947a 100644
+--- a/render.c
++++ b/render.c
+@@ -522,46 +522,8 @@ render_cell(struct terminal *term, pixman_image_t *pix, pixman_region32_t *damag
+             uint32_t swap = _fg;
+             _fg = _bg;
+             _bg = swap;
+-        }
+-
+-        else if (cell->attrs.bg_src == COLOR_DEFAULT) {
+-            if (term->window->is_fullscreen) {
+-                /*
+-                 * Note: disable transparency when fullscreened.
+-                 *
+-                 * This is because the wayland protocol mandates no
+-                 * screen content is shown behind the fullscreened
+-                 * window.
+-                 *
+-                 * The _intent_ of the specification is that a black
+-                 * (or other static color) should be used as
+-                 * background.
+-                 *
+-                 * There's a bit of gray area however, and some
+-                 * compositors have chosen to interpret the
+-                 * specification in a way that allows wallpapers to be
+-                 * seen through a fullscreen window.
+-                 *
+-                 * Given that a) the intent of the specification, and
+-                 * b) we don't know what the compositor will do, we
+-                 * simply disable transparency while in fullscreen.
+-                 *
+-                 * To see why, consider what happens if we keep our
+-                 * transparency. For example, if the background color
+-                 * is white, and alpha is 0.5, then the window will be
+-                 * drawn in a shade of gray while fullscreened.
+-                 *
+-                 * See
+-                 * https://gitlab.freedesktop.org/wayland/wayland-protocols/-/issues/116
+-                 * for a discussion on whether transparent, fullscreen
+-                 * windows should be allowed in some way or not.
+-                 *
+-                 * NOTE: if changing this, also update render_margin()
+-                 */
+-                xassert(alpha == 0xffff);
+-            } else {
+-                alpha = term->colors.alpha;
+-            }
++        } else if (cell->attrs.bg_src == COLOR_DEFAULT) {
++            alpha = term->colors.alpha;
+         }
+     }
+ 
+@@ -900,15 +862,8 @@ render_margin(struct terminal *term, struct buffer *buf,
+     const int bmargin = term->height - term->margins.bottom;
+     const int line_count = end_line - start_line;
+ 
+-    const uint32_t _bg = !term->reverse ? term->colors.bg : term->colors.fg;
+-    uint16_t alpha = term->colors.alpha;
+-
+-    if (term->window->is_fullscreen) {
+-        /* Disable alpha in fullscreen - see render_cell() for details */
+-        alpha = 0xffff;
+-    }
+-
+-    pixman_color_t bg = color_hex_to_pixman_with_alpha(_bg, alpha);
++    uint32_t _bg = !term->reverse ? term->colors.bg : term->colors.fg;
++    pixman_color_t bg = color_hex_to_pixman_with_alpha(_bg, term->colors.alpha);
+ 
+     pixman_image_fill_rectangles(
+         PIXMAN_OP_SRC, buf->pix[0], &bg, 4,
+@@ -2817,8 +2772,7 @@ grid_render(struct terminal *term)
+     xassert(term->height > 0);
+ 
+     struct buffer_chain *chain = term->render.chains.grid;
+-    bool use_alpha = !term->window->is_fullscreen &&
+-                     term->colors.alpha != 0xffff;
++    bool use_alpha = term->colors.alpha != 0xffff;
+     struct buffer *buf = shm_get_buffer(
+         chain, term->width, term->height, use_alpha);
+ 
