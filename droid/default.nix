@@ -20,6 +20,7 @@
 
         modules = [
           ../packages/module.nix
+          ../shared/all.nix
           ./common.nix
           ./hosts/${name}.nix
           {environment.sessionVariables.HOSTNAME = name;}

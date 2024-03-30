@@ -76,6 +76,4 @@
 
     etc.current.source = lib.cleanSource ./..;
   };
-
-  system.stateVersion = "23.05";
 }

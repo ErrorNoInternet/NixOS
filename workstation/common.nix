@@ -6,7 +6,6 @@
   inherit (lib) mkDefault;
 in {
   imports = [
-    ../shared/nixos.nix
     ./fonts.nix
     ./kernel.nix
     ./modules

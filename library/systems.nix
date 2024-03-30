@@ -33,6 +33,8 @@ in rec {
             ../${type}/hosts/${name}
             ../${type}/hosts/${name}/hardware.nix
             ../packages/module.nix
+            ../shared/all.nix
+            ../shared/nixos.nix
             {host = {inherit name system;};}
           ]
           ++ optionals disko [

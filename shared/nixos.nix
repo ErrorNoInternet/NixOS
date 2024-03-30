@@ -109,9 +109,5 @@ in {
     etc."nixos/current".source = lib.cleanSource ./..;
   };
 
-  system = {
-    configurationRevision = self.rev or self.dirtyRev;
-
-    stateVersion = "23.05";
-  };
+  system.configurationRevision = self.rev or self.dirtyRev;
 }
