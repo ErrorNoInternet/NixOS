@@ -30,6 +30,7 @@ in {
         extensions = with config.nur.repos.rycee.firefox-addons; [
           behind-the-overlay-revival
           darkreader
+          kristofferhagen-nord-theme
           playback-speed
           privacy-badger
           return-youtube-dislikes
@@ -46,6 +47,7 @@ in {
           "beacon.enabled" = false;
           "browser.aboutConfig.showWarning" = false;
           "browser.discovery.enabled" = false;
+          "browser.display.use_system_colors" = true;
           "browser.fixup.alternate.enabled" = false;
           "browser.formfill.enable" = false;
           "browser.newtabpage.enabled" = false;
