@@ -3,10 +3,15 @@ rec {
     RUSTFLAGS = "${(old.RUSTFLAGS or "")} ${flags}";
   };
 
-  optimize = derivation: 
+  optimizeAll = host: derivation:
+    optimizeArchitecture host
+    (optimizeLto
+      (optimize derivation));
+
+  optimize = derivation:
     derivation.overrideAttrs (old: (mkFlags old "-Ccodegen-units=1"));
 
-  optimizeLto = derivation: 
+  optimizeLto = derivation:
     derivation.overrideAttrs (old: (mkFlags old "-Clto"));
 
   optimizeArchitecture = {

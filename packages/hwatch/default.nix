@@ -1,10 +1,17 @@
-{hwatch, ...}:
-hwatch.overrideAttrs (old: {
+{
+  architectures,
+  hwatch,
+  self,
+  system,
+  ...
+}:
+self.lib.derivations.rust.optimizeAll
+{inherit architectures system;}
+(hwatch.overrideAttrs (old: {
   patches =
     (old.patches or [])
     ++ [
-      ./optimize-build.patch
       ./precise-intervals.patch
       ./remove-help-banner.patch
     ];
-})
+}))
