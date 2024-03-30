@@ -73,6 +73,7 @@ in {
           "extensions.getAddons.showPane" = false;
           "extensions.htmlaboutaddons.recommendations.enabled" = false;
           "general.autoScroll" = true;
+          "identity.fxaccounts.account.device.name" = config.host.name;
           "keyword.enabled" = false;
           "media.eme.enabled" = true;
           "privacy.donottrackheader.enabled" = true;
