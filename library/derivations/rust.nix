@@ -12,7 +12,7 @@ rec {
     derivation.overrideAttrs (old: (mkFlags old "-Ccodegen-units=1"));
 
   optimizeLto = derivation:
-    derivation.overrideAttrs (old: (mkFlags old "-Clto"));
+    derivation.overrideAttrs {CARGO_PROFILE_RELEASE_LTO = "true";};
 
   optimizeArchitecture = {
     system,
