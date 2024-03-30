@@ -1,5 +1,6 @@
 {
   config,
+  osConfig,
   inputs,
   lib,
   pkgs,
@@ -38,12 +39,9 @@ in {
         ];
 
         settings = {
-          "app.normandy.first_run" = false;
-          "dom.forms.autocomplete.formautofill" = false;
-          "trailhead.firstrun.didSeeAboutWelcome" = true;
-
           "app.normandy.api_url" = "";
           "app.normandy.enabled" = false;
+          "app.normandy.first_run" = false;
           "app.shield.optoutstudies.enabled" = false;
           "beacon.enabled" = false;
           "browser.aboutConfig.showWarning" = false;
@@ -62,9 +60,11 @@ in {
           "browser.toolbars.bookmarks.visibility" = "never";
           "browser.urlbar.dnsResolveSingleWordsAfterSearch" = false;
           "browser.urlbar.speculativeConnect.enabled" = false;
+          "browser.urlbar.suggest.searches" = true;
           "datareporting.healthreport.uploadEnabled" = false;
           "datareporting.policy.dataSubmissionEnabled" = false;
           "devtools.onboarding.telemetry.logged" = false;
+          "dom.forms.autocomplete.formautofill" = false;
           "extensions.formautofill.addresses.enabled" = false;
           "extensions.formautofill.available" = "off";
           "extensions.formautofill.creditCards.available" = false;
@@ -73,7 +73,7 @@ in {
           "extensions.getAddons.showPane" = false;
           "extensions.htmlaboutaddons.recommendations.enabled" = false;
           "general.autoScroll" = true;
-          "identity.fxaccounts.account.device.name" = config.host.name;
+          "identity.fxaccounts.account.device.name" = osConfig.host.name;
           "keyword.enabled" = false;
           "media.eme.enabled" = true;
           "privacy.donottrackheader.enabled" = true;
@@ -97,6 +97,7 @@ in {
           "toolkit.telemetry.shutdownPingSender.enabled" = false;
           "toolkit.telemetry.unified" = false;
           "toolkit.telemetry.updatePing.enabled" = false;
+          "trailhead.firstrun.didSeeAboutWelcome" = true;
           "widget.use-xdg-desktop-portal.file-picker" = 1;
         };
 
@@ -104,6 +105,10 @@ in {
           default = "Google";
 
           engines = {
+            "Google".metaData.alias = "@g";
+
+            "Bing".metaData.alias = "@b";
+
             "Nix Packages" = {
               urls = [
                 {
