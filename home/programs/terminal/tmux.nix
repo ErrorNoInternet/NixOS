@@ -51,6 +51,7 @@
         set -ga terminal-overrides ",xterm*:RGB"
 
         set -ga update-environment HYPRLAND_INSTANCE_SIGNATURE
+        set -ga update-environment SSH_TTY
         set -ga update-environment TERM
         set -ga update-environment TERM_PROGRAM
         set -ga update-environment TERMINAL
