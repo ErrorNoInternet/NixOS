@@ -60,7 +60,7 @@ in {
           "browser.toolbars.bookmarks.visibility" = "never";
           "browser.urlbar.dnsResolveSingleWordsAfterSearch" = false;
           "browser.urlbar.speculativeConnect.enabled" = false;
-          "browser.urlbar.suggest.searches" = true;
+          "browser.urlbar.suggest.searches" = false;
           "datareporting.healthreport.uploadEnabled" = false;
           "datareporting.policy.dataSubmissionEnabled" = false;
           "devtools.onboarding.telemetry.logged" = false;
