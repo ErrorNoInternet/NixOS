@@ -67,6 +67,7 @@ in {
           "datareporting.policy.dataSubmissionEnabled" = false;
           "devtools.onboarding.telemetry.logged" = false;
           "dom.forms.autocomplete.formautofill" = false;
+          "dom.security.https_first" = true;
           "extensions.formautofill.addresses.enabled" = false;
           "extensions.formautofill.available" = "off";
           "extensions.formautofill.creditCards.available" = false;
