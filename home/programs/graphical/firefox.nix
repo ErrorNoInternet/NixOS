@@ -76,7 +76,7 @@ in {
           "extensions.htmlaboutaddons.recommendations.enabled" = false;
           "general.autoScroll" = true;
           "identity.fxaccounts.account.device.name" = osConfig.host.name;
-          "keyword.enabled" = false;
+          "keyword.enabled" = true;
           "media.eme.enabled" = true;
           "privacy.donottrackheader.enabled" = true;
           "privacy.globalprivacycontrol.enabled" = true;
@@ -100,6 +100,7 @@ in {
           "toolkit.telemetry.unified" = false;
           "toolkit.telemetry.updatePing.enabled" = false;
           "trailhead.firstrun.didSeeAboutWelcome" = true;
+          "ui.key.menuAccessKeyFocuses" = false;
           "widget.use-xdg-desktop-portal.file-picker" = 1;
         };
 
