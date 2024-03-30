@@ -1,12 +1,11 @@
 {
-  architectures,
+  host,
   kitty,
   self,
-  system,
   ...
 }:
 with self.lib.derivations;
-  optimizeArchitecture {inherit architectures system;}
+  optimizeArchitecture host
   (optimizeLto (kitty.overrideAttrs (old: {
     patches =
       (old.patches or [])

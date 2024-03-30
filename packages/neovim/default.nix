@@ -1,12 +1,11 @@
 {
-  architectures,
+  host,
   inputs',
   self,
-  system,
   ...
 }:
 with self.lib.derivations;
-  optimizeArchitecture {inherit architectures system;}
+  optimizeArchitecture host
   (optimizeLto (inputs'.neovim-nightly.packages.default.overrideAttrs
     (old: {
       patches =

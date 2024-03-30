@@ -1,12 +1,10 @@
 {
-  architectures,
-  system,
-  wezterm,
+  host,
   self,
+  wezterm,
   ...
 }:
-self.lib.derivations.rust.optimizeAll
-{inherit architectures system;}
+self.lib.derivations.rust.optimizeAll host
 (wezterm.overrideAttrs (old: {
   patches =
     (old.patches or [])

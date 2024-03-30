@@ -1,12 +1,10 @@
 {
-  architectures,
+  host,
   hwatch,
   self,
-  system,
   ...
 }:
-self.lib.derivations.rust.optimizeAll
-{inherit architectures system;}
+self.lib.derivations.rust.optimizeAll host
 (hwatch.overrideAttrs (old: {
   patches =
     (old.patches or [])

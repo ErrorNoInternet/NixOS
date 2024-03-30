@@ -1,13 +1,12 @@
 {
-  architectures,
   fetchFromGitHub,
+  host,
   self,
-  system,
   tmux,
   ...
 }:
 with self.lib.derivations;
-  optimizeArchitecture {inherit architectures system;}
+  optimizeArchitecture host
   (optimizeLto (tmux.overrideAttrs {
     src = fetchFromGitHub {
       owner = "tmux";

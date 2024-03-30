@@ -1,12 +1,11 @@
 {
-  architectures,
+  host,
   inputs',
   self,
-  system,
   ...
 }:
 with self.lib.derivations;
-  optimizeArchitecture {inherit architectures system;}
+  optimizeArchitecture host
   (optimizeLto (inputs'.nix-super.packages.default.overrideAttrs {
     doCheck = false;
     doInstallCheck = false;
