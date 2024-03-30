@@ -2,6 +2,7 @@
   imports = [
     ./discord.nix
     ./fcitx5.nix
+    ./firefox.nix
     ./kdeconnect.nix
     ./libreoffice.nix
     ./mpv.nix

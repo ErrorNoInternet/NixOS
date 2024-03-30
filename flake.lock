@@ -994,6 +994,21 @@
         "type": "gitlab"
       }
     },
+    "nur": {
+      "locked": {
+        "lastModified": 1711716298,
+        "narHash": "sha256-24MNZKd/kBWp1Lks+IeN0MUcNgVtddlwvcb5g/J1bMM=",
+        "owner": "nix-community",
+        "repo": "nur",
+        "rev": "0a7a2c10096cae71f40231baf9ba65a409833d7d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "nur",
+        "type": "github"
+      }
+    },
     "overmask": {
       "inputs": {
         "flake-parts": [
@@ -1091,6 +1106,7 @@
         "nix-super": "nix-super",
         "nixpkgs": "nixpkgs_2",
         "nixvim": "nixvim",
+        "nur": "nur",
         "overmask": "overmask",
         "paralload": "paralload",
         "rust-overlay": "rust-overlay",

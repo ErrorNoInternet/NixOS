@@ -44,6 +44,7 @@ in rec {
               home-manager = {
                 extraSpecialArgs = specialArgs;
 
+                backupFileExtension = "nixbak";
                 useGlobalPkgs = true;
                 useUserPackages = true;
 

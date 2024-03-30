@@ -107,6 +107,8 @@
       };
     };
 
+    nur.url = "github:nix-community/nur";
+
     overmask = {
       url = "github:ErrorNoInternet/overmask";
       inputs = {

@@ -67,7 +67,6 @@
   home.packages = with pkgs; [
     compsize
     ffmpeg_6-full
-    firefox
     gimp
     hyprpicker
     imhex

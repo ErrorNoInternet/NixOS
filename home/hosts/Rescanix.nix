@@ -47,7 +47,6 @@
     efivar
     ffmpeg_6-full
     fio
-    firefox
     geekbench
     ghidra
     gimp
