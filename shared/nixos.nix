@@ -16,6 +16,21 @@ in {
     inputs.agenix.nixosModules.default
   ];
 
+  system.replaceRuntimeDependencies = [
+    {
+      original = pkgs.xz;
+      replacement = pkgs.xz.overrideAttrs rec {
+        version = "5.4.6";
+        src = pkgs.fetchurl {
+          url =
+            "https://github.com/tukaani-project/xz/releases/download/"
+            + "v${version}/xz-${version}.tar.bz2";
+          hash = "sha256-kThRsnTo4dMXgeyUnxwj6NvPDs9uc6JDbcIXad0+b0k=";
+        };
+      };
+    }
+  ];
+
   nix = {
     settings = {
       auto-optimise-store = true;
