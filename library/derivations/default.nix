@@ -1,20 +1,17 @@
 {lib, ...}: let
   inherit (lib) strings;
 in rec {
+  meson = import ./meson.nix;
+
+  rust = import ./rust.nix;
+
   mkFlags = old: flags: {
     NIX_CFLAGS_COMPILE = "${(old.NIX_CFLAGS_COMPILE or "")} ${flags}";
     NIX_CXXFLAGS_COMPILE = "${(old.NIX_CXXFLAGS_COMPILE or "")} ${flags}";
   };
 
-  mkFlagsMeson = old: flags: {
-    mesonBuildFlags = (old.mesonBuildFlags or []) ++ flags;
-  };
-
   optimizeLto = derivation:
     derivation.overrideAttrs (old: (mkFlags old "-flto"));
-
-  optimizeLtoMeson = derivation:
-    derivation.overrideAttrs (old: (mkFlagsMeson old ["-Db_lto=true"]));
 
   optimizeArchitecture = {
     system,
