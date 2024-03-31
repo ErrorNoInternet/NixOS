@@ -3,7 +3,6 @@
   inputs',
   lib,
   pkgs,
-  self',
   ...
 }: let
   cfg = config.profiles.development;
@@ -54,13 +53,12 @@ in {
         black
         python3Packages.bpython
 
-        alejandra
         cachix
+        config.pkgsSelf.alejandra
         config.pkgsSelf.attic
         nix-output-monitor
         nix-tree
         nvd
-        self'.formatter
 
         gnumake
         go

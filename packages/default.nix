@@ -8,6 +8,10 @@
 }: let
   packages = [
     {
+      name = "alejandra";
+      path = ./alejandra;
+    }
+    {
       name = "attic";
       path = ./attic;
     }

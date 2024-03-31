@@ -169,12 +169,12 @@
         pkgs,
         system,
         ...
-      }: {
+      }: rec {
         packages = import ./packages {
           inherit inputs' pkgs self system;
         };
 
-        formatter = pkgs.alejandra;
+        formatter = packages.alejandra;
       };
     };
 }
