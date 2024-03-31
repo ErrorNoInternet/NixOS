@@ -22,6 +22,7 @@
         packages = [
           croc
           curl
+          git
           which
         ];
         extendedPath =
