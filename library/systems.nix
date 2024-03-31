@@ -55,7 +55,7 @@ in rec {
                   if isWorkstation
                   then "error"
                   else "snowflake"
-                } = {...}: {
+                } = _: {
                   imports = [
                     ../home/common.nix
                     ../home/hosts/${name}.nix
