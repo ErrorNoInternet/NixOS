@@ -65,15 +65,15 @@
     };
 
     extraConfig = ''
-      layerrule=animation fade,  hyprpicker
-      layerrule=animation fade,  wleave
-      layerrule=animation slide, swaync-control-center
-      layerrule=blur,            rofi
-      layerrule=blur,            swaync-notification-window
-      layerrule=blur,            waybar
-      layerrule=blur,            wleave
-      layerrule=ignorezero,      rofi
-      layerrule=ignorezero,      swaync-notification-window
+      layerrule=animation fade,      hyprpicker
+      layerrule=animation fade,      wleave
+      layerrule=animation slide top, swaync-control-center
+      layerrule=blur,                rofi
+      layerrule=blur,                swaync-notification-window
+      layerrule=blur,                waybar
+      layerrule=blur,                wleave
+      layerrule=ignorezero,          rofi
+      layerrule=ignorezero,          swaync-notification-window
     '';
   };
 }
