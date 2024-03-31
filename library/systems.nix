@@ -8,9 +8,10 @@
 in rec {
   mkSystem = {
     type,
-    homeManager ? true,
     name,
+    id ? null,
     system ? "x86_64-linux",
+    homeManager ? true,
     disko ? true,
   }:
     withSystem system ({
@@ -35,7 +36,7 @@ in rec {
             ../packages/module.nix
             ../shared/all.nix
             ../shared/nixos.nix
-            {host = {inherit name system;};}
+            {host = {inherit name id system;};}
           ]
           ++ optionals disko [
             ../${type}/hosts/${name}/disko.nix
@@ -68,25 +69,25 @@ in rec {
           ];
       });
 
-  mkHmServer = name: extraConfig:
+  mkHmServer = name: id: extraConfig:
     mkSystem ({
         type = "server";
-        inherit name;
+        inherit name id;
       }
       // extraConfig);
 
-  mkServer = name: extraConfig:
+  mkServer = name: id: extraConfig:
     mkSystem ({
         type = "server";
         homeManager = false;
-        inherit name;
+        inherit name id;
       }
       // extraConfig);
 
-  mkWorkstation = name: extraConfig:
+  mkWorkstation = name: id: extraConfig:
     mkSystem ({
         type = "workstation";
-        inherit name;
+        inherit name id;
       }
       // extraConfig);
 }

@@ -1,6 +1,4 @@
 {
-  host.id = "fc7ad223";
-
   imports = [
     ./ddns.nix
     ./drives.nix

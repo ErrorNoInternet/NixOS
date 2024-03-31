@@ -1,8 +1,5 @@
 {pkgs, ...}: {
-  host = {
-    architecture = "haswell";
-    id = "102f58f5";
-  };
+  host.architecture = "haswell";
 
   imports = [
     ./nas-mounts.nix

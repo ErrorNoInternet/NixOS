@@ -19,6 +19,7 @@ in {
 
     system = mkOption {
       type = types.str;
+      default = "x86_64-linux";
     };
 
     architecture = mkOption {
