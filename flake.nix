@@ -171,7 +171,7 @@
         ...
       }: {
         packages = import ./packages {
-          inherit inputs inputs' pkgs self system;
+          inherit inputs' pkgs self system;
         };
 
         formatter = pkgs.alejandra;

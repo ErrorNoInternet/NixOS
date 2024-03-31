@@ -58,7 +58,6 @@ in rec {
                   imports = [
                     ../home/common.nix
                     ../home/hosts/${name}.nix
-                    ../packages/module.nix
                   ];
 
                   flags = {inherit isWorkstation;};

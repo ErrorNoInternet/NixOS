@@ -1,7 +1,6 @@
 {
   config ? {},
   inputs',
-  inputs,
   pkgs,
   self,
   system,
@@ -113,7 +112,7 @@ in
   builtins.listToAttrs (map (package: {
       inherit (package) name;
       value = pkgs.callPackage package.path {
-        inherit inputs' inputs self;
+        inherit inputs' self;
         host = {
           inherit system;
           architectures =

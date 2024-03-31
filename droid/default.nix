@@ -33,7 +33,6 @@
                 ({config, ...}: {nix.package = config.pkgsSelf.nix;})
                 ../home/common.nix
                 ../home/hosts/${name}.nix
-                ../packages/module.nix
               ];
             };
           }
