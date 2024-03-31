@@ -20,6 +20,7 @@
 
       shellHook = with pkgs; let
         packages = [
+          croc
           curl
           which
         ];
