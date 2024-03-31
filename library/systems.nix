@@ -8,10 +8,10 @@
 in rec {
   mkSystem = {
     type,
-    homeManager,
+    homeManager ? true,
     name,
     system ? "x86_64-linux",
-    disko ? type == "workstation",
+    disko ? true,
   }:
     withSystem system ({
       inputs',
@@ -71,7 +71,6 @@ in rec {
   mkHmServer = name: extraConfig:
     mkSystem ({
         type = "server";
-        homeManager = true;
         inherit name;
       }
       // extraConfig);
@@ -87,7 +86,6 @@ in rec {
   mkWorkstation = name: extraConfig:
     mkSystem ({
         type = "workstation";
-        homeManager = true;
         inherit name;
       }
       // extraConfig);
