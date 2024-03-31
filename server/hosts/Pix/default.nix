@@ -18,7 +18,6 @@
       samba.enable = true;
     };
     printing.enable = true;
-    zfs.enable = true;
   };
 
   networking.firewall = {
