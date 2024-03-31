@@ -106,6 +106,8 @@ in {
         };
 
         search = {
+          force = true;
+
           default = "Google";
 
           engines = {
