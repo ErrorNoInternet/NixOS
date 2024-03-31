@@ -1045,11 +1045,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1708711784,
-        "narHash": "sha256-ml8Fj5kGGDKJ/lmeCAj22sOsLLqTi06HjByArxq5ztY=",
+        "lastModified": 1711874416,
+        "narHash": "sha256-Jqk/dtYc78IOMwl2LtcDyoMZlR/5pOs/qyLlW0lr38Q=",
         "owner": "ErrorNoInternet",
         "repo": "Paralload",
-        "rev": "5e8020a07af3f3f628e9afc0544f389d39d5da62",
+        "rev": "c40afe24a4f976d06cc5f0de708c1a6886d83566",
         "type": "github"
       },
       "original": {
