@@ -4,9 +4,7 @@ rec {
   };
 
   optimizeAll = host: derivation:
-    optimizeArchitecture host
-    (optimizeLto
-      (optimize derivation));
+    optimizeArchitecture host (optimizeLto (optimize derivation));
 
   optimize = derivation:
     derivation.overrideAttrs (old: (mkFlags old "-Ccodegen-units=1"));
