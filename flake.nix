@@ -90,6 +90,14 @@
       };
     };
 
+    nixpak = {
+      url = "github:nixpak/nixpak";
+      inputs = {
+        flake-parts.follows = "flake-parts";
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
+
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     nix-super = {
