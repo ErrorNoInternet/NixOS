@@ -9,24 +9,25 @@
         (mkNixPak {
           config = _: {
             app.package = bash;
-            bubblewrap.bind.ro = let
-              paths = [
-                "curl"
-                "which"
-              ];
-            in
-              map (path: "/run/current-system/sw/bin/${path}") paths;
 
-            etc.sslCertificates.enable = true;
             dbus.enable = false;
+            etc.sslCertificates.enable = true;
           };
         })
         .config
         .script
       ];
 
-      shellHook = ''
-        which bash
+      shellHook = with pkgs; let
+        packages = [
+          curl
+          which
+        ];
+        extendedPath =
+          lib.strings.concatStringsSep ":"
+          (map (package: "${package}/bin") packages);
+      in ''
+        export PATH=$PATH:${extendedPath}
         exec bash
       '';
     };
