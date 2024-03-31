@@ -5,7 +5,7 @@
   self,
   ...
 }:
-self.lib.derivations.optimizeArchitecture host (
+self.lib.derivations.c.optimizeAllExceptLto host (
   foot.overrideAttrs (old: {
     src = fetchFromGitea {
       domain = "codeberg.org";

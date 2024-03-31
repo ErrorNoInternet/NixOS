@@ -1,5 +1,5 @@
 {lib, ...}: {
-  c = import ./c {inherit lib;};
+  c = import ./c.nix {inherit lib;};
 
   meson = import ./meson.nix;
 
