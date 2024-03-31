@@ -30,7 +30,7 @@ in {
         extensions = with config.nur.repos.rycee.firefox-addons; [
           behind-the-overlay-revival
           darkreader
-          kristofferhagen-nord-theme
+          nord123
           playback-speed
           privacy-badger
           return-youtube-dislikes
