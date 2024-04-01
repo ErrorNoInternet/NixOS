@@ -46,6 +46,7 @@ in {
           "app.shield.optoutstudies.enabled" = false;
           "beacon.enabled" = false;
           "browser.aboutConfig.showWarning" = false;
+          "browser.compactmode.show" = true;
           "browser.discovery.enabled" = false;
           "browser.display.use_system_colors" = true;
           "browser.fixup.alternate.enabled" = false;
@@ -60,6 +61,7 @@ in {
           "browser.tabs.inTitlebar" = 0;
           "browser.theme.toolbar-theme" = 0;
           "browser.toolbars.bookmarks.visibility" = "never";
+          "browser.uidensity" = 1;
           "browser.urlbar.dnsResolveSingleWordsAfterSearch" = false;
           "browser.urlbar.speculativeConnect.enabled" = false;
           "browser.urlbar.suggest.searches" = false;
