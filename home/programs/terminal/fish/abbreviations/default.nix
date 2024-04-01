@@ -29,13 +29,13 @@
       dmtw = "dmesg -Tw";
       e = "echo";
       ex = "exec";
-      nv = "nvim";
       p = "ping";
       pf = "printf";
       s = "sudo";
       sc = "systemctl";
       scu = "systemctl --user";
       sl = "sleep";
+      v = "nvim";
 
       hy = "hyprctl";
     }
