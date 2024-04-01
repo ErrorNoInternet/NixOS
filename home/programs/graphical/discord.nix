@@ -1,5 +1,6 @@
 {
   config,
+  inputs,
   lib,
   pkgs,
   ...
@@ -11,12 +12,65 @@ in {
 
   config = mkIf cfg.enable {
     home = {
-      packages = [
-        (pkgs.discord-canary.override {
+      packages = let
+        unwrapped-discord = pkgs.discord-canary.override {
           withOpenASAR = true;
           withVencord = true;
-        })
-      ];
+        };
+
+        sandboxed-discord =
+          (inputs.nixpak.lib.nixpak {inherit lib pkgs;} {
+            config = {sloth, ...}: rec {
+              app.package = unwrapped-discord;
+
+              flatpak.appId = "com.discordapp.DiscordCanary";
+              etc.sslCertificates.enable = true;
+
+              dbus.policies = {
+                "${flatpak.appId}" = "own";
+                "org.freedesktop.portal.Notification" = "talk";
+                "org.kde.StatusNotifierWatcher" = "talk";
+              };
+
+              fonts = {
+                enable = true;
+                fonts = with pkgs; [
+                  noto-fonts-cjk-sans
+                  noto-fonts-cjk-serif
+                ];
+              };
+
+              bubblewrap = {
+                bind = {
+                  ro = [
+                    (sloth.concat' sloth.xdgConfigHome "/gtk-3.0")
+                    (sloth.concat' sloth.xdgDataHome "/icons")
+                  ];
+                  rw = [
+                    (sloth.concat' sloth.xdgConfigHome "/discord")
+                    (sloth.concat' sloth.xdgConfigHome "/discordcanary")
+                    (sloth.concat' sloth.xdgConfigHome "/Vencord")
+                  ];
+                };
+
+                sockets = {
+                  pulse = true;
+                  wayland = true;
+                };
+              };
+            };
+          })
+          .config
+          .script;
+      in
+        with pkgs; [
+          sandboxed-discord
+
+          (runCommand "DiscordCanary-metadata" {} ''
+            mkdir -p $out
+            cp -a ${unwrapped-discord}/share $out
+          '')
+        ];
 
       file."${config.xdg.configHome}/Vencord/settings/settings.json" = {
         force = true;
