@@ -66,6 +66,7 @@ in {
           "datareporting.healthreport.uploadEnabled" = false;
           "datareporting.policy.dataSubmissionEnabled" = false;
           "devtools.onboarding.telemetry.logged" = false;
+          "devtools.toolbox.host" = "right";
           "dom.forms.autocomplete.formautofill" = false;
           "dom.security.https_first" = true;
           "extensions.formautofill.addresses.enabled" = false;
