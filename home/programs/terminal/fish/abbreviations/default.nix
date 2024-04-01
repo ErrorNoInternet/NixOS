@@ -24,6 +24,9 @@
       cl = "curl -L";
       clo = "curl -LO";
       d = "cd ~/data";
+      dm = "dmesg";
+      dmt = "dmesg -T";
+      dmtw = "dmesg -Tw";
       e = "echo";
       ex = "exec";
       nv = "nvim";
