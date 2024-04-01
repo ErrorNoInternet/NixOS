@@ -8,6 +8,7 @@
     ./mpv.nix
     ./nheko.nix
     ./obs-studio.nix
+    ./prismlauncher.nix
     ./spotify.nix
     ./spotify.nix
     ./terminals

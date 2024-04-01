@@ -35,6 +35,7 @@
       kdeconnect.enable = true;
       libreoffice.enable = true;
       obsStudio.enable = true;
+      prismlauncher.enable = true;
       spotify.enable = true;
       thunderbird.enable = true;
       virtManager.enable = true;
@@ -73,7 +74,6 @@
     jetbrains.idea-community
     nvtopPackages.full
     osu-lazer-bin
-    prismlauncher
     qbittorrent
     self'.packages.tbw
     superTuxKart
