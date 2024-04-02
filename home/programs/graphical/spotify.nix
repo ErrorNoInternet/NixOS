@@ -61,9 +61,9 @@ in {
                 liberation_ttf
                 noto-fonts-cjk-sans
                 noto-fonts-cjk-serif
-                noto-fonts-color-emoji
                 source-code-pro
                 source-sans
+                twitter-color-emoji
               ];
             };
 
