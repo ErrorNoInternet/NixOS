@@ -341,9 +341,10 @@ in {
       in
         with pkgs; [
           (runCommand "DiscordCanary-wrapper" {} ''
-            mkdir -p $out/{bin,share}
+            mkdir -p $out/bin
 
-            cp -a ${unwrapped-discord}/share/* $out/share
+            cp -a ${unwrapped-discord}/opt $out
+            cp -a ${unwrapped-discord}/share $out
 
             cat << EOF > $out/bin/DiscordCanary
             export PATH=$PATH:${lib.makeSearchPath "bin" [xdg-utils]}
