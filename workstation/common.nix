@@ -61,10 +61,16 @@ in {
     ];
   };
 
-  systemd.coredump.extraConfig = ''
-    ProcessSizeMax=4G
-    ExternalSizeMax=512M
-  '';
+  systemd = {
+    user.extraConfig = ''
+      DefaultEnvironment="PATH=/run/current-system/sw/bin"
+    '';
+
+    coredump.extraConfig = ''
+      ProcessSizeMax=4G
+      ExternalSizeMax=512M
+    '';
+  };
 
   environment = {
     etc."xdg/user-dirs.defaults".text = ''
