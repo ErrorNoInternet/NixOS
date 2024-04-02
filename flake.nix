@@ -57,15 +57,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    iamb = {
-      url = "github:ulyssa/iamb";
-      inputs = {
-        flake-utils.follows = "flake-utils";
-        nixpkgs.follows = "nixpkgs";
-        rust-overlay.follows = "rust-overlay";
-      };
-    };
-
     neovim-nightly = {
       url = "github:nix-community/neovim-nightly-overlay";
       inputs = {
