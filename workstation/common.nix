@@ -53,11 +53,17 @@ in {
 
   security.pam.services.swaylock = {};
 
-  xdg.portal = {
-    enable = true;
-    extraPortals = with pkgs; [
-      xdg-desktop-portal-gtk
-    ];
+  xdg = {
+    portal = {
+      enable = true;
+      extraPortals = with pkgs; [
+        xdg-desktop-portal-gtk
+      ];
+    };
+    mime.defaultApplications = {
+      "x-scheme-handler/http" = "firefox.desktop";
+      "x-scheme-handler/https" = "firefox.desktop";
+    };
   };
 
   systemd.coredump.extraConfig = ''
@@ -90,6 +96,7 @@ in {
 
   programs = {
     dconf.enable = true;
+    firefox.enable = true;
     light.enable = true;
     neovim.defaultEditor = true;
   };
