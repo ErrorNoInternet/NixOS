@@ -8,7 +8,8 @@
   cfg = config.customPrograms.graphical.discord;
   inherit (lib) mkEnableOption mkIf;
 in {
-  options.customPrograms.graphical.discord.enable = mkEnableOption "";
+  options.customPrograms.graphical.discord.enable =
+    mkEnableOption "";
 
   config = mkIf cfg.enable {
     home = {
@@ -199,7 +200,9 @@ in {
             ShikiCodeblocks = {
               enabled = true;
               useDevIcon = "GREYSCALE";
-              theme = "https://raw.githubusercontent.com/shikijs/shiki/0b28ad8ccfbf2615f2d9d38ea8255416b8ac3043/packages/shiki/themes/github-dark-dimmed.json";
+              theme =
+                "https://raw.githubusercontent.com/shikijs/shiki/0b28ad8ccfbf2615f2d9d38ea8255416b8ac3043"
+                + "/packages/shiki/themes/github-dark-dimmed.json";
               tryHljs = "SECONDARY";
               bgOpacity = 100;
             };
@@ -338,10 +341,8 @@ in {
       in
         with pkgs; [
           (writeScriptBin "DiscordCanary" ''
-            export PATH=$PATH:${lib.makeSearchPath "bin" [
-              xdg-utils
-            ]}
-            ${sandboxed-discord}/bin/DiscordCanary \
+            export PATH=$PATH:${lib.makeSearchPath "bin" [xdg-utils]}
+            ${lib.getExe sandboxed-discord} \
                 --enable-features=UseOzonePlatform,WaylandWindowDecorations \
                 --ozone-platform=wayland "$@"
           '')
