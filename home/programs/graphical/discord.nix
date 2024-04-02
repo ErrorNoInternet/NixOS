@@ -301,11 +301,15 @@ in {
               fonts = {
                 enable = true;
                 fonts = with pkgs; [
+                  cantarell-fonts
                   dejavu_fonts
                   gyre-fonts
                   liberation_ttf
                   noto-fonts-cjk-sans
                   noto-fonts-cjk-serif
+                  noto-fonts-color-emoji
+                  source-code-pro
+                  source-sans
                 ];
               };
 
