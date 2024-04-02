@@ -14,14 +14,14 @@ in {
 
     networking.wireless = {
       enable = true;
+      userControlled.enable = true;
       environmentFile = config.age.secrets.wireless-networks.path;
 
-      userControlled.enable = true;
       networks = builtins.listToAttrs (builtins.genList (n: {
           name = "@ssid${builtins.toString n}@";
           value.psk = "@psk${builtins.toString n}@";
         })
-        2);
+        4);
     };
   };
 }
