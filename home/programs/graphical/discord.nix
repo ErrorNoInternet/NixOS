@@ -294,11 +294,11 @@ in {
               flatpak.appId = "com.discordapp.DiscordCanary";
 
               dbus.policies = {
-                ${flatpak.appId} = "own";
                 "org.freedesktop.portal.Desktop" = "talk";
                 "org.freedesktop.portal.Notification" = "talk";
                 "org.freedesktop.portal.OpenURI" = "talk";
                 "org.kde.StatusNotifierWatcher" = "talk";
+                ${flatpak.appId} = "own";
               };
 
               fonts = {
@@ -340,16 +340,18 @@ in {
           .script;
       in
         with pkgs; [
-          (writeScriptBin "DiscordCanary" ''
+          (runCommand "DiscordCanary-wrapper" {} ''
+            mkdir -p $out/{bin,share}
+
+            cp -a ${unwrapped-discord}/share/* $out/share
+
+            cat << EOF > $out/bin/DiscordCanary
             export PATH=$PATH:${lib.makeSearchPath "bin" [xdg-utils]}
             ${lib.getExe sandboxed-discord} \
                 --enable-features=UseOzonePlatform,WaylandWindowDecorations \
                 --ozone-platform=wayland "$@"
-          '')
-
-          (runCommand "DiscordCanary-metadata" {} ''
-            mkdir -p $out
-            cp -a ${unwrapped-discord}/share $out
+            EOF
+            chmod +x $out/bin/DiscordCanary
           '')
         ];
     };
