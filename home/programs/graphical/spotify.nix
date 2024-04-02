@@ -45,7 +45,7 @@ in {
             flatpak.appId = "com.spotify.Client";
 
             dbus.policies = {
-              "${flatpak.appId}" = "own";
+              ${flatpak.appId} = "own";
               "org.freedesktop.portal.Desktop" = "talk";
               "org.freedesktop.portal.OpenURI" = "talk";
               "org.gnome.SettingsDaemon.MediaKeys" = "talk";

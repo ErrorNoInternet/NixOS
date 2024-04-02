@@ -294,10 +294,10 @@ in {
               flatpak.appId = "com.discordapp.DiscordCanary";
 
               dbus.policies = {
-                "${flatpak.appId}" = "own";
+                ${flatpak.appId} = "own";
                 "org.freedesktop.portal.Desktop" = "talk";
-                "org.freedesktop.portal.OpenURI" = "talk";
                 "org.freedesktop.portal.Notification" = "talk";
+                "org.freedesktop.portal.OpenURI" = "talk";
                 "org.kde.StatusNotifierWatcher" = "talk";
               };
 
