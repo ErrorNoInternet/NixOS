@@ -8,6 +8,7 @@ in {
   wayland.windowManager.hyprland.settings.exec-once =
     [
       "hyprctl setcursor ${config.cursor.name} ${builtins.toString config.cursor.size}"
+      "systemctl --user import-environment PATH && systemctl --user restart xdg-desktop-portal.service"
 
       "waybar"
       "wl-paste --watch cliphist -max-items 1000 store"
