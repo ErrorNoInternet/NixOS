@@ -20,6 +20,7 @@
         croc
         curl
         git
+        strace
         which
       ];
 
