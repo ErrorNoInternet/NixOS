@@ -319,6 +319,7 @@ in {
               bubblewrap = {
                 bind = {
                   ro = [
+                    "/etc/localtime"
                     (sloth.concat' sloth.xdgConfigHome "/gtk-3.0")
                     (sloth.concat' sloth.xdgDataHome "/icons")
                   ];
