@@ -30,7 +30,7 @@ in {
         extensions = with config.nur.repos.rycee.firefox-addons; [
           behind-the-overlay-revival
           darkreader
-          kristofferhagen-nord-theme
+          nord123
           playback-speed
           privacy-badger
           return-youtube-dislikes
@@ -66,6 +66,7 @@ in {
           "datareporting.healthreport.uploadEnabled" = false;
           "datareporting.policy.dataSubmissionEnabled" = false;
           "devtools.onboarding.telemetry.logged" = false;
+          "devtools.toolbox.host" = "right";
           "dom.forms.autocomplete.formautofill" = false;
           "dom.security.https_first" = true;
           "extensions.formautofill.addresses.enabled" = false;
@@ -106,6 +107,8 @@ in {
         };
 
         search = {
+          force = true;
+
           default = "Google";
 
           engines = {

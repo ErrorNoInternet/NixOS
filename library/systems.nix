@@ -8,10 +8,11 @@
 in rec {
   mkSystem = {
     type,
-    homeManager,
     name,
+    id ? null,
     system ? "x86_64-linux",
-    disko ? type == "workstation",
+    homeManager ? true,
+    disko ? true,
   }:
     withSystem system ({
       inputs',
@@ -35,7 +36,7 @@ in rec {
             ../packages/module.nix
             ../shared/all.nix
             ../shared/nixos.nix
-            {host = {inherit name system;};}
+            {host = {inherit name id system;};}
           ]
           ++ optionals disko [
             ../${type}/hosts/${name}/disko.nix
@@ -54,11 +55,10 @@ in rec {
                   if isWorkstation
                   then "error"
                   else "snowflake"
-                } = {...}: {
+                } = _: {
                   imports = [
                     ../home/common.nix
                     ../home/hosts/${name}.nix
-                    ../packages/module.nix
                   ];
 
                   flags = {inherit isWorkstation;};
@@ -69,27 +69,25 @@ in rec {
           ];
       });
 
-  mkHmServer = name: extraConfig:
+  mkHmServer = name: id: extraConfig:
     mkSystem ({
         type = "server";
-        homeManager = true;
-        inherit name;
+        inherit name id;
       }
       // extraConfig);
 
-  mkServer = name: extraConfig:
+  mkServer = name: id: extraConfig:
     mkSystem ({
         type = "server";
         homeManager = false;
-        inherit name;
+        inherit name id;
       }
       // extraConfig);
 
-  mkWorkstation = name: extraConfig:
+  mkWorkstation = name: id: extraConfig:
     mkSystem ({
         type = "workstation";
-        homeManager = true;
-        inherit name;
+        inherit name id;
       }
       // extraConfig);
 }

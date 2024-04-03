@@ -21,6 +21,7 @@
     zpl = "zpool list";
     zplv = "zpool list -v";
     zps = "zpool status";
+    zpss = "zpool status -s";
     zpst = "zpool status -t";
     zpstv = "zpool status -tv";
     zpsv = "zpool status -v";

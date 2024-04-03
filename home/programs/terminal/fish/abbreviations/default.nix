@@ -24,9 +24,11 @@
       cl = "curl -L";
       clo = "curl -LO";
       d = "cd ~/data";
+      dm = "dmesg";
+      dmt = "dmesg -T";
+      dmtw = "dmesg -Tw";
       e = "echo";
       ex = "exec";
-      nv = "nvim";
       p = "ping";
       pf = "printf";
       s = "sudo";
@@ -34,6 +36,7 @@
       scu = "systemctl --user";
       sl = "sleep";
       t = "tmux";
+      v = "nvim";
 
       hy = "hyprctl";
     }

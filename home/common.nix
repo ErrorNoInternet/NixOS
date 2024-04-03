@@ -9,6 +9,7 @@
   inherit (lib) mkDefault;
 in {
   imports = [
+    ../packages/module.nix
     ../shared/caches
     ./modules
     ./profiles

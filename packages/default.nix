@@ -1,13 +1,16 @@
 {
   config ? {},
   inputs',
-  inputs,
   pkgs,
   self,
   system,
   ...
 }: let
   packages = [
+    {
+      name = "alejandra";
+      path = ./alejandra;
+    }
     {
       name = "attic";
       path = ./attic;
@@ -113,12 +116,14 @@ in
   builtins.listToAttrs (map (package: {
       inherit (package) name;
       value = pkgs.callPackage package.path {
-        inherit inputs' inputs self system;
-
-        architectures =
-          if (config ? host)
-          then {${config.host.system} = config.host.architecture;}
-          else defaultArchitectures;
+        inherit inputs' self;
+        host = {
+          inherit system;
+          architectures =
+            if (config ? host)
+            then {${config.host.system} = config.host.architecture;}
+            else defaultArchitectures;
+        };
       };
     })
     packages)

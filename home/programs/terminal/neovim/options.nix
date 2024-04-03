@@ -1,5 +1,5 @@
 {
-  programs.nixvim.options = {
+  programs.nixvim.opts = {
     encoding = "utf8";
     expandtab = true;
     modeline = false;

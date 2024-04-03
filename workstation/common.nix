@@ -55,15 +55,22 @@ in {
 
   xdg.portal = {
     enable = true;
+    xdgOpenUsePortal = true;
     extraPortals = with pkgs; [
       xdg-desktop-portal-gtk
     ];
   };
 
-  systemd.coredump.extraConfig = ''
-    ProcessSizeMax=4G
-    ExternalSizeMax=512M
-  '';
+  systemd = {
+    user.extraConfig = ''
+      DefaultEnvironment="PATH=/run/wrappers/bin:/etc/profiles/per-user/%u/bin:/nix/var/nix/profiles/default/bin:/run/current-system/sw/bin"
+    '';
+
+    coredump.extraConfig = ''
+      ProcessSizeMax=4G
+      ExternalSizeMax=512M
+    '';
+  };
 
   environment = {
     etc."xdg/user-dirs.defaults".text = ''

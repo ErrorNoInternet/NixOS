@@ -1,6 +1,7 @@
 {
   imports = [
     ./rust.nix
+    ./sandbox.nix
   ];
 
   perSystem = {

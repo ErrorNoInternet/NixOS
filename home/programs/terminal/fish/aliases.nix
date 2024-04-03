@@ -20,6 +20,7 @@ in {
       lsimg = "timg --grid=6 --upscale --title --center --frames=1";
       py = "python3";
       timg = "timg -pk";
+      zrg = "rg -z";
 
       "l@" = "ls -l@";
       "lT@" = "ls -lT@";
@@ -27,7 +28,7 @@ in {
       la = "ls -la";
       laT = "ls -laT";
       ll = "ls -l";
-      ls = "LS_COLORS= eza --git --icons";
+      ls = "LS_COLORS= eza --icons";
       lT = "ls -lT";
       lTZ = "ls -lTZ";
       lZ = "ls -lZ";

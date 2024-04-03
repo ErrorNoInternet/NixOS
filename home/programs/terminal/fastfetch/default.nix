@@ -14,7 +14,7 @@ in {
     home = {
       packages = with pkgs;
         map (variation: (writeScriptBin variation ''
-          export PATH=${nix}/bin:$PATH
+          export PATH=$PATH:${nix}/bin
           ${fastfetch}/bin/${variation} "$@"
         ''))
         ["fastfetch" "flashfetch"];

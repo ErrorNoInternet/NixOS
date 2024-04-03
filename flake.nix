@@ -90,6 +90,14 @@
       };
     };
 
+    nixpak = {
+      url = "github:nixpak/nixpak";
+      inputs = {
+        flake-parts.follows = "flake-parts";
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
+
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     nix-super = {
@@ -169,12 +177,12 @@
         pkgs,
         system,
         ...
-      }: {
+      }: rec {
         packages = import ./packages {
-          inherit inputs inputs' pkgs self system;
+          inherit inputs' pkgs self system;
         };
 
-        formatter = pkgs.alejandra;
+        formatter = packages.alejandra;
       };
     };
 }

@@ -9,7 +9,7 @@
     modules = [
       {
         name = "derivations";
-        path = ./derivations.nix;
+        path = ./derivations;
       }
       {
         name = "systems";

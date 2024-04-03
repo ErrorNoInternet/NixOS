@@ -1,6 +1,4 @@
 {
-  host.id = "fc7ad223";
-
   imports = [
     ./ddns.nix
     ./drives.nix
@@ -18,7 +16,6 @@
       samba.enable = true;
     };
     printing.enable = true;
-    zfs.enable = true;
   };
 
   networking.firewall = {

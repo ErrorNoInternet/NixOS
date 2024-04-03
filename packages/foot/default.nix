@@ -1,12 +1,11 @@
 {
-  architectures,
   fetchFromGitea,
   foot,
+  host,
   self,
-  system,
   ...
 }:
-self.lib.derivations.optimizeArchitecture {inherit architectures system;} (
+self.lib.derivations.c.optimizeAllExceptLto host (
   foot.overrideAttrs (old: {
     src = fetchFromGitea {
       domain = "codeberg.org";
