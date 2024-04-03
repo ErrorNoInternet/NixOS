@@ -2,13 +2,12 @@
   config,
   lib,
   pkgs,
-  self',
   ...
 }: {
   config = lib.mkIf config.customPrograms.terminal.fish.enable {
     programs.tmux = {
       enable = true;
-      package = self'.packages.tmux;
+      package = config.pkgsSelf.tmux;
       plugins = with pkgs.tmuxPlugins; [
         jump
         yank
@@ -50,8 +49,12 @@
         set -g repeat-time 0
         set -g set-clipboard on
         set -ga terminal-overrides ",xterm*:RGB"
+
+        set -ga update-environment HYPRLAND_INSTANCE_SIGNATURE
+        set -ga update-environment SSH_TTY
         set -ga update-environment TERM
         set -ga update-environment TERM_PROGRAM
+        set -ga update-environment TERMINAL
 
         bind -n C-F3 set-option status
         bind '"' split-window -v -c "#{pane_current_path}"

@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: {
-  config = lib.mkIf config.shared.flags.raspberryPi {
+  config = lib.mkIf config.shared.flags.isRaspberryPi {
     boot.loader = {
       grub.enable = false;
       generic-extlinux-compatible = {

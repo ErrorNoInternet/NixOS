@@ -13,8 +13,10 @@ in {
     mkEnableOption "" // {default = true;};
 
   config = mkIf cfg.enable {
-    nix.substituters = values.substituters;
+    nix = {inherit (values) substituters;};
+
     time.timeZone = "Asia/Shanghai";
+
     networking.extraHosts = ''
       185.199.111.133 raw.githubusercontent.com
     '';

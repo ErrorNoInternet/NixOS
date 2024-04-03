@@ -13,9 +13,20 @@
 
       todo-comments.enable = true;
 
-      comment-nvim.enable = true;
+      comment.enable = true;
 
       nvim-autopairs.enable = true;
+
+      indent-blankline = {
+        enable = true;
+        settings = {
+          indent.char = "";
+          scope = {
+            show_start = false;
+            show_end = false;
+          };
+        };
+      };
 
       treesitter = {
         enable = true;

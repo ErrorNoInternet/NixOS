@@ -2,19 +2,19 @@
   config,
   inputs',
   inputs,
+  lib,
   pkgs,
   ...
-}: {
+}: let
+  inherit (lib) mkDefault;
+in {
   imports = [
+    ../packages/module.nix
     ../shared/caches
     ./modules
     ./profiles
     ./programs
     inputs.agenix.homeManagerModules.default
-  ];
-
-  age.identityPaths = [
-    "/home/${config.home.username}/.ssh/id_ed25519_agenix"
   ];
 
   specialisation.outside.configuration = {
@@ -24,7 +24,11 @@
     };
   };
 
-  home = {
+  age.identityPaths = [
+    "/home/${config.home.username}/.ssh/id_ed25519_agenix"
+  ];
+
+  home = rec {
     packages = with pkgs; [
       cmatrix
       croc
@@ -36,6 +40,15 @@
       progress
       try
     ];
+
+    username =
+      mkDefault
+      (
+        if config.flags.isWorkstation
+        then "error"
+        else "snowflake"
+      );
+    homeDirectory = mkDefault "/home/${username}";
 
     stateVersion = "23.05";
   };

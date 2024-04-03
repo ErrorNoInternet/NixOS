@@ -1,5 +1,10 @@
-{kitty, ...}:
-kitty.overrideAttrs (old: {
+{
+  host,
+  kitty,
+  self,
+  ...
+}:
+self.lib.derivations.c.optimizeAll host (kitty.overrideAttrs (old: {
   patches =
     (old.patches or [])
     ++ [
@@ -7,4 +12,4 @@ kitty.overrideAttrs (old: {
       ./remove-resize-text.patch
       ./thicker-braille-dots.patch
     ];
-})
+}))

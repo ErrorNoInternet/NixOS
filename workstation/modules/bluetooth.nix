@@ -10,7 +10,10 @@ in {
     mkEnableOption "" // {default = true;};
 
   config = mkIf cfg.enable {
-    hardware.bluetooth.enable = true;
+    hardware.bluetooth = {
+      enable = true;
+      powerOnBoot = false;
+    };
     services.blueman.enable = true;
   };
 }

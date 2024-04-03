@@ -7,12 +7,15 @@ rustPlatform.buildRustPackage {
   pname = "passgen";
   version = "0.1.0";
 
+  src = let
+    repo = fetchFromGitHub {
+      owner = "ErrorNoInternet";
+      repo = "passgen";
+      rev = "e538b2ab50bbf514db50101169dec3a16e12e9f1";
+      hash = "sha256-DSLrI3O/0sXbZuWy2ErbBoJhJ/OZu+oso7Tf0SlGVnk=";
+    };
+  in "${repo}/rust";
+  cargoHash = "sha256-RqW5pa+ExHhii1e28HMz1sUFCmDelSZ9dWcOf8CWd+c=";
+
   patches = [./reproducible.patch];
-  src = fetchFromGitHub {
-    owner = "ErrorNoInternet";
-    repo = "passgen";
-    rev = "e222f7604edd06a2bc6e366ed91c37c1297173ff";
-    hash = "sha256-Uy0fZUcv3bbM5lack+NMTui9qjFPzCQ+AKnD849lPlU=";
-  };
-  cargoHash = "sha256-/z7QD76wtFiReGmhmhPp3K4E88kFxzkHtXvof5phTEY=";
 }

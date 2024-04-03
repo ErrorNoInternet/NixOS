@@ -5,7 +5,6 @@
   ...
 }: {
   imports = [
-    ../shared
     ./modules
     ./profiles
     ./programs

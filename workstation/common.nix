@@ -3,40 +3,31 @@
   pkgs,
   ...
 }: let
-  inherit (lib) mkDefault mkOverride;
+  inherit (lib) mkDefault;
 in {
   imports = [
-    ../shared
     ./fonts.nix
+    ./kernel.nix
     ./modules
     ./profiles
     ./programs
     ./specialisations
   ];
 
-  boot = {
-    loader = {
-      grub = {
-        enable = mkDefault true;
-        efiSupport = true;
-        efiInstallAsRemovable = true;
-        device = "nodev";
-        splashImage = null;
+  boot.loader = {
+    grub = {
+      enable = mkDefault true;
+      efiSupport = true;
+      efiInstallAsRemovable = true;
+      device = "nodev";
+      splashImage = null;
 
-        configurationLimit = 100;
-      };
-      timeout = 3;
+      configurationLimit = 100;
     };
-
-    kernelPackages = mkOverride 1250 pkgs.linuxPackages_latest;
-    supportedFilesystems = ["ntfs"];
-
-    kernel.sysctl = {
-      "kernel.sysrq" = mkDefault 1;
-    };
+    timeout = 3;
   };
 
-  shared.modules.wireless.enable = true;
+  shared.wireless.enable = true;
   networking.firewall.enable = mkDefault false;
 
   services = {
@@ -65,15 +56,22 @@ in {
 
   xdg.portal = {
     enable = true;
+    xdgOpenUsePortal = true;
     extraPortals = with pkgs; [
       xdg-desktop-portal-gtk
     ];
   };
 
-  systemd.coredump.extraConfig = ''
-    ProcessSizeMax=4G
-    ExternalSizeMax=512M
-  '';
+  systemd = {
+    user.extraConfig = ''
+      DefaultEnvironment="PATH=/run/wrappers/bin:/etc/profiles/per-user/%u/bin:/nix/var/nix/profiles/default/bin:/run/current-system/sw/bin"
+    '';
+
+    coredump.extraConfig = ''
+      ProcessSizeMax=4G
+      ExternalSizeMax=512M
+    '';
+  };
 
   environment = {
     etc."xdg/user-dirs.defaults".text = ''

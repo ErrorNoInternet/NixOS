@@ -15,7 +15,7 @@
       "............" = "../../../../../..";
 
       c = "cd ${
-        if config.flags.nixOnDroid
+        if config.flags.isNixOnDroid
         then "~/.config/nixpkgs"
         else "/etc/nixos"
       }/configuration.nix";
@@ -24,15 +24,18 @@
       cl = "curl -L";
       clo = "curl -LO";
       d = "cd ~/data";
+      dm = "dmesg";
+      dmt = "dmesg -T";
+      dmtw = "dmesg -Tw";
       e = "echo";
       ex = "exec";
-      nv = "nvim";
       p = "ping";
       pf = "printf";
       s = "sudo";
       sc = "systemctl";
       scu = "systemctl --user";
       sl = "sleep";
+      v = "nvim";
 
       hy = "hyprctl";
     }

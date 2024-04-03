@@ -90,6 +90,14 @@
       };
     };
 
+    nixpak = {
+      url = "github:nixpak/nixpak";
+      inputs = {
+        flake-parts.follows = "flake-parts";
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
+
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     nix-super = {
@@ -106,6 +114,8 @@
         nixpkgs.follows = "nixpkgs";
       };
     };
+
+    nur.url = "github:nix-community/nur";
 
     overmask = {
       url = "github:ErrorNoInternet/overmask";
@@ -143,12 +153,15 @@
     };
   };
 
-  outputs = {flake-parts, ...} @ inputs:
+  outputs = {
+    flake-parts,
+    self,
+    ...
+  } @ inputs:
     flake-parts.lib.mkFlake {inherit inputs;} {
       imports = [
         ./droid
         ./library
-        ./packages
         ./server
         ./shells
         ./workstation
@@ -159,8 +172,17 @@
         "x86_64-linux"
       ];
 
-      perSystem = {pkgs, ...}: {
-        formatter = pkgs.alejandra;
+      perSystem = {
+        inputs',
+        pkgs,
+        system,
+        ...
+      }: rec {
+        packages = import ./packages {
+          inherit inputs' pkgs self system;
+        };
+
+        formatter = packages.alejandra;
       };
     };
 }

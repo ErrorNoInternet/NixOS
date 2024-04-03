@@ -9,7 +9,7 @@ in {
     {
       H = "exec Hyprland";
       q =
-        (strings.optionalString config.flags.nixOnDroid
+        (strings.optionalString config.flags.isNixOnDroid
           "if [ \"$SSH_AGENT_LAUNCHED\" = 1 ]; killall ssh-agent; end;")
         + "exit";
 
@@ -19,7 +19,8 @@ in {
       ip = "ip --color";
       lsimg = "timg --grid=6 --upscale --title --center --frames=1";
       py = "python3";
-      timg = "timg";
+      timg = "timg -pk";
+      zrg = "rg -z";
 
       "l@" = "ls -l@";
       "lT@" = "ls -lT@";
@@ -27,7 +28,7 @@ in {
       la = "ls -la";
       laT = "ls -laT";
       ll = "ls -l";
-      ls = "eza --git --icons";
+      ls = "LS_COLORS= eza --icons";
       lT = "ls -lT";
       lTZ = "ls -lTZ";
       lZ = "ls -lZ";
@@ -52,7 +53,7 @@ in {
       pps = "playerctl pause";
       pwdc = "pwd | tr -d '\\n' | wl-copy";
     }
-    // (attrsets.optionalAttrs config.flags.nixOnDroid {
+    // (attrsets.optionalAttrs config.flags.isNixOnDroid {
       ping = "/android/system/bin/linker64 /android/system/bin/ping";
       ping6 = "/android/system/bin/linker64 /android/system/bin/ping6";
     });

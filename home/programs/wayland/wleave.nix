@@ -9,15 +9,15 @@
   inherit (lib) mkEnableOption mkOption mkIf types;
 in {
   options.customPrograms.wayland.wleave = {
-    enable = mkEnableOption "";
+    enable = mkEnableOption "" // {default = config.profiles.windowManager.enable;};
 
     height = mkOption {
-      default = 0.5;
       type = types.numbers.between 0 1;
+      default = 0.5;
     };
   };
 
-  config = mkIf (cfg.enable || config.profiles.windowManager.enable) {
+  config = mkIf cfg.enable {
     programs.wlogout = {
       enable = true;
       package = pkgs.wleave;

@@ -2,7 +2,6 @@
   config,
   lib,
   pkgs,
-  self',
   ...
 }: let
   cfg = config.workstation.programs.openrgb;
@@ -19,7 +18,7 @@ in {
 
     environment.systemPackages =
       if cfg.forceLibusb
-      then [self'.packages.openrgb-libusb]
+      then [config.pkgsSelf.openrgb-libusb]
       else with pkgs; [(openrgb.withPlugins [openrgb-plugin-effects])];
   };
 }

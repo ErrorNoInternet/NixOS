@@ -1,16 +1,10 @@
-{
-  config,
-  inputs',
-  self',
-  ...
-}: {
+{config, ...}: {
   wayland.windowManager.hyprland = let
-    brightness = "${self'.packages.brightness}/bin/brightness";
     grimblast = "grimblast --freeze save area -";
-    hyprgamemode = "${self'.packages.hyprgamemode}/bin/hyprgamemode";
+    hyprgamemode = "${config.pkgsSelf.hyprgamemode}/bin/hyprgamemode";
     rofi = "rofi -modes drun,window,run -show drun";
     satty = "satty -f- --early-exit --copy-command wl-copy --init-tool rectangle";
-    shadower = "${inputs'.shadower.packages.shadower}/bin/shadower -r16";
+    shadower = "shadower -r16";
   in {
     settings = {
       bind =
@@ -19,8 +13,7 @@
           "$mod, escape, exec, wleave -p layer-shell -f -b5 -T425 -B425 -L250 -R250"
 
           "$mod, D, exec, ${rofi} || pkill rofi"
-          "$mod, Z, exec, ${rofi} || pkill rofi"
-          "$mod, G, exec, cliphist list | (rofi -dmenu || pkill rofi) | cliphist decode | wl-copy"
+          "$mod, G, exec, cliphist list | (rofi -dmenu -window-title cb || pkill rofi) | cliphist decode | wl-copy"
           "$mod, code:60, exec, rofi -show emoji || pkill rofi"
 
           ", PRINT, exec, ${grimblast} | wl-copy"
@@ -30,19 +23,22 @@
 
           "$mod, F1, exec, ${hyprgamemode}"
           "$mod, L, exec, swaylock --grace 0 --fade-in 1"
-          "$mod, A, exec, scratchpad"
-          "$mod SHIFT, A, exec, scratchpad -g"
           "$mod, O, exec, swaync-client -t"
           "$mod, RETURN, exec, ${config.terminal.command}"
           "$mod, code:51, exec, firefox"
           "$mod SHIFT, RETURN, exec, [float; center] ${config.terminal.command}"
 
+          "$mod SHIFT, A, exec, scratchpad -g"
+          "$mod SHIFT, W, movetoworkspacesilent, special:overlay"
+          "$mod, A, exec, scratchpad"
+          "$mod, W, togglespecialworkspace, overlay"
+
           "$mod SHIFT, F, fullscreen"
           "$mod, F, fullscreen, 1"
-          "$mod, V, togglefloating"
-          "$mod, W, togglesplit"
+          "$mod, Q, killactive"
           "$mod, T, togglegroup"
-          "$mod SHIFT, Q, killactive"
+          "$mod, V, togglefloating"
+          "$mod, Z, togglesplit"
 
           "$mod, left, movefocus, l"
           "$mod, right, movefocus, r"
@@ -91,8 +87,8 @@
         ",XF86AudioMute, exec, pavolume toggle"
         ",XF86AudioRaiseVolume, exec, pavolume up"
         ",XF86AudioLowerVolume, exec, pavolume down"
-        ",XF86MonBrightnessUp, exec, ${brightness} up"
-        ",XF86MonBrightnessDown, exec, ${brightness} down"
+        ",XF86MonBrightnessUp, exec, brightnessctl s 2%+"
+        ",XF86MonBrightnessDown, exec, brightnessctl s 2%-"
       ];
       bindl = [
         ",switch:on:Lid Switch, exec, swaylock --grace 0 --fade-in 1"

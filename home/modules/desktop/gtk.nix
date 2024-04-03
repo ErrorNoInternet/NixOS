@@ -13,7 +13,7 @@ in {
     theme = mkOption {
       default = {
         name = "Nordic-darker";
-        package = pkgs.nordic;
+        package = config.pkgsSelf.gtkTheme-nordic;
       };
     };
 

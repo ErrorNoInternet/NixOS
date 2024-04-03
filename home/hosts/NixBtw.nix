@@ -35,6 +35,7 @@
       kdeconnect.enable = true;
       libreoffice.enable = true;
       obsStudio.enable = true;
+      prismlauncher.enable = true;
       spotify.enable = true;
       thunderbird.enable = true;
       virtManager.enable = true;
@@ -64,34 +65,18 @@
     };
   };
 
-  home = {
-    username = "error";
-    homeDirectory = "/home/error";
-    packages = with pkgs; [
-      # desktop
-      hyprpicker
-      self'.packages.scratchpad
-
-      # system utilities
-      compsize
-      ffmpeg_6-full
-      nvtop
-      self'.packages.tbw
-      timg
-
-      # graphical utilities
-      firefox
-      gimp
-      imhex
-      qbittorrent
-
-      # development utilities
-      jetbrains.idea-community
-
-      # games
-      osu-lazer-bin
-      prismlauncher
-      superTuxKart
-    ];
-  };
+  home.packages = with pkgs; [
+    compsize
+    ffmpeg_6-full
+    gimp
+    hyprpicker
+    imhex
+    jetbrains.idea-community
+    nvtopPackages.full
+    osu-lazer-bin
+    qbittorrent
+    self'.packages.tbw
+    superTuxKart
+    timg
+  ];
 }

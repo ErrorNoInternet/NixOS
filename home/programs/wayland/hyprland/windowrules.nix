@@ -6,7 +6,7 @@
     "title:Open"
     "title:Save As"
   ];
-  floats = [
+  floating = [
     "class:branchdialog"
     "class:confirm"
     "class:dialog"
@@ -21,7 +21,7 @@ in {
     [
       "size 50% 55%, class:${config.terminal.name}"
     ]
-    ++ (map (float: "float, ${float}") floats)
+    ++ (map (float: "float, ${float}") floating)
     ++ builtins.concatLists (map (dialog: [
         "animation slide, ${dialog}"
         "center,          ${dialog}"

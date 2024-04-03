@@ -17,7 +17,7 @@
         mode = "n";
         options.silent = true;
         key = "<leader>m";
-        action = ":MinimapToggle<CR>";
+        action = "<cmd>MinimapToggle<CR>";
       }
     ];
   };

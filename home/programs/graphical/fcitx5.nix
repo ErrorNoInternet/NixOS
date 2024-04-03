@@ -2,25 +2,28 @@
   config,
   lib,
   pkgs,
-  self',
   ...
 }: let
   cfg = config.customPrograms.graphical.fcitx5;
-  inherit (lib) mkOption mkIf types;
+  inherit (lib) mkEnableOption mkOption mkIf types;
 in {
-  options.customPrograms.graphical.fcitx5.theme = {
-    name = mkOption {
-      default = "Nord-Dark";
-      type = types.str;
-    };
+  options.customPrograms.graphical.fcitx5 = {
+    enable = mkEnableOption "" // {default = config.profiles.desktop.enable;};
 
-    package = mkOption {
-      default = self'.packages.fcitx5Theme-nord;
-      type = types.package;
+    theme = {
+      name = mkOption {
+        default = "Nord-Dark";
+        type = types.str;
+      };
+
+      package = mkOption {
+        default = config.pkgsSelf.fcitx5Theme-nord;
+        type = types.package;
+      };
     };
   };
 
-  config = mkIf config.profiles.desktop.enable {
+  config = mkIf cfg.enable {
     i18n.inputMethod = {
       enabled = "fcitx5";
       fcitx5.addons = with pkgs; [

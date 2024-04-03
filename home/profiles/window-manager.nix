@@ -3,7 +3,6 @@
   inputs',
   lib,
   pkgs,
-  self',
   ...
 }: let
   cfg = config.profiles.windowManager;
@@ -18,16 +17,25 @@ in {
       brightnessctl
       cliphist
       inputs'.hyprwm-contrib.packages.grimblast
+      inputs'.shadower.packages.shadower
       libnotify
       libsForQt5.qtimageformats
       pavucontrol
       playerctl
       ripdrag
       satty
-      self'.packages.pavolume
+      config.pkgsSelf.pavolume
       slurp
       swayidle
       vimiv-qt
+      wl-clipboard
+      wlr-randr
+
+      (writeScriptBin "scratchpad" ''
+        export PATH=${gawk}/bin:$PATH
+        ${config.pkgsSelf.scratchpad}/bin/scratchpad "$@"
+      '')
+
       (wf-recorder.overrideAttrs {
         src = fetchFromGitHub {
           owner = "ammen99";
@@ -36,8 +44,6 @@ in {
           hash = "sha256-TAFUwHLaA/zsTBiR2qqwcv8NCIaHWnBm7LsnI1fo/o4=";
         };
       })
-      wl-clipboard
-      wlr-randr
     ];
   };
 }

@@ -2,7 +2,7 @@
   imports = [
     ./development.nix
     ./lsp.nix
-    ./theme.nix
+    ./visual.nix
   ];
 
   programs.nixvim.keymaps =
@@ -42,32 +42,32 @@
       {
         mode = "n";
         key = "<c-j>";
-        action = ":m .+1<CR>==";
+        action = "<cmd>m .+1<CR>==";
       }
       {
         mode = "n";
         key = "<c-k>";
-        action = ":m .-2<CR>==";
+        action = "<cmd>m .-2<CR>==";
       }
       {
         mode = "i";
         key = "<c-j>";
-        action = "<esc>:m .+1<CR>==gi";
+        action = "<esc><cmd>m .+1<CR>==gi";
       }
       {
         mode = "i";
         key = "<c-k>";
-        action = "<esc>:m .-2<CR>==gi";
+        action = "<esc><cmd>m .-2<CR>==gi";
       }
       {
         mode = "v";
         key = "<c-j>";
-        action = ":m '>+1<CR>gv=gv";
+        action = "<cmd>m '>+1<CR>gv=gv";
       }
       {
         mode = "v";
         key = "<c-k>";
-        action = ":m '<-2<CR>gv=gv";
+        action = "<cmd>m '<-2<CR>gv=gv";
       }
 
       {
@@ -117,7 +117,7 @@
           silent = true;
         };
         key = "<F1>";
-        action = "<esc>:w<CR>";
+        action = "<esc><cmd>w<CR>";
       }
       {
         mode = "n";
@@ -126,95 +126,101 @@
           silent = true;
         };
         key = "<F1>";
-        action = ":w<CR>";
+        action = "<cmd>w<CR>";
       }
       {
         mode = "i";
         options.silent = true;
         key = "<C-S>";
-        action = "<esc>:w<CR>";
+        action = "<esc><cmd>w<CR>";
       }
       {
         mode = "n";
         options.silent = true;
         key = "<C-S>";
-        action = ":w<CR>";
+        action = "<cmd>w<CR>";
       }
 
       {
         mode = "n";
         options.silent = true;
         key = "gt";
-        action = ":BufferNext<CR>";
+        action = "<cmd>BufferNext<CR>";
       }
       {
         mode = "n";
         options.silent = true;
         key = "gT";
-        action = ":BufferPrevious<CR>";
+        action = "<cmd>BufferPrevious<CR>";
       }
       {
         mode = "n";
         options.silent = true;
         key = ";d";
-        action = ":bd<CR>";
+        action = "<cmd>bd<CR>";
       }
       {
         mode = "n";
         options.silent = true;
         key = ";D";
-        action = ":bd!<CR>";
+        action = "<cmd>bd!<CR>";
       }
 
       {
         mode = "n";
         options.silent = true;
         key = "<C-l>";
-        action = ":NvimTreeToggle<CR>";
+        action = "<cmd>Neotree toggle<CR>";
       }
       {
         mode = "n";
         options.silent = true;
         key = "<leader>l";
-        action = ":NvimTreeFocus<CR>";
+        action = "<cmd>Neotree focus<CR>";
+      }
+      {
+        mode = "n";
+        options.silent = true;
+        key = "<leader>v";
+        action = "<cmd>Neotree reveal<CR>";
       }
       {
         mode = "n";
         options.silent = true;
         key = "<leader>u";
-        action = ":UndotreeToggle<CR>:UndotreeFocus<CR>";
+        action = "<cmd>UndotreeToggle<CR><cmd>UndotreeFocus<CR>";
       }
       {
         mode = "i";
         options.silent = true;
         key = "<F4>";
-        action = "<esc>:nohl<CR>:MinimapRefresh<CR>i";
+        action = "<esc><cmd>nohl<CR><cmd>MinimapRefresh<CR>i";
       }
       {
         mode = "n";
         options.silent = true;
         key = "<F4>";
-        action = ":nohl<CR>:MinimapRefresh<CR>";
+        action = "<cmd>nohl<CR><cmd>MinimapRefresh<CR>";
       }
 
       {
         mode = "n";
         options.silent = true;
         key = "<leader>fy";
-        action = ":Telescope yank_history<CR>";
+        action = "<cmd>Telescope yank_history<CR>";
       }
       {
         mode = "n";
         options.silent = true;
         key = "<leader>fe";
-        action = ":Telescope spell_suggest<CR>";
+        action = "<cmd>Telescope spell_suggest<CR>";
       }
     ]
     ++ (builtins.genList (n: {
         mode = "n";
         options.silent = true;
         key = "<leader>${builtins.toString (n + 1)}";
-        action = ":BufferGoto ${builtins.toString (n + 1)}<CR>";
+        action = "<cmd>BufferGoto ${builtins.toString (n + 1)}<CR>";
       })
       9);
 }

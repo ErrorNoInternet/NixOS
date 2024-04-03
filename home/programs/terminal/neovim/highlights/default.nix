@@ -28,9 +28,24 @@
         bg = "#${base00}";
       };
 
-      NvimTreeCursorLine.bg = "#${base03}";
-      NvimTreeNormal.bg = "#${base01}";
-      NvimTreeRootFolder.fg = "#${base0C}";
+      NeoTreeCursorLine.bg = "#${base03}";
+      NeoTreeDimText.fg = "#${base03}";
+      NeoTreeDotfile.fg = "#${base03}";
+      NeoTreeFileStats.fg = "#${base03}";
+      NeoTreeFileStatsHeader.fg = "#${base03}";
+      NeoTreeGitConflict.fg = "#${base08}";
+      NeoTreeGitIgnored.fg = "#${base03}";
+      NeoTreeGitUnstaged.fg = "#${base0A}";
+      NeoTreeGitUntracked.fg = "#${base0D}";
+      NeoTreeMessage.fg = "#${base03}";
+      NeoTreeNormal.bg = "#${base01}";
+      NeoTreeNormalNC.bg = "#${base01}";
+      NeoTreeRootName = {
+        bold = true;
+        italic = false;
+      };
+      NeoTreeTitleBar.bg = "#${base03}";
+
       OutlineNormal.bg = "#${base01}";
       TroubleNormal.bg = "#${base00}";
 

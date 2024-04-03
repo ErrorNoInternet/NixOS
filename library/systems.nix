@@ -8,75 +8,86 @@
 in rec {
   mkSystem = {
     type,
-    homeManager,
     name,
+    id ? null,
     system ? "x86_64-linux",
-    disko ? type == "workstation",
+    homeManager ? true,
+    disko ? true,
   }:
     withSystem system ({
       inputs',
       self',
       ...
-    }:
+    }: let
+      specialArgs = {
+        inherit inputs' inputs self' self system;
+      };
+    in
       inputs.nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs' inputs self' self;};
+        inherit specialArgs;
 
-        modules =
+        modules = let
+          isWorkstation = type == "workstation";
+        in
           [
             ../${type}/common.nix
             ../${type}/hosts/${name}
             ../${type}/hosts/${name}/hardware.nix
-            {host = {inherit name system;};}
+            ../packages/module.nix
+            ../shared/all.nix
+            ../shared/nixos.nix
+            {host = {inherit name id system;};}
           ]
           ++ optionals disko [
-            inputs.disko.nixosModules.disko
             ../${type}/hosts/${name}/disko.nix
+            inputs.disko.nixosModules.disko
           ]
           ++ optionals homeManager [
-            inputs.home-manager.nixosModules.home-manager
             {
               home-manager = {
-                extraSpecialArgs = {inherit inputs' inputs self' self;};
+                extraSpecialArgs = specialArgs;
 
+                backupFileExtension = "nixbak";
                 useGlobalPkgs = true;
                 useUserPackages = true;
 
-                users."${
-                  if type == "workstation"
+                users.${
+                  if isWorkstation
                   then "error"
                   else "snowflake"
-                }" = {...}: {
+                } = _: {
                   imports = [
                     ../home/common.nix
                     ../home/hosts/${name}.nix
                   ];
+
+                  flags = {inherit isWorkstation;};
                 };
               };
             }
+            inputs.home-manager.nixosModules.home-manager
           ];
       });
 
-  mkHmServer = name: extraConfig:
+  mkHmServer = name: id: extraConfig:
     mkSystem ({
         type = "server";
-        homeManager = true;
-        inherit name;
+        inherit name id;
       }
       // extraConfig);
 
-  mkServer = name: extraConfig:
+  mkServer = name: id: extraConfig:
     mkSystem ({
         type = "server";
         homeManager = false;
-        inherit name;
+        inherit name id;
       }
       // extraConfig);
 
-  mkWorkstation = name: extraConfig:
+  mkWorkstation = name: id: extraConfig:
     mkSystem ({
         type = "workstation";
-        homeManager = true;
-        inherit name;
+        inherit name id;
       }
       // extraConfig);
 

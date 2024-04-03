@@ -1,7 +1,6 @@
 {pkgs, ...}: {
   programs.yazi.keymap = {
     manager.keymap = [
-      # yazi
       {
         on = ["<Esc>"];
         run = "escape";
@@ -23,7 +22,6 @@
         desc = "Suspend the process";
       }
 
-      # Navigation
       {
         on = ["k"];
         run = "arrow -1";
@@ -119,7 +117,6 @@
         desc = "move selection to the bottom";
       }
 
-      # Selection
       {
         on = ["<Space>"];
         run = ["select --state=none" "arrow 1"];
@@ -146,7 +143,6 @@
         desc = "Inverse selection of all files";
       }
 
-      # operations
       {
         on = ["o"];
         run = "open";
@@ -223,7 +219,6 @@
         desc = "reveal files with fzf";
       }
 
-      # Copy
       {
         on = ["c" "c"];
         run = "copy path";
@@ -245,7 +240,6 @@
         desc = "copy file name without extension";
       }
 
-      # Find
       {
         on = ["/"];
         run = "find";
@@ -275,7 +269,6 @@
         run = "search none";
       }
 
-      # Sorting
       {
         on = [";" "a"];
         run = "sort alphabetical --dir-first";
@@ -327,7 +320,6 @@
         desc = "Sort by size (reverse)";
       }
 
-      # Tabs
       {
         on = ["t"];
         run = "tab_create --current";
@@ -401,14 +393,12 @@
         desc = "Swap the current tab with the next tab";
       }
 
-      # Tasks
       {
         on = ["w"];
         run = "tasks_show";
         desc = "Show the tasks manager";
       }
 
-      # Jumps
       {
         on = ["g" "h"];
         run = "cd ~";
@@ -480,7 +470,6 @@
         desc = "delete all marked locations";
       }
 
-      # Help
       {
         on = ["~"];
         run = "help";

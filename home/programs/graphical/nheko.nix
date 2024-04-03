@@ -5,11 +5,12 @@
   self,
   ...
 }: let
+  cfg = config.customPrograms.graphical.nheko;
   inherit (lib) mkEnableOption mkIf;
 in {
   options.customPrograms.graphical.nheko.enable = mkEnableOption "";
 
-  config = mkIf config.customPrograms.graphical.nheko.enable {
+  config = mkIf cfg.enable {
     age.secrets.nheko_access-token.file = "${self}/secrets/nheko_access-token.age";
     home.activation."nheko_access-token" = lib.hm.dag.entryAfter ["writeBoundary"] ''
       secret=$(cat "${config.age.secrets.nheko_access-token.path}")

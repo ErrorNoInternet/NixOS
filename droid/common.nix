@@ -1,4 +1,5 @@
 {
+  config,
   inputs',
   inputs,
   lib,
@@ -15,20 +16,12 @@
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
-    config.flags.nixOnDroid = true;
+    config.flags.isNixOnDroid = true;
   };
 
   environment.motd = "";
   nix = {
-    package = self'.packages.nix;
-
     nixPath = ["nixpkgs=${inputs.nixpkgs}"];
-    registry = let
-      mappedRegistry = lib.mapAttrs' (name: flake:
-        lib.nameValuePair name {inherit flake;})
-      inputs;
-    in
-      mappedRegistry // {default = mappedRegistry.nixpkgs;};
 
     extraOptions = ''
       experimental-features = nix-command flakes
@@ -37,6 +30,10 @@
       show-trace = true
     '';
   };
+
+  networking.extraHosts = lib.strings.concatStringsSep "\n" (lib.attrsets.mapAttrsToList (
+    name: host: "${host} ${name}"
+  ) (import ../shared/hostnames.nix));
 
   user.shell = "${pkgs.fish}/bin/fish";
   environment = {
@@ -49,7 +46,6 @@
         gnused
         gnutar
         gzip
-        htop
         inetutils
         iproute2
         kbd
@@ -66,10 +62,10 @@
         xz
         zstd
       ]
-      ++ (import ../shared/packages.nix {inherit inputs' pkgs self';});
+      ++ (import ../shared/packages.nix {
+        inherit config inputs' pkgs self';
+      });
 
     etc.current.source = lib.cleanSource ./..;
   };
-
-  system.stateVersion = "23.05";
 }

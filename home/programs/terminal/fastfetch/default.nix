@@ -14,7 +14,7 @@ in {
     home = {
       packages = with pkgs;
         map (variation: (writeScriptBin variation ''
-          export PATH=${nix}/bin:$PATH
+          export PATH=$PATH:${nix}/bin
           ${fastfetch}/bin/${variation} "$@"
         ''))
         ["fastfetch" "flashfetch"];
@@ -26,6 +26,7 @@ in {
         "${config.xdg.configHome}/fastfetch/minimal-droid.jsonc".text = escape (import ./minimal-droid.nix {inherit pkgs;});
 
         "${config.xdg.configHome}/fastfetch/config.jsonc".text = builtins.toJSON {
+          general.processingTimeout = 10000;
           modules = [
             "title"
             "separator"

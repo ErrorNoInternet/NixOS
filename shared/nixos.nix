@@ -8,7 +8,7 @@
   self,
   ...
 }: let
-  inherit (lib) mkDefault mkForce;
+  inherit (lib) mkDefault mkForce attrsets;
 in {
   imports = [
     ./caches
@@ -17,16 +17,6 @@ in {
   ];
 
   nix = {
-    package = self'.packages.nix;
-
-    nixPath = ["nixpkgs=${inputs.nixpkgs}"];
-    registry = let
-      mappedRegistry = lib.mapAttrs' (name: flake:
-        lib.nameValuePair name {inherit flake;})
-      inputs;
-    in
-      mappedRegistry // {default = mappedRegistry.nixpkgs;};
-
     settings = {
       auto-optimise-store = true;
       experimental-features = ["nix-command" "flakes"];
@@ -74,10 +64,10 @@ in {
     memoryPercent = 200;
   };
 
-  networking.hosts = {
-    "192.168.0.100" = ["Pix.local"];
-    "192.168.0.101" = ["NixBtw.local"];
-  };
+  networking.hosts = attrsets.listToAttrs (map (entry: {
+    name = entry.value;
+    value = [entry.name];
+  }) (attrsets.attrsToList (import ./hostnames.nix)));
 
   services = {
     getty = {
@@ -89,27 +79,26 @@ in {
   };
 
   programs.command-not-found.enable = false;
+
   environment = {
     systemPackages = with pkgs;
       [
         bandwhich
         btop
+        config.pkgsSelf.btrfs-map-physical
+        config.pkgsSelf.btrfs-progs
         duf
         ethtool
         iotop-c
         neovim
-        self'.packages.btrfs-map-physical
-        self'.packages.btrfs-progs
         tcpdump
       ]
-      ++ (import ./packages.nix {inherit inputs' pkgs self';});
+      ++ (import ./packages.nix {
+        inherit config inputs' pkgs self';
+      });
 
     etc."nixos/current".source = lib.cleanSource ./..;
   };
 
-  system = {
-    configurationRevision = self.rev or self.dirtyRev;
-
-    stateVersion = "23.05";
-  };
+  system.configurationRevision = self.rev or self.dirtyRev;
 }

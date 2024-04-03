@@ -12,7 +12,7 @@
       settings = {
         clock = true;
         screenshot = true;
-        effect-blur = "10x10";
+        effect-blur = "20x10";
 
         font = config.font.name;
         font-size = 25;

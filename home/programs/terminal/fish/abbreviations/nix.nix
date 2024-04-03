@@ -7,6 +7,7 @@
   in {
     "/insecure" = anywhere "NIXPKGS_ALLOW_INSECURE=1";
     "/unfree" = anywhere "NIXPKGS_ALLOW_UNFREE=1";
+    "/unsupported" = anywhere "NIXPKGS_ALLOW_UNSUPPORTED_SYSTEM=1";
 
     "/c" = anywhere "-c fish";
     "/es" = anywhere "--extra-substituters";
@@ -30,6 +31,7 @@
     nfc = "nix flake check";
     nfl = "nix flake lock";
     nfm = "nix flake metadata";
+    nfmt = "nix fmt";
     nfs = "nix flake show";
     nfu = "nix flake update";
     nr = "nix run";
@@ -39,5 +41,6 @@
     nS = "nix-shell --run fish";
     nsl = "nix shell -L";
     nSS = "nix-shell --run fish -p";
+    nst = "nix-store";
   };
 }

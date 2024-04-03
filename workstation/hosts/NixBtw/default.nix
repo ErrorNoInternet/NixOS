@@ -1,8 +1,9 @@
 {pkgs, ...}: {
+  host.architecture = "haswell";
+
   imports = [
     ./nas-mounts.nix
   ];
-  host.id = "102f58f5";
 
   specialisation = let
     common = {absentFileSystems = ["/mnt/nas/drive1" "/mnt/nas/drive3"];};

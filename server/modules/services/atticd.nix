@@ -5,12 +5,12 @@
   self,
   ...
 }: let
-  cfg = config.server.services.attic;
+  cfg = config.server.services.atticd;
   inherit (lib) mkEnableOption mkOption mkIf types;
 in {
   imports = [inputs.attic.nixosModules.atticd];
 
-  options.server.services.attic = {
+  options.server.services.atticd = {
     enable = mkEnableOption "";
 
     host = mkOption {
@@ -38,18 +38,21 @@ in {
 
   config = mkIf cfg.enable {
     age.secrets.attic-server-token.file = "${self}/secrets/attic_server-token.age";
+
     networking.firewall.allowedTCPPorts = with cfg.ports; [insecure secure];
+
     systemd.services.atticd.serviceConfig.ReadWritePaths = [cfg.storagePath];
+
     services = {
       atticd = {
         enable = true;
         credentialsFile = config.age.secrets.attic-server-token.path;
+
         settings = {
           listen = "[::]:${builtins.toString cfg.ports.insecure}";
           api-endpoint = "https://${cfg.host}:${builtins.toString cfg.ports.secure}/";
 
           database.url = "sqlite://${cfg.storagePath}/server.db";
-          require-proof-of-possession = false;
           storage = {
             type = "local";
             path = "${cfg.storagePath}/storage";
@@ -73,13 +76,16 @@ in {
 
       nginx = {
         enable = true;
+
+        clientMaxBodySize = "10G";
         recommendedProxySettings = true;
         recommendedTlsSettings = true;
-        clientMaxBodySize = "10G";
+
         virtualHosts.${cfg.host} = {
           forceSSL = true;
           sslCertificate = "/etc/letsencrypt/live/${cfg.host}/fullchain.pem";
           sslCertificateKey = "/etc/letsencrypt/live/${cfg.host}/privkey.pem";
+
           listen = [
             {
               addr = "0.0.0.0";
@@ -87,6 +93,7 @@ in {
               ssl = true;
             }
           ];
+
           locations."/" = {
             proxyPass = "http://localhost:${builtins.toString cfg.ports.insecure}";
             extraConfig = ''
