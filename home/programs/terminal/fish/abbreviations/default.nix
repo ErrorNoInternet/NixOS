@@ -35,6 +35,7 @@
       sc = "systemctl";
       scu = "systemctl --user";
       sl = "sleep";
+      t = "tmux";
       v = "nvim";
 
       hy = "hyprctl";
