@@ -78,6 +78,7 @@ in {
         enable = true;
 
         clientMaxBodySize = "10G";
+        proxyTimeout = "120s";
         recommendedProxySettings = true;
         recommendedTlsSettings = true;
 

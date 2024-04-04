@@ -5,10 +5,10 @@
   self,
   ...
 }: let
-  cfg = config.customPrograms.graphical.nheko;
+  cfg = config.customPrograms.nheko;
   inherit (lib) mkEnableOption mkIf;
 in {
-  options.customPrograms.graphical.nheko.enable = mkEnableOption "";
+  options.customPrograms.nheko.enable = mkEnableOption "";
 
   config = mkIf cfg.enable {
     age.secrets.nheko_access-token.file = "${self}/secrets/nheko_access-token.age";

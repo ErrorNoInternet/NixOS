@@ -4,10 +4,10 @@
   pkgs,
   ...
 }: let
-  cfg = config.customPrograms.graphical.fcitx5;
+  cfg = config.customPrograms.fcitx5;
   inherit (lib) mkEnableOption mkOption mkIf types;
 in {
-  options.customPrograms.graphical.fcitx5 = {
+  options.customPrograms.fcitx5 = {
     enable = mkEnableOption "" // {default = config.profiles.desktop.enable;};
 
     theme = {

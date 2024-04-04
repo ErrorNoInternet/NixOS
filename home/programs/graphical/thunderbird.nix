@@ -3,10 +3,10 @@
   lib,
   ...
 }: let
-  cfg = config.customPrograms.graphical.thunderbird;
+  cfg = config.customPrograms.thunderbird;
   inherit (lib) mkEnableOption mkIf;
 in {
-  options.customPrograms.graphical.thunderbird.enable = mkEnableOption "";
+  options.customPrograms.thunderbird.enable = mkEnableOption "";
 
   config = mkIf cfg.enable {
     programs.thunderbird = {

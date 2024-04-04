@@ -1,6 +1,4 @@
 {
-  description = "ErrorNoInternet's NixOS configuration";
-
   inputs = {
     agenix = {
       url = "github:ryantm/agenix";
@@ -55,15 +53,6 @@
     hyprwm-contrib = {
       url = "github:hyprwm/contrib";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    iamb = {
-      url = "github:ulyssa/iamb";
-      inputs = {
-        flake-utils.follows = "flake-utils";
-        nixpkgs.follows = "nixpkgs";
-        rust-overlay.follows = "rust-overlay";
-      };
     };
 
     neovim-nightly = {
@@ -185,4 +174,6 @@
         formatter = packages.alejandra;
       };
     };
+
+  description = "ErrorNoInternet's NixOS, home-manager and nix-on-droid configuration";
 }

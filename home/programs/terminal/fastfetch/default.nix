@@ -4,11 +4,11 @@
   pkgs,
   ...
 }: let
-  cfg = config.customPrograms.terminal.fastfetch;
+  cfg = config.customPrograms.fastfetch;
   inherit (lib) mkEnableOption mkIf;
 in {
-  options.customPrograms.terminal.fastfetch.enable =
-    mkEnableOption "" // {default = config.customPrograms.terminal.fish.enable;};
+  options.customPrograms.fastfetch.enable =
+    mkEnableOption "" // {default = config.customPrograms.fish.enable;};
 
   config = mkIf cfg.enable {
     home = {

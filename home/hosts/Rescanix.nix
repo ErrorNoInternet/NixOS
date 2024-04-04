@@ -15,21 +15,17 @@
   desktop.monitors = [{}];
 
   customPrograms = {
-    graphical = {
-      kdeconnect.enable = true;
-      libreoffice.enable = true;
-      obsStudio.enable = true;
-      prismlauncher.enable = true;
-      spotify.enable = true;
-      thunderbird.enable = true;
-      virtManager.enable = true;
-    };
-    terminal = {
-      cava.enable = true;
-      git.user.name = "Rescanix";
-      gpg.enable = true;
-      irssi.enable = true;
-    };
+    kdeconnect.enable = true;
+    libreoffice.enable = true;
+    obsStudio.enable = true;
+    prismlauncher.enable = true;
+    spotify.enable = true;
+    thunderbird.enable = true;
+    virtManager.enable = true;
+    cava.enable = true;
+    git.user.name = "Rescanix";
+    gpg.enable = true;
+    irssi.enable = true;
   };
 
   home.packages = with pkgs; [

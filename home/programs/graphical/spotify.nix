@@ -6,14 +6,14 @@
   pkgs,
   ...
 }: let
-  cfg = config.customPrograms.graphical.spotify;
+  cfg = config.customPrograms.spotify;
   inherit (lib) mkEnableOption mkIf;
 
   spicePkgs = inputs'.spicetify-nix.packages.default;
 in {
   imports = [inputs.spicetify-nix.homeManagerModule];
 
-  options.customPrograms.graphical.spotify.enable =
+  options.customPrograms.spotify.enable =
     mkEnableOption "";
 
   config = mkIf cfg.enable {

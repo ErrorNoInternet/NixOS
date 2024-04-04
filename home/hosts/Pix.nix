@@ -1,3 +1,3 @@
 {
-  customPrograms.terminal.git.user.name = "Pix";
+  customPrograms.git.user.name = "Pix";
 }

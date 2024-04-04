@@ -2,9 +2,10 @@
   wayland.windowManager.hyprland = let
     grimblast = "grimblast --freeze save area -";
     hyprgamemode = "${config.pkgsSelf.hyprgamemode}/bin/hyprgamemode";
-    rofi = "rofi -modes drun,window,run -show drun";
     satty = "satty -f- --early-exit --copy-command wl-copy --init-tool rectangle";
     shadower = "shadower -r16";
+
+    rofi = config.customPrograms.rofi.commands;
   in {
     settings = {
       bind =
@@ -12,9 +13,9 @@
           "$mod CTRL SHIFT, code:22, exec, hyprctl dispatch exit"
           "$mod, escape, exec, wleave -p layer-shell -f -b5 -T425 -B425 -L250 -R250"
 
-          "$mod, D, exec, ${rofi} || pkill rofi"
-          "$mod, G, exec, cliphist list | (rofi -dmenu -window-title cb || pkill rofi) | cliphist decode | wl-copy"
-          "$mod, code:60, exec, rofi -show emoji || pkill rofi"
+          "$mod, D, exec, ${rofi.default}"
+          "$mod, G, exec, ${rofi.clipboard} | wl-copy"
+          "$mod, code:60, exec, ${rofi.emoji}"
 
           ", PRINT, exec, ${grimblast} | wl-copy"
           "SHIFT, PRINT, exec, ${grimblast} | ${shadower} | wl-copy"

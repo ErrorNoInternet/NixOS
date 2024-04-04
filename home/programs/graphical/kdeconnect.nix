@@ -4,10 +4,10 @@
   pkgs,
   ...
 }: let
-  cfg = config.customPrograms.graphical.kdeconnect;
+  cfg = config.customPrograms.kdeconnect;
   inherit (lib) mkDefault mkEnableOption mkOption mkIf types;
 in {
-  options.customPrograms.graphical.kdeconnect = {
+  options.customPrograms.kdeconnect = {
     enable = mkEnableOption "";
 
     enableYaziIntegration =
