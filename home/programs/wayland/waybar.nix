@@ -84,8 +84,8 @@
         "network#status" = {
           format-wifi = "  {signalStrength}%";
           format-ethernet = "󰈀  {ifname} (eth)";
-          tooltip-format-wifi = "({frequency} GHz) Connected to {essid} ({gwaddr}) via {ifname} ({ipaddr})";
-          tooltip-format-ethernet = "Connected via {ifname} ({gwaddr} -> {ipaddr})";
+          tooltip-format-wifi = "Connected ({frequency} GHz) to {essid} ({gwaddr}) via {ifname} ({ipaddr})";
+          tooltip-format-ethernet = "Connected to ethernet ({gwaddr}) via {ifname} ({ipaddr})";
           format-linked = "󰈀  {ifname} (eth) (No IP)";
           format-disconnected = "󰖪  ?";
         };
