@@ -1,6 +1,4 @@
 {
-  description = "ErrorNoInternet's NixOS configuration";
-
   inputs = {
     agenix = {
       url = "github:ryantm/agenix";
@@ -185,4 +183,6 @@
         formatter = packages.alejandra;
       };
     };
+
+  description = "ErrorNoInternet's NixOS, home-manager and nix-on-droid configuration";
 }
