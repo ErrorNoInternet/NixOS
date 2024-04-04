@@ -4,8 +4,32 @@
   lib,
   pkgs,
   ...
-}: {
-  config = lib.mkIf config.profiles.windowManager.enable {
+}: let
+  cfg = config.customPrograms.rofi;
+  inherit (lib) mkEnableOption mkOption mkIf types;
+in {
+  options.customPrograms.rofi = {
+    enable = mkEnableOption "" // {default = config.profiles.windowManager.enable;};
+
+    commands = {
+      default = mkOption {
+        type = types.str;
+        default = "rofi -modes drun,window,run -show drun || pkill rofi";
+      };
+
+      clipboard = mkOption {
+        type = types.str;
+        default = "cliphist list | (rofi -dmenu -window-title -no-show-icons cb || pkill rofi) | cliphist decode";
+      };
+
+      emoji = mkOption {
+        type = types.str;
+        default = "rofi -show emoji -no-show-icons || pkill rofi";
+      };
+    };
+  };
+
+  config = mkIf cfg.enable {
     programs.rofi = {
       enable = true;
       package = with pkgs;
@@ -30,9 +54,7 @@
         inherit (config.lib.formats.rasi) mkLiteral;
 
         base00RGBA = "rgba(${
-          inputs.nix-colors.lib.conversions.hexToRGBString
-          ","
-          base00
+          inputs.nix-colors.lib.conversions.hexToRGBString "," base00
         },${builtins.toString config.opacity.menu})";
       in {
         "*" = {
