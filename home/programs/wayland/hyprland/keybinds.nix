@@ -13,8 +13,8 @@
           "$mod, escape, exec, wleave -p layer-shell -f -b5 -T425 -B425 -L250 -R250"
 
           "$mod, D, exec, ${rofi} || pkill rofi"
-          "$mod, G, exec, cliphist list | (rofi -dmenu -window-title cb || pkill rofi) | cliphist decode | wl-copy"
-          "$mod, code:60, exec, rofi -show emoji || pkill rofi"
+          "$mod, G, exec, cliphist list | (rofi -dmenu -window-title -no-show-icons cb || pkill rofi) | cliphist decode | wl-copy"
+          "$mod, code:60, exec, rofi -show emoji -no-show-icons || pkill rofi"
 
           ", PRINT, exec, ${grimblast} | wl-copy"
           "SHIFT, PRINT, exec, ${grimblast} | ${shadower} | wl-copy"
