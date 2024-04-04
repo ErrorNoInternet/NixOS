@@ -3,10 +3,10 @@
   lib,
   ...
 }: let
-  cfg = config.customPrograms.terminal.ssh;
+  cfg = config.customPrograms.ssh;
   inherit (lib) mkEnableOption mkIf;
 in {
-  options.customPrograms.terminal.ssh.enable =
+  options.customPrograms.ssh.enable =
     mkEnableOption "" // {default = true;};
 
   config = mkIf cfg.enable {

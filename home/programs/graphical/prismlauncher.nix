@@ -4,10 +4,10 @@
   pkgs,
   ...
 }: let
-  cfg = config.customPrograms.graphical.prismlauncher;
+  cfg = config.customPrograms.prismlauncher;
   inherit (lib) mkEnableOption mkIf;
 in {
-  options.customPrograms.graphical.prismlauncher.enable =
+  options.customPrograms.prismlauncher.enable =
     mkEnableOption "";
 
   config = mkIf cfg.enable {

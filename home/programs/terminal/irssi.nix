@@ -3,10 +3,10 @@
   lib,
   ...
 }: let
-  cfg = config.customPrograms.terminal.irssi;
+  cfg = config.customPrograms.irssi;
   inherit (lib) mkEnableOption mkOption mkIf types;
 in {
-  options.customPrograms.terminal.irssi = {
+  options.customPrograms.irssi = {
     enable = mkEnableOption "";
 
     nick = mkOption {

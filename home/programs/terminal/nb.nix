@@ -4,10 +4,10 @@
   pkgs,
   ...
 }: let
-  cfg = config.customPrograms.terminal.nb;
+  cfg = config.customPrograms.nb;
   inherit (lib) mkEnableOption mkOption mkIf types;
 in {
-  options.customPrograms.terminal.nb = {
+  options.customPrograms.nb = {
     enable = mkEnableOption "";
 
     dataDirectory = mkOption {

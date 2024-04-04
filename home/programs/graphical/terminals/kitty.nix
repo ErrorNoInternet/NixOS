@@ -4,10 +4,10 @@
   lib,
   ...
 }: let
-  cfg = config.customPrograms.graphical.kitty;
+  cfg = config.customPrograms.kitty;
   inherit (lib) mkEnableOption mkOption mkIf types intersperse;
 in {
-  options.customPrograms.graphical.kitty = {
+  options.customPrograms.kitty = {
     enable = mkEnableOption "" // {default = config.profiles.desktop.enable;};
 
     monitor = {

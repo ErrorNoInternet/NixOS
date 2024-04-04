@@ -30,38 +30,34 @@
   };
 
   customPrograms = {
-    graphical = {
-      discord.enable = true;
-      kdeconnect.enable = true;
-      libreoffice.enable = true;
-      obsStudio.enable = true;
-      prismlauncher.enable = true;
-      spotify.enable = true;
-      thunderbird.enable = true;
-      virtManager.enable = true;
+    discord.enable = true;
+    kdeconnect.enable = true;
+    libreoffice.enable = true;
+    obsStudio.enable = true;
+    prismlauncher.enable = true;
+    spotify.enable = true;
+    thunderbird.enable = true;
+    virtManager.enable = true;
+    cava.enable = true;
+    git = {
+      user = {
+        name = "ErrorNoInternet";
+        email = "errornointernet@envs.net";
+      };
+      signing = {
+        key = "2486BFB7B1E6A4A3";
+        signByDefault = true;
+      };
     };
-    terminal = {
-      cava.enable = true;
-      git = {
-        user = {
-          name = "ErrorNoInternet";
-          email = "errornointernet@envs.net";
-        };
-        signing = {
-          key = "2486BFB7B1E6A4A3";
-          signByDefault = true;
-        };
-      };
-      gpg = {
-        enable = true;
-        defaultKey = "2486BFB7B1E6A4A3";
-      };
-      iamb.enable = true;
-      irssi.enable = true;
-      nb = {
-        enable = true;
-        dataDirectory = "/mnt/data/other/nb";
-      };
+    gpg = {
+      enable = true;
+      defaultKey = "2486BFB7B1E6A4A3";
+    };
+    iamb.enable = true;
+    irssi.enable = true;
+    nb = {
+      enable = true;
+      dataDirectory = "/mnt/data/other/nb";
     };
   };
 

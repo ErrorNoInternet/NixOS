@@ -4,10 +4,10 @@
   pkgs,
   ...
 }: let
-  cfg = config.customPrograms.terminal.gpg;
+  cfg = config.customPrograms.gpg;
   inherit (lib) mkEnableOption mkOption mkIf types;
 in {
-  options.customPrograms.terminal.gpg = {
+  options.customPrograms.gpg = {
     enable = mkEnableOption "";
 
     defaultKey = mkOption {

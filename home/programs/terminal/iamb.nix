@@ -4,10 +4,10 @@
   lib,
   ...
 }: let
-  cfg = config.customPrograms.terminal.iamb;
+  cfg = config.customPrograms.iamb;
   inherit (lib) mkEnableOption mkOption mkIf types;
 in {
-  options.customPrograms.terminal.iamb = {
+  options.customPrograms.iamb = {
     enable = mkEnableOption "";
 
     defaultProfile = mkOption {

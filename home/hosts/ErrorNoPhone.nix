@@ -1,5 +1,5 @@
 {
-  customPrograms.terminal = {
+  customPrograms = {
     git.user.name = "ErrorNoPhone";
     gpg.enable = true;
     nb = {

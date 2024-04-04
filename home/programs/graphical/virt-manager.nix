@@ -4,10 +4,10 @@
   pkgs,
   ...
 }: let
-  cfg = config.customPrograms.graphical.virtManager;
+  cfg = config.customPrograms.virtManager;
   inherit (lib) mkEnableOption mkIf;
 in {
-  options.customPrograms.graphical.virtManager.enable = mkEnableOption "";
+  options.customPrograms.virtManager.enable = mkEnableOption "";
 
   config = mkIf cfg.enable {
     home.packages = [pkgs.virt-manager];
