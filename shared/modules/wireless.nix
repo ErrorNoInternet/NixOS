@@ -21,7 +21,7 @@ in {
           name = "@ssid${builtins.toString n}@";
           value.psk = "@psk${builtins.toString n}@";
         })
-        4);
+        5);
     };
   };
 }
