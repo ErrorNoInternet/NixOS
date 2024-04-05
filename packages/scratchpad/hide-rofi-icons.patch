@@ -1,7 +1,7 @@
-diff --git a/scratchpad/scratchpad b/scratchpad/scratchpad
+diff --git a/scratchpad b/scratchpad
 index 4cf92b5..4ddaeee 100755
---- a/scratchpad/scratchpad
-+++ b/scratchpad/scratchpad
+--- a/scratchpad
++++ b/scratchpad
 @@ -5,7 +5,7 @@
  # Variables
  _action=send
