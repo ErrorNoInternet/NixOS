@@ -28,6 +28,10 @@ in rec {
 
         modules = let
           isWorkstation = type == "workstation";
+          username =
+            if isWorkstation
+            then "error"
+            else "snowflake";
         in
           [
             ../${type}/common.nix
@@ -36,7 +40,10 @@ in rec {
             ../packages/module.nix
             ../shared/all.nix
             ../shared/nixos.nix
-            {host = {inherit name id system;};}
+            {
+              host = {inherit name id system;};
+              inherit username;
+            }
           ]
           ++ optionals disko [
             ../${type}/hosts/${name}/disko.nix
@@ -51,11 +58,7 @@ in rec {
                 useGlobalPkgs = true;
                 useUserPackages = true;
 
-                users.${
-                  if isWorkstation
-                  then "error"
-                  else "snowflake"
-                } = _: {
+                users.${username} = _: {
                   imports = [
                     ../home/common.nix
                     ../home/hosts/${name}.nix
