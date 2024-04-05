@@ -6,7 +6,10 @@
   ];
 
   specialisation = let
-    common = {absentFileSystems = ["/mnt/nas/drive1" "/mnt/nas/drive3"];};
+    common.absentFileSystems = [
+      "/mnt/nas/drive1"
+      "/mnt/nas/drive3"
+    ];
   in {
     lockdown.configuration = common;
     outside.configuration = common;
