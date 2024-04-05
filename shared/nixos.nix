@@ -87,10 +87,10 @@ in {
         btop
         config.pkgsSelf.btrfs-map-physical
         config.pkgsSelf.btrfs-progs
+        config.pkgsSelf.neovim
         duf
         ethtool
         iotop-c
-        self'.packages.neovim
         tcpdump
       ]
       ++ (import ./packages.nix {
