@@ -90,7 +90,7 @@ in {
         duf
         ethtool
         iotop-c
-        neovim
+        self'.packages.neovim
         tcpdump
       ]
       ++ (import ./packages.nix {
