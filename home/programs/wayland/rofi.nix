@@ -11,7 +11,9 @@ in {
   options.customPrograms.rofi = {
     enable = mkEnableOption "" // {default = config.profiles.windowManager.enable;};
 
-    commands = {
+    commands = let
+      bulkView = "-no-show-icons -theme-str 'window { width: 500px; } listview { lines: 15; }'";
+    in {
       default = mkOption {
         type = types.str;
         default = "rofi -modes drun,window,run -show drun || pkill rofi";
@@ -19,12 +21,12 @@ in {
 
       clipboard = mkOption {
         type = types.str;
-        default = "cliphist list | (rofi -dmenu -window-title cb -no-show-icons || pkill rofi) | cliphist decode";
+        default = "cliphist list | (rofi -dmenu -window-title cb ${bulkView} || pkill rofi) | cliphist decode";
       };
 
       emoji = mkOption {
         type = types.str;
-        default = "rofi -show emoji -no-show-icons || pkill rofi";
+        default = "rofi -show emoji ${bulkView} || pkill rofi";
       };
     };
   };
@@ -82,7 +84,7 @@ in {
           location = mkLiteral "center";
           text-color = mkLiteral "#${base06}";
           transparency = "real";
-          width = mkLiteral "500px";
+          width = mkLiteral "450px";
           x-offset = mkLiteral "0";
           y-offset = mkLiteral "0";
         };
