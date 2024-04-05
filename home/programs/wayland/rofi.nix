@@ -19,7 +19,7 @@ in {
 
       clipboard = mkOption {
         type = types.str;
-        default = "cliphist list | (rofi -dmenu -window-title -no-show-icons cb || pkill rofi) | cliphist decode";
+        default = "cliphist list | (rofi -dmenu -window-title cb -no-show-icons || pkill rofi) | cliphist decode";
       };
 
       emoji = mkOption {
