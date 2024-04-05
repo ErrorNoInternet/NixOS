@@ -17,13 +17,6 @@ in {
     inputs.agenix.homeManagerModules.default
   ];
 
-  specialisation.outside.configuration = {
-    caches.errornobinaries = {
-      internal = false;
-      external = true;
-    };
-  };
-
   age.identityPaths = [
     "/home/${config.home.username}/.ssh/id_ed25519_agenix"
   ];

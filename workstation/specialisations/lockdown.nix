@@ -1,4 +1,5 @@
 {
+  config,
   lib,
   pkgs,
   self,
@@ -35,5 +36,9 @@
     };
 
     workstation.bluetooth.enable = false;
+
+    home-manager.users.${config.username} = {
+      services.kdeconnect.enable = false;
+    };
   };
 }

@@ -20,10 +20,6 @@ in {
   };
 
   config = mkIf cfg.enable {
-    specialisation.lockdown.configuration = {
-      services.kdeconnect.enable = false;
-    };
-
     services.kdeconnect.enable = mkDefault true;
     xdg.configFile."kdeconnect/${cfg.deviceId}/kdeconnect_runcommand/config".text = ''
       [General]
