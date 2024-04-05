@@ -13,8 +13,9 @@
     gbr = "git branch -r";
     gbt = "git branch -t";
     gc = "git commit -m";
-    gC = "git commit -m";
+    gC = "git commit";
     gca = "git commit --amend";
+    gce = "git commit --allow-empty";
     gcf = "git clean -f .";
     gcfx = "git clean -fX .";
     gch = "git cherry";
