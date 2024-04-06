@@ -9,12 +9,14 @@ in {
   boot = {
     kernelPatches = [
       {
-        name = "Rust support";
+        name = "Base configuration";
         patch = null;
-        features.rust = true;
+        extraStructuredConfig = with lib.kernel; {
+          LOCALVERSION = freeform "-error";
+        };
       }
       {
-        name = "Zen kernel configuration";
+        name = "Lower latency";
         patch = null;
         extraStructuredConfig = with lib.kernel; {
           NET_SCH_DEFAULT = yes;
@@ -22,7 +24,10 @@ in {
           DEFAULT_NET_SCH = freeform "fq_codel";
 
           PREEMPT = mkOverride 60 yes;
+          PREEMPT_BUILD = mkOverride 60 yes;
+          PREEMPT_COUNT = mkOverride 60 yes;
           PREEMPT_VOLUNTARY = mkOverride 60 no;
+          PREEMPTION = mkOverride 60 yes;
 
           TREE_RCU = yes;
           PREEMPT_RCU = yes;
@@ -47,6 +52,11 @@ in {
           HZ = freeform "1000";
           HZ_1000 = yes;
         };
+      }
+      {
+        name = "Rust support";
+        patch = null;
+        features.rust = true;
       }
       {
         name = "Native CPU optimizations";
