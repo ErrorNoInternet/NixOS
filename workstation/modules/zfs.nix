@@ -21,7 +21,7 @@ in {
       loader.grub.zfsSupport = true;
 
       kernelPackages =
-        mkDefault config.boot.zfs.package.latestCompatibleLinuxPackages;
+        mkDefault config.workstation.pkgsKernels.latestZfs;
       supportedFilesystems = ["zfs"];
 
       zfs.forceImportRoot = false;

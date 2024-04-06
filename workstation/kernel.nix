@@ -1,6 +1,5 @@
 {
   config,
-  pkgs,
   lib,
   ...
 }: let
@@ -8,13 +7,6 @@
 in {
   boot = {
     kernelPatches = [
-      {
-        name = "Base configuration";
-        patch = null;
-        extraStructuredConfig = with lib.kernel; {
-          LOCALVERSION = freeform "-error";
-        };
-      }
       {
         name = "Lower latency";
         patch = null;
@@ -70,7 +62,7 @@ in {
       }
     ];
 
-    kernelPackages = mkOverride 1250 pkgs.linuxPackages_latest;
+    kernelPackages = mkOverride 1250 config.workstation.pkgsKernels.latest;
 
     supportedFilesystems = ["ntfs"];
 
