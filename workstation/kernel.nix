@@ -57,12 +57,14 @@ in {
           inherit (config.host) architecture;
         in
           ["-march=${architecture}"]
-          ++ optional (!strings.hasPrefix "x86-64" architecture)
+          ++ optional (!strings.hasPrefix "x86-64-" architecture)
           "-mtune=${architecture}";
       }
     ];
 
-    kernelPackages = mkOverride 1250 config.workstation.pkgsKernels.latest;
+    kernelPackages =
+      mkOverride 1250
+      config.workstation.pkgsKernels.latest;
 
     supportedFilesystems = ["ntfs"];
 

@@ -25,7 +25,7 @@ in rec {
     if (builtins.elem system ["x86_64-linux"])
     then
       derivation.overrideAttrs (old: (mkFlags old ("-march=${architectures.${system}}"
-        + (strings.optionalString (!strings.hasPrefix "x86-64" architectures.${system})
+        + (strings.optionalString (!strings.hasPrefix "x86-64-" architectures.${system})
           " -mtune=${architectures.${system}}"))))
     else derivation;
 }
