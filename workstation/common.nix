@@ -45,7 +45,6 @@ in {
       displayManager.lightdm.enable = false;
     };
 
-    dbus.implementation = "broker";
     gnome.gnome-keyring.enable = true;
 
     logind.lidSwitch = mkDefault "ignore";
