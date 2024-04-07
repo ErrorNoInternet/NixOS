@@ -4,6 +4,8 @@
     ./drives.nix
   ];
 
+  host.architecture = "cortex-a72+crypto";
+
   shared = {
     flags.isRaspberryPi = true;
     btrfs.compression.enable = true;

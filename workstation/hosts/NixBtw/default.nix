@@ -1,9 +1,9 @@
 {pkgs, ...}: {
-  host.architecture = "haswell";
-
   imports = [
     ./nas-mounts.nix
   ];
+
+  host.architecture = "haswell";
 
   boot.extraModprobeConfig = ''
     options snd_hda_intel power_save=0

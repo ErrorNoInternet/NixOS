@@ -22,10 +22,18 @@ in rec {
     system,
     architectures,
   }: derivation:
-    if (builtins.elem system ["x86_64-linux"])
+    if system == "x86_64-linux"
     then
-      derivation.overrideAttrs (old: (mkFlags old ("-march=${architectures.${system}}"
-        + (strings.optionalString (!strings.hasPrefix "x86-64-" architectures.${system})
-          " -mtune=${architectures.${system}}"))))
+      derivation.overrideAttrs (old: (
+        mkFlags old ("-march=${architectures.${system}}"
+          + (strings.optionalString
+            (!strings.hasPrefix "x86-64-" architectures.${system})
+            " -mtune=${architectures.${system}}"))
+      ))
+    else if system == "aarch64-linux"
+    then
+      derivation.overrideAttrs (old: (
+        mkFlags old "-mcpu=${architectures.${system}}"
+      ))
     else derivation;
 }

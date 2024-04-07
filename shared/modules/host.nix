@@ -25,7 +25,7 @@ in {
     architecture = mkOption {
       type = with types; nullOr str;
       default =
-        if (system == "x86_64-linux")
+        if system == "x86_64-linux"
         then "x86-64-v3"
         else null;
     };
