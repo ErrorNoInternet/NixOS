@@ -40,7 +40,7 @@ in rec {
             ../shared/nixos
             ../shared/system.nix
             {
-              host = {inherit name id system;};
+              host = {inherit name id;};
               inherit username;
             }
           ]
