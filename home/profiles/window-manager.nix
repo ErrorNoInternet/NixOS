@@ -16,6 +16,7 @@ in {
     home.packages = with pkgs; [
       brightnessctl
       cliphist
+      config.pkgsSelf.pavolume
       inputs'.hyprwm-contrib.packages.grimblast
       inputs'.shadower.packages.shadower
       libnotify
@@ -24,12 +25,13 @@ in {
       playerctl
       ripdrag
       satty
-      config.pkgsSelf.pavolume
       slurp
       swayidle
       vimiv-qt
+      wev
       wl-clipboard
       wlr-randr
+      ydotool
 
       (writeScriptBin "scratchpad" ''
         export PATH=${gawk}/bin:$PATH

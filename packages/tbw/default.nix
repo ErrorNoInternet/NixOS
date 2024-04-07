@@ -21,7 +21,7 @@ writeShellApplication rec {
       echo -e "\t-b\tdisplay bytes instead of terabytes"
       echo -e "\t-p\tspecify terabyte precision"
       echo -e "\t-i\tignore smartctl exit code"
-      exit 1
+      exit 2
     }
 
     while getopts ":rbip:" option; do
@@ -37,7 +37,7 @@ writeShellApplication rec {
     shift $((OPTIND-1))
 
     if [ $# -eq 0 ]; then
-      usage;
+      usage
     fi
 
     for device in "$@"; do

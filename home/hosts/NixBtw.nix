@@ -1,6 +1,6 @@
 {
+  config,
   pkgs,
-  self',
   ...
 }: {
   profiles = {
@@ -63,6 +63,7 @@
 
   home.packages = with pkgs; [
     compsize
+    config.pkgsSelf.tbw
     ffmpeg_6-full
     gimp
     hyprpicker
@@ -71,7 +72,6 @@
     nvtopPackages.full
     osu-lazer-bin
     qbittorrent
-    self'.packages.tbw
     superTuxKart
     timg
   ];
