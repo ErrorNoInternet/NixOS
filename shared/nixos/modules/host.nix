@@ -27,6 +27,8 @@ in {
       default =
         if system == "x86_64-linux"
         then "x86-64-v3"
+        else if system == "aarch64-linux"
+        then "generic"
         else null;
     };
   };

@@ -4,6 +4,10 @@
   lib,
   ...
 }: {
+  imports = [
+    ./modules
+  ];
+
   nix = {
     package = config.pkgsSelf.nix;
 

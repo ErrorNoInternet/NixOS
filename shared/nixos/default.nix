@@ -11,7 +11,7 @@
   inherit (lib) mkDefault mkForce attrsets;
 in {
   imports = [
-    ./caches
+    ../caches
     ./modules
     inputs.agenix.nixosModules.default
   ];
@@ -67,7 +67,7 @@ in {
   networking.hosts = attrsets.listToAttrs (map (entry: {
     name = entry.value;
     value = [entry.name];
-  }) (attrsets.attrsToList (import ./hostnames.nix)));
+  }) (attrsets.attrsToList (import ../hostnames.nix)));
 
   services = {
     getty = {
@@ -93,7 +93,7 @@ in {
         iotop-c
         tcpdump
       ]
-      ++ (import ./packages.nix {
+      ++ (import ../packages.nix {
         inherit config inputs' pkgs self';
       });
 
