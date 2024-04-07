@@ -110,6 +110,7 @@
   ];
 
   defaultArchitectures = {
+    aarch64-linux = "generic";
     x86_64-linux = "x86-64-v3";
   };
 in
