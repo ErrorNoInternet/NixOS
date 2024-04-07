@@ -348,7 +348,7 @@ in {
             cp -a ${unwrapped-discord}/share $out
 
             cat << EOF > $out/bin/DiscordCanary
-            export PATH=$PATH:${lib.makeSearchPath "bin" [xdg-utils]}
+            export PATH=$PATH:${lib.makeBinPath [xdg-utils]}
             ${lib.getExe sandboxed-discord} \
                 --enable-features=UseOzonePlatform,WaylandWindowDecorations \
                 --ozone-platform=wayland "$@"
