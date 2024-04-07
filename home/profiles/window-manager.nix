@@ -31,6 +31,7 @@ in {
       wev
       wl-clipboard
       wlr-randr
+      ydotool
 
       (writeScriptBin "scratchpad" ''
         export PATH=${gawk}/bin:$PATH
