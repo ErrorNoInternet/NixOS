@@ -13,7 +13,10 @@
       self',
       ...
     }: let
-      specialArgs = {inherit inputs' inputs self' self system;};
+      specialArgs = {
+        inherit inputs' inputs self' self system;
+        osConfig = {};
+      };
     in
       inputs.nix-on-droid.lib.nixOnDroidConfiguration {
         extraSpecialArgs = specialArgs;
@@ -26,7 +29,7 @@
 
           {
             home-manager = {
-              extraSpecialArgs = specialArgs // {osConfig = {};};
+              extraSpecialArgs = specialArgs;
 
               sharedModules = [
                 ({config, ...}: {nix.package = config.pkgsSelf.nix;})
