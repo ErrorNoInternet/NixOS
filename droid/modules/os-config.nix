@@ -5,7 +5,7 @@
 }: let
   inherit (lib) mkOption;
 in {
-  options.osConfig = mkOption {
+  home-manager.config.options.osConfig = mkOption {
     default = config;
     readOnly = true;
   };

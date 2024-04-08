@@ -21,6 +21,7 @@
   };
 
   environment.motd = "";
+
   nix = {
     nixPath = ["nixpkgs=${inputs.nixpkgs}"];
 
