@@ -9,10 +9,11 @@ Nix flake for my workstations, servers, home-manager configuration, and a lot mo
 - [library](/library): Nix helper functions (e.g. mkSystem and mkSpecialisation)
 - [other](/other): other (configuration) files that don't fit in Nix expressions
 - [packages](/packages): scripts and patched programs to make my life easier
-- [server](/server): system configuration for some of my dedicated servers 
 - [shared](/shared): shared modules (and binary caches) applied everywhere
 - [shells](/shells): Nix development shells/environments (e.g. rust nightly)
-- [workstation](/workstation): system configuration for my laptops and desktops
+- [nixos](/nixos): everything for NixOS (nixosConfigurations attribute)
+  - [server](/server): system configuration for some of my dedicated servers 
+  - [workstation](/workstation): system configuration for my laptops / desktops
 
 ## 🖥️ Screenshots
 
