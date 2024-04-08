@@ -3,10 +3,10 @@
   lib,
   ...
 }: let
-  cfg = config.mimeapps;
+  cfg = config.mimetypes;
   inherit (lib) mkEnableOption mkOption types attrsets;
 in {
-  options.mimeapps = {
+  options.mimetypes = {
     image = {
       enable = mkEnableOption "";
 

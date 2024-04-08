@@ -14,7 +14,7 @@ in {
   config = mkIf cfg.enable {
     cursor.enable = true;
 
-    mimeapps.image.enable = true;
+    mimetypes.image.enable = true;
 
     toolkits = {
       gtk.enable = true;
