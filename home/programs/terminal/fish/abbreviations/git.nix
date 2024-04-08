@@ -23,6 +23,7 @@
     gcl = "git clone";
     gco = "git checkout";
     gcob = "git checkout -b";
+    gcoh = "git checkout HEAD^";
     gcp = "git cherry-pick";
     gcpa = "git cherry-pick --abort";
     gcpc = "git cherry-pick --continue";
@@ -63,6 +64,9 @@
     grvc = "git revert --continue";
     grvn = "git revert --no-commit";
     gs = "git show";
+    gsh = "git stash";
+    gshp = "git stash pop";
+    gshs = "git stash show";
     gsm = "git show -m";
     gst = "git status";
     gsw = "git switch -";
