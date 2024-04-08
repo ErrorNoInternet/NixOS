@@ -38,6 +38,7 @@
   ) (import ../shared/hostnames.nix));
 
   user.shell = "${pkgs.fish}/bin/fish";
+
   environment = {
     packages = with pkgs;
       [
