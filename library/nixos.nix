@@ -38,6 +38,7 @@ in rec {
             ../nixos/${type}/hosts/${name}
             ../nixos/${type}/hosts/${name}/hardware.nix
             ../nixos/common.nix
+            ../shared/caches
             ../shared/modules
             ../shared/system
             {

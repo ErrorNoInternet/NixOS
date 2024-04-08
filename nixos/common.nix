@@ -11,7 +11,6 @@
   inherit (lib) mkDefault mkForce attrsets;
 in {
   imports = [
-    ../shared/caches
     ./modules
     inputs.agenix.nixosModules.default
   ];
