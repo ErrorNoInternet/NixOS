@@ -93,7 +93,6 @@ in {
   programs = {
     dconf.enable = true;
     light.enable = true;
-    neovim.defaultEditor = true;
   };
 
   users.users = {

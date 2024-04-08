@@ -20,14 +20,17 @@ in {
   };
 
   config = mkIf cfg.enable {
-    xdg.mimeApps.defaultApplications = with cfg.image;
-      attrsets.optionalAttrs cfg.image.enable {
-        "image/gif" = [image.opener];
-        "image/jpeg" = [image.opener];
-        "image/png" = [image.opener];
-        "image/svg+xml" = [image.opener];
-        "image/tiff" = [image.opener];
-        "image/webp" = [image.opener];
-      };
+    xdg.mimeApps = {
+      enable = true;
+      defaultApplications = with cfg;
+        attrsets.optionalAttrs image.enable {
+          "image/gif" = [image.opener];
+          "image/jpeg" = [image.opener];
+          "image/png" = [image.opener];
+          "image/svg+xml" = [image.opener];
+          "image/tiff" = [image.opener];
+          "image/webp" = [image.opener];
+        };
+    };
   };
 }
