@@ -80,6 +80,10 @@
       path = ./tmux;
     }
     {
+      name = "vesktop";
+      path = ./vesktop;
+    }
+    {
       name = "wezterm";
       path = ./wezterm;
     }
