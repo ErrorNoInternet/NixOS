@@ -85,7 +85,6 @@
     steam-run
     superTuxKart
     timg
-    tree
     unigine-heaven
     usbutils
     util-linux

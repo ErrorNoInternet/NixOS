@@ -6,6 +6,8 @@
 }:
 with pkgs; [
   _7zz
+  config.pkgsSelf.hwatch
+  config.pkgsSelf.tmux
   curl
   dig
   dua
@@ -23,10 +25,9 @@ with pkgs; [
   procs
   pv
   ripgrep
-  config.pkgsSelf.hwatch
-  config.pkgsSelf.tmux
   sysstat
   traceroute
+  tree
   unzip
   vim
   wget
