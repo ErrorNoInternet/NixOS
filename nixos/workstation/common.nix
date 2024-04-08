@@ -53,14 +53,6 @@ in {
 
   security.pam.services.swaylock = {};
 
-  xdg.portal = {
-    enable = true;
-    xdgOpenUsePortal = true;
-    extraPortals = with pkgs; [
-      xdg-desktop-portal-gtk
-    ];
-  };
-
   systemd = {
     user.extraConfig =
       "DefaultEnvironment=\"PATH="

@@ -1,6 +1,4 @@
 {vesktop, ...}:
 vesktop.overrideAttrs (old: {
-  patches =
-    (old.patches or [])
-    ++ [./readonly-fix.patch];
+  patches = (old.patches or []) ++ [./readonly-fix.patch];
 })
