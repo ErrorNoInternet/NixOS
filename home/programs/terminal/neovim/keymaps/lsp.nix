@@ -1,14 +1,16 @@
 {lib, ...}: {
-  programs.nixvim = {
+  programs.nixvim = {helpers, ...}: let
+    inherit (helpers) mkRaw;
+  in {
     plugins.cmp = let
       mkPreset = type: ''
         cmp.mapping.preset.${type}(${lib.generators.toLua {} {
-          "<C-down>" = "cmp.mapping.scroll_docs(4)";
-          "<C-e>" = "cmp.mapping.abort()";
-          "<C-up>" = "cmp.mapping.scroll_docs(-4)";
-          "<CR>" = "cmp.mapping.confirm()";
-          "<S-Tab>" = "cmp.mapping.select_prev_item()";
-          "<Tab>" = "cmp.mapping.select_next_item()";
+          "<C-down>" = mkRaw "cmp.mapping.scroll_docs(4)";
+          "<C-e>" = mkRaw "cmp.mapping.abort()";
+          "<C-up>" = mkRaw "cmp.mapping.scroll_docs(-4)";
+          "<CR>" = mkRaw "cmp.mapping.confirm()";
+          "<S-Tab>" = mkRaw "cmp.mapping.select_prev_item()";
+          "<Tab>" = mkRaw "cmp.mapping.select_next_item()";
         }})
       '';
     in {
