@@ -92,6 +92,11 @@
           padding: 10px;
         }
 
+        .control-center-list-placeholder {
+          color: #${base03};
+          opacity: 1;
+        }
+
         .critical {
           background: #${base01};
         }
