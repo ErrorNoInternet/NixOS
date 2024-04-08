@@ -34,8 +34,7 @@ jobs:
 
       - name: Scan for dead code
         if: always()
-        run: nix run nixpkgs#deadnix -- -f --exclude
-               ./library/sorted-inputs.nix
+        run: nix run nixpkgs#deadnix -- -f
 
       - name: Check if inputs are sorted
         if: always()
