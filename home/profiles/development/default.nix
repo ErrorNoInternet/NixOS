@@ -57,9 +57,11 @@ in {
         cachix
         config.pkgsSelf.alejandra
         config.pkgsSelf.attic
+        deadnix
         nix-output-monitor
         nix-tree
         nvd
+        statix
 
         gnumake
         go
