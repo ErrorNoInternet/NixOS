@@ -34,11 +34,11 @@ in rec {
             else "snowflake";
         in
           [
-            ../${type}/common.nix
-            ../${type}/hosts/${name}
-            ../${type}/hosts/${name}/hardware.nix
+            ../nixos/${type}/common.nix
+            ../nixos/${type}/hosts/${name}
+            ../nixos/${type}/hosts/${name}/hardware.nix
+            ../nixos/common.nix
             ../shared/modules
-            ../shared/nixos
             ../shared/system
             {
               host = {inherit name id;};
@@ -46,7 +46,7 @@ in rec {
             }
           ]
           ++ optionals disko [
-            ../${type}/hosts/${name}/disko.nix
+            ../nixos/${type}/hosts/${name}/disko.nix
             inputs.disko.nixosModules.disko
           ]
           ++ optionals homeManager [

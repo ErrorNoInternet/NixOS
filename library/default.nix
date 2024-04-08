@@ -12,8 +12,8 @@
         path = ./derivations;
       }
       {
-        name = "systems";
-        path = ./systems.nix;
+        name = "nixos";
+        path = ./nixos.nix;
       }
     ];
   in

@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  self,
   ...
 }: {
   imports = [
@@ -64,7 +65,7 @@
       isNormalUser = true;
       extraGroups = ["wheel"];
       initialPassword = "snowflake";
-      openssh.authorizedKeys.keys = with (import ../shared/ssh-keys.nix); [NixBtw ErrorNoPhone];
+      openssh.authorizedKeys.keys = with (import "${self}/shared/ssh-keys.nix"); [NixBtw ErrorNoPhone];
     };
   };
 }

@@ -1,6 +1,7 @@
 {
   lib,
   pkgs,
+  self,
   ...
 }: let
   inherit (lib) mkDefault;
@@ -109,7 +110,7 @@ in {
       isNormalUser = true;
       extraGroups = ["wheel" "video"];
       initialPassword = "snowflake";
-      openssh.authorizedKeys.keys = with (import ../shared/ssh-keys.nix); [NixBtw ErrorNoPhone];
+      openssh.authorizedKeys.keys = with (import "${self}/shared/ssh-keys.nix"); [NixBtw ErrorNoPhone];
     };
   };
 }
