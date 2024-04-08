@@ -1,0 +1,5 @@
+{
+  imports = [
+    ./os-config.nix
+  ];
+}

@@ -9,6 +9,7 @@
 }: {
   imports = [
     ./caches
+    ./modules
     ./profiles
     ./terminal.nix
   ];
