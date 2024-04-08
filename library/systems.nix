@@ -37,8 +37,9 @@ in rec {
             ../${type}/common.nix
             ../${type}/hosts/${name}
             ../${type}/hosts/${name}/hardware.nix
+            ../shared/modules
             ../shared/nixos
-            ../shared/system.nix
+            ../shared/system
             {
               host = {inherit name id;};
               inherit username;

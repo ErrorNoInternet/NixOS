@@ -22,7 +22,8 @@
         extraSpecialArgs = specialArgs;
 
         modules = [
-          ../shared/system.nix
+          ../shared/modules
+          ../shared/system
           ./common.nix
           ./hosts/${name}.nix
           {environment.sessionVariables.HOSTNAME = name;}
