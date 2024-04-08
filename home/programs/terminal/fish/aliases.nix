@@ -49,8 +49,10 @@ in {
       ppc = "playerctl play";
       ppm = "playerctl metadata";
       ppn = "playerctl next";
+      ppP = "playerctl position";
       ppp = "playerctl previous";
       pps = "playerctl pause";
+      ppS = "playerctl status";
       pwdc = "pwd | tr -d '\\n' | wl-copy";
     }
     // (attrsets.optionalAttrs config.flags.isNixOnDroid {
