@@ -1,6 +1,7 @@
 {
   lib,
   system,
+  osConfig ? {},
   ...
 }: let
   inherit (lib) mkOption types;
@@ -23,11 +24,14 @@ in {
     architecture = mkOption {
       type = with types; nullOr str;
       default =
-        if system == "x86_64-linux"
-        then "x86-64-v3"
-        else if system == "aarch64-linux"
-        then "generic"
-        else null;
+        osConfig.host.architecture
+        or (
+          if system == "x86_64-linux"
+          then "x86-64-v3"
+          else if system == "aarch64-linux"
+          then "generic"
+          else null
+        );
     };
   };
 }
