@@ -16,6 +16,10 @@
     path = ./btrfs-progs;
   }
   {
+    name = "delta";
+    path = ./delta;
+  }
+  {
     name = "foot";
     path = ./foot;
   }

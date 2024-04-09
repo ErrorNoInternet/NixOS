@@ -63,6 +63,8 @@ in {
 
       delta = {
         enable = true;
+        package = config.pkgsSelf.delta;
+
         options = {
           syntax-theme = config.colors.schemeName;
           side-by-side = true;
