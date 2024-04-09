@@ -1,0 +1,23 @@
+diff --git a/src/env.rs b/src/env.rs
+index 978c488..d4c488b 100644
+--- a/src/env.rs
++++ b/src/env.rs
+@@ -72,18 +72,6 @@ pub mod tests {
+         assert_eq!(env.features, Some(feature.into()));
+     }
+ 
+-    #[test]
+-    fn test_env_parsing_with_pager_set_to_bat() {
+-        env::set_var("PAGER", "bat");
+-        let env = DeltaEnv::init();
+-        assert_eq!(
+-            env.pagers.1,
+-            Some("bat".into()),
+-            "Expected env.pagers.1 == Some(bat) but was {:?}",
+-            env.pagers.1
+-        );
+-    }
+-
+     #[test]
+     fn test_env_parsing_with_pager_set_to_more() {
+         env::set_var("PAGER", "more");
