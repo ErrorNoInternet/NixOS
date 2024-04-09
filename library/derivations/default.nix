@@ -1,9 +1,9 @@
-{lib, ...}: {
-  architectures = import ./architectures.nix {inherit lib;};
+args: {
+  architectures = import ./architectures.nix args;
   
-  c = import ./c.nix {inherit lib;};
+  c = import ./c.nix args;
 
   meson = import ./meson.nix;
 
-  rust = import ./rust.nix;
+  rust = import ./rust.nix args;
 }

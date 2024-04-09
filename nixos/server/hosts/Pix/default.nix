@@ -4,7 +4,7 @@
     ./drives.nix
   ];
 
-  host.architecture = "cortex-a72+crypto";
+  host.architecture = "cortex-a72";
 
   shared = {
     flags.isRaspberryPi = true;
