@@ -45,6 +45,7 @@ in {
         notifyAboutUpdates = true;
 
         plugins = {
+          AlwaysTrust.enabled = true;
           BadgeAPI.enabled = true;
           BetterFolders = {
             closeAllFolders = false;
