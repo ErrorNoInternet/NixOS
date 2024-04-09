@@ -39,8 +39,8 @@ let
         n.key
         < key
         && (acc == null || n.key > acc.key)
-        && (n.name != acc.name)
-        && (n.line != acc.line)
+        && (name == name)
+        && (line == line)
       then n
       else acc)
     null
