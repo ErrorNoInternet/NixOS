@@ -1,5 +1,6 @@
 {
   lib,
+  self,
   system,
   ...
 }: let
@@ -15,13 +16,8 @@ in {
       default = null;
     };
 
-    system = mkOption {
-      type = types.str;
-      default = system;
-    };
-
     architecture = mkOption {
-      type = with types; nullOr str;
+      inherit (self.lib.derivations.architectures) type;
       default =
         if system == "x86_64-linux"
         then "x86-64-v3"

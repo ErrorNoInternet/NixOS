@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  system,
   ...
 }: let
   cfg = config.shared.emulation;
@@ -10,7 +11,7 @@ in {
     enable = mkEnableOption "" // {default = true;};
 
     linux = {
-      aarch64 = mkEnableOption "" // {default = config.host.system != "aarch64-linux";};
+      aarch64 = mkEnableOption "" // {default = system != "aarch64-linux";};
     };
   };
 
