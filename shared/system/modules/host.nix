@@ -25,5 +25,11 @@ in {
         then "generic"
         else null;
     };
+
+    system = mkOption {
+      type = types.str;
+      readOnly = true;
+      default = system;
+    };
   };
 }
