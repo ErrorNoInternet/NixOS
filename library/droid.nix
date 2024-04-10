@@ -21,24 +21,33 @@
       inputs.nix-on-droid.lib.nixOnDroidConfiguration {
         extraSpecialArgs = specialArgs;
 
+        pkgs = import inputs.nixpkgs {
+          inherit system;
+          overlays = [
+            (_: _: (import ../packages {
+              pkgs = import inputs.nixpkgs {inherit system;};
+              inherit inputs' self system;
+            }))
+          ];
+        };
+
         modules = [
           ../droid/common.nix
-          ../droid/hosts/${name}.nix
-          ../shared/modules
+          ../droid/hosts/${name}
           ../shared/system
           {environment.sessionVariables.HOSTNAME = name;}
 
-          {
+          ({pkgs, ...}: {
             home-manager = {
               extraSpecialArgs = specialArgs;
 
               sharedModules = [
-                ({config, ...}: {nix.package = config.pkgsSelf.nix;})
                 ../home/common.nix
                 ../home/hosts/${name}.nix
+                {nix.package = pkgs.nix;}
               ];
             };
-          }
+          })
         ];
       });
 

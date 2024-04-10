@@ -16,8 +16,8 @@ in {
     home.packages = with pkgs; [
       brightnessctl
       cliphist
-      config.pkgsSelf.pavolume
-      config.pkgsSelf.satty
+      pavolume
+      satty
       inputs'.hyprwm-contrib.packages.grimblast
       inputs'.shadower.packages.shadower
       libnotify
@@ -35,7 +35,7 @@ in {
 
       (writeScriptBin "scratchpad" ''
         export PATH=$PATH:${lib.makeBinPath [gawk]}
-        ${config.pkgsSelf.scratchpad}/bin/scratchpad "$@"
+        ${scratchpad}/bin/scratchpad "$@"
       '')
 
       (wf-recorder.overrideAttrs {

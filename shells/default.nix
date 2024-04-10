@@ -15,18 +15,18 @@
       packages = with pkgs; [
         bat
         deadnix
-        delta
         git
         inputs'.agenix.packages.default
         inputs'.disko.packages.default
         nix-output-monitor
         parted
         self'.formatter
-        self'.packages.neovim
+        self'.packages.delta
+        self'.packages.neovim-unwrapped
         self'.packages.nix
+        self'.packages.tmux
         smartmontools
         statix
-        tmux
       ];
     };
   };

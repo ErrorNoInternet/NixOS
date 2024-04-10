@@ -12,7 +12,7 @@ in {
   config = mkIf cfg.enable {
     services.xserver.displayManager.sddm = {
       enable = true;
-      theme = "${config.pkgsSelf.sddmTheme-corners}";
+      theme = "${pkgs.sddmTheme-corners}";
     };
 
     environment.systemPackages = [pkgs.libsForQt5.qt5.qtgraphicaleffects];

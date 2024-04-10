@@ -54,9 +54,9 @@ in {
         black
         python3Packages.bpython
 
+        alejandra
+        attic
         cachix
-        config.pkgsSelf.alejandra
-        config.pkgsSelf.attic
         deadnix
         nix-output-monitor
         nix-tree

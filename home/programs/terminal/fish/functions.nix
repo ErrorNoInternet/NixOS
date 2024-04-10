@@ -80,7 +80,7 @@
 
 
       function btrfs-map-physical
-        sudo ${config.pkgsSelf.btrfs-map-physical}/bin/btrfs-map-physical $argv | column -ts\t
+        sudo ${pkgs.btrfs-map-physical}/bin/btrfs-map-physical $argv | column -ts\t
       end
 
       function scc

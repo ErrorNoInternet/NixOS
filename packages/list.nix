@@ -20,12 +20,12 @@
     path = ./delta;
   }
   {
-    name = "foot";
-    path = ./foot;
+    name = "fcitx5Theme-nord";
+    path = ./themes/fcitx5/nord.nix;
   }
   {
-    name = "git";
-    path = ./git;
+    name = "foot";
+    path = ./foot;
   }
   {
     name = "hwatch";
@@ -44,7 +44,7 @@
     path = ./kitty;
   }
   {
-    name = "neovim";
+    name = "neovim-unwrapped";
     path = ./neovim;
   }
   {
@@ -52,8 +52,12 @@
     path = ./nix;
   }
   {
-    name = "openrgb-libusb";
-    path = ./openrgb-libusb;
+    name = "nordic";
+    path = ./themes/gtk/nordic;
+  }
+  {
+    name = "openrgb";
+    path = ./openrgb;
   }
   {
     name = "passgen";
@@ -76,6 +80,10 @@
     path = ./scratchpad;
   }
   {
+    name = "sddmTheme-corners";
+    path = ./themes/sddm/corners.nix;
+  }
+  {
     name = "tbw";
     path = ./tbw;
   }
@@ -88,31 +96,19 @@
     path = ./vesktop;
   }
   {
-    name = "wezterm";
-    path = ./wezterm;
-  }
-  {
-    name = "gtkTheme-nordic";
-    path = ./themes/gtk/nordic;
-  }
-  {
-    name = "fcitx5Theme-nord";
-    path = ./themes/fcitx5/nord.nix;
-  }
-  {
-    name = "sddmTheme-corners";
-    path = ./themes/sddm/corners.nix;
-  }
-  {
     name = "vimPlugin-textobj-indent";
     path = ./plugins/vim/textobj-indent.nix;
   }
   {
-    name = "yaziPlugin-keyjump";
-    path = ./plugins/yazi/keyjump.nix;
+    name = "wezterm";
+    path = ./wezterm;
   }
   {
     name = "yaziPlugin-bookmarks";
     path = ./plugins/yazi/bookmarks.nix;
+  }
+  {
+    name = "yaziPlugin-keyjump";
+    path = ./plugins/yazi/keyjump.nix;
   }
 ]

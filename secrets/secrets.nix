@@ -14,7 +14,7 @@ let
     servers = with systems; [Crix Pix];
   };
 in {
-  "attic_server-token.age".publicKeys = [users.NixBtw systems.Pix];
+  "atticd-token.age".publicKeys = [users.NixBtw systems.Pix];
   "ddns.age".publicKeys = [users.NixBtw systems.Pix];
   "server-zed.age".publicKeys = all.servers;
   "wireless-networks.age".publicKeys = all.systems;
