@@ -91,6 +91,7 @@ in {
         ethtool
         iotop-c
         tcpdump
+        whois
       ]
       ++ (import ../shared/packages.nix {
         inherit config inputs' pkgs self';
