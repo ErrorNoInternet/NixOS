@@ -1,5 +1,5 @@
-{config, ...}: let
-  plugins = with config.pkgsSelf; [
+{pkgs, ...}: let
+  plugins = with pkgs; [
     {
       name = "keyjump.yazi";
       src = yaziPlugin-keyjump;

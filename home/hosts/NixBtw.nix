@@ -63,7 +63,6 @@
 
   home.packages = with pkgs; [
     compsize
-    config.pkgsSelf.tbw
     ffmpeg_6-full
     gimp
     hyprpicker
@@ -73,6 +72,7 @@
     osu-lazer-bin
     qbittorrent
     superTuxKart
+    tbw
     timg
   ];
 }

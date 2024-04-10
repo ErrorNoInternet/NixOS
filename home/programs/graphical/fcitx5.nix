@@ -26,7 +26,7 @@ in {
 
       package = mkOption {
         type = types.package;
-        default = config.pkgsSelf.fcitx5Theme-nord;
+        default = pkgs.fcitx5Theme-nord;
       };
     };
   };
