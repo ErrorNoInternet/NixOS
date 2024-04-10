@@ -24,4 +24,4 @@ in
         };
       };
     })
-    (import ./all-packages.nix))
+    (import ./list.nix))
