@@ -26,7 +26,6 @@ in {
   config = mkIf cfg.enable {
     programs.kitty = {
       enable = true;
-      package = config.pkgsSelf.kitty;
       shellIntegration.mode = "no-cursor";
 
       font = {

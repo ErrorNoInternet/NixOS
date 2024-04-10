@@ -1,13 +1,9 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   programs.nixvim = {
     extraPackages = with pkgs; [
+      alejandra
       black
       clang-tools
-      config.pkgsSelf.alejandra
       isort
       taplo
     ];

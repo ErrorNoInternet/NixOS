@@ -20,9 +20,6 @@ in {
     mkEnableOption "" // {default = osConfig.workstation.desktops.hyprland.enable or false;};
 
   config = mkIf cfg.enable {
-    wayland.windowManager.hyprland = {
-      enable = true;
-      package = config.pkgsSelf.hyprland;
-    };
+    wayland.windowManager.hyprland.enable = true;
   };
 }

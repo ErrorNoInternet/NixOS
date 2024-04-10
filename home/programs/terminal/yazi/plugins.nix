@@ -1,7 +1,7 @@
-{config, ...}: let
+{pkgs, ...}: let
   pluginsPath = "yazi/plugins";
 in {
-  xdg.configFile = with config.pkgsSelf; {
+  xdg.configFile = with pkgs; {
     "${pluginsPath}/keyjump.yazi".source = yaziPlugin-keyjump;
     "${pluginsPath}/bookmarks.yazi".source = yaziPlugin-bookmarks;
   };
