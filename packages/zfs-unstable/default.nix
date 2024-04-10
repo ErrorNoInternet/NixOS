@@ -2,8 +2,12 @@
   fetchFromGitHub,
   zfs_unstable,
   ...
-}:
-zfs_unstable.overrideAttrs (old: {
+}: let
   inherit (import ./source.nix {inherit fetchFromGitHub;}) src version;
-  patches = (old.patches or []) ++ [./chacha20poly1305.patch];
-})
+in
+  zfs_unstable.overrideAttrs (old: {
+    inherit src version;
+    name = "zfs-user-${version}";
+
+    patches = (old.patches or []) ++ [./chacha20poly1305.patch];
+  })
