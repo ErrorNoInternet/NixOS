@@ -20,8 +20,6 @@ in {
     boot = {
       loader.grub.zfsSupport = true;
 
-      kernelPackages =
-        mkDefault config.workstation.pkgsKernels.latestZfs;
       supportedFilesystems = ["zfs"];
 
       zfs = {
