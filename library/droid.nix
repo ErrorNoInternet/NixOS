@@ -24,6 +24,7 @@
         modules = [
           ../droid/common.nix
           ../droid/hosts/${name}.nix
+          ../shared/modules
           ../shared/system
           {environment.sessionVariables.HOSTNAME = name;}
 
@@ -32,6 +33,7 @@
               extraSpecialArgs = specialArgs;
 
               sharedModules = [
+                ({config, ...}: {nix.package = config.pkgsSelf.nix;})
                 ../home/common.nix
                 ../home/hosts/${name}.nix
               ];

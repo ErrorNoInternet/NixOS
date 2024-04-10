@@ -26,6 +26,7 @@ in {
   config = mkIf config.profiles.desktop.enable {
     programs.wezterm = {
       enable = true;
+      package = config.pkgsSelf.wezterm;
 
       extraConfig = ''
         local config = {}

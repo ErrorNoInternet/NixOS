@@ -16,12 +16,9 @@ in {
   config = mkIf cfg.enable {
     boot.kernelModules = ["i2c-dev" "i2c-piix4"];
 
-    environment.systemPackages = with pkgs; [
-      (
-        if cfg.forceLibusb
-        then openrgb-libusb
-        else (openrgb.withPlugins [openrgb-plugin-effects])
-      )
-    ];
+    environment.systemPackages =
+      if cfg.forceLibusb
+      then [config.pkgsSelf.openrgb-libusb]
+      else with pkgs; [(openrgb.withPlugins [openrgb-plugin-effects])];
   };
 }

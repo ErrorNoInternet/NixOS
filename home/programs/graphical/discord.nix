@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  pkgs,
   ...
 }: let
   cfg = config.customPrograms.discord;
@@ -12,7 +11,7 @@ in {
 
     package = mkOption {
       type = types.package;
-      default = pkgs.vesktop;
+      default = config.pkgsSelf.vesktop;
     };
 
     finalPackage = mkOption {

@@ -30,6 +30,7 @@ in {
   config = mkIf cfg.enable {
     programs.nixvim = {
       enable = true;
+      package = config.pkgsSelf.neovim;
       defaultEditor = true;
       enableMan = false;
     };

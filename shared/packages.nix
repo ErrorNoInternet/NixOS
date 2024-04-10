@@ -1,10 +1,13 @@
 {
   inputs',
   pkgs,
+  config,
   ...
 }:
 with pkgs; [
   _7zz
+  config.pkgsSelf.hwatch
+  config.pkgsSelf.tmux
   curl
   dig
   dua
@@ -14,7 +17,6 @@ with pkgs; [
   findutils
   git
   htop
-  hwatch
   inputs'.agenix.packages.default
   killall
   lsof
@@ -24,7 +26,6 @@ with pkgs; [
   pv
   ripgrep
   sysstat
-  tmux
   traceroute
   tree
   unzip

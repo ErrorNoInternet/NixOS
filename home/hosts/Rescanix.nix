@@ -32,6 +32,9 @@
     amdgpu_top
     brave
     compsize
+    config.pkgsSelf.passgen
+    config.pkgsSelf.savehw
+    config.pkgsSelf.tbw
     cpu-x
     ddrescue
     dmidecode
@@ -67,7 +70,6 @@
     nvtopPackages.full
     ookla-speedtest
     osu-lazer-bin
-    passgen
     patchelf
     pavucontrol
     pciutils
@@ -75,7 +77,6 @@
     qbittorrent
     qrencode
     radeontop
-    savehw
     sdparm
     smartmontools
     sqlite
@@ -83,7 +84,6 @@
     sshfs
     steam-run
     superTuxKart
-    tbw
     testdisk
     timg
     unigine-heaven

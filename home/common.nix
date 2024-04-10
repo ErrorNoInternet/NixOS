@@ -10,6 +10,7 @@
 in {
   imports = [
     ../shared/caches
+    ../shared/modules
     ./modules
     ./profiles
     ./programs

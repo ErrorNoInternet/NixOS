@@ -7,6 +7,7 @@
   config = lib.mkIf config.customPrograms.fish.enable {
     programs.tmux = {
       enable = true;
+      package = config.pkgsSelf.tmux;
       plugins = with pkgs.tmuxPlugins; [
         jump
         yank

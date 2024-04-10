@@ -84,12 +84,12 @@ in {
       [
         bandwhich
         btop
-        btrfs-map-physical
-        btrfs-progs
+        config.pkgsSelf.btrfs-map-physical
+        config.pkgsSelf.btrfs-progs
+        config.pkgsSelf.neovim
         duf
         ethtool
         iotop-c
-        neovim
         tcpdump
         whois
       ]

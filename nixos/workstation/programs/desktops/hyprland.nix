@@ -9,6 +9,9 @@ in {
   options.workstation.desktops.hyprland.enable = mkEnableOption "";
 
   config = mkIf cfg.enable {
-    programs.hyprland.enable = true;
+    programs.hyprland = {
+      enable = true;
+      package = config.pkgsSelf.hyprland;
+    };
   };
 }
