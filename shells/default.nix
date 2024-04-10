@@ -22,7 +22,7 @@
         parted
         self'.formatter
         self'.packages.delta
-        self'.packages.neovim
+        self'.packages.neovim-unwrapped
         self'.packages.nix
         self'.packages.tmux
         smartmontools
