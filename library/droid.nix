@@ -27,16 +27,17 @@
           ../shared/system
           {environment.sessionVariables.HOSTNAME = name;}
 
-          {
+          ({pkgs, ...}: {
             home-manager = {
               extraSpecialArgs = specialArgs;
 
               sharedModules = [
                 ../home/common.nix
                 ../home/hosts/${name}.nix
+                {nix.package = pkgs.nix;}
               ];
             };
-          }
+          })
         ];
       });
 
