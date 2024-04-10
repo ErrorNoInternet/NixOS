@@ -15,8 +15,6 @@ in {
       theme = "${config.pkgsSelf.sddmTheme-corners}";
     };
 
-    environment.systemPackages = with pkgs; [
-      libsForQt5.qt5.qtgraphicaleffects
-    ];
+    environment.systemPackages = [pkgs.libsForQt5.qt5.qtgraphicaleffects];
   };
 }

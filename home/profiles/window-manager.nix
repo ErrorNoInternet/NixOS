@@ -34,7 +34,7 @@ in {
       ydotool
 
       (writeScriptBin "scratchpad" ''
-        export PATH=${gawk}/bin:$PATH
+        export PATH=$PATH:${lib.makeBinPath [gawk]}
         ${config.pkgsSelf.scratchpad}/bin/scratchpad "$@"
       '')
 
