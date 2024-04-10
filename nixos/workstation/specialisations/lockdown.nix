@@ -5,7 +5,7 @@
   self,
   ...
 }: {
-  specialisation.lockdown = self.lib.systems.mkSpecialisation "lockdown" {
+  specialisation.lockdown = self.lib.nixos.mkSpecialisation "lockdown" {
     boot = {
       kernelPackages = lib.mkForce pkgs.linuxPackages_hardened;
 

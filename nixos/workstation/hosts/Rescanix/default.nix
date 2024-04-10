@@ -36,7 +36,7 @@
     };
   };
 
-  specialisation.lts-kernel = self.lib.systems.mkSpecialisation "lts-kernel" {
+  specialisation.lts-kernel = self.lib.nixos.mkSpecialisation "lts-kernel" {
     boot.kernelPackages = pkgs.linuxPackages;
   };
 }

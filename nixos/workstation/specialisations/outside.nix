@@ -9,7 +9,7 @@
       external = true;
     };
   in
-    self.lib.systems.mkSpecialisation "outside" {
+    self.lib.nixos.mkSpecialisation "outside" {
       inherit caches;
       home-manager.users.${config.username} = {inherit caches;};
     };
