@@ -3,12 +3,14 @@
   lib,
   ...
 }: let
-  cfg = config.mimeapps;
-  inherit (lib) mkEnableOption mkOption types attrsets;
+  cfg = config.mimetypes;
+  inherit (lib) mkEnableOption mkOption mkIf types attrsets;
 in {
-  options.mimeapps = {
+  options.mimetypes = {
+    enable = mkEnableOption "";
+
     image = {
-      enable = mkEnableOption "";
+      enable = mkEnableOption "" // {default = true;};
 
       opener = mkOption {
         default = "vimiv.desktop";
@@ -17,16 +19,18 @@ in {
     };
   };
 
-  config.xdg.mimeApps = with cfg; {
-    enable = true;
-
-    defaultApplications = attrsets.optionalAttrs cfg.image.enable {
-      "image/gif" = [image.opener];
-      "image/jpeg" = [image.opener];
-      "image/png" = [image.opener];
-      "image/svg+xml" = [image.opener];
-      "image/tiff" = [image.opener];
-      "image/webp" = [image.opener];
+  config = mkIf cfg.enable {
+    xdg.mimeApps = {
+      enable = true;
+      defaultApplications = with cfg;
+        attrsets.optionalAttrs image.enable {
+          "image/gif" = [image.opener];
+          "image/jpeg" = [image.opener];
+          "image/png" = [image.opener];
+          "image/svg+xml" = [image.opener];
+          "image/tiff" = [image.opener];
+          "image/webp" = [image.opener];
+        };
     };
   };
 }

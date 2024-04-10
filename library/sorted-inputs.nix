@@ -35,7 +35,12 @@ let
   }:
     foldl'
     (acc: n:
-      if n.key < key && (acc == null || n.key > acc.key)
+      if
+        n.key
+        < key
+        && (acc == null || n.key > acc.key)
+        && (name == name)
+        && (line == line)
       then n
       else acc)
     null

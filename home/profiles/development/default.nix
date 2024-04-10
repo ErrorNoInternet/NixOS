@@ -3,10 +3,11 @@
   inputs',
   lib,
   pkgs,
+  system,
   ...
 }: let
   cfg = config.profiles.development;
-  inherit (lib) mkEnableOption mkIf;
+  inherit (lib) mkEnableOption mkIf attrsets;
 in {
   imports = [
     ./clang-format.nix
@@ -56,9 +57,11 @@ in {
         cachix
         config.pkgsSelf.alejandra
         config.pkgsSelf.attic
+        deadnix
         nix-output-monitor
         nix-tree
         nvd
+        statix
 
         gnumake
         go
@@ -74,7 +77,7 @@ in {
       };
     };
 
-    programs.fish.shellAliases = {
+    programs.fish.shellAliases = attrsets.optionalAttrs (system == "x86_64-linux") {
       objdump = "objdump -M intel";
     };
   };

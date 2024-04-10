@@ -14,7 +14,9 @@ in {
   config = mkIf cfg.enable {
     cursor.enable = true;
 
-    mimeapps.image.enable = true;
+    mimetypes.enable = true;
+
+    portals.enable = true;
 
     toolkits = {
       gtk.enable = true;

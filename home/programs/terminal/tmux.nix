@@ -67,6 +67,7 @@
         bind -r -T prefix C-Left resize-pane -L 8
         bind -r -T prefix C-Right resize-pane -R 8
         bind -r -T prefix C-Up resize-pane -U 6
+        bind -r -T prefix C-g display-popup
         bind -T copy-mode-vi 'End' send -X end-of-line
         bind -T copy-mode-vi 'Home' send -X start-of-line
         bind -T copy-mode-vi C-Left send -X previous-word

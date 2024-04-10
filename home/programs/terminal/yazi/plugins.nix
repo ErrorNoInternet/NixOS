@@ -1,8 +1,18 @@
 {config, ...}: let
-  pluginsPath = "yazi/plugins";
+  plugins = with config.pkgsSelf; [
+    {
+      name = "keyjump.yazi";
+      src = yaziPlugin-keyjump;
+    }
+    {
+      name = "bookmarks.yazi";
+      src = yaziPlugin-bookmarks;
+    }
+  ];
 in {
-  xdg.configFile = with config.pkgsSelf; {
-    "${pluginsPath}/keyjump.yazi".source = yaziPlugin-keyjump;
-    "${pluginsPath}/bookmarks.yazi".source = yaziPlugin-bookmarks;
-  };
+  xdg.configFile = builtins.listToAttrs (map (plugin: {
+      name = "yazi/plugins/${plugin.name}";
+      value.source = plugin.src;
+    })
+    plugins);
 }

@@ -1,4 +1,4 @@
-rec {
+{self, ...}: rec {
   mkFlags = old: flags: {
     RUSTFLAGS = "${(old.RUSTFLAGS or "")} ${flags}";
   };
@@ -16,7 +16,7 @@ rec {
     system,
     architectures,
   }: derivation:
-    if (builtins.elem system ["x86_64-linux"])
-    then derivation.overrideAttrs (old: (mkFlags old "-Ctarget-cpu=${architectures.${system}}"))
-    else derivation;
+    derivation.overrideAttrs (old: (mkFlags old
+      "-Ctarget-cpu=${self.lib.derivations.architectures.toRust
+        architectures.${system}}"));
 }

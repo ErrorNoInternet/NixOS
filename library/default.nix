@@ -4,26 +4,29 @@
   self,
   withSystem,
   ...
-}: {
-  flake.lib = let
-    modules = [
-      {
-        name = "derivations";
-        path = ./derivations;
+}: let
+  modules = [
+    {
+      name = "derivations";
+      path = ./derivations;
+    }
+    {
+      name = "droid";
+      path = ./droid.nix;
+    }
+    {
+      name = "nixos";
+      path = ./nixos.nix;
+    }
+  ];
+in {
+  flake.lib = builtins.listToAttrs (map (
+      module: {
+        inherit (module) name;
+        value = import module.path {
+          inherit inputs lib self withSystem;
+        };
       }
-      {
-        name = "systems";
-        path = ./systems.nix;
-      }
-    ];
-  in
-    builtins.listToAttrs (map (
-        module: {
-          inherit (module) name;
-          value = import module.path {
-            inherit inputs lib self withSystem;
-          };
-        }
-      )
-      modules);
+    )
+    modules);
 }

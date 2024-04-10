@@ -84,8 +84,8 @@
     sshfs
     steam-run
     superTuxKart
+    testdisk
     timg
-    tree
     unigine-heaven
     usbutils
     util-linux

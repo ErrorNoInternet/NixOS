@@ -1,16 +1,19 @@
-{
+{lib, ...}: {
   programs.nixvim = {
     plugins.cmp = let
-      mkPreset = type: ''
-        cmp.mapping.preset.${type}({
-          ['<C-down>'] = cmp.mapping.scroll_docs(4),
-          ['<C-e>'] = cmp.mapping.abort(),
-          ['<C-up>'] = cmp.mapping.scroll_docs(-4),
-          ['<CR>'] = cmp.mapping.confirm(),
-          ['<S-Tab>'] = cmp.mapping.select_prev_item(),
-          ['<Tab>'] = cmp.mapping.select_next_item(),
-        })
-      '';
+      mkPreset = type:
+        with lib.generators; let
+          raw = mkLuaInline;
+        in ''
+          cmp.mapping.preset.${type}(${toLua {} {
+            "<C-down>" = raw "cmp.mapping.scroll_docs(4)";
+            "<C-e>" = raw "cmp.mapping.abort()";
+            "<C-up>" = raw "cmp.mapping.scroll_docs(-4)";
+            "<CR>" = raw "cmp.mapping.confirm()";
+            "<S-Tab>" = raw "cmp.mapping.select_prev_item()";
+            "<Tab>" = raw "cmp.mapping.select_next_item()";
+          }})
+        '';
     in {
       cmdline = builtins.listToAttrs (map (name: {
         inherit name;

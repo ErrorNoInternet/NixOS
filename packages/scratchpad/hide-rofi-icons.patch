@@ -1,0 +1,13 @@
+diff --git a/scratchpad b/scratchpad
+index 4cf92b5..4ddaeee 100755
+--- a/scratchpad
++++ b/scratchpad
+@@ -5,7 +5,7 @@
+ # Variables
+ _action=send
+ _listing=false
+-_menu_cmd="rofi -dmenu -i -p scratchpad"
++_menu_cmd="rofi -dmenu -i -p scratchpad -no-show-icons"
+ green="\033[0;32m"
+ red="\033[0;31m"
+ blue="\033[0;34m"

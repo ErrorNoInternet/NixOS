@@ -4,7 +4,5 @@
   ...
 }:
 (openrgb.withPlugins [openrgb-plugin-effects]).overrideAttrs (old: {
-  patches =
-    (old.patches or [])
-    ++ [./force-libusb.patch];
+  patches = (old.patches or []) ++ [./force-libusb.patch];
 })

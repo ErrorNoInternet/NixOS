@@ -10,15 +10,23 @@ in {
   options.customPrograms.fcitx5 = {
     enable = mkEnableOption "" // {default = config.profiles.desktop.enable;};
 
+    addons = mkOption {
+      type = with types; listOf package;
+      default = with pkgs; [
+        fcitx5-gtk
+        fcitx5-chinese-addons
+      ];
+    };
+
     theme = {
       name = mkOption {
-        default = "Nord-Dark";
         type = types.str;
+        default = "Nord-Dark";
       };
 
       package = mkOption {
-        default = config.pkgsSelf.fcitx5Theme-nord;
         type = types.package;
+        default = config.pkgsSelf.fcitx5Theme-nord;
       };
     };
   };
@@ -26,10 +34,7 @@ in {
   config = mkIf cfg.enable {
     i18n.inputMethod = {
       enabled = "fcitx5";
-      fcitx5.addons = with pkgs; [
-        fcitx5-gtk
-        fcitx5-chinese-addons
-      ];
+      fcitx5 = {inherit (cfg) addons;};
     };
 
     xdg = {

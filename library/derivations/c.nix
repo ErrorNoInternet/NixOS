@@ -1,4 +1,8 @@
-{lib, ...}: let
+{
+  lib,
+  self,
+  ...
+}: let
   inherit (lib) strings;
 in rec {
   mkFlags = old: flags: {
@@ -21,11 +25,23 @@ in rec {
   optimizeArchitecture = {
     system,
     architectures,
-  }: derivation:
-    if (builtins.elem system ["x86_64-linux"])
+  }: derivation: let
+    platformArchitecture =
+      self.lib.derivations.architectures.toC
+      architectures.${system};
+  in
+    if system == "x86_64-linux"
     then
-      derivation.overrideAttrs (old: (mkFlags old ("-march=${architectures.${system}}"
-        + (strings.optionalString (!strings.hasPrefix "x86-64" architectures.${system})
-          " -mtune=${architectures.${system}}"))))
+      derivation.overrideAttrs (old: (
+        mkFlags old ("-march=${platformArchitecture}"
+          + (strings.optionalString
+            (!strings.hasPrefix "x86-64-" platformArchitecture)
+            " -mtune=${platformArchitecture}"))
+      ))
+    else if system == "aarch64-linux"
+    then
+      derivation.overrideAttrs (old: (
+        mkFlags old "-mcpu=${platformArchitecture}"
+      ))
     else derivation;
 }

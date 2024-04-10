@@ -1,0 +1,17 @@
+diff --git a/static/views/splash.html b/static/views/splash.html
+index bac2ad2..a668c91 100644
+--- a/static/views/splash.html
++++ b/static/views/splash.html
+@@ -32,12 +32,6 @@
+ 
+ <body>
+     <div class="wrapper">
+-        <img
+-            draggable="false"
+-            src="../shiggy.gif"
+-            alt="shiggy"
+-            role="presentation"
+-        />
+         <p>Loading Vesktop...</p>
+     </div>
+ </body>

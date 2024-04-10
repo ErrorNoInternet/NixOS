@@ -151,9 +151,8 @@
       imports = [
         ./droid
         ./library
-        ./server
+        ./nixos
         ./shells
-        ./workstation
       ];
 
       systems = [

@@ -1,0 +1,136 @@
+diff --git a/src/libexpr/eval-cache.cc b/src/libexpr/eval-cache.cc
+index 1538eb05679..2cccbb25e5c 100644
+--- a/src/libexpr/eval-cache.cc
++++ b/src/libexpr/eval-cache.cc
+@@ -3,6 +3,7 @@
+ #include "sqlite.hh"
+ #include "eval.hh"
+ #include "eval-inline.hh"
++#include "eval-settings.hh"
+ #include "store-api.hh"
+ 
+ namespace nix::eval_cache {
+@@ -470,7 +471,7 @@ Suggestions AttrCursor::getSuggestionsForAttr(Symbol name)
+     return Suggestions::bestMatches(strAttrNames, root->state.symbols[name]);
+ }
+ 
+-std::shared_ptr<AttrCursor> AttrCursor::maybeGetAttr(Symbol name, bool forceErrors)
++std::shared_ptr<AttrCursor> AttrCursor::maybeGetAttr(Symbol name)
+ {
+     if (root->db) {
+         if (!cachedValue)
+@@ -488,7 +489,7 @@ std::shared_ptr<AttrCursor> AttrCursor::maybeGetAttr(Symbol name, bool forceErro
+                     if (std::get_if<missing_t>(&attr->second))
+                         return nullptr;
+                     else if (std::get_if<failed_t>(&attr->second)) {
+-                        if (forceErrors)
++                        if (evalSettings.forceErrorsInEvalCache)
+                             debug("reevaluating failed cached attribute '%s'", getAttrPathStr(name));
+                         else
+                             throw CachedEvalError(root->state, "cached failure of attribute '%s'", getAttrPathStr(name));
+@@ -537,9 +538,9 @@ std::shared_ptr<AttrCursor> AttrCursor::maybeGetAttr(std::string_view name)
+     return maybeGetAttr(root->state.symbols.create(name));
+ }
+ 
+-ref<AttrCursor> AttrCursor::getAttr(Symbol name, bool forceErrors)
++ref<AttrCursor> AttrCursor::getAttr(Symbol name)
+ {
+-    auto p = maybeGetAttr(name, forceErrors);
++    auto p = maybeGetAttr(name);
+     if (!p)
+         throw Error("attribute '%s' does not exist", getAttrPathStr(name));
+     return ref(p);
+@@ -550,11 +551,11 @@ ref<AttrCursor> AttrCursor::getAttr(std::string_view name)
+     return getAttr(root->state.symbols.create(name));
+ }
+ 
+-OrSuggestions<ref<AttrCursor>> AttrCursor::findAlongAttrPath(const std::vector<Symbol> & attrPath, bool force)
++OrSuggestions<ref<AttrCursor>> AttrCursor::findAlongAttrPath(const std::vector<Symbol> & attrPath)
+ {
+     auto res = shared_from_this();
+     for (auto & attr : attrPath) {
+-        auto child = res->maybeGetAttr(attr, force);
++        auto child = res->maybeGetAttr(attr);
+         if (!child) {
+             auto suggestions = res->getSuggestionsForAttr(attr);
+             return OrSuggestions<ref<AttrCursor>>::failed(suggestions);
+@@ -691,7 +692,7 @@ std::vector<std::string> AttrCursor::getListOfStrings()
+         }
+     }
+ 
+-    debug("evaluating uncached attribute '%s'", getAttrPathStr());
++    debug("[AttrCursor::getListOfStrings] evaluating uncached attribute '%s'", getAttrPathStr());
+ 
+     auto & v = getValue();
+     root->state.forceValue(v, noPos);
+@@ -751,7 +752,7 @@ bool AttrCursor::isDerivation()
+ 
+ StorePath AttrCursor::forceDerivation()
+ {
+-    auto aDrvPath = getAttr(root->state.sDrvPath, true);
++    auto aDrvPath = getAttr(root->state.sDrvPath);
+     auto drvPath = root->state.store->parseStorePath(aDrvPath->getString());
+     if (!root->state.store->isValidPath(drvPath) && !settings.readOnlyMode) {
+         /* The eval cache contains 'drvPath', but the actual path has
+diff --git a/src/libexpr/eval-cache.hh b/src/libexpr/eval-cache.hh
+index 46c4999c84c..efecf8232ec 100644
+--- a/src/libexpr/eval-cache.hh
++++ b/src/libexpr/eval-cache.hh
+@@ -102,11 +102,11 @@ public:
+ 
+     Suggestions getSuggestionsForAttr(Symbol name);
+ 
+-    std::shared_ptr<AttrCursor> maybeGetAttr(Symbol name, bool forceErrors = false);
++    std::shared_ptr<AttrCursor> maybeGetAttr(Symbol name);
+ 
+     std::shared_ptr<AttrCursor> maybeGetAttr(std::string_view name);
+ 
+-    ref<AttrCursor> getAttr(Symbol name, bool forceErrors = false);
++    ref<AttrCursor> getAttr(Symbol name);
+ 
+     ref<AttrCursor> getAttr(std::string_view name);
+ 
+@@ -114,7 +114,7 @@ public:
+      * Get an attribute along a chain of attrsets. Note that this does
+      * not auto-call functors or functions.
+      */
+-    OrSuggestions<ref<AttrCursor>> findAlongAttrPath(const std::vector<Symbol> & attrPath, bool force = false);
++    OrSuggestions<ref<AttrCursor>> findAlongAttrPath(const std::vector<Symbol> & attrPath);
+ 
+     std::string getString();
+ 
+diff --git a/src/libexpr/eval-settings.hh b/src/libexpr/eval-settings.hh
+index 60d3a6f25dd..d17667f0b67 100644
+--- a/src/libexpr/eval-settings.hh
++++ b/src/libexpr/eval-settings.hh
+@@ -128,6 +128,9 @@ struct EvalSettings : Config
+     Setting<bool> useEvalCache{this, true, "eval-cache",
+         "Whether to use the flake evaluation cache."};
+ 
++    Setting<bool> forceErrorsInEvalCache{this, true, "force-errors-in-eval-cache",
++        "Whether to force reevaluation of cached failures."};
++
+     Setting<bool> ignoreExceptionsDuringTry{this, false, "ignore-try",
+         R"(
+           If set to true, ignore exceptions inside 'tryEval' calls when evaluating nix expressions in
+diff --git a/src/libexpr/flake/flake.cc b/src/libexpr/flake/flake.cc
+index bca473453f3..61cd9493ed8 100644
+--- a/src/libexpr/flake/flake.cc
++++ b/src/libexpr/flake/flake.cc
+@@ -930,7 +930,15 @@ std::optional<Fingerprint> LockedFlake::getFingerprint(ref<Store> store) const
+     if (lockFile.isUnlocked()) return std::nullopt;
+ 
+     auto fingerprint = flake.lockedRef.input.getFingerprint(store);
+-    if (!fingerprint) return std::nullopt;
++    if (!fingerprint) {
++        return hashString(HashAlgorithm::SHA256,
++            fmt("%s;%s;%d;%d;%s",
++                flake.path.to_string(),
++                flake.lockedRef.subdir,
++                flake.lockedRef.input.getRevCount().value_or(0),
++                flake.lockedRef.input.getLastModified().value_or(0),
++                lockFile));
++    }
+ 
+     // FIXME: as an optimization, if the flake contains a lock file
+     // and we haven't changed it, then it's sufficient to use

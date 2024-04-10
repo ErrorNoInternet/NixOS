@@ -9,6 +9,7 @@ in {
     ./mimetypes.nix
     ./nvidia.nix
     ./opacity.nix
+    ./portals.nix
     ./qt.nix
     ./terminal.nix
     ./wallpaper.nix

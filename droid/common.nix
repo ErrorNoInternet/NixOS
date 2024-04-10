@@ -9,6 +9,7 @@
 }: {
   imports = [
     ./caches
+    ./modules
     ./profiles
     ./terminal.nix
   ];
@@ -20,6 +21,7 @@
   };
 
   environment.motd = "";
+
   nix = {
     nixPath = ["nixpkgs=${inputs.nixpkgs}"];
 
@@ -36,6 +38,7 @@
   ) (import ../shared/hostnames.nix));
 
   user.shell = "${pkgs.fish}/bin/fish";
+
   environment = {
     packages = with pkgs;
       [

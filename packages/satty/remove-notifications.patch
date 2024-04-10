@@ -1,0 +1,12 @@
+diff --git a/src/notification.rs b/src/notification.rs
+index 2e463b6..73d2b7d 100644
+--- a/src/notification.rs
++++ b/src/notification.rs
+@@ -5,7 +5,6 @@ use relm4::gtk::{IconLookupFlags, IconTheme, TextDirection};
+ 
+ pub fn log_result(msg: &str) {
+     println!("{}", msg);
+-    show_notification(msg);
+ }
+ 
+ fn show_notification(msg: &str) {
