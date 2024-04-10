@@ -111,4 +111,8 @@
     name = "yaziPlugin-keyjump";
     path = ./plugins/yazi/keyjump.nix;
   }
+  {
+    name = "zfs_unstable";
+    path = ./zfs-unstable;
+  }
 ]

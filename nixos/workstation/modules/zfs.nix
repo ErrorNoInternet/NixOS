@@ -24,7 +24,10 @@ in {
         mkDefault config.workstation.pkgsKernels.latestZfs;
       supportedFilesystems = ["zfs"];
 
-      zfs.forceImportRoot = false;
+      zfs = {
+        package = pkgs.zfs_unstable;
+        forceImportRoot = false;
+      };
       extraModprobeConfig = ''
         options zfs zfs_bclone_enabled=1
       '';
