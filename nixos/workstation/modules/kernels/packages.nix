@@ -33,8 +33,8 @@ in
               };
             };
           }))
-        .extend (final: prev: {
-          zfs_unstable = prev.zfs_unstable.overrideAttrs (_: let
+        .extend (_: prev: {
+          zfs_unstable = prev.zfs_unstable.overrideAttrs (old: let
             inherit
               (import "${self}/packages/zfs-unstable/source.nix"
                 {inherit (pkgs) fetchFromGitHub;})
@@ -44,6 +44,10 @@ in
           in {
             inherit src version;
             name = "zfs-kernel-${version}-${prev.kernel.version}";
+
+            patches =
+              (old.patches or [])
+              ++ ["${self}/packages/zfs-unstable/chacha20poly1305.patch"];
           });
         });
     })
