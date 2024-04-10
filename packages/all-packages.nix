@@ -24,10 +24,6 @@
     path = ./foot;
   }
   {
-    name = "git";
-    path = ./git;
-  }
-  {
     name = "hwatch";
     path = ./hwatch;
   }
