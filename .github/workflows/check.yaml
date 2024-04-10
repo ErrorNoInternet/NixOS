@@ -38,7 +38,7 @@ jobs:
           check-outdated: false
 
       - name: Check Nix flake outputs
-        run: NIXPKGS_ALLOW_UNFREE=1 nix flake check --impure --all-systems --show-trace
+        run: nix flake check --all-systems --show-trace
       
       - name: Check ErrorNoPhone (nix-on-droid)
         if: always()
