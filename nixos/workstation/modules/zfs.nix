@@ -6,7 +6,7 @@
   ...
 }: let
   cfg = config.workstation.zfs;
-  inherit (lib) mkEnableOption mkIf mkDefault;
+  inherit (lib) mkEnableOption mkIf;
 in {
   options.workstation.zfs = {
     enable = mkEnableOption "" // {default = true;};

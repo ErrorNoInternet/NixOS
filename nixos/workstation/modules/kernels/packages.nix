@@ -26,8 +26,7 @@ in
           (kernel.override {
             argsOverride = {
               modDirVersion =
-                lib.versions.pad 3
-                "${kernel.version}-${suffix}";
+                lib.versions.pad 3 "${kernel.version}-${suffix}";
               structuredExtraConfig = with lib.kernel; {
                 LOCALVERSION = freeform "-${suffix}";
               };
