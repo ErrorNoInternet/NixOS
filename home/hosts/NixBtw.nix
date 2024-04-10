@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   profiles = {
     windowManager.enable = true;
     desktop = {

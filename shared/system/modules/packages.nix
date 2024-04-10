@@ -8,7 +8,7 @@
   ...
 }: {
   nixpkgs.overlays = [
-    (_: prev: (import "${self}/packages" {
+    (_: _: (import "${self}/packages" {
       pkgs = import inputs.nixpkgs {inherit system;};
       inherit inputs' self system;
       config.host =
