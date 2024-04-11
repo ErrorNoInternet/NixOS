@@ -108,6 +108,10 @@
     path = ./wezterm;
   }
   {
+    name = "xdg-desktop-portal-hyprland";
+    path = ./xdph;
+  }
+  {
     name = "yaziPlugin-bookmarks";
     path = ./plugins/yazi/bookmarks.nix;
   }
