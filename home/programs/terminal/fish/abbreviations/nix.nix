@@ -34,6 +34,7 @@
     nfmt = "nix fmt";
     nfs = "nix flake show";
     nfu = "nix flake update";
+    nL = "nix log";
     nr = "nix run";
     nre = "nix repl";
     nrl = "nix run -L";
