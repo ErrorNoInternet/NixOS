@@ -31,16 +31,14 @@ in {
           inherit
             (import "${self}/packages/zfs-unstable/source.nix"
               {inherit (pkgs) fetchFromGitHub;})
-            src
             version
+            src
+            patches
             ;
         in {
-          inherit src version;
           name = "zfs-kernel-${version}-${prev.kernel.version}";
-
-          patches =
-            (old.patches or [])
-            ++ ["${self}/packages/zfs-unstable/chacha20poly1305.patch"];
+          inherit version src;
+          patches = (old.patches or []) ++ patches;
         });
       }));
 
