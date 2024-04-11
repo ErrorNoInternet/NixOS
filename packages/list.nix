@@ -20,6 +20,10 @@
     path = ./delta;
   }
   {
+    name = "fastfetch";
+    path = ./fastfetch;
+  }
+  {
     name = "fcitx5Theme-nord";
     path = ./themes/fcitx5/nord.nix;
   }
