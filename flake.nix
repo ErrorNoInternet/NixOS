@@ -13,6 +13,7 @@
       inputs = {
         flake-compat.follows = "flake-compat";
         flake-utils.follows = "flake-utils";
+        nixpkgs-stable.follows = "nixpkgs";
         nixpkgs.follows = "nixpkgs";
       };
     };
@@ -91,7 +92,10 @@
 
     nix-super = {
       url = "github:privatevoid-net/nix-super";
-      inputs.flake-compat.follows = "flake-compat";
+      inputs = {
+        flake-compat.follows = "flake-compat";
+        nixpkgs.follows = "nixpkgs";
+      };
     };
 
     nixvim = {
