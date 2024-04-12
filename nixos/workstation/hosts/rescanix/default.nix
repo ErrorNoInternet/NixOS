@@ -39,6 +39,6 @@
   };
 
   specialisation.lts-kernel = self.lib.nixos.mkSpecialisation "lts-kernel" {
-    workstation.modules.zfs.kernelPackages = config.workstation.pkgsKernels.lts;
+    workstation.zfs.kernelPackages = config.workstation.pkgsKernels.lts;
   };
 }
