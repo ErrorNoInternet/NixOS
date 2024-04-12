@@ -21,7 +21,7 @@
       aunmenu PopUp.How-to\ disable\ mouse
       aunmenu PopUp.-1-
 
-      echo " "
+      echo ":"
     '';
 
     colorschemes.nord = {
