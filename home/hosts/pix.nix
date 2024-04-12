@@ -1,6 +1,6 @@
 {
   customPrograms = {
     btop.net_iface = "end0";
-    git.user.name = "Pix";
+    git.user.name = "pix";
   };
 }
