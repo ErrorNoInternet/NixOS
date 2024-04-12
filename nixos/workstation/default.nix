@@ -1,7 +1,7 @@
 {self, ...}: {
   flake.nixosConfigurations = with self.lib.nixos; {
-    NixBtw = mkWorkstation "NixBtw" "102f58f5" {};
+    msix = mkWorkstation "msix" "102f58f5" {};
 
-    Rescanix = mkWorkstation "Rescanix" "3a1f6cc6" {};
+    rescanix = mkWorkstation "rescanix" "3a1f6cc6" {};
   };
 }

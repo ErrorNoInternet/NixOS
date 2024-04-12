@@ -1,0 +1,14 @@
+diff --git a/hyprland-share-picker/mainpicker.ui b/hyprland-share-picker/mainpicker.ui
+index 21b3c3c..165cf09 100644
+--- a/hyprland-share-picker/mainpicker.ui
++++ b/hyprland-share-picker/mainpicker.ui
+@@ -262,9 +262,6 @@
+          <string>By selecting this, the application will be given a restore token that it can use to skip prompting you next time. 
+ Only select if you trust the application.</string>
+         </property>
+-        <property name="layoutDirection">
+-         <enum>Qt::LeftToRight</enum>
+-        </property>
+         <property name="text">
+          <string>Allow a restore token</string>
+         </property>

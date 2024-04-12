@@ -17,8 +17,6 @@ in {
     mkEnableOption "";
 
   config = mkIf cfg.enable {
-    nixpkgs.config.allowUnfree = true;
-
     programs.spicetify = {
       enable = true;
       dontInstall = true;

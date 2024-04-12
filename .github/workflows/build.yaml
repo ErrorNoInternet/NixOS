@@ -18,8 +18,8 @@ jobs:
       max-parallel: 1
       matrix:
         include:
-          - host: NixBtw
-          - host: Rescanix
+          - host: msix
+          - host: rescanix
 
     steps:
       - name: Maximize disk space

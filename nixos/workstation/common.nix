@@ -13,6 +13,7 @@ in {
     ./profiles
     ./programs
     ./specialisations
+    ./unfree.nix
   ];
 
   boot.loader = {
@@ -102,7 +103,7 @@ in {
       isNormalUser = true;
       extraGroups = ["wheel" "video"];
       initialPassword = "snowflake";
-      openssh.authorizedKeys.keys = with (import "${self}/shared/ssh-keys.nix"); [NixBtw ErrorNoPhone];
+      openssh.authorizedKeys.keys = with (import "${self}/shared/ssh-keys.nix"); [msix ErrorNoPhone];
     };
   };
 }

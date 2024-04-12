@@ -20,6 +20,10 @@
     path = ./delta;
   }
   {
+    name = "fastfetch";
+    path = ./fastfetch;
+  }
+  {
     name = "fcitx5Theme-nord";
     path = ./themes/fcitx5/nord.nix;
   }
@@ -104,11 +108,19 @@
     path = ./wezterm;
   }
   {
+    name = "xdg-desktop-portal-hyprland";
+    path = ./xdph;
+  }
+  {
     name = "yaziPlugin-bookmarks";
     path = ./plugins/yazi/bookmarks.nix;
   }
   {
     name = "yaziPlugin-keyjump";
     path = ./plugins/yazi/keyjump.nix;
+  }
+  {
+    name = "zfs_unstable";
+    path = ./zfs-unstable;
   }
 ]

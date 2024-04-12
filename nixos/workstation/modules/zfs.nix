@@ -6,10 +6,14 @@
   ...
 }: let
   cfg = config.workstation.zfs;
-  inherit (lib) mkEnableOption mkIf mkDefault;
+  inherit (lib) mkEnableOption mkOption mkIf mkDefault;
 in {
   options.workstation.zfs = {
     enable = mkEnableOption "" // {default = true;};
+
+    kernelPackages = mkOption {
+      default = config.workstation.pkgsKernels.latest;
+    };
   };
 
   config = mkIf cfg.enable {
@@ -18,13 +22,31 @@ in {
     services.zfs.autoSnapshot.monthly = 3;
 
     boot = {
-      loader.grub.zfsSupport = true;
-
-      kernelPackages =
-        mkDefault config.workstation.pkgsKernels.latestZfs;
       supportedFilesystems = ["zfs"];
 
-      zfs.forceImportRoot = false;
+      loader.grub.zfsSupport = true;
+
+      kernelPackages = mkDefault (cfg.kernelPackages.extend (_: prev: {
+        zfs_unstable = prev.zfs_unstable.overrideAttrs (old: let
+          inherit
+            (import "${self}/packages/zfs-unstable/source.nix"
+              {inherit (pkgs) fetchFromGitHub;})
+            version
+            src
+            patches
+            ;
+        in {
+          name = "zfs-kernel-${version}-${prev.kernel.version}";
+          inherit version src;
+          patches = (old.patches or []) ++ patches;
+        });
+      }));
+
+      zfs = {
+        package = pkgs.zfs_unstable;
+        forceImportRoot = false;
+      };
+
       extraModprobeConfig = ''
         options zfs zfs_bclone_enabled=1
       '';

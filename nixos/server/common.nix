@@ -4,7 +4,9 @@
   pkgs,
   self,
   ...
-}: {
+}: let
+  inherit (lib) mkOverride;
+in {
   imports = [
     ./modules
     ./profiles
@@ -13,7 +15,13 @@
 
   documentation.doc.enable = false;
 
-  boot.kernelParams = ["console=tty0"];
+  boot = {
+    kernelPackages =
+      mkOverride 1250
+      config.server.pkgsKernels.lts;
+
+    kernelParams = ["console=tty0"];
+  };
 
   networking = {
     firewall = {
@@ -65,7 +73,7 @@
       isNormalUser = true;
       extraGroups = ["wheel"];
       initialPassword = "snowflake";
-      openssh.authorizedKeys.keys = with (import "${self}/shared/ssh-keys.nix"); [NixBtw ErrorNoPhone];
+      openssh.authorizedKeys.keys = with (import "${self}/shared/ssh-keys.nix"); [msix ErrorNoPhone];
     };
   };
 }

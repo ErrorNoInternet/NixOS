@@ -21,7 +21,7 @@
       aunmenu PopUp.How-to\ disable\ mouse
       aunmenu PopUp.-1-
 
-      echo " "
+      echo ":"
     '';
 
     colorschemes.nord = {
@@ -79,7 +79,7 @@
         enable = true;
         extensions.ui-select.enable = true;
 
-        defaults.layout_strategy = "vertical";
+        settings.defaults.layout_strategy = "vertical";
       };
 
       yanky = {

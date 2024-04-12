@@ -1,0 +1,73 @@
+diff --git a/src/detection/memory/memory_linux.c b/src/detection/memory/memory_linux.c
+index 6f9e87a0..501fcf57 100644
+--- a/src/detection/memory/memory_linux.c
++++ b/src/detection/memory/memory_linux.c
+@@ -4,6 +4,39 @@
+ 
+ #include <inttypes.h>
+ 
++uint64_t ffGetArcStat(char *name) {
++    char buf[PROC_FILE_BUFFSIZ];
++    ssize_t nRead = ffReadFileData("/proc/spl/kstat/zfs/arcstats", sizeof(buf) - 1, buf);
++    if(nRead < 0)
++        return 0;
++    buf[nRead] = '\0';
++    char *mutbuf = strdup(buf);
++
++    uint64_t value = 0;
++
++    char *line;
++    while ((line = strsep(&mutbuf, "\n")) != NULL) {
++        if (strncmp(line, name, strlen(name)) != 0)
++            continue;
++
++        char *split = strdup(line);
++        char *token = NULL;
++        size_t field = 0;
++        while ((token = strsep(&split, " ")) != NULL) {
++            if (*token == 0)
++                continue;
++
++            if (++field != 3)
++                continue;
++
++            value = strtoul(token, NULL, 10);
++            break;
++        }
++    }
++
++    return value / 1024;
++}
++
+ const char* ffDetectMemory(FFMemoryResult* ram)
+ {
+     char buf[PROC_FILE_BUFFSIZ];
+@@ -18,7 +51,9 @@ const char* ffDetectMemory(FFMemoryResult* ram)
+              memFree = 0,
+              buffers = 0,
+              cached = 0,
+-             sReclaimable = 0;
++             sReclaimable = 0,
++             arcSize = ffGetArcStat("size"),
++             arcMinSize = ffGetArcStat("c_min");
+ 
+     char *token = NULL;
+     if((token = strstr(buf, "MemTotal:")) != NULL)
+@@ -27,7 +62,7 @@ const char* ffDetectMemory(FFMemoryResult* ram)
+         return "MemTotal not found in /proc/meminfo";
+ 
+     if((token = strstr(buf, "MemAvailable:")) != NULL)
+-        memAvailable = strtoul(token + strlen("MemAvailable:"), NULL, 10);
++        memAvailable = strtoul(token + strlen("MemAvailable:"), NULL, 10) + arcSize - arcMinSize;
+     else
+     {
+         if((token = strstr(buf, "MemFree:")) != NULL)
+@@ -37,7 +72,7 @@ const char* ffDetectMemory(FFMemoryResult* ram)
+             buffers = strtoul(token + strlen("Buffers:"), NULL, 10);
+ 
+         if((token = strstr(buf, "Cached:")) != NULL)
+-            cached = strtoul(token + strlen("Cached:"), NULL, 10);
++            cached = strtoul(token + strlen("Cached:"), NULL, 10) + arcSize;
+ 
+         if((token = strstr(buf, "Shmem:")) != NULL)
+             shmem = strtoul(token + strlen("Shmem:"), NULL, 10);

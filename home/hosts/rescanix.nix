@@ -22,7 +22,7 @@
     thunderbird.enable = true;
     virtManager.enable = true;
     cava.enable = true;
-    git.user.name = "Rescanix";
+    git.user.name = "rescanix";
     gpg.enable = true;
     irssi.enable = true;
   };

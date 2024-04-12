@@ -7,7 +7,7 @@
 }: let
   inherit (lib) mkOption;
 in {
-  options.workstation.pkgsKernels = mkOption {
+  options.server.pkgsKernels = mkOption {
     default = import ./packages.nix {inherit config lib pkgs self;};
   };
 }
