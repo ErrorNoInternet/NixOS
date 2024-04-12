@@ -79,7 +79,7 @@
         enable = true;
         extensions.ui-select.enable = true;
 
-        defaults.layout_strategy = "vertical";
+        settings.defaults.layout_strategy = "vertical";
       };
 
       yanky = {

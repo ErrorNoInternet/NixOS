@@ -10,7 +10,7 @@ in {
   options.workstation.sddm.enable = mkEnableOption "";
 
   config = mkIf cfg.enable {
-    services.xserver.displayManager.sddm = {
+    services.displayManager.sddm = {
       enable = true;
       theme = "${pkgs.sddmTheme-corners}";
     };
