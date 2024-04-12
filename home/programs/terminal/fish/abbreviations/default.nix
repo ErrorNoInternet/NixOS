@@ -21,6 +21,7 @@
       }/configuration.nix";
 
       "-" = "cd -";
+      b = "bat";
       cl = "curl -L";
       clo = "curl -LO";
       d = "cd ~/data";
