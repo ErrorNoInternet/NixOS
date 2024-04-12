@@ -6,6 +6,10 @@
 }: let
   packages = [
     {
+      name = "default";
+      value = pkgs.linuxPackages_latest;
+    }
+    {
       name = "latest";
       value = pkgs.linuxPackages_latest;
     }

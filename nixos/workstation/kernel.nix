@@ -64,7 +64,7 @@ in {
 
     kernelPackages =
       mkOverride 1250
-      config.workstation.pkgsKernels.latest;
+      config.workstation.pkgsKernels.default;
 
     supportedFilesystems = ["ntfs"];
 
