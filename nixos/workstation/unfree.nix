@@ -6,6 +6,10 @@
       "spotify"
       "steam"
 
+      "geekbench"
+      "ookla-speedtest"
+      "unigine-heaven"
+
       "cuda_cccl"
       "cuda_cudart"
       "cuda_nvcc"
