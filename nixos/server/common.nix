@@ -4,7 +4,9 @@
   pkgs,
   self,
   ...
-}: {
+}: let
+  inherit (lib) mkOverride;
+in {
   imports = [
     ./modules
     ./profiles
@@ -14,7 +16,9 @@
   documentation.doc.enable = false;
 
   boot = {
-    kernelPackages = config.server.pkgsKernels.lts;
+    kernelPackages =
+      mkOverride 1250
+      config.server.pkgsKernels.lts;
 
     kernelParams = ["console=tty0"];
   };
