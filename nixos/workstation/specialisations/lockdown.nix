@@ -1,16 +1,19 @@
 {
   config,
+  lib,
   pkgs,
   self,
   ...
 }: let
+  inherit (lib) mkOverride;
+
   kernelPackages = pkgs.linuxPackages_hardened;
 in {
   specialisation.lockdown = self.lib.nixos.mkSpecialisation "lockdown" {
     workstation.zfs = {inherit kernelPackages;};
 
     boot = {
-      inherit kernelPackages;
+      kernelPackages = mkOverride 1100 kernelPackages;
 
       kernel.sysctl = {
         "kernel.kexec_load_disabled" = 1;
