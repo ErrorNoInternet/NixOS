@@ -43,5 +43,7 @@
     nsl = "nix shell -L";
     nSS = "nix-shell --run fish -p";
     nst = "nix-store";
+    nstq = "nix-store -q";
+    nstr = "nix-store -r";
   };
 }
