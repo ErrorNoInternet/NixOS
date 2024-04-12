@@ -10,6 +10,10 @@
       value = pkgs.linuxPackages_latest;
     }
     {
+      name = "lts";
+      value = pkgs.linuxPackages;
+    }
+    {
       name = "latestZfs";
       value = config.boot.zfs.package.latestCompatibleLinuxPackages;
     }

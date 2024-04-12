@@ -1,19 +1,16 @@
 {
   config,
-  lib,
   pkgs,
   self,
   ...
 }: let
-  inherit (lib) mkForce;
-
   kernelPackages = pkgs.linuxPackages_hardened;
 in {
   specialisation.lockdown = self.lib.nixos.mkSpecialisation "lockdown" {
-    workstation.zfs.kernelPackages = mkForce kernelPackages;
+    workstation.zfs.kernelPackages = kernelPackages;
 
     boot = {
-      kernelPackages = mkForce kernelPackages;
+      kernelPackages = kernelPackages;
 
       kernel.sysctl = {
         "kernel.kexec_load_disabled" = 1;
