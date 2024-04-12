@@ -12,6 +12,7 @@ in {
     ./modules
     ./profiles
     ./programs
+    ./unfree.nix
   ];
 
   boot.loader = {

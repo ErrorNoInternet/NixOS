@@ -10,8 +10,6 @@ in {
     mkEnableOption "" // {default = true;};
 
   config = mkIf cfg.enable {
-    nixpkgs.config.allowUnfree = true;
-
     programs.steam = {
       enable = true;
       remotePlay.openFirewall = true;

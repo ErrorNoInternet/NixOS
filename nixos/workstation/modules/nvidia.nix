@@ -12,10 +12,7 @@ in {
   };
 
   config = mkIf cfg.enable {
-    nixpkgs.config = {
-      allowUnfree = true;
-      cudaSupport = true;
-    };
+    nixpkgs.config.cudaSupport = true;
 
     caches.cuda.enable = true;
 
