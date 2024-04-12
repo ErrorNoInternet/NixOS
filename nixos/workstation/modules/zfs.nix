@@ -12,7 +12,7 @@ in {
     enable = mkEnableOption "" // {default = true;};
 
     kernelPackages = mkOption {
-      default = config.workstation.pkgsKernels.latest;
+      default = config.workstation.pkgsKernels.default;
     };
   };
 
