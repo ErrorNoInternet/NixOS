@@ -6,25 +6,35 @@
   ...
 }: let
   cfg = config.server.zfs;
-  inherit (lib) mkEnableOption mkIf mkDefault;
+  inherit (lib) mkEnableOption mkOption mkIf mkDefault;
 in {
   options.server.zfs = {
     enable = mkEnableOption "" // {default = true;};
+
+    kernelPackages = mkOption {
+      default = config.server.pkgsKernels.ltsZfs;
+    };
   };
 
   config = mkIf cfg.enable {
     age.secrets.server-zed.file = "${self}/secrets/server-zed.age";
 
     boot = {
-      kernelPackages = let
-        ltsLatest = pkgs.linuxPackages;
-        zfsLatest = config.boot.zfs.package.latestCompatibleLinuxPackages;
-      in
-        mkDefault (
-          if ((builtins.compareVersions zfsLatest.kernel.version ltsLatest.kernel.version) >= 0)
-          then ltsLatest
-          else builtins.trace "using older ZFS-supported kernel" zfsLatest
-        );
+      kernelPackages = mkDefault (cfg.kernelPackages.extend (_: prev: {
+        zfs_unstable = prev.zfs_unstable.overrideAttrs (old: let
+          inherit
+            (import "${self}/packages/zfs-unstable/source.nix"
+              {inherit (pkgs) fetchFromGitHub;})
+            version
+            src
+            patches
+            ;
+        in {
+          name = "zfs-kernel-${version}-${prev.kernel.version}";
+          inherit version src;
+          patches = (old.patches or []) ++ patches;
+        });
+      }));
 
       supportedFilesystems = ["zfs"];
 

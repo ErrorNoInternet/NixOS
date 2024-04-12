@@ -13,7 +13,11 @@
 
   documentation.doc.enable = false;
 
-  boot.kernelParams = ["console=tty0"];
+  boot = {
+    kernelPackages = config.server.pkgsKernels.lts;
+
+    kernelParams = ["console=tty0"];
+  };
 
   networking = {
     firewall = {
