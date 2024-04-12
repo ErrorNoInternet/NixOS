@@ -4,9 +4,7 @@
   pkgs,
   self,
   ...
-}: let
-  inherit (lib) mkOverride;
-in {
+}: {
   time.hardwareClockInLocalTime = true;
 
   boot = {
@@ -40,11 +38,7 @@ in {
     };
   };
 
-  specialisation.lts-kernel = let
-    kernelPackages = config.workstation.pkgsKernels.lts;
-  in
-    self.lib.nixos.mkSpecialisation "lts-kernel" {
-      boot.kernelPackages = mkOverride 1100 kernelPackages;
-      workstation.modules.zfs = {inherit kernelPackages;};
-    };
+  specialisation.lts-kernel = self.lib.nixos.mkSpecialisation "lts-kernel" {
+    workstation.modules.zfs.kernelPackages = config.workstation.pkgsKernels.lts;
+  };
 }
