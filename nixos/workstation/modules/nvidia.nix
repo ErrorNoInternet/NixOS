@@ -14,7 +14,7 @@ in {
   config = mkIf cfg.enable {
     nixpkgs.config.cudaSupport = true;
 
-    caches.cuda.enable = true;
+    caches.numtide.enable = true;
 
     services.xserver.videoDrivers = ["nvidia"];
 
