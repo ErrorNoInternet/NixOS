@@ -27,18 +27,10 @@ in {
       loader.grub.zfsSupport = true;
 
       kernelPackages = mkDefault (cfg.kernelPackages.extend (_: prev: {
-        zfs_unstable = prev.zfs_unstable.overrideAttrs (old: let
-          inherit
-            (import "${self}/packages/zfs-unstable/source.nix"
-              {inherit (pkgs) fetchFromGitHub;})
-            version
-            src
-            patches
-            ;
-        in {
-          name = "zfs-kernel-${version}-${prev.kernel.version}";
-          inherit version src;
-          patches = (old.patches or []) ++ patches;
+        zfs_unstable = prev.zfs_unstable.overrideAttrs (old: {
+          patches =
+            (old.patches or [])
+            ++ (import "${self}/packages/zfs-unstable/patches.nix");
         });
       }));
 
