@@ -39,7 +39,11 @@ in {
     };
   };
 
-  specialisation.lts-kernel = self.lib.nixos.mkSpecialisation "lts-kernel" {
-    boot.kernelPackages = mkOverride 1100 config.workstation.pkgsKernels.lts;
-  };
+  specialisation.lts-kernel = let
+    kernelPackages = config.workstation.pkgsKernels.lts;
+  in
+    self.lib.nixos.mkSpecialisation "lts-kernel" {
+      boot.kernelPackages = mkOverride 1100 kernelPackages;
+      workstation.modules.zfs = {inherit kernelPackages;};
+    };
 }

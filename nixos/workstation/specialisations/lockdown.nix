@@ -7,10 +7,10 @@
   kernelPackages = pkgs.linuxPackages_hardened;
 in {
   specialisation.lockdown = self.lib.nixos.mkSpecialisation "lockdown" {
-    workstation.zfs.kernelPackages = kernelPackages;
+    workstation.zfs = {inherit kernelPackages;};
 
     boot = {
-      kernelPackages = kernelPackages;
+      inherit kernelPackages;
 
       kernel.sysctl = {
         "kernel.kexec_load_disabled" = 1;
