@@ -65,7 +65,7 @@
       isNormalUser = true;
       extraGroups = ["wheel"];
       initialPassword = "snowflake";
-      openssh.authorizedKeys.keys = with (import "${self}/shared/ssh-keys.nix"); [NixBtw ErrorNoPhone];
+      openssh.authorizedKeys.keys = with (import "${self}/shared/ssh-keys.nix"); [msix ErrorNoPhone];
     };
   };
 }
