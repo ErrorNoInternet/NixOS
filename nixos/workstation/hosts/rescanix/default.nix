@@ -14,6 +14,7 @@ in {
       timeout = lib.mkForce 5;
       grub.memtest86.enable = true;
     };
+
     supportedFilesystems = [
       "apfs"
       "exfat"

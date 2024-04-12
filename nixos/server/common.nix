@@ -18,7 +18,7 @@ in {
   boot = {
     kernelPackages =
       mkOverride 1250
-      config.server.pkgsKernels.lts;
+      config.server.pkgsKernels.default;
 
     kernelParams = ["console=tty0"];
   };

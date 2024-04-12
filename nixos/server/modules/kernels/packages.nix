@@ -8,6 +8,10 @@
     latestZfs = config.boot.zfs.package.latestCompatibleLinuxPackages;
   in [
     {
+      name = "default";
+      value = latestLts;
+    }
+    {
       name = "lts";
       value = latestLts;
     }
