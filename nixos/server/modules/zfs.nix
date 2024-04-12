@@ -38,7 +38,10 @@ in {
 
       supportedFilesystems = ["zfs"];
 
-      zfs.forceImportRoot = false;
+      zfs = {
+        package = pkgs.zfs_unstable;
+        forceImportRoot = false;
+      };
     };
 
     services.zfs.zed.settings = {
