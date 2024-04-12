@@ -19,7 +19,7 @@ jobs:
       matrix:
         include:
           - host: NixBtw
-          - host: Rescanix
+          - host: rescanix
 
     steps:
       - name: Maximize disk space
