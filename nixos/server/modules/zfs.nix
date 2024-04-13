@@ -24,7 +24,7 @@ in {
         zfs_unstable = prev.zfs_unstable.overrideAttrs (old: let
           inherit
             (import "${self}/packages/zfs-unstable/source.nix"
-              {inherit (pkgs) fetchFromGitHub;})
+              {inherit (pkgs) fetchFromGitHub fetchpatch;})
             version
             src
             patches

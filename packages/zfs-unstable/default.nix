@@ -1,10 +1,11 @@
 {
   fetchFromGitHub,
+  fetchpatch,
   zfs_unstable,
   ...
 }: let
   inherit
-    (import ./source.nix {inherit fetchFromGitHub;})
+    (import ./source.nix {inherit fetchFromGitHub fetchpatch;})
     version
     src
     patches
