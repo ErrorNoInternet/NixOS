@@ -28,6 +28,7 @@
       dm = "dmesg";
       dmt = "dmesg -T";
       dmtw = "dmesg -Tw";
+      dmw = "dmesg -w";
       e = "echo";
       ex = "exec";
       p = "ping";
