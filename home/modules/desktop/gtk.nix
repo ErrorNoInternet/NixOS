@@ -10,6 +10,8 @@ in {
   options.toolkits.gtk = {
     enable = mkEnableOption "";
 
+    force = mkEnableOption "";
+
     theme = mkOption {
       default = {
         name = "Nordic-darker";
@@ -30,6 +32,7 @@ in {
   config = mkIf cfg.enable {
     gtk = {
       enable = true;
+      gtk2 = {inherit (cfg) force;};
       inherit (cfg) theme iconTheme;
     };
   };
