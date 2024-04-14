@@ -97,11 +97,11 @@ in {
   };
 
   users.users = {
-    root.initialPassword = "snowflake";
+    root.hashedPassword = "$y$j9T$WfJxCznVCCzIRKDYZy5sY0$58VFaRawiS69TGWsDGJVWGwc1JHgQErCV9QVqLEU.r6";
     error = {
       isNormalUser = true;
       extraGroups = ["wheel" "video"];
-      initialPassword = "snowflake";
+      hashedPassword = "$y$j9T$y5Y9Is9PBhWC.XFec1Ljo/$vEKBucaLv1jYhbWZM0Dslog7cbOol/zMp9sS434X6b6";
       openssh.authorizedKeys.keys = with (import "${self}/shared/ssh-keys.nix"); [msix ErrorNoPhone];
     };
   };
