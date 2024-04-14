@@ -59,6 +59,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    impermanence.url = "github:nix-community/impermanence";
+
     neovim-nightly = {
       url = "github:nix-community/neovim-nightly-overlay";
       inputs = {
