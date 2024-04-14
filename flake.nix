@@ -59,7 +59,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    impermanence.url = "github:nix-community/impermanence";
+    impermanence.url = "github:nix-community/impermanence/create-needed-for-boot";
 
     neovim-nightly = {
       url = "github:nix-community/neovim-nightly-overlay";
