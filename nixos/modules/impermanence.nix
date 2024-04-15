@@ -33,7 +33,7 @@ in {
           "/var/lib/systemd/coredump"
           "/var/log"
         ]
-        ++ optional config.shared.flags.isWorkstation "/var/lib/systemd/backlight"
+        ++ optional config.nixos.flags.isWorkstation "/var/lib/systemd/backlight"
         ++ cfg.directories;
 
       files =
