@@ -3,10 +3,10 @@
   lib,
   ...
 }: let
-  cfg = config.shared.btrfs.compression;
+  cfg = config.nixos.btrfs.compression;
   inherit (lib) mkEnableOption mkIf attrsets;
 in {
-  options.shared.btrfs.compression = {
+  options.nixos.btrfs.compression = {
     enable = mkEnableOption "";
     enableSubvolumeLayout = mkEnableOption "" // {default = true;};
   };
