@@ -6,6 +6,8 @@
     g = "git";
     ga = "git add";
     gap = "git add -p";
+    gapl = "git apply";
+    gapl3 = "git apply -3";
     gb = "git branch";
     gbd = "git branch -d";
     gbD = "git branch -D";
