@@ -31,7 +31,7 @@
     zpool.${config.host.name} = {
       type = "zpool";
 
-      options.ashift = 12;
+      options.ashift = "12";
       rootFsOptions = {
         "com.sun:auto-snapshot" = "true";
         acltype = "posix";
@@ -68,6 +68,7 @@
           mountpoint = "/var/lib/systemd/coredump";
           type = "zfs_fs";
           options = {
+            atime = "off";
             compression = "zle";
             mountpoint = "legacy";
             recordsize = "1M";
@@ -76,7 +77,10 @@
         "root/var/log" = {
           mountpoint = "/var/log";
           type = "zfs_fs";
-          options.mountpoint = "legacy";
+          options = {
+            atime = "off";
+            mountpoint = "legacy";
+          };
         };
         "root/nix" = {
           mountpoint = "/nix";
