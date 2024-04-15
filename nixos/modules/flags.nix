@@ -3,5 +3,6 @@
 in {
   options.shared.flags = {
     isRaspberryPi = mkEnableOption "";
+    isWorkstation = mkEnableOption "";
   };
 }

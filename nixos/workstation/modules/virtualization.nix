@@ -21,5 +21,7 @@ in {
 
       spiceUSBRedirection.enable = true;
     };
+
+    shared.impermanence.directories = ["/var/lib/libvirt"];
   };
 }

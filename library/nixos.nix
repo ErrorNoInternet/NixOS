@@ -43,6 +43,7 @@ in rec {
             {
               host = {inherit name id;};
               inherit username;
+              shared.flags = {inherit isWorkstation;};
             }
           ]
           ++ optionals disko [

@@ -14,6 +14,9 @@ in {
       enable = true;
       powerOnBoot = false;
     };
+
     services.blueman.enable = true;
+
+    shared.impermanence.directories = ["/var/lib/bluetooth"];
   };
 }
