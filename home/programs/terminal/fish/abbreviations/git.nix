@@ -1,6 +1,7 @@
 {
   programs.fish.shellAbbrs = {
     "ga." = "git add .";
+    "ga.c" = "git add . && git commit -m ";
     "gd." = "git diff .";
     "gl." = "git log .";
     "gr." = "git restore .";
