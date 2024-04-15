@@ -1,7 +1,7 @@
 {lib, ...}: let
   inherit (lib) mkEnableOption;
 in {
-  options.shared.flags = {
+  options.nixos.flags = {
     isRaspberryPi = mkEnableOption "";
     isWorkstation = mkEnableOption "";
   };

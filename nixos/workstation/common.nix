@@ -28,7 +28,7 @@ in {
     timeout = 3;
   };
 
-  shared.wireless.enable = true;
+  nixos.wireless.enable = true;
   networking.firewall.enable = mkDefault false;
 
   services = {

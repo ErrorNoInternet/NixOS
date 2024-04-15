@@ -4,10 +4,10 @@
   self,
   ...
 }: let
-  cfg = config.shared.wireless;
+  cfg = config.nixos.wireless;
   inherit (lib) mkEnableOption mkIf;
 in {
-  options.shared.wireless.enable = mkEnableOption "";
+  options.nixos.wireless.enable = mkEnableOption "";
 
   config = mkIf cfg.enable {
     age.secrets.wireless-networks.file = "${self}/secrets/wireless-networks.age";

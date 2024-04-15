@@ -6,6 +6,8 @@
     g = "git";
     ga = "git add";
     gap = "git add -p";
+    gapl = "git apply";
+    gapl3 = "git apply -3";
     gb = "git branch";
     gbd = "git branch -d";
     gbD = "git branch -D";
@@ -63,11 +65,12 @@
     grva = "git revert --abort";
     grvc = "git revert --continue";
     grvn = "git revert --no-commit";
-    gs = "git show";
+    gs = "git show -m";
     gsh = "git stash";
     gshp = "git stash pop";
     gshs = "git stash show";
-    gsm = "git show -m";
+    gsm = "git submodule";
+    gsmu = "git submodule update";
     gst = "git status";
     gsw = "git switch -";
   };

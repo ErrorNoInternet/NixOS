@@ -4,10 +4,10 @@
   system,
   ...
 }: let
-  cfg = config.shared.emulation;
+  cfg = config.nixos.emulation;
   inherit (lib) mkEnableOption mkIf optional;
 in {
-  options.shared.emulation = {
+  options.nixos.emulation = {
     enable = mkEnableOption "" // {default = true;};
 
     linux = {
