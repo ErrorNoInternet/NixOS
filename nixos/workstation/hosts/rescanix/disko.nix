@@ -45,18 +45,12 @@
         root = {
           mountpoint = "/";
           type = "zfs_fs";
-          options.mountpoint = "legacy";
-        };
-        var = {
-          mountpoint = "/var";
-          type = "zfs_fs";
           options = {
             mountpoint = "legacy";
             recordsize = "64K";
-            refreservation = "1G";
           };
         };
-        home = {
+        "root/home" = {
           mountpoint = "/home";
           type = "zfs_fs";
           options = {
@@ -64,21 +58,44 @@
             refreservation = "1G";
           };
         };
-        nix = {
+        "root/var" = {
+          mountpoint = "/var";
+          type = "zfs_fs";
+          options.mountpoint = "legacy";
+        };
+        "root/var/coredump" = {
+          mountpoint = "/var/lib/systemd/coredump";
+          type = "zfs_fs";
+          options = {
+            compression = "zle";
+            mountpoint = "legacy";
+            recordsize = "1M";
+          };
+        };
+        "root/var/log" = {
+          mountpoint = "/var/log";
+          type = "zfs_fs";
+          options = {
+            mountpoint = "legacy";
+            recordsize = "16K";
+          };
+        };
+        "root/nix" = {
           mountpoint = "/nix";
           type = "zfs_fs";
           options = {
             atime = "off";
             mountpoint = "legacy";
-            recordsize = "64K";
+            recordsize = "32K";
           };
         };
-        "nix/store" = {
+        "root/nix/store" = {
           mountpoint = "/nix/store";
           type = "zfs_fs";
           options = {
+            "com.sun:auto-snapshot" = "false";
             mountpoint = "legacy";
-            recordsize = "1M";
+            recordsize = "256K";
           };
         };
       };
