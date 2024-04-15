@@ -17,8 +17,7 @@ in {
         "/".options = ["compress=zstd" "noatime"];
       }
       // attrsets.optionalAttrs cfg.enableSubvolumeLayout {
-        "/home".options = ["compress=zstd" "relatime"];
-        "/nix".options = ["compress=zstd" "noatime"];
+        "/nix".options = ["noatime"];
       };
   };
 }
