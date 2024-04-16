@@ -24,10 +24,10 @@ index 2823b8845..de177981c 100644
   * Parse a features file for -o compatibility
   */
 diff --git a/include/os/linux/zfs/sys/zfs_vnops_os.h b/include/os/linux/zfs/sys/zfs_vnops_os.h
-index 830c76e57..0f613374d 100644
+index 830c76e57..7b838b278 100644
 --- a/include/os/linux/zfs/sys/zfs_vnops_os.h
 +++ b/include/os/linux/zfs/sys/zfs_vnops_os.h
-@@ -30,6 +30,7 @@
+@@ -30,9 +30,11 @@
  #include <sys/uio.h>
  #include <sys/cred.h>
  #include <sys/fcntl.h>
@@ -35,7 +35,11 @@ index 830c76e57..0f613374d 100644
  #include <sys/pathname.h>
  #include <sys/zpl.h>
  #include <sys/zfs_file.h>
-@@ -83,6 +84,12 @@ extern int zfs_dirty_inode(struct inode *ip, int flags);
++#include <linux/fiemap.h>
+ 
+ #ifdef	__cplusplus
+ extern "C" {
+@@ -83,6 +85,12 @@ extern int zfs_dirty_inode(struct inode *ip, int flags);
  extern int zfs_map(struct inode *ip, offset_t off, caddr_t *addrp,
      size_t len, unsigned long vm_flags);
  extern void zfs_zrele_async(znode_t *zp);
@@ -318,7 +322,7 @@ index 73ae0950c..dc1469927 100644
   * Return 1 if the user requested ANSI color output, and our terminal supports
   * it.  Return 0 for no color.
 diff --git a/module/os/linux/zfs/zfs_vnops_os.c b/module/os/linux/zfs/zfs_vnops_os.c
-index 1cecad9f7..b3932ed08 100644
+index 1cecad9f7..ebff3d824 100644
 --- a/module/os/linux/zfs/zfs_vnops_os.c
 +++ b/module/os/linux/zfs/zfs_vnops_os.c
 @@ -51,6 +51,7 @@
@@ -734,7 +738,7 @@ index 1cecad9f7..b3932ed08 100644
 +	int error;
 +
 +	if ((error = zfs_enter_verify_zp(zfsvfs, zp, FTAG)) != 0)
-+		return (error)
++		return (error);
 +
 +	error = dnode_hold(zfsvfs->z_os, zp->z_id, FTAG, &dn);
 +	if (error) {
@@ -845,7 +849,7 @@ index 1cecad9f7..b3932ed08 100644
 +	zfs_rangelock_exit(lr);
 +
 +	dnode_rele(dn, FTAG);
-+	ZFS_EXIT(zfsvfs);
++	zfs_exit(zfsvfs, FTAG);
 +
 +	return (error);
 +}
@@ -884,7 +888,7 @@ index 1cecad9f7..b3932ed08 100644
 +		logical_len = logical_len - (end - fm->fm_file_size);
 +
 +	struct fiemap_extent extent;
-+	bzero(&extent, sizeof (extent));
++	memset(&extent, 0, sizeof (extent));
 +	extent.fe_logical = logical_start;
 +	extent.fe_physical = physical_start;
 +	extent.fe_length = logical_len;
@@ -1080,7 +1084,7 @@ index 1cecad9f7..b3932ed08 100644
  /* CSTYLED */
  module_param(zfs_delete_blocks, ulong, 0644);
 diff --git a/module/os/linux/zfs/zpl_inode.c b/module/os/linux/zfs/zpl_inode.c
-index ad1753f7a..76fe1cfb9 100644
+index ad1753f7a..1234712f6 100644
 --- a/module/os/linux/zfs/zpl_inode.c
 +++ b/module/os/linux/zfs/zpl_inode.c
 @@ -797,6 +797,44 @@ out:
@@ -1106,7 +1110,7 @@ index ad1753f7a..76fe1cfb9 100644
 +	/* Incompatible ZFS-only flags masked out of compatibility check */
 +	fei->fi_flags &= ~ZFS_FIEMAP_FLAGS_ZFS;
 +
-+	error = fiemap_check_flags(fei, ZFS_FIEMAP_FLAGS_COMPAT);
++	error = fiemap_prep(ip, fei, start, &len, ZFS_FIEMAP_FLAGS_COMPAT);
 +	if (error)
 +		return (error);
 +
@@ -1153,7 +1157,7 @@ index ad1753f7a..76fe1cfb9 100644
  
  const struct inode_operations zpl_special_inode_operations = {
 diff --git a/module/zfs/dbuf.c b/module/zfs/dbuf.c
-index 5f3643f57..abbdf5a8d 100644
+index 5f3643f57..00a5c24e7 100644
 --- a/module/zfs/dbuf.c
 +++ b/module/zfs/dbuf.c
 @@ -2327,11 +2327,11 @@ dbuf_dirty(dmu_buf_impl_t *db, dmu_tx_t *tx)
@@ -1171,7 +1175,7 @@ index 5f3643f57..abbdf5a8d 100644
  
  	/*
  	 * If this buffer is dirty in an old transaction group we need
-@@ -5201,6 +5201,143 @@ dbuf_write(dbuf_dirty_record_t *dr, arc_buf_t *data, dmu_tx_t *tx)
+@@ -5201,6 +5201,145 @@ dbuf_write(dbuf_dirty_record_t *dr, arc_buf_t *data, dmu_tx_t *tx)
  	}
  }
  
@@ -1278,7 +1282,9 @@ index 5f3643f57..abbdf5a8d 100644
 +		range_seg_t *rs;
 +		zfs_btree_index_t where;
 +
++#ifdef ZFS_DEBUG
 +		txg_verify(spa, i);
++#endif
 +		txgoff = i & TXG_MASK;
 +
 +		if (dn->dn_next_blksz[txgoff] != 0)
