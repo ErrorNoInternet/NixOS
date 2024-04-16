@@ -32,6 +32,7 @@
       dmw = "dmesg -w";
       e = "echo";
       ex = "exec";
+      m = "man";
       p = "ping";
       pf = "printf";
       s = "sudo";
