@@ -35,6 +35,7 @@
     gd = "git diff";
     gdc = "git diff --compact-summary";
     gds = "git diff --staged";
+    gdsc = "git diff --staged --compact-summary";
     gf = "git fetch origin";
     gl = "git log";
     glf = "git log --follow";
