@@ -391,7 +391,7 @@ index ad1753f7a..76fe1cfb9 100644
  
  const struct inode_operations zpl_special_inode_operations = {
 diff --git a/module/zfs/dbuf.c b/module/zfs/dbuf.c
-index 5f3643f57..c4f40f9f2 100644
+index 5f3643f57..abbdf5a8d 100644
 --- a/module/zfs/dbuf.c
 +++ b/module/zfs/dbuf.c
 @@ -2327,11 +2327,11 @@ dbuf_dirty(dmu_buf_impl_t *db, dmu_tx_t *tx)
@@ -409,7 +409,7 @@ index 5f3643f57..c4f40f9f2 100644
  
  	/*
  	 * If this buffer is dirty in an old transaction group we need
-@@ -5201,6 +5201,141 @@ dbuf_write(dbuf_dirty_record_t *dr, arc_buf_t *data, dmu_tx_t *tx)
+@@ -5201,6 +5201,143 @@ dbuf_write(dbuf_dirty_record_t *dr, arc_buf_t *data, dmu_tx_t *tx)
  	}
  }
  
@@ -471,6 +471,8 @@ index 5f3643f57..c4f40f9f2 100644
 +	mls = multilist_sublist_lock_obj(
 +	    &dn->dn_objset->os_dirty_dnodes[txgoff], dn);
 +	mutex_enter(&dn->dn_mtx);
++
++	uint32_t blksz = dnp->dn_datablkszsec << SPA_MINBLOCKSHIFT;
 +
 +	/*
 +	 * Fast path.  The dnode has not been dirtied since it was last synced
