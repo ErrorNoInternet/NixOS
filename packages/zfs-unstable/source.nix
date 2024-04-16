@@ -12,6 +12,8 @@
   };
 
   patches = [
+    ./fiemap.patch
+
     (fetchpatch {
       name = "chacha20-poly1305.patch";
       url = "https://github.com/openzfs/zfs/pull/14249.patch";
