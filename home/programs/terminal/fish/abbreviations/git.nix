@@ -39,6 +39,7 @@
     gf = "git fetch origin";
     gl = "git log";
     glf = "git log --follow";
+    gls = "git log -S";
     gm = "git merge";
     gma = "git merge --abort";
     gmc = "git merge --continue";
