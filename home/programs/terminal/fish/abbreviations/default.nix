@@ -24,6 +24,7 @@
       b = "bat";
       cl = "curl -L";
       clo = "curl -LO";
+      clO = "curl -Lo";
       d = "cd ~/data";
       dm = "dmesg";
       dmt = "dmesg -T";
