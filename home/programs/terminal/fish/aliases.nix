@@ -41,7 +41,6 @@ in {
 
       B = "nh os boot .";
       Ba = "B -a";
-      DSa = "DS -a";
       S = "nh os switch .";
       Sa = "S -a";
       T = "nh os test .";
@@ -58,6 +57,8 @@ in {
       pwdc = "pwd | tr -d '\\n' | wl-copy";
     }
     // (attrsets.optionalAttrs config.flags.isNixOnDroid {
+      DSa = "DS -a";
+
       ping = "/android/system/bin/linker64 /android/system/bin/ping";
       ping6 = "/android/system/bin/linker64 /android/system/bin/ping6";
     });

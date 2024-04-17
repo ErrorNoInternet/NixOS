@@ -68,6 +68,10 @@ in {
     value = [entry.name];
   }) (attrsets.attrsToList (import ../shared/hostnames.nix)));
 
+  security.sudo.extraConfig = ''
+    Defaults:root,%wheel timestamp_timeout=10
+  '';
+
   services = {
     getty = {
       greetingLine = ''>>> NixOS ${config.system.nixos.label} (\m) - \l'';

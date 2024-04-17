@@ -80,6 +80,7 @@ in {
           "identity.fxaccounts.account.device.name" = osConfig.host.name;
           "keyword.enabled" = true;
           "media.eme.enabled" = true;
+          "pdfjs.enableScripting" = false;
           "privacy.donottrackheader.enabled" = true;
           "privacy.globalprivacycontrol.enabled" = true;
           "privacy.globalprivacycontrol.was_ever_enabled" = true;

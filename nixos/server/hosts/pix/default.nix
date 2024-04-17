@@ -6,7 +6,7 @@
 
   host.architecture = "cortex-a72";
 
-  shared = {
+  nixos = {
     flags.isRaspberryPi = true;
     btrfs.compression.enable = true;
   };

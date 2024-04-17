@@ -7,10 +7,10 @@
   cfg = config.customPrograms.virtManager;
   inherit (lib) mkEnableOption mkIf;
 in {
-  options.customPrograms.virtManager.enable = mkEnableOption "";
+  options.customPrograms.virtManager.enable =
+    mkEnableOption "";
 
   config = mkIf cfg.enable {
-    home.packages = [pkgs.virt-manager];
     dconf.settings = {
       "org/virt-manager/virt-manager" = {
         xmleditor-enabled = true;
@@ -41,5 +41,6 @@ in {
         network-traffic = true;
       };
     };
+    home.packages = [pkgs.virt-manager];
   };
 }

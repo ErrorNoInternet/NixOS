@@ -21,14 +21,18 @@
       }/configuration.nix";
 
       "-" = "cd -";
+      b = "bat";
       cl = "curl -L";
       clo = "curl -LO";
+      clO = "curl -Lo";
       d = "cd ~/data";
       dm = "dmesg";
       dmt = "dmesg -T";
       dmtw = "dmesg -Tw";
+      dmw = "dmesg -w";
       e = "echo";
       ex = "exec";
+      m = "man";
       p = "ping";
       pf = "printf";
       s = "sudo";

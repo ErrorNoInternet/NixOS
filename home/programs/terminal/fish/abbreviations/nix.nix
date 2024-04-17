@@ -29,6 +29,7 @@
     ndl = "nix develop -L";
     nf = "nix flake";
     nfc = "nix flake check";
+    nfca = "nix flake check --all-systems";
     nfl = "nix flake lock";
     nfm = "nix flake metadata";
     nfmt = "nix fmt";

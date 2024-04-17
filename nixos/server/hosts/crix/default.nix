@@ -1,7 +1,7 @@
 {
   services.logind.lidSwitch = "ignore";
 
-  shared.wireless.enable = true;
+  nixos.wireless.enable = true;
 
   server = {
     bootloader.enable = true;
