@@ -1,11 +1,15 @@
 {
   programs.fish.shellAbbrs = {
     "ga." = "git add .";
+    "ga.c" = "git add . && git commit -m";
+    "gd." = "git diff .";
     "gl." = "git log .";
     "gr." = "git restore .";
     g = "git";
     ga = "git add";
     gap = "git add -p";
+    gapl = "git apply";
+    gapl3 = "git apply -3";
     gb = "git branch";
     gbd = "git branch -d";
     gbD = "git branch -D";
@@ -31,9 +35,11 @@
     gd = "git diff";
     gdc = "git diff --compact-summary";
     gds = "git diff --staged";
+    gdsc = "git diff --staged --compact-summary";
     gf = "git fetch origin";
     gl = "git log";
     glf = "git log --follow";
+    gls = "git log -S";
     gm = "git merge";
     gma = "git merge --abort";
     gmc = "git merge --continue";
@@ -63,11 +69,12 @@
     grva = "git revert --abort";
     grvc = "git revert --continue";
     grvn = "git revert --no-commit";
-    gs = "git show";
+    gs = "git show -m";
     gsh = "git stash";
     gshp = "git stash pop";
     gshs = "git stash show";
-    gsm = "git show -m";
+    gsm = "git submodule";
+    gsmu = "git submodule update";
     gst = "git status";
     gsw = "git switch -";
   };

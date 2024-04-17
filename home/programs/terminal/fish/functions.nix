@@ -132,17 +132,22 @@
     ''
     + lib.strings.optionalString config.flags.isNixOnDroid ''
       function DS
+        argparse "n/no-nom" "a/ask" -- $argv
         set tmpDir (mktemp -d)
 
         echo "$(tput bold)>$(tput sgr0) Building nix-on-droid configuration"
-        nix build .#nixOnDroidConfigurations.\"$HOSTNAME\".activationPackage \
-          --impure --show-trace -v --log-format internal-json -o $tmpDir/result &| nom --json
+        if set -q _flag_no_nom
+          nix build .#nixOnDroidConfigurations.\"$HOSTNAME\".activationPackage \
+            --impure --show-trace -o $tmpDir/result
+        else
+          nix build .#nixOnDroidConfigurations.\"$HOSTNAME\".activationPackage \
+            --impure --show-trace -v --log-format internal-json -o $tmpDir/result &| nom --json
+        end
 
         if ! test -d $tmpDir/result
           return
         end
 
-        argparse "a/ask" -- $argv
         if set -q _flag_ask
           read confirmation -n1 -P "$(tput bold)>$(tput sgr0) Activate the configuration?$(tput bold) [y/N]:$(tput sgr0) "
           if test "$confirmation" != "y" && test "$confirmation" != "Y"

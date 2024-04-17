@@ -64,16 +64,20 @@
       };
     };
 
-    extraConfig = ''
-      layerrule=animation fade,      hyprpicker
-      layerrule=animation fade,      wleave
-      layerrule=animation slide top, swaync-control-center
-      layerrule=blur,                rofi
-      layerrule=blur,                swaync-notification-window
-      layerrule=blur,                waybar
-      layerrule=blur,                wleave
-      layerrule=ignorezero,          rofi
-      layerrule=ignorezero,          swaync-notification-window
+    extraConfig = let
+      barOpacity = builtins.toString config.opacity.bar;
+    in ''
+      layerrule=animation fade,            hyprpicker
+      layerrule=animation fade,            wleave
+      layerrule=animation slide top,       swaync-control-center
+      layerrule=blur,                      rofi
+      layerrule=blur,                      swaync-notification-window
+      layerrule=blur,                      waybar
+      layerrule=blur,                      wleave
+      layerrule=blurpopups,                waybar
+      layerrule=ignorealpha ${barOpacity}, waybar
+      layerrule=ignorezero,                rofi
+      layerrule=ignorezero,                swaync-notification-window
     '';
   };
 }

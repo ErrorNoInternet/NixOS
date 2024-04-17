@@ -44,5 +44,7 @@ in {
           end
         '');
     };
+
+    home.sessionVariables.SHELL = "fish";
   };
 }

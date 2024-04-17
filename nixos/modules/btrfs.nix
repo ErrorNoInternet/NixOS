@@ -3,22 +3,20 @@
   lib,
   ...
 }: let
-  cfg = config.shared.btrfs.compression;
+  cfg = config.nixos.btrfs.compression;
   inherit (lib) mkEnableOption mkIf attrsets;
 in {
-  options.shared.btrfs.compression = {
+  options.nixos.btrfs.compression = {
     enable = mkEnableOption "";
+
     enableSubvolumeLayout = mkEnableOption "" // {default = true;};
   };
 
   config = mkIf cfg.enable {
     fileSystems =
-      {
-        "/".options = ["compress=zstd" "noatime"];
-      }
+      {"/".options = ["compress=zstd" "noatime"];}
       // attrsets.optionalAttrs cfg.enableSubvolumeLayout {
-        "/home".options = ["compress=zstd" "relatime"];
-        "/nix".options = ["compress=zstd" "noatime"];
+        "/nix".options = ["noatime"];
       };
   };
 }

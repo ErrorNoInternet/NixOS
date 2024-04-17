@@ -1,0 +1,1360 @@
+diff --git a/include/Makefile.am b/include/Makefile.am
+index fa725c2e7..b18941c91 100644
+--- a/include/Makefile.am
++++ b/include/Makefile.am
+@@ -62,6 +62,7 @@ COMMON_H = \
+ 	sys/dsl_userhold.h \
+ 	sys/edonr.h \
+ 	sys/efi_partition.h \
++	sys/fiemap.h \
+ 	sys/frame.h \
+ 	sys/hkdf.h \
+ 	sys/metaslab.h \
+diff --git a/include/libzfs.h b/include/libzfs.h
+index 2823b8845..de177981c 100644
+--- a/include/libzfs.h
++++ b/include/libzfs.h
+@@ -1009,6 +1009,8 @@ _LIBZFS_H int zpool_disable_datasets(zpool_handle_t *, boolean_t);
+ _LIBZFS_H void zpool_disable_datasets_os(zpool_handle_t *, boolean_t);
+ _LIBZFS_H void zpool_disable_volume_os(const char *);
+ 
++_LIBZFS_H int zfs_get_hole_count(const char *, uint64_t *, uint64_t *);
++
+ /*
+  * Parse a features file for -o compatibility
+  */
+diff --git a/include/os/linux/zfs/sys/zfs_vnops_os.h b/include/os/linux/zfs/sys/zfs_vnops_os.h
+index 830c76e57..7b838b278 100644
+--- a/include/os/linux/zfs/sys/zfs_vnops_os.h
++++ b/include/os/linux/zfs/sys/zfs_vnops_os.h
+@@ -30,9 +30,11 @@
+ #include <sys/uio.h>
+ #include <sys/cred.h>
+ #include <sys/fcntl.h>
++#include <sys/fiemap.h>
+ #include <sys/pathname.h>
+ #include <sys/zpl.h>
+ #include <sys/zfs_file.h>
++#include <linux/fiemap.h>
+ 
+ #ifdef	__cplusplus
+ extern "C" {
+@@ -83,6 +85,12 @@ extern int zfs_dirty_inode(struct inode *ip, int flags);
+ extern int zfs_map(struct inode *ip, offset_t off, caddr_t *addrp,
+     size_t len, unsigned long vm_flags);
+ extern void zfs_zrele_async(znode_t *zp);
++int zfs_fiemap_assemble(struct inode *ip, zfs_fiemap_t *fm);
++int zfs_fiemap_fill(zfs_fiemap_t *fm, struct fiemap_extent_info *fei,
++    uint64_t start, uint64_t len);
++zfs_fiemap_t *zfs_fiemap_create(uint64_t start, uint64_t len,
++    uint64_t flags, uint64_t extents_max);
++void zfs_fiemap_destroy(zfs_fiemap_t *fm);
+ 
+ #ifdef	__cplusplus
+ }
+diff --git a/include/sys/dbuf.h b/include/sys/dbuf.h
+index 3808a04cb..090ef0d1c 100644
+--- a/include/sys/dbuf.h
++++ b/include/sys/dbuf.h
+@@ -37,6 +37,7 @@
+ #include <sys/zfs_refcount.h>
+ #include <sys/zrlock.h>
+ #include <sys/multilist.h>
++#include <sys/range_tree.h>
+ 
+ #ifdef	__cplusplus
+ extern "C" {
+@@ -410,6 +411,8 @@ void dbuf_free_range(struct dnode *dn, uint64_t start, uint64_t end,
+     struct dmu_tx *);
+ 
+ void dbuf_new_size(dmu_buf_impl_t *db, int size, dmu_tx_t *tx);
++int dbuf_generate_dirty_maps(dnode_t *dn, range_tree_t *dirty_tree,
++    range_tree_t *free_tree, uint64_t *syncing_txg, uint64_t open_txg);
+ 
+ void dbuf_stats_init(dbuf_hash_table_t *hash);
+ void dbuf_stats_destroy(void);
+diff --git a/include/sys/fiemap.h b/include/sys/fiemap.h
+new file mode 100644
+index 000000000..67eaa9361
+--- /dev/null
++++ b/include/sys/fiemap.h
+@@ -0,0 +1,112 @@
++/*
++ * CDDL HEADER START
++ *
++ * The contents of this file are subject to the terms of the
++ * Common Development and Distribution License (the "License").
++ * You may not use this file except in compliance with the License.
++ *
++ * You can obtain a copy of the license at usr/src/OPENSOLARIS.LICENSE
++ * or http://www.opensolaris.org/os/licensing.
++ * See the License for the specific language governing permissions
++ * and limitations under the License.
++ *
++ * When distributing Covered Code, include this CDDL HEADER in each
++ * file and include the License file at usr/src/OPENSOLARIS.LICENSE.
++ * If applicable, add the following below this CDDL HEADER, with the
++ * fields enclosed by brackets "[]" replaced with your own identifying
++ * information: Portions Copyright [yyyy] [name of copyright owner]
++ *
++ * CDDL HEADER END
++ */
++/*
++ * Copyright (c) 2018, Lawrence Livermore National Security, LLC.
++ */
++
++#ifndef	_SYS_FIEMAP_H
++#define	_SYS_FIEMAP_H
++
++/*
++ * FIEMAP interface flags
++ *
++ * The following flags have been submitted for inclusion in future
++ * Linux kernels and the filefrag(8) utility.
++ */
++#define	fe_device_reserved		fe_reserved[0]
++#define	fe_physical_length_reserved	fe_reserved64[0]
++
++/*
++ * Request that all copies of an extent be reported.  They will be reported
++ * as overlapping logical extents with different physical extents.
++ */
++#ifndef FIEMAP_FLAG_COPIES
++#define	FIEMAP_FLAG_COPIES	0x08000000
++#endif
++
++/*
++ * Request that each block be reported and not merged in to an extent.
++ */
++#ifndef FIEMAP_FLAG_NOMERGE
++#define	FIEMAP_FLAG_NOMERGE	0x04000000
++#endif
++
++/*
++ * Request that holes be reported as FIEMAP_EXTENT_UNWRITTEN extents.  This
++ * flag can be used internally to implement version of SEEK_HOLE which
++ * properly account for dirty data.
++ */
++#ifndef FIEMAP_FLAG_HOLES
++#define	FIEMAP_FLAG_HOLES	0x02000000
++#endif
++
++/*
++ * Extent is shared with other space.  Introduced in 2.6.33 kernel.
++ */
++#ifndef FIEMAP_EXTENT_SHARED
++#define	FIEMAP_EXTENT_SHARED	0x00002000
++#endif
++
++#ifdef _KERNEL
++
++#include <sys/spa.h>		/* for SPA_DVAS_PER_BP */
++#include <sys/avl.h>
++#include <sys/range_tree.h>
++
++/*
++ * Generic supported flags.  The flags FIEMAP_FLAG_COPIES, FIEMAP_FLAG_NOMERGE,
++ * and FIEMAP_FLAG_HOLES are excluded from the compatibility check until they
++ * are provided by a future Linux kernel.  Until then they are a ZFS specific
++ * extension.
++ */
++#define	ZFS_FIEMAP_FLAGS_COMPAT	(FIEMAP_FLAG_SYNC)
++#define	ZFS_FIEMAP_FLAGS_ZFS	(FIEMAP_FLAG_COPIES | FIEMAP_FLAG_NOMERGE | \
++				FIEMAP_FLAG_HOLES)
++
++typedef struct zfs_fiemap_entry {
++	uint64_t fe_logical_start;
++	uint64_t fe_logical_len;
++	uint64_t fe_physical_start;
++	uint64_t fe_physical_len;
++	uint64_t fe_vdev;
++	uint64_t fe_flags;
++	avl_node_t fe_node;
++} zfs_fiemap_entry_t;
++
++typedef struct zfs_fiemap {
++	avl_tree_t fm_extent_trees[SPA_DVAS_PER_BP];	/* extent trees */
++	range_tree_t *fm_dirty_tree;	/* pending dirty ranges */
++	range_tree_t *fm_free_tree;	/* pending free ranges */
++
++	uint64_t fm_file_size;		/* cached inode size */
++	uint64_t fm_block_size;		/* cached dnp block size */
++	uint64_t fm_fill_count;		/* only used with FIEMAP_FLAG_NOMERGE */
++
++	/* Immutable */
++	uint64_t fm_start;		/* stat of requested range */
++	uint64_t fm_length;		/* length of requested range */
++	uint64_t fm_flags;		/* copy of fei.fi_flags */
++	uint64_t fm_extents_max;	/* copy of fei.fi_extents_mapped */
++	int fm_copies;
++} zfs_fiemap_t;
++
++#endif /* _KERNEL */
++#endif	/* _SYS_FIEMAP_H */
+diff --git a/include/sys/space_reftree.h b/include/sys/space_reftree.h
+index b7a846aec..37abf547d 100644
+--- a/include/sys/space_reftree.h
++++ b/include/sys/space_reftree.h
+@@ -49,6 +49,7 @@ void space_reftree_add_seg(avl_tree_t *t, uint64_t start, uint64_t end,
+ void space_reftree_add_map(avl_tree_t *t, range_tree_t *rt, int64_t refcnt);
+ void space_reftree_generate_map(avl_tree_t *t, range_tree_t *rt,
+     int64_t minref);
++boolean_t space_reftree_is_empty(avl_tree_t *t);
+ 
+ #ifdef	__cplusplus
+ }
+diff --git a/lib/libspl/include/umem.h b/lib/libspl/include/umem.h
+index 9039212ba..2ab095609 100644
+--- a/lib/libspl/include/umem.h
++++ b/lib/libspl/include/umem.h
+@@ -41,6 +41,7 @@
+ #include <stdlib.h>
+ #include <stdio.h>
+ #include <string.h>
++#include <errno.h>
+ 
+ #ifdef  __cplusplus
+ extern "C" {
+diff --git a/lib/libzfs/libzfs_util.c b/lib/libzfs/libzfs_util.c
+index 73ae0950c..dc1469927 100644
+--- a/lib/libzfs/libzfs_util.c
++++ b/lib/libzfs/libzfs_util.c
+@@ -47,12 +47,16 @@
+ #if LIBFETCH_DYNAMIC
+ #include <dlfcn.h>
+ #endif
+-#include <sys/stat.h>
+-#include <sys/mnttab.h>
++#include <sys/fiemap.h>
+ #include <sys/mntent.h>
++#include <sys/mnttab.h>
++#include <sys/stat.h>
+ #include <sys/types.h>
+ #include <sys/wait.h>
+ 
++#include <linux/fiemap.h>
++#include <linux/fs.h>
++
+ #include <libzfs.h>
+ #include <libzfs_core.h>
+ 
+@@ -1985,6 +1989,82 @@ zfs_version_print(void)
+ 	return (0);
+ }
+ 
++/*
++ * zfs_get_hole_count() retrieves the number of holes (blocks which are
++ * zero-filled) in the specified file using the FS_IOC_FIEMAP ioctl.  It
++ * also optionally fetches the block size when bs is non-NULL.  With hole
++ * count and block size the full space consumed by the holes of a file can
++ * be calculated.
++ *
++ * On success, zero is returned, the count argument is set to the number of
++ * unallocated blocks (holes), and the bs argument is set to the block size
++ * (if it is not NULL). On error, a non-zero errno is returned and the values
++ * in count and bs are undefined.
++ */
++int
++zfs_get_hole_count(const char *path, uint64_t *count, uint64_t *bs)
++{
++	struct fiemap *fiemap;
++	struct stat64 ss;
++	uint64_t fill;
++	int fd, error;
++
++	fd = open(path, O_RDONLY);
++	if (fd == -1)
++		return (errno);
++
++	fiemap = calloc(1, sizeof (struct fiemap));
++	if (fiemap == NULL) {
++		error = errno;
++		(void) close(fd);
++		return (error);
++	}
++
++	fiemap->fm_start = 0;
++	fiemap->fm_length = FIEMAP_MAX_OFFSET;
++	fiemap->fm_flags = FIEMAP_FLAG_NOMERGE;
++	fiemap->fm_extent_count = 0;
++	fiemap->fm_mapped_extents = 0;
++
++	error = ioctl(fd, FS_IOC_FIEMAP, fiemap);
++	if (error < 0) {
++		error = errno;
++		free(fiemap);
++		(void) close(fd);
++		return (error);
++	}
++
++	fill = fiemap->fm_mapped_extents;
++	free(fiemap);
++
++	if (fstat64(fd, &ss) == -1) {
++		error = errno;
++		(void) close(fd);
++		return (error);
++	}
++
++	if (ss.st_blksize == 0) {
++		(void) close(fd);
++		return (EINVAL);
++	}
++
++	/*
++	 * The number of blocks times the block size may exceed the file size
++	 * when there are pending dirty blocks which have not be written.
++	 */
++	*count = (ss.st_size + ss.st_blksize - 1) / ss.st_blksize - fill;
++	if ((longlong_t)*count < 0)
++		*count = 0;
++
++	if (bs != NULL)
++		*bs = ss.st_blksize;
++
++	if (close(fd) == -1)
++		return (errno);
++
++	return (0);
++}
++
+ /*
+  * Return 1 if the user requested ANSI color output, and our terminal supports
+  * it.  Return 0 for no color.
+diff --git a/module/os/linux/zfs/zfs_vnops_os.c b/module/os/linux/zfs/zfs_vnops_os.c
+index 1cecad9f7..ebff3d824 100644
+--- a/module/os/linux/zfs/zfs_vnops_os.c
++++ b/module/os/linux/zfs/zfs_vnops_os.c
+@@ -51,6 +51,7 @@
+ #include <sys/fs/zfs.h>
+ #include <sys/dmu.h>
+ #include <sys/dmu_objset.h>
++#include <sys/dmu_traverse.h>
+ #include <sys/spa.h>
+ #include <sys/txg.h>
+ #include <sys/dbuf.h>
+@@ -4225,6 +4226,738 @@ zfs_fid(struct inode *ip, fid_t *fidp)
+ 	return (0);
+ }
+ 
++/*
++ * Convert the provided block pointer in to an extent.  This may result in
++ * a new extent being created or an existing extent being extended.
++ */
++static int
++zfs_fiemap_cb(spa_t *spa, zilog_t *zilog, const blkptr_t *bp,
++    const zbookmark_phys_t *zb, const dnode_phys_t *dnp, void *arg)
++{
++	zfs_fiemap_t *fm = (zfs_fiemap_t *)arg;
++	blkptr_t bp_copy = *bp;
++
++	if (BP_GET_LEVEL(bp) != 0)
++		return (0);
++
++	/*
++	 * Indirect block pointers must be remapped to reflect the real
++	 * physical offset and length.  The remapping is transparent to
++	 * the fiemap interface so no additional extent flags are set.
++	 */
++	spa_config_enter(spa, SCL_VDEV, FTAG, RW_READER);
++	if (spa_remap_blkptr(spa, &bp_copy, NULL, NULL))
++		bp = &bp_copy;
++	spa_config_exit(spa, SCL_VDEV, FTAG);
++
++	for (int i = 0; i < fm->fm_copies; i++) {
++		zfs_fiemap_entry_t *fe, *pfe;
++		avl_index_t idx;
++
++		/*
++		 * N.B. Embedded block pointers and holes are only added to
++		 * the fm_extents_trees[0], the additional trees are used
++		 * for redundant copies of data blocks.
++		 */
++		if (i > 0 && (BP_IS_HOLE(bp) || BP_IS_EMBEDDED(bp)))
++			continue;
++
++		fe = kmem_zalloc(sizeof (zfs_fiemap_entry_t), KM_SLEEP);
++		fe->fe_logical_start = zb->zb_blkid * fm->fm_block_size;
++
++		if (BP_IS_HOLE(bp)) {
++			fe->fe_logical_len = fm->fm_block_size;
++			fe->fe_flags |= FIEMAP_EXTENT_UNWRITTEN;
++		} else if (BP_IS_EMBEDDED(bp)) {
++			fe->fe_logical_len = BPE_GET_LSIZE(bp);
++			fe->fe_physical_start = 0;
++			fe->fe_physical_len = BPE_GET_PSIZE(bp);
++			fe->fe_flags |= FIEMAP_EXTENT_DATA_INLINE |
++			    FIEMAP_EXTENT_NOT_ALIGNED;
++
++			if (BP_IS_ENCRYPTED(bp))
++				fe->fe_flags |= FIEMAP_EXTENT_DATA_ENCRYPTED;
++			if (BP_GET_COMPRESS(bp) != ZIO_COMPRESS_OFF)
++				fe->fe_flags |= FIEMAP_EXTENT_ENCODED;
++		} else {
++			if (i >= BP_GET_NDVAS(bp)) {
++				kmem_free(fe, sizeof (zfs_fiemap_entry_t));
++				continue;
++			}
++
++			if (BP_IS_ENCRYPTED(bp))
++				fe->fe_flags |= FIEMAP_EXTENT_DATA_ENCRYPTED;
++			if (BP_GET_COMPRESS(bp) != ZIO_COMPRESS_OFF)
++				fe->fe_flags |= FIEMAP_EXTENT_ENCODED;
++			if (BP_GET_DEDUP(bp))
++				fe->fe_flags |= FIEMAP_EXTENT_SHARED;
++
++			/*
++			 * Report gang blocks as a single unknown extent.
++			 * Ideally we should be walking the gang block tree and
++			 * reporting all component-blocks as physical extents.
++			 */
++			if (BP_IS_GANG(bp)) {
++				fe->fe_flags |= FIEMAP_EXTENT_UNKNOWN;
++				fe->fe_physical_start = 0;
++				fe->fe_physical_len = 0;
++				fe->fe_vdev = 0;
++			} else {
++				fe->fe_physical_len = BP_GET_PSIZE(bp);
++
++				if (DVA_IS_VALID(&bp->blk_dva[i])) {
++					fe->fe_vdev =
++					    DVA_GET_VDEV(&bp->blk_dva[i]);
++					fe->fe_physical_start =
++					    DVA_GET_OFFSET(&bp->blk_dva[i]);
++				}
++			}
++
++			fe->fe_logical_len = BP_GET_LSIZE(bp);
++		}
++
++		/*
++		 * By default merge compatible adjacent block pointers in to a
++		 * single extent.  Embedded block pointers can never be merged.
++		 *
++		 * N.B. Block pointers provided by the iterator will always
++		 * be in logical offset order.  Therefore, it is sufficient
++		 * to check only the previously inserted entry when merging.
++		 */
++		pfe = avl_last(&fm->fm_extent_trees[i]);
++		if (pfe != NULL && !BP_IS_EMBEDDED(bp) &&
++		    !(fm->fm_flags & FIEMAP_FLAG_NOMERGE)) {
++			ASSERT3U(pfe->fe_logical_start + pfe->fe_logical_len,
++			    ==, fe->fe_logical_start);
++
++			if (BP_IS_HOLE(bp) && fe->fe_flags ==
++			    (pfe->fe_flags & ~FIEMAP_EXTENT_MERGED)) {
++				pfe->fe_logical_len += fe->fe_logical_len;
++				pfe->fe_flags |= FIEMAP_EXTENT_MERGED;
++				kmem_free(fe, sizeof (zfs_fiemap_entry_t));
++				continue;
++			}
++
++			if (!BP_IS_HOLE(bp) && fe->fe_flags ==
++			    (pfe->fe_flags & ~FIEMAP_EXTENT_MERGED) &&
++			    fe->fe_physical_start ==
++			    pfe->fe_physical_start + pfe->fe_physical_len &&
++			    fe->fe_vdev == pfe->fe_vdev) {
++				pfe->fe_logical_len += fe->fe_logical_len;
++				pfe->fe_physical_len += fe->fe_physical_len;
++				pfe->fe_flags |= FIEMAP_EXTENT_MERGED;
++				kmem_free(fe, sizeof (zfs_fiemap_entry_t));
++				continue;
++			}
++		}
++
++		/*
++		 * The FIEMAP documentation specifies that all encrypted
++		 * extents must also set the encoded flag.
++		 */
++		if (fe->fe_flags & FIEMAP_EXTENT_DATA_ENCRYPTED)
++			fe->fe_flags |= FIEMAP_EXTENT_ENCODED;
++
++		/*
++		 * Add the new extent to the copies tree.  This should never
++		 * conflict with an existing logical extent, but is handled
++		 * none the less by discarding the overlapping extent.
++		 */
++		if (avl_find(&fm->fm_extent_trees[i], fe, &idx) == NULL) {
++			avl_insert(&fm->fm_extent_trees[i], fe, idx);
++		} else {
++			kmem_free(fe, sizeof (zfs_fiemap_entry_t));
++		}
++	}
++
++	return (0);
++}
++
++/*
++ * Recursively walk the indirect block tree for a dnode_phys_t and call
++ * the provided callback for all block pointers traversed.
++ */
++static int
++zfs_fiemap_visit_indirect(spa_t *spa, const dnode_phys_t *dnp,
++    blkptr_t *bp, const zbookmark_phys_t *zb,
++    blkptr_cb_t func, void *arg)
++{
++	int error = 0;
++
++	if (zb->zb_blkid > dnp->dn_maxblkid)
++		return (0);
++
++	error = func(spa, NULL, bp, zb, dnp, arg);
++	if (error)
++		return (error);
++
++	if (BP_GET_LEVEL(bp) > 0 && !BP_IS_HOLE(bp)) {
++		arc_flags_t flags = ARC_FLAG_WAIT;
++		blkptr_t *cbp;
++		int epb = BP_GET_LSIZE(bp) >> SPA_BLKPTRSHIFT;
++		arc_buf_t *buf;
++
++		error = arc_read(NULL, spa, bp, arc_getbuf_func, &buf,
++		    ZIO_PRIORITY_ASYNC_READ, ZIO_FLAG_CANFAIL, &flags, zb);
++		if (error)
++			return (error);
++
++		cbp = buf->b_data;
++		for (int i = 0; i < epb; i++, cbp++) {
++			zbookmark_phys_t czb;
++
++			SET_BOOKMARK(&czb, zb->zb_objset, zb->zb_object,
++			    zb->zb_level - 1, zb->zb_blkid * epb + i);
++			error = zfs_fiemap_visit_indirect(spa, dnp, cbp, &czb,
++			    func, arg);
++			if (error)
++				break;
++		}
++
++		arc_buf_destroy(buf, &buf);
++	}
++
++	return (error);
++}
++
++/*
++ * Allocate and insert a new extent.  Duplicates are never allowed so make
++ * sure to clear the range with zfs_fiemap_clear() as needed.
++ */
++static void
++zfs_fiemap_add_impl(avl_tree_t *t, uint64_t logical_start,
++    uint64_t logical_len, uint64_t physical_start, uint64_t physical_len,
++    uint64_t vdev, uint64_t flags)
++{
++	zfs_fiemap_entry_t *fe;
++
++	fe = kmem_zalloc(sizeof (zfs_fiemap_entry_t), KM_SLEEP);
++	fe->fe_logical_start = logical_start;
++	fe->fe_logical_len = logical_len;
++	fe->fe_physical_start = physical_start;
++	fe->fe_physical_len = physical_len;
++	fe->fe_vdev = vdev;
++	fe->fe_flags = flags;
++
++	avl_add(t, fe);
++}
++
++/*
++ * Clear a range from the extent tree.  This allows new extents to be
++ * added to the cleared region.
++ */
++static void
++zfs_fiemap_clear(avl_tree_t *t, uint64_t start, uint64_t len)
++{
++	zfs_fiemap_entry_t search;
++	zfs_fiemap_entry_t *fe, *next_fe;
++	avl_index_t idx;
++	uint64_t end = start + len;
++
++	search.fe_logical_start = start;
++	fe = avl_find(t, &search, &idx);
++	if (fe == NULL) {
++		fe = avl_nearest(t, idx, AVL_BEFORE);
++		if (fe == NULL)
++			fe = avl_first(t);
++	}
++
++	while (fe != NULL && fe->fe_logical_start < end) {
++		uint64_t extent_len = fe->fe_logical_len;
++		uint64_t extent_start = fe->fe_logical_start;
++		uint64_t extent_end = extent_start + extent_len;
++
++		/*
++		 * Region to be cleared does not overlap the extent.
++		 */
++		if (extent_end <= start || extent_start >= end) {
++			fe = AVL_NEXT(t, fe);
++			continue;
++		/*
++		 * Region to be cleared overlaps with the end of an extent.
++		 * Truncate the extent to the new correct length.
++		 */
++		} else if (extent_start < start && extent_end <= end) {
++			fe->fe_logical_len = start - extent_start;
++		/*
++		 * Extent fits entirely within the region to be cleared.
++		 * It can be entirely removed and freed.
++		 */
++		} else if (extent_start >= start && extent_end <= end) {
++			next_fe = AVL_NEXT(t, fe);
++			avl_remove(t, fe);
++			kmem_free(fe, sizeof (zfs_fiemap_entry_t));
++			fe = next_fe;
++			continue;
++		/*
++		 * Region to be cleared overlaps with the start of an extent.
++		 * Advance the starting offset of the extent and re-size.
++		 */
++		} else if (extent_start >= start && extent_end > end) {
++			fe->fe_logical_len = extent_end - end;
++			fe->fe_logical_start = end;
++		/*
++		 * Extent spans before and after the region to be clearer.
++		 * Split the extent in to a before and after portion.
++		 */
++		} else if (extent_start < start && extent_end > end) {
++			fe->fe_logical_len = start - extent_start;
++			zfs_fiemap_add_impl(t, end, extent_end - end,
++			    0, 0, fe->fe_vdev, fe->fe_flags);
++		} else {
++			fe = AVL_NEXT(t, fe);
++			continue;
++		}
++
++		/*
++		 * Zero the physical start and length which are no longer
++		 * meaningful after modifying the logical start or length.
++		 *
++		 * N.B. Ideally we should keep a list the block pointers
++		 * comprising the extent.  This would allow us to properly
++		 * trim it and correctly update the physical start and length.
++		 */
++		fe->fe_physical_start = 0;
++		fe->fe_physical_len = 0;
++
++		fe = AVL_NEXT(t, fe);
++	}
++}
++
++/*
++ * Pending dirty extents set FIEMAP_EXTENT_DELALLOC to indicate they have
++ * not yet been written.  The FIEMAP_EXTENT_UNKNOWN flag must be set when
++ * FIEMAP_EXTENT_DELALLOC is set.  Dirty extents are only inserted in to
++ * the first extent tree.
++ */
++static void
++zfs_fiemap_add_dirty(void *arg, uint64_t start, uint64_t size)
++{
++	zfs_fiemap_t *fm = (zfs_fiemap_t *)arg;
++	avl_tree_t *t = &fm->fm_extent_trees[0];
++
++	zfs_fiemap_clear(t, start, size);
++
++	if (fm->fm_flags & FIEMAP_FLAG_NOMERGE) {
++		uint64_t blksz = fm->fm_block_size;
++
++		for (uint64_t i = start; i < start + size; i += blksz) {
++			zfs_fiemap_add_impl(t, i, blksz, 0, 0, 0,
++			    FIEMAP_EXTENT_DELALLOC | FIEMAP_EXTENT_UNKNOWN);
++		}
++	} else {
++		zfs_fiemap_add_impl(t, start, size, 0, 0, 0,
++		    FIEMAP_EXTENT_DELALLOC | FIEMAP_EXTENT_UNKNOWN |
++		    FIEMAP_EXTENT_MERGED);
++	}
++}
++
++/*
++ * Pending free extents set FIEMAP_EXTENT_UNWRITTEN since they will be a hole.
++ * FIEMAP_EXTENT_DELALLOC is set to indicate it has not yet been written.  The
++ * FIEMAP_EXTENT_UNKNOWN flag must be set when FIEMAP_EXTENT_DELALLOC is set.
++ * Free extents are only inserted in to the first extent tree.
++ */
++static void
++zfs_fiemap_add_free(void *arg, uint64_t start, uint64_t size)
++{
++	zfs_fiemap_t *fm = (zfs_fiemap_t *)arg;
++	avl_tree_t *t = &fm->fm_extent_trees[0];
++
++	zfs_fiemap_clear(t, start, size);
++
++	if (fm->fm_flags & FIEMAP_FLAG_NOMERGE) {
++		uint64_t blksz = fm->fm_block_size;
++
++		for (uint64_t i = start; i < start + size; i += blksz) {
++			zfs_fiemap_add_impl(t, i, blksz, 0, 0, 0,
++			    FIEMAP_EXTENT_UNWRITTEN | FIEMAP_EXTENT_DELALLOC |
++			    FIEMAP_EXTENT_UNKNOWN);
++		}
++	} else {
++		zfs_fiemap_add_impl(t, start, size, 0, 0, 0,
++		    FIEMAP_EXTENT_UNWRITTEN | FIEMAP_EXTENT_DELALLOC |
++		    FIEMAP_EXTENT_UNKNOWN | FIEMAP_EXTENT_MERGED);
++	}
++}
++
++/*
++ * The entire file is sparse and there are no level zero blocks with data.
++ * In this case pretend that hole block pointers exist to maintain consistency
++ * in the reported output.  Either add a single unwritten extent for the
++ * entire length of the file.  Or when no merging is requested add the
++ * correct number of hole block pointers.  Only the first extent tree should
++ * be populated since only holes are being added.
++ */
++static void
++zfs_fiemap_add_sparse(zfs_fiemap_t *fm)
++{
++	avl_tree_t *t = &fm->fm_extent_trees[0];
++	uint64_t blksz = fm->fm_block_size;
++	uint64_t size = P2ROUNDUP(fm->fm_file_size, blksz);
++
++	if (fm->fm_flags & FIEMAP_FLAG_NOMERGE) {
++		for (uint64_t i = 0; i < size; i += blksz) {
++			zfs_fiemap_add_impl(t, i, blksz, 0, 0, 0,
++			    FIEMAP_EXTENT_UNWRITTEN);
++		}
++	} else {
++		zfs_fiemap_add_impl(t, 0, size, 0, 0, 0,
++		    size == blksz ? FIEMAP_EXTENT_UNWRITTEN :
++		    FIEMAP_EXTENT_UNWRITTEN | FIEMAP_EXTENT_MERGED);
++	}
++}
++
++/*
++ * Walk the block pointers for the provided object and assemble a tree
++ * of extents which describe the logical to physical mapping.  Additionally
++ * include dirty buffers for the object which will be written but have
++ * not yet have had space allocated on disk.
++ */
++int
++zfs_fiemap_assemble(struct inode *ip, zfs_fiemap_t *fm)
++{
++	znode_t *zp = ITOZ(ip);
++	zfsvfs_t *zfsvfs = ZTOZSB(zp);
++	zbookmark_phys_t czb;
++	txg_handle_t th;
++	dnode_t *dn;
++	spa_t *spa;
++	uint64_t open_txg, syncing_txg, dirty_txg;
++	int error;
++
++	if ((error = zfs_enter_verify_zp(zfsvfs, zp, FTAG)) != 0)
++		return (error);
++
++	error = dnode_hold(zfsvfs->z_os, zp->z_id, FTAG, &dn);
++	if (error) {
++		zfs_exit(zfsvfs, FTAG);
++		return (error);
++	}
++
++	spa = dmu_objset_spa(dn->dn_objset);
++
++	if (fm->fm_flags & FIEMAP_FLAG_SYNC)
++		txg_wait_synced(spa_get_dsl(spa), 0);
++
++	/*
++	 * Lock the entire file against changes while assembling the FIEMAP.
++	 * Then hold open the TXG while generating a map of all pending frees
++	 * and dirty blocks.  This isn't strictly necessary but it is a
++	 * convenient way to determine the range of TXGs to check.
++	 */
++	zfs_locked_range_t *lr = zfs_rangelock_enter(&zp->z_rangelock, 0,
++	    UINT64_MAX, RL_READER);
++	open_txg = txg_hold_open(spa_get_dsl(spa), &th);
++	syncing_txg = dirty_txg = spa_syncing_txg(spa);
++
++	(void) dbuf_generate_dirty_maps(dn, fm->fm_dirty_tree,
++	    fm->fm_free_tree, &dirty_txg, open_txg);
++
++	/*
++	 * When the currently syncing TXG could not be checked, likely because
++	 * the dnode was already synced, we need to wait for the syncing TXG
++	 * to fully complete in order to avoid using stale block pointers.
++	 */
++	if (dirty_txg > syncing_txg)
++		txg_wait_synced(spa_get_dsl(spa), syncing_txg);
++
++	rw_enter(&dn->dn_struct_rwlock, RW_READER);
++	mutex_enter(&dn->dn_mtx);
++
++	dnode_phys_t *dnp = dn->dn_phys;
++	fm->fm_file_size = i_size_read(ip);
++	fm->fm_block_size = dnp->dn_datablkszsec << SPA_MINBLOCKSHIFT;
++	fm->fm_fill_count = 0;
++
++	/*
++	 * When there are only pending dirty buffers the block size will not
++	 * yet have been determined.  Assume the maximum block size.
++	 */
++	if (fm->fm_block_size == 0)
++		fm->fm_block_size = zfsvfs->z_max_blksz;
++
++	/*
++	 * When FIEMAP_FLAG_NOMERGE is set and the number of extents for the
++	 * entire file are being requested.  Then in this special case walking
++	 * the entire indirect block tree is not required.
++	 *
++	 * The fill count can be used to determine the number of extents, all
++	 * dirty blocks are assumed to fill holes, and free blocks are assumed
++	 * to overlap with existing free blocks.  This is a safe worst case
++	 * estimate which may slightly over report the number of extents for
++	 * a file being actively overwritten.
++	 *
++	 * Otherwise, the entire block tree needs to be walked to determine
++	 * exactly how the block pointer will be merged.
++	 */
++	if (fm->fm_extents_max == 0 && fm->fm_flags & FIEMAP_FLAG_NOMERGE &&
++	    fm->fm_start == 0 && fm->fm_length == FIEMAP_MAX_OFFSET) {
++		for (int i = 0; i < MIN(dnp->dn_nblkptr, fm->fm_copies); i++)
++			fm->fm_fill_count += BP_GET_FILL(&dnp->dn_blkptr[i]);
++
++		fm->fm_fill_count += P2ROUNDUP(range_tree_space(
++		    fm->fm_dirty_tree), fm->fm_block_size) / fm->fm_block_size;
++	} else {
++		SET_BOOKMARK(&czb, dmu_objset_id(dn->dn_objset),
++		    dn->dn_object, dnp->dn_nlevels - 1, 0);
++
++		for (int i = 0; i < MIN(dnp->dn_nblkptr, fm->fm_copies); i++) {
++			blkptr_t *bp = &dnp->dn_blkptr[i];
++
++			if (BP_GET_FILL(bp) > 0) {
++				czb.zb_blkid = i;
++				error = zfs_fiemap_visit_indirect(spa, dnp, bp,
++				    &czb, zfs_fiemap_cb, (void *)fm);
++			} else {
++				zfs_fiemap_add_sparse(fm);
++			}
++		}
++
++		for (int i = 0; i < fm->fm_copies; i++) {
++			avl_tree_t *t = &fm->fm_extent_trees[i];
++			zfs_fiemap_entry_t *fe;
++
++			if (i == 0) {
++				range_tree_walk(fm->fm_dirty_tree,
++				    zfs_fiemap_add_dirty, fm);
++				range_tree_walk(fm->fm_free_tree,
++				    zfs_fiemap_add_free, fm);
++			}
++
++			if ((fe = avl_last(t)) != NULL)
++				fe->fe_flags |= FIEMAP_EXTENT_LAST;
++		}
++	}
++
++	mutex_exit(&dn->dn_mtx);
++	rw_exit(&dn->dn_struct_rwlock);
++
++	txg_rele_to_quiesce(&th);
++	txg_rele_to_sync(&th);
++	zfs_rangelock_exit(lr);
++
++	dnode_rele(dn, FTAG);
++	zfs_exit(zfsvfs, FTAG);
++
++	return (error);
++}
++
++/*
++ * Fill the fiemap_extent_info structure with an extent.  It has been
++ * requested that the following fields be reserved in future kernels.
++ *
++ * - fe_physical_len - reserved for physical length
++ * - fe_device - reserved for device identifier
++ *
++ * Returns:
++ *   ESRCH  - FIEMAP_EXTENT_LAST entry added
++ *   ENOSPC - additional entries cannot be added
++ *   EFAULT - bad address
++ */
++static int
++zfs_fiemap_fill_next_extent(zfs_fiemap_t *fm, struct fiemap_extent_info *fei,
++    uint64_t logical_start, uint64_t physical_start,
++    uint64_t logical_len, uint64_t physical_len,
++    uint32_t device, uint32_t flags)
++{
++	boolean_t is_last = !!(flags & FIEMAP_EXTENT_LAST);
++	int error;
++
++	if (fei->fi_extents_max == 0) {
++		fei->fi_extents_mapped++;
++		return (is_last ? SET_ERROR(ESRCH) : 0);
++	}
++
++	if (fei->fi_extents_mapped >= fei->fi_extents_max)
++		return (SET_ERROR(ENOSPC));
++
++	uint64_t end = logical_start + logical_len;
++	if (end > fm->fm_file_size)
++		logical_len = logical_len - (end - fm->fm_file_size);
++
++	struct fiemap_extent extent;
++	memset(&extent, 0, sizeof (extent));
++	extent.fe_logical = logical_start;
++	extent.fe_physical = physical_start;
++	extent.fe_length = logical_len;
++	extent.fe_physical_length_reserved = physical_len;
++	extent.fe_flags = flags;
++	extent.fe_device_reserved = device;
++
++	error = copy_to_user(fei->fi_extents_start + fei->fi_extents_mapped,
++	    &extent, sizeof (extent));
++	if (error)
++		return (SET_ERROR(EFAULT));
++
++	fei->fi_extents_mapped++;
++	if (fei->fi_extents_mapped >= fei->fi_extents_max)
++		return (SET_ERROR(ENOSPC));
++
++	return (is_last ? SET_ERROR(ESRCH) : 0);
++}
++
++/*
++ * Inclusively add all data and holes extents in the requested range from
++ * the assembled zfs_fiemap_tree to the user fiemap_extent_info.
++ */
++static int
++zfs_fiemap_tree_fill(zfs_fiemap_t *fm, int idx, struct fiemap_extent_info *fei,
++    uint64_t start, uint64_t length)
++{
++	avl_tree_t *t = &fm->fm_extent_trees[idx];
++	zfs_fiemap_entry_t *fe;
++	boolean_t skip_holes = B_TRUE;
++	int error = 0;
++
++	if (fm->fm_flags & FIEMAP_FLAG_HOLES)
++		skip_holes = B_FALSE;
++
++	if (start == 0) {
++		fe = avl_first(t);
++	} else {
++		zfs_fiemap_entry_t search;
++		avl_index_t idx;
++
++		search.fe_logical_start = start;
++		fe = avl_find(t, &search, &idx);
++		if (fe == NULL)
++			fe = avl_nearest(t, idx, AVL_BEFORE);
++		if (fe == NULL)
++			fe = avl_first(t);
++	}
++
++	while (fe != NULL) {
++
++		if (skip_holes && fe->fe_flags & FIEMAP_EXTENT_UNWRITTEN) {
++			fe = AVL_NEXT(t, fe);
++			continue;
++		}
++
++		if (fe->fe_logical_start > start + length)
++			return (SET_ERROR(ESRCH));
++
++		error = zfs_fiemap_fill_next_extent(fm, fei,
++		    fe->fe_logical_start, fe->fe_physical_start,
++		    fe->fe_logical_len, fe->fe_physical_len,
++		    fe->fe_vdev, fe->fe_flags);
++		if (error)
++			return (error);
++
++		fe = AVL_NEXT(t, fe);
++	}
++
++	return (error);
++}
++
++/*
++ * Given the requested logical starting offset and length, find all inclusive
++ * extents and populate the provided fiemap_extent_info.  For compatibility,
++ * the default behavior is to only report extents using a block pointer's
++ * first DVA.  When the FIEMAP_FLAG_COPIES is set all extents are reported.
++ */
++int
++zfs_fiemap_fill(zfs_fiemap_t *fm, struct fiemap_extent_info *fei,
++    uint64_t start, uint64_t length)
++{
++	int error = 0;
++
++	/*
++	 * See FIEMAP_FLAG_NOMERGE comment block in zfs_fiemap_assemble().
++	 */
++	if (fm->fm_extents_max == 0 && fm->fm_flags & FIEMAP_FLAG_NOMERGE &&
++	    fm->fm_start == 0 && fm->fm_length == FIEMAP_MAX_OFFSET) {
++		fei->fi_extents_mapped = fm->fm_fill_count;
++		return (0);
++	}
++
++	if (fm->fm_flags & FIEMAP_FLAG_COPIES) {
++		for (int i = 0; i < fm->fm_copies; i++) {
++			error = zfs_fiemap_tree_fill(fm, i, fei, start, length);
++			if (error == ESRCH)
++				continue;
++			else if (error)
++				break;
++		}
++	} else {
++		error = zfs_fiemap_tree_fill(fm, 0, fei, start, length);
++	}
++
++	if (error == ESRCH || error == ENOSPC)
++		return (0);
++
++	return (error);
++}
++
++/*
++ * Comparison function for FIEMAP extent trees.
++ */
++static int
++zfs_fiemap_compare(const void *x1, const void *x2)
++{
++	const zfs_fiemap_entry_t *fe1 = (const zfs_fiemap_entry_t *)x1;
++	const zfs_fiemap_entry_t *fe2 = (const zfs_fiemap_entry_t *)x2;
++
++	return (TREE_CMP(fe1->fe_logical_start, fe2->fe_logical_start));
++}
++
++/*
++ * Allocate a zfs_fiemap_t which contains the extent trees.
++ */
++zfs_fiemap_t *
++zfs_fiemap_create(uint64_t start, uint64_t len, uint64_t flags, uint64_t max)
++{
++	zfs_fiemap_t *fm;
++
++	fm = kmem_zalloc(sizeof (zfs_fiemap_t), KM_SLEEP);
++	fm->fm_copies = 1;
++	fm->fm_start = start;
++	fm->fm_length = len;
++	fm->fm_flags = flags;
++	fm->fm_extents_max = max;
++
++	if (fm->fm_flags & FIEMAP_FLAG_COPIES)
++		fm->fm_copies = SPA_DVAS_PER_BP;
++
++	for (int i = 0; i < SPA_DVAS_PER_BP; i++) {
++		avl_create(&fm->fm_extent_trees[i], zfs_fiemap_compare,
++		    sizeof (struct zfs_fiemap_entry),
++		    offsetof(struct zfs_fiemap_entry, fe_node));
++	}
++
++	fm->fm_dirty_tree = range_tree_create(NULL, RANGE_SEG64, NULL,
++	    start, 0);
++	fm->fm_free_tree = range_tree_create(NULL, RANGE_SEG64, NULL, start, 0);
++
++	return (fm);
++}
++
++/*
++ * Destroy a zfs_fiemap_t.
++ */
++void
++zfs_fiemap_destroy(zfs_fiemap_t *fm)
++{
++	for (int i = 0; i < SPA_DVAS_PER_BP; i++) {
++		avl_tree_t *t = &fm->fm_extent_trees[i];
++		zfs_fiemap_entry_t *fe;
++		void *cookie = NULL;
++
++		while ((fe = avl_destroy_nodes(t, &cookie)) != NULL)
++			kmem_free(fe, sizeof (zfs_fiemap_entry_t));
++
++		avl_destroy(&fm->fm_extent_trees[i]);
++	}
++
++	range_tree_vacate(fm->fm_dirty_tree, NULL, NULL);
++	range_tree_destroy(fm->fm_dirty_tree);
++
++	range_tree_vacate(fm->fm_free_tree, NULL, NULL);
++	range_tree_destroy(fm->fm_free_tree);
++
++	kmem_free(fm, sizeof (zfs_fiemap_t));
++}
++
+ #if defined(_KERNEL)
+ EXPORT_SYMBOL(zfs_open);
+ EXPORT_SYMBOL(zfs_close);
+@@ -4248,6 +4981,10 @@ EXPORT_SYMBOL(zfs_getpage);
+ EXPORT_SYMBOL(zfs_putpage);
+ EXPORT_SYMBOL(zfs_dirty_inode);
+ EXPORT_SYMBOL(zfs_map);
++EXPORT_SYMBOL(zfs_fiemap_create);
++EXPORT_SYMBOL(zfs_fiemap_destroy);
++EXPORT_SYMBOL(zfs_fiemap_assemble);
++EXPORT_SYMBOL(zfs_fiemap_fill);
+ 
+ /* CSTYLED */
+ module_param(zfs_delete_blocks, ulong, 0644);
+diff --git a/module/os/linux/zfs/zpl_inode.c b/module/os/linux/zfs/zpl_inode.c
+index ad1753f7a..1234712f6 100644
+--- a/module/os/linux/zfs/zpl_inode.c
++++ b/module/os/linux/zfs/zpl_inode.c
+@@ -797,6 +797,44 @@ out:
+ 	return (error);
+ }
+ 
++/*
++ * Valid FIEMAP flags:
++ * - FIEMAP_FLAG_SYNC    - Sync extents before reporting
++ * - FIEMAP_FLAG_XATTR   - Report extents used by xattrs (Unsupported)
++ * - FIEMAP_FLAG_COPIES  - Report all data copies (ZFS-only)
++ * - FIEMAP_FLAG_NOMERGE - Never merge blocks in to extents (ZFS-only)
++ */
++static int
++zpl_fiemap(struct inode *ip, struct fiemap_extent_info *fei,
++    __u64 start, __u64 len)
++{
++	zfs_fiemap_t *fm;
++	unsigned int flags = fei->fi_flags;
++	fstrans_cookie_t cookie;
++	int error = 0;
++
++	/* Incompatible ZFS-only flags masked out of compatibility check */
++	fei->fi_flags &= ~ZFS_FIEMAP_FLAGS_ZFS;
++
++	error = fiemap_prep(ip, fei, start, &len, ZFS_FIEMAP_FLAGS_COMPAT);
++	if (error)
++		return (error);
++
++	fm = zfs_fiemap_create(start, len, flags, fei->fi_extents_max);
++
++	cookie = spl_fstrans_mark();
++	error = -zfs_fiemap_assemble(ip, fm);
++	spl_fstrans_unmark(cookie);
++
++	if (error)
++		return (error);
++
++	error = -zfs_fiemap_fill(fm, fei, start, len);
++	zfs_fiemap_destroy(fm);
++
++	return (error);
++}
++
+ const struct inode_operations zpl_inode_operations = {
+ 	.setattr	= zpl_setattr,
+ 	.getattr	= zpl_getattr,
+@@ -816,6 +854,7 @@ const struct inode_operations zpl_inode_operations = {
+ 	.get_acl	= zpl_get_acl,
+ #endif /* HAVE_GET_INODE_ACL */
+ #endif /* CONFIG_FS_POSIX_ACL */
++	.fiemap         = zpl_fiemap,
+ };
+ 
+ #ifdef HAVE_RENAME2_OPERATIONS_WRAPPER
+@@ -866,6 +905,7 @@ const struct inode_operations zpl_dir_inode_operations = {
+ 	},
+ 	.rename2	= zpl_rename2,
+ #endif
++	.fiemap         = zpl_fiemap,
+ };
+ 
+ const struct inode_operations zpl_symlink_inode_operations = {
+@@ -888,6 +928,7 @@ const struct inode_operations zpl_symlink_inode_operations = {
+ 	.removexattr	= generic_removexattr,
+ #endif
+ 	.listxattr	= zpl_xattr_list,
++	.fiemap         = zpl_fiemap,
+ };
+ 
+ const struct inode_operations zpl_special_inode_operations = {
+diff --git a/module/zfs/dbuf.c b/module/zfs/dbuf.c
+index 5f3643f57..00a5c24e7 100644
+--- a/module/zfs/dbuf.c
++++ b/module/zfs/dbuf.c
+@@ -2327,11 +2327,11 @@ dbuf_dirty(dmu_buf_impl_t *db, dmu_tx_t *tx)
+ #endif
+ 	ASSERT(db->db.db_size != 0);
+ 
+-	dprintf_dbuf(db, "size=%llx\n", (u_longlong_t)db->db.db_size);
++	dprintf_dbuf(db, "size=%llx txg=%llu\n", (u_longlong_t)db->db.db_size,
++	    	(u_longlong_t)dmu_tx_get_txg(tx));
+ 
+-	if (db->db_blkid != DMU_BONUS_BLKID && db->db_state != DB_NOFILL) {
++	if (db->db_blkid != DMU_BONUS_BLKID && db->db_state != DB_NOFILL)
+ 		dmu_objset_willuse_space(os, db->db.db_size, tx);
+-	}
+ 
+ 	/*
+ 	 * If this buffer is dirty in an old transaction group we need
+@@ -5201,6 +5201,145 @@ dbuf_write(dbuf_dirty_record_t *dr, arc_buf_t *data, dmu_tx_t *tx)
+ 	}
+ }
+ 
++/*
++ * Add all pending level zero blocks from a dnode's list of dirty records
++ * to the provided dirty tree.  Clear these same ranges from the free tree.
++ */
++static void
++dbuf_add_dirty_map(list_t *list, range_tree_t *dirty_tree,
++    range_tree_t *free_tree)
++{
++	dbuf_dirty_record_t *dr;
++
++	for (dr = list_head(list); dr != NULL; dr = list_next(list, dr)) {
++		dmu_buf_impl_t *db = dr->dr_dbuf;
++
++		if (db->db_buf == NULL)
++			(void) dbuf_read(db, NULL, DB_RF_MUST_SUCCEED);
++
++		if (db->db_level > 0) {
++			dbuf_add_dirty_map(&dr->dt.di.dr_children, dirty_tree,
++			    free_tree);
++		} else {
++			if (db->db_blkid == DMU_SPILL_BLKID ||
++			    db->db_blkid == DMU_BONUS_BLKID) {
++				continue;
++			} else {
++				uint64_t offset = db->db.db_offset;
++				uint64_t length = db->db.db_size;
++
++				range_tree_add(dirty_tree, offset, length);
++				range_tree_clear(free_tree, offset, length);
++			}
++		}
++	}
++}
++
++/*
++ * Generates two non-overlapping range trees which describe pending dirty
++ * and free ranges which have not yet been synced to the pool.  The
++ * passed syncing_txg will be updated to reflect the first TXG where
++ * the dnode was potentially dirty.
++ */
++int
++dbuf_generate_dirty_maps(dnode_t *dn, range_tree_t *dirty_tree,
++    range_tree_t *free_tree, uint64_t *syncing_txg, uint64_t open_txg)
++{
++	spa_t *spa = dn->dn_objset->os_spa;
++	dnode_phys_t *dnp = dn->dn_phys;
++	multilist_sublist_t *mls;
++	uint64_t txg, txgoff;
++
++	range_tree_vacate(dirty_tree, NULL, NULL);
++	range_tree_vacate(free_tree, NULL, NULL);
++
++	txg = *syncing_txg;
++	txgoff = txg & TXG_MASK;
++
++	mls = multilist_sublist_lock_obj(
++	    &dn->dn_objset->os_dirty_dnodes[txgoff], dn);
++	mutex_enter(&dn->dn_mtx);
++
++	uint32_t blksz = dnp->dn_datablkszsec << SPA_MINBLOCKSHIFT;
++
++	/*
++	 * Fast path.  The dnode has not been dirtied since it was last synced
++	 * and therefore cannot contain pending frees or dirty records.
++	 */
++	if (dn->dn_dirty_txg < txg) {
++		for (uint64_t i = txg; i <= open_txg; i++) {
++			uint64_t txgoff __maybe_unused = i & TXG_MASK;
++			ASSERT3P(dn->dn_free_ranges[txgoff], ==, NULL);
++			ASSERT(list_is_empty(&dn->dn_dirty_records[txgoff]));
++		}
++
++		mutex_exit(&dn->dn_mtx);
++		multilist_sublist_unlock(mls);
++		return (0);
++	}
++
++	/*
++	 * Rather than wait for the syncing transaction to complete, which
++	 * can take a considerable amount of time.  Determine if the given
++	 * dnode is still dirty and has pending free blocks and dirty records
++	 * which must be added to the pending mappings.  If the dnode is
++	 * determined to be dirty it will remain dirty until the sublist
++	 * lock is released.
++	 */
++	boolean_t dirty = B_FALSE;
++	for (dnode_t *mls_dn = multilist_sublist_head(mls); mls_dn != NULL;
++	    mls_dn = multilist_sublist_next(mls, mls_dn)) {
++		if (dn == mls_dn) {
++			dirty = B_TRUE;
++			break;
++		}
++	}
++
++	if (!dirty)
++		txg++;
++
++	for (uint64_t i = txg; i <= open_txg; i++) {
++		uint64_t start, length;
++		range_tree_t *rt;
++		range_seg_t *rs;
++		zfs_btree_index_t where;
++
++#ifdef ZFS_DEBUG
++		txg_verify(spa, i);
++#endif
++		txgoff = i & TXG_MASK;
++
++		if (dn->dn_next_blksz[txgoff] != 0)
++			blksz = dn->dn_next_blksz[txgoff];
++
++		rt = dn->dn_free_ranges[txgoff];
++		if (rt != NULL) {
++			int blkshift = dn->dn_datablkshift;
++			for (rs = zfs_btree_first(&rt->rt_root, &where);
++			    rs != NULL;
++			    rs = zfs_btree_next(&rt->rt_root, &where, &where)) {
++				start = rs_get_start(rs, rt);
++				length = (rs_get_end(rs, rt) - start);
++
++				start = start << blkshift;
++				length = length << blkshift;
++				range_tree_add(free_tree, start, length);
++				range_tree_clear(dirty_tree, start, length);
++			}
++		}
++
++		dbuf_add_dirty_map(&dn->dn_dirty_records[txgoff], dirty_tree,
++		    free_tree);
++	}
++
++	*syncing_txg = txg;
++
++	mutex_exit(&dn->dn_mtx);
++	multilist_sublist_unlock(mls);
++
++	return (0);
++}
++
+ EXPORT_SYMBOL(dbuf_find);
+ EXPORT_SYMBOL(dbuf_is_metadata);
+ EXPORT_SYMBOL(dbuf_destroy);
+diff --git a/module/zfs/space_reftree.c b/module/zfs/space_reftree.c
+index ee11e162d..e6752dffd 100644
+--- a/module/zfs/space_reftree.c
++++ b/module/zfs/space_reftree.c
+@@ -150,3 +150,32 @@ space_reftree_generate_map(avl_tree_t *t, range_tree_t *rt, int64_t minref)
+ 	ASSERT(refcnt == 0);
+ 	ASSERT(start == -1ULL);
+ }
++
++/*
++ * Determines if a reference tree is empty.  The tree is considered empty
++ * if expanding all the ranges would result in an empty range tree.
++ */
++boolean_t
++space_reftree_is_empty(avl_tree_t *t)
++{
++	uint64_t start = -1ULL;
++	int64_t refcnt = 0;
++	space_ref_t *sr;
++
++	for (sr = avl_first(t); sr != NULL; sr = AVL_NEXT(t, sr)) {
++		refcnt += sr->sr_refcnt;
++		if (refcnt == 0) {
++			if (start != sr->sr_offset)
++				return (B_FALSE);
++
++			start = -1ULL;
++		} else {
++			if (start == -1ULL)
++				start = sr->sr_offset;
++			else if (start != sr->sr_offset)
++				return (B_FALSE);
++		}
++	}
++
++	return (B_TRUE);
++}
