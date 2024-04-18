@@ -5,6 +5,5 @@ vesktop.overrideAttrs (old: {
     ++ [
       ./fix-readonly.patch
       ./remove-splash.patch
-      ./tray-notifications.patch
     ];
 })
