@@ -1,0 +1,65 @@
+diff --git a/src/fs/file.rs b/src/fs/file.rs
+index ca0be62b..d658cc7c 100644
+--- a/src/fs/file.rs
++++ b/src/fs/file.rs
+@@ -39,6 +39,49 @@ use super::mounts::MountedFs;
+ static DIRECTORY_SIZE_CACHE: Lazy<Mutex<HashMap<(u64, u64), (u64, u64)>>> =
+     Lazy::new(|| Mutex::new(HashMap::new()));
+ 
++#[cfg(unix)]
++#[derive(PartialEq)]
++enum Filesystem {
++    Zfs,
++}
++
++#[cfg(unix)]
++static FILESYSTEMS: Lazy<HashMap<u64, Filesystem>> = Lazy::new(|| {
++    let mut mountinfo = HashMap::new();
++    if let Ok(lines) = std::fs::read_to_string("/proc/self/mountinfo") {
++        for line in lines.split("\n") {
++            let mut line_split = line.split_whitespace();
++
++            let Some(devs) = line_split.nth(2) else {
++                continue;
++            };
++            let Some(dev_split) = devs.split_once(":") else {
++                continue;
++            };
++            let dev = if let (Ok(major), Ok(minor)) =
++                (dev_split.0.parse::<u64>(), dev_split.1.parse::<u64>())
++            {
++                major << 8 | minor
++            } else {
++                continue;
++            };
++
++            let Some(fs) = line_split.nth(5) else {
++                continue;
++            };
++
++            mountinfo.insert(
++                dev,
++                match fs {
++                    "zfs" => Filesystem::Zfs,
++                    _ => continue,
++                },
++            );
++        }
++    }
++    mountinfo
++});
++
+ /// A **File** is a wrapper around one of Rust’s `PathBuf` values, along with
+ /// associated data about the file.
+ ///
+@@ -665,6 +708,10 @@ impl<'dir> File<'dir> {
+     #[cfg(unix)]
+     pub fn is_empty_dir(&self) -> bool {
+         if self.is_directory() {
++            if FILESYSTEMS.get(&self.metadata.dev()) == Some(&Filesystem::Zfs) {
++                return self.metadata.size() <= 2;
++            }
++
+             if self.metadata.nlink() > 2 {
+                 // Directories will have a link count of two if they do not have any subdirectories.
+                 // The '.' entry is a link to itself and the '..' is a link to the parent directory.

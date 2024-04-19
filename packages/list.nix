@@ -20,6 +20,10 @@
     path = ./delta;
   }
   {
+    name = "eza";
+    path = ./eza;
+  }
+  {
     name = "fastfetch";
     path = ./fastfetch;
   }
