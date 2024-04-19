@@ -1,5 +1,5 @@
 diff --git a/src/fs/file.rs b/src/fs/file.rs
-index ca0be62b..d658cc7c 100644
+index ca0be62b..1bb04f6a 100644
 --- a/src/fs/file.rs
 +++ b/src/fs/file.rs
 @@ -39,6 +39,49 @@ use super::mounts::MountedFs;
@@ -52,14 +52,17 @@ index ca0be62b..d658cc7c 100644
  /// A **File** is a wrapper around one of Rust’s `PathBuf` values, along with
  /// associated data about the file.
  ///
-@@ -665,6 +708,10 @@ impl<'dir> File<'dir> {
-     #[cfg(unix)]
-     pub fn is_empty_dir(&self) -> bool {
-         if self.is_directory() {
-+            if FILESYSTEMS.get(&self.metadata.dev()) == Some(&Filesystem::Zfs) {
-+                return self.metadata.size() <= 2;
-+            }
-+
-             if self.metadata.nlink() > 2 {
-                 // Directories will have a link count of two if they do not have any subdirectories.
-                 // The '.' entry is a link to itself and the '..' is a link to the parent directory.
+@@ -673,7 +716,12 @@ impl<'dir> File<'dir> {
+                 // has subdirectories.
+                 false
+             } else {
+-                self.is_empty_directory()
++                let size = self.metadata.size();
++                if size > 255 && FILESYSTEMS.get(&self.metadata.dev()) == Some(&Filesystem::Zfs) {
++                    size <= 2
++                } else {
++                    self.is_empty_directory()
++                }
+             }
+         } else {
+             false
