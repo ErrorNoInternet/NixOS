@@ -59,6 +59,7 @@
 
   home.packages = with pkgs; [
     compsize
+    exiftool
     ffmpeg_6-full
     gimp
     hyprpicker
