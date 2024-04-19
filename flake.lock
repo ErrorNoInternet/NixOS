@@ -1320,6 +1320,7 @@
           "hyprlang"
         ],
         "nixpkgs": [
+          "hyprland",
           "nixpkgs"
         ],
         "systems": "systems_7"
