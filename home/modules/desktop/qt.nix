@@ -33,6 +33,7 @@ in {
       platformTheme = "qtct";
       style.name = "kvantum";
     };
+
     xdg.configFile = with cfg.theme; {
       "Kvantum/kvantum.kvconfig".text = ''
         [General]
@@ -40,6 +41,5 @@ in {
       '';
       "Kvantum/${packageName}".source = "${package}/share/Kvantum/${packageName}";
     };
-    home.sessionVariables.QT_FONT_DPI = "84";
   };
 }
