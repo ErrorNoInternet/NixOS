@@ -14,7 +14,7 @@ index ca0be62b..d658cc7c 100644
 +
 +#[cfg(unix)]
 +static FILESYSTEMS: Lazy<HashMap<u64, Filesystem>> = Lazy::new(|| {
-+    let mut mountinfo = HashMap::new();
++    let mut filesystems = HashMap::new();
 +    if let Ok(lines) = std::fs::read_to_string("/proc/self/mountinfo") {
 +        for line in lines.split("\n") {
 +            let mut line_split = line.split_whitespace();
@@ -37,7 +37,7 @@ index ca0be62b..d658cc7c 100644
 +                continue;
 +            };
 +
-+            mountinfo.insert(
++            filesystems.insert(
 +                dev,
 +                match fs {
 +                    "zfs" => Filesystem::Zfs,
@@ -46,7 +46,7 @@ index ca0be62b..d658cc7c 100644
 +            );
 +        }
 +    }
-+    mountinfo
++    filesystems
 +});
 +
  /// A **File** is a wrapper around one of Rust’s `PathBuf` values, along with
