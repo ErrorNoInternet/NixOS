@@ -1013,11 +1013,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1713243069,
-        "narHash": "sha256-TdkShVN7BFNL0RZlECTrFIIZGkSi6Z3l5FRaDM8cXoI=",
+        "lastModified": 1713507969,
+        "narHash": "sha256-SWVXSo5IWudg24yl9oHQY/YIT46rlFFRu71+4iUjW3A=",
         "owner": "ErrorNoInternet",
         "repo": "overmask",
-        "rev": "d4628487b1dea0072980bee94e51bc09c6efe2fe",
+        "rev": "bcd2560a6242dff3142f6d46ce67aa550576cc14",
         "type": "github"
       },
       "original": {
