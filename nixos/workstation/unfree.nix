@@ -12,13 +12,11 @@ in {
       "ookla-speedtest"
       "unigine-heaven"
 
-      "cuda_cccl"
-      "cuda_cudart"
-      "cuda_nvcc"
+      "cuda"
       "cudatoolkit"
-      "libcublas"
-      "libcufft"
+      "libcu"
       "libnpp"
+      "libnvjitlink"
       "nvidia-settings"
       "nvidia-x11"
     ]);
