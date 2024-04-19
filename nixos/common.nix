@@ -93,7 +93,6 @@ in {
         duf
         ethtool
         iotop-c
-        neovim
         tcpdump
         whois
       ]
