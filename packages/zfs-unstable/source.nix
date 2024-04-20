@@ -13,6 +13,7 @@
 
   patches = [
     ./fiemap.patch
+    ./type-abbreviations.patch
 
     (fetchpatch {
       name = "zap-shrinking.patch";
