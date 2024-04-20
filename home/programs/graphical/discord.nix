@@ -311,6 +311,7 @@ in {
         splashColor = "rgb(216, 222, 233)";
         splashTheming = true;
         tray = true;
+        trayBadge = true;
       };
     };
 
