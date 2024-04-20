@@ -39,8 +39,6 @@ in {
         shell = "tmux";
 
         background_opacity = builtins.toString config.opacity.normal;
-        initial_window_height = cfg.monitor.height;
-        initial_window_width = cfg.monitor.width;
         remember_window_size = "no";
         resize_debounce_time = "0 0";
         window_padding_width = 5;
