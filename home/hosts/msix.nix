@@ -29,7 +29,6 @@
     discord.enable = true;
     kdeconnect.enable = true;
     libreoffice.enable = true;
-    obsStudio.enable = true;
     prismlauncher.enable = true;
     spotify.enable = true;
     thunderbird.enable = true;
