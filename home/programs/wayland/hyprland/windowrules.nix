@@ -20,6 +20,7 @@ in {
   wayland.windowManager.hyprland.settings.windowrulev2 =
     [
       "size 50% 55%, class:${config.terminal.name}"
+      "size 720 540, class:qalculate-gtk"
     ]
     ++ (map (float: "float, ${float}") floating)
     ++ builtins.concatLists (map (dialog: [
