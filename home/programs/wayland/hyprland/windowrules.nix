@@ -19,6 +19,7 @@
 in {
   wayland.windowManager.hyprland.settings.windowrulev2 =
     [
+      "float,        class:qalculate-gtk"
       "size 50% 55%, class:${config.terminal.name}"
       "size 720 540, class:qalculate-gtk"
     ]
