@@ -18,7 +18,7 @@
     (fetchpatch {
       name = "zap-shrinking.patch";
       url = "https://github.com/openzfs/zfs/pull/15888.diff";
-      hash = "sha256-Hx4jOqDQo2wTTRVWX48dnBvFE8uQIP1yL6JQ3Akgrjo=";
+      hash = "sha256-RMNtO+dVf7f+V87lrNeOJV9aL9KI/M8rfc9WsNE0rdA=";
     })
 
     (fetchpatch {
