@@ -15,6 +15,11 @@
     gbD = "git branch -D";
     gbl = "git blame";
     gbr = "git branch -r";
+    gbs = "git bisect";
+    gbsb = "git bisect bad";
+    gbsg = "git bisect good";
+    gbsr = "git bisect reset";
+    gbss = "git bisect start";
     gbt = "git branch -t";
     gc = "git commit -m";
     gC = "git commit";
