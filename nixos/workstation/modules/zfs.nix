@@ -48,7 +48,7 @@ in {
       };
 
       extraModprobeConfig = ''
-        options zfs zfs_bclone_enabled=1
+        options zfs zfs_bclone_enabled=1 l2arc_mfuonly=1
       '';
     };
 
