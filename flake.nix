@@ -151,6 +151,7 @@
         hyprland-protocols.follows = "hyprland/hyprland-protocols";
         hyprlang.follows = "hyprland/hyprlang";
         nixpkgs.follows = "hyprland/nixpkgs";
+        systems.follows = "hyprland/systems";
       };
     };
   };
