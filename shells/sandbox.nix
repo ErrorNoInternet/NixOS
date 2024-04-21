@@ -12,6 +12,11 @@
 
             dbus.enable = false;
             etc.sslCertificates.enable = true;
+
+            bubblewrap.bind = {
+              ro = ["/tmp/sandbox/ro"];
+              rw = ["/tmp/sandbox/rw"];
+            };
           };
         })
         .config
