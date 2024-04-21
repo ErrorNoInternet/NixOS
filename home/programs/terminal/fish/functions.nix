@@ -95,7 +95,7 @@
         git log --graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" $argv | \
           fzf --ansi --no-sort --reverse --tiebreak=index --scroll-off=5 --preview-window=right:60% \
             --preview 'function preview; set commit (echo $argv | grep -o "[a-f0-9]\{7\}"); git show -m --color=always $commit | delta --width=(tput cols); end; preview {}' \
-            --bind "j:down,k:up,alt-j:preview-down,alt-k:preview-up,shift-down:preview-page-down,shift-up:preview-page-up,ctrl-m:execute:
+            --bind "alt-j:preview-down,alt-k:preview-up,shift-down:preview-page-down,shift-up:preview-page-up,ctrl-m:execute:
                     function show; set commit (echo \$argv | grep -o '[a-f0-9]\{7\}'); git show -m --color=always \$commit | delta --width=(tput cols) | less -R; end; show {}"
       end
 
