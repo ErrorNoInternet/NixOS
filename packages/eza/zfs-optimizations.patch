@@ -1,68 +1,37 @@
 diff --git a/src/fs/file.rs b/src/fs/file.rs
-index ca0be62b..1bb04f6a 100644
+index ca0be62b..57d8988c 100644
 --- a/src/fs/file.rs
 +++ b/src/fs/file.rs
-@@ -39,6 +39,49 @@ use super::mounts::MountedFs;
- static DIRECTORY_SIZE_CACHE: Lazy<Mutex<HashMap<(u64, u64), (u64, u64)>>> =
-     Lazy::new(|| Mutex::new(HashMap::new()));
- 
-+#[cfg(unix)]
-+#[derive(PartialEq)]
-+enum Filesystem {
-+    Zfs,
-+}
+@@ -664,6 +664,8 @@ impl<'dir> File<'dir> {
+     /// based on directory size alone.
+     #[cfg(unix)]
+     pub fn is_empty_dir(&self) -> bool {
++        use std::ffi::CString;
 +
-+#[cfg(unix)]
-+static FILESYSTEMS: Lazy<HashMap<u64, Filesystem>> = Lazy::new(|| {
-+    let mut filesystems = HashMap::new();
-+    if let Ok(lines) = std::fs::read_to_string("/proc/self/mountinfo") {
-+        for line in lines.split("\n") {
-+            let mut line_split = line.split_whitespace();
-+
-+            let Some(devs) = line_split.nth(2) else {
-+                continue;
-+            };
-+            let Some(dev_split) = devs.split_once(":") else {
-+                continue;
-+            };
-+            let dev = if let (Ok(major), Ok(minor)) =
-+                (dev_split.0.parse::<u64>(), dev_split.1.parse::<u64>())
-+            {
-+                major << 8 | minor
-+            } else {
-+                continue;
-+            };
-+
-+            let Some(fs) = line_split.nth(5) else {
-+                continue;
-+            };
-+
-+            filesystems.insert(
-+                dev,
-+                match fs {
-+                    "zfs" => Filesystem::Zfs,
-+                    _ => continue,
-+                },
-+            );
-+        }
-+    }
-+    filesystems
-+});
-+
- /// A **File** is a wrapper around one of Rust’s `PathBuf` values, along with
- /// associated data about the file.
- ///
-@@ -673,7 +716,12 @@ impl<'dir> File<'dir> {
+         if self.is_directory() {
+             if self.metadata.nlink() > 2 {
+                 // Directories will have a link count of two if they do not have any subdirectories.
+@@ -673,6 +675,23 @@ impl<'dir> File<'dir> {
                  // has subdirectories.
                  false
              } else {
--                self.is_empty_directory()
-+                let size = self.metadata.size();
-+                if size > 255 && FILESYSTEMS.get(&self.metadata.dev()) == Some(&Filesystem::Zfs) {
-+                    size <= 2
-+                } else {
-+                    self.is_empty_directory()
-+                }
++                unsafe {
++                    let Some(str_path) = self.path.to_str() else {
++                        return self.is_empty_directory();
++                    };
++                    let Ok(c_path) = CString::new(str_path) else {
++                        return self.is_empty_directory();
++                    };
++
++                    let mut statfs_res: libc::statfs = std::mem::zeroed();
++                    if libc::statfs(c_path.as_ptr() as *const libc::c_char, &mut statfs_res) == 0 {
++                        // ZFS
++                        if statfs_res.f_type == 0x2fc12fc1 {
++                            return self.metadata.size() <= 2;
++                        };
++                    };
++                };
++
+                 self.is_empty_directory()
              }
          } else {
-             false
