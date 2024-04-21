@@ -47,7 +47,7 @@
     };
 
     hyprland = {
-      url = "github:hyprwm/Hyprland/cmake";
+      url = "github:hyprwm/Hyprland";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         xdph.follows = "xdph";
