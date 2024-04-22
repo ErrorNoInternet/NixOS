@@ -14,17 +14,6 @@ in {
       type = types.package;
       default = pkgs.vesktop;
     };
-
-    finalPackage = mkOption {
-      type = types.package;
-      readOnly = true;
-      default = cfg.package.overrideAttrs {
-        postFixup = ''
-          wrapProgram $out/bin/${lib.getName cfg.package} \
-            --add-flags "--enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland"
-        '';
-      };
-    };
   };
 
   config = mkIf cfg.enable {
@@ -315,6 +304,6 @@ in {
       };
     };
 
-    home.packages = [cfg.finalPackage];
+    home.packages = [cfg.package];
   };
 }

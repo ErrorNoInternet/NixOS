@@ -91,15 +91,8 @@ in {
       with pkgs; [
         (runCommand "spotify-wrapper" {} ''
           mkdir -p $out/bin
-
+          cp -a ${lib.getExe sandboxed-spotify} $out/bin
           cp -a ${unwrapped-spotify}/share $out
-
-          cat << EOF > $out/bin/spotify
-          ${lib.getExe sandboxed-spotify} \
-              --enable-features=UseOzonePlatform,WaylandWindowDecorations \
-              --ozone-platform=wayland "$@"
-          EOF
-          chmod +x $out/bin/spotify
         '')
       ];
   };
