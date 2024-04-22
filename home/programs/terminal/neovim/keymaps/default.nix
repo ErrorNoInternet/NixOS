@@ -42,32 +42,32 @@
       {
         mode = "n";
         key = "<c-j>";
-        action = "<cmd>m .+1<CR>==";
+        action = ":m .+1<CR>==";
       }
       {
         mode = "n";
         key = "<c-k>";
-        action = "<cmd>m .-2<CR>==";
+        action = ":m .-2<CR>==";
       }
       {
         mode = "i";
         key = "<c-j>";
-        action = "<esc><cmd>m .+1<CR>==gi";
+        action = "<esc>:m .+1<CR>==gi";
       }
       {
         mode = "i";
         key = "<c-k>";
-        action = "<esc><cmd>m .-2<CR>==gi";
+        action = "<esc>:m .-2<CR>==gi";
       }
       {
         mode = "v";
         key = "<c-j>";
-        action = "<cmd>m '>+1<CR>gv=gv";
+        action = ":m '>+1<CR>gv=gv";
       }
       {
         mode = "v";
         key = "<c-k>";
-        action = "<cmd>m '<-2<CR>gv=gv";
+        action = ":m '<-2<CR>gv=gv";
       }
 
       {
