@@ -14,12 +14,12 @@
         name = "eDP-1";
         width = 1920;
         height = 1080;
-        x = 1680;
       }
       {
         name = "VGA-1";
         width = 1680;
         height = 1050;
+        x = -1680;
       }
       {}
     ];
