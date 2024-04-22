@@ -16,15 +16,16 @@ in {
     home.packages = with pkgs; [
       brightnessctl
       cliphist
-      pavolume
-      satty
+      grim
       inputs'.hyprwm-contrib.packages.grimblast
       inputs'.shadower.packages.shadower
       libnotify
       libsForQt5.qtimageformats
+      pavolume
       pavucontrol
       playerctl
       ripdrag
+      satty
       slurp
       swayidle
       vimiv-qt
