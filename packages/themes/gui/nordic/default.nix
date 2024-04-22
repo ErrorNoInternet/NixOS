@@ -4,6 +4,7 @@ nordic.overrideAttrs (old: {
     (old.patches or [])
     ++ [
       ./gtk-transparent-context-menu.patch
+      ./qt-animate-states.patch
       ./qt-remove-button-icons.patch
     ];
 })

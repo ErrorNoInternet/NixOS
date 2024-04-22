@@ -1,0 +1,13 @@
+diff --git a/Nordic/kde/kvantum/Nordic-Darker/Nordic-Darker.kvconfig b/Nordic/kde/kvantum/Nordic-Darker/Nordic-Darker.kvconfig
+index 89ff020..c006579 100644
+--- a/Nordic/kde/kvantum/Nordic-Darker/Nordic-Darker.kvconfig
++++ b/Nordic/kde/kvantum/Nordic-Darker/Nordic-Darker.kvconfig
+@@ -40,7 +40,7 @@ large_icon_size=32
+ button_icon_size=16
+ toolbar_icon_size=22
+ combo_as_lineedit=true
+-animate_states=false
++animate_states=true
+ button_contents_shift=false
+ combo_menu=true
+ hide_combo_checkboxes=true
