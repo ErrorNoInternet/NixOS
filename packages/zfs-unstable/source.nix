@@ -13,7 +13,6 @@
 
   patches = [
     ./fiemap.patch
-    ./passphrase-prompt-space.patch
     ./type-abbreviations.patch
 
     (fetchpatch {
