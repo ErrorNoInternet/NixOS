@@ -61,7 +61,7 @@
   }
   {
     name = "nordic";
-    path = ./themes/gtk/nordic;
+    path = ./themes/gui/nordic;
   }
   {
     name = "openrgb";

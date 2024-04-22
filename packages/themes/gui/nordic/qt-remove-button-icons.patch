@@ -1,0 +1,13 @@
+diff --git a/Nordic/kde/kvantum/Nordic-Darker/Nordic-Darker.kvconfig b/Nordic/kde/kvantum/Nordic-Darker/Nordic-Darker.kvconfig
+index 89ff020..d418f75 100644
+--- a/Nordic/kde/kvantum/Nordic-Darker/Nordic-Darker.kvconfig
++++ b/Nordic/kde/kvantum/Nordic-Darker/Nordic-Darker.kvconfig
+@@ -100,7 +100,7 @@ transparent_menutitle=true
+ respect_darkness=true
+ kcapacitybar_as_progressbar=true
+ force_size_grip=true
+-iconless_pushbutton=false
++iconless_pushbutton=true
+ iconless_menu=false
+ disabled_icon_opacity=70
+ lxqtmainmenu_iconsize=22
