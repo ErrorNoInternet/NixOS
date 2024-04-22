@@ -13,19 +13,11 @@ in {
   config = mkIf cfg.enable {
     wallpaper.enable = true;
 
-    home.packages = with pkgs; let
-      customSlurp = slurp.overrideAttrs (old: {
-        nativeBuildInputs = (old.nativeBuildInputs or []) ++ [makeWrapper];
-        postFixup = with config.colors.scheme.palette; ''
-          wrapProgram $out/bin/slurp \
-            --add-flags "-b \"#${base06}30\" -c \"#${base00}ff\""
-        '';
-      });
-    in [
+    home.packages = with pkgs; [
       brightnessctl
       cliphist
-      customSlurp
       grim
+      inputs'.hyprwm-contrib.packages.grimblast
       inputs'.shadower.packages.shadower
       libnotify
       libsForQt5.qtimageformats
@@ -34,16 +26,13 @@ in {
       playerctl
       ripdrag
       satty
+      slurp
       swayidle
       vimiv-qt
       wev
       wl-clipboard
       wlr-randr
       ydotool
-
-      (inputs'.hyprwm-contrib.packages.grimblast.override {
-        slurp = customSlurp;
-      })
 
       (writeScriptBin "scratchpad" ''
         export PATH=$PATH:${lib.makeBinPath [gawk]}

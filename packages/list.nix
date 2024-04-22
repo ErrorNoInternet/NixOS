@@ -92,6 +92,10 @@
     path = ./themes/sddm/corners.nix;
   }
   {
+    name = "slurp";
+    path = ./slurp;
+  }
+  {
     name = "tbw";
     path = ./tbw;
   }
