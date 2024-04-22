@@ -48,10 +48,7 @@
 
     hyprland = {
       url = "github:hyprwm/Hyprland";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        xdph.follows = "xdph";
-      };
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     hyprwm-contrib = {
@@ -142,16 +139,6 @@
       inputs = {
         flake-utils.follows = "flake-utils";
         nixpkgs.follows = "nixpkgs";
-      };
-    };
-
-    xdph = {
-      url = "github:hyprwm/xdg-desktop-portal-hyprland";
-      inputs = {
-        hyprland-protocols.follows = "hyprland/hyprland-protocols";
-        hyprlang.follows = "hyprland/hyprlang";
-        nixpkgs.follows = "hyprland/nixpkgs";
-        systems.follows = "hyprland/systems";
       };
     };
   };
