@@ -1,5 +1,6 @@
 {
   config,
+  pkgs,
   inputs,
   lib,
   ...
@@ -9,9 +10,14 @@
 in {
   imports = [inputs.hyprland.nixosModules.default];
 
-  options.workstation.desktops.hyprland.enable = mkEnableOption "";
+  options.workstation.desktops.hyprland.enable =
+    mkEnableOption "";
 
   config = mkIf cfg.enable {
-    programs.hyprland.enable = true;
+    programs.hyprland = {
+      enable = true;
+      package = pkgs.hyprland;
+      portalPackage = pkgs.xdg-desktop-portal-hyprland;
+    };
   };
 }

@@ -10,4 +10,5 @@
 }))
 .override {
   slurp = callPackage ../slurp {inherit host self;};
+  hyprland = callPackage ../hyprland {inherit host inputs' self;};
 }
