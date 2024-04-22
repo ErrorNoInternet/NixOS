@@ -1,16 +1,14 @@
 diff --git a/hyprland-share-picker/mainpicker.ui b/hyprland-share-picker/mainpicker.ui
-index 95a3c65..2fab086 100644
+index 21b3c3c..165cf09 100644
 --- a/hyprland-share-picker/mainpicker.ui
 +++ b/hyprland-share-picker/mainpicker.ui
-@@ -157,9 +157,9 @@
-    <widget class="QCheckBox" name="checkBox">
-     <property name="geometry">
-      <rect>
--      <x>340</x>
-+      <x>14</x>
-       <y>256</y>
--      <width>140</width>
-+      <width>250</width>
-       <height>21</height>
-      </rect>
-     </property>
+@@ -262,9 +262,6 @@
+          <string>By selecting this, the application will be given a restore token that it can use to skip prompting you next time. 
+ Only select if you trust the application.</string>
+         </property>
+-        <property name="layoutDirection">
+-         <enum>Qt::LeftToRight</enum>
+-        </property>
+         <property name="text">
+          <string>Allow a restore token</string>
+         </property>
