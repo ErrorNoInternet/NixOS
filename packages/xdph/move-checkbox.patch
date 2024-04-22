@@ -1,12 +1,16 @@
 diff --git a/hyprland-share-picker/mainpicker.ui b/hyprland-share-picker/mainpicker.ui
-index 95a3c65..6bc1e5b 100644
+index 95a3c65..2fab086 100644
 --- a/hyprland-share-picker/mainpicker.ui
 +++ b/hyprland-share-picker/mainpicker.ui
-@@ -157,7 +157,6 @@
+@@ -157,9 +157,9 @@
     <widget class="QCheckBox" name="checkBox">
      <property name="geometry">
       <rect>
 -      <x>340</x>
++      <x>14</x>
        <y>256</y>
-       <width>140</width>
+-      <width>140</width>
++      <width>250</width>
        <height>21</height>
+      </rect>
+     </property>
