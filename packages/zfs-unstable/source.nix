@@ -2,18 +2,17 @@
   fetchFromGitHub,
   fetchpatch,
 }: {
-  version = "2.2.3-unstable-2024-04-10";
+  version = "2.2.3-unstable-2024-04-23";
 
   src = fetchFromGitHub {
     owner = "openzfs";
     repo = "zfs";
-    rev = "d98973dbdd5a85b6c8a8556d5bd5c9903e2d2ee6";
-    hash = "sha256-Dt/MRIjqqiJOFwpkfoJPO23Eu+CrkIg2RaIUfIa9AHk=";
+    rev = "87d81d1d13e0ef848d2d533a4f12f5de41026e73";
+    hash = "sha256-X4DsZ1Ex1IU2+iNxbtoujozg5RkJfhmEkZpr88ghf8s=";
   };
 
   patches = [
     ./fiemap.patch
-    ./type-abbreviations.patch
 
     (fetchpatch {
       name = "zap-shrinking.patch";
