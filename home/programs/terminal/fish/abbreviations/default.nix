@@ -34,6 +34,7 @@
       ex = "exec";
       m = "man";
       p = "ping";
+      pa = "patch -p1";
       pf = "printf";
       s = "sudo";
       sc = "systemctl";
