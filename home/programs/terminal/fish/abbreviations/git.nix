@@ -2,6 +2,8 @@
   programs.fish.shellAbbrs = {
     "ga." = "git add .";
     "ga.c" = "git add . && git commit -m";
+    "ga.ca" = "git add . && git commit --amend --no-edit";
+    "ga.cae" = "git add . && git commit --amend";
     "gd." = "git diff .";
     "gl." = "git log .";
     "gr." = "git restore .";

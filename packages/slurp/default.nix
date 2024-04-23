@@ -6,8 +6,6 @@
   ...
 }:
 self.lib.derivations.c.optimizeAll host (slurp.overrideAttrs (old: {
-  patches = (old.patches or []) ++ [./fix-multimonitor-focus.patch];
-
   nativeBuildInputs = (old.nativeBuildInputs or []) ++ [makeWrapper];
   postFixup = ''
     wrapProgram $out/bin/slurp \

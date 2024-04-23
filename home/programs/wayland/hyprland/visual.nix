@@ -38,7 +38,7 @@
           enabled = true;
 
           popups = true;
-          popups_ignorealpha = 0.4;
+          popups_ignorealpha = 0.5;
 
           passes = 3;
           size = 8;
