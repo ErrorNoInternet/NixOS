@@ -9,6 +9,11 @@
     "gr." = "git restore .";
     g = "git";
     ga = "git add";
+    gam = "git am";
+    gama = "git am --abort";
+    gamc = "git am --continue";
+    game = "git am --allow-empty";
+    gams = "git am --skip";
     gap = "git add -p";
     gapl = "git apply";
     gapl3 = "git apply -3";
