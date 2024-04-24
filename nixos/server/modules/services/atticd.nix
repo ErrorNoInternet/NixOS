@@ -37,7 +37,7 @@ in {
   };
 
   config = mkIf cfg.enable {
-    age.secrets.attic-server-token.file = "${self}/secrets/atticd-token.age";
+    age.secrets.attic-server-token.file = "${self}/secrets/atticd_token.age";
 
     networking.firewall.allowedTCPPorts = with cfg.ports; [insecure secure];
 
