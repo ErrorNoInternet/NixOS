@@ -15,8 +15,19 @@ in {
     boot = {
       kernelPackages = mkOverride 1100 kernelPackages;
 
+      blacklistedKernelModules = [
+        "ufs"
+      ];
+
+      kernelParams = [
+        "debugfs=off"
+        "init_on_free=1"
+        "page_alloc.shuffle=1"
+        "slab_nomerge"
+        "slub_debug=FZ"
+      ];
+
       kernel.sysctl = {
-        "kernel.kexec_load_disabled" = 1;
         "kernel.sysrq" = 0;
 
         "net.ipv4.conf.all.rp_filter" = 1;
@@ -24,7 +35,11 @@ in {
       };
     };
 
-    security.lockKernelModules = true;
+    security = {
+      apparmor.enable = true;
+      lockKernelModules = true;
+      protectKernelImage = true;
+    };
 
     services = {
       logind.lidSwitch = "suspend";
