@@ -11,6 +11,7 @@
   inherit (lib) mkDefault mkForce attrsets;
 in {
   imports = [
+    ./hardening.nix
     ./modules
     inputs.agenix.nixosModules.default
   ];
@@ -37,20 +38,6 @@ in {
 
   boot = {
     kernelParams = ["boot.shell_on_fail"];
-
-    kernel.sysctl = {
-      "net.ipv4.conf.all.accept_redirects" = 0;
-      "net.ipv4.conf.all.secure_redirects" = 0;
-      "net.ipv4.conf.default.accept_redirects" = 0;
-      "net.ipv4.conf.default.secure_redirects" = 0;
-      "net.ipv6.conf.all.accept_redirects" = 0;
-      "net.ipv6.conf.default.accept_redirects" = 0;
-
-      "net.ipv4.tcp_fin_timeout" = 30;
-
-      "vm.page-cluster" = 0;
-      "vm.swappiness" = 180;
-    };
 
     tmp = {
       useTmpfs = true;
