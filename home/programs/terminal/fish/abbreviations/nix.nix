@@ -13,6 +13,7 @@
     "/es" = anywhere "--extra-substituters";
     "/etpk" = anywhere "--extra-trusted-public-keys";
     "/i" = anywhere "--impure";
+    "/msj" = anywhere "--max-substitution-jobs";
     "/ncnt" = anywhere "--narinfo-cache-negative-ttl 0";
     "/nec" = anywhere "--no-eval-cache";
     "/o" = anywhere "--option";
