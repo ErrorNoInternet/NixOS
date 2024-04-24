@@ -42,5 +42,7 @@ in {
         theme=${name}
       '';
     };
+
+    home.sessionVariables.QT_FONT_DPI = "84";
   };
 }
