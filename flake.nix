@@ -92,7 +92,10 @@
 
     nix-super = {
       url = "github:privatevoid-net/nix-super";
-      inputs.flake-compat.follows = "flake-compat";
+      inputs = {
+        flake-compat.follows = "flake-compat";
+        flake-parts.follows = "flake-parts";
+      };
     };
 
     nixvim = {
