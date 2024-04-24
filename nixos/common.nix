@@ -63,10 +63,14 @@ in {
     memoryPercent = 200;
   };
 
-  networking.hosts = attrsets.listToAttrs (map (entry: {
-    name = entry.value;
-    value = [entry.name];
-  }) (attrsets.attrsToList (import ../shared/hostnames.nix)));
+  networking = {
+    nameservers = ["1.1.1.1" "8.8.8.8"];
+
+    hosts = attrsets.listToAttrs (map (entry: {
+      name = entry.value;
+      value = [entry.name];
+    }) (attrsets.attrsToList (import ../shared/hostnames.nix)));
+  };
 
   security.sudo.extraConfig = ''
     Defaults:root,%wheel timestamp_timeout=10
@@ -93,7 +97,6 @@ in {
         duf
         ethtool
         iotop-c
-        neovim
         tcpdump
         whois
       ]

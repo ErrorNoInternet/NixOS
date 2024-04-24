@@ -17,10 +17,10 @@ index 74f83d1..decea7f 100644
  Tab
  
 diff --git a/src/app.rs b/src/app.rs
-index 7cb66b9..d11b0e3 100644
+index 4512092..67ec595 100644
 --- a/src/app.rs
 +++ b/src/app.rs
-@@ -499,14 +499,14 @@ impl<'a> App<'a> {
+@@ -490,14 +490,14 @@ impl<'a> App<'a> {
      ///
      fn increase_interval(&mut self) {
          let cur_interval = *self.interval.read().unwrap();
@@ -39,17 +39,17 @@ index 7cb66b9..d11b0e3 100644
      }
  
 diff --git a/src/help.rs b/src/help.rs
-index f762c7e..ae3828c 100644
+index fb7cf98..cb46223 100644
 --- a/src/help.rs
 +++ b/src/help.rs
-@@ -90,8 +90,8 @@ fn gen_help_text<'a>() -> Vec<Line<'a>> {
-         Line::from(" - [F2] key  ... change output mode as stderr."),
-         Line::from(" - [F3] key  ... change output mode as output(stdout/stderr set.)"),
+@@ -146,8 +146,8 @@ fn gen_help_text<'a>() -> Vec<Line<'a>> {
+         KeyData { key: "F2".to_string(), description: "change output mode as stderr.".to_string() },
+         KeyData { key: "F3".to_string(), description: "change output mode as output(stdout/stderr set.).".to_string() },
          // change interval
--        Line::from(" - [+] key ... Increase interval by .5 seconds."),
--        Line::from(" - [-] key ... Decrease interval by .5 seconds."),
-+        Line::from(" - [+] key ... Increase interval by .1 seconds."),
-+        Line::from(" - [-] key ... Decrease interval by .1 seconds."),
+-        KeyData { key: "+".to_string(), description: "Increase interval by .5 seconds.".to_string() },
+-        KeyData { key: "-".to_string(), description: "Decrease interval by .5 seconds.".to_string() },
++        KeyData { key: "+".to_string(), description: "Increase interval by .1 seconds.".to_string() },
++        KeyData { key: "-".to_string(), description: "Decrease interval by .1 seconds.".to_string() },
          // change use area
-         Line::from(" - [Tab] key ... toggle current area at history or watch."),
+         KeyData { key: "Tab".to_string(), description: "toggle current area at history or watch.".to_string() },
          // filter text input

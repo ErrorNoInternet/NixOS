@@ -1,0 +1,37 @@
+diff --git a/src/fs/file.rs b/src/fs/file.rs
+index ca0be62b..57d8988c 100644
+--- a/src/fs/file.rs
++++ b/src/fs/file.rs
+@@ -664,6 +664,8 @@ impl<'dir> File<'dir> {
+     /// based on directory size alone.
+     #[cfg(unix)]
+     pub fn is_empty_dir(&self) -> bool {
++        use std::ffi::CString;
++
+         if self.is_directory() {
+             if self.metadata.nlink() > 2 {
+                 // Directories will have a link count of two if they do not have any subdirectories.
+@@ -673,6 +675,23 @@ impl<'dir> File<'dir> {
+                 // has subdirectories.
+                 false
+             } else {
++                unsafe {
++                    let Some(str_path) = self.path.to_str() else {
++                        return self.is_empty_directory();
++                    };
++                    let Ok(c_path) = CString::new(str_path) else {
++                        return self.is_empty_directory();
++                    };
++
++                    let mut statfs_res: libc::statfs = std::mem::zeroed();
++                    if libc::statfs(c_path.as_ptr() as *const libc::c_char, &mut statfs_res) == 0 {
++                        // ZFS
++                        if statfs_res.f_type == 0x2fc12fc1 {
++                            return self.metadata.size() <= 2;
++                        };
++                    };
++                };
++
+                 self.is_empty_directory()
+             }
+         } else {

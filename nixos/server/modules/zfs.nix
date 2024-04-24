@@ -17,7 +17,7 @@ in {
   };
 
   config = mkIf cfg.enable {
-    age.secrets.server-zed.file = "${self}/secrets/server-zed.age";
+    age.secrets.zed_server.file = "${self}/secrets/zed_server.age";
 
     boot = {
       kernelPackages = mkDefault (cfg.kernelPackages.extend (_: prev: {
@@ -53,7 +53,7 @@ in {
       systemPackages = [pkgs.ioztat];
 
       etc."zfs/zed.d/zed.rc".text = ''
-        source ${config.age.secrets.server-zed.path}
+        source ${config.age.secrets.zed_server.path}
       '';
     };
   };

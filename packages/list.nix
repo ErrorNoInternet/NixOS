@@ -20,6 +20,10 @@
     path = ./delta;
   }
   {
+    name = "eza";
+    path = ./eza;
+  }
+  {
     name = "fastfetch";
     path = ./fastfetch;
   }
@@ -57,7 +61,7 @@
   }
   {
     name = "nordic";
-    path = ./themes/gtk/nordic;
+    path = ./themes/gui/nordic;
   }
   {
     name = "openrgb";
@@ -86,6 +90,10 @@
   {
     name = "sddmTheme-corners";
     path = ./themes/sddm/corners.nix;
+  }
+  {
+    name = "slurp";
+    path = ./slurp;
   }
   {
     name = "tbw";

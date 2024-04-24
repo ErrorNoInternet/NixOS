@@ -1,0 +1,167 @@
+diff --git a/glfw/glfw3.h b/glfw/glfw3.h
+index c12979a6c..cc73c2c37 100644
+--- a/glfw/glfw3.h
++++ b/glfw/glfw3.h
+@@ -1055,7 +1055,6 @@ typedef enum {
+ #define GLFW_X11_INSTANCE_NAME      0x00024002
+ 
+ #define GLFW_WAYLAND_APP_ID         0x00025001
+-#define GLFW_WAYLAND_BGCOLOR        0x00025002
+ /*! @} */
+ 
+ #define GLFW_NO_API                          0
+diff --git a/glfw/internal.h b/glfw/internal.h
+index f3d10357a..149dd2a2c 100644
+--- a/glfw/internal.h
++++ b/glfw/internal.h
+@@ -332,7 +332,6 @@ struct _GLFWwndconfig
+     } x11;
+     struct {
+         char      appId[256];
+-        uint32_t  bgcolor;
+     } wl;
+ };
+ 
+diff --git a/glfw/window.c b/glfw/window.c
+index 4c2314a24..c9870ac33 100644
+--- a/glfw/window.c
++++ b/glfw/window.c
+@@ -468,9 +468,6 @@ GLFWAPI void glfwWindowHint(int hint, int value)
+         case GLFW_REFRESH_RATE:
+             _glfw.hints.refreshRate = value;
+             return;
+-        case GLFW_WAYLAND_BGCOLOR:
+-            _glfw.hints.window.wl.bgcolor = value;
+-            return;
+     }
+     _glfwInputError(GLFW_INVALID_ENUM, "Invalid window hint 0x%08X", hint);
+ }
+diff --git a/glfw/wl_window.c b/glfw/wl_window.c
+index 35fabd611..2a06db997 100644
+--- a/glfw/wl_window.c
++++ b/glfw/wl_window.c
+@@ -789,78 +789,6 @@ typedef union pixel {
+     uint32_t value;
+ } pixel;
+ 
+-static struct wl_buffer*
+-create_single_color_buffer(int width, int height, pixel color) {
+-    // convert to pre-multiplied alpha as that's what wayland wants
+-    if (width == 1 && height == 1 && _glfw.wl.wp_single_pixel_buffer_manager_v1) {
+-#define C(x) (uint32_t)(((double)((uint64_t)color.alpha * color.x * UINT32_MAX)) / (255 * 255))
+-        struct wl_buffer *ans = wp_single_pixel_buffer_manager_v1_create_u32_rgba_buffer(
+-            _glfw.wl.wp_single_pixel_buffer_manager_v1, C(red), C(green), C(blue), color.alpha * UINT32_MAX);
+-#undef C
+-        if (!ans) _glfwInputError(GLFW_PLATFORM_ERROR, "Wayland: failed to create single pixel buffer");
+-        return ans;
+-    }
+-    float alpha = color.alpha / 255.f;
+-    color.red = (uint8_t)(alpha * color.red); color.green = (uint8_t)(alpha * color.green); color.blue = (uint8_t)(alpha * color.blue);
+-    int shm_format = color.alpha == 0xff ? WL_SHM_FORMAT_XRGB8888 : WL_SHM_FORMAT_ARGB8888;
+-    const size_t size = 4 * width * height;
+-    int fd = createAnonymousFile(size);
+-    if (fd < 0) {
+-        _glfwInputError(GLFW_PLATFORM_ERROR, "Wayland: failed to create anonymous file");
+-        return NULL;
+-    }
+-    uint32_t *shm_data = mmap(NULL, size, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
+-    if (color.value) for (size_t i = 0; i < size/4; i++) shm_data[i] = color.value;
+-    else memset(shm_data, 0, size);
+-    if (!shm_data) {
+-        close(fd);
+-        _glfwInputError(GLFW_PLATFORM_ERROR, "Wayland: failed to mmap anonymous file");
+-        return NULL;
+-    }
+-    struct wl_shm_pool *pool = wl_shm_create_pool(_glfw.wl.shm, fd, size);
+-    if (!pool) {
+-        close(fd); munmap(shm_data, size);
+-        _glfwInputError(GLFW_PLATFORM_ERROR, "Wayland: failed to create wl_shm_pool of size: %zu", size);
+-        return NULL;
+-    }
+-    struct wl_buffer *buffer = wl_shm_pool_create_buffer(pool, 0, width, height, width * 4, shm_format);
+-    wl_shm_pool_destroy(pool); munmap(shm_data, size); close(fd);
+-    if (!buffer) {
+-        _glfwInputError(GLFW_PLATFORM_ERROR, "Wayland: failed to create wl_buffer of size: %zu", size);
+-        return NULL;
+-    }
+-    return buffer;
+-}
+-
+-static bool
+-attach_temp_buffer_during_window_creation(_GLFWwindow *window) {
+-    pixel color;
+-    color.value = _glfw.hints.window.wl.bgcolor;
+-    if (!window->wl.transparent) color.alpha = 0xff;
+-    else if (color.alpha == 0) color.value = 0;  // fully transparent blends best with black and we can use memset
+-
+-    if (window->wl.temp_buffer_used_during_window_creation) {
+-        wl_buffer_destroy(window->wl.temp_buffer_used_during_window_creation);
+-        window->wl.temp_buffer_used_during_window_creation = NULL;
+-    }
+-    int width, height;
+-    _glfwPlatformGetFramebufferSize(window, &width, &height);
+-
+-    if (window->wl.wp_viewport) {
+-        window->wl.temp_buffer_used_during_window_creation = create_single_color_buffer(1, 1, color);
+-        wl_surface_set_buffer_scale(window->wl.surface, 1);
+-        wp_viewport_set_destination(window->wl.wp_viewport, window->wl.width, window->wl.height);
+-    } else {
+-        window->wl.temp_buffer_used_during_window_creation = create_single_color_buffer(width, height, color);
+-        wl_surface_set_buffer_scale(window->wl.surface, window->wl.fractional_scale ? 1: _glfwWaylandIntegerWindowScale(window));
+-    }
+-    if (!window->wl.temp_buffer_used_during_window_creation) return false;
+-    wl_surface_attach(window->wl.surface, window->wl.temp_buffer_used_during_window_creation, 0, 0);
+-    wl_surface_commit(window->wl.surface);
+-    debug("Attached temp buffer during window creation of size: %dx%d and rgba(%u, %u, %u, %u)\n", width, height, color.red, color.green, color.blue, color.alpha);
+-    return true;
+-}
+-
+ static void
+ loop_till_window_fully_created(_GLFWwindow *window) {
+     if (!window->wl.window_fully_created) {
+@@ -890,9 +818,6 @@ xdgSurfaceHandleConfigure(void* data, struct xdg_surface* surface, uint32_t seri
+     xdg_surface_ack_configure(surface, serial);
+     debug("XDG surface configure event received and acknowledged\n");
+     apply_xdg_configure_changes(window);
+-    if (!window->wl.window_fully_created) {
+-        if (!attach_temp_buffer_during_window_creation(window)) window->wl.window_fully_created = true;
+-    }
+ }
+ 
+ static const struct xdg_surface_listener xdgSurfaceListener = {
+@@ -1003,9 +928,6 @@ layer_surface_handle_configure(void* data, struct zwlr_layer_surface_v1* surface
+         layer_set_properties(window);
+     }
+     commit_window_surface_if_safe(window);
+-    if (!window->wl.window_fully_created) {
+-        if (!attach_temp_buffer_during_window_creation(window)) window->wl.window_fully_created = true;
+-    }
+ }
+ 
+ static void
+diff --git a/kitty/glfw-wrapper.h b/kitty/glfw-wrapper.h
+index 62b3f7bf5..10f3577c9 100644
+--- a/kitty/glfw-wrapper.h
++++ b/kitty/glfw-wrapper.h
+@@ -793,7 +793,6 @@ typedef enum {
+ #define GLFW_X11_INSTANCE_NAME      0x00024002
+ 
+ #define GLFW_WAYLAND_APP_ID         0x00025001
+-#define GLFW_WAYLAND_BGCOLOR        0x00025002
+ /*! @} */
+ 
+ #define GLFW_NO_API                          0
+diff --git a/kitty/glfw.c b/kitty/glfw.c
+index c9550833b..7980528b4 100644
+--- a/kitty/glfw.c
++++ b/kitty/glfw.c
+@@ -1149,9 +1149,6 @@ create_os_window(PyObject UNUSED *self, PyObject *args, PyObject *kw) {
+     }
+     bool want_semi_transparent = (1.0 - OPT(background_opacity) >= 0.01) || OPT(dynamic_background_opacity);
+     glfwWindowHint(GLFW_TRANSPARENT_FRAMEBUFFER, want_semi_transparent);
+-    uint32_t bgcolor = OPT(background);
+-    uint32_t bgalpha = (uint32_t)((MAX(0.f, MIN((OPT(background_opacity) * 255), 255.f))));
+-    glfwWindowHint(GLFW_WAYLAND_BGCOLOR, ((bgalpha & 0xff) << 24) | bgcolor);
+     // We use a temp window to avoid the need to set the window size after
+     // creation, which causes a resize event and all the associated processing.
+     // The temp window is used to get the DPI.

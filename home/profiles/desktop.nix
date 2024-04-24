@@ -24,5 +24,7 @@ in {
     };
 
     nvidia.desktopEntries.enable = cfg.enableNvidia;
+
+    home.sessionVariables.NIXOS_OZONE_WL = "1";
   };
 }

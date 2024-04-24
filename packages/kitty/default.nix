@@ -9,6 +9,7 @@ self.lib.derivations.c.optimizeAll host (kitty.overrideAttrs (old: {
     (old.patches or [])
     ++ [
       ./parse-base10-rgb.patch
+      ./remove-initial-color.patch
       ./remove-resize-text.patch
       ./thicker-braille-dots.patch
     ];

@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }: let
   cfg = config.customPrograms.irssi;
@@ -53,6 +54,24 @@ in {
         }
       ];
     };
+
+    scripts = mkOption {
+      type = with types; listOf str;
+      default = [
+        "adv_windowlist.pl"
+        "crapbuster.pl"
+      ];
+    };
+
+    startupCommands = mkOption {
+      type = types.str;
+      default = ''
+        /format -delete awl_display_header
+        /format awl_display_key \$N%n \$H\$C\$S
+        /format awl_display_key_active (\$N%n) \$H%9\$C%n\$S
+        /set awl_viewer off
+      '';
+    };
   };
 
   config = mkIf cfg.enable {
@@ -83,11 +102,39 @@ in {
           cfg.networks);
     };
 
-    home.file.".irssi/default.theme".text = ''
-      abstracts = {
-        sb_background = "%4%k";
-        sb_foreground = "%*";
-      };
-    '';
+    home.file =
+      {
+        ".irssi/startup".text = ''
+          /load perl
+          ${
+            builtins.concatStringsSep "\n"
+            (map (script: "/script load ${script}") cfg.scripts)
+          }
+
+          ${cfg.startupCommands}
+
+          /clear
+        '';
+
+        ".irssi/default.theme".text = ''
+          abstracts = {
+            sb_background = "%4%k";
+            sb_foreground = "%*";
+          };
+        '';
+      }
+      // (let
+        scripts = "${pkgs.fetchFromGitHub {
+          owner = "irssi";
+          repo = "scripts.irssi.org";
+          rev = "08e2b21e74909de5e88e36f2ddd5dc77b6a7f8cc";
+          hash = "sha256-QMntf1ehA/7+bhPDV9KfPU4DJQJx1S8CULOflbIaHUI=";
+        }}/scripts";
+      in
+        builtins.listToAttrs (map (script: {
+            name = ".irssi/scripts/${script}";
+            value.source = "${scripts}/${script}";
+          })
+          cfg.scripts));
   };
 }

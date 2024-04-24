@@ -14,9 +14,9 @@ let
     servers = with systems; [crix pix];
   };
 in {
-  "atticd-token.age".publicKeys = [users.msix systems.pix];
+  "atticd_token.age".publicKeys = [users.msix systems.pix];
   "ddns.age".publicKeys = [users.msix systems.pix];
-  "server-zed.age".publicKeys = all.servers;
   "wireless-networks.age".publicKeys = all.systems;
-  "workstation-zed.age".publicKeys = all.workstations;
+  "zed_server.age".publicKeys = all.servers;
+  "zed_workstation.age".publicKeys = all.workstations;
 }

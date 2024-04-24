@@ -55,19 +55,10 @@ in {
 
   security.pam.services.swaylock = {};
 
-  systemd = {
-    user.extraConfig =
-      "DefaultEnvironment=\"PATH="
-      + "/run/wrappers/bin:"
-      + "/etc/profiles/per-user/%u/bin:"
-      + "/nix/var/nix/profiles/default/bin:"
-      + "/run/current-system/sw/bin\"";
-
-    coredump.extraConfig = ''
-      ProcessSizeMax=4G
-      ExternalSizeMax=512M
-    '';
-  };
+  systemd.coredump.extraConfig = ''
+    ProcessSizeMax=2G
+    ExternalSizeMax=512M
+  '';
 
   environment = {
     etc."xdg/user-dirs.defaults".text = ''

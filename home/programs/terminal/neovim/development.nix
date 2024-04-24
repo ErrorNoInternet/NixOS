@@ -37,8 +37,10 @@
 
       treesitter-context = {
         enable = true;
-        minWindowHeight = 12;
-        maxLines = 3;
+        settings = {
+          max_lines = 3;
+          min_window_height = 12;
+        };
       };
     };
 

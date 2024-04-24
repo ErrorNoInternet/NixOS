@@ -38,6 +38,7 @@
     duperemove
     efibootmgr
     efivar
+    exiftool
     ffmpeg_6-full
     fio
     geekbench

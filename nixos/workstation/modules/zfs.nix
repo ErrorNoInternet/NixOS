@@ -17,7 +17,7 @@ in {
   };
 
   config = mkIf cfg.enable {
-    age.secrets.workstation-zed.file = "${self}/secrets/workstation-zed.age";
+    age.secrets.zed_workstation.file = "${self}/secrets/zed_workstation.age";
 
     services.zfs.autoSnapshot.monthly = 3;
 
@@ -48,7 +48,7 @@ in {
       };
 
       extraModprobeConfig = ''
-        options zfs zfs_bclone_enabled=1
+        options zfs zfs_bclone_enabled=1 l2arc_mfuonly=1
       '';
     };
 
@@ -61,7 +61,7 @@ in {
       systemPackages = [pkgs.ioztat];
 
       etc."zfs/zed.d/zed.rc".text = ''
-        source ${config.age.secrets.workstation-zed.path}
+        source ${config.age.secrets.zed_workstation.path}
       '';
     };
   };

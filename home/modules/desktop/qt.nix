@@ -19,6 +19,7 @@ in {
             package = mkOption {type = package;};
           };
         };
+
       default = {
         name = "Nordic-Darker";
         packageName = "Nordic-Darker";
@@ -30,16 +31,18 @@ in {
   config = mkIf cfg.enable {
     qt = {
       enable = true;
-      platformTheme = "qtct";
+      platformTheme.name = "qtct";
       style.name = "kvantum";
     };
+
     xdg.configFile = with cfg.theme; {
+      "Kvantum/${packageName}".source = "${package}/share/Kvantum/${packageName}";
       "Kvantum/kvantum.kvconfig".text = ''
         [General]
         theme=${name}
       '';
-      "Kvantum/${packageName}".source = "${package}/share/Kvantum/${packageName}";
     };
+
     home.sessionVariables.QT_FONT_DPI = "84";
   };
 }

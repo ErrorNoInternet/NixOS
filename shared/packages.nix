@@ -23,6 +23,7 @@ with pkgs; [
   procs
   pv
   ripgrep
+  socat
   sysstat
   tmux
   traceroute
