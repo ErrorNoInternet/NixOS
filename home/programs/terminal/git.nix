@@ -37,6 +37,7 @@ in {
   config = mkIf cfg.enable {
     programs.git = {
       enable = true;
+      lfs.enable = true;
 
       userName = with cfg.user; mkIf (name != null) name;
       userEmail = with cfg.user; mkIf (email != null) email;
