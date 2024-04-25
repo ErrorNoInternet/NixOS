@@ -1,11 +1,29 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }: let
   inherit (lib) mkOverride optional strings;
 in {
   boot.kernelPatches = [
+    {
+      name = "BORE CPU scheduler";
+      patch = pkgs.fetchurl {
+        url =
+          "https://raw.githubusercontent.com"
+          + "/firelzrd/bore-scheduler"
+          + "/main/patches/stable"
+          + "/linux-6.8-bore/0001-linux6.8.y-bore5.1.0.patch";
+        hash = "sha256-WyD1NuM+1m12O3ppjhZ+6YrJFQJn9Zcyz4QV2YgwNGk=";
+      };
+    }
+
+    {
+      name = "BTRFS allocator hints";
+      patch = ./files/btrfs-allocator-hints.patch;
+    }
+
     {
       name = "Lower latency";
       patch = null;
