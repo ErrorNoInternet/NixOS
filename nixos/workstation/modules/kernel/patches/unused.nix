@@ -3,8 +3,8 @@
   lib,
   ...
 }: let
+cfg = config.workstation.kernel.patches;
   inherit (lib) optional;
-  cfg = config.workstation.kernel.patches;
 in {
   boot.kernelPatches =
     [
@@ -50,6 +50,9 @@ in {
       patch = null;
       extraStructuredConfig = with lib.kernel; {
         CONFIG_CHROME_PLATFORMS = no;
+        CONFIG_COMEDI = no;
+        CONFIG_IIO = no;
+        CONFIG_INFINIBAND = no;
         CONFIG_NFC = no;
         CONFIG_SURFACE_AGGREGATOR = no;
 
@@ -61,6 +64,15 @@ in {
         ALTERA_TSE = no;
         ALX = no;
 
+        DELL_RBTN = no;
+        DELL_RBU = no;
+        DELL_SMBIOS = no;
+        DELL_WMI = no;
+        DELL_WMI_AIO = no;
+        DELL_WMI_DESCRIPTOR = no;
+        DELL_WMI_LED = no;
+        DELL_WMI_SYSMAN = no;
+
         CONFIG_DRM_AMDGPU = no;
         CONFIG_DRM_AMDGPU_CIK = no;
         CONFIG_DRM_GMA500 = no;
@@ -70,15 +82,6 @@ in {
         CONFIG_FB_RADEON = no;
         CONFIG_FB_RADEON_BACKLIGHT = no;
         CONFIG_FB_RADEON_I2C = no;
-
-        DELL_RBTN = no;
-        DELL_RBU = no;
-        DELL_SMBIOS = no;
-        DELL_WMI = no;
-        DELL_WMI_AIO = no;
-        DELL_WMI_DESCRIPTOR = no;
-        DELL_WMI_LED = no;
-        DELL_WMI_SYSMAN = no;
       };
     };
 }
