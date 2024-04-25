@@ -8,6 +8,11 @@ in {
   boot = {
     kernelPatches = [
       {
+        name = "BTRFS allocator hints";
+        patch = ./patches/btrfs-allocator-hints.patch;
+      }
+
+      {
         name = "Lower latency";
         patch = null;
         extraStructuredConfig = with lib.kernel; {
@@ -50,6 +55,7 @@ in {
         patch = null;
         features.rust = true;
       }
+
       {
         name = "Native CPU optimizations";
         patch = null;
