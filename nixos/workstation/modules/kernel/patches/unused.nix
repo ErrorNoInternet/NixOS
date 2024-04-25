@@ -49,6 +49,18 @@ in {
       name = "Remove extra unused features";
       patch = null;
       extraStructuredConfig = with lib.kernel; {
+        CONFIG_CHROME_PLATFORMS = no;
+        CONFIG_NFC = no;
+        CONFIG_SURFACE_AGGREGATOR = no;
+
+        ALIENWARE_WMI = no;
+        ALIM1535_WDT = no;
+        ALIM7101_WDT = no;
+        ALTERA_MBOX = no;
+        ALTERA_MSGDMA = no;
+        ALTERA_TSE = no;
+        ALX = no;
+
         CONFIG_DRM_AMDGPU = no;
         CONFIG_DRM_AMDGPU_CIK = no;
         CONFIG_DRM_GMA500 = no;
@@ -58,7 +70,15 @@ in {
         CONFIG_FB_RADEON = no;
         CONFIG_FB_RADEON_BACKLIGHT = no;
         CONFIG_FB_RADEON_I2C = no;
-        CONFIG_NFC = no;
+
+        DELL_RBTN = no;
+        DELL_RBU = no;
+        DELL_SMBIOS = no;
+        DELL_WMI = no;
+        DELL_WMI_AIO = no;
+        DELL_WMI_DESCRIPTOR = no;
+        DELL_WMI_LED = no;
+        DELL_WMI_SYSMAN = no;
       };
     };
 }
