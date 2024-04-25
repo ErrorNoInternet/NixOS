@@ -14,21 +14,21 @@
     devShells.default = pkgs.mkShell {
       name = "configuration.nix";
       packages = with pkgs; let
-        pkgsSelf = import ../packages {
+        customPkgs = import ../packages {
           inherit inputs' pkgs self system;
         };
       in [
         bat
+        customPkgs.delta
+        customPkgs.neovim-unwrapped
+        customPkgs.nix
+        customPkgs.tmux
         deadnix
         git
         inputs'.agenix.packages.default
         inputs'.disko.packages.default
         nix-output-monitor
         parted
-        pkgsSelf.delta
-        pkgsSelf.neovim-unwrapped
-        pkgsSelf.nix
-        pkgsSelf.tmux
         self'.formatter
         smartmontools
         statix
