@@ -3,14 +3,12 @@ concurrency: build
 on:
   push:
     paths:
-      - flake.lock
-      - packages/**
+      - '**.nix'
   workflow_dispatch:
 
 jobs:
   nixos:
     name: NixOS
-    needs: packages
     runs-on: ubuntu-22.04
 
     strategy:
