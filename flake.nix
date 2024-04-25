@@ -146,11 +146,7 @@
     };
   };
 
-  outputs = {
-    flake-parts,
-    self,
-    ...
-  } @ inputs:
+  outputs = {flake-parts, ...} @ inputs:
     flake-parts.lib.mkFlake {inherit inputs;} {
       imports = [
         ./droid
