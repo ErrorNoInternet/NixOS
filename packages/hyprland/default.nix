@@ -5,8 +5,7 @@
   ...
 }:
 with self.lib.derivations;
-  c.optimizeAllExceptLto host
-  (meson.optimizeLto (
+  c.optimizeAllExceptLto host (meson.optimizeLto (
     inputs'.hyprland.packages.default.overrideAttrs {
       prePatch = ''
         git apply ${./remove-wallpapers.patch}
