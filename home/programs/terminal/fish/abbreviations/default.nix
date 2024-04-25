@@ -22,6 +22,7 @@
 
       "-" = "cd -";
       b = "bat";
+      bt = "btop";
       cl = "curl -L";
       clo = "curl -LO";
       clO = "curl -Lo";
