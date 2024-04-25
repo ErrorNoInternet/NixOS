@@ -3,7 +3,7 @@
   lib,
   ...
 }: let
-cfg = config.workstation.kernel.patches;
+  cfg = config.workstation.kernel.patches;
   inherit (lib) optional;
 in {
   boot.kernelPatches =
