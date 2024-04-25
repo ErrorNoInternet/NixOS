@@ -34,6 +34,7 @@
       e = "echo";
       ex = "exec";
       m = "man";
+      mk = "make";
       p = "ping";
       pa = "patch -p1";
       pf = "printf";
