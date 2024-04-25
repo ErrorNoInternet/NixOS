@@ -36,7 +36,10 @@ in {
     };
 
     security = {
-      apparmor.enable = true;
+      apparmor = {
+        enable = true;
+        killUnconfinedConfinables = true;
+      };
       lockKernelModules = true;
       protectKernelImage = true;
     };
