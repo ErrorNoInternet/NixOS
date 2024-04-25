@@ -7,6 +7,7 @@
 in {
   imports = [
     ./patches.nix
+    ./unused.nix
   ];
 
   boot = {
