@@ -8,7 +8,6 @@
 in {
   imports = [
     ./fonts.nix
-    ./kernel
     ./modules
     ./profiles
     ./programs

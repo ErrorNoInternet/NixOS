@@ -12,7 +12,7 @@ in {
     enable = mkEnableOption "" // {default = true;};
 
     kernelPackages = mkOption {
-      inherit (config.workstation.pkgsKernels) default;
+      inherit (config.workstation.kernel.packages) default;
     };
   };
 

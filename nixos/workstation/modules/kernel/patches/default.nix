@@ -1,4 +1,9 @@
 {
+  imports = [
+    ./common.nix
+    ./unused.nix
+  ];
+
   boot.kernelPatches = [
     {
       name = "BTRFS allocator hints";
