@@ -5,7 +5,7 @@
   self,
   ...
 }: let
-  inherit (lib) mkOverride;
+  inherit (lib) mkOverride attrsets;
 
   kernelPackages = pkgs.linuxPackages_hardened;
 in {
@@ -27,12 +27,15 @@ in {
         "slub_debug=FZ"
       ];
 
-      kernel.sysctl = {
-        "kernel.sysrq" = 0;
-
-        "net.ipv4.conf.all.rp_filter" = 1;
-        "net.ipv4.conf.default.rp_filter" = 1;
-      };
+      kernel.sysctl =
+        {
+          "kernel.ftrace_enabled" = 0;
+          "kernel.sysrq" = 0;
+        }
+        // attrsets.optionalAttrs (!config.services.mullvad-vpn.enable) {
+          "net.ipv4.conf.all.rp_filter" = 1;
+          "net.ipv4.conf.default.rp_filter" = 1;
+        };
     };
 
     security = {
