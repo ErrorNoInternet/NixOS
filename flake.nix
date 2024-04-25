@@ -164,17 +164,8 @@
         "x86_64-linux"
       ];
 
-      perSystem = {
-        inputs',
-        pkgs,
-        system,
-        ...
-      }: rec {
-        packages = import ./packages {
-          inherit inputs' pkgs self system;
-        };
-
-        formatter = packages.alejandra;
+      perSystem = {pkgs, ...}: {
+        formatter = pkgs.alejandra;
       };
     };
 

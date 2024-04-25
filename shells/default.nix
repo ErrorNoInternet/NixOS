@@ -1,4 +1,4 @@
-{
+{self, ...}: {
   imports = [
     ./rust.nix
     ./sandbox.nix
@@ -8,11 +8,16 @@
     inputs',
     pkgs,
     self',
+    system,
     ...
   }: {
     devShells.default = pkgs.mkShell {
       name = "configuration.nix";
-      packages = with pkgs; [
+      packages = with pkgs; let
+        pkgsSelf = import ../packages {
+          inherit inputs' pkgs self system;
+        };
+      in [
         bat
         deadnix
         git
@@ -20,11 +25,11 @@
         inputs'.disko.packages.default
         nix-output-monitor
         parted
+        pkgsSelf.delta
+        pkgsSelf.neovim-unwrapped
+        pkgsSelf.nix
+        pkgsSelf.tmux
         self'.formatter
-        self'.packages.delta
-        self'.packages.neovim-unwrapped
-        self'.packages.nix
-        self'.packages.tmux
         smartmontools
         statix
       ];
