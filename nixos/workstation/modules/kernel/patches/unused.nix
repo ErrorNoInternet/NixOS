@@ -13,10 +13,10 @@ in
           name = "Remove unused features";
           patch = null;
           extraStructuredConfig = attrsets.mapAttrs (_: mkForce) {
-            CONFIG_BATMAN_ADV = no;
-            CONFIG_CAIF = no;
-            CONFIG_NET_VENDOR_RENESAS = no;
-            CONFIG_SUNRPC = no;
+            BATMAN_ADV = no;
+            CAIF = no;
+            NET_VENDOR_RENESAS = no;
+            SUNRPC = no;
 
             SND_ATMEL_SOC = no;
             SND_DESIGNWARE_I2S = no;
@@ -50,12 +50,12 @@ in
         name = "Remove extra unused features";
         patch = null;
         extraStructuredConfig = attrsets.mapAttrs (_: mkForce) {
-          CONFIG_CHROME_PLATFORMS = no;
-          CONFIG_COMEDI = no;
-          CONFIG_IIO = no;
-          CONFIG_INFINIBAND = no;
-          CONFIG_NFC = no;
-          CONFIG_SURFACE_AGGREGATOR = no;
+          CHROME_PLATFORMS = no;
+          COMEDI = no;
+          IIO = no;
+          INFINIBAND = no;
+          NFC = no;
+          SURFACE_AGGREGATOR = no;
 
           ALIENWARE_WMI = no;
           ALIM1535_WDT = no;
@@ -74,15 +74,15 @@ in
           DELL_WMI_LED = no;
           DELL_WMI_SYSMAN = no;
 
-          CONFIG_DRM_AMDGPU = no;
-          CONFIG_DRM_AMDGPU_CIK = no;
-          CONFIG_DRM_GMA500 = no;
-          CONFIG_DRM_RADEON = no;
-          CONFIG_DRM_VMWGFX = no;
-          CONFIG_DRM_XE = no;
-          CONFIG_FB_RADEON = no;
-          CONFIG_FB_RADEON_BACKLIGHT = no;
-          CONFIG_FB_RADEON_I2C = no;
+          DRM_AMDGPU = no;
+          DRM_AMDGPU_CIK = no;
+          DRM_GMA500 = no;
+          DRM_RADEON = no;
+          DRM_VMWGFX = no;
+          DRM_XE = no;
+          FB_RADEON = no;
+          FB_RADEON_BACKLIGHT = no;
+          FB_RADEON_I2C = no;
         };
       };
   }
