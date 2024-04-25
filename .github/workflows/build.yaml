@@ -19,6 +19,7 @@ jobs:
       matrix:
         include:
           - host: msix
+          - host: pix
           - host: rescanix
 
     steps:
@@ -70,9 +71,10 @@ jobs:
       - name: Set up Attic
         uses: ErrorNoInternet/attic-action@v0
         with:
-          endpoint: ${{ secrets.ATTIC_ENDPOINT }}
-          cache: ${{ secrets.ATTIC_CACHE }}
+          endpoint: "${{ secrets.ATTIC_ENDPOINT }}"
+          cache: "${{ secrets.ATTIC_CACHE }}"
           token: "${{ secrets.ATTIC_TOKEN }}"
+          skip-use: true
 
       - name: Set up Cachix
         uses: cachix/cachix-action@v13
@@ -83,8 +85,8 @@ jobs:
       - name: Clone repository
         uses: actions/checkout@v4
 
-      - name: Apply CI build patches
-        run: patch --verbose -p1 < .github/workflows/no-nvidia.patch
-
       - name: Build ${{ matrix.host }}
-        run: nix run github:Mic92/nix-fast-build -- --no-nom --eval-workers 1 -j 1 --skip-cached --flake .#nixosConfigurations.${{ matrix.host }}.config.system.build.toplevel
+        run: nix run github:Mic92/nix-fast-build --
+               --no-nom --skip-cached
+               --eval-workers 1 -j 1
+               --flake .#nixosConfigurations.${{ matrix.host }}.config.system.build.toplevel
