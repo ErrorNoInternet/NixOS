@@ -12,7 +12,7 @@ in {
     enable = mkEnableOption "" // {default = true;};
 
     kernelPackages = mkOption {
-      default = config.server.pkgsKernels.ltsZfs;
+      default = config.server.kernel.packages.ltsZfs;
     };
   };
 

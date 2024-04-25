@@ -1,7 +1,7 @@
 {
   imports = [
     ./bluetooth.nix
-    ./kernels
+    ./kernel
     ./nvidia.nix
     ./sddm.nix
     ./video-acceleration.nix
