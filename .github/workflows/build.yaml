@@ -1,5 +1,4 @@
 name: Build
-concurrency: build
 on:
   push:
     paths:
