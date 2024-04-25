@@ -4,6 +4,6 @@
     ./kernels
     ./printing.nix
     ./services
-    ./zfs.nix
+    ./zfs
   ];
 }
