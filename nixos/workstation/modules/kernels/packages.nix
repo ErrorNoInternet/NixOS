@@ -26,8 +26,7 @@ in
       value = let
         inherit (package.value) kernel;
       in
-        pkgs.linuxPackagesFor
-        (kernel.override {
+        pkgs.linuxPackagesFor (kernel.override {
           argsOverride = {
             modDirVersion =
               lib.versions.pad 3 "${kernel.version}-${suffix}";
