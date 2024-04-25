@@ -5,13 +5,12 @@
 }: let
   inherit (lib) mkDefault mkOverride optional strings;
 in {
+  imports = [
+    ./patches.nix
+  ];
+
   boot = {
     kernelPatches = [
-      {
-        name = "BTRFS allocator hints";
-        patch = ./patches/btrfs-allocator-hints.patch;
-      }
-
       {
         name = "Lower latency";
         patch = null;
