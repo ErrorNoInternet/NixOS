@@ -16,15 +16,6 @@ in
             BATMAN_ADV = no;
             CAIF = no;
             IIO = no;
-            WLAN_VENDOR_MEDIATEK = no;
-
-            INFINIBAND = no;
-            INFINIBAND_IPOIB = unset;
-            INFINIBAND_IPOIB_CM = unset;
-            NET_DSA = no;
-            NET_VENDOR_CISCO = no;
-            NET_VENDOR_MELLANOX = no;
-            NET_VENDOR_RENESAS = no;
 
             AFFS_FS = no;
             AFS_FS = no;
@@ -51,7 +42,6 @@ in
             SND_SOC_XILINX_AUDIO_FORMATTER = no;
             SND_SOC_XILINX_I2S = no;
             SND_SOC_XILINX_SPDIF = no;
-            SND_XEN_FRONTEND = no;
           };
         }
       ]
@@ -64,6 +54,16 @@ in
           DRM_XE = unset;
           NFC = no;
           SURFACE_AGGREGATOR = no;
+          XEN = no;
+
+          INFINIBAND = no;
+          INFINIBAND_IPOIB = unset;
+          INFINIBAND_IPOIB_CM = unset;
+          NET_DSA = no;
+          NET_VENDOR_CISCO = no;
+          NET_VENDOR_MELLANOX = no;
+          NET_VENDOR_RENESAS = no;
+          WLAN_VENDOR_MEDIATEK = no;
 
           DELL_RBTN = no;
           DELL_RBU = no;
