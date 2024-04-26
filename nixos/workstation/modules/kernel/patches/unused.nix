@@ -61,8 +61,8 @@ in
         patch = null;
         extraStructuredConfig = attrsets.mapAttrs (_: mkForce) {
           COMEDI = no;
+          DRM_XE = unset;
           NFC = no;
-          DRM_XE = no;
           SURFACE_AGGREGATOR = no;
 
           DELL_RBTN = no;
