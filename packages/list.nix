@@ -48,6 +48,10 @@
     path = ./hyprland;
   }
   {
+    name = "imhex";
+    path = ./imhex;
+  }
+  {
     name = "kitty";
     path = ./kitty;
   }
