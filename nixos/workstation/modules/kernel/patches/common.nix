@@ -5,18 +5,26 @@
   ...
 }: let
   inherit (lib) mkOverride optional strings;
+  inherit (pkgs) fetchurl;
 in {
   boot.kernelPatches = [
     {
       name = "BORE CPU scheduler";
-      patch = pkgs.fetchurl {
-        url =
-          "https://raw.githubusercontent.com"
-          + "/firelzrd/bore-scheduler"
-          + "/main/patches/stable"
-          + "/linux-6.8-bore/0001-linux6.8.y-bore5.1.0.patch";
-        hash = "sha256-WyD1NuM+1m12O3ppjhZ+6YrJFQJn9Zcyz4QV2YgwNGk=";
-      };
+      patch = let
+        baseUrl = "https://raw.githubusercontent.com/firelzrd/bore-scheduler/main/patches/stable";
+        kernelVersion = lib.versions.majorMinor config.boot.kernelPackages.kernel.version;
+      in
+        fetchurl (
+          if kernelVersion == "6.6"
+          then {
+            url = baseUrl + "/linux-6.6-bore/0001-linux6.6.y-bore5.1.0.patch";
+            hash = "sha256-iLydPGZZSkEQhSj6Ah0Xq0zf7YUPwcpyKt8t0BeHYz8=";
+          }
+          else {
+            url = baseUrl + "/linux-6.8-bore/0001-linux6.8.y-bore5.1.0.patch";
+            hash = "sha256-WyD1NuM+1m12O3ppjhZ+6YrJFQJn9Zcyz4QV2YgwNGk=";
+          }
+        );
     }
 
     {
@@ -76,9 +84,7 @@ in {
         inherit (config.host) architecture;
       in
         ["-march=${architecture}"]
-        ++ optional
-        (!strings.hasPrefix "x86-64-" architecture)
-        "-mtune=${architecture}";
+        ++ optional (!strings.hasPrefix "x86-64-" architecture) "-mtune=${architecture}";
     }
   ];
 }
