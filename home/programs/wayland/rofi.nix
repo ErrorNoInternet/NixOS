@@ -47,9 +47,7 @@ in {
             };
           };
 
-          plugins = [
-            rofi-emoji
-          ];
+          plugins = [rofi-emoji];
         };
 
       theme = with config.colors.scheme.palette; let
@@ -64,7 +62,7 @@ in {
           text-color = raw "#${base06}";
         };
 
-        "configuration" = {
+        configuration = {
           disable-history = raw "false";
           display-drun = "";
           drun-display-format = "{name}";
@@ -76,7 +74,7 @@ in {
           sidebar-mode = raw "false";
         };
 
-        "window" = {
+        window = {
           background-color = raw base00RGBA;
           border = raw "2px";
           border-color = raw "#${base0D}";
@@ -89,7 +87,7 @@ in {
           y-offset = raw "0";
         };
 
-        "prompt" = {
+        prompt = {
           background-color = raw "#${base01}";
           enabled = raw "true";
           font = "${config.font.name} 9";
@@ -97,7 +95,7 @@ in {
           text-color = raw "#${base06}";
         };
 
-        "entry" = {
+        entry = {
           background-color = raw "#${base01}";
           blink = raw "true";
           expand = raw "true";
@@ -109,7 +107,7 @@ in {
           text-color = raw "#${base06}";
         };
 
-        "inputbar" = {
+        inputbar = {
           background-color = raw "#${base02}";
           border-radius = raw "0px";
           children = map raw ["prompt" "entry"];
@@ -118,7 +116,7 @@ in {
           text-color = raw "#${base06}";
         };
 
-        "listview" = {
+        listview = {
           background-color = raw base00RGBA;
           cycle = raw "true";
           dynamic = raw "true";
@@ -128,7 +126,7 @@ in {
           spacing = raw "5px";
         };
 
-        "mainbox" = {
+        mainbox = {
           background-color = raw base00RGBA;
           border-radius = raw "0px";
           children = map raw ["inputbar" "listview"];
@@ -136,7 +134,7 @@ in {
           spacing = raw "0px";
         };
 
-        "element" = {
+        element = {
           background-color = raw "transparent";
           border-radius = raw "10px";
           orientation = raw "horizontal";
@@ -144,14 +142,14 @@ in {
           text-color = raw "#${base06}";
         };
 
-        "element-icon" = {
+        element-icon = {
           background-color = raw "transparent";
           border = raw "0px";
           size = raw "24px";
           text-color = raw "inherit";
         };
 
-        "element-text" = {
+        element-text = {
           background-color = raw "transparent";
           expand = raw "true";
           horizontal-align = raw "0";
