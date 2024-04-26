@@ -4,4 +4,4 @@
   self,
   ...
 }:
-self.lib.derivations.c.optimizeAll host imhex
+self.lib.derivations.c.optimizeAllExceptLto host imhex
