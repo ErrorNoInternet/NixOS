@@ -159,9 +159,8 @@ in {
         };
 
         "element selected" = {
-          background-color = raw "#${base06}";
+          background-color = raw "#${base02}";
           border-radius = raw "10px";
-          text-color = raw "#${base00}";
         };
       };
     };
