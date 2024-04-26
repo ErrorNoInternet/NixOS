@@ -36,7 +36,6 @@ in
         patch = null;
         extraStructuredConfig = attrsets.mapAttrs (_: mkForce) {
           COMEDI = no;
-          HWMON = no;
           INPUT_TOUCHSCREEN = no;
           NFC = no;
           SURFACE_AGGREGATOR = no;
