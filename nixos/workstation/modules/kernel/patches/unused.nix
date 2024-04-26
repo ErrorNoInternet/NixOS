@@ -16,10 +16,23 @@ in
             BATMAN_ADV = no;
             CAIF = no;
             IIO = no;
+            WLAN_VENDOR_MEDIATEK = no;
+
             INFINIBAND = no;
             INFINIBAND_IPOIB = unset;
             INFINIBAND_IPOIB_CM = unset;
+            NET_DSA = no;
+            NET_VENDOR_CISCO = no;
+            NET_VENDOR_MELLANOX = no;
             NET_VENDOR_RENESAS = no;
+
+            AFFS_FS = no;
+            AFS_FS = no;
+            BEFS_FS = no;
+            JFS_FS = no;
+            OCFS2_FS = no;
+            OMFS_FS = no;
+            ORANGEFS_FS = no;
 
             SND_ATMEL_SOC = no;
             SND_DESIGNWARE_I2S = no;

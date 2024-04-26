@@ -27,8 +27,6 @@
       "efs"
       "exofs"
       "freevxfs"
-      "hfs"
-      "hpfs"
       "jfs"
       "minix"
       "omfs"
