@@ -3,6 +3,7 @@ on:
   push:
     paths:
       - '**.nix'
+      - flake.lock
   workflow_dispatch:
 
 jobs:
