@@ -13,6 +13,7 @@ in
           name = "Remove unused features";
           patch = null;
           extraStructuredConfig = attrsets.mapAttrs (_: mkForce) {
+            ATALK = no;
             BATMAN_ADV = no;
             CAIF = no;
             IIO = no;
@@ -20,28 +21,12 @@ in
             AFFS_FS = no;
             AFS_FS = no;
             BEFS_FS = no;
+            CODA_FS = no;
             JFS_FS = no;
             OCFS2_FS = no;
             OMFS_FS = no;
             ORANGEFS_FS = no;
-
-            SND_ATMEL_SOC = no;
-            SND_DESIGNWARE_I2S = no;
-            SND_I2S_HI6210_I2S = no;
-            SND_SOC_ADI = no;
-            SND_SOC_CHV3_I2S = no;
-            SND_SOC_FSL_ASRC = no;
-            SND_SOC_FSL_AUDMIX = no;
-            SND_SOC_FSL_ESAI = no;
-            SND_SOC_FSL_MICFIL = no;
-            SND_SOC_FSL_SAI = no;
-            SND_SOC_FSL_SPDIF = no;
-            SND_SOC_FSL_SSI = no;
-            SND_SOC_FSL_XCVR = no;
-            SND_SOC_IMG = no;
-            SND_SOC_XILINX_AUDIO_FORMATTER = no;
-            SND_SOC_XILINX_I2S = no;
-            SND_SOC_XILINX_SPDIF = no;
+            SYSV_FS = no;
           };
         }
       ]
@@ -51,7 +36,7 @@ in
         patch = null;
         extraStructuredConfig = attrsets.mapAttrs (_: mkForce) {
           COMEDI = no;
-          DRM_XE = unset;
+          INPUT_TOUCHSCREEN = no;
           NFC = no;
           SURFACE_AGGREGATOR = no;
           XEN = no;
@@ -61,9 +46,31 @@ in
           INFINIBAND_IPOIB_CM = unset;
           NET_DSA = no;
           NET_VENDOR_CISCO = no;
+          NET_VENDOR_HUAWEI = no;
           NET_VENDOR_MELLANOX = no;
           NET_VENDOR_RENESAS = no;
           WLAN_VENDOR_MEDIATEK = no;
+          X25 = no;
+
+          SND_SOC = no;
+          SND_SOC_INTEL_SOUNDWIRE_SOF_MACH = unset;
+          SND_SOC_INTEL_USER_FRIENDLY_LONG_NAMES = unset;
+          SND_SOC_SOF_ACPI = unset;
+          SND_SOC_SOF_APOLLOLAKE = unset;
+          SND_SOC_SOF_CANNONLAKE = unset;
+          SND_SOC_SOF_COFFEELAKE = unset;
+          SND_SOC_SOF_COMETLAKE = unset;
+          SND_SOC_SOF_ELKHARTLAKE = unset;
+          SND_SOC_SOF_GEMINILAKE = unset;
+          SND_SOC_SOF_HDA_AUDIO_CODEC = unset;
+          SND_SOC_SOF_HDA_LINK = unset;
+          SND_SOC_SOF_ICELAKE = unset;
+          SND_SOC_SOF_INTEL_TOPLEVEL = unset;
+          SND_SOC_SOF_JASPERLAKE = unset;
+          SND_SOC_SOF_MERRIFIELD = unset;
+          SND_SOC_SOF_PCI = unset;
+          SND_SOC_SOF_TIGERLAKE = unset;
+          SND_SOC_SOF_TOPLEVEL = unset;
 
           DELL_RBTN = no;
           DELL_RBU = no;
@@ -101,6 +108,7 @@ in
           DRM_AMDGPU_CIK = unset;
           DRM_AMDGPU_SI = unset;
           DRM_AMDGPU_USERPTR = unset;
+          DRM_ETNAVIV = no;
           DRM_GMA500 = no;
           DRM_RADEON = no;
           DRM_VMWGFX = no;
