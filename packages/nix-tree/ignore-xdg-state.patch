@@ -1,0 +1,17 @@
+diff --git a/src/NixTree/Main.hs b/src/NixTree/Main.hs
+index d9d45a0..d11115f 100644
+--- a/src/NixTree/Main.hs
++++ b/src/NixTree/Main.hs
+@@ -96,12 +96,10 @@ main = do
+       return $ p :| ps
+     [] -> do
+       home <- getHomeDirectory
+-      nixXdgDirectory <- getXdgDirectory XdgState "nix/profile"
+       roots <-
+         filterM
+           doesDirectoryExist
+           [ home </> ".nix-profile",
+-            nixXdgDirectory,
+             "/var/run/current-system"
+           ]
+       case roots of

@@ -64,6 +64,10 @@
     path = ./nix;
   }
   {
+    name = "nix-tree";
+    path = ./nix-tree;
+  }
+  {
     name = "nordic";
     path = ./themes/gui/nordic;
   }
