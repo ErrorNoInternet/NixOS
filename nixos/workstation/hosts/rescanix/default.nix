@@ -28,6 +28,8 @@
   };
 
   workstation = {
+    kernel.patches.removeUnusedExtra = false;
+
     sddm.enable = true;
 
     profiles.qemuGuest.enable = true;

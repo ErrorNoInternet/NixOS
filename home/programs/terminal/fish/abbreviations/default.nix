@@ -22,6 +22,7 @@
 
       "-" = "cd -";
       b = "bat";
+      bt = "btop";
       cl = "curl -L";
       clo = "curl -LO";
       clO = "curl -Lo";
@@ -33,6 +34,7 @@
       e = "echo";
       ex = "exec";
       m = "man";
+      mk = "make";
       p = "ping";
       pa = "patch -p1";
       pf = "printf";

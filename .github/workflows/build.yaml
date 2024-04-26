@@ -3,22 +3,20 @@ concurrency: build
 on:
   push:
     paths:
-      - flake.lock
-      - packages/**
+      - '**.nix'
   workflow_dispatch:
 
 jobs:
   nixos:
     name: NixOS
-    needs: packages
     runs-on: ubuntu-22.04
 
     strategy:
       fail-fast: false
-      max-parallel: 1
       matrix:
         include:
           - host: msix
+          - host: pix
           - host: rescanix
 
     steps:
@@ -57,71 +55,9 @@ jobs:
         uses: DeterminateSystems/nix-installer-action@v9
         with:
           extra-conf: |
-            extra-platforms = aarch64-linux
+            extra-platforms = i686-linux aarch64-linux
             substituters = https://cache.garnix.io https://nix-community.cachix.org https://nix-gaming.cachix.org
             trusted-public-keys = cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g= nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs= nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4=
-            log-lines = 500
-            download-attempts = 100
-            download-speed = 10000
-
-      - name: Set up Magic Nix Cache
-        uses: DeterminateSystems/magic-nix-cache-action@v3
-
-      - name: Set up Attic
-        uses: ErrorNoInternet/attic-action@v0
-        with:
-          endpoint: ${{ secrets.ATTIC_ENDPOINT }}
-          cache: ${{ secrets.ATTIC_CACHE }}
-          token: "${{ secrets.ATTIC_TOKEN }}"
-
-      - name: Set up Cachix
-        uses: cachix/cachix-action@v13
-        with:
-          name: errornobinaries
-          authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
-
-      - name: Clone repository
-        uses: actions/checkout@v4
-
-      - name: Apply CI build patches
-        run: patch --verbose -p1 < .github/workflows/no-nvidia.patch
-
-      - name: Build ${{ matrix.host }}
-        run: nix run github:Mic92/nix-fast-build -- --no-nom --eval-workers 1 -j 1 --skip-cached --flake .#nixosConfigurations.${{ matrix.host }}.config.system.build.toplevel
-
-
-  packages:
-    name: Packages
-    runs-on: ubuntu-22.04
-
-    strategy:
-      fail-fast: false
-      matrix:
-        include:
-          - package: attic
-          - package: btrfs-progs
-          - package: kitty
-          - package: neovim
-          - package: nix
-          - package: passgen
-          - package: savehw
-          - package: tbw
-          - package: wezterm
-          - package: yazi
-
-    steps:
-      - name: Install QEMU
-        run: |
-          sudo apt update -y
-          sudo apt install -y qemu-user-static
-
-      - name: Install Nix
-        uses: DeterminateSystems/nix-installer-action@v9
-        with:
-          extra-conf: |
-            extra-platforms = aarch64-linux
-            substituters = https://cache.garnix.io https://nix-community.cachix.org
-            trusted-public-keys = cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g= nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=
             log-lines = 500
             download-attempts = 100
             download-speed = 10000
@@ -135,6 +71,7 @@ jobs:
           endpoint: "${{ secrets.ATTIC_ENDPOINT }}"
           cache: "${{ secrets.ATTIC_CACHE }}"
           token: "${{ secrets.ATTIC_TOKEN }}"
+          skip-use: true
 
       - name: Set up Cachix
         uses: cachix/cachix-action@v13
@@ -145,5 +82,8 @@ jobs:
       - name: Clone repository
         uses: actions/checkout@v4
 
-      - name: Build package
-        run: nix build -L .#${{ matrix.package }}
+      - name: Build ${{ matrix.host }}
+        run: nix run github:Mic92/nix-fast-build --
+               --no-nom --skip-cached
+               --eval-workers 1 -j 1
+               --flake .#nixosConfigurations.${{ matrix.host }}.config.system.build.toplevel

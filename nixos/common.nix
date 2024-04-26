@@ -41,7 +41,7 @@ in {
 
     tmp = {
       useTmpfs = true;
-      tmpfsSize = "100%";
+      tmpfsSize = "200%";
     };
   };
 

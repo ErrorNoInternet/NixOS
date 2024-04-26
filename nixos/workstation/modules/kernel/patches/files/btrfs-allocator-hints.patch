@@ -1,0 +1,283 @@
+diff --git a/fs/btrfs/sysfs.c b/fs/btrfs/sysfs.c
+index b1d1ac25237b7a..9246161bfdecc7 100644
+--- a/fs/btrfs/sysfs.c
++++ b/fs/btrfs/sysfs.c
+@@ -1817,6 +1817,70 @@ static ssize_t btrfs_devinfo_error_stats_show(struct kobject *kobj,
+ }
+ BTRFS_ATTR(devid, error_stats, btrfs_devinfo_error_stats_show);
+ 
++static ssize_t btrfs_devinfo_type_show(struct kobject *kobj,
++					    struct kobj_attribute *a, char *buf)
++{
++	struct btrfs_device *device = container_of(kobj, struct btrfs_device,
++						   devid_kobj);
++
++	return scnprintf(buf, PAGE_SIZE, "0x%08llx\n", device->type);
++}
++
++static ssize_t btrfs_devinfo_type_store(struct kobject *kobj,
++				 struct kobj_attribute *a,
++				 const char *buf, size_t len)
++{
++	struct btrfs_fs_info *fs_info;
++	struct btrfs_root *root;
++	struct btrfs_device *device;
++	int ret;
++	struct btrfs_trans_handle *trans;
++
++	u64 type, prev_type;
++
++	device = container_of(kobj, struct btrfs_device, devid_kobj);
++	fs_info = device->fs_info;
++	if (!fs_info)
++		return -EPERM;
++
++	root = fs_info->chunk_root;
++	if (sb_rdonly(fs_info->sb))
++		return -EROFS;
++
++	ret = kstrtou64(buf, 0, &type);
++	if (ret < 0)
++		return -EINVAL;
++
++	/* for now, allow to touch only the 'allocation hint' bits */
++	if (type & ~((1 << BTRFS_DEV_ALLOCATION_MASK_BIT_COUNT) - 1))
++		return -EINVAL;
++
++	trans = btrfs_start_transaction(root, 1);
++	if (IS_ERR(trans))
++		return PTR_ERR(trans);
++
++	prev_type = device->type;
++	device->type = type;
++
++	ret = btrfs_update_device(trans, device);
++
++	if (ret < 0) {
++		btrfs_abort_transaction(trans, ret);
++		btrfs_end_transaction(trans);
++		goto abort;
++	}
++
++	ret = btrfs_commit_transaction(trans);
++	if (ret < 0)
++		goto abort;
++
++	return len;
++abort:
++	device->type = prev_type;
++	return  ret;
++}
++BTRFS_ATTR_RW(devid, type, btrfs_devinfo_type_show, btrfs_devinfo_type_store);
++
+ /*
+  * Information about one device.
+  *
+@@ -1830,6 +1894,7 @@ static struct attribute *devid_attrs[] = {
+ 	BTRFS_ATTR_PTR(devid, replace_target),
+ 	BTRFS_ATTR_PTR(devid, scrub_speed_max),
+ 	BTRFS_ATTR_PTR(devid, writeable),
++	BTRFS_ATTR_PTR(devid, type),
+ 	NULL
+ };
+ ATTRIBUTE_GROUPS(devid);
+diff --git a/fs/btrfs/volumes.c b/fs/btrfs/volumes.c
+index b9ef6f54635ca5..959976d34ffa92 100644
+--- a/fs/btrfs/volumes.c
++++ b/fs/btrfs/volumes.c
+@@ -174,6 +174,19 @@ enum btrfs_raid_types __attribute_const__ btrfs_bg_flags_to_raid_index(u64 flags
+ 	return BTRFS_BG_FLAG_TO_INDEX(profile);
+ }
+ 
++#define BTRFS_DEV_ALLOCATION_MASK ((1ULL << \
++		BTRFS_DEV_ALLOCATION_MASK_BIT_COUNT) - 1)
++#define BTRFS_DEV_ALLOCATION_MASK_COUNT (1ULL << \
++		BTRFS_DEV_ALLOCATION_MASK_BIT_COUNT)
++
++static const char alloc_hint_map[BTRFS_DEV_ALLOCATION_MASK_COUNT] = {
++	[BTRFS_DEV_ALLOCATION_DATA_ONLY] = -1,
++	[BTRFS_DEV_ALLOCATION_PREFERRED_DATA] = 0,
++	[BTRFS_DEV_ALLOCATION_PREFERRED_METADATA] = 1,
++	[BTRFS_DEV_ALLOCATION_METADATA_ONLY] = 2,
++	/* the other values are set to 0 */
++};
++
+ const char *btrfs_bg_type_to_raid_name(u64 flags)
+ {
+ 	const int index = btrfs_bg_flags_to_raid_index(flags);
+@@ -2856,7 +2869,7 @@ int btrfs_init_new_device(struct btrfs_fs_info *fs_info, const char *device_path
+ 	return ret;
+ }
+ 
+-static noinline int btrfs_update_device(struct btrfs_trans_handle *trans,
++noinline int btrfs_update_device(struct btrfs_trans_handle *trans,
+ 					struct btrfs_device *device)
+ {
+ 	int ret;
+@@ -5034,13 +5047,18 @@ static int btrfs_add_system_chunk(struct btrfs_fs_info *fs_info,
+ }
+ 
+ /*
+- * sort the devices in descending order by max_avail, total_avail
++ * sort the devices in descending order by alloc_hint,
++ * max_avail, total_avail
+  */
+ static int btrfs_cmp_device_info(const void *a, const void *b)
+ {
+ 	const struct btrfs_device_info *di_a = a;
+ 	const struct btrfs_device_info *di_b = b;
+ 
++	if (di_a->alloc_hint > di_b->alloc_hint)
++		return -1;
++	if (di_a->alloc_hint < di_b->alloc_hint)
++		return 1;
+ 	if (di_a->max_avail > di_b->max_avail)
+ 		return -1;
+ 	if (di_a->max_avail < di_b->max_avail)
+@@ -5193,6 +5211,8 @@ static int gather_device_info(struct btrfs_fs_devices *fs_devices,
+ 	int ndevs = 0;
+ 	u64 max_avail;
+ 	u64 dev_offset;
++	int hint;
++	int i;
+ 
+ 	/*
+ 	 * in the first pass through the devices list, we gather information
+@@ -5245,16 +5265,91 @@ static int gather_device_info(struct btrfs_fs_devices *fs_devices,
+ 		devices_info[ndevs].max_avail = max_avail;
+ 		devices_info[ndevs].total_avail = total_avail;
+ 		devices_info[ndevs].dev = device;
++
++		if ((ctl->type & BTRFS_BLOCK_GROUP_DATA) &&
++		     (ctl->type & BTRFS_BLOCK_GROUP_METADATA)) {
++			/*
++			 * if mixed bg set all the alloc_hint
++			 * fields to the same value, so the sorting
++			 * is not affected
++			 */
++			devices_info[ndevs].alloc_hint = 0;
++		} else if (ctl->type & BTRFS_BLOCK_GROUP_DATA) {
++			hint = device->type & BTRFS_DEV_ALLOCATION_MASK;
++
++			/*
++			 * skip BTRFS_DEV_METADATA_ONLY disks
++			 */
++			if (hint == BTRFS_DEV_ALLOCATION_METADATA_ONLY)
++				continue;
++			/*
++			 * if a data chunk must be allocated,
++			 * sort also by hint (data disk
++			 * higher priority)
++			 */
++			devices_info[ndevs].alloc_hint = -alloc_hint_map[hint];
++		} else { /* BTRFS_BLOCK_GROUP_METADATA */
++			hint = device->type & BTRFS_DEV_ALLOCATION_MASK;
++
++			/*
++			 * skip BTRFS_DEV_DATA_ONLY disks
++			 */
++			if (hint == BTRFS_DEV_ALLOCATION_DATA_ONLY)
++				continue;
++			/*
++			 * if a data chunk must be allocated,
++			 * sort also by hint (metadata hint
++			 * higher priority)
++			 */
++			devices_info[ndevs].alloc_hint = alloc_hint_map[hint];
++		}
++
+ 		++ndevs;
+ 	}
+ 	ctl->ndevs = ndevs;
+ 
++	/*
++	 * no devices available
++	 */
++	if (!ndevs)
++		return 0;
++
+ 	/*
+ 	 * now sort the devices by hole size / available space
+ 	 */
+ 	sort(devices_info, ndevs, sizeof(struct btrfs_device_info),
+ 	     btrfs_cmp_device_info, NULL);
+ 
++	/*
++	 * select the minimum set of disks grouped by hint that
++	 * can host the chunk
++	 */
++	ndevs = 0;
++	while (ndevs < ctl->ndevs) {
++		hint = devices_info[ndevs++].alloc_hint;
++		while (ndevs < ctl->ndevs &&
++		       devices_info[ndevs].alloc_hint == hint)
++				ndevs++;
++		if (ndevs >= ctl->devs_min)
++			break;
++	}
++
++	BUG_ON(ndevs > ctl->ndevs);
++	ctl->ndevs = ndevs;
++
++	/*
++	 * the next layers require the devices_info ordered by
++	 * max_avail. If we are returing two (or more) different
++	 * group of alloc_hint, this is not always true. So sort
++	 * these gain.
++	 */
++
++	for (i = 0 ; i < ndevs ; i++)
++		devices_info[i].alloc_hint = 0;
++
++	sort(devices_info, ndevs, sizeof(struct btrfs_device_info),
++	     btrfs_cmp_device_info, NULL);
++
+ 	return 0;
+ }
+ 
+diff --git a/fs/btrfs/volumes.h b/fs/btrfs/volumes.h
+index 2128a032c3b74d..12777e8e2769c8 100644
+--- a/fs/btrfs/volumes.h
++++ b/fs/btrfs/volumes.h
+@@ -493,6 +493,7 @@ struct btrfs_device_info {
+ 	u64 dev_offset;
+ 	u64 max_avail;
+ 	u64 total_avail;
++	int alloc_hint;
+ };
+ 
+ struct btrfs_raid_attr {
+@@ -745,6 +746,8 @@ int btrfs_bg_type_to_factor(u64 flags);
+ const char *btrfs_bg_type_to_raid_name(u64 flags);
+ int btrfs_verify_dev_extents(struct btrfs_fs_info *fs_info);
+ bool btrfs_repair_one_zone(struct btrfs_fs_info *fs_info, u64 logical);
++int btrfs_update_device(struct btrfs_trans_handle *trans,
++                                       struct btrfs_device *device);
+ 
+ bool btrfs_pinned_by_swapfile(struct btrfs_fs_info *fs_info, void *ptr);
+ u8 *btrfs_sb_fsid_ptr(struct btrfs_super_block *sb);
+diff --git a/include/uapi/linux/btrfs_tree.h b/include/uapi/linux/btrfs_tree.h
+index fc3c32186d7eb1..0261ed5f0adabd 100644
+--- a/include/uapi/linux/btrfs_tree.h
++++ b/include/uapi/linux/btrfs_tree.h
+@@ -557,6 +557,20 @@ struct btrfs_node {
+ 	struct btrfs_key_ptr ptrs[];
+ } __attribute__ ((__packed__));
+ 
++/* dev_item.type */
++
++/* btrfs chunk allocation hints */
++#define BTRFS_DEV_ALLOCATION_MASK_BIT_COUNT	3
++/* preferred data chunk, but metadata chunk allowed */
++#define BTRFS_DEV_ALLOCATION_PREFERRED_DATA	(0ULL)
++/* preferred metadata chunk, but data chunk allowed */
++#define BTRFS_DEV_ALLOCATION_PREFERRED_METADATA	(1ULL)
++/* only metadata chunk are allowed */
++#define BTRFS_DEV_ALLOCATION_METADATA_ONLY	(2ULL)
++/* only data chunk allowed */
++#define BTRFS_DEV_ALLOCATION_DATA_ONLY		(3ULL)
++/* 5..7 are unused values */
++
+ struct btrfs_dev_item {
+ 	/* the internal btrfs device id */
+ 	__le64 devid;
