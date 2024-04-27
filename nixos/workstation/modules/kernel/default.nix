@@ -20,7 +20,7 @@ in {
     };
 
     patches = {
-      removeUnusedExtra = mkOption {
+      removeUnused = mkOption {
         default = true;
         type = types.bool;
       };

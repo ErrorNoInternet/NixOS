@@ -26,7 +26,7 @@
   };
 
   workstation = {
-    kernel.patches.removeUnusedExtra = false;
+    kernel.patches.removeUnused = false;
 
     sddm.enable = true;
 
