@@ -1,9 +1,9 @@
 name: Build
-concurrency: build
 on:
   push:
     paths:
       - '**.nix'
+      - flake.lock
   workflow_dispatch:
 
 jobs:

@@ -48,6 +48,10 @@
     path = ./hyprland;
   }
   {
+    name = "imhex";
+    path = ./imhex;
+  }
+  {
     name = "kitty";
     path = ./kitty;
   }
@@ -58,6 +62,10 @@
   {
     name = "nix";
     path = ./nix;
+  }
+  {
+    name = "nix-tree";
+    path = ./nix-tree;
   }
   {
     name = "nordic";

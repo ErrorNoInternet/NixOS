@@ -18,7 +18,7 @@ in {
     };
 
     menu = mkOption {
-      default = 0.3;
+      default = 0.45;
       type = types.numbers.between 0 1;
     };
 

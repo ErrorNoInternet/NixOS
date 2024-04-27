@@ -15,5 +15,11 @@
       enable = true;
       enableFishIntegration = config.customPrograms.fish.enable;
     };
+
+    xdg.configFile."yazi/init.lua".text = ''
+      require("zoxide"):setup {
+        update_db = true,
+      }
+    '';
   };
 }

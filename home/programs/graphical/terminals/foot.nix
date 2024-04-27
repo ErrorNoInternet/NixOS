@@ -2,8 +2,15 @@
   config,
   lib,
   ...
-}: {
-  config = lib.mkIf config.profiles.desktop.enable {
+}: let
+  cfg = config.customPrograms.foot;
+  inherit (lib) mkEnableOption mkIf;
+in {
+  options.customPrograms.foot = {
+    enable = mkEnableOption "" // {default = config.profiles.desktop.enable;};
+  };
+
+  config = mkIf cfg.enable {
     programs.foot = {
       enable = true;
 
@@ -19,6 +26,7 @@
           blink = "yes";
           color = "${base04} ${base04}";
         };
+
         colors = {
           alpha = builtins.toString config.opacity.normal;
           background = base00;
