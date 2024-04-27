@@ -84,6 +84,10 @@
     path = ./pavolume;
   }
   {
+    name = "prismlauncher-unwrapped";
+    path = ./prismlauncher;
+  }
+  {
     name = "satty";
     path = ./satty;
   }

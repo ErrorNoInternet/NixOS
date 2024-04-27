@@ -1,0 +1,299 @@
+diff --git a/buildconfig/BuildConfig.h b/buildconfig/BuildConfig.h
+index 77b6eef54..dc0106ab4 100644
+--- a/buildconfig/BuildConfig.h
++++ b/buildconfig/BuildConfig.h
+@@ -187,6 +187,15 @@ class Config {
+ 
+     QString FLAME_BASE_URL = "https://api.curseforge.com/v1";
+ 
++    /**
++     * BMCLAPI (Minecraft assets and libraries mirror) URLs
++     */
++    QString BMCLAPI_BASE = "https://bmclapi2.bangbang93.com/";
++    QString BMCLAPI_RESOURCE_BASE = "https://bmclapi2.bangbang93.com/assets/";
++    QString BMCLAPI_LIBRARY_BASE = "https://bmclapi2.bangbang93.com/maven/";
++    QString BMCLAPI_FORGE_BASE = BMCLAPI_LIBRARY_BASE;
++    QString BMCLAPI_FABRIC_BASE = BMCLAPI_LIBRARY_BASE;
++
+     QString versionString() const;
+     /**
+      * \brief Converts the Version to a string.
+diff --git a/launcher/Application.cpp b/launcher/Application.cpp
+index bb8751ccc..13e04bbbc 100644
+--- a/launcher/Application.cpp
++++ b/launcher/Application.cpp
+@@ -656,6 +656,9 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
+         m_settings->registerSetting("RecordGameTime", true);
+         m_settings->registerSetting("ShowGameTimeWithoutDays", false);
+ 
++        // Minecraft assets and libraries download mirror
++        m_settings->registerSetting("UseBMCLAPI", false);
++
+         // Minecraft mods
+         m_settings->registerSetting("ModMetadataDisabled", false);
+         m_settings->registerSetting("ModDependenciesDisabled", false);
+diff --git a/launcher/minecraft/AssetsUtils.cpp b/launcher/minecraft/AssetsUtils.cpp
+index 48e150d16..6688103b5 100644
+--- a/launcher/minecraft/AssetsUtils.cpp
++++ b/launcher/minecraft/AssetsUtils.cpp
+@@ -298,6 +298,8 @@ QString AssetObject::getLocalPath()
+ 
+ QUrl AssetObject::getUrl()
+ {
++    if (APPLICATION->settings()->get("UseBMCLAPI").toBool())
++        return BuildConfig.BMCLAPI_RESOURCE_BASE + getRelPath();
+     return BuildConfig.RESOURCE_BASE + getRelPath();
+ }
+ 
+diff --git a/launcher/minecraft/Library.cpp b/launcher/minecraft/Library.cpp
+index 0e8ddf03d..b48e155d4 100644
+--- a/launcher/minecraft/Library.cpp
++++ b/launcher/minecraft/Library.cpp
+@@ -77,7 +77,8 @@ void Library::getApplicableFiles(const RuntimeContext& runtimeContext,
+ QList<NetAction::Ptr> Library::getDownloads(const RuntimeContext& runtimeContext,
+                                             class HttpMetaCache* cache,
+                                             QStringList& failedLocalFiles,
+-                                            const QString& overridePath) const
++                                            const QString& overridePath,
++                                            bool useBMCLAPI) const
+ {
+     QList<NetAction::Ptr> out;
+     bool stale = isAlwaysStale();
+@@ -113,6 +114,14 @@ QList<NetAction::Ptr> Library::getDownloads(const RuntimeContext& runtimeContext
+         // Don't add a time limit for the libraries cache entry validity
+         options |= Net::Download::Option::MakeEternal;
+ 
++        if (useBMCLAPI) {
++            url.replace(BuildConfig.LIBRARY_BASE, BuildConfig.BMCLAPI_LIBRARY_BASE);
++            url.replace("https://launcher.mojang.com/", BuildConfig.BMCLAPI_BASE);
++            url.replace("https://piston-data.mojang.com/", BuildConfig.BMCLAPI_BASE);
++            url.replace("https://maven.minecraftforge.net/", BuildConfig.BMCLAPI_BASE);
++            url.replace("https://maven.fabricmc.net/", BuildConfig.BMCLAPI_FABRIC_BASE);
++        }
++
+         if (sha1.size()) {
+             auto rawSha1 = QByteArray::fromHex(sha1.toLatin1());
+             auto dl = Net::ApiDownload::makeCached(url, entry, options);
+diff --git a/launcher/minecraft/Library.h b/launcher/minecraft/Library.h
+index adb89c4c6..847cb3a7e 100644
+--- a/launcher/minecraft/Library.h
++++ b/launcher/minecraft/Library.h
+@@ -147,7 +147,8 @@ class Library {
+     QList<NetAction::Ptr> getDownloads(const RuntimeContext& runtimeContext,
+                                        class HttpMetaCache* cache,
+                                        QStringList& failedLocalFiles,
+-                                       const QString& overridePath) const;
++                                       const QString& overridePath,
++                                       bool useBMCLAPI) const;
+ 
+     QString getCompatibleNative(const RuntimeContext& runtimeContext) const;
+ 
+diff --git a/launcher/minecraft/update/AssetUpdateTask.cpp b/launcher/minecraft/update/AssetUpdateTask.cpp
+index 8af014996..f2694ca5c 100644
+--- a/launcher/minecraft/update/AssetUpdateTask.cpp
++++ b/launcher/minecraft/update/AssetUpdateTask.cpp
+@@ -73,7 +73,11 @@ void AssetUpdateTask::assetIndexFinished()
+ 
+     auto job = index.getDownloadJob();
+     if (job) {
+-        setStatus(tr("Getting the assets files from Mojang..."));
++        if (APPLICATION->settings()->get("UseBMCLAPI").toBool())
++            setStatus(tr("Getting the assets files from BMCLAPI..."));
++        else
++            setStatus(tr("Getting the assets files from Mojang..."));
++
+         downloadJob = job;
+         connect(downloadJob.get(), &NetJob::succeeded, this, &AssetUpdateTask::emitSucceeded);
+         connect(downloadJob.get(), &NetJob::failed, this, &AssetUpdateTask::assetsFailed);
+diff --git a/launcher/minecraft/update/LibrariesTask.cpp b/launcher/minecraft/update/LibrariesTask.cpp
+index 1581b32ee..a72cdb66f 100644
+--- a/launcher/minecraft/update/LibrariesTask.cpp
++++ b/launcher/minecraft/update/LibrariesTask.cpp
+@@ -24,6 +24,7 @@ void LibrariesTask::executeTask()
+     downloadJob.reset(job);
+ 
+     auto metacache = APPLICATION->metacache();
++    auto useBMCLAPI = APPLICATION->settings()->get("UseBMCLAPI").toBool();
+ 
+     auto processArtifactPool = [&](const QList<LibraryPtr>& pool, QStringList& errors, const QString& localPath) {
+         for (auto lib : pool) {
+@@ -31,7 +32,7 @@ void LibrariesTask::executeTask()
+                 emitFailed(tr("Null jar is specified in the metadata, aborting."));
+                 return false;
+             }
+-            auto dls = lib->getDownloads(inst->runtimeContext(), metacache.get(), errors, localPath);
++            auto dls = lib->getDownloads(inst->runtimeContext(), metacache.get(), errors, localPath, useBMCLAPI);
+             for (auto dl : dls) {
+                 downloadJob->addNetAction(dl);
+             }
+diff --git a/launcher/ui/pages/global/MinecraftPage.cpp b/launcher/ui/pages/global/MinecraftPage.cpp
+index 3431dcb9c..620d0eb37 100644
+--- a/launcher/ui/pages/global/MinecraftPage.cpp
++++ b/launcher/ui/pages/global/MinecraftPage.cpp
+@@ -111,6 +111,9 @@ void MinecraftPage::applySettings()
+     s->set("UseDiscreteGpu", ui->useDiscreteGpuCheck->isChecked());
+     s->set("UseZink", ui->useZink->isChecked());
+ 
++    // Minecraft assets and libraries download mirror
++    s->set("UseBMCLAPI", ui->useBMCLAPI->isChecked());
++
+     // Game time
+     s->set("ShowGameTime", ui->showGameTime->isChecked());
+     s->set("ShowGlobalGameTime", ui->showGlobalGameTime->isChecked());
+@@ -154,6 +157,8 @@ void MinecraftPage::loadSettings()
+     ui->useDiscreteGpuCheck->setChecked(s->get("UseDiscreteGpu").toBool());
+     ui->useZink->setChecked(s->get("UseZink").toBool());
+ 
++    ui->useBMCLAPI->setChecked(s->get("UseBMCLAPI").toBool());
++
+ #if !defined(Q_OS_LINUX)
+     ui->perfomanceGroupBox->setVisible(false);
+ #endif
+diff --git a/launcher/ui/pages/global/MinecraftPage.ui b/launcher/ui/pages/global/MinecraftPage.ui
+index 7d2741250..a7ff8efd8 100644
+--- a/launcher/ui/pages/global/MinecraftPage.ui
++++ b/launcher/ui/pages/global/MinecraftPage.ui
+@@ -321,6 +321,22 @@
+           </item>
+          </layout>
+         </widget>
++        </item>
++       <item>
++        <widget class="QGroupBox" name="downloadMirrorGroupBox">
++         <property name="title">
++          <string>Download mirror</string>
++         </property>
++         <layout class="QVBoxLayout" name="verticalLayout_5">
++          <item>
++           <widget class="QCheckBox" name="useBMCLAPI">
++            <property name="text">
++             <string>Use &amp;BMCLAPI as aseets and libraries download source</string>
++            </property>
++           </widget>
++          </item>
++         </layout>
++        </widget>
+        </item>
+        <item>
+         <spacer name="verticalSpacer">
+diff --git a/tests/Library_test.cpp b/tests/Library_test.cpp
+index 8b8d4c55c..05fa75067 100644
+--- a/tests/Library_test.cpp
++++ b/tests/Library_test.cpp
+@@ -92,7 +92,7 @@ class LibraryTest : public QObject {
+         QStringList failedFiles;
+         Library test("test.package:testname:testversion");
+         test.setRepositoryURL("file://foo/bar");
+-        auto downloads = test.getDownloads(r, cache.get(), failedFiles, QString());
++        auto downloads = test.getDownloads(r, cache.get(), failedFiles, QString(), false);
+         QCOMPARE(downloads.size(), 1);
+         QCOMPARE(failedFiles, {});
+         NetAction::Ptr dl = downloads[0];
+@@ -105,7 +105,7 @@ class LibraryTest : public QObject {
+         QCOMPARE(test.isNative(), false);
+         QStringList failedFiles;
+         test.setHint("local");
+-        auto downloads = test.getDownloads(r, cache.get(), failedFiles, QString());
++        auto downloads = test.getDownloads(r, cache.get(), failedFiles, QString(), false);
+         QCOMPARE(downloads.size(), 0);
+         QCOMPARE(failedFiles, { "testname-testversion.jar" });
+     }
+@@ -116,7 +116,7 @@ class LibraryTest : public QObject {
+         QCOMPARE(test.isNative(), false);
+         QStringList failedFiles;
+         test.setHint("local");
+-        auto downloads = test.getDownloads(r, cache.get(), failedFiles, QFINDTESTDATA("testdata/Library"));
++        auto downloads = test.getDownloads(r, cache.get(), failedFiles, QFINDTESTDATA("testdata/Library"), false);
+         QCOMPARE(downloads.size(), 0);
+         qDebug() << failedFiles;
+         QCOMPARE(failedFiles.size(), 0);
+@@ -143,7 +143,7 @@ class LibraryTest : public QObject {
+             QCOMPARE(native32, {});
+             QCOMPARE(native64, {});
+             QStringList failedFiles;
+-            auto dls = test.getDownloads(r, cache.get(), failedFiles, QString());
++            auto dls = test.getDownloads(r, cache.get(), failedFiles, QString(), false);
+             QCOMPARE(dls.size(), 1);
+             QCOMPARE(failedFiles, {});
+             auto dl = dls[0];
+@@ -167,7 +167,7 @@ class LibraryTest : public QObject {
+             QCOMPARE(native32, getStorage("test/package/testname/testversion/testname-testversion-linux-32.jar"));
+             QCOMPARE(native64, getStorage("test/package/testname/testversion/testname-testversion-linux-64.jar"));
+             QStringList failedFiles;
+-            auto dls = test.getDownloads(r, cache.get(), failedFiles, QString());
++            auto dls = test.getDownloads(r, cache.get(), failedFiles, QString(), false);
+             QCOMPARE(dls.size(), 2);
+             QCOMPARE(failedFiles, {});
+             QCOMPARE(dls[0]->m_url, QUrl("file://foo/bar/test/package/testname/testversion/testname-testversion-linux-32.jar"));
+@@ -182,7 +182,7 @@ class LibraryTest : public QObject {
+             QCOMPARE(native32, getStorage("test/package/testname/testversion/testname-testversion-windows-32.jar"));
+             QCOMPARE(native64, getStorage("test/package/testname/testversion/testname-testversion-windows-64.jar"));
+             QStringList failedFiles;
+-            auto dls = test.getDownloads(r, cache.get(), failedFiles, QString());
++            auto dls = test.getDownloads(r, cache.get(), failedFiles, QString(), false);
+             QCOMPARE(dls.size(), 2);
+             QCOMPARE(failedFiles, {});
+             QCOMPARE(dls[0]->m_url, QUrl("file://foo/bar/test/package/testname/testversion/testname-testversion-windows-32.jar"));
+@@ -197,7 +197,7 @@ class LibraryTest : public QObject {
+             QCOMPARE(native32, getStorage("test/package/testname/testversion/testname-testversion-osx-32.jar"));
+             QCOMPARE(native64, getStorage("test/package/testname/testversion/testname-testversion-osx-64.jar"));
+             QStringList failedFiles;
+-            auto dls = test.getDownloads(r, cache.get(), failedFiles, QString());
++            auto dls = test.getDownloads(r, cache.get(), failedFiles, QString(), false);
+             QCOMPARE(dls.size(), 2);
+             QCOMPARE(failedFiles, {});
+             QCOMPARE(dls[0]->m_url, QUrl("file://foo/bar/test/package/testname/testversion/testname-testversion-osx-32.jar"));
+@@ -220,7 +220,7 @@ class LibraryTest : public QObject {
+             QCOMPARE(native32, { QFileInfo(QFINDTESTDATA("testdata/Library/testname-testversion-linux-32.jar")).absoluteFilePath() });
+             QCOMPARE(native64, { QFileInfo(QFINDTESTDATA("testdata/Library") + "/testname-testversion-linux-64.jar").absoluteFilePath() });
+             QStringList failedFiles;
+-            auto dls = test.getDownloads(r, cache.get(), failedFiles, QFINDTESTDATA("testdata/Library"));
++            auto dls = test.getDownloads(r, cache.get(), failedFiles, QFINDTESTDATA("testdata/Library"), false);
+             QCOMPARE(dls.size(), 0);
+             QCOMPARE(failedFiles,
+                      { QFileInfo(QFINDTESTDATA("testdata/Library") + "/testname-testversion-linux-64.jar").absoluteFilePath() });
+@@ -241,7 +241,7 @@ class LibraryTest : public QObject {
+         r.system = "linux";
+         {
+             QStringList failedFiles;
+-            auto dls = test->getDownloads(r, cache.get(), failedFiles, QString());
++            auto dls = test->getDownloads(r, cache.get(), failedFiles, QString(), false);
+             QCOMPARE(dls.size(), 1);
+             QCOMPARE(failedFiles, {});
+             QCOMPARE(dls[0]->m_url, QUrl("https://libraries.minecraft.net/com/paulscode/codecwav/20101023/codecwav-20101023.jar"));
+@@ -259,7 +259,7 @@ class LibraryTest : public QObject {
+         r.system = "linux";
+         {
+             QStringList failedFiles;
+-            auto dls = test->getDownloads(r, cache.get(), failedFiles, QFINDTESTDATA("testdata/Library"));
++            auto dls = test->getDownloads(r, cache.get(), failedFiles, QFINDTESTDATA("testdata/Library"), false);
+             QCOMPARE(dls.size(), 0);
+             QCOMPARE(failedFiles, {});
+         }
+@@ -280,7 +280,7 @@ class LibraryTest : public QObject {
+         r.system = "linux";
+         {
+             QStringList failedFiles;
+-            auto dls = test->getDownloads(r, cache.get(), failedFiles, QFINDTESTDATA("testdata/Library"));
++            auto dls = test->getDownloads(r, cache.get(), failedFiles, QFINDTESTDATA("testdata/Library"), false);
+             QCOMPARE(dls.size(), 0);
+             QCOMPARE(failedFiles, {});
+         }
+@@ -297,7 +297,7 @@ class LibraryTest : public QObject {
+         QCOMPARE(native32, {});
+         QCOMPARE(native64, {});
+         QStringList failedFiles;
+-        auto dls = test->getDownloads(r, cache.get(), failedFiles, QString());
++        auto dls = test->getDownloads(r, cache.get(), failedFiles, QString(), false);
+         QCOMPARE(dls.size(), 1);
+         QCOMPARE(failedFiles, {});
+         QCOMPARE(dls[0]->m_url, QUrl("https://libraries.minecraft.net/org/lwjgl/lwjgl/lwjgl-platform/2.9.4-nightly-20150209/"
+@@ -314,7 +314,7 @@ class LibraryTest : public QObject {
+         QCOMPARE(native32, getStorage("tv/twitch/twitch-platform/5.16/twitch-platform-5.16-natives-windows-32.jar"));
+         QCOMPARE(native64, getStorage("tv/twitch/twitch-platform/5.16/twitch-platform-5.16-natives-windows-64.jar"));
+         QStringList failedFiles;
+-        auto dls = test->getDownloads(r, cache.get(), failedFiles, QString());
++        auto dls = test->getDownloads(r, cache.get(), failedFiles, QString(), false);
+         QCOMPARE(dls.size(), 2);
+         QCOMPARE(failedFiles, {});
+         QCOMPARE(dls[0]->m_url,
