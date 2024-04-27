@@ -87,6 +87,7 @@
     gshs = "git stash show";
     gsm = "git submodule";
     gsmu = "git submodule update";
+    gss = "git show -m --stat";
     gst = "git status";
     gsw = "git switch -";
   };
