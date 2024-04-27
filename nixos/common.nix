@@ -39,6 +39,11 @@ in {
   boot = {
     kernelParams = ["boot.shell_on_fail"];
 
+    kernel.sysctl = {
+      "vm.page-cluster" = 0;
+      "vm.swappiness" = 180;
+    };
+
     tmp = {
       useTmpfs = true;
       tmpfsSize = "200%";

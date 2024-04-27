@@ -9,9 +9,6 @@
       "net.ipv6.conf.default.accept_redirects" = 0;
 
       "net.ipv4.tcp_fin_timeout" = 30;
-
-      "vm.page-cluster" = 0;
-      "vm.swappiness" = 180;
     };
 
     blacklistedKernelModules = [

@@ -13,7 +13,6 @@ in {
       "unigine-heaven"
 
       "cuda"
-      "cudatoolkit"
       "libcu"
       "libnpp"
       "libnvjitlink"
