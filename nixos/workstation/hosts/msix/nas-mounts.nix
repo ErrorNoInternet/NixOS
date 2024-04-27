@@ -13,12 +13,12 @@ in {
     "/mnt/nas/drive1" = {
       device = "pix:/mnt/drive1";
       fsType = "nfs";
-      options = ["x-systemd.automount" "noauto"];
+      options = ["x-systemd.automount" "noauto" "user"];
     };
     "/mnt/nas/drive3" = {
       device = "pix:/mnt/drive3";
       fsType = "nfs";
-      options = ["x-systemd.automount" "noauto"];
+      options = ["x-systemd.automount" "noauto" "user"];
     };
   };
 }
