@@ -25,7 +25,7 @@ in {
     services.kdeconnect.enable = mkDefault true;
 
     xdg.configFile = {
-      "kdeconnect/config".text = toINI {} {General.name = osConfig.host.name;};
+      "kdeconnect/config".text = toINI {} {General = {inherit (osConfig.host) name;};};
 
       "kdeconnect/${cfg.deviceId}/kdeconnect_runcommand/config".text = ''
         [General]
