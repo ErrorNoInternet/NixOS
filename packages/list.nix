@@ -78,6 +78,7 @@
   {
     name = "passgen";
     path = ./passgen;
+    exposeOutput = true;
   }
   {
     name = "pavolume";
@@ -94,6 +95,7 @@
   {
     name = "savehw";
     path = ./savehw;
+    exposeOutput = true;
   }
   {
     name = "scratchpad";
