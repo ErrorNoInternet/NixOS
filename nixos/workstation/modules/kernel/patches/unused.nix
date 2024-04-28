@@ -46,6 +46,34 @@ in
         WLAN_VENDOR_RALINK = no;
         X25 = no;
 
+        ALIENWARE_WMI = no;
+        ALIM1535_WDT = no;
+        ALIM7101_WDT = no;
+        ALTERA_MBOX = no;
+        ALTERA_MSGDMA = no;
+        ALTERA_TSE = no;
+        ALX = no;
+        DELL_RBTN = no;
+        DELL_RBU = no;
+        DELL_SMBIOS = no;
+        DELL_WMI = unset;
+        DELL_WMI_AIO = no;
+        DELL_WMI_DESCRIPTOR = unset;
+        DELL_WMI_LED = no;
+        DELL_WMI_SYSMAN = no;
+        HUAWEI_WMI = no;
+
+        CHROME_PLATFORMS = no;
+        CHROMEOS_LAPTOP = unset;
+        CHROMEOS_PSTORE = unset;
+        CHROMEOS_TBMC = unset;
+        CROS_EC = unset;
+        CROS_EC_I2C = unset;
+        CROS_EC_ISHTP = unset;
+        CROS_EC_LPC = unset;
+        CROS_EC_SPI = unset;
+        CROS_KBD_LED_BACKLIGHT = unset;
+
         SND_SOC = no;
         SND_SOC_INTEL_SOUNDWIRE_SOF_MACH = unset;
         SND_SOC_INTEL_USER_FRIENDLY_LONG_NAMES = unset;
@@ -65,35 +93,6 @@ in
         SND_SOC_SOF_PCI = unset;
         SND_SOC_SOF_TIGERLAKE = unset;
         SND_SOC_SOF_TOPLEVEL = unset;
-
-        DELL_RBTN = no;
-        DELL_RBU = no;
-        DELL_SMBIOS = no;
-        DELL_WMI = unset;
-        DELL_WMI_AIO = no;
-        DELL_WMI_DESCRIPTOR = unset;
-        DELL_WMI_LED = no;
-        DELL_WMI_SYSMAN = no;
-        HUAWEI_WMI = no;
-
-        ALIENWARE_WMI = no;
-        ALIM1535_WDT = no;
-        ALIM7101_WDT = no;
-        ALTERA_MBOX = no;
-        ALTERA_MSGDMA = no;
-        ALTERA_TSE = no;
-        ALX = no;
-
-        CHROME_PLATFORMS = no;
-        CHROMEOS_LAPTOP = unset;
-        CHROMEOS_PSTORE = unset;
-        CHROMEOS_TBMC = unset;
-        CROS_EC = unset;
-        CROS_EC_I2C = unset;
-        CROS_EC_ISHTP = unset;
-        CROS_EC_LPC = unset;
-        CROS_EC_SPI = unset;
-        CROS_KBD_LED_BACKLIGHT = unset;
 
         DRM_AMD_ACP = unset;
         DRM_AMD_DC_FP = unset;
