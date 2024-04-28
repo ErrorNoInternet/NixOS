@@ -210,12 +210,12 @@
       }
       {
         on = ["z"];
-        run = "jump zoxide";
+        run = "plugin zoxide";
         desc = "jump to a directory using zoxide";
       }
       {
         on = ["Z"];
-        run = "jump fzf";
+        run = "plugin fzf";
         desc = "reveal files with fzf";
       }
 
