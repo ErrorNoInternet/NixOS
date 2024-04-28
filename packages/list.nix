@@ -110,6 +110,7 @@
   {
     name = "tbw";
     path = ./tbw;
+    exposeOutput = true;
   }
   {
     name = "tmux";

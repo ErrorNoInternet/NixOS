@@ -1,5 +1,6 @@
 {
   config ? {},
+  flakeOutputs ? false,
   inputs',
   pkgs,
   self,
@@ -24,4 +25,6 @@ in
         };
       };
     })
-    (import ./list.nix))
+    (builtins.filter
+      (package: package.exposeOutput or (!flakeOutputs))
+      (import ./list.nix)))

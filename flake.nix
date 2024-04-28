@@ -146,7 +146,11 @@
     };
   };
 
-  outputs = {flake-parts, ...} @ inputs:
+  outputs = {
+    flake-parts,
+    self,
+    ...
+  } @ inputs:
     flake-parts.lib.mkFlake {inherit inputs;} {
       imports = [
         ./droid
@@ -155,14 +159,24 @@
         ./shells
       ];
 
+      perSystem = {
+        inputs',
+        pkgs,
+        system,
+        ...
+      }: {
+        packages = import ./packages {
+          inherit inputs' pkgs self system;
+          flakeOutputs = true;
+        };
+
+        formatter = pkgs.alejandra;
+      };
+
       systems = [
         "aarch64-linux"
         "x86_64-linux"
       ];
-
-      perSystem = {pkgs, ...}: {
-        formatter = pkgs.alejandra;
-      };
     };
 
   description = "ErrorNoInternet's NixOS, home-manager and nix-on-droid configuration";
