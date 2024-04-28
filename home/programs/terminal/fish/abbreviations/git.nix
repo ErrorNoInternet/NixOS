@@ -37,6 +37,7 @@
     gcfx = "git clean -fX .";
     gch = "git cherry";
     gcl = "git clone";
+    gcld = "git clone --depth 1";
     gco = "git checkout";
     gcob = "git checkout -b";
     gcoh = "git checkout HEAD^";
@@ -49,6 +50,7 @@
     gds = "git diff --staged";
     gdsc = "git diff --staged --compact-summary";
     gf = "git fetch origin";
+    gfu = "git fetch --unshallow";
     gl = "git log";
     glf = "git log --follow";
     gls = "git log -S";
