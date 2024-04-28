@@ -15,10 +15,12 @@ in
         BATMAN_ADV = no;
         CAIF = no;
         COMEDI = no;
+        DVB_CORE = no;
         IIO = no;
         INPUT_TOUCHSCREEN = no;
         NFC = no;
         SURFACE_AGGREGATOR = no;
+        USB_GSPCA = no;
         XEN = no;
 
         AFFS_FS = no;
