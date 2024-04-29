@@ -1,6 +1,7 @@
 {
   imports = [
-    ./common.nix
+    ./features.nix
+    ./optimizations.nix
     ./unused.nix
   ];
 }

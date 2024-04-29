@@ -8,7 +8,7 @@
 in
   with lib.kernel; {
     boot.kernelPatches = optional cfg.removeUnused {
-      name = "Remove extra unused features";
+      name = "Remove unused features";
       patch = null;
       extraStructuredConfig = attrsets.mapAttrs (_: mkForce) {
         ATALK = no;
