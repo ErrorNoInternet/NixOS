@@ -33,6 +33,7 @@
     gC = "git commit";
     gca = "git commit --amend --no-edit";
     gcae = "git commit --amend";
+    gcap = "git commit --amend --no-edit && git push --force-with-lease";
     gce = "git commit --allow-empty";
     gcf = "git clean -f .";
     gcfx = "git clean -fX .";
