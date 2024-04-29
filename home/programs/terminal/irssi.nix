@@ -68,7 +68,7 @@ in {
       default = ''
         /format -delete awl_display_header
         /format awl_display_key \$N%n \$H\$C\$S
-        /format awl_display_key_active (\$N%n) \$H%9\$C%n\$S
+        /format awl_display_key_active \$N%n \$H%9\$C%n\$S
         /set awl_viewer off
       '';
     };
