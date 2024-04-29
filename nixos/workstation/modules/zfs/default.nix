@@ -33,8 +33,6 @@ in {
     services.zfs.autoSnapshot.monthly = 3;
 
     boot = {
-      supportedFilesystems = ["zfs"];
-
       loader.grub.zfsSupport = true;
 
       kernelPackages = mkDefault (cfg.kernelPackages.extend (_: prev: {
@@ -51,7 +49,5 @@ in {
         patches = (old.patches or []) ++ patches;
       });
     };
-
-    environment.systemPackages = [pkgs.ioztat];
   };
 }

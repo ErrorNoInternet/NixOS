@@ -8,5 +8,6 @@
     ./raspberry-pi.nix
     ./username.nix
     ./wireless.nix
+    ./zfs.nix
   ];
 }

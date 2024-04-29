@@ -39,15 +39,11 @@ in {
         });
       }));
 
-      supportedFilesystems = ["zfs"];
-
       zfs.package = pkgs.zfs_unstable.overrideAttrs (old: {
         name = "zfs-user-${version}";
         inherit version src;
         patches = (old.patches or []) ++ patches;
       });
     };
-
-    environment.systemPackages = [pkgs.ioztat];
   };
 }
