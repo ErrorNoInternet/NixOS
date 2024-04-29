@@ -4,6 +4,7 @@
     "ga.c" = "git add . && git commit -m";
     "ga.ca" = "git add . && git commit --amend --no-edit";
     "ga.cae" = "git add . && git commit --amend";
+    "ga.d" = "git add . && git diff --staged";
     "gd." = "git diff .";
     "gl." = "git log .";
     "gr." = "git restore .";
