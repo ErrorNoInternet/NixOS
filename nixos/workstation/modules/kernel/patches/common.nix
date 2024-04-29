@@ -6,30 +6,18 @@
 }: let
   inherit (lib) mkOverride optional strings;
   inherit (pkgs) fetchurl;
+
+  kernelVersion = lib.versions.majorMinor config.boot.kernelPackages.kernel.version;
 in {
   boot.kernelPatches = [
     {
-      name = "BORE CPU scheduler";
-      patch = let
-        baseUrl = "https://raw.githubusercontent.com/firelzrd/bore-scheduler/main/patches/stable";
-        kernelVersion = lib.versions.majorMinor config.boot.kernelPackages.kernel.version;
+      name = "Native CPU optimizations";
+      patch = null;
+      extraMakeFlags = let
+        inherit (config.host) architecture;
       in
-        fetchurl (
-          if kernelVersion == "6.6"
-          then {
-            url = baseUrl + "/linux-6.6-bore/0001-linux6.6.y-bore5.1.0.patch";
-            hash = "sha256-iLydPGZZSkEQhSj6Ah0Xq0zf7YUPwcpyKt8t0BeHYz8=";
-          }
-          else {
-            url = baseUrl + "/linux-6.8-bore/0001-linux6.8.y-bore5.1.0.patch";
-            hash = "sha256-WyD1NuM+1m12O3ppjhZ+6YrJFQJn9Zcyz4QV2YgwNGk=";
-          }
-        );
-    }
-
-    {
-      name = "BTRFS allocator hints";
-      patch = ./files/btrfs-allocator-hints.patch;
+        ["-march=${architecture}"]
+        ++ optional (!strings.hasPrefix "x86-64-" architecture) "-mtune=${architecture}";
     }
 
     {
@@ -72,19 +60,32 @@ in {
     }
 
     {
+      name = "BORE CPU scheduler";
+      patch = let
+        baseUrl = "https://raw.githubusercontent.com/firelzrd/bore-scheduler/main/patches/stable";
+      in
+        fetchurl (
+          if kernelVersion == "6.6"
+          then {
+            url = baseUrl + "/linux-6.6-bore/0001-linux6.6.y-bore5.1.0.patch";
+            hash = "sha256-iLydPGZZSkEQhSj6Ah0Xq0zf7YUPwcpyKt8t0BeHYz8=";
+          }
+          else {
+            url = baseUrl + "/linux-6.8-bore/0001-linux6.8.y-bore5.1.0.patch";
+            hash = "sha256-WyD1NuM+1m12O3ppjhZ+6YrJFQJn9Zcyz4QV2YgwNGk=";
+          }
+        );
+    }
+
+    {
       name = "Rust support";
       patch = null;
       features.rust = true;
     }
 
     {
-      name = "Native CPU optimizations";
-      patch = null;
-      extraMakeFlags = let
-        inherit (config.host) architecture;
-      in
-        ["-march=${architecture}"]
-        ++ optional (!strings.hasPrefix "x86-64-" architecture) "-mtune=${architecture}";
+      name = "BTRFS allocator hints";
+      patch = ./files/btrfs-allocator-hints.patch;
     }
   ];
 }
