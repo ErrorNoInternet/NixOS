@@ -14,6 +14,7 @@
     gama = "git am --abort";
     gamc = "git am --continue";
     game = "git am --allow-empty";
+    gamS = "git am --show-current-patch=diff";
     gams = "git am --skip";
     gap = "git add -p";
     gapl = "git apply";

@@ -58,6 +58,7 @@ in {
         attic
         cachix
         deadnix
+        hydra-check
         nix-output-monitor
         nix-tree
         nvd

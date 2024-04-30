@@ -60,6 +60,7 @@
     compsize
     exiftool
     ffmpeg_6-full
+    fio
     gimp
     hyprpicker
     imhex
