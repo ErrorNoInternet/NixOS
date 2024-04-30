@@ -1,14 +1,7 @@
-{
-  config,
-  lib,
-  ...
-}: let
-  inherit (lib) mkOverride mkDefault;
+{lib, ...}: let
+  inherit (lib) mkDefault;
 in {
   boot = {
-    kernelPackages =
-      mkOverride 1250 config.workstation.kernel.packages.default;
-
     supportedFilesystems = ["ntfs"];
 
     kernel.sysctl = {
