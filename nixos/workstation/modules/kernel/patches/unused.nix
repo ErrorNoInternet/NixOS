@@ -16,9 +16,11 @@ in
         CAIF = no;
         COMEDI = no;
         DVB_CORE = no;
+        FIREWIRE = no;
         IIO = no;
         INPUT_TOUCHSCREEN = no;
         NFC = no;
+        SND_FIREWIRE = unset;
         SURFACE_AGGREGATOR = no;
         USB_GSPCA = no;
         XEN = no;
