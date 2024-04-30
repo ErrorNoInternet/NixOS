@@ -16,6 +16,7 @@ in
         CAIF = no;
         COMEDI = no;
         DVB_CORE = no;
+        FB_TFT = no;
         FIREWIRE = no;
         IIO = no;
         INPUT_TOUCHSCREEN = no;
@@ -23,17 +24,12 @@ in
         SND_FIREWIRE = unset;
         SURFACE_AGGREGATOR = no;
         USB_GSPCA = no;
+        USB_SERIAL = no;
+        USB_SERIAL_CONSOLE = unset;
+        USB_SERIAL_GENERIC = unset;
+        WATCHDOG = no;
+        WATCHDOG_SYSFS = unset;
         XEN = no;
-
-        AFFS_FS = no;
-        AFS_FS = no;
-        BEFS_FS = no;
-        CODA_FS = no;
-        JFS_FS = no;
-        OCFS2_FS = no;
-        OMFS_FS = no;
-        ORANGEFS_FS = no;
-        SYSV_FS = no;
 
         INFINIBAND = no;
         INFINIBAND_IPOIB = unset;
@@ -52,9 +48,17 @@ in
         WLAN_VENDOR_RALINK = no;
         X25 = no;
 
+        AFFS_FS = no;
+        AFS_FS = no;
+        BEFS_FS = no;
+        CODA_FS = no;
+        JFS_FS = no;
+        OCFS2_FS = no;
+        OMFS_FS = no;
+        ORANGEFS_FS = no;
+        SYSV_FS = no;
+
         ALIENWARE_WMI = no;
-        ALIM1535_WDT = no;
-        ALIM7101_WDT = no;
         ALTERA_MBOX = no;
         ALTERA_MSGDMA = no;
         ALTERA_TSE = no;
