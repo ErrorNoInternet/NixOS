@@ -25,25 +25,23 @@ in {
     enable = mkEnableOption "" // {default = true;};
 
     kernelPackages = mkOption {
-      default = config.server.kernel.packages.ltsZfs;
+      default = config.server.kernel.availablePackages.ltsZfs;
     };
   };
 
   config = mkIf cfg.enable {
-    boot = {
-      kernelPackages = mkDefault (cfg.kernelPackages.extend (_: prev: {
-        zfs_unstable = prev.zfs_unstable.overrideAttrs (old: {
-          name = "zfs-kernel-${version}-${prev.kernel.version}";
-          inherit version src;
-          patches = (old.patches or []) ++ patches;
-        });
-      }));
-
-      zfs.package = pkgs.zfs_unstable.overrideAttrs (old: {
-        name = "zfs-user-${version}";
+    server.kernel.packages = mkDefault (cfg.kernelPackages.extend (_: prev: {
+      zfs_unstable = prev.zfs_unstable.overrideAttrs (old: {
+        name = "zfs-kernel-${version}-${prev.kernel.version}";
         inherit version src;
         patches = (old.patches or []) ++ patches;
       });
-    };
+    }));
+
+    boot.zfs.package = pkgs.zfs_unstable.overrideAttrs (old: {
+      name = "zfs-user-${version}";
+      inherit version src;
+      patches = (old.patches or []) ++ patches;
+    });
   };
 }
