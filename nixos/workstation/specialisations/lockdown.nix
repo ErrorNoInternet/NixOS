@@ -1,20 +1,20 @@
 {
   config,
   lib,
-  pkgs,
   self,
   ...
 }: let
   inherit (lib) mkOverride attrsets;
 
-  kernelPackages = pkgs.linuxPackages_hardened;
+  kernelPackages = config.workstation.kernel.availablePackages.hardened;
 in {
   specialisation.lockdown = self.lib.nixos.mkSpecialisation "lockdown" {
-    workstation.zfs = {inherit kernelPackages;};
+    workstation = {
+      zfs = {inherit kernelPackages;};
+      kernel.packages = mkOverride 1100 kernelPackages;
+    };
 
     boot = {
-      kernelPackages = mkOverride 1100 kernelPackages;
-
       blacklistedKernelModules = [
         "ufs"
       ];
