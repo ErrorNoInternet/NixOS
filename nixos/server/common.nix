@@ -4,9 +4,7 @@
   pkgs,
   self,
   ...
-}: let
-  inherit (lib) mkOverride;
-in {
+}: {
   imports = [
     ./modules
     ./profiles
@@ -15,13 +13,7 @@ in {
 
   documentation.doc.enable = false;
 
-  boot = {
-    kernelPackages =
-      mkOverride 1250
-      config.server.kernel.packages.default;
-
-    kernelParams = ["console=tty0"];
-  };
+  boot.kernelParams = ["console=tty0"];
 
   networking = {
     firewall = {
