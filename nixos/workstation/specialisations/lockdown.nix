@@ -1,12 +1,13 @@
 {
   config,
   lib,
+  pkgs,
   self,
   ...
 }: let
   inherit (lib) mkOverride attrsets;
 
-  kernelPackages = config.workstation.kernel.availablePackages.hardened;
+  kernelPackages = pkgs.linuxPackages_hardened;
 in {
   specialisation.lockdown = self.lib.nixos.mkSpecialisation "lockdown" {
     workstation = {

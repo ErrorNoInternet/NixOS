@@ -18,10 +18,6 @@
       value = pkgs.linuxPackages;
     }
     {
-      name = "hardened";
-      value = pkgs.linuxPackages_hardened;
-    }
-    {
       name = "latestZfs";
       value = config.boot.zfs.package.latestCompatibleLinuxPackages;
     }
