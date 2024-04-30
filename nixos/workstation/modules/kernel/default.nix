@@ -5,7 +5,8 @@
   self,
   ...
 }: let
-  inherit (lib) mkOption types;
+  cfg = config.workstation.kernel;
+  inherit (lib) mkOverride mkOption types;
 in {
   imports = [
     ./common.nix
@@ -13,10 +14,15 @@ in {
   ];
 
   options.workstation.kernel = {
-    packages = mkOption {
+    availablePackages = mkOption {
       default = import ./packages.nix {
         inherit config lib pkgs self;
       };
+    };
+
+    packages = mkOption {
+      default =
+        mkOverride 1250 cfg.availablePackages.default;
     };
 
     patches = {
@@ -26,4 +32,6 @@ in {
       };
     };
   };
+
+  config.boot.kernelPackages = cfg.packages;
 }

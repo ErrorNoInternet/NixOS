@@ -44,8 +44,10 @@ in
         NET_VENDOR_MARVELL = no;
         NET_VENDOR_MELLANOX = no;
         NET_VENDOR_RENESAS = no;
+        NET_VENDOR_STMICRO = no;
         RT2800USB_RT53XX = unset;
         RT2800USB_RT55XX = unset;
+        WLAN_VENDOR_MARVELL = no;
         WLAN_VENDOR_MEDIATEK = no;
         WLAN_VENDOR_RALINK = no;
         X25 = no;
