@@ -1,7 +1,7 @@
 {
   imports = [
     ./bootloader.nix
-    ./kernels
+    ./kernel
     ./printing.nix
     ./services
     ./zfs
