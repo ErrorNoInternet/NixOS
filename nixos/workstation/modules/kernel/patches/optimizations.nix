@@ -25,9 +25,8 @@ in {
         name = "Lower latency";
         patch = null;
         extraStructuredConfig = with lib.kernel; {
-          NET_SCH_DEFAULT = yes;
-          DEFAULT_FQ_CODEL = yes;
-          DEFAULT_NET_SCH = freeform "fq_codel";
+          HZ = freeform "1000";
+          HZ_1000 = yes;
 
           PREEMPT = mkOverride 60 yes;
           PREEMPT_BUILD = mkOverride 60 yes;
@@ -51,12 +50,6 @@ in {
           RCU_BOOST_DELAY = freeform "500";
           RCU_NOCB_CPU = yes;
           RCU_LAZY = yes;
-
-          FUTEX = yes;
-          FUTEX_PI = yes;
-
-          HZ = freeform "1000";
-          HZ_1000 = yes;
         };
       }
 
@@ -82,6 +75,16 @@ in {
               hash = "sha256-CGw3gWEiNUDgn0J3DqlIr5/C2RkM8zVGYfmIaIO/Cao=";
             }
           );
+      }
+
+      {
+        name = "fq_codel packet scheduling";
+        patch = null;
+        extraStructuredConfig = with lib.kernel; {
+          NET_SCH_DEFAULT = yes;
+          DEFAULT_FQ_CODEL = yes;
+          DEFAULT_NET_SCH = freeform "fq_codel";
+        };
       }
     ]
     ++ optionals (versionAtLeast kernelVersion "6.8") [
