@@ -15,8 +15,10 @@
   ];
 
   home-manager = {
+    backupFileExtension = "nixbak";
     useGlobalPkgs = true;
     useUserPackages = true;
+
     config.flags.isNixOnDroid = true;
   };
 

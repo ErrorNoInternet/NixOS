@@ -31,7 +31,11 @@
     zpool.${config.host.name} = {
       type = "zpool";
 
-      options.ashift = "12";
+      options = {
+        ashift = "12";
+        compatibility = "openzfs-2.2-linux";
+      };
+
       rootFsOptions = {
         acltype = "posix";
         compression = "zstd";

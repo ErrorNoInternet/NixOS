@@ -78,10 +78,15 @@
   {
     name = "passgen";
     path = ./passgen;
+    exposeOutput = true;
   }
   {
     name = "pavolume";
     path = ./pavolume;
+  }
+  {
+    name = "prismlauncher-unwrapped";
+    path = ./prismlauncher;
   }
   {
     name = "satty";
@@ -90,6 +95,7 @@
   {
     name = "savehw";
     path = ./savehw;
+    exposeOutput = true;
   }
   {
     name = "scratchpad";
@@ -106,6 +112,7 @@
   {
     name = "tbw";
     path = ./tbw;
+    exposeOutput = true;
   }
   {
     name = "tmux";

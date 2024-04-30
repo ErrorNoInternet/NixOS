@@ -4,4 +4,8 @@
   self,
   ...
 }:
-self.lib.derivations.c.optimizeAllExceptLto host imhex
+with self.lib.derivations;
+  c.optimizeAllExceptLto host (
+    cmake.optimizeLto
+    imhex
+  )

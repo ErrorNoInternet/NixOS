@@ -4,6 +4,7 @@
     "ga.c" = "git add . && git commit -m";
     "ga.ca" = "git add . && git commit --amend --no-edit";
     "ga.cae" = "git add . && git commit --amend";
+    "ga.d" = "git add . && git diff --staged";
     "gd." = "git diff .";
     "gl." = "git log .";
     "gr." = "git restore .";
@@ -32,11 +33,13 @@
     gC = "git commit";
     gca = "git commit --amend --no-edit";
     gcae = "git commit --amend";
+    gcap = "git commit --amend --no-edit && git push --force-with-lease";
     gce = "git commit --allow-empty";
     gcf = "git clean -f .";
     gcfx = "git clean -fX .";
     gch = "git cherry";
     gcl = "git clone";
+    gcld = "git clone --depth 1";
     gco = "git checkout";
     gcob = "git checkout -b";
     gcoh = "git checkout HEAD^";
@@ -49,6 +52,7 @@
     gds = "git diff --staged";
     gdsc = "git diff --staged --compact-summary";
     gf = "git fetch origin";
+    gfu = "git fetch --unshallow";
     gl = "git log";
     glf = "git log --follow";
     gls = "git log -S";
@@ -87,6 +91,7 @@
     gshs = "git stash show";
     gsm = "git submodule";
     gsmu = "git submodule update";
+    gss = "git show -m --stat";
     gst = "git status";
     gsw = "git switch -";
   };

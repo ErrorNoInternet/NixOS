@@ -25,33 +25,29 @@ in {
     enable = mkEnableOption "" // {default = true;};
 
     kernelPackages = mkOption {
-      inherit (config.workstation.kernel.packages) default;
+      inherit (config.workstation.kernel.availablePackages) default;
     };
   };
 
   config = mkIf cfg.enable {
     services.zfs.autoSnapshot.monthly = 3;
 
+    workstation.kernel.packages = mkDefault (cfg.kernelPackages.extend (_: prev: {
+      zfs_unstable = prev.zfs_unstable.overrideAttrs (old: {
+        name = "zfs-kernel-${version}-${prev.kernel.version}";
+        inherit version src;
+        patches = (old.patches or []) ++ patches;
+      });
+    }));
+
     boot = {
-      supportedFilesystems = ["zfs"];
-
-      loader.grub.zfsSupport = true;
-
-      kernelPackages = mkDefault (cfg.kernelPackages.extend (_: prev: {
-        zfs_unstable = prev.zfs_unstable.overrideAttrs (old: {
-          name = "zfs-kernel-${version}-${prev.kernel.version}";
-          inherit version src;
-          patches = (old.patches or []) ++ patches;
-        });
-      }));
-
       zfs.package = pkgs.zfs_unstable.overrideAttrs (old: {
         name = "zfs-user-${version}";
         inherit version src;
         patches = (old.patches or []) ++ patches;
       });
-    };
 
-    environment.systemPackages = [pkgs.ioztat];
+      loader.grub.zfsSupport = true;
+    };
   };
 }
