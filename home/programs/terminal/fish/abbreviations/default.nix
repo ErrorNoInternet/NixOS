@@ -27,6 +27,7 @@
       clo = "curl -LO";
       clO = "curl -Lo";
       d = "cd ~/data";
+      dl = "cd ~/downloads";
       dm = "dmesg";
       dmt = "dmesg -T";
       dmtw = "dmesg -Tw";
