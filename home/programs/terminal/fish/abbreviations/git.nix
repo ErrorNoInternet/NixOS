@@ -64,6 +64,7 @@
     gp = "git push";
     gpa = "git push --all";
     gpf = "git push --force-with-lease";
+    gpfa = "git push --force-with-lease --all";
     gpl = "git pull";
     gplu = "git pull --allow-unrelated-histories";
     gpo = "git push origin";
