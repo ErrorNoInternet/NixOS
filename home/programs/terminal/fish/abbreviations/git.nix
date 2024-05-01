@@ -30,6 +30,7 @@
     gbsr = "git bisect reset";
     gbss = "git bisect start";
     gbt = "git branch -t";
+    gbu = "git branch --set-upstream-to";
     gc = "git commit -m";
     gC = "git commit";
     gca = "git commit --amend --no-edit";

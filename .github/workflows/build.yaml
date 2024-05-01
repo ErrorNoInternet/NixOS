@@ -23,7 +23,7 @@ jobs:
       - name: Maximize disk space
         uses: ErrorNoInternet/maximize-build-space@v1
         with:
-          swap-size-mb: 4096
+          swap-size-mb: 8192
           build-mount-path: /nix
           overprovision-lvm: "true"
           remove-dotnet: "true"

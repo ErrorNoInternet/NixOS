@@ -2,14 +2,19 @@
   config,
   inputs,
   lib,
-  pkgs,
   ...
-}: {
-  config = lib.mkIf config.profiles.windowManager.enable {
-    home.packages = [pkgs.swaynotificationcenter];
+}: let
+  cfg = config.customPrograms.swaync;
+  inherit (lib) mkEnableOption mkIf;
+in {
+  options.customPrograms.swaync.enable =
+    mkEnableOption "" // {default = config.profiles.windowManager.enable;};
 
-    xdg.configFile = {
-      "swaync/config.json".text = builtins.toJSON {
+  config = mkIf cfg.enable {
+    services.swaync = {
+      enable = true;
+
+      settings = {
         timeout = 10;
         timeout-critical = 0;
         timeout-low = 5;
@@ -53,7 +58,7 @@
         };
       };
 
-      "swaync/style.css".text = with config.colors.scheme.palette; ''
+      style = with config.colors.scheme.palette; ''
         * {
           background: transparent;
           border-radius: 12px;
