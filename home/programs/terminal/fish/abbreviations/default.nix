@@ -34,6 +34,7 @@
       dmw = "dmesg -w";
       e = "echo";
       ex = "exec";
+      jr = "journalctl";
       m = "man";
       mk = "make";
       p = "ping";
