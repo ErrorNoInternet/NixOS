@@ -99,7 +99,6 @@
           mountpoint = "/nix/store";
           type = "zfs_fs";
           options = {
-            "com.sun:auto-snapshot" = "false";
             mountpoint = "legacy";
             recordsize = "256K";
           };
