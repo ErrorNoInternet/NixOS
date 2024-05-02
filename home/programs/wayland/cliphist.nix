@@ -13,8 +13,12 @@ in {
     services.cliphist = {
       enable = true;
 
-      maxDedupeSearch = 10;
-      maxItems = 1000;
+      extraOptions = [
+        "-max-items"
+        "1000"
+        "-max-dedupe-search"
+        "10"
+      ];
     };
   };
 }
