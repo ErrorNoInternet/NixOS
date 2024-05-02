@@ -75,6 +75,7 @@
     qbittorrent
     qrencode
     radeontop
+    rowhammer-test
     savehw
     sdparm
     smartmontools
