@@ -29,6 +29,7 @@
 
   home.packages = with pkgs; [
     amdgpu_top
+    binwalk
     brave
     compsize
     cpu-x
