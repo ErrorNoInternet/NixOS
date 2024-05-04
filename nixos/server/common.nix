@@ -33,14 +33,19 @@
       multipliers = "1 2 6 12 24 72 144 288 864 2016";
       rndtime = "5m";
     };
+
     jails = {
-      DEFAULT.settings = {
-        findtime = "15m";
-      };
+      DEFAULT.settings.findtime = "15m";
+
       sshd = lib.mkForce ''
         enabled = true
         mode = aggressive
-        port = ${lib.strings.concatMapStringsSep "," toString config.services.openssh.ports}
+        port = ${
+          lib.strings.concatMapStringsSep
+          ","
+          toString
+          config.services.openssh.ports
+        }
       '';
     };
   };
