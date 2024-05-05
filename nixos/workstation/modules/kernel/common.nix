@@ -6,6 +6,9 @@ in {
 
     kernel.sysctl = {
       "kernel.sysrq" = mkDefault 1;
+
+      "vm.dirty_background_ratio" = 15;
+      "vm.dirty_ratio" = 25;
     };
   };
 }
