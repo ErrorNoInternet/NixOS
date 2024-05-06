@@ -31,6 +31,7 @@
     amdgpu_top
     binwalk
     brave
+    cowsay
     cpu-x
     ddrescue
     disko
@@ -42,6 +43,7 @@
     efivar
     exiftool
     ffmpeg_6-full
+    figlet
     fio
     geekbench
     ghidra
@@ -61,6 +63,7 @@
     libva-utils
     linuxPackages_latest.perf
     lm_sensors
+    lolcat
     lshw
     mangohud
     mesa-demos
@@ -80,6 +83,7 @@
     rowhammer-test
     savehw
     sdparm
+    sl
     smartmontools
     sqlite
     squashfsTools
