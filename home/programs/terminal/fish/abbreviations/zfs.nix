@@ -2,7 +2,6 @@
   programs.fish.shellAbbrs = {
     ioz = "ioztat -x 1";
     iozx = "ioztat -xx 1";
-    md = "sudo zpool import -al";
     zf = "zfs";
     zfg = "zfs get";
     zfgf = "zfs get -t fs";
@@ -16,6 +15,7 @@
     zfls = "zfs list -t snap";
     zfm = "zfs mount -v";
     zfma = "zfs mount -val";
+    zmd = "sudo zpool import -al";
     zp = "zpool";
     zpg = "zpool get";
     zpi = "zpool import";
