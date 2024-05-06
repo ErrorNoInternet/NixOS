@@ -11,7 +11,7 @@
     };
   };
 
-  desktop.monitors = [{}];
+  desktop.monitors = [{} {} {}];
 
   customPrograms = {
     kdeconnect.enable = true;
