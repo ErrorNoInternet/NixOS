@@ -29,6 +29,7 @@ in {
       l = "ls -l";
       la = "ls -la";
       laT = "ls -laT";
+      li = "ls -li";
       ll = "ls -l";
       ls = "LS_COLORS= eza --icons";
       lT = "ls -lT";

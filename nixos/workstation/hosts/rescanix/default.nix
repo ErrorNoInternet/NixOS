@@ -30,6 +30,8 @@
   workstation = {
     kernel.patches.removeUnused = false;
 
+    zfs.enable = true;
+
     sddm.enable = true;
 
     profiles.qemuGuest.enable = true;

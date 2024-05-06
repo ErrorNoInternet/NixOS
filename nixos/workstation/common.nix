@@ -71,7 +71,9 @@ in {
     '';
 
     systemPackages = with pkgs; [
+      compsize
       cryptsetup
+      duperemove
       glxinfo
       home-manager
       intel-gpu-tools
@@ -84,6 +86,7 @@ in {
 
   programs = {
     dconf.enable = true;
+    fuse.userAllowOther = true;
     light.enable = true;
   };
 

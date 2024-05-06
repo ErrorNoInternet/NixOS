@@ -29,8 +29,8 @@
 
   home.packages = with pkgs; [
     amdgpu_top
+    binwalk
     brave
-    compsize
     cpu-x
     ddrescue
     dmidecode
@@ -75,6 +75,7 @@
     qbittorrent
     qrencode
     radeontop
+    rowhammer-test
     savehw
     sdparm
     smartmontools
