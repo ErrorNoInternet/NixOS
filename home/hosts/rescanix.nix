@@ -33,6 +33,7 @@
     brave
     cpu-x
     ddrescue
+    disko
     dmidecode
     drm_info
     duperemove
