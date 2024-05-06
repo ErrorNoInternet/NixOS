@@ -35,6 +35,7 @@
     ddrescue
     disko
     dmidecode
+    dracut
     drm_info
     duperemove
     efibootmgr
