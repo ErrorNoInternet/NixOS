@@ -31,7 +31,6 @@
     amdgpu_top
     binwalk
     brave
-    compsize
     cpu-x
     ddrescue
     dmidecode

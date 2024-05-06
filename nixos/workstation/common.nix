@@ -70,7 +70,9 @@ in {
     '';
 
     systemPackages = with pkgs; [
+      compsize
       cryptsetup
+      duperemove
       glxinfo
       home-manager
       intel-gpu-tools
