@@ -133,8 +133,8 @@
       function md
         read -P "[luks] password for btank: " -s LUKS_PASSWORD
 
-        echo "$LUKS_PASSWORD" | sudo cryptsetup luksOpen /dev/disk/by-uuid/5e05e286-205a-4063-9fa1-ac384bed4e9c luks_btank0
-        and echo "$LUKS_PASSWORD" | sudo cryptsetup luksOpen /dev/disk/by-uuid/136e9203-0172-464e-a795-9f5ed11c96fa luks_btank1
+        echo "$LUKS_PASSWORD" | sudo cryptsetup luksOpen /dev/disk/by-uuid/5e05e286-205a-4063-9fa1-ac384bed4e9c luks_btank-data0
+        and echo "$LUKS_PASSWORD" | sudo cryptsetup luksOpen /dev/disk/by-uuid/136e9203-0172-464e-a795-9f5ed11c96fa luks_btank-cache0
 
         set -e LUKS_PASSWORD
 
