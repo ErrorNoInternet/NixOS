@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   imports = [
-    ./nas-mounts.nix
+    ./drives.nix
+    ./nas.nix
   ];
 
   host.architecture = "haswell";
@@ -25,13 +26,9 @@
     wantedBy = ["multi-user.target"];
   };
 
-  services = {
-    udev.extraRules = ''
-      SUBSYSTEMS=="usb|hidraw", ATTRS{idVendor}=="1770", ATTRS{idProduct}=="ff00", TAG+="uaccess", TAG+="MSI_3Zone_Laptop"
-    '';
-
-    zfs.autoSnapshot.enable = true;
-  };
+  services.udev.extraRules = ''
+    SUBSYSTEMS=="usb|hidraw", ATTRS{idVendor}=="1770", ATTRS{idProduct}=="ff00", TAG+="uaccess", TAG+="MSI_3Zone_Laptop"
+  '';
 
   workstation.desktops.hyprland.enable = true;
 
