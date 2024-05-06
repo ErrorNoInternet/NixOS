@@ -47,10 +47,11 @@
       t = "tmux";
       v = "nvim";
 
-      ios = "sudo iostat --human 1";
-      ios3 = "sudo iostat --human 3";
-      psd = "sudo pidstat --human -d 1";
-      psd3 = "sudo pidstat --human -d 3";
+      ios = "iostat --human 1";
+      ios3 = "iostat --human 3";
+      iot = "sudo iotop-c";
+      psd = "pidstat --human -d 1";
+      psd3 = "pidstat --human -d 3";
 
       hy = "hyprctl";
     }
