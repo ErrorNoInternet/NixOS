@@ -6,8 +6,10 @@
   inherit (lib) strings;
 in rec {
   mkFlags = old: flags: {
-    NIX_CFLAGS_COMPILE = "${(old.NIX_CFLAGS_COMPILE or "")} ${flags}";
-    NIX_CXXFLAGS_COMPILE = "${(old.NIX_CXXFLAGS_COMPILE or "")} ${flags}";
+    env = {
+      NIX_CFLAGS_COMPILE = "${(old.env.NIX_CFLAGS_COMPILE or old.NIX_CFLAGS_COMPILE or "")} ${flags}";
+      NIX_CXXFLAGS_COMPILE = "${(old.env.NIX_CXXFLAGS_COMPILE or old.NIX_CXXFLAGS_COMPILE or "")} ${flags}";
+    };
   };
 
   optimizeAll = host: derivation:
