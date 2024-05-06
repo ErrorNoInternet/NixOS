@@ -22,7 +22,7 @@ in {
   ];
 
   options.workstation.zfs = {
-    enable = mkEnableOption "" // {default = true;};
+    enable = mkEnableOption "";
 
     kernelPackages = mkOption {
       inherit (config.workstation.kernel.availablePackages) default;
