@@ -70,16 +70,18 @@ in {
     '';
 
     systemPackages = with pkgs; [
-      compsize
-      cryptsetup
-      duperemove
       glxinfo
       home-manager
       intel-gpu-tools
       mangohud
-      parted
       pulseaudio
       qalculate-gtk
+
+      compsize
+      cryptsetup
+      duperemove
+      parted
+      python3Packages.btrfs
     ];
   };
 
