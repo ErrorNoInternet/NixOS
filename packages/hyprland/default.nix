@@ -6,9 +6,9 @@
 }:
 with self.lib.derivations;
   c.optimizeAllExceptLto host (
-    inputs'.hyprland.packages.default.overrideAttrs (old: {
+    inputs'.hyprland.packages.default.overrideAttrs {
       prePatch = ''
         git apply ${./remove-wallpapers.patch}
       '';
-    })
+    }
   )
