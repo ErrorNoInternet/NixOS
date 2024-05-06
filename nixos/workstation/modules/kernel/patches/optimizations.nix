@@ -7,7 +7,7 @@
   inherit (lib) mkOverride optional optionals strings versions versionAtLeast;
   inherit (pkgs) fetchpatch;
 
-  kernelVersion = versions.majorMinor config.workstation.kernel.packages.kernel.version;
+  kernelVersion = versions.majorMinor config.workstation.kernel.packages.content.kernel.version;
 in {
   boot.kernelPatches =
     [
