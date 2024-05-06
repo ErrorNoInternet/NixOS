@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   imports = [
     ./drives.nix
-    ./nas-mounts.nix
+    ./nas.nix
   ];
 
   host.architecture = "haswell";
