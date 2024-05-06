@@ -20,6 +20,8 @@
 
         root = {
           size = "100%";
+          label = "root";
+
           content = {
             type = "btrfs";
             extraArgs = [

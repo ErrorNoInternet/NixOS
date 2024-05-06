@@ -19,6 +19,8 @@
 
           root = {
             size = "100%";
+            label = "root";
+
             content = {
               type = "zfs";
               pool = config.host.name;

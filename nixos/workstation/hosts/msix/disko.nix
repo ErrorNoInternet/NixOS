@@ -20,6 +20,8 @@
 
         luks = {
           size = "100%";
+          label = "root";
+
           content = {
             type = "luks";
 
