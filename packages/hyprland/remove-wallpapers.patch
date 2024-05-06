@@ -1,3 +1,19 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index ef077d8b2c9814217615e00ec8f576bb95dd5fb1..dd29616e47c78caaf2cbecc56ad976cdef523c87 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -304,11 +304,6 @@ install(CODE "execute_process( \
+ install(FILES ${CMAKE_SOURCE_DIR}/example/hyprland.desktop
+         DESTINATION ${CMAKE_INSTALL_DATADIR}/wayland-sessions)
+ 
+-# wallpapers
+-file(GLOB_RECURSE WALLPAPERS "assets/wall*")
+-install(FILES ${WALLPAPERS}
+-        DESTINATION ${CMAKE_INSTALL_DATADIR}/hyprland)
+-
+ # default config
+ install(FILES ${CMAKE_SOURCE_DIR}/example/hyprland.conf
+         DESTINATION ${CMAKE_INSTALL_DATADIR}/hyprland)
 diff --git a/assets/meson.build b/assets/meson.build
 index 8c4a60ec6f0e5e7e5ecbe847d7ecc429f12dec97..befebe86a7196bf62c233ecc6201bbfabccbd535 100644
 --- a/assets/meson.build
