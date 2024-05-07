@@ -40,7 +40,6 @@ in {
     profiles.qemuGuest.enable = true;
 
     desktops = {
-      gnome.enable = true;
       hyprland.enable = true;
       plasma5.enable = true;
     };
