@@ -1,149 +1,149 @@
 [
   {
     name = "alejandra";
-    path = ./alejandra;
+    source = ./alejandra;
   }
   {
     name = "attic";
-    path = ./attic;
+    source = ./attic;
   }
   {
     name = "btrfs-map-physical";
-    path = ./btrfs-map-physical;
+    source = ./btrfs-map-physical;
   }
   {
     name = "btrfs-progs";
-    path = ./btrfs-progs;
+    source = ./btrfs-progs;
   }
   {
     name = "delta";
-    path = ./delta;
+    source = ./delta;
   }
   {
     name = "eza";
-    path = ./eza;
+    source = ./eza;
   }
   {
     name = "fastfetch";
-    path = ./fastfetch;
+    source = ./fastfetch;
   }
   {
     name = "fcitx5Theme-nord";
-    path = ./themes/fcitx5/nord.nix;
+    source = ./themes/fcitx5/nord.nix;
   }
   {
     name = "foot";
-    path = ./foot;
+    source = ./foot;
   }
   {
     name = "hwatch";
-    path = ./hwatch;
+    source = ./hwatch;
   }
   {
     name = "hyprgamemode";
-    path = ./hyprgamemode;
+    source = ./hyprgamemode;
   }
   {
     name = "hyprland";
-    path = ./hyprland;
+    source = ./hyprland;
   }
   {
     name = "imhex";
-    path = ./imhex;
+    source = ./imhex;
   }
   {
     name = "kitty";
-    path = ./kitty;
+    source = ./kitty;
   }
   {
     name = "neovim-unwrapped";
-    path = ./neovim;
+    source = ./neovim;
   }
   {
     name = "nix";
-    path = ./nix;
+    source = ./nix;
   }
   {
     name = "nix-tree";
-    path = ./nix-tree;
+    source = ./nix-tree;
   }
   {
     name = "nordic";
-    path = ./themes/gui/nordic;
+    source = ./themes/gui/nordic;
   }
   {
     name = "openrgb";
-    path = ./openrgb;
+    source = ./openrgb;
   }
   {
     name = "passgen";
-    path = ./passgen;
+    source = ./passgen;
     exposeOutput = true;
   }
   {
     name = "pavolume";
-    path = ./pavolume;
+    source = ./pavolume;
   }
   {
     name = "prismlauncher-unwrapped";
-    path = ./prismlauncher;
+    source = ./prismlauncher;
   }
   {
     name = "rsync";
-    path = ./rsync;
+    source = ./rsync;
   }
   {
     name = "satty";
-    path = ./satty;
+    source = ./satty;
   }
   {
     name = "savehw";
-    path = ./savehw;
+    source = ./savehw;
     exposeOutput = true;
   }
   {
     name = "scratchpad";
-    path = ./scratchpad;
+    source = ./scratchpad;
   }
   {
     name = "sddmTheme-corners";
-    path = ./themes/sddm/corners.nix;
+    source = ./themes/sddm/corners.nix;
   }
   {
     name = "slurp";
-    path = ./slurp;
+    source = ./slurp;
   }
   {
     name = "tbw";
-    path = ./tbw;
+    source = ./tbw;
     exposeOutput = true;
   }
   {
     name = "tmux";
-    path = ./tmux;
+    source = ./tmux;
   }
   {
     name = "vesktop";
-    path = ./vesktop;
+    source = ./vesktop;
   }
   {
     name = "vimPlugin-textobj-indent";
-    path = ./plugins/vim/textobj-indent.nix;
+    source = ./plugins/vim/textobj-indent.nix;
   }
   {
     name = "wezterm";
-    path = ./wezterm;
+    source = ./wezterm;
   }
   {
     name = "xdg-desktop-portal-hyprland";
-    path = ./xdph;
+    source = ./xdph;
   }
   {
     name = "yaziPlugin-bookmarks";
-    path = ./plugins/yazi/bookmarks.nix;
+    source = ./plugins/yazi/bookmarks.nix;
   }
   {
     name = "yaziPlugin-keyjump";
-    path = ./plugins/yazi/keyjump.nix;
+    source = ./plugins/yazi/keyjump.nix;
   }
 ]
