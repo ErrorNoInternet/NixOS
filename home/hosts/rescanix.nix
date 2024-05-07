@@ -74,6 +74,7 @@
     nvtopPackages.full
     ookla-speedtest
     osu-lazer-bin
+    par2cmdline-turbo
     passgen
     patchelf
     pavucontrol
