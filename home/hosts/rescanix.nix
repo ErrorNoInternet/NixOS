@@ -48,6 +48,7 @@
     geekbench
     ghidra
     gimp
+    gocryptfs
     gparted
     gptfdisk
     hashcat
