@@ -28,7 +28,7 @@
     nixPath = ["nixpkgs=${inputs.nixpkgs}"];
 
     extraOptions = ''
-      experimental-features = nix-command flakes
+      experimental-features = nix-command flakes ca-derivations
       flake-registry =
       log-lines = 500
       show-trace = true
