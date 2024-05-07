@@ -21,7 +21,8 @@ jobs:
       - name: Install Nix
         uses: DeterminateSystems/nix-installer-action@v9
         with:
-          extra-conf: |
+          extra-conf: |-
+            experimental-features = nix-command flakes ca-derivations
             log-lines = 500
             extra-platforms = aarch64-linux
 
