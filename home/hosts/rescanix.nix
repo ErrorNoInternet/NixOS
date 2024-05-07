@@ -35,7 +35,6 @@
     cowsay
     cpu-x
     ddrescue
-    disko
     dmidecode
     dracut
     drm_info
@@ -56,6 +55,7 @@
     hyperfine
     hyprpicker
     imagemagick
+    inputs'.disko.packages.default
     inputs'.overmask.packages.default
     inputs'.paralload.packages.default
     intel-gpu-tools
