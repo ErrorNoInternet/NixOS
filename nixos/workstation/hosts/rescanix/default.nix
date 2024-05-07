@@ -2,7 +2,9 @@
   lib,
   pkgs,
   ...
-}: {
+}: let
+  inherit (lib) mkForce;
+in {
   time.hardwareClockInLocalTime = true;
 
   boot = {
@@ -19,6 +21,9 @@
       "xfs"
     ];
   };
+
+  nixos.wireless.enable = mkForce false;
+  networking.networkmanager.enable = true;
 
   services.printing = {
     enable = true;
