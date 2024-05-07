@@ -1,7 +1,11 @@
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
+    btdu
     compsize
+    cryptsetup
     duperemove
+    parted
+    python3Packages.btrfs
     smartmontools
     snapper
     xxd

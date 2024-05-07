@@ -31,6 +31,7 @@
     amdgpu_top
     binwalk
     brave
+    btrfs-heatmap
     cowsay
     cpu-x
     ddrescue

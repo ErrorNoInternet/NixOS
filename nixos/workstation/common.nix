@@ -77,6 +77,7 @@ in {
       pulseaudio
       qalculate-gtk
 
+      btdu
       compsize
       cryptsetup
       duperemove
