@@ -89,6 +89,10 @@
     path = ./prismlauncher;
   }
   {
+    name = "rsync";
+    path = ./rsync;
+  }
+  {
     name = "satty";
     path = ./satty;
   }
