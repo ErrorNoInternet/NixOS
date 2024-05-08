@@ -35,6 +35,7 @@
     binwalk
     brave
     btrfs-heatmap
+    clamtk
     cmake
     cowsay
     cpu-x
@@ -67,6 +68,7 @@
     inputs'.paralload.packages.default
     intel-gpu-tools
     iperf
+    john
     kdenlive
     kdiskmark
     kexec-tools
@@ -114,6 +116,7 @@
     upx
     usbutils
     util-linux
+    uutils-coreutils
     virt-manager
     vlc
     vscodium
