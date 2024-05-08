@@ -29,6 +29,9 @@
 
   home.packages = with pkgs; [
     amdgpu_top
+    apt
+    aria2
+    arp-scan
     binwalk
     brave
     btrfs-heatmap
@@ -37,6 +40,8 @@
     cpu-x
     ddrescue
     dmidecode
+    dnf5
+    dpkg
     dracut
     drm_info
     duperemove
@@ -49,6 +54,7 @@
     geekbench
     ghidra
     gimp
+    gobuster
     gocryptfs
     gparted
     gptfdisk
@@ -72,11 +78,13 @@
     mangohud
     mesa-demos
     meson
+    metasploit
     multipath-tools
     nvme-cli
     nvtopPackages.full
     ookla-speedtest
     osu-lazer-bin
+    pacman
     par2cmdline-turbo
     passgen
     patchelf
@@ -87,6 +95,9 @@
     qrencode
     radeontop
     rowhammer-test
+    rpm
+    rustscan
+    sambaFull
     savehw
     sdparm
     sl
@@ -100,9 +111,12 @@
     testdisk
     timg
     unigine-heaven
+    upx
     usbutils
     util-linux
     virt-manager
+    vlc
+    vscodium
     vulkan-tools
     wev
     wine
