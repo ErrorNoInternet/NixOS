@@ -45,6 +45,7 @@ in {
         libllvm
         lldb
         pkg-config
+        valgrind
 
         (python3.withPackages (ps:
           with ps; [
