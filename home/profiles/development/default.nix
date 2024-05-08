@@ -60,6 +60,7 @@ in {
         deadnix
         hydra-check
         nix-output-monitor
+        nix-top
         nix-tree
         nvd
         statix
