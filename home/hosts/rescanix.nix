@@ -32,6 +32,7 @@
     binwalk
     brave
     btrfs-heatmap
+    cmake
     cowsay
     cpu-x
     ddrescue
@@ -70,6 +71,7 @@
     lshw
     mangohud
     mesa-demos
+    meson
     multipath-tools
     nvme-cli
     nvtopPackages.full
