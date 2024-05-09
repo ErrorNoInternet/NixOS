@@ -45,6 +45,7 @@ in {
         libllvm
         lldb
         pkg-config
+        valgrind
 
         (python3.withPackages (ps:
           with ps; [
@@ -60,6 +61,7 @@ in {
         deadnix
         hydra-check
         nix-output-monitor
+        nix-top
         nix-tree
         nvd
         statix

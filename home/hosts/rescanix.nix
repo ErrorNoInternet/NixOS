@@ -29,14 +29,20 @@
 
   home.packages = with pkgs; [
     amdgpu_top
+    apt
+    aria2
+    arp-scan
     binwalk
     brave
     btrfs-heatmap
+    clamtk
+    cmake
     cowsay
     cpu-x
     ddrescue
-    disko
     dmidecode
+    dnf5
+    dpkg
     dracut
     drm_info
     duperemove
@@ -49,6 +55,7 @@
     geekbench
     ghidra
     gimp
+    gobuster
     gocryptfs
     gparted
     gptfdisk
@@ -56,12 +63,15 @@
     hyperfine
     hyprpicker
     imagemagick
+    inputs'.disko.packages.default
     inputs'.overmask.packages.default
     inputs'.paralload.packages.default
     intel-gpu-tools
     iperf
+    john
     kdenlive
     kdiskmark
+    kexec-tools
     libva-utils
     linuxPackages_latest.perf
     lm_sensors
@@ -69,11 +79,15 @@
     lshw
     mangohud
     mesa-demos
+    meson
+    metasploit
     multipath-tools
     nvme-cli
     nvtopPackages.full
     ookla-speedtest
     osu-lazer-bin
+    pacman
+    par2cmdline-turbo
     passgen
     patchelf
     pavucontrol
@@ -83,6 +97,9 @@
     qrencode
     radeontop
     rowhammer-test
+    rpm
+    rustscan
+    sambaFull
     savehw
     sdparm
     sl
@@ -96,9 +113,14 @@
     testdisk
     timg
     unigine-heaven
+    upx
     usbutils
     util-linux
+    uutils-coreutils
     virt-manager
+    vlc
+    vmtouch
+    vscodium
     vulkan-tools
     wev
     wine
