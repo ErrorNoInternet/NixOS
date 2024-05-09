@@ -59,7 +59,7 @@ in {
       {
         name = "BORE CPU scheduler";
         patch = let
-          baseUrl = "https://raw.githubusercontent.com/firelzrd/bore-scheduler/main/patches/";
+          baseUrl = "https://raw.githubusercontent.com/firelzrd/bore-scheduler/main/patches/stable";
         in
           fetchpatch (
             if kernelVersion == "6.6"
@@ -67,15 +67,15 @@ in {
               name = "0001-linux6.6.y-bore5.1.0.patch";
             in {
               inherit name;
-              url = baseUrl + "stable/linux-6.6-bore/${name}";
+              url = baseUrl + "/linux-6.6-bore/${name}";
               hash = "sha256-xIZ6vnMW6oi155JS8ZtBVXfcXHduBDGGHMuhDMoZwH0=";
             }
             else let
-              name = "0001-linux6.8.y-bore5.2.0.patch";
+              name = "0001-linux6.8.y-bore5.1.0.patch";
             in {
               inherit name;
-              url = baseUrl + "testing/linux-6.8-bore/${name}";
-              hash = "sha256-6F/2g8ae4qkEbkCbT367JNFwqx6H8vVp4XkESqs0Axs=";
+              url = baseUrl + "/linux-6.8-bore/${name}";
+              hash = "sha256-CGw3gWEiNUDgn0J3DqlIr5/C2RkM8zVGYfmIaIO/Cao=";
             }
           );
       }
