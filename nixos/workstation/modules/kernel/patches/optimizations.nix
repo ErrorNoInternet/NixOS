@@ -1,11 +1,9 @@
 {
   config,
   lib,
-  pkgs,
   ...
 }: let
   inherit (lib) mkOverride optional optionals strings versions versionAtLeast;
-  inherit (pkgs) fetchpatch;
 
   kernelVersion =
     versions.majorMinor
@@ -58,26 +56,10 @@ in {
 
       {
         name = "BORE CPU scheduler";
-        patch = let
-          baseUrl = "https://raw.githubusercontent.com/firelzrd/bore-scheduler/main/patches/stable";
-        in
-          fetchpatch (
-            if kernelVersion == "6.6"
-            then let
-              name = "0001-linux6.6.y-bore5.1.0.patch";
-            in {
-              inherit name;
-              url = baseUrl + "/linux-6.6-bore/${name}";
-              hash = "sha256-xIZ6vnMW6oi155JS8ZtBVXfcXHduBDGGHMuhDMoZwH0=";
-            }
-            else let
-              name = "0001-linux6.8.y-bore5.1.0.patch";
-            in {
-              inherit name;
-              url = baseUrl + "/linux-6.8-bore/${name}";
-              hash = "sha256-CGw3gWEiNUDgn0J3DqlIr5/C2RkM8zVGYfmIaIO/Cao=";
-            }
-          );
+        patch =
+          if kernelVersion == "6.6"
+          then ./files/linux6.6.y-bore5.1.0.patch
+          else ./files/linux6.8.y-bore5.1.0.patch;
       }
 
       {
@@ -93,20 +75,12 @@ in {
     ++ optionals (versionAtLeast kernelVersion "6.8") [
       {
         name = "zstd updates";
-        patch = fetchpatch {
-          name = "zstd.patch";
-          url = "https://raw.githubusercontent.com/CachyOS/kernel-patches/master/6.8/0009-zstd.patch";
-          hash = "sha256-mW9OJmGMRqDZLnrg1nLtLOGibzx2cV4Tt/c2nv4jouM=";
-        };
+        patch = ./files/zstd-updates.patch;
       }
 
       {
         name = "aes-xts updates";
-        patch = fetchpatch {
-          name = "aes-xts.patch";
-          url = "https://raw.githubusercontent.com/CachyOS/kernel-patches/master/6.8/0001-aes-xts.patch";
-          hash = "sha256-L3N81Vvq4keHpIB/LmZK6sGUipfqzTf9H9yOPRn2PVg=";
-        };
+        patch = ./files/aes-xts-updates.patch;
       }
     ];
 }

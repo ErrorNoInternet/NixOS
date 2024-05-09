@@ -2,19 +2,20 @@
   config,
   lib,
   pkgs,
+  self,
   ...
 }: let
   cfg = config.server.zfs;
   inherit (lib) mkEnableOption mkOption mkIf mkDefault;
 
-  version = "2.2.3-unstable-2024-04-23";
+  version = "2.2.3-unstable-2024-05-03";
   src = pkgs.fetchFromGitHub {
     owner = "openzfs";
     repo = "zfs";
-    rev = "87d81d1d13e0ef848d2d533a4f12f5de41026e73";
-    hash = "sha256-X4DsZ1Ex1IU2+iNxbtoujozg5RkJfhmEkZpr88ghf8s=";
+    rev = "04bae5ec95f7273105237159a882d5b72ec2b998";
+    hash = "sha256-z9PvV3AHYJnVF5x7mt8KSiMaQ+4D1IBJzkbbffP09AY=";
   };
-  patches = import ./patches {inherit (pkgs) fetchpatch;};
+  patches = import ./patches {inherit self;};
 in {
   imports = [
     ./options.nix
