@@ -58,6 +58,7 @@
     gl = "git log";
     glf = "git log --follow";
     gls = "git log -S";
+    glsr = "git ls-remote";
     gm = "git merge";
     gma = "git merge --abort";
     gmc = "git merge --continue";
