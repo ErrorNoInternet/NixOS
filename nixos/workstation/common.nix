@@ -83,6 +83,7 @@ in {
       duperemove
       parted
       python3Packages.btrfs
+      vmtouch
     ];
   };
 
