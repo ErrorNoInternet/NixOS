@@ -54,6 +54,7 @@
     gds = "git diff --staged";
     gdsc = "git diff --staged --compact-summary";
     gf = "git fetch origin";
+    gft = "git fetch origin tag";
     gfu = "git fetch --unshallow";
     gl = "git log";
     glf = "git log --follow";
