@@ -32,6 +32,7 @@
     apt
     aria2
     arp-scan
+    binsort
     binwalk
     brave
     btrfs-heatmap
