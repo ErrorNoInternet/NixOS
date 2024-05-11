@@ -24,8 +24,11 @@ in {
       enabledExtensions = with spicePkgs.extensions; [
         adblock
         fullAppDisplay
-        lyrics-plus
         volumePercentage
+      ];
+
+      enabledCustomApps = with spicePkgs.apps; [
+        lyrics-plus
       ];
 
       theme = spicePkgs.themes.text;
