@@ -1,26 +1,26 @@
 diff --git a/man/man.md b/man/man.md
-index 74f83d1..decea7f 100644
+index 45b8557..94bf8b9 100644
 --- a/man/man.md
 +++ b/man/man.md
-@@ -132,11 +132,11 @@ F3
+@@ -247,11 +247,11 @@ F3
  
- +
+ \+
  
--:   Increase interval by .5 seconds.
-+:   Increase interval by .1 seconds.
+-:   Increase interval by 0.5 seconds.
++:   Increase interval by 0.1 seconds.
  
- -
+ \-
  
--:   Decrease interval by .5 seconds (As long as it's positive).
-+:   Decrease interval by .1 seconds (As long as it's positive).
+-:   Decrease interval by 0.5 seconds (As long as it's positive).
++:   Decrease interval by 0.1 seconds (As long as it's positive).
  
  Tab
  
 diff --git a/src/app.rs b/src/app.rs
-index 4512092..67ec595 100644
+index 0ce695e..cd74bd8 100644
 --- a/src/app.rs
 +++ b/src/app.rs
-@@ -490,14 +490,14 @@ impl<'a> App<'a> {
+@@ -505,14 +505,14 @@ impl<'a> App<'a> {
      ///
      fn increase_interval(&mut self) {
          let cur_interval = *self.interval.read().unwrap();
@@ -39,10 +39,10 @@ index 4512092..67ec595 100644
      }
  
 diff --git a/src/help.rs b/src/help.rs
-index fb7cf98..cb46223 100644
+index 1aa3a53..565f089 100644
 --- a/src/help.rs
 +++ b/src/help.rs
-@@ -146,8 +146,8 @@ fn gen_help_text<'a>() -> Vec<Line<'a>> {
+@@ -150,8 +150,8 @@ fn gen_help_text<'a>() -> Vec<Line<'a>> {
          KeyData { key: "F2".to_string(), description: "change output mode as stderr.".to_string() },
          KeyData { key: "F3".to_string(), description: "change output mode as output(stdout/stderr set.).".to_string() },
          // change interval
