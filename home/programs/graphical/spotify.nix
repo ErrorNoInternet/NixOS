@@ -24,6 +24,7 @@ in {
       enabledExtensions = with spicePkgs.extensions; [
         adblock
         fullAppDisplay
+        lyrics-plus
         volumePercentage
       ];
 
