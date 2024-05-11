@@ -16,6 +16,8 @@ in {
     inputs.agenix.nixosModules.default
   ];
 
+  nixpkgs.config.contentAddressedByDefault = true;
+
   nix = {
     settings = {
       auto-optimise-store = true;
