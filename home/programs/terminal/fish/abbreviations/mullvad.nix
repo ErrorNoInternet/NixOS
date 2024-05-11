@@ -7,7 +7,7 @@
     mll = "mullvad relay set location";
     mlr = "mullvad reconnect -w";
     mls = "mullvad status -v";
-    mlsl = "mullvad status listen";
+    mlsl = "mullvad status -v listen";
     mlst = "mullvad split-tunnel";
     mlsta = "mullvad split-tunnel add";
     mlstc = "mullvad split-tunnel clear";

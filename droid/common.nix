@@ -44,6 +44,8 @@
   environment = {
     packages = with pkgs;
       [
+        cowsay
+        figlet
         gawk
         glibc
         gnugrep
@@ -55,6 +57,7 @@
         iproute2
         kbd
         less
+        lolcat
         nano
         ncurses
         neofetch

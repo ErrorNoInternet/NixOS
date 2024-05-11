@@ -119,7 +119,6 @@
     uutils-coreutils
     virt-manager
     vlc
-    vmtouch
     vscodium
     vulkan-tools
     wev

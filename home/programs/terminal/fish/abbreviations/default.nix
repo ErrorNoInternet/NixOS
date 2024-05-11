@@ -50,8 +50,8 @@
       ios = "iostat --human 1";
       ios3 = "iostat --human 3";
       iot = "sudo iotop-c";
-      psd = "pidstat --human -d 1";
-      psd3 = "pidstat --human -d 3";
+      pds = "pidstat --human -d 1";
+      pds3 = "pidstat --human -d 3";
 
       hy = "hyprctl";
     }
