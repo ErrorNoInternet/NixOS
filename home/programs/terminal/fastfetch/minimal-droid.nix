@@ -1,4 +1,3 @@
-{pkgs, ...}:
 builtins.toJSON {
   general.processingTimeout = 10000;
   logo = {
@@ -13,7 +12,6 @@ builtins.toJSON {
     keyWidth = 14;
   };
   modules = let
-    nix-store = "${pkgs.nix}/bin/nix-store";
     getprop = "/android/system/bin/linker64 /android/system/bin/getprop";
   in [
     {
@@ -31,9 +29,8 @@ builtins.toJSON {
       key = " uptime  ";
     }
     {
-      type = "command";
+      type = "packages";
       key = "󰆧 packages";
-      text = "(${nix-store} --query --requisites ~/.nix-profile | wc -l | tr -d '\n') && echo ' (nix: ~/.nix-profile)'";
     }
     {
       type = "memory";

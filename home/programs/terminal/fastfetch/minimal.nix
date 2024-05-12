@@ -1,4 +1,3 @@
-{pkgs, ...}:
 builtins.toJSON {
   general.processingTimeout = 10000;
   logo = {
@@ -12,9 +11,7 @@ builtins.toJSON {
     separator = " ";
     keyWidth = 14;
   };
-  modules = let
-    nix-store = "${pkgs.nix}/bin/nix-store";
-  in [
+  modules = [
     {
       type = "os";
       key = " system  ";
@@ -30,9 +27,8 @@ builtins.toJSON {
       key = " uptime  ";
     }
     {
-      type = "command";
+      type = "packages";
       key = "󰆧 packages";
-      text = "(${nix-store} --query --requisites /run/current-system | wc -l | tr -d '\n') && echo ' (nix: /run/current-system)'";
     }
     {
       type = "memory";
