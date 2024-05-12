@@ -80,8 +80,16 @@ in {
       };
     };
 
-    programs.fish.shellAliases = attrsets.optionalAttrs (system == "x86_64-linux") {
-      objdump = "objdump -M intel";
+    programs.fish = {
+      shellAliases = attrsets.optionalAttrs (system == "x86_64-linux") {
+        objdump = "objdump -M intel";
+      };
+
+      interactiveShellInit = ''
+        function scc
+          command scc --no-cocomo $argv | head -c-1
+        end
+      '';
     };
   };
 }
