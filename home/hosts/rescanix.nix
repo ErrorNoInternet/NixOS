@@ -73,6 +73,7 @@
     kdenlive
     kdiskmark
     kexec-tools
+    libeatmydata
     libva-utils
     linuxPackages_latest.perf
     lm_sensors
