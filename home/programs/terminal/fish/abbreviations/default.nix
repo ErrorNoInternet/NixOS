@@ -52,6 +52,8 @@
       iot = "sudo iotop-c";
       pds = "pidstat --human -d 1";
       pds3 = "pidstat --human -d 3";
+      spds = "sudo pidstat --human -d 1";
+      spds3 = "sudo pidstat --human -d 3";
 
       hy = "hyprctl";
     }
