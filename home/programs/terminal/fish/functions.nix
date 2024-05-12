@@ -138,10 +138,7 @@
 
         set -e LUKS_PASSWORD
 
-        echo /dev/mapper/luks_btank-data0 | sudo tee /sys/fs/bcache/register > /dev/null
-        echo /dev/mapper/luks_btank-cache0 | sudo tee /sys/fs/bcache/register > /dev/null
-
-        sudo mount -o compress=zstd /dev/bcache0 /mnt/data
+        sudo mount /mnt/data
       end
     ''
     + lib.strings.optionalString config.flags.isNixOnDroid ''

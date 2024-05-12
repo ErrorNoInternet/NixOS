@@ -153,4 +153,10 @@
   };
 
   environment.systemPackages = [pkgs.snapper];
+
+  fileSystems."/mnt/data" = {
+    device = "/dev/bcache0";
+    fsType = "btrfs";
+    options = ["noauto" "compress=zstd"];
+  };
 }
