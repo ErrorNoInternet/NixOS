@@ -34,8 +34,8 @@
     arp-scan
     binsort
     binwalk
-    brave
     btrfs-heatmap
+    chromium
     clamtk
     cmake
     cowsay
