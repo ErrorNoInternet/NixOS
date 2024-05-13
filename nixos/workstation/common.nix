@@ -24,7 +24,7 @@ in {
 
       configurationLimit = 100;
     };
-    timeout = 3;
+    timeout = 1;
   };
 
   nixos.wireless.enable = true;
