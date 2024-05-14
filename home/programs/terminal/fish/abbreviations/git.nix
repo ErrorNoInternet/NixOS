@@ -20,6 +20,7 @@
     gapl = "git apply";
     gapl3 = "git apply -3";
     gb = "git branch";
+    gba = "git branch --all";
     gbd = "git branch -d";
     gbD = "git branch -D";
     gbl = "git blame";
