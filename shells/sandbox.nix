@@ -25,6 +25,7 @@
         croc
         curl
         git
+        openssh
         strace
         which
       ];
