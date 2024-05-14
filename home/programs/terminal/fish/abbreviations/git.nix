@@ -100,5 +100,7 @@
     gss = "git show -m --stat";
     gst = "git status";
     gsw = "git switch -";
+    gt = "git tag";
+    gtd = "git tag -d";
   };
 }
