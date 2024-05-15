@@ -37,7 +37,6 @@
     btrfs-heatmap
     chromium
     clamtk
-    cmake
     cowsay
     cpu-x
     ddrescue

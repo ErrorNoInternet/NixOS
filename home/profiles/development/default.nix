@@ -40,6 +40,7 @@ in {
 
         clang
         clang-tools
+        cmake
         gdb
         glibc.static
         libllvm
