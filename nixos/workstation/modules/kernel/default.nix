@@ -34,7 +34,6 @@ in {
 
     version = mkOption {
       default =
-        lib.versions.majorMinor
         cfg.packages.content.kernel.version
         or cfg.packages.kernel.version;
     };
