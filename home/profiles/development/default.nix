@@ -68,6 +68,7 @@ in {
 
         gnumake
         go
+        hyperfine
         linuxPackages_latest.perf
         man-pages
         onefetch

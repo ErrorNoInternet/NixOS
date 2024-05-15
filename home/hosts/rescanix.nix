@@ -61,7 +61,6 @@
     gparted
     gptfdisk
     hashcat
-    hyperfine
     hyprpicker
     imagemagick
     inputs'.disko.packages.default
