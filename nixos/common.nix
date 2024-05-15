@@ -19,7 +19,11 @@ in {
   nix = {
     settings = {
       auto-optimise-store = true;
-      experimental-features = ["nix-command" "flakes"];
+      experimental-features = [
+        "nix-command"
+        "flakes"
+        "ca-derivations"
+      ];
       flake-registry = "";
       log-lines = 500;
       show-trace = true;
@@ -42,6 +46,7 @@ in {
     kernel.sysctl = {
       "vm.page-cluster" = 0;
       "vm.swappiness" = 180;
+      "vm.watermark_boost_factor" = 0;
     };
 
     tmp = {

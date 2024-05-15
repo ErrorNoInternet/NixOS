@@ -28,7 +28,7 @@
     nixPath = ["nixpkgs=${inputs.nixpkgs}"];
 
     extraOptions = ''
-      experimental-features = nix-command flakes
+      experimental-features = nix-command flakes ca-derivations
       flake-registry =
       log-lines = 500
       show-trace = true
@@ -44,6 +44,8 @@
   environment = {
     packages = with pkgs;
       [
+        cowsay
+        figlet
         gawk
         glibc
         gnugrep
@@ -55,6 +57,7 @@
         iproute2
         kbd
         less
+        lolcat
         nano
         ncurses
         neofetch

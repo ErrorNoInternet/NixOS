@@ -6,11 +6,13 @@
   ...
 }:
 self.lib.derivations.c.optimizeAll host (tmux.overrideAttrs {
+  version = "3.5-next";
+
   src = fetchFromGitHub {
     owner = "tmux";
     repo = "tmux";
-    rev = "3c3643f580ca718a5f6bbeea81abeb0a8bbdb131";
-    hash = "sha256-IfNBlxRcGICztKmACA7Vx9gaEVBI2UWf5qXWZ9H2+70=";
+    rev = "3823fa2c577d440649a84af660e4d3b0c095d248";
+    hash = "sha256-L/Mgzl95RxePUuZt+XgmhTpU1TPJmGUgJcWooAgcdQ0=";
   };
   patches = [];
 })

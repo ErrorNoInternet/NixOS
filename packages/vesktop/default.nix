@@ -9,6 +9,6 @@ vesktop.overrideAttrs (old: {
     ];
 
   pnpmDeps = old.pnpmDeps.overrideAttrs {
-    outputHash = "sha256-m0fwKKwgVCQgB3ypvfDOUt7fqKtayNWTKIN0YUiMfOE=";
+    outputHash = "sha256-I7Hkyuh2HBYNBXYEauQocBrkWmP2CsFS0PiLkeDYrF8=";
   };
 })

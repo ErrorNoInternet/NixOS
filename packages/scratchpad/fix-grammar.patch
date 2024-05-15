@@ -1,7 +1,16 @@
 diff --git a/scratchpad b/scratchpad
-index 4cf92b5..cc6d975 100755
+index 4cf92b5..6192ba5 100755
 --- a/scratchpad
 +++ b/scratchpad
+@@ -103,7 +103,7 @@ getBack() {
+   _current_workspace="$(hyprctl monitors -j | jq '.[] | select(.focused==true)' | jq -j '.activeWorkspace.name')"
+ 
+   [ -z "$_current_workspace" ] && {
+-    notify "Scratchpad" "Some Error Occured while getting current workspace."
++    notify "Scratchpad" "An error occurred while getting current workspace"
+     exit 1
+   }
+ 
 @@ -117,7 +117,7 @@ getBack() {
        -e 's/]//g')
  

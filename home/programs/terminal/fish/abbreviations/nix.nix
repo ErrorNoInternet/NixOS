@@ -41,9 +41,9 @@
     nre = "nix repl";
     nrl = "nix run -L";
     ns = "nix shell";
-    nS = "nix-shell --run fish";
+    nS = "nix-shell --run fish -p";
     nsl = "nix shell -L";
-    nSS = "nix-shell --run fish -p";
+    nSS = "nix-shell --run fish";
     nst = "nix-store";
     nstq = "nix-store -q";
     nstr = "nix-store -r";

@@ -20,6 +20,7 @@
     gapl = "git apply";
     gapl3 = "git apply -3";
     gb = "git branch";
+    gba = "git branch --all";
     gbd = "git branch -d";
     gbD = "git branch -D";
     gbl = "git blame";
@@ -54,10 +55,12 @@
     gds = "git diff --staged";
     gdsc = "git diff --staged --compact-summary";
     gf = "git fetch origin";
+    gft = "git fetch origin tag";
     gfu = "git fetch --unshallow";
     gl = "git log";
     glf = "git log --follow";
     gls = "git log -S";
+    glsr = "git ls-remote";
     gm = "git merge";
     gma = "git merge --abort";
     gmc = "git merge --continue";
@@ -97,5 +100,7 @@
     gss = "git show -m --stat";
     gst = "git status";
     gsw = "git switch -";
+    gt = "git tag";
+    gtd = "git tag -d";
   };
 }

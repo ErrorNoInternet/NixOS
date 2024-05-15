@@ -3,7 +3,7 @@
   lib,
   pkgs,
   ...
-} @ args: let
+}: let
   cfg = config.customPrograms.fastfetch;
   inherit (lib) mkEnableOption mkIf;
 in {
@@ -16,8 +16,8 @@ in {
     xdg.configFile = let
       escape = string: builtins.replaceStrings ["\\\\"] ["\\"] string;
     in {
-      "fastfetch/minimal.jsonc".text = escape (import ./minimal.nix args);
-      "fastfetch/minimal-droid.jsonc".text = escape (import ./minimal-droid.nix args);
+      "fastfetch/minimal.jsonc".text = escape (import ./minimal.nix);
+      "fastfetch/minimal-droid.jsonc".text = escape (import ./minimal-droid.nix);
       "fastfetch/config.jsonc".text = builtins.toJSON {
         general.processingTimeout = 10000;
         modules = [

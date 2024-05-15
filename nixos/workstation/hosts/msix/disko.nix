@@ -20,6 +20,8 @@
 
         luks = {
           size = "100%";
+          label = "root";
+
           content = {
             type = "luks";
 
@@ -49,7 +51,7 @@
                   mountOptions = ["compress=zstd"];
                 };
                 "@var" = {
-                  mountpoint = "/home";
+                  mountpoint = "/var";
                   mountOptions = ["compress=zstd"];
                 };
                 "@nix" = {

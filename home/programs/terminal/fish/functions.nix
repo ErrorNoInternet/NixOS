@@ -78,13 +78,8 @@
         end
       end
 
-
       function btrfs-map-physical
         sudo ${pkgs.btrfs-map-physical}/bin/btrfs-map-physical $argv | column -ts\t
-      end
-
-      function scc
-        command scc --no-cocomo --ci $argv | head -c-1
       end
 
       function ggr -d "fancy git history graph"

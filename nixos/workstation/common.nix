@@ -25,7 +25,7 @@ in {
 
       configurationLimit = 100;
     };
-    timeout = 3;
+    timeout = 1;
   };
 
   nixos.wireless.enable = true;
@@ -71,16 +71,20 @@ in {
     '';
 
     systemPackages = with pkgs; [
-      compsize
-      cryptsetup
-      duperemove
       glxinfo
       home-manager
       intel-gpu-tools
       mangohud
-      parted
       pulseaudio
       qalculate-gtk
+
+      btdu
+      compsize
+      cryptsetup
+      duperemove
+      parted
+      python3Packages.btrfs
+      vmtouch
     ];
   };
 

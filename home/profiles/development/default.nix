@@ -40,11 +40,13 @@ in {
 
         clang
         clang-tools
+        cmake
         gdb
         glibc.static
         libllvm
         lldb
         pkg-config
+        valgrind
 
         (python3.withPackages (ps:
           with ps; [
@@ -60,12 +62,14 @@ in {
         deadnix
         hydra-check
         nix-output-monitor
+        nix-top
         nix-tree
         nvd
         statix
 
         gnumake
         go
+        hyperfine
         linuxPackages_latest.perf
         man-pages
         onefetch
@@ -78,8 +82,16 @@ in {
       };
     };
 
-    programs.fish.shellAliases = attrsets.optionalAttrs (system == "x86_64-linux") {
-      objdump = "objdump -M intel";
+    programs.fish = {
+      shellAliases = attrsets.optionalAttrs (system == "x86_64-linux") {
+        objdump = "objdump -M intel";
+      };
+
+      interactiveShellInit = ''
+        function scc
+          command scc --no-cocomo $argv | head -c-1
+        end
+      '';
     };
   };
 }

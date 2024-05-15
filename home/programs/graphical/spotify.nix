@@ -27,6 +27,10 @@ in {
         volumePercentage
       ];
 
+      enabledCustomApps = with spicePkgs.apps; [
+        lyrics-plus
+      ];
+
       theme = spicePkgs.themes.text;
       colorScheme = config.colors.schemeName;
     };

@@ -31,6 +31,7 @@ in {
       laT = "ls -laT";
       li = "ls -li";
       ll = "ls -l";
+      lM = "ls -lM";
       ls = "LS_COLORS= eza --icons";
       lT = "ls -lT";
       lTZ = "ls -lTZ";

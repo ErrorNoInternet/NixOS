@@ -1,7 +1,11 @@
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
+    btdu
     compsize
+    cryptsetup
     duperemove
+    parted
+    python3Packages.btrfs
     smartmontools
     snapper
     xxd
@@ -10,7 +14,7 @@
   fileSystems."/mnt/drive3" = {
     device = "/dev/disk/by-uuid/6a03c0f9-5c76-4a08-9091-aba7239a6429";
     fsType = "btrfs";
-    options = ["subvol=root" "relatime" "x-systemd.automount" "noauto"];
+    options = ["relatime" "x-systemd.automount" "noauto"];
   };
 
   services = {

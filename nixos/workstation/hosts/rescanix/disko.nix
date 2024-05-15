@@ -20,6 +20,8 @@
 
         root = {
           size = "100%";
+          label = "root";
+
           content = {
             type = "btrfs";
             extraArgs = [
@@ -37,7 +39,7 @@
                 mountOptions = ["compress=zstd"];
               };
               "@var" = {
-                mountpoint = "/home";
+                mountpoint = "/var";
                 mountOptions = ["compress=zstd"];
               };
               "@nix" = {

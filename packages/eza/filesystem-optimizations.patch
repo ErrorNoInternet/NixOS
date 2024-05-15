@@ -1,8 +1,8 @@
 diff --git a/src/fs/file.rs b/src/fs/file.rs
-index ca0be62b..65ab134c 100644
+index ba2703d9..0ca7522e 100644
 --- a/src/fs/file.rs
 +++ b/src/fs/file.rs
-@@ -664,6 +664,8 @@ impl<'dir> File<'dir> {
+@@ -666,6 +666,8 @@ impl<'dir> File<'dir> {
      /// based on directory size alone.
      #[cfg(unix)]
      pub fn is_empty_dir(&self) -> bool {
@@ -11,7 +11,7 @@ index ca0be62b..65ab134c 100644
          if self.is_directory() {
              if self.metadata.nlink() > 2 {
                  // Directories will have a link count of two if they do not have any subdirectories.
-@@ -673,6 +675,24 @@ impl<'dir> File<'dir> {
+@@ -675,6 +677,24 @@ impl<'dir> File<'dir> {
                  // has subdirectories.
                  false
              } else {
@@ -27,7 +27,7 @@ index ca0be62b..65ab134c 100644
 +                    if libc::statfs(c_path.as_ptr().cast::<libc::c_char>(), &mut statfs_res) == 0 {
 +                        match statfs_res.f_type {
 +                            0x9123_683e => return self.metadata.size() == 0, // BTRFS
-+                            0x2fc1_2fc1 => return self.metadata.size() <= 2, // ZFS
++                            0x2fc1_2fc1 => return self.metadata.size() == 2, // ZFS
 +                            _ => (),
 +                        };
 +                    };
