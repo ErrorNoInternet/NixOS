@@ -55,14 +55,6 @@ in {
       }
 
       {
-        name = "BORE CPU scheduler";
-        patch =
-          if kernelVersion == "6.6"
-          then ./files/linux6.6.y-bore5.1.0.patch
-          else ./files/linux6.8.y-bore5.1.0.patch;
-      }
-
-      {
         name = "fq_codel packet scheduling";
         patch = null;
         extraStructuredConfig = with lib.kernel; {
@@ -70,6 +62,15 @@ in {
           DEFAULT_FQ_CODEL = yes;
           DEFAULT_NET_SCH = freeform "fq_codel";
         };
+      }
+    ]
+    ++ optionals (versionAtLeast kernelVersion "6.6") [
+      {
+        name = "BORE CPU scheduler";
+        patch =
+          if kernelVersion == "6.6"
+          then ./files/linux6.6.y-bore5.1.0.patch
+          else ./files/linux6.8.y-bore5.1.0.patch;
       }
     ]
     ++ optionals (versionAtLeast kernelVersion "6.8") [
