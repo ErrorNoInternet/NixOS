@@ -22,12 +22,12 @@ in {
       {
         name = "Lower latency";
         patch = null;
-        extraStructuredConfig = with lib.kernel; {
+        extraStructuredConfig = with lib.kernel;
+        with lib.kernel.whenHelpers kernelVersion; {
           HZ = freeform "1000";
           HZ_1000 = yes;
 
           PREEMPT = mkOverride 60 yes;
-          PREEMPT_BUILD = mkOverride 60 yes;
           PREEMPT_COUNT = mkOverride 60 yes;
           PREEMPT_VOLUNTARY = mkOverride 60 no;
           PREEMPTION = mkOverride 60 yes;
@@ -47,7 +47,7 @@ in {
           RCU_BOOST = yes;
           RCU_BOOST_DELAY = freeform "500";
           RCU_NOCB_CPU = yes;
-          RCU_LAZY = yes;
+          RCU_LAZY = whenAtLeast "6.2" yes;
         };
       }
 
