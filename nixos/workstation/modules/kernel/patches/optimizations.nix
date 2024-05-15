@@ -3,12 +3,8 @@
   lib,
   ...
 }: let
-  inherit (lib) mkOverride optional optionals strings versions versionAtLeast;
-
-  kernelVersion =
-    versions.majorMinor
-    config.workstation.kernel.packages.content.kernel.version
-    or config.workstation.kernel.packages.kernel.version;
+  inherit (lib) mkOverride optional optionals strings versionAtLeast;
+  kernelVersion = config.workstation.kernel.version;
 in {
   boot.kernelPatches =
     [
