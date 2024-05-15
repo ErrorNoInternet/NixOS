@@ -4,6 +4,7 @@
   ...
 }: let
   inherit (lib) mkOverride optional optionals strings versionAtLeast;
+  inherit (lib.versions) majorMinor;
   kernelVersion = config.workstation.kernel.version;
 in {
   boot.kernelPatches =
@@ -64,8 +65,10 @@ in {
       {
         name = "BORE CPU scheduler";
         patch =
-          if kernelVersion == "6.6"
-          then ./files/6.6_bore5.1.0.patch
+          if kernelVersion == "6.6.30"
+          then ./files/6.6.30_bore5.1.0.patch
+          else if (majorMinor kernelVersion) == "6.6"
+          then ./files/6.6.y_bore5.1.0.patch
           else ./files/6.8_bore5.1.0.patch;
       }
     ]
