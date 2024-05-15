@@ -47,7 +47,17 @@ in {
     };
   };
 
-  specialisation.lts-kernel = self.lib.nixos.mkSpecialisation "lts-kernel" {
-    workstation.zfs.kernelPackages = config.workstation.kernel.availablePackages.lts;
+  specialisation = {
+    kernel-lts = self.lib.nixos.mkSpecialisation "kernel-lts" {
+      workstation.zfs.kernelPackages = config.workstation.kernel.availablePackages.lts;
+    };
+
+    kernel-lts-515 = self.lib.nixos.mkSpecialisation "kernel-lts-515" {
+      workstation.zfs.kernelPackages = config.workstation.kernel.availablePackages.lts-515;
+    };
+
+    kernel-lts-510 = self.lib.nixos.mkSpecialisation "kernel-lts-510" {
+      workstation.zfs.kernelPackages = config.workstation.kernel.availablePackages.lts-510;
+    };
   };
 }

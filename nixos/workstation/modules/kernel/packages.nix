@@ -18,6 +18,14 @@
       value = pkgs.linuxPackages;
     }
     {
+      name = "lts-515";
+      value = pkgs.linuxPackages_5_15;
+    }
+    {
+      name = "lts-510";
+      value = pkgs.linuxPackages_5_10;
+    }
+    {
       name = "latestZfs";
       value = config.boot.zfs.package.latestCompatibleLinuxPackages;
     }
