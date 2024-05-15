@@ -59,13 +59,14 @@ in {
           DEFAULT_NET_SCH = freeform "fq_codel";
         };
       }
-
+    ]
+    ++ optionals (versionAtLeast kernelVersion "6.6") [
       {
         name = "BORE CPU scheduler";
         patch =
           if kernelVersion == "6.6"
-          then ./files/6.6-bore5.1.0.patch
-          else ./files/6.8-bore5.1.0.patch;
+          then ./files/6.6_bore5.1.0.patch
+          else ./files/6.8_bore5.1.0.patch;
       }
     ]
     ++ optionals (versionAtLeast kernelVersion "6.8") [
