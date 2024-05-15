@@ -31,6 +31,13 @@ in {
         type = types.bool;
       };
     };
+
+    version = mkOption {
+      default =
+        lib.versions.majorMinor
+        cfg.packages.content.kernel.version
+        or cfg.packages.kernel.version;
+    };
   };
 
   config.boot.kernelPackages = cfg.packages;
