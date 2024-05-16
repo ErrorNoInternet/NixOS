@@ -1,0 +1,345 @@
+diff --git a/Makefile b/Makefile
+index 374f59b9..2a75b17d 100644
+--- a/Makefile
++++ b/Makefile
+@@ -239,8 +239,8 @@ cmds_objects = cmds/subvolume.o cmds/subvolume-list.o \
+ 	       cmds/restore.o cmds/rescue.o cmds/rescue-chunk-recover.o \
+ 	       cmds/rescue-super-recover.o \
+ 	       cmds/property.o cmds/filesystem-usage.o cmds/inspect-dump-tree.o \
+-	       cmds/inspect-dump-super.o cmds/inspect-tree-stats.o cmds/filesystem-du.o \
+-	       cmds/reflink.o \
++	       cmds/inspect-dump-super.o cmds/inspect-dump-csum.o cmds/inspect-tree-stats.o \
++	       cmds/filesystem-du.o cmds/reflink.o \
+ 	       mkfs/common.o check/mode-common.o check/mode-lowmem.o \
+ 	       common/clear-cache.o
+ 
+diff --git a/btrfs-completion b/btrfs-completion
+index 1d224087..8ca5cdb0 100644
+--- a/btrfs-completion
++++ b/btrfs-completion
+@@ -29,7 +29,7 @@ _btrfs()
+ 	commands_device='scan add delete remove ready stats usage'
+ 	commands_scrub='start cancel resume status'
+ 	commands_rescue='chunk-recover super-recover zero-log fix-device-size create-control-device clear-uuid-tree clear-ino-cache clear-space-cache'
+-	commands_inspect_internal='inode-resolve logical-resolve subvolid-resolve rootid min-dev-size dump-tree dump-super tree-stats map-swapfile'
++	commands_inspect_internal='inode-resolve logical-resolve subvolid-resolve rootid min-dev-size dump-tree dump-super dump-csum tree-stats map-swapfile'
+ 	commands_property='get set list'
+ 	commands_quota='enable disable rescan'
+ 	commands_qgroup='assign remove create destroy show limit clear-stale'
+@@ -128,7 +128,7 @@ _btrfs()
+ 						_btrfs_mnts
+ 						return 0
+ 						;;
+-					dump-tree|dump-super|rootid|inode-resolve)
++					dump-tree|dump-super|dump-csum|rootid|inode-resolve)
+ 						_filedir
+ 						return 0
+ 						;;
+diff --git a/cmds/commands.h b/cmds/commands.h
+index c19e664a..8d491c8f 100644
+--- a/cmds/commands.h
++++ b/cmds/commands.h
+@@ -142,6 +142,7 @@ DECLARE_COMMAND(check);
+ DECLARE_COMMAND(inspect);
+ DECLARE_COMMAND(inspect_dump_super);
+ DECLARE_COMMAND(inspect_dump_tree);
++DECLARE_COMMAND(inspect_dump_csum);
+ DECLARE_COMMAND(inspect_tree_stats);
+ DECLARE_COMMAND(property);
+ DECLARE_COMMAND(send);
+diff --git a/cmds/inspect-dump-csum.c b/cmds/inspect-dump-csum.c
+new file mode 100644
+index 00000000..6ee5ed61
+--- /dev/null
++++ b/cmds/inspect-dump-csum.c
+@@ -0,0 +1,243 @@
++/*
++ * Copyright (C) 2019 SUSE. All rights reserved.
++ *
++ * This program is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU General Public
++ * License v2 as published by the Free Software Foundation.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ * General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public
++ * License along with this program; if not, write to the
++ * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
++ * Boston, MA 021110-1307, USA.
++ */
++
++#include <linux/fiemap.h>
++#include <linux/fs.h>
++
++#include <sys/types.h>
++#include <sys/ioctl.h>
++
++#include <stdlib.h>
++#include <stdio.h>
++#include <errno.h>
++#include <unistd.h>
++#include <string.h>
++#include <fcntl.h>
++#include <getopt.h>
++
++#include "cmds/commands.h"
++#include "common/help.h"
++#include "common/utils.h"
++#include "kerncompat.h"
++#include "kernel-shared/ctree.h"
++#include "kernel-shared/disk-io.h"
++#include "kernel-shared/messages.h"
++#include "sys/ioctl.h"
++
++static bool debug = false;
++
++static int btrfs_lookup_csum_for_extent(int fd, struct btrfs_super_block *sb,
++					struct fiemap_extent *fe)
++{
++	struct btrfs_ioctl_search_args_v2 *search;
++	struct btrfs_ioctl_search_key *sk;
++	const int bufsz = 1024;
++	char buf[bufsz], *bp;
++	unsigned int off = 0;
++	const int csum_size = btrfs_super_csum_size(sb);
++	const int sector_size = btrfs_super_sectorsize(sb);
++	int ret, i, j;
++	u64 phys = fe->fe_physical;
++	u64 needle = phys;
++	u64 pending_csum_count = fe->fe_length / sector_size;
++
++	memset(buf, 0, sizeof(buf));
++	search = (struct btrfs_ioctl_search_args_v2 *)buf;
++	sk = &search->key;
++
++again:
++	if (debug)
++		printf(
++"Looking up checksums for extent at physial offset: %llu (searching at %llu), looking for %llu csums\n",
++		       phys, needle, pending_csum_count);
++
++	sk->tree_id = BTRFS_CSUM_TREE_OBJECTID;
++	sk->min_objectid = BTRFS_EXTENT_CSUM_OBJECTID;
++	sk->max_objectid = BTRFS_EXTENT_CSUM_OBJECTID;
++	sk->max_type = BTRFS_EXTENT_CSUM_KEY;
++	sk->min_type = BTRFS_EXTENT_CSUM_KEY;
++	sk->min_offset = needle;
++	sk->max_offset = (u64)-1;
++	sk->max_transid = (u64)-1;
++	sk->nr_items = 1;
++	search->buf_size = bufsz - sizeof(*search);
++
++	ret = ioctl(fd, BTRFS_IOC_TREE_SEARCH_V2, search);
++	if (ret < 0)
++		return ret;
++
++	/*
++	 * If we don't find the csum item at @needle go back by @sector_size and
++	 * retry until we've found it.
++	 */
++	if (sk->nr_items == 0) {
++		needle -= sector_size;
++		goto again;
++	}
++
++
++	bp = (char *) search->buf;
++
++	for (i = 0; i < sk->nr_items; i++) {
++		struct btrfs_ioctl_search_header *sh;
++		u64 csums_in_item;
++
++		sh = (struct btrfs_ioctl_search_header *) (bp + off);
++		off += sizeof(*sh);
++
++		csums_in_item = btrfs_search_header_len(sh) / csum_size;
++		csums_in_item = min(csums_in_item, pending_csum_count);
++
++		for (j = 0; j < csums_in_item; j++) {
++			struct btrfs_csum_item *csum_item;
++
++			csum_item = (struct btrfs_csum_item *)
++						(bp + off + j * csum_size);
++
++			printf("Offset: %llu, checksum: 0x%08x\n",
++			       phys + j * sector_size, *(u32 *)csum_item);
++		}
++
++		off += btrfs_search_header_len(sh);
++		pending_csum_count -= csums_in_item;
++
++	}
++
++	return ret;
++}
++
++static int btrfs_get_extent_csum(int fd, struct btrfs_super_block *sb)
++{
++	struct fiemap *fiemap, *tmp;
++	size_t ext_size;
++	int ret, i;
++
++	fiemap = calloc(1, sizeof(*fiemap));
++	if (!fiemap)
++		return -ENOMEM;
++
++	fiemap->fm_length = ~0;
++
++	ret = ioctl(fd, FS_IOC_FIEMAP, fiemap);
++	if (ret)
++		goto free_fiemap;
++
++	ext_size = fiemap->fm_mapped_extents * sizeof(struct fiemap_extent);
++
++	tmp = realloc(fiemap, sizeof(*fiemap) + ext_size);
++	if (!tmp) {
++		ret = -ENOMEM;
++		goto free_fiemap;
++	}
++
++	fiemap = tmp;
++	fiemap->fm_extent_count = fiemap->fm_mapped_extents;
++	fiemap->fm_mapped_extents = 0;
++
++	ret = ioctl(fd, FS_IOC_FIEMAP, fiemap);
++	if (ret)
++		goto free_fiemap;
++
++	for (i = 0; i < fiemap->fm_mapped_extents; i++) {
++
++		ret = btrfs_lookup_csum_for_extent(fd, sb,
++						   &fiemap->fm_extents[i]);
++		if (ret)
++			break;
++	}
++
++
++free_fiemap:
++	free(fiemap);
++	return ret;
++}
++
++static const char * const cmd_inspect_dump_csum_usage[] = {
++	"btrfs inspect-internal dump-csum <path> <device>",
++	"Dump checksums for a given file",
++	"",
++	OPTLINE("-d|--debug", "Be more verbose"),
++	NULL
++};
++
++static int cmd_inspect_dump_csum(const struct cmd_struct *cmd,
++			  int argc, char **argv)
++{
++	struct btrfs_super_block sb;
++	char *filename;
++	char *device;
++	int fd;
++	int devfd;
++	int ret;
++
++	optind = 0;
++
++	while (1) {
++		static const struct option longopts[] = {
++			{ "debug", no_argument, NULL, 'd' },
++			{ NULL, 0, NULL, 0 }
++		};
++
++		int opt = getopt_long(argc, argv, "d", longopts, NULL);
++		if (opt < 0)
++			break;
++
++		switch (opt) {
++		case 'd':
++			debug = true;
++			break;
++		default:
++			usage_unknown_option(cmd, argv);
++		}
++	}
++
++	if (check_argc_exact(argc - optind, 2))
++		return 1;
++
++	filename = argv[optind];
++	device = argv[optind + 1];
++
++	fd = open(filename, O_RDONLY);
++	if (fd < 0) {
++		error("cannot open file %s:%m", filename);
++		return -errno;
++	}
++
++	devfd = open(device, O_RDONLY);
++	if (devfd < 0) {
++		error("cannot open device %s:%m", device);
++		ret = -errno;
++		goto out_close;
++	}
++	load_sb(devfd, btrfs_sb_offset(0), &sb, sizeof(sb));
++	close(devfd);
++
++	if (btrfs_super_magic(&sb) != BTRFS_MAGIC) {
++		ret = -EINVAL;
++		error("bad magic on superblock on %s", device);
++		goto out_close;
++	}
++
++	ret = btrfs_get_extent_csum(fd, &sb);
++	if (ret)
++		error("checsum lookup for file %s failed", filename);
++out_close:
++	close(fd);
++	return ret;
++}
++DEFINE_SIMPLE_COMMAND(inspect_dump_csum, "dump-csum");
+diff --git a/cmds/inspect.c b/cmds/inspect.c
+index fd2fb598..b8f18a3f 100644
+--- a/cmds/inspect.c
++++ b/cmds/inspect.c
+@@ -1622,6 +1622,7 @@ static const struct cmd_group inspect_cmd_group = {
+ 		&cmd_struct_inspect_min_dev_size,
+ 		&cmd_struct_inspect_dump_tree,
+ 		&cmd_struct_inspect_dump_super,
++		&cmd_struct_inspect_dump_csum,
+ 		&cmd_struct_inspect_tree_stats,
+ #if EXPERIMENTAL
+ 		&cmd_struct_inspect_list_chunks,
+diff --git a/common/utils.c b/common/utils.c
+index 3ca7cff3..81338b43 100644
+--- a/common/utils.c
++++ b/common/utils.c
+@@ -1399,3 +1399,17 @@ out:
+ 
+ 	return ret;
+ }
++
++int load_sb(int fd, u64 bytenr, struct btrfs_super_block *sb, size_t size)
++{
++	int ret;
++
++	ret = pread64(fd, sb, size, bytenr);
++	if (ret != size) {
++		if (ret == 0 && errno == 0)
++			return -EINVAL;
++
++		return -errno;
++	}
++	return 0;
++}
+diff --git a/common/utils.h b/common/utils.h
+index 56d00ed8..ee62d82c 100644
+--- a/common/utils.h
++++ b/common/utils.h
+@@ -87,6 +87,8 @@ unsigned long total_memory(void);
+ void print_device_info(struct btrfs_device *device, char *prefix);
+ void print_all_devices(struct list_head *devices);
+ 
++int load_sb(int fd, u64 bytenr, struct btrfs_super_block *sb, size_t size);
++
+ #define BTRFS_BCONF_UNSET	-1
+ #define BTRFS_BCONF_QUIET	 0
+ /*
