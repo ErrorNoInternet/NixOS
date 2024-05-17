@@ -72,6 +72,7 @@
     kdiskmark
     kexec-tools
     libeatmydata
+    libfaketime
     libva-utils
     linuxPackages_latest.perf
     lm_sensors
