@@ -82,6 +82,7 @@
     grh = "git reset HEAD";
     grhh = "git reset HEAD~";
     grm = "git remote";
+    grma = "git remote add origin";
     grmp = "git remote prune origin";
     grms = "git remote show origin";
     grmsu = "git remote set-url origin";
