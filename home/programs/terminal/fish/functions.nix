@@ -102,7 +102,7 @@
       function pmem -d "display virtual memory information about a process"
         for pid in (echo $argv | sed "s| |\n|g")
           echo $pid
-          grep -E "Vm(RSS|Swap)" /proc/$pid/status | sed "s| ||g; s|kB||g" | hsize -fk r "\d+"
+          grep -E "Vm(RSS|Swap)" /proc/$pid/status | sed "s| ||g; s|kB||g" | hsize -fk r -r"\d+"
         end
       end
 

@@ -1075,11 +1075,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1715335390,
-        "narHash": "sha256-CcApSO3i7es5T/gbkOO0hON5jKtOB3R6fadPtA31NBU=",
+        "lastModified": 1715784470,
+        "narHash": "sha256-txv5+RXCnm4f9sm8ROuaHbkAGKvN7dDhpYVX6j6yscw=",
         "owner": "ErrorNoInternet",
         "repo": "overmask",
-        "rev": "c81ce68d613bc8e3d68a4d196065f5058084e3b1",
+        "rev": "18f76914b0d347e817da396ffd5cf932de9cc36b",
         "type": "github"
       },
       "original": {
