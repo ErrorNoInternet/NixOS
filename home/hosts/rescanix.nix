@@ -99,6 +99,7 @@
     radeontop
     rowhammer-test
     rpm
+    ruapu
     rustscan
     sambaFull
     savehw
