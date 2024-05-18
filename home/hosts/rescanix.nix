@@ -72,6 +72,7 @@
     kdiskmark
     kexec-tools
     libeatmydata
+    libfaketime
     libva-utils
     linuxPackages_latest.perf
     lm_sensors
@@ -98,6 +99,7 @@
     radeontop
     rowhammer-test
     rpm
+    ruapu
     rustscan
     sambaFull
     savehw
