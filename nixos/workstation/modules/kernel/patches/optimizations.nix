@@ -79,8 +79,8 @@ in {
       }
 
       {
-        name = "aes-xts updates";
-        patch = ./files/aes-xts-updates.patch;
+        name = "aes updates";
+        patch = ./files/aes-updates.patch;
       }
     ];
 }
