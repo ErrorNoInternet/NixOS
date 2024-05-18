@@ -49,7 +49,7 @@ index c19e664a..8d491c8f 100644
  DECLARE_COMMAND(send);
 diff --git a/cmds/inspect-dump-csum.c b/cmds/inspect-dump-csum.c
 new file mode 100644
-index 00000000..6ee5ed61
+index 00000000..8e607e51
 --- /dev/null
 +++ b/cmds/inspect-dump-csum.c
 @@ -0,0 +1,243 @@
@@ -269,13 +269,13 @@ index 00000000..6ee5ed61
 +
 +	fd = open(filename, O_RDONLY);
 +	if (fd < 0) {
-+		error("cannot open file %s:%m", filename);
++		error("cannot open file %s: %m", filename);
 +		return -errno;
 +	}
 +
 +	devfd = open(device, O_RDONLY);
 +	if (devfd < 0) {
-+		error("cannot open device %s:%m", device);
++		error("cannot open device %s: %m", device);
 +		ret = -errno;
 +		goto out_close;
 +	}
