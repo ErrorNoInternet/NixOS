@@ -114,6 +114,10 @@
     source = ./slurp;
   }
   {
+    name = "strace";
+    source = ./strace;
+  }
+  {
     name = "tbw";
     source = ./tbw;
     exposeOutput = true;
