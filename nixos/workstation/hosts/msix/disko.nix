@@ -10,7 +10,8 @@
         ESP = {
           size = "1G";
           type = "EF00";
-          label = "BOOT";
+          label = "boot";
+
           content = {
             type = "filesystem";
             format = "vfat";
