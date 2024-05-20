@@ -4,6 +4,12 @@ btrfs-progs.overrideAttrs (old: {
     (old.patches or [])
     ++ [
       ./dump-csum.patch
-      ./receive-selinux.patch
+      ./remove-receive-errors.patch
+    ];
+
+  configureFlags =
+    (old.configureFlags or [])
+    ++ [
+      "--enable-experimental"
     ];
 })
