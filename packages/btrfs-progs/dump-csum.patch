@@ -49,10 +49,10 @@ index c19e664a..8d491c8f 100644
  DECLARE_COMMAND(send);
 diff --git a/cmds/inspect-dump-csum.c b/cmds/inspect-dump-csum.c
 new file mode 100644
-index 00000000..8e607e51
+index 00000000..4597ebf6
 --- /dev/null
 +++ b/cmds/inspect-dump-csum.c
-@@ -0,0 +1,243 @@
+@@ -0,0 +1,244 @@
 +/*
 + * Copyright (C) 2019 SUSE. All rights reserved.
 + *
@@ -223,7 +223,7 @@ index 00000000..8e607e51
 +}
 +
 +static const char * const cmd_inspect_dump_csum_usage[] = {
-+	"btrfs inspect-internal dump-csum <path> <device>",
++	"btrfs inspect-internal dump-csum <file> <device>",
 +	"Dump checksums for a given file",
 +	"",
 +	OPTLINE("-d|--debug", "Be more verbose"),
@@ -269,13 +269,13 @@ index 00000000..8e607e51
 +
 +	fd = open(filename, O_RDONLY);
 +	if (fd < 0) {
-+		error("cannot open file %s: %m", filename);
++		error("couldn't open file %s: %m", filename);
 +		return -errno;
 +	}
 +
 +	devfd = open(device, O_RDONLY);
 +	if (devfd < 0) {
-+		error("cannot open device %s: %m", device);
++		error("couldn't open device %s: %m", device);
 +		ret = -errno;
 +		goto out_close;
 +	}
@@ -284,13 +284,14 @@ index 00000000..8e607e51
 +
 +	if (btrfs_super_magic(&sb) != BTRFS_MAGIC) {
 +		ret = -EINVAL;
-+		error("bad magic on superblock on %s", device);
++		error("bad superblock magic on %s", device);
 +		goto out_close;
 +	}
 +
 +	ret = btrfs_get_extent_csum(fd, &sb);
 +	if (ret)
-+		error("checsum lookup for file %s failed", filename);
++		error("checksum lookup for file %s failed", filename);
++
 +out_close:
 +	close(fd);
 +	return ret;

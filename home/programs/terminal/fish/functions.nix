@@ -87,6 +87,7 @@
       end
 
       function glfzf -d "use fzf to preview git commits"
+        set SHELL fish
         git log --graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" $argv | \
           fzf --ansi --no-sort --reverse --tiebreak=index --scroll-off=5 --preview-window=right:60% \
             --preview 'function preview; set commit (echo $argv | grep -o "[a-f0-9]\{7\}"); git show -m --color=always $commit | delta --width=(tput cols); end; preview {}' \

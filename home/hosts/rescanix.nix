@@ -111,9 +111,11 @@
     sshfs
     steam-run
     superTuxKart
+    sysbench
     tbw
     testdisk
     timg
+    tor-browser
     unigine-heaven
     upx
     usbutils
