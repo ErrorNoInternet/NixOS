@@ -114,6 +114,7 @@
     tbw
     testdisk
     timg
+    tor-browser
     unigine-heaven
     upx
     usbutils
