@@ -5,6 +5,7 @@
     mld = "mullvad disconnect -w";
     mle = "mullvad-exclude";
     mll = "mullvad relay set location";
+    mlls = "mullvad relay list";
     mlr = "mullvad reconnect -w";
     mls = "mullvad status -v";
     mlsl = "mullvad status -v listen";

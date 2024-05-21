@@ -121,6 +121,7 @@
     usbutils
     util-linux
     uutils-coreutils
+    ventoy-full
     virt-manager
     vlc
     vscodium

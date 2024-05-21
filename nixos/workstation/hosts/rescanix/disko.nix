@@ -10,7 +10,7 @@
         ESP = {
           size = "512M";
           type = "EF00";
-          label = "boot";
+          label = "${config.host.name}-boot";
 
           content = {
             type = "filesystem";
@@ -21,7 +21,7 @@
 
         root = {
           size = "100%";
-          label = "root";
+          label = "${config.host.name}-root";
 
           content = {
             type = "btrfs";
