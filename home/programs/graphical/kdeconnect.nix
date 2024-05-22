@@ -46,7 +46,7 @@ in {
     programs.yazi.keymap.manager.keymap = mkIf cfg.enableYaziIntegration [
       {
         on = ["E"];
-        run = "shell --block '${pkgs.kdeconnect}/bin/kdeconnect-cli -d ${cfg.deviceId} --share \"$@\"; read'";
+        run = "shell --confirm --block '${pkgs.kdeconnect}/bin/kdeconnect-cli -d ${cfg.deviceId} --share \"$@\"; read'";
         desc = "send file to ${cfg.deviceId} using KDE Connect";
       }
     ];
