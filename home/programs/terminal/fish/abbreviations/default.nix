@@ -56,6 +56,7 @@
       spds3 = "sudo pidstat --human -d 3";
 
       hy = "hyprctl";
+      nv = "nvidia-offload";
     }
     // (let
       wf-recorder = "wf-recorder -b 0 -c h264_nvenc -p b=5M -f recording_(date \"+%Y-%m-%d_%H:%M:%S\").mp4";
