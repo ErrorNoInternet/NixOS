@@ -20,6 +20,8 @@
     printing.enable = true;
   };
 
+  programs.ssh.forwardX11 = true;
+
   networking.firewall = {
     allowedTCPPorts = [
       1010
