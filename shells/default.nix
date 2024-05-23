@@ -1,6 +1,5 @@
 {self, ...}: {
   imports = [
-    ./fhs.nix
     ./rust.nix
     ./sandbox.nix
   ];
