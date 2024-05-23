@@ -8,6 +8,10 @@
     source = ./attic;
   }
   {
+    name = "btop";
+    source = ./btop;
+  }
+  {
     name = "btrfs-map-physical";
     source = ./btrfs-map-physical;
   }
