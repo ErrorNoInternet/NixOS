@@ -12,12 +12,16 @@
         bg = "#${base00}";
         bold = true;
       };
+      RadarBackground.fg = "#${base03}";
+      RadarMark.fg = "#${base04}";
       HighlightUndo = {
         bg = "#${base03}";
         fg = "none";
       };
-      RadarBackground.fg = "#${base03}";
-      RadarMark.fg = "#${base04}";
+      HighlightRedo = {
+        bg = "#${base03}";
+        fg = "none";
+      };
 
       BufferCurrentSign = {
         fg = "#${base0D}";
