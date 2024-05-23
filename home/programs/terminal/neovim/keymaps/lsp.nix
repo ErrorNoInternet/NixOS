@@ -103,6 +103,18 @@
       {
         mode = "n";
         options.silent = true;
+        key = "<leader>ci";
+        action = "<cmd>Lspsaga incoming_calls<CR>";
+      }
+      {
+        mode = "n";
+        options.silent = true;
+        key = "<leader>co";
+        action = "<cmd>Lspsaga outgoing_calls<CR>";
+      }
+      {
+        mode = "n";
+        options.silent = true;
         key = "<leader>ca";
         action = "<cmd>lua require('crates').show_popup()<CR>";
       }
