@@ -97,6 +97,7 @@
     gshp = "git stash pop";
     gshs = "git stash show";
     gsm = "git submodule";
+    gsma = "git submodule add";
     gsmu = "git submodule update";
     gss = "git show -m --stat";
     gst = "git status";
