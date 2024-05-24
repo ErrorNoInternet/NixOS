@@ -9,7 +9,7 @@
       };
     };
     extraPlugins = with pkgs.vimPlugins; [
-      suda-vim
+      vim-suda
     ];
     globals = {
       suda_smart_edit = 1;
