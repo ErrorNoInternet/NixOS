@@ -8,12 +8,12 @@
   cfg = config.server.zfs;
   inherit (lib) mkEnableOption mkOption mkIf mkDefault;
 
-  version = "2.2.3-unstable-2024-05-03";
+  version = "2.2.4-unstable-2024-05-24";
   src = pkgs.fetchFromGitHub {
     owner = "openzfs";
     repo = "zfs";
-    rev = "04bae5ec95f7273105237159a882d5b72ec2b998";
-    hash = "sha256-z9PvV3AHYJnVF5x7mt8KSiMaQ+4D1IBJzkbbffP09AY=";
+    rev = "efbef9e6cc1e14cc19a24b76175f7ec86610161a";
+    hash = "sha256-4eU2qSedecGwmOFwJ25PdnbH2pD7w4sH5Yd0unYXMYE=";
   };
   patches = import ./patches {inherit self;};
 in {
@@ -36,6 +36,7 @@ in {
         name = "zfs-kernel-${version}-${prev.kernel.version}";
         inherit version src;
         patches = (old.patches or []) ++ patches;
+        meta = old.meta // {broken = false;};
       });
     }));
 
@@ -43,6 +44,7 @@ in {
       name = "zfs-user-${version}";
       inherit version src;
       patches = (old.patches or []) ++ patches;
+      meta = old.meta // {broken = false;};
     });
   };
 }
