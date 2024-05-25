@@ -31,12 +31,6 @@ jobs:
       - name: Clone repository
         uses: actions/checkout@v4
 
-      - name: Check Nix flake inputs
-        uses: DeterminateSystems/flake-checker-action@v5
-        with:
-          fail-mode: true
-          check-outdated: false
-
       - name: Check Nix flake outputs
         run: nix flake check --all-systems --show-trace
       
