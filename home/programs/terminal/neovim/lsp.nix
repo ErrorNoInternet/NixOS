@@ -5,7 +5,7 @@
 
       crates-nvim = {
         enable = true;
-        extraOptions.src.cmp.enabled = true;
+        extraOptions.completion.cmp.enabled = true;
       };
 
       zig = {
