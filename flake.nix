@@ -88,7 +88,7 @@
       };
     };
 
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:ErrorNoInternet/nixpkgs/nixos-unstable";
 
     nix-super = {
       url = "github:privatevoid-net/nix-super";

@@ -924,15 +924,15 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1716509168,
-        "narHash": "sha256-4zSIhSRRIoEBwjbPm3YiGtbd8HDWzFxJjw5DYSDy1n8=",
-        "owner": "NixOS",
+        "lastModified": 1716622406,
+        "narHash": "sha256-LeqpqMDPCXKMbnDz4Pre/I/7dhS8Wr1stsQVKJyhwuM=",
+        "owner": "ErrorNoInternet",
         "repo": "nixpkgs",
-        "rev": "bfb7a882678e518398ce9a31a881538679f6f092",
+        "rev": "9ac36c2c9eef1fdd0fd9969fbec8c7c04032f80e",
         "type": "github"
       },
       "original": {
-        "owner": "NixOS",
+        "owner": "ErrorNoInternet",
         "ref": "nixos-unstable",
         "repo": "nixpkgs",
         "type": "github"
