@@ -202,6 +202,18 @@
         key = "<F4>";
         action = "<cmd>nohl<CR><cmd>MinimapRefresh<CR>";
       }
+      {
+        mode = "i";
+        options.silent = true;
+        key = "<M-u>";
+        action = "<esc><cmd>nohl<CR><cmd>MinimapRefresh<CR>i";
+      }
+      {
+        mode = "n";
+        options.silent = true;
+        key = "<M-u>";
+        action = "<cmd>nohl<CR><cmd>MinimapRefresh<CR>";
+      }
 
       {
         mode = "n";
