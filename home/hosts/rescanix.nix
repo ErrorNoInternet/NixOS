@@ -129,7 +129,6 @@
     wev
     wine
     winetricks
-    wireshark
     wl-screenrec
     yt-dlp
     zbar

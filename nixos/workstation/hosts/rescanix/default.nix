@@ -25,11 +25,6 @@ in {
   nixos.wireless.enable = mkForce false;
   networking.networkmanager.enable = true;
 
-  services.printing = {
-    enable = true;
-    drivers = [pkgs.hplip];
-  };
-
   workstation = {
     kernel.patches.removeUnused = false;
 
@@ -43,5 +38,14 @@ in {
       hyprland.enable = true;
       plasma5.enable = true;
     };
+  };
+
+  services.printing = {
+    enable = true;
+    drivers = [pkgs.hplip];
+  };
+
+  programs = {
+    wireshark.enable = true;
   };
 }
