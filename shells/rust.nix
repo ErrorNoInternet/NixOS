@@ -8,6 +8,7 @@
       targetsFull = [
         "aarch64-unknown-linux-gnu"
         "aarch64-unknown-linux-musl"
+        "wasm32-unknown-unknown"
         "wasm32-wasi"
         "x86_64-unknown-linux-gnu"
         "x86_64-unknown-linux-musl"
