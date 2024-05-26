@@ -1,0 +1,57 @@
+diff --git a/src/libstore/http-binary-cache-store.cc b/src/libstore/http-binary-cache-store.cc
+index 5da87e935..605771ecb 100644
+--- a/src/libstore/http-binary-cache-store.cc
++++ b/src/libstore/http-binary-cache-store.cc
+@@ -89,7 +89,7 @@ protected:
+     void maybeDisable()
+     {
+         auto state(_state.lock());
+-        if (state->enabled && settings.tryFallback) {
++        if (state->enabled) {
+             int t = 60;
+             printError("disabling binary cache '%s' for %s seconds", getUri(), t);
+             state->enabled = false;
+diff --git a/src/libstore/store-api.cc b/src/libstore/store-api.cc
+index 118e5de9f..ecfb696b6 100644
+--- a/src/libstore/store-api.cc
++++ b/src/libstore/store-api.cc
+@@ -555,10 +555,7 @@ void Store::querySubstitutablePathInfos(const StorePathCAMap & paths, Substituta
+             } catch (InvalidPath &) {
+             } catch (SubstituterDisabled &) {
+             } catch (Error & e) {
+-                if (settings.tryFallback)
+-                    logError(e.info());
+-                else
+-                    throw;
++                logError(e.info());
+             }
+         }
+     }
+diff --git a/src/libstore/unix/build/substitution-goal.cc b/src/libstore/unix/build/substitution-goal.cc
+index c7e8e2825..55f7edc70 100644
+--- a/src/libstore/unix/build/substitution-goal.cc
++++ b/src/libstore/unix/build/substitution-goal.cc
+@@ -113,18 +113,12 @@ void PathSubstitutionGoal::tryNext()
+         tryNext();
+         return;
+     } catch (SubstituterDisabled &) {
+-        if (settings.tryFallback) {
+-            tryNext();
+-            return;
+-        }
+-        throw;
++        tryNext();
++        return;
+     } catch (Error & e) {
+-        if (settings.tryFallback) {
+-            logError(e.info());
+-            tryNext();
+-            return;
+-        }
+-        throw;
++        logError(e.info());
++        tryNext();
++        return;
+     }
+ 
+     if (info->path != storePath) {
