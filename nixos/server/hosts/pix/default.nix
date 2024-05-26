@@ -21,6 +21,7 @@
   };
 
   programs.ssh.forwardX11 = true;
+  services.openssh.settings.X11Forwarding = true;
 
   networking.firewall = {
     allowedTCPPorts = [
